@@ -1,0 +1,148 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "12. TITAN CLANS"
+  },
+  "name": "Titan Clans",
+  "doctrines": ["Heavy Support", "Breakthrough"],
+  "worldbuilding": "Ogre kingdoms, giant tribes, monstrous nomads, and beast clans. Their ordinary warriors are already exceptionally large and powerful, while their armies rely on physical mass and devastating Charges.",
+  "factionRule": {
+    "name": "Massive Momentum",
+    "effect": "All friendly Units gain Impact 1."
+  },
+  "factionCommands": [
+    { "name": "Thunderous Advance", "timing": "Assault", "cost": "1 CP", "effect": "One friendly Unit makes an additional Move before declaring a Charge." },
+    { "name": "Smash Through", "timing": "Assault", "cost": "1 CP", "effect": "One friendly Unit's next Charge Impact this Phase ignores one step of temporary Armor improvement on the target (use its normal printed Armor for this Impact if a bonus improved it). Impact already ignores Evade and Cover." },
+    { "name": "Roar of Dominance", "timing": "Assault", "cost": "1 CP", "effect": "Choose one friendly Monster. Enemies cannot use Reactions against that Monster until the end of the Phase." }
+  ],
+  "signatureCoreUnits": [
+    {
+      "name": "Ogre Warriors",
+      "points": 225,
+      "models": 3,
+      "tags": ["Monster", "Infantry", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Heavy Clubs", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 2, "keywords": ["Anti-Armored 2"] }
+      ],
+      "abilities": [
+        { "name": "Massive Charge", "type": "Passive", "effect": "Roll 3d6 for this unit's charges and keep the two highest." }
+      ]
+    },
+    {
+      "name": "Beast Riders",
+      "points": 205,
+      "models": 2,
+      "tags": ["Monster", "Cavalry", "Mortal"],
+      "modelProfile": { "move": "6\"", "wounds": 5, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Mauling Harness", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 2, "keywords": ["Anti-Infantry 2"] }
+      ],
+      "abilities": [
+        { "name": "Stampede", "type": "Passive", "effect": "Gain Impact +2 on a successful Charge." }
+      ]
+    },
+    {
+      "name": "Stone Hurlers",
+      "points": 220,
+      "models": 3,
+      "tags": ["Monster", "Infantry", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Boulder Toss", "range": "10\"", "attacks": 3, "hit": "5+", "damage": 2, "keywords": ["Heavy"] },
+        { "name": "Heavy Clubs", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Covering Barrage", "type": "Passive", "effect": "While this Unit remains stationary, friendly Monster Units within Medium gain Accurate 1 on their next Charge-phase Attack." }
+      ]
+    }
+  ],
+  "captainAndSpecialists": [
+    {
+      "name": "Tyrant",
+      "role": "Captain",
+      "points": 275,
+      "tags": ["Infantry", "Hero", "Mortal", "Monster"],
+      "modelProfile": { "move": "5\"", "wounds": 8, "armor": "4+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Great Weapon", "range": "Engaged", "attacks": 6, "hit": "3+", "damage": 2, "keywords": ["Anti-Elite 2"] }
+      ],
+      "abilities": [
+        { "name": "Stampede", "type": "Passive", "effect": "Gain Impact +2 on a successful Charge." },
+        { "name": "Throw Aside", "type": "Command", "cost": "1 CP", "timing": "Reaction", "effect": "After inflicting an unsaved Hit to an engaged unit or after a successful Charge, reposition one enemy basic Model up to 2\" to a legal position, maintaining Unit coherency." }
+      ]
+    },
+    {
+      "name": "Beast Shaman",
+      "role": "Wizard",
+      "points": 190,
+      "tags": ["Wizard", "Elite", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 6, "armor": "5+", "evade": "6+", "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Primal Bolt", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Staff", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Earthshatter", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "On 3+, inflict Direct Damage 1 and Slow 1 on one visible enemy within Short." }
+      ]
+    },
+    {
+      "name": "Beastmaster",
+      "role": "Support",
+      "points": 155,
+      "tags": ["Support", "Elite", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 6, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Chain Spear", "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Crack the Whip", "type": "Command", "cost": "1 CP", "timing": "Reaction", "effect": "When a friendly Monster or Beast Unit within Short rolls its Charge Pool, reroll up to two dice, respecting the usual reroll restriction." }
+      ]
+    }
+  ],
+  "largeAssets": [
+    {
+      "name": "Giant",
+      "points": 300,
+      "tags": ["Monster", "Beast", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 14, "armor": "4+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Massive Club", "range": "Engaged 2\"", "attacks": 5, "hit": "4+", "damage": 3, "keywords": ["Anti-Armored 3"] }
+      ],
+      "abilities": [
+        { "name": "Huge", "type": "Passive", "effect": "Counts as three Units for objective control." }
+      ]
+    },
+    {
+      "name": "War Mammoth",
+      "points": 400,
+      "tags": ["Monster", "Beast", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 16, "armor": "3+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Howdah Bows", "range": "10\"", "attacks": 7, "hit": "5+", "damage": 1, "keywords": ["Accurate 1"] },
+        { "name": "Crushing Tusks", "range": "Engaged", "attacks": 5, "hit": "3+", "damage": 3, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Mobile Fortress", "type": "Passive", "effect": "Friendly units immediately behind the Mammoth benefit from Cover where appropriate." }
+      ]
+    }
+  ],
+  "factionLeader": {
+    "name": "Overtyrant",
+    "points": 540,
+    "tags": ["Infantry", "Hero", "Mortal"],
+    "modelProfile": { "move": "5\"", "wounds": 13, "armor": "3+", "evade": "6+", "ward": null },
+    "attackProfiles": [
+      { "name": "Royal Maul", "range": "Engaged", "attacks": 8, "hit": "3+", "damage": 3, "keywords": [] }
+    ],
+    "abilities": [
+      { "name": "Supreme Bully", "type": "Passive", "effect": "The Overtyrant's Engagement Attacks gain Anti-Monster 2 and Anti-Character 2." },
+      { "name": "The Crushing Tide", "type": "Command", "cost": "2 CP", "timing": "Movement", "frequency": "Once per Battle", "effect": "Up to two friendly Ogre or Monster Units within Medium gain +1 Impact and +1 Damage on their next Engagement Attack this Round." }
+    ],
+    "knownIssues": ["No printed Impact value, unusual for a melee-focused faction's Leader (every other Titan Clans signature melee Unit prints an Impact bonus or Massive Charge). Likely a drafting gap rather than intentional, since the Overtyrant otherwise has the faction's heaviest melee kit; not resolved here."]
+  },
+  "genericUnitsWorthTaking": "Cheap auxiliaries, conventional Ranged Infantry, light mobile troops, Scouts, and ordinary Support Units. Ogre Warriors and Beast Riders are devastating but too expensive to efficiently cover every objective.",
+  "designNotes": [
+    "v4.2 balance pass: added Stone Hurlers as the faction's Extra Core, a stationary ranged-support Monster unit reinforcing the Heavy Support doctrine rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on Ogre Warriors' Heavy Clubs and the Giant's Massive Club, Anti-Infantry on Beast Riders' Mauling Harness, Anti-Elite on the Tyrant's Great Weapon) or an improved Hit (War Mammoth's Crushing Tusks 4+ -> 3+). The Overtyrant's Supreme Bully passive also had its Anti-Monster/Anti-Character values doubled from 1 to 2."
+  ]
+}

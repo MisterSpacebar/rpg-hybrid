@@ -1,0 +1,25 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "P4 — EXTRACTION" },
+  "id": "P4",
+  "name": "Extraction",
+  "tagline": "Heist, Rescue, or Recovery",
+  "defaultDuration": "6 Rounds",
+  "setup": [
+    "One Primary Target.",
+    "One Target Starting Location.",
+    "One or more Extraction Areas.",
+    "One Retrieving side.",
+    "One Guarding side."
+  ],
+  "acquireTarget": {
+    "rule": "An unengaged Unit within 1\" of the Target may perform an Acquire Mission Action. The Unit becomes its carrier or escort. Apply the normal Carried Objective rules for portable Targets, or the appropriate Scenario Model / Escort rules for living Targets. Establish which applies at setup.",
+    "ifDropped": "If a portable carrier is Defeated, its Target is dropped. Living Targets instead follow their printed capture, defeat, or escort rules. The Guarding side may recover the dropped Target and transport it back to its designated Starting Location."
+  },
+  "victory": {
+    "retrievingSideWins": "The Retrieving side wins by extracting the Target before the Round limit.",
+    "guardingSideWins": "The Guarding side wins if extraction is prevented.",
+    "note": "The Mission may specify that a Target must be recovered intact rather than destroyed."
+  },
+  "recommendedSecondaries": ["Recover Treasure", "Rescue Captives", "Gather Intelligence", "Sabotage Target", "Expose Conspiracy"],
+  "campaignNotes": "Extraction supports robberies, prison breaks, retrieving documents, recovering artifacts, and rescuing important people. The Target's identity determines the potential campaign consequences."
+}

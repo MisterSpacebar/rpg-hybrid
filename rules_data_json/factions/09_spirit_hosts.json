@@ -1,0 +1,149 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "9. SPIRIT HOSTS"
+  },
+  "name": "Spirit Hosts",
+  "doctrines": ["Deep Strike", "Grinding"],
+  "worldbuilding": "Restless ancestors, spectral warriors, wraiths, banshees, and supernatural processions. Their armies pass through terrain and rely on unnatural defenses, fear, and freedom of movement. They do not require conventional mounted cavalry to field mobile battlefield units.",
+  "factionRule": {
+    "name": "Incorporeal",
+    "effect": "Friendly Spirit Units gain Ward 6+ against Physical Damage, or their Ward is improved by 1 against incoming Physical damage. This effect is already marked on the faction datasheets and is not applied a second time to those printed Ward values."
+  },
+  "factionCommands": [
+    { "name": "Fade from Reality", "timing": "Reaction", "cost": "1 CP", "effect": "Improve one friendly Unit's applicable Ward by one step until the end of the Phase." },
+    { "name": "Spectral Passage", "timing": "Movement", "cost": "1 CP", "effect": "One friendly Unit gains Move +2\" and may move through terrain and Models this activation, finishing legally." },
+    { "name": "Haunting Presence", "timing": "Assault", "cost": "1 CP", "effect": "One nearby enemy cannot benefit from Cover and worsens Evade by one step until the end of the Round." }
+  ],
+  "signatureCoreUnits": [
+    {
+      "name": "Wraith Guard",
+      "points": 185,
+      "models": 3,
+      "tags": ["Elite Infantry", "Spirit", "Undead"],
+      "modelProfile": { "move": "4\"", "wounds": 3, "armor": "6+", "evade": "5+", "ward": "5+ (Physical)" },
+      "attackProfiles": [
+        { "name": "Spectral Blades", "range": "Engaged", "attacks": 3, "hit": "4+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Incorporeal Advance", "type": "Passive", "effect": "May Move and Charge through terrain and Models but must finish legally." }
+      ]
+    },
+    {
+      "name": "Haunters",
+      "points": 170,
+      "models": 4,
+      "tags": ["Mobile", "Infantry", "Spirit", "Undead"],
+      "modelProfile": { "move": "6\"", "wounds": 2, "armor": "6+", "evade": "4+", "ward": "6+ (Physical)" },
+      "attackProfiles": [
+        { "name": "Ghostly Touch", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Terrifying Presence", "type": "Passive", "effect": "Enemies Engaged with this Unit worsen Evade by one step. May Move through terrain, finishing legally." }
+      ]
+    },
+    {
+      "name": "Keening Archers",
+      "points": 175,
+      "models": 4,
+      "tags": ["Ranged Infantry", "Spirit", "Undead"],
+      "modelProfile": { "move": "5\"", "wounds": 2, "armor": "6+", "evade": "5+", "ward": "6+ (Physical)" },
+      "attackProfiles": [
+        { "name": "Soul Arrows", "range": "9\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Ghostly Touch", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Keening Wail", "type": "Passive", "effect": "Enemies within Short of this Unit worsen Hit by one step when targeting it with ranged Attacks." }
+      ]
+    }
+  ],
+  "captainAndSpecialists": [
+    {
+      "name": "Wraith Captain",
+      "role": "Captain",
+      "points": 200,
+      "tags": ["Infantry", "Hero", "Spirit", "Undead"],
+      "modelProfile": { "move": "5\"", "wounds": 6, "armor": "6+", "evade": "4+", "ward": "6+ (Ward Physical +2)" },
+      "attackProfiles": [
+        { "name": "Ghostblade", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Deathly Escort", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One unengaged friendly Spirit Unit within Short gains Concealed until its next activation or until it becomes Engaged." }
+      ]
+    },
+    {
+      "name": "Spirit Seer",
+      "role": "Wizard",
+      "points": 180,
+      "tags": ["Elite", "Spirit", "Undead"],
+      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "6+", "evade": "5+", "ward": "5+ (Physical)" },
+      "attackProfiles": [
+        { "name": "Soul Lance", "range": "9\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Spectral Staff", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Soul Rend", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "On 3+, inflict Direct Damage 1 on a visible enemy within Medium." }
+      ]
+    },
+    {
+      "name": "Mourning Herald",
+      "role": "Support",
+      "points": 155,
+      "tags": ["Support", "Elite", "Spirit", "Undead"],
+      "modelProfile": { "move": "5\"", "wounds": 5, "armor": "6+", "evade": "5+", "ward": "6+ (Physical)" },
+      "attackProfiles": [
+        { "name": "Tolling Echo", "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Ghostly Hands", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Funeral Bell", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One visible enemy within Medium cannot benefit from positive Move modifiers or Charge this Round." }
+      ]
+    }
+  ],
+  "largeAssets": [
+    {
+      "name": "Mourning Engine",
+      "points": 255,
+      "tags": ["Spirit", "Construct", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 9, "armor": "5+", "evade": "5+", "ward": "4+ (Physical)" },
+      "attackProfiles": [
+        { "name": "Soul Wave", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic", "Blast 1\""] },
+        { "name": "Spectral Limbs", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Unbound Spirit", "type": "Passive", "effect": "Ignores terrain and Models while moving, finishing legally." }
+      ]
+    },
+    {
+      "name": "Grave Leviathan",
+      "points": 325,
+      "tags": ["Monster", "Spirit", "Undead"],
+      "modelProfile": { "move": "6\"", "wounds": 12, "armor": "6+", "evade": "5+", "ward": "4+ (Physical)" },
+      "attackProfiles": [
+        { "name": "Abyssal Grasp", "range": "Engaged 2\"", "attacks": 5, "hit": "4+", "damage": 2, "keywords": ["Magic", "Anti-Armored 2"] }
+      ],
+      "abilities": [
+        { "name": "Otherworldly Bulk", "type": "Passive", "effect": "After successfully Charging, enemies cannot use Reactions against its first Engagement Attack that Round." }
+      ]
+    }
+  ],
+  "factionLeader": {
+    "name": "Pale Monarch",
+    "points": 495,
+    "tags": ["Hero", "Spirit", "Undead"],
+    "modelProfile": { "move": "6\"", "wounds": 6, "armor": "6+", "evade": "3+", "ward": "4+ (Physical Ward +2)" },
+    "attackProfiles": [
+      { "name": "Lament of the Dead", "range": "8\"", "attacks": 9, "hit": "4+", "damage": 1, "keywords": ["Magic", "Accurate 1"] },
+      { "name": "Crown of Sorrows", "range": "Engaged", "attacks": 5, "hit": "3+", "damage": 2, "keywords": ["Magic", "Anti-Character 2"] }
+    ],
+    "abilities": [
+      { "name": "Royal Terror", "type": "Passive", "effect": "Enemies within Short of the Pale Monarch cannot Evade." },
+      { "name": "Kingdom of the Dead", "type": "Command", "cost": "2 CP", "timing": "Movement", "frequency": "Once per Battle", "effect": "Until the end of the Round, Friendly Units within Short of Pale Monarch gain Tough 2 until the end of the Round." }
+    ],
+    "knownIssues": ["No printed Impact value, unlike other Faction Leaders in this file (most list an explicit Impact bonus). Could be an intentional omission for a Spirit Leader without a melee Charge focus, or a drafting gap; not resolved here."]
+  },
+  "genericUnitsWorthTaking": "Spirit-themed generic Line Infantry, ranged spectral archers, Scouts, and conventional Support Units. Haunters serve as dedicated combat infiltrators, while generic Scouts remain a less expensive way to obtain target designation.",
+  "designNotes": [
+    "v4.2 balance pass: added Keening Archers as the faction's Extra Core, a ranged Spirit unit reinforcing the incorporeal/magic identity rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on the Grave Leviathan's Abyssal Grasp, Anti-Character on the Pale Monarch's Crown of Sorrows)."
+  ]
+}

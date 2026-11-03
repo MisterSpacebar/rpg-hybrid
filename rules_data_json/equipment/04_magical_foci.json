@@ -1,0 +1,12 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "MAGICAL FOCI"
+  },
+  "description": "A character may normally equip one magical focus. Magical foci improve Spell Attacks or provide supernatural benefits. Focus improvements apply while the item is equipped. A magical focus does not grant additional Spell Attacks unless explicitly stated.",
+  "foci": [
+    { "name": "Arcane Focus", "points": 10, "effect": "Choose one Spell Attack; +1\" Range" },
+    { "name": "Channeling Focus", "points": 15, "effect": "Once per Round, reroll one natural 1 on a Spell Attack" },
+    { "name": "Protective Focus", "points": 20, "effect": "Gain Ward 6+ against Magic" }
+  ]
+}

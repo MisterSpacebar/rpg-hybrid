@@ -1,0 +1,70 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/05_classes.md",
+    "section": "Classes (intro, STARTING EQUIPMENT, ATTACK PROFILES, Shared References)"
+  },
+  "description": [
+    "Classes represent a character's primary training, capabilities, and battlefield role.",
+    "Each Player Character chooses one Base Class and one of its Subclasses.",
+    "A Base Class establishes the character's starting combat profile and grants a shared Class Ability.",
+    "A Subclass provides a Signature Ability or equivalent always-prepared feature, additional capabilities, and suggested equipment.",
+    "Class Abilities are always available unless otherwise specified.",
+    "Subclass Signature Commands and the Artificer's Field Specialty are always prepared and do not count against the character's four optional prepared Command Ability slots."
+  ],
+  "startingEquipmentConventions": {
+    "basePoints": 100,
+    "finalPointValueFormula": "max(100, spent Talent XP) + Equipment Points + other explicit costs",
+    "formulaSourceRef": "03_experience_and_advancement.md",
+    "equipmentListingConventions": [
+      "Standard: The recommended primary weapon for that Subclass. It is not mandatory or automatically free.",
+      "Included: Equipment that adds 0 Points to the character's value.",
+      "Optional: Additional suggested equipment that may be acquired normally.",
+      "Starting Spells: Automatically known Spell Attacks included in the Base Character Value unless a specific optional spell states an additional cost."
+    ],
+    "costRule": "Select a recommended or permitted weapon and pay its listed price from the Equipment Catalogue. A Class/Subclass provides access and recommendations, not a second version of the weapon or a price discount. For learned spells outside the granted starting set, use the assigned Points from the Spell Catalogue.",
+    "equipmentRules": [
+      "A character may normally equip one primary melee weapon, one ranged weapon, and reasonable backup weapons.",
+      "Known Spell Attacks do not occupy physical weapon slots.",
+      "Only equipped weapons contribute their listed Equipment Points.",
+      "Armor, Shields, and magical foci are purchased separately.",
+      "The Equipment Catalogue (11_equipment_and_crafting.md) is the authoritative source for PC weapon Attack profiles and their Point costs.",
+      "This chapter repeats the relevant weapon and starting spell profiles directly beneath each Class and Subclass as reference copies, not different versions or free equipment; if a profile is later revised, the Class tables must be synchronized.",
+      "Starting Spell Attacks are also maintained in 06_spells_and_equipment.md; Characters know the spells granted by their Class/Subclass at the stated included or optional cost.",
+      "Class weapon suggestions use those exact Attack profiles and Point costs. NPC Unit Attack profiles are separate."
+    ]
+  },
+  "attackProfileConventions": {
+    "columns": ["Range", "A (Attack dice)", "Hit", "Dmg", "Keywords", "Pts"],
+    "notes": [
+      "A is the number of Attack dice the Character rolls using the listed weapon or spell before specifically granted modifications (such as Prowess or Commands).",
+      "Use each printed profile directly; apply only specific modifiers from Talents, Commands, or equipment.",
+      "Assault Phase: Ranged Weapon Attacks and ranged Spell Attacks.",
+      "Combat Phase: Melee Weapon Attacks and Spell Attacks with an Engaged Range.",
+      "Characters may acquire weapons for either phase, regardless of their Subclass's suggested equipment.",
+      "A Class without a starting Assault Attack may still participate in that phase through other eligible actions and may acquire ranged weapons later.",
+      "Charging remains a standard Assault action available to eligible Units, using universal Move + 2D6 in Structured Combat or success-based Charging in Narrative Combat.",
+      "A Charge's base Impact equals the highest Charge die, with Impact X adding to it."
+    ],
+    "example": "A Berserker choosing the standard Longsword pays its listed 10 Equipment Points and uses Engaged / A 4 / Hit 5+ / Dmg 1 as printed in the Equipment Catalogue. It does not become A 5 merely because a PC or Warrior equips it. An explicit +1 Attack die from a Talent or Command would increase it to A 5 for the specified Attack."
+  },
+  "classList": [
+    { "id": "warrior", "name": "Warrior", "file": "warrior.json" },
+    { "id": "rogue", "name": "Rogue", "file": "rogue.json" },
+    { "id": "mage", "name": "Mage", "file": "mage.json" },
+    { "id": "priest", "name": "Priest", "file": "priest.json" },
+    { "id": "artificer", "name": "Artificer", "file": "artificer.json" }
+  ],
+  "sharedReferences": {
+    "description": "The weapon/spell tables repeated in this chapter are player-facing quick references, not alternate profiles. They must be updated whenever their source catalogue changes.",
+    "authoritativeSources": {
+      "pcWeaponAttackDiceAndPrices": "11_equipment_and_crafting.md",
+      "classSubclassStartingSpellProfiles": "06_spells_and_equipment.md",
+      "additionalLearnedSpells": "12_spell_catalogue.md",
+      "artificerFormulas": "18_artificer_formulas.md"
+    },
+    "notes": [
+      "The Spell Catalogue additionally includes Flame Lance (Magic, Fire).",
+      "All personal CP Commands follow the active Unit timing in the full combat chapters (16_structured_combat.md); spell Attacks use the chosen Assault Attack action, not a free Attack following an Assault Move."
+    ]
+  }
+}

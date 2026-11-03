@@ -1,0 +1,14 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "9. Alpha Strike" },
+  "name": "Alpha Strike",
+  "foundationRecruitmentSlot": "V",
+  "strategy": "Deliver powerful opening attacks and exploit the first moments of an Engagement.",
+  "commands": [
+    { "name": "First Strike Orders", "slot": "H", "timing": "Assault", "effect": "One friendly Unit within Short of friendly Headquarters gains Accurate 2 on its next Attack against an enemy it has not previously attacked this battle." },
+    { "name": "Opening Volley", "slot": "R", "timing": "Assault", "effect": "One friendly Unit gains +3 Attacks on its first ranged Attack of the battle." },
+    { "name": "Shock Assault", "slot": "E", "timing": "Combat", "effect": "One friendly Unit that Charged this Round gains +2 Attacks on its first Engagement Attack this Combat Phase." },
+    { "name": "Opening Barrage", "slot": "A", "timing": "Assault", "effect": "One friendly Unit gains +2 Attacks on its first Attack against a target it has not previously attacked this battle." },
+    { "name": "Ferocious Opening", "slot": "C", "timing": "Combat", "effect": "One friendly Unit gains Accurate 2 and Critical 1 on its first Engagement Attack against a target it has not previously attacked this battle." }
+  ],
+  "doctrineIdentity": "Front-loaded damage and decisive first contact. Alpha Strike is less effective during prolonged engagements because many of its bonuses depend on making initial attacks."
+}

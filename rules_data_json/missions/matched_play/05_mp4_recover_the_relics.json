@@ -1,0 +1,30 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md", "section": "MP4 — RECOVER THE RELICS" },
+  "id": "MP4",
+  "name": "Recover the Relics",
+  "tagline": "Collect and Deliver",
+  "primaryObjective": "Score 1 VP for each controlled objective during every scoring Round.",
+  "setup": "Place one Relic marker at each of the five objective markers. Each Relic is a separate Scenario Object. The objective marker remains in place if its Relic is removed.",
+  "specialRules": {
+    "recoverRelic": {
+      "rule": "An eligible unengaged Unit within 1\" of an unclaimed Relic may perform a Recover Mission Action in Movement or Assault, replacing its normal action in that phase. The Unit becomes the Relic's carrier.",
+      "carrierRules": [
+        "May carry only one Relic.",
+        "May move normally.",
+        "Cannot Charge.",
+        "Drops the Relic if defeated.",
+        "May voluntarily drop the Relic during its activation."
+      ],
+      "recoveryFromGround": "A Relic may be recovered from the ground by either side using the same Mission Action."
+    },
+    "deliverRelic": {
+      "rule": "A carrier that ends its Movement or Assault Move wholly within its friendly Deployment Zone may deliver its Relic. Remove the Relic from play. Each Relic can be delivered only once.",
+      "relicDeliveryPoints": "Each successfully delivered Relic awards 2 bonus Primary VP once. A player may score at most 4 delivery VP per Round. These finite delivery VP are tracked separately from the ordinary objective-control Primary VP cap, and are awarded when delivery is resolved (normally during Movement or Assault). They count toward the 10-VP Decisive Victory check at the end of that Round's Scoring Phase; do not check the lead mid-Phase. A delivery made in Round 1 is recorded but does not award VP until the Round 2 Scoring Phase; for Tactical scoring only, it counts as delivered during Round 2. This preserves the universal no-scoring Round 1 rule without penalizing early delivery."
+    }
+  },
+  "tacticalObjective": {
+    "name": "Secure an Artifact",
+    "effect": "Gain 1 Tactical VP if you deliver at least one Relic during the current Round."
+  },
+  "designNotes": "Recover the Relics creates a tradeoff between holding objectives and carrying valuable objects away from the front. The Relics do not replace the normal capture objectives, so players must balance territorial scoring against extraction."
+}

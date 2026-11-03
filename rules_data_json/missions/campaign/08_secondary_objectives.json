@@ -1,0 +1,201 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "3. Secondary Objectives" },
+  "intro": "Each side normally receives one Secondary Objective. These are grouped into six thematic categories based on common fantasy RPG tropes. Secondary success is independent of Primary victory. Campaign consequences listed below are examples of appropriate Stakes, not automatic rewards.",
+  "categoryTable": [
+    { "category": "Treasure & Discovery", "objectives": "S1–S3" },
+    { "category": "Rescue & Relationships", "objectives": "S4–S6" },
+    { "category": "Intrigue & Subterfuge", "objectives": "S7–S9" },
+    { "category": "Warfare & Logistics", "objectives": "S10–S12" },
+    { "category": "Wilderness & Monsters", "objectives": "S13–S15" },
+    { "category": "Magic & the Supernatural", "objectives": "S16–S18" },
+    { "category": "Narrative Secondaries", "objectives": "GM-identified, not numbered" }
+  ],
+  "treasureAndDiscovery": [
+    {
+      "id": "S1", "name": "Recover Treasure",
+      "setup": "Place a Treasure marker separate from the Primary Target.",
+      "objective": "Recover and extract the Treasure.",
+      "rules": "An eligible Unit may collect the marker using a Mission Action. The marker becomes a Carried Objective.",
+      "completion": "Deliver the Treasure to a designated friendly Extraction Area.",
+      "opposition": "Enemy Units may defeat the carrier, intercept it, or recover the dropped marker.",
+      "campaignNotes": "The PCs might recover specified Gold, equipment, or a discovery. The opposition might preserve or seize the same asset."
+    },
+    {
+      "id": "S2", "name": "Uncover Secrets",
+      "setup": "Place two Clue markers at separate locations.",
+      "objective": "Investigate both Clues.",
+      "rules": "Each Clue requires a Mission Action or an appropriate Character Skill Alternative. A side may investigate only one Clue per Round.",
+      "completion": "Both Clues are successfully investigated.",
+      "opposition": "Enemy forces may deny access, engage investigators, or prevent the required interactions.",
+      "campaignNotes": "Success might reveal plans, hidden routes, identities, or other information. The opposition may uncover the company's secrets or protect its own."
+    },
+    {
+      "id": "S3", "name": "Explore Hidden Site",
+      "setup": "Place three Potential Site markers. Secretly designate one as the True Site.",
+      "objective": "Discover and explore the True Site.",
+      "rules": "Surveying a Site requires a Mission Action or an appropriate Character Skill Alternative. Surveying reveals whether the Site is genuine. Once identified, the True Site requires one additional Explore Mission Action.",
+      "completion": "Identify and explore the True Site.",
+      "opposition": "Enemy Units may prevent access or undertake their own search if assigned an appropriate objective.",
+      "campaignNotes": "The winning side might discover a new location, route, hidden settlement, or future opportunity."
+    }
+  ],
+  "rescueAndRelationships": [
+    {
+      "id": "S4", "name": "Rescue Captives",
+      "setup": "Place a Captive marker at a guarded location.",
+      "objective": "Free and extract the Captives.",
+      "rules": "An eligible Unit may free the Captives using a Mission Action. The Captives then become a Carried Objective escorted by that Unit.",
+      "completion": "Extract the Captives through a designated friendly Exit.",
+      "opposition": "The enemy may intercept the escort, recover dropped Captives, or prevent their release.",
+      "campaignNotes": "The PCs may rescue allies, specialists, prisoners, or civilians. The opposition may preserve hostages or recover its own captured personnel."
+    },
+    {
+      "id": "S5", "name": "Protect VIP",
+      "setup": "Designate one friendly VIP and one relevant Meeting or Objective Site.",
+      "objective": "Complete the VIP's required participation while preserving their safety.",
+      "rules": "The VIP must reach the Site and remain there through one Scoring Phase, or perform an equivalent meaningful Narrative action. The VIP must remain undefeated until the encounter ends.",
+      "completion": "Fulfill the participation requirement and preserve the VIP.",
+      "opposition": "Enemy forces may attack, capture, isolate, or prevent the VIP from reaching the required location.",
+      "campaignNotes": "Success might preserve a political relationship, important witness, specialist, or military leader."
+    },
+    {
+      "id": "S6", "name": "Win Local Support",
+      "setup": "Designate one Neutral Delegation or local group.",
+      "objective": "Secure its cooperation.",
+      "rules": "An eligible Character may perform an Appeal action through an appropriate social Skill check. Alternatively, an eligible Unit may perform a suitable Mission Action when physical assistance or protection is the basis of the appeal. Each success adds 1 Support Progress, to a maximum of one per Round.",
+      "completion": "Accumulate 2 Support Progress.",
+      "opposition": "An opposing side pursuing the same group's support may also attempt Appeals. The first side to complete its requirement secures the group's support.",
+      "campaignNotes": "Success may provide a contact, local access, intelligence, or an established political opportunity. It does not automatically grant a formation or transfer political control."
+    }
+  ],
+  "intrigueAndSubterfuge": [
+    {
+      "id": "S7", "name": "Gather Intelligence",
+      "setup": "Place one Intelligence Source at a designated location.",
+      "objective": "Recover useful information from the Source.",
+      "rules": "Perform a Gather Intelligence Mission Action in Movement or Assault, or an appropriate Character Skill Alternative during Movement. Each successful interaction generates 1 Intelligence Progress.",
+      "completion": "Accumulate 2 Intelligence Progress.",
+      "opposition": "An enemy Unit may perform a Counterintelligence Mission Action at the same Source to remove 1 Intelligence Progress before completion.",
+      "campaignNotes": "The PCs might reveal an enemy operation, preparations, hidden assets, or future Task. The opposition may expose the company's plans."
+    },
+    {
+      "id": "S8", "name": "Sabotage Target",
+      "setup": "Designate one installation, mechanism, supply depot, or military asset.",
+      "objective": "Disable the Target.",
+      "rules": "An eligible Unit may perform a Sabotage Mission Action at the Target. Each action contributes 1 Sabotage Progress.",
+      "completion": "Accumulate 2 Sabotage Progress. The Target becomes Disabled.",
+      "opposition": "Before completion, an eligible defending Unit may perform a Repair Mission Action to remove 1 Sabotage Progress.",
+      "campaignNotes": "Success may disable an established Improvement, interrupt preparations, or damage a named asset when the Campaign Stakes authorize that consequence."
+    },
+    {
+      "id": "S9", "name": "Expose Conspiracy",
+      "setup": "Place two Evidence markers and designate a Witness or Authority.",
+      "objective": "Gather evidence and present it.",
+      "rules": "Each Evidence marker requires one successful Investigation interaction, using an eligible Movement or Assault Mission Action or a permitted Movement-phase Character Skill Alternative. After both are collected, an eligible Character must present the Evidence through a Mission Action or Narrative Exchange.",
+      "completion": "Recover both pieces of Evidence and successfully present them.",
+      "opposition": "Enemy forces may conceal Evidence, prevent interactions, or block access to the Witness.",
+      "campaignNotes": "Success may expose misconduct, undermine a political plot, or reveal a concealed faction relationship. It does not independently overturn an established political agreement."
+    }
+  ],
+  "warfareAndLogistics": [
+    {
+      "id": "S10", "name": "Secure Supplies",
+      "setup": "Designate one Supply Cache.",
+      "objective": "Secure the Cache while controlling its location.",
+      "rules": "An eligible Unit performs a Secure Supplies Mission Action at the Cache. The assigned side must then control the Cache during the same Round's Scoring Phase.",
+      "completion": "Successfully secure and control the Cache.",
+      "opposition": "Enemy forces may contest the Cache, engage the securing Unit, or force it away before scoring.",
+      "campaignNotes": "Success may preserve supply access, protect an existing logistical asset, or secure a specified reward connected to the operation."
+    },
+    {
+      "id": "S11", "name": "Disable Defenses",
+      "setup": "Designate one defensive emplacement or installation.",
+      "objective": "Neutralize the defense.",
+      "rules": "The defense may be disabled through two successful Mission Actions. If it has a legal destructible profile, defeating it through combat also completes the objective.",
+      "defaultDestructibleInstallation": "W8 / Armor 5+ / no Evade or Ward.",
+      "completion": "Disable or destroy the Target.",
+      "opposition": "Enemy forces may protect the installation, engage attackers, or prevent the required interactions.",
+      "campaignNotes": "Success may interrupt the operation of a fortification, gate, watchtower, or other established defensive asset."
+    },
+    {
+      "id": "S12", "name": "Hold Strategic Position",
+      "setup": "Designate one Strategic Position separate from the Primary Objective.",
+      "objective": "Maintain control of the location.",
+      "rules": "The assigned side must control the Position at the end of two consecutive Scoring Phases. If either check finds the Position Contested or enemy-controlled, the sequence resets.",
+      "completion": "Hold the Position for two consecutive Scoring Phases.",
+      "opposition": "The enemy may contest or capture the Position to interrupt the sequence.",
+      "campaignNotes": "Success may represent a foothold, defensible staging area, observation post, or control of a critical route."
+    }
+  ],
+  "wildernessAndMonsters": [
+    {
+      "id": "S13", "name": "Track Quarry",
+      "setup": "Place two Track markers linked to a concealed creature, route, or other quarry.",
+      "objective": "Identify the quarry's location.",
+      "rules": "Investigate each Track using Survival, Awareness, or an ordinary Mission Action. Only one Track may be investigated per Round.",
+      "completion": "Investigate both Tracks and reveal the quarry or its route.",
+      "opposition": "Enemy forces may block access to Tracks or prevent investigation.",
+      "campaignNotes": "The PCs may discover a Monster's lair, migration route, or hidden trail. The opposition may track the company or locate the quarry first."
+    },
+    {
+      "id": "S14", "name": "Contain Threat",
+      "setup": "Designate one mobile Threat and an Escape Boundary.",
+      "objective": "Prevent the Threat from escaping.",
+      "rules": "The assigned side must keep the Threat from crossing its Escape Boundary until the end of Round 4 or the encounter, whichever occurs first. Defeating the Threat also completes Containment if defeating it is not already the Primary Mission.",
+      "completion": "Maintain containment for the required duration or defeat the designated Threat through an independent objective.",
+      "opposition": "Enemy forces may free the Threat, disrupt containment, or interfere with the protecting Units.",
+      "campaignNotes": "Success may prevent a creature, magical hazard, or other threat from reaching nearby territory."
+    },
+    {
+      "id": "S15", "name": "Survive Environment",
+      "setup": "Place two Environmental Hazard markers and designate one Expedition Unit.",
+      "objective": "Overcome environmental dangers while preserving the Expedition Unit.",
+      "rules": "Each Hazard requires one Stabilize Mission Action or appropriate Survival-based Character Skill Alternative. Only one Hazard may be stabilized per Round.",
+      "completion": "Stabilize both Hazards and keep the Expedition Unit undefeated until the encounter ends.",
+      "opposition": "Enemy forces and existing environmental effects may interfere with stabilization or threaten the Expedition Unit.",
+      "campaignNotes": "Success may preserve expedition resources, prevent an established logistical loss, or establish safe passage through dangerous territory."
+    }
+  ],
+  "magicAndTheSupernatural": [
+    {
+      "id": "S16", "name": "Disrupt Ritual",
+      "setup": "Designate one active Ritual Site.",
+      "objective": "Interrupt the Ritual.",
+      "rules": "Perform a Disrupt Mission Action during Movement or Assault, or an expressly permitted Movement-phase Mysticism Skill Alternative at the Site. Each success adds 1 Disruption Progress.",
+      "completion": "Accumulate 2 Disruption Progress.",
+      "opposition": "Before completion, a defending Unit may perform a Channel Mission Action to remove 1 Disruption Progress.",
+      "campaignNotes": "Success may interrupt magical preparations, delay a supernatural event, or prevent an established magical consequence."
+    },
+    {
+      "id": "S17", "name": "Attune Site",
+      "setup": "Designate one magical Site.",
+      "objective": "Attune the Site and maintain control.",
+      "rules": "Perform a Channel Mission Action during Movement or Assault, or an expressly permitted Movement-phase Mysticism Skill Alternative to Attune the Site. The assigned side must then control the Site during the following Scoring Phase.",
+      "completion": "Establish Attunement and maintain control through the required check.",
+      "opposition": "An opposing Unit may contest the Site or perform a Channel Mission Action to replace its Attunement before completion.",
+      "campaignNotes": "Success may provide magical information, access to a specific location, or another established supernatural opportunity."
+    },
+    {
+      "id": "S18", "name": "Seal Breach",
+      "setup": "Place two Anchor markers and one Breach marker.",
+      "objective": "Disable the Anchors and close the Breach.",
+      "rules": "Each Anchor requires one successful Disable Mission Action during Movement or Assault, or an expressly permitted Movement-phase Mysticism Skill Alternative. Once both are Disabled, an eligible Unit may perform a Seal Mission Action at the Breach.",
+      "completion": "Disable both Anchors and Seal the Breach.",
+      "opposition": "Enemy forces may defend the Anchors, interrupt interactions, or prevent access to the Breach.",
+      "campaignNotes": "Success may contain a supernatural threat, stop further incursions, or prevent a magical disaster."
+    }
+  ],
+  "narrativeSecondaries": {
+    "intro": "Some recommended Secondaries are deliberately left narrative rather than tied to the Mission Action / Progress framework above. The GM identifies the specific target or scene at setup and judges completion directly, instead of tracking markers or Progress.",
+    "entries": [
+      {
+        "name": "Eliminate Officer",
+        "objective": "Defeat a designated enemy Officer — a Captain, named Leader, or another Unit with the Hero or Elite designation — identified by the GM at setup.",
+        "completion": "The designated Officer is defeated: Downed for a Character, or its last Model removed for a multi-model Unit.",
+        "opposition": "Enemy forces may shield, reposition, or reinforce the designated Officer.",
+        "campaignNotes": "Success may remove a named commander, disrupt enemy leadership, or satisfy an eligible Warfare Stake. It does not, by itself, cause the rest of the opposing force to rout or withdraw."
+      }
+    ]
+  },
+  "crossCheck": "Every Recommended Secondary listed under each Primary Mission (02_p1_confrontation.json through 07_p6_negotiation.json) corresponds to an actual Secondary defined here (S1–S18 or the Eliminate Officer Narrative Secondary). No dangling references found. Note: S14 'Contain Threat' and S18 'Seal Breach' are each fully defined here but aren't listed as a Recommended Secondary under any of the six Primary Missions — likely intended as GM-selectable options beyond the 'recommended' shortlists rather than an omission, since the recommended lists are explicitly non-exhaustive suggestions."
+}

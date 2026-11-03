@@ -1,0 +1,347 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/17_bestiary.md",
+    "section": "4. Large Monsters, 4.1 Profiles, 4.2 Abilities and Upgrades"
+  },
+  "description": "Boss encounters and potential Large Assets. All are single-model Units except the four-model Abyssal Kraken.",
+  "units": [
+    {
+      "name": "Ogre",
+      "tags": ["Monster", "Elite", "Humanoid"],
+      "points": 145,
+      "models": 1,
+      "modelProfile": { "move": "4\"", "wounds": 7, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Club", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+      ],
+      "abilities": [
+        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." }
+      ],
+      "notes": ["The Ogre is a straightforward Monster emphasizing strong melee Damage rather than exotic abilities."],
+      "upgrades": [
+        { "name": "Standard Ogre", "cost": "+0", "description": "W7, Club, Impact 1." },
+        { "name": "Heavy Armor", "cost": "+20", "description": "Improve Armor to 4+." },
+        { "name": "Throwing Rocks", "cost": "+15", "description": "Gain 6\" / 2 / 5+ / 2 / Anti-Cavalry 2." },
+        { "name": "Crushing Blows", "cost": "+20", "description": "Club gains Accurate 1 against Armored Units." }
+      ]
+    },
+    {
+      "name": "Troll",
+      "tags": ["Monster", "Elite", "Humanoid"],
+      "points": 170,
+      "models": 1,
+      "modelProfile": { "move": "4\"", "wounds": 8, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Claws", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] }
+      ],
+      "abilities": [
+        { "name": "Regeneration", "type": "Passive", "effect": "At the beginning of each Round, Heal 1. Regeneration does not trigger if the Troll suffered unsaved Fire Damage since its previous activation." }
+      ],
+      "upgrades": [
+        { "name": "Standard Troll", "cost": "+0", "description": "W8, Claws, Regeneration 1." },
+        { "name": "Thick Hide", "cost": "+20", "description": "Improve Armor to 4+." },
+        { "name": "Greater Regeneration", "cost": "+35", "description": "Heal 2 instead of 1 when Regeneration triggers." },
+        { "name": "Hulking Troll", "cost": "+25", "description": "Increase Wounds to W10." }
+      ]
+    },
+    {
+      "name": "Minotaur",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 180,
+      "models": 1,
+      "modelProfile": { "move": "5\"", "wounds": 8, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Great Axe", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] },
+        { "name": "Horns", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Cavalry 2"] }
+      ],
+      "abilities": [
+        { "name": "Impact 2", "type": "Passive", "effect": "Add 2 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Bull Rush", "type": "Passive", "effect": "Increase Impact by 1 when this Unit successfully Charges, giving it Impact 3 before other modifiers." }
+      ],
+      "upgrades": [
+        { "name": "Standard Minotaur", "cost": "+0", "description": "Great Axe, Horns, Impact 2, Bull Rush." },
+        { "name": "Heavy Horns", "cost": "+20", "description": "Bull Rush grants +2 Impact instead of +1." },
+        { "name": "Frenzied Assault", "cost": "+25", "description": "Great Axe gains Accurate 1 on its first Attack after Charging." },
+        { "name": "Armored Hide", "cost": "+20", "description": "Improve Armor to 4+." }
+      ]
+    },
+    {
+      "name": "Clockwork Horror",
+      "tags": ["Construct", "Monster", "Elite"],
+      "points": 205,
+      "models": 1,
+      "modelProfile": { "move": "5\"", "wounds": 9, "armor": "4+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Blades", "range": "Engaged", "attacks": 7, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Critical 1"] }
+      ],
+      "abilities": [
+        { "name": "Construct", "type": "Passive", "effect": "Counts as a Construct for abilities that reference Constructs." },
+        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Overdrive", "type": "Command", "cost": "1 CP", "timing": "Assault / Combat", "effect": "Gain +3 Attacks on the next Blades Attack this activation. After resolving the Attack, suffer 1 Damage." }
+      ],
+      "upgrades": [
+        { "name": "Standard Horror", "cost": "+0", "description": "W9, Blades, Impact 1, Overdrive." },
+        { "name": "Reinforced Chassis", "cost": "+25", "description": "Increase Wounds to W11." },
+        { "name": "Rotary Blades", "cost": "+30", "description": "Increase Blades to eight Attacks." },
+        { "name": "Improved Targeting", "cost": "+20", "description": "Blades gain Accurate 1." }
+      ]
+    },
+    {
+      "name": "Manticore",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 220,
+      "models": 1,
+      "modelProfile": { "move": "7\"", "wounds": 9, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Claws", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] },
+        { "name": "Tail Spikes", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Flying", "type": "Passive", "effect": "May Move over terrain and Models, finishing legally." },
+        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Predatory Dive", "type": "Passive", "effect": "Increase Impact by 1 when successfully Charging after beginning the Round outside Engagement." }
+      ],
+      "upgrades": [
+        { "name": "Standard Manticore", "cost": "+0", "description": "Claws, Tail Spikes, Flying, Impact 1, Predatory Dive." },
+        { "name": "Barbed Tail", "cost": "+20", "description": "Tail Spikes gain Anti-Armored 1." },
+        { "name": "Greater Wings", "cost": "+20", "description": "Increase Move to M9\"." },
+        { "name": "Savage Claws", "cost": "+20", "description": "Claws gain Accurate 1." }
+      ]
+    },
+    {
+      "name": "Griffon",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 235,
+      "models": 1,
+      "modelProfile": { "move": "8\"", "wounds": 9, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Talons", "range": "Engaged", "attacks": 6, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Critical 1"] },
+        { "name": "Beak", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Cavalry 2"] }
+      ],
+      "abilities": [
+        { "name": "Flying", "type": "Passive", "effect": "May Move over terrain and Models, finishing legally." },
+        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Diving Charge", "type": "Passive", "effect": "Its first Engagement Attack after successfully Charging gains Accurate 1." }
+      ],
+      "upgrades": [
+        { "name": "Standard Griffon", "cost": "+0", "description": "Talons, Beak, Flying, Impact 1, Diving Charge." },
+        { "name": "Armored Griffon", "cost": "+20", "description": "Improve Armor to 4+." },
+        { "name": "Savage Talons", "cost": "+25", "description": "Talons gain Accurate 1 even when it has not Charged." },
+        { "name": "Crushing Dive", "cost": "+20", "description": "Increase Impact to 2." }
+      ]
+    },
+    {
+      "name": "Wyvern",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 295,
+      "models": 1,
+      "modelProfile": { "move": "8\"", "wounds": 11, "armor": "4+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Bite", "range": "Engaged", "attacks": 6, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] },
+        { "name": "Venomous Tail", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+      ],
+      "abilities": [
+        { "name": "Flying", "type": "Passive", "effect": "May Move over terrain and Models, finishing legally." },
+        { "name": "Impact 2", "type": "Passive", "effect": "Add 2 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Venom", "type": "Passive", "effect": "When Venomous Tail generates a Surge, convert one successful Hit into Direct Damage 2. Applicable Ward Saves still apply." }
+      ],
+      "upgrades": [
+        { "name": "Standard Wyvern", "cost": "+0", "description": "Bite, Tail, Flying, Impact 2, Venom." },
+        { "name": "Hardened Scales", "cost": "+20", "description": "Gain Tough 1." },
+        { "name": "Greater Venom", "cost": "+25", "description": "On a Tail Surge, convert up to two successful Hits into Direct Damage 2 each." },
+        { "name": "Armored Wyvern", "cost": "+25", "description": "Improve Armor to 3+." }
+      ]
+    },
+    {
+      "name": "Young Dragon",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 395,
+      "models": 1,
+      "modelProfile": { "move": "8\"", "wounds": 12, "armor": "4+", "evade": "5+", "ward": "6+ Magic" },
+      "attackProfiles": [
+        { "name": "Claws", "range": "Engaged", "attacks": 6, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] },
+        { "name": "Bite", "range": "Engaged", "attacks": 3, "hit": "4+", "damage": 3, "damageTypes": ["Physical"], "keywords": ["Anti-Elite 2"] }
+      ],
+      "abilities": [
+        { "name": "Flying", "type": "Passive", "effect": "May Move over terrain and Models, finishing legally." },
+        { "name": "Impact 3", "type": "Passive", "effect": "Add 3 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Draconic Breath", "type": "Passive", "effect": "Choose one Breath Weapon at creation. It may be used once per Round as the Dragon's normal Attack, rather than as an additional Attack." }
+      ],
+      "breathWeaponOptions": [
+        { "name": "Fire Breath", "cost": "+0", "profile": { "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Fire"], "keywords": ["Blast 1\""] }, "effect": "Generates one automatic secondary Hit against other Units within 1\" of the target when the primary Attack scores a Hit." },
+        { "name": "Frost Breath", "cost": "+0", "profile": { "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Frost"], "keywords": [] }, "effect": "When the Attack generates a Surge, its target suffers Slow 2." },
+        { "name": "Lightning Breath", "cost": "+0", "profile": { "range": "10\"", "attacks": 3, "hit": "4+", "damage": 2, "damageTypes": ["Magic", "Lightning"], "keywords": ["Instant", "Anti-Armored 2"] }, "effect": "Cannot normally be responded to with Reactions." }
+      ],
+      "upgrades": [
+        { "name": "Standard Young Dragon", "cost": "+0", "description": "W12, Flying, Impact 3, one Breath Weapon." },
+        { "name": "Ancient Scales", "cost": "+25", "description": "Improve Armor to 3+." },
+        { "name": "Greater Wings", "cost": "+20", "description": "Increase Move to M9\"." },
+        { "name": "Greater Dragon", "cost": "+50", "description": "Increase Wounds to W15 and Impact to 4." }
+      ]
+    },
+    {
+      "name": "Hydra",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 365,
+      "pointsNote": "Base cost: 365 Points (provisional). Reassess after testing degraded damage output and Fire suppression.",
+      "models": 1,
+      "modelProfile": { "move": "4\"", "wounds": 15, "armor": "5+", "evade": "6+", "ward": null },
+      "wardNote": "Ward — (none printed in the base profile).",
+      "attackProfiles": [
+        { "name": "Many-Headed Bites", "range": "Engaged 2\"", "attacks": "2 per functional head (max 10 at W15)", "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] }
+      ],
+      "abilities": [
+        { "name": "Five Heads", "type": "Passive", "effect": "Begin at W15 with five functioning heads. Each 3 remaining Wounds, rounded up, corresponds to one head; each functioning head contributes 2 Attack dice to Many-Headed Bites. Restore Attack dice when healing crosses a head threshold." },
+        { "name": "Many Heads", "type": "Passive", "effect": "Divide the available Bite dice among up to three enemy Units in Engaged 2\" range, declaring allocations before rolling. Roll each target's dice as a separate Attack pool with its own Surges, Critical conversions and Saves. This still uses one Combat activation." },
+        { "name": "Regrowth", "type": "Passive", "effect": "At the start of each Round, Heal 1. Regrowth is suppressed if the Hydra suffered unsaved Fire Damage since its previous activation. Healing may restore Bite Attacks by restoring a functioning head." },
+        { "name": "Impact 1", "type": "Passive", "effect": "Add one automatic Impact Hit to the normal highest Charge die." }
+      ],
+      "headThresholds": [
+        { "remainingWounds": "13–15", "functioningHeads": 5, "biteAttacks": 10 },
+        { "remainingWounds": "10–12", "functioningHeads": 4, "biteAttacks": 8 },
+        { "remainingWounds": "7–9", "functioningHeads": 3, "biteAttacks": 6 },
+        { "remainingWounds": "4–6", "functioningHeads": 2, "biteAttacks": 4 },
+        { "remainingWounds": "1–3", "functioningHeads": 1, "biteAttacks": 2 }
+      ],
+      "upgrades": [
+        { "name": "Additional Head", "addedPoints": 45, "effect": "+3 maximum Wounds and one more functional head (up to +2 Bite Attacks); revise head thresholds accordingly" },
+        { "name": "Venomous Heads", "addedPoints": 30, "effect": "When a Bite Attack Surges, replace one successful Hit with Direct Damage 2 (Ward applies)" },
+        { "name": "Accelerated Regrowth", "addedPoints": 35, "effect": "Regrowth heals 2 instead of 1 when it triggers" },
+        { "name": "Armored Scales", "addedPoints": 20, "effect": "Gain Tough 1" }
+      ]
+    },
+    {
+      "name": "Chimera",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 330,
+      "models": 1,
+      "modelProfile": { "move": "7\"", "wounds": 11, "armor": "4+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Claws and Fangs", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Mobile 2"] },
+        { "name": "Fire Maw", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Fire"], "keywords": ["Blast 1\""] }
+      ],
+      "abilities": [
+        { "name": "Flying", "type": "Passive", "effect": "May Move over terrain and Models, finishing legally." },
+        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Threefold Predator", "type": "Passive", "effect": "When Claws and Fangs generate a Surge, the target suffers Slow 1." }
+      ],
+      "notes": ["Fire Maw is a normal ranged Magic Attack and may be used after moving, subject to the normal ranged Attack rules."],
+      "upgrades": [
+        { "name": "Standard Chimera", "cost": "+0", "description": "Claws and Fangs, Fire Maw, Flying, Impact 1." },
+        { "name": "Venomous Serpent Tail", "cost": "+20", "description": "On a Claws and Fangs Surge, also inflict Direct Damage 1." },
+        { "name": "Greater Flame", "cost": "+30", "description": "Fire Maw gains +1 Attack." },
+        { "name": "Hardened Hide", "cost": "+25", "description": "Gain Tough 1." }
+      ]
+    },
+    {
+      "name": "Roc",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 315,
+      "models": 1,
+      "modelProfile": { "move": "9\"", "wounds": 11, "armor": "5+", "evade": "4+", "ward": null },
+      "attackProfiles": [
+        { "name": "Great Talons", "range": "Engaged", "attacks": 6, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Cavalry 2"] }
+      ],
+      "abilities": [
+        { "name": "Flying", "type": "Passive", "effect": "May Move over terrain and Models, finishing legally." },
+        { "name": "Impact 2", "type": "Passive", "effect": "Add 2 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Swooping Predator", "type": "Passive", "effect": "Increase Impact by 1 when successfully Charging after beginning the Round outside Engagement." },
+        { "name": "Snatch Prey", "type": "Passive", "effect": "When Great Talons inflicts an unsaved Hit on an Infantry or Cavalry Unit, the Roc may reposition one non-Character Model from the target Unit up to 2\". The Model must finish legally and maintain Unit coherency." }
+      ],
+      "upgrades": [
+        { "name": "Standard Roc", "cost": "+0", "description": "W11, Flying, Impact 2, Swooping Predator, Snatch Prey." },
+        { "name": "Greater Roc", "cost": "+35", "description": "Increase Wounds to W14." },
+        { "name": "Razor Talons", "cost": "+25", "description": "Great Talons gain Accurate 1." },
+        { "name": "Armored Feathers", "cost": "+20", "description": "Improve Armor to 4+." }
+      ]
+    },
+    {
+      "name": "Stone Giant",
+      "tags": ["Monster", "Elite", "Giant", "Armored"],
+      "points": 285,
+      "models": 1,
+      "modelProfile": { "move": "4\"", "wounds": 12, "armor": "3+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Stone Fists", "range": "Engaged", "attacks": 4, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] },
+        { "name": "Hurled Boulder", "range": "10\"", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] }
+      ],
+      "abilities": [
+        { "name": "Impact 2", "type": "Passive", "effect": "Add 2 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Earthshaking Blows", "type": "Passive", "effect": "If Stone Fists inflicts an unsaved Hit, the target suffers Slow 1." },
+        { "name": "Mountain Strider", "type": "Passive", "effect": "Ignore movement penalties from rocky and mountainous Difficult Terrain." }
+      ],
+      "upgrades": [
+        { "name": "Standard Stone Giant", "cost": "+0", "description": "Stone Fists, Hurled Boulder, Impact 2, Earthshaking Blows." },
+        { "name": "Greater Strength", "cost": "+30", "description": "Increase Stone Fists Damage to 3." },
+        { "name": "Mountain Armor", "cost": "+25", "description": "Gain Tough 1." },
+        { "name": "Ancient Giant", "cost": "+40", "description": "Increase Wounds to W15." }
+      ]
+    },
+    {
+      "name": "Cave Wurm",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 360,
+      "models": 1,
+      "modelProfile": { "move": "4\"", "wounds": 13, "armor": "4+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Devouring Maw", "range": "Engaged", "attacks": 6, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+      ],
+      "abilities": [
+        { "name": "Impact 3", "type": "Passive", "effect": "Add 3 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Burrower", "type": "Passive", "effect": "May move through suitable natural earth, sand, loose rock, and similar underground terrain. Must finish legally." },
+        { "name": "Subterranean Ambush", "type": "Once per Battle", "timing": "Movement", "effect": "Move up to 8\" through suitable ground, ignoring intervening terrain and Models. Emerge at a legal position. The Wurm cannot finish Engaged or Charge during the Round in which it uses this ability." },
+        { "name": "Tremorsense", "type": "Passive", "effect": "Ignore Concealed when targeting grounded enemy Units within Short." }
+      ],
+      "upgrades": [
+        { "name": "Standard Cave Wurm", "cost": "+0", "description": "W13, Devouring Maw, Impact 3, Burrower, Ambush, Tremorsense." },
+        { "name": "Armored Plates", "cost": "+25", "description": "Improve Armor to 3+." },
+        { "name": "Crushing Mandibles", "cost": "+35", "description": "Increase Devouring Maw Damage to 3." },
+        { "name": "Seismic Charge", "cost": "+25", "description": "Increase Impact to 4." },
+        { "name": "Elder Wurm", "cost": "+65", "description": "Increase Wounds to W17 and Impact to 4. Cannot combine with Seismic Charge." }
+      ],
+      "preconfiguredVariant": {
+        "name": "Elder Wurm",
+        "points": 425,
+        "modelProfile": { "move": "4\"", "wounds": 17, "armor": "4+", "evade": "6+", "ward": null },
+        "attackProfiles": [
+          { "name": "Devouring Maw", "range": "Engaged", "attacks": 6, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+        ],
+        "abilities": ["Impact 4", "Burrower", "Subterranean Ambush", "Tremorsense"],
+        "note": "Printed as a fully-worked-out stat line (425 Points) in the source, consistent with the Standard profile + Elder Wurm upgrade (+65) applied on top of Standard Cave Wurm's base 360: 360 + 65 = 425. Consistent, no issue."
+      }
+    },
+    {
+      "name": "Abyssal Kraken",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 460,
+      "models": "4-model Unit",
+      "modelProfile": {
+        "body": { "move": "5\"", "wounds": 10, "armor": "4+", "evade": "5+", "ward": "6+ Magic" },
+        "tentacles": { "count": 3, "move": "5\"", "wounds": "2 each", "armor": "4+", "evade": "5+", "ward": "6+ Magic", "note": "Same Saves as the Body." }
+      },
+      "attackProfiles": [
+        { "name": "Abyssal Jet", "model": "Body", "range": "10\"", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] },
+        { "name": "Titanic Tentacles", "model": "each Tentacle", "range": "Engaged 3\"", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+      ],
+      "abilities": [
+        { "name": "Four-Model Unit — Special Coherency", "type": "Passive", "effect": "The Kraken consists of one Body Model (W10) and three Tentacle Models (W2 each). All share the printed Armor, Evade and Ward. A Tentacle may be positioned and move independently within 6\" (Short Range) of the Body, instead of the usual 3\" Coherency rule. Every Model remains part of one Unit: it receives one Movement, one Assault and one eligible Combat activation, not one activation per Model." },
+        { "name": "Many Tentacles", "type": "Passive", "effect": "Each surviving Tentacle contributes its own Engaged 3\" / A2 / Hit 4+ / Dmg 2 / Anti-Armored 2 attack, targeting enemies it can reach. Separate target pools if Tentacles attack different eligible Units. The Body uses Abyssal Jet (10\" / A4 / 5+ / 2 / Anti-Infantry 2), as its eligible ranged Assault profile." },
+        { "name": "Damage allocation — Exception", "type": "Passive", "effect": "Attacks that can reach only a Tentacle allocate Hits and Damage among the eligible Tentacles, not to the distant Body. Attacks targeting the Body allocate to the Body." },
+        { "name": "Aquatic", "type": "Passive", "effect": "Ignore swimming penalties; on land, the Unit's Move is M2\"." },
+        { "name": "Grasping Limbs", "type": "Passive", "effect": "After a Tentacle Attack inflicts unsaved Damage, its target suffers Slow 1." },
+        { "name": "Ink Cloud", "type": "Command", "cost": "1 CP", "timing": "Reaction", "effect": "When targeted by a non-Instant ranged Attack while in water, become Concealed until the end of the Phase; use normal Reaction timing." },
+        { "name": "Grasping Tentacles", "type": "Command", "cost": "1 CP", "timing": "Combat — Once per Round", "effect": "After one of this Unit's Tentacle Attacks deals Damage, reposition one non-Hero target Model up to 2\" within legal placement. The target Unit must still maintain Coherency. This is forced movement and does not grant an extra Attack." }
+      ],
+      "upgrades": [
+        { "name": "Elder Kraken", "addedPoints": 50, "effect": "Increase Body Wounds to 14 (total Unit Wounds 20)" },
+        { "name": "Crushing Tentacles", "addedPoints": 35, "effect": "Titanic Tentacles gain Accurate 1" },
+        { "name": "Armored Hide", "addedPoints": 25, "effect": "Improve shared Armor to 3+" },
+        { "name": "Abyssal Horror", "addedPoints": 30, "effect": "Abyssal Jet gains Blast 1\"" }
+      ],
+      "notes": ["The Kraken has no printed Impact bonus; like any ordinary eligible Unit it still generates the normal highest-die Impact on a successful Charge. Tentacles do not each generate separate Impact pools."]
+    }
+  ],
+  "knownIssues": [
+    "Hydra's base model profile prints 'Ward —' (no Ward) in the Profiles table, unlike most other Large Monsters of comparable Elite status which have a Magic Ward (e.g. Young Dragon Ward 6+ Magic). This is likely intentional (balancing its very high Wounds/Attack ceiling) rather than an omission, but is flagged here since it's an outlier within the section."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "domain": "missions",
+  "description": "The two Missions chapters: Matched Play Missions (competitive wargame scenarios with VP scoring) and Campaign Missions (RPG/narrative encounter archetypes with Secondary Objectives and Campaign Stakes).",
+  "matchedPlay": {
+    "sourceRef": {
+      "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md",
+      "section": "MATCHED PLAY MISSIONS — Standard Wargame Scenarios — Revised Draft v2 (pre-layout reconciliation)"
+    },
+    "folder": "matched_play/",
+    "files": [
+      { "id": "overview-and-setup", "file": "00_overview_and_setup.json", "description": "Overview, Standard Game Size, Setting Up a Battle, Objective Control, VP Scoring, Victory Conditions." },
+      { "id": "mission-list", "file": "01_mission_list.json", "description": "The D8 Mission List table." },
+      { "id": "mp1-domination", "file": "02_mp1_domination.json" },
+      { "id": "mp2-frontlines", "file": "03_mp2_frontlines.json" },
+      { "id": "mp3-breakthrough", "file": "04_mp3_breakthrough.json" },
+      { "id": "mp4-recover-the-relics", "file": "05_mp4_recover_the_relics.json" },
+      { "id": "mp5-supply-requisition", "file": "06_mp5_supply_requisition.json" },
+      { "id": "mp6-sabotage", "file": "07_mp6_sabotage.json" },
+      { "id": "mp7-seek-and-destroy", "file": "08_mp7_seek_and_destroy.json" },
+      { "id": "mp8-arcane-supremacy", "file": "09_mp8_arcane_supremacy.json" },
+      { "id": "mission-actions-and-scoring", "file": "10_mission_actions_and_scoring.json", "description": "Mission Actions and Scoring/Timing Clarifications." },
+      { "id": "format-scaling-and-design-principles", "file": "11_format_scaling_and_design_principles.json", "description": "Optional Format Scaling table and Matched Play Design Principles." }
+    ],
+    "knownIssues": [
+      "MP3 'Breakthrough' shares its name with Doctrine 16 'Breakthrough' (rules_data_json/doctrines/16_breakthrough.json), but the two are unrelated mechanics (a scoring Mission vs. a Command-selection package). See 04_mp3_breakthrough.json."
+    ]
+  },
+  "campaign": {
+    "sourceRef": {
+      "file": "rulebooks/chapters/03_missions/02_campaign_missions.md",
+      "section": "CAMPAIGN MISSIONS — Primary Missions, Secondary Objectives & Special Rules — Revised Draft v2 (pre-layout reconciliation)"
+    },
+    "folder": "campaign/",
+    "files": [
+      { "id": "overview-and-mission-construction", "file": "00_overview_and_mission_construction.json", "description": "Overview, Mission Construction, Independent Objectives, Mission Actions, Secondary Progress, Carried Objectives, Scenario Models, Mission Duration and Victory." },
+      { "id": "primary-missions-overview", "file": "01_primary_missions_overview.json", "description": "The six Primary Mission archetypes table (P1–P6)." },
+      { "id": "p1-confrontation", "file": "02_p1_confrontation.json" },
+      { "id": "p2-defense", "file": "03_p2_defense.json" },
+      { "id": "p3-expedition", "file": "04_p3_expedition.json" },
+      { "id": "p4-extraction", "file": "05_p4_extraction.json" },
+      { "id": "p5-passage", "file": "06_p5_passage.json" },
+      { "id": "p6-negotiation", "file": "07_p6_negotiation.json" },
+      { "id": "secondary-objectives", "file": "08_secondary_objectives.json", "description": "S1–S18 across six categories, plus the Narrative Secondary 'Eliminate Officer'." },
+      { "id": "special-rules", "file": "09_special_rules.json", "description": "The eight optional Special Rules (Ambush, Fortified, Reinforcements, etc.)." },
+      { "id": "campaign-stakes-and-consequences", "file": "10_campaign_stakes_and_consequences.json", "description": "Primary/Secondary success consequences, Consequence Scale, Political Stakes, Neutral Opportunities, Company Orders, Casualties and Persistence." },
+      { "id": "example-assembled-missions", "file": "11_example_assembled_missions.json", "description": "Four fully worked example encounters (A–D)." },
+      { "id": "mission-preparation-checklist", "file": "12_mission_preparation_checklist.json" }
+    ]
+  }
+}

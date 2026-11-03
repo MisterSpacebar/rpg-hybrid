@@ -1,0 +1,75 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "CORE FACTIONS & SIGNATURE ROSTERS — General Roster Rules"
+  },
+  "title": "CORE FACTIONS & SIGNATURE ROSTERS",
+  "versionLabel": "Hybrid RPG / Wargame — Matched-Play Revision v10",
+  "generalRosterRules": {
+    "genericUnitAccess": "All factions retain access to appropriately themed generic Units. A generic Unit recruited into a faction gains that faction's relevant type and benefits from its faction rules unless otherwise specified.",
+    "signatureUnits": "Signature Units provide specialized alternatives, not mandatory replacements. Most factions receive two signature Core choices, alongside one Captain, two Wizards/Support specialists, and one or more Large Assets.",
+    "recruitmentClassification": "All Units listed under Signature Core Units have the Core classification and may occupy C; alternative choices (R/V/E) are set by the Signature Core Recruitment Reference. These alternative choices do not remove Core classification. Signature Captains and Faction Leaders use H (faction Captains are Heroes unless explicitly printed otherwise); faction Wizards and Supports use S, or E when they carry Elite. Designated Artillery and Large Assets normally use A. Where another category is specifically printed in a roster, use its listed eligibility.",
+    "signatureCoreRecruitmentReference": {
+      "description": "Explicitly identifies the compatible recruitment choices of each faction's Core formations. Every listed Unit remains Core regardless of which eligible Slot is assigned.",
+      "entries": [
+        { "faction": "Free Realms", "unit": "Greatweapon Guard", "eligibleSlots": ["C"] },
+        { "faction": "Free Realms", "unit": "Outriders", "eligibleSlots": ["C", "R", "V"] },
+        { "faction": "Sacred Orders", "unit": "Temple Guard", "eligibleSlots": ["C", "E"] },
+        { "faction": "Sacred Orders", "unit": "Sanctified Arbalests", "eligibleSlots": ["C", "R", "E"] },
+        { "faction": "Sacred Orders", "unit": "Consecrated Knights", "eligibleSlots": ["C", "V", "E"] },
+        { "faction": "Iron Holds", "unit": "Ironbreakers", "eligibleSlots": ["C"] },
+        { "faction": "Iron Holds", "unit": "Thunderers", "eligibleSlots": ["C", "R"] },
+        { "faction": "Wild Courts", "unit": "Glade Hunters", "eligibleSlots": ["C", "R"] },
+        { "faction": "Wild Courts", "unit": "Wild Riders", "eligibleSlots": ["C", "V"] },
+        { "faction": "Warclans", "unit": "Choppa Mob", "eligibleSlots": ["C"] },
+        { "faction": "Warclans", "unit": "Brutes", "eligibleSlots": ["C"] },
+        { "faction": "Underclans", "unit": "Sneaks", "eligibleSlots": ["C", "V"] },
+        { "faction": "Underclans", "unit": "Bombardiers", "eligibleSlots": ["C", "R"] },
+        { "faction": "Death Legions", "unit": "Corpse Horde", "eligibleSlots": ["C"] },
+        { "faction": "Death Legions", "unit": "Grave Guard", "eligibleSlots": ["C", "E"] },
+        { "faction": "Blood Courts", "unit": "Thralls", "eligibleSlots": ["C"] },
+        { "faction": "Blood Courts", "unit": "Blood Knights", "eligibleSlots": ["C", "E", "V"] },
+        { "faction": "Spirit Hosts", "unit": "Wraith Guard", "eligibleSlots": ["C", "E"] },
+        { "faction": "Spirit Hosts", "unit": "Haunters", "eligibleSlots": ["C", "V"] },
+        { "faction": "Infernal Hosts", "unit": "Hellguard", "eligibleSlots": ["C", "E"] },
+        { "faction": "Infernal Hosts", "unit": "Rift Stalkers", "eligibleSlots": ["C", "V"] },
+        { "faction": "Arcane Orders", "unit": "Spellguard", "eligibleSlots": ["C", "E"] },
+        { "faction": "Arcane Orders", "unit": "Aether Ballista Team", "eligibleSlots": ["C", "R", "E"] },
+        { "faction": "Titan Clans", "unit": "Ogre Warriors", "eligibleSlots": ["C"] },
+        { "faction": "Titan Clans", "unit": "Beast Riders", "eligibleSlots": ["C", "V"] }
+      ],
+      "note": "The table grants eligibility even when a Unit's battlefield tag is narrower or uses different vocabulary (for example, Outriders' carbine-equipped mobility allows R or V). It does not turn these Units into generic Infantry or change their existing abilities."
+    },
+    "doubleFormation": "Faction-specific Core may purchase the Double Formation option under Army Construction: double the starting Models and double the paid formation cost, retaining one Unit, one compatible Slot, one phase activation, and one Core classification. Unit-wide Keywords, Commands, and objective-control value do not automatically double.",
+    "largeAssetCap": "All Large Assets listed beneath a faction's Large Assets heading count toward the Large Asset cap unless expressly exempted; a designated Core Monster is not automatically a Large Asset.",
+    "signatureCaptainCommands": "A faction's unique Captain generally knows two Commands: its listed signature Command and one eligible generic Captain Command. Unique specialists receive their listed abilities and, if designated Wizards, may select compatible generic Arcana where appropriate.",
+    "engagementDefault": "Every Unit capable of Engagement has a melee Attack. Ranged specialists without a listed melee weapon use Improvised Weapons: Engaged / 1 / 6+ / 1.",
+    "sharedKeywordRanks": "In a combined Unit Attack pool, shared Accurate X and Critical X apply once at the printed value, not once per Model; compatible bonuses add to X unless explicitly excluded. Tough X, Cover X, and Brace X are likewise Unit-wide ranks, never multiplied by Model count.",
+    "commandEconomy": {
+      "matchedPlay": "In 2,000-point matched play, an army has 8 CP per Round, represented by its eight selected Faction and Doctrine Command cards. To use a selected card's Command, exhaust that card to spend its 1 CP; if a Command costs 2 CP, exhaust its card and one other available card. To use an eligible personal Unit Command, exhaust one or more available cards instead of using their printed Commands. Card exhaustion is the CP expenditure, not an additional cost. All eight CP and exhausted cards refresh at the start of each Round. Ordinary faction Commands cost 1 CP unless specified otherwise; major Faction Leader abilities generally cost 2 CP and are once per battle. Phase Commands of a Unit are used during that Unit's activation, Faction Commands when the side has priority, and Reactions at their triggers.",
+      "rpgCampaign": "The selected eight-card repertoire exists only when the campaign rules specifically provide it. Each PC normally has 2 CP per Round, with the GM receiving max(2, 2 × PCs − 1); CP can be tracked without cards, especially early in a campaign. The campaign's unlocked Commands, not matched-play army construction, determine which abilities are available."
+    },
+    "profileNotation": "M / W / Arm / Eva / optional Ward. Weapon notation: Range / Attacks / Hit / Damage / Keywords. Attacks are per Model except for single-model war machines and assets. Per the user's own clarification, range bands (Short / Medium / Long etc.) are shorthand for 6\" / 12\" / >12\".",
+    "reinforcement": "Healing never returns a defeated Model unless expressly stated. Ordinary active reinforcement affects only surviving, unengaged Units; restore basic Models into legal Coherency, never above starting size unless the ability expressly permits it. A completely destroyed Unit cannot return except by a rule such as Rise Again that specifically permits returning a destroyed Unit. Passive casualty recovery, such as Endless Dead, may function for a surviving Engaged Unit, but cannot return a Unit whose final Model was destroyed during the Attack. All costs are provisional."
+  },
+  "files": [
+    { "id": "general-roster-rules", "file": "00_general_roster_rules.json" },
+    { "id": "free-realms", "file": "01_free_realms.json" },
+    { "id": "sacred-orders", "file": "02_sacred_orders.json" },
+    { "id": "iron-holds", "file": "03_iron_holds.json" },
+    { "id": "wild-courts", "file": "04_wild_courts.json" },
+    { "id": "warclans", "file": "05_warclans.json" },
+    { "id": "underclans", "file": "06_underclans.json" },
+    { "id": "death-legions", "file": "07_death_legions.json" },
+    { "id": "blood-courts", "file": "08_blood_courts.json" },
+    { "id": "spirit-hosts", "file": "09_spirit_hosts.json" },
+    { "id": "infernal-hosts", "file": "10_infernal_hosts.json" },
+    { "id": "arcane-orders", "file": "11_arcane_orders.json" },
+    { "id": "titan-clans", "file": "12_titan_clans.json" },
+    { "id": "roster-distribution-summary", "file": "13_roster_distribution_summary.json" },
+    { "id": "balance-and-design-notes", "file": "14_balance_and_design_notes.json" }
+  ],
+  "knownIssues": [
+    "Several factions' 'Doctrines: X / Y' line (e.g. Free Realms' 'Combined Arms / Objective Play') names generic Doctrines defined in rulebooks/chapters/02_wargame/03_non_faction_doctrines.md (not yet converted to JSON). At least one name collision exists: Free Realms' own Faction Rule is also named 'Combined Arms' but has a different effect (Accurate 1 vs. an already-Engaged enemy) than the generic Combined Arms Doctrine (a 5-Command Slot-based table keyed on mutual support). This is likely intentional thematic echoing rather than a drafting error, but it means the two 'Combined Arms' are not the same rules object and should not be merged."
+  ]
+}

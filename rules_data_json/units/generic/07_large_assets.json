@@ -1,0 +1,19 @@
+{
+  "category": "large-assets",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/01_generic_units.md",
+    "section": "7. LARGE ASSETS"
+  },
+  "summary": "Large Assets include Monsters, Vehicles, Constructs, War Machines, Siege Beasts, and other unusually powerful battlefield Units. Unlike conventional troops, their profiles vary significantly and should be balanced individually.",
+  "note": "This section is a design-reference guideline table, not a purchasable generic unit profile. Individual Large Assets are defined per-faction or per-encounter.",
+  "assetClasses": [
+    { "name": "Lesser Asset", "typicalPoints": "125–150", "description": "Small monsters, light constructs, and unusual equipment roughly comparable to elite troops or cavalry." },
+    { "name": "Standard Asset", "typicalPoints": "175–225", "description": "Moderately powerful monsters, vehicles, or war machines with a distinctive combat or support role." },
+    { "name": "Greater Asset", "typicalPoints": "250–350", "description": "Large monsters, heavy vehicles, and major battlefield threats with substantial durability and offensive power." },
+    { "name": "Centerpiece Asset", "typicalPoints": "400+", "description": "Exceptional monsters or war machines designed as major army investments, often requiring additional restrictions." }
+  ],
+  "guidelines": [
+    "A typical Large Asset has 6–12 or more Wounds, one or two major Attack profiles, and a defining passive rule.",
+    "Faction Leaders are a separate Character category, even when comparable to a Large Asset in power or cost."
+  ]
+}

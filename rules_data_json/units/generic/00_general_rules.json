@@ -1,0 +1,79 @@
+{
+  "id": "generic-units-general-rules",
+  "title": "Generic Units — General Rules",
+  "draftLabel": "Rebalanced Draft v3 — Rounded Upgrade Pricing",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/01_generic_units.md",
+    "section": "General Rules"
+  },
+  "summary": "Generic Units provide the standard battlefield profiles available to most armies. Their equipment, appearance, and origins may vary by faction without requiring separate rules. Faction-specific troops supplement these profiles; they may have different Model counts, Wounds, characteristics, equipment, and abilities, provided they are balanced against comparable generic Units.",
+  "unitConventions": [
+    "M: Movement in inches.",
+    "W: Wounds per Model.",
+    "Arm: Armor Save.",
+    "Eva: Evade Save.",
+    "Ward: Additional applicable Ward Save.",
+    "Weapon profiles: Range / Attacks / Hit / Damage / Keywords.",
+    "Attacks are made per eligible Model unless specified otherwise.",
+    "Each Unit has at least one melee weapon.",
+    "Units with multiple weapons do not automatically make additional Attacks.",
+    "Unless specified, weapon packages apply to every Model in the Unit.",
+    "All Standard Unit-wide Keyword values and modifiers use the shared keyword rules below; they do not multiply by the Model count."
+  ],
+  "unitWideKeywordRules": [
+    "A combined Attack roll uses a weapon's printed Accurate X, Critical X, and other shared Attack Keywords once for the entire Unit Attack pool, not once per contributing Model.",
+    "Example: a five-Model Unit whose weapon has Accurate 1 rolls its combined Attacks with Accurate 1, not Accurate 5. If it gains Accurate 2 from another eligible source, it has Accurate 3 for that Attack.",
+    "The same additive principle applies to Critical, Tough, Cover, Brace, and other compatible ranked Keywords unless an explicit exception states otherwise.",
+    "If a bonus says '+1 Attack per Model', add one die for every eligible contributing Model; if it says '+2 Attacks to a Unit's next Attack', add only two dice total.",
+    "When different Model groups use different weapons or benefits, resolve separate pools as necessary.",
+    "Each die may be rerolled no more than once.",
+    "Critical X: after rerolls, convert up to X failed Hit dice to Critical Hits without requiring a Surge unless a particular source says it does.",
+    "No per-Model multiplication of a keyword's X value occurs by default."
+  ],
+  "equipmentAndUpgradeCostRules": [
+    "Base Unit costs include their standard equipment.",
+    "Weapon and equipment options marked +0 Points are included without additional cost. Other upgrades increase the Unit's total price by the amount listed.",
+    "Weapon-package costs cover the Unit's initial Model count. When adding Models to an upgraded Unit, pay an additional +5 Points per new Model for each paid weapon or shield package the new Model carries, in addition to the Model's normal cost.",
+    "A weapon-package surcharge is not charged for unit-wide training or range upgrades.",
+    "Some formations also list a Veteran reinforcement surcharge, reflecting the scaling of Attack dice and Hit improvements with additional Models; those surcharges are separate and cumulative.",
+    "Upgrades may be selected only when listed in the Unit's profile or permitted by another rule."
+  ],
+  "pointIncrementGuidance": [
+    "Significant multi-model weapon packages and training upgrades favor 25-Point steps where their effects warrant them.",
+    "Smaller utility effects and individual-Model costs may still use 5-, 10-, 15-, or 20-Point increments.",
+    "Veteran pricing is per-unit, not a single flat value: it scales with how many Models benefit from its flat +1 Attack per Model. Larger multi-Model formations (Line Infantry, Ranged Infantry: 4-10 Models) pay +75, each with its own printed per-added-Model Veteran reinforcement surcharge; smaller or single-Model Units (Elite Infantry, Cavalry, Captains, Wizards: 1-5 Models) pay a flat +50; generic Support Veterans are a further-reduced +25 combat-training option.",
+    "Damage 2 ranged packages pay a higher upfront weapon premium rather than a different Veteran price.",
+    "Weapon Specialization (+25) is priced flat regardless of Unit size, since its granted Anti-[Type] 2 applies once to the whole Unit's combined Attack pool rather than per Model — unlike Veterans, it does not scale with Model count."
+  ],
+  "knownIssues": [],
+  "resolvedIssues": [
+    "v4 balance pass: the previously flagged Veterans-cost inconsistency (prose said +50, but Line Infantry/Ranged Infantry/Elite Infantry tables said +75) is resolved by adopting per-unit pricing: Line Infantry and Ranged Infantry (larger formations) pay +75; Elite Infantry, Cavalry, Captains, and Wizards (smaller/single-Model) pay +50. This reflects a deliberate design principle (Veterans scale with Model count) rather than a uniform value, superseding the interim v4 fix that had set all of these to a flat +50."
+  ],
+  "commandPointsAndCards": {
+    "note": "Duplicated/summarized across multiple rulebook chapters (see e.g. 09_structured_combat_quick_reference.md, 04_army_construction.md); included here because this source file states it directly.",
+    "matchedPlay": {
+      "armyCommandSelection": "A standard 2,000-point matched-play army selects eight army Commands during construction: two Faction Commands and three from each of its two Doctrines.",
+      "cpPerRound": 8,
+      "refresh": "Refreshed at the beginning of the Round. Unspent CP are lost rather than carried forward.",
+      "rules": [
+        "Each selected Command is represented by a card if playing physically. All eight selected cards remain available as the army's Command repertoire; players do not prepare a separate two-card hand each Round.",
+        "To use a printed Faction or Doctrine Command, exhaust its card to spend 1 CP, or exhaust that card plus additional available cards if the printed cost exceeds 1 CP. Exhausting the card represents spending 1 CP for a 1 CP Command; it is not a second cost.",
+        "To use a Unit's personal Command instead, exhaust any available selected Command card as the physical representation of the CP spent. The card's printed Command is not also resolved. For a 2 CP personal Command, exhaust two available cards and resolve that Command once.",
+        "An exhausted card cannot be exhausted again until the next Round, when all cards become ready. Each selected card's printed Command can therefore be used no more than once per Round unless a rule explicitly says otherwise.",
+        "A 0 CP ability does not consume or exhaust a card; its own timing and usage restrictions still apply.",
+        "Personal phase Commands normally occur only during that Unit's own activation. Faction and Doctrine phase Commands are used while the controlling side has activation priority. Reactions are used at their stated triggers without requiring priority; explicitly timed End Step Commands resolve in the End Step.",
+        "Extra Attacks or activations occur only when the ability explicitly grants them. A Command does not normally replace the Unit's chosen Phase action unless stated otherwise."
+      ]
+    },
+    "campaignAndRpg": {
+      "note": "The eight-card repertoire and 2,000-point roster selection belong to matched play; they are not prerequisites for RPG or campaign encounters.",
+      "defaultPlayerCp": 2,
+      "gmCpFormula": "max(2, 2 * numberOfPCs - 1)",
+      "rules": [
+        "Players normally have 2 CP each per Round, including early campaign encounters with no physical Command cards.",
+        "The GM/DM uses the applicable encounter CP allowance (by default max(2, 2 x number of PCs - 1)).",
+        "CP can be tracked as imaginary points, tokens, or cards when available; Unit Commands and Artificer Formulas do not require a Doctrine card in encounters without them."
+      ]
+    }
+  }
+}

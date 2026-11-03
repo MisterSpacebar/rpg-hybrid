@@ -1,0 +1,72 @@
+{
+  "category": "artillery",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/01_generic_units.md",
+    "section": "6. ARTILLERY"
+  },
+  "summary": "Artillery Units represent crewed weapon platforms rather than ordinary infantry. They generally attack using a single Artillery profile, with one weak melee profile representing the crew's ability to defend the machine. Artillery cannot charge and has the Artillery tag.",
+  "units": [
+    {
+      "id": "artillery",
+      "name": "Artillery",
+      "basePoints": 110,
+      "tags": ["Artillery"],
+      "artilleryClass": {
+        "chooseCount": 1,
+        "options": [
+          {
+            "name": "Light Artillery",
+            "points": 0,
+            "stats": { "move": "3\"", "wounds": 4, "armor": "5+", "evade": null },
+            "notes": "Smaller artillery suitable for general fire support."
+          },
+          {
+            "name": "Heavy Artillery",
+            "points": 40,
+            "totalPoints": 150,
+            "stats": { "move": "2\"", "wounds": 5, "armor": "5+", "evade": null },
+            "notes": "Larger artillery with heavier weapons and greater durability."
+          }
+        ]
+      },
+      "lightArtilleryWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Bolt Thrower", "points": 0, "profile": { "range": "15\"", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] }, "notes": "Accurate projectiles suited to attacking armored enemies." },
+          { "name": "Light Cannon", "points": 0, "profile": { "range": "15\"", "attacks": 2, "hit": "5+", "damage": 3, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Anti-Monster 2"] }, "notes": "Powerful direct-fire cannon that gains Instant." },
+          { "name": "Repeater Gun", "points": 0, "profile": { "range": "10\"", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Rapid-Fire 2"] }, "notes": "Gains +2 Attacks when the target is within 5\"." },
+          { "name": "Arcane Ballista", "points": 0, "profile": { "range": "12\"", "attacks": 3, "hit": "5+", "damage": 2, "damageTypes": ["Magic"], "keywords": ["Heavy", "Anti-Construct 2"] }, "notes": "Magically powered artillery with multiple projectiles." }
+        ]
+      },
+      "heavyArtilleryWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Heavy Cannon", "points": 0, "profile": { "range": "18\"", "attacks": 2, "hit": "4+", "damage": 3, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Anti-Armored 2"] }, "notes": "Powerful direct-fire siege cannon." },
+          { "name": "Bombard", "points": 0, "profile": { "range": "15\"", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Blast 2\"", "Firearm", "Heavy", "Anti-Infantry 2"] }, "notes": "Explosive artillery affecting nearby Units when the primary Attack scores a Hit." },
+          { "name": "Great Ballista", "points": 0, "profile": { "range": "18\"", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Monster 2"] }, "notes": "Long-range mechanical siege weapon." },
+          { "name": "Arcane Cannon", "points": 0, "profile": { "range": "15\"", "attacks": 3, "hit": "4+", "damage": 2, "damageTypes": ["Magic"], "keywords": ["Heavy", "Anti-Elite 2"] }, "notes": "Powerful magical artillery with reliable Hit characteristics." }
+        ]
+      },
+      "specialUpgrades": [
+        {
+          "name": "Timed Barrage",
+          "points": 20,
+          "availableTo": "Heavy Artillery equipped with a Bombard",
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "When this Unit activates during the Movement Phase and there are other activations available, it may prepare a Timed Barrage instead of moving. At the end of the Movement Phase, provided the Unit remained stationary and unengaged, place a 25mm token within 15\". Each Unit with at least half its current Models (rounded up) within 2\" of the token suffers one automatic Physical Hit at Damage 1 total. Resolve Armor and applicable Ward; Evade does not apply. Friendly Units can be affected. The Unit cannot make its normal Bombard Attack during the following Assault Phase. Remove the token after resolving the effect."
+        }
+      ],
+      "secondaryWeapon": {
+        "name": "Crew Weapons",
+        "points": 0,
+        "profile": { "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+        "notes": "The artillery platform makes one melee Attack using this profile, regardless of the number of crew figures represented. All Artillery includes this."
+      },
+      "battlefieldRole": "Ranged fire support, siege warfare, attacking heavily armored targets, and area denial.",
+      "designNotes": [
+        "v4 balance pass (post-playtesting): the Damage-1 Repeater Gun and Crew Weapons gained +1 Attack; all Damage-2/3 main weapons kept their listed Attacks and gained a thematic Anti-[Type] 2, diversified across Armored/Monster/Construct/Elite/Infantry categories to keep Artillery profiles distinct from one another."
+      ]
+    }
+  ]
+}

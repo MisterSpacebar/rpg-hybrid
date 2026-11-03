@@ -1,0 +1,27 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "P1 — CONFRONTATION" },
+  "id": "P1",
+  "name": "Confrontation",
+  "tagline": "Battle, Duel, or Monster Hunt",
+  "defaultDuration": "5 Rounds",
+  "setup": {
+    "note": "Choose one Confrontation variant.",
+    "variants": [
+      { "name": "Open Battle", "description": "Both sides are attempting to defeat the opposing force." },
+      { "name": "Targeted Confrontation", "description": "One side must defeat a designated Character, Monster, or Unit. The GM identifies the designated Target before deployment unless a Hidden Information Special Rule applies." }
+    ]
+  },
+  "openBattleRules": {
+    "trackingRule": "Track the starting Points of each side's participating army, including Units assigned to Reserves.",
+    "scoring": "At the end of Round 5, calculate the percentage of the opposing starting army's Points lost by each side. A defeated single-model Unit contributes its entire purchased Points cost; an un-Defeated single-model Unit contributes no defeated Points from its accumulated Damage. For a multi-model Unit, use its purchased total Points multiplied by (number of Models defeated at the end of battle ÷ starting Model count). This includes paid weapons and upgrades proportionally and also applies to Double Formations. Un-Defeated remaining Models with partial Wounds do not contribute fractional Model losses. Track actual surviving Models after any legally resolved reinforcement; Units still in Reserve count in the starting army but not as defeated merely because they did not enter.",
+    "victory": "The side that defeated the greater percentage wins. A side also wins immediately if every opposing combat Unit has been Defeated and the opponent has no eligible forces remaining. If the percentages are equal, the encounter is a Draw.",
+    "casualtyNote": "For casualty-based victory, a Downed Character counts as defeated, but uses the normal Critical Injury and recovery rules afterward."
+  },
+  "targetedConfrontationRules": {
+    "attackingSideVictory": "The attacking side wins when the designated Target is defeated.",
+    "defendingSideVictory": "The defending side wins if the Target survives until the end of Round 5.",
+    "note": "Defeating unrelated Units does not automatically complete the Primary."
+  },
+  "recommendedSecondaries": ["Eliminate Officer", "Track Quarry", "Protect VIP", "Gather Intelligence", "Hold Strategic Position"],
+  "campaignNotes": "Confrontation may resolve military supremacy, a contested challenge, the removal of a significant threat, or an eligible Warfare Stake. Winning does not automatically grant territory or additional formations."
+}

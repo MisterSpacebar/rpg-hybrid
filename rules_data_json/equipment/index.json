@@ -1,0 +1,23 @@
+{
+  "description": "Manifest for Equipment and Crafting data: weapons, armor, shields, magical foci, magical equipment (weapons/armor/shields/artifacts/relics), enchantments, and crafting rules.",
+  "files": [
+    { "id": "overview", "file": "00_overview.json", "description": "Equipment/character value rules, equipment slots, weapon keywords, combat timing notes, equipment rules summary." },
+    { "id": "melee-weapons", "file": "01_melee_weapons.json", "description": "Simple, Martial, and Heavy Melee Weapons." },
+    { "id": "ranged-weapons", "file": "02_ranged_weapons.json", "description": "Thrown/Simple, Bows, Crossbows, and Firearms." },
+    { "id": "armor-and-shields", "file": "03_armor_and_shields.json", "description": "Shields, Armor types, Armor+Shield combinations, Class Armor Access." },
+    { "id": "magical-foci", "file": "04_magical_foci.json", "description": "Mundane magical foci (Arcane/Channeling/Protective Focus)." },
+    { "id": "learning-spells", "file": "05_learning_spells.json", "description": "Starting Spells vs. Additional Spells and provisional learning costs." },
+    { "id": "magical-weapons", "file": "06_magical_weapons.json", "description": "Artifact Categories, Item Commands, and Weapon Enchantments." },
+    { "id": "magical-armor", "file": "07_magical_armor.json", "description": "Armor Enchantments." },
+    { "id": "magical-shields", "file": "08_magical_shields.json", "description": "Shield Enchantments." },
+    { "id": "arcane-and-divine-foci", "file": "09_arcane_and_divine_foci.json", "description": "Relic-tier magical foci." },
+    { "id": "general-artifacts", "file": "10_general_artifacts.json", "description": "General Artifacts (Ring/Boots/Cloak/Amulet/Charm/Horn/Banner/Hourglass)." },
+    { "id": "relics", "file": "11_relics.json", "description": "Named unique Relics, including one complete weapon profile (Blade of the Falling Star)." },
+    { "id": "enchantment-components", "file": "12_enchantment_components.json", "description": "Minor and Major Enchantments applicable to ordinary equipment." },
+    { "id": "command-imprinted-equipment", "file": "13_command_imprinted_equipment.json", "description": "Items that enhance a Universal Command already known to the character." },
+    { "id": "crafting", "file": "14_crafting.json", "description": "Crafting Difficulty/Checks/Success/Surge/Blunder, Crafting Qualities, Crafting Flaws, Repairing Equipment, worked Crafting Example, Artificer Formulae note." }
+  ],
+  "sourceFiles": [
+    "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md"
+  ]
+}

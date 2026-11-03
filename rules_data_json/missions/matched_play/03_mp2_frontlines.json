@@ -1,0 +1,15 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md", "section": "MP2 — FRONTLINES" },
+  "id": "MP2",
+  "name": "Frontlines",
+  "tagline": "Advance and Occupy",
+  "primaryObjective": "Score 1 VP for each controlled objective during every scoring Round.",
+  "tacticalObjective": {
+    "name": "Push Forward",
+    "effect": "Gain 1 Tactical VP if you control at least one enemy-affiliated objective. For this Mission, an objective is enemy-affiliated to the opposing side as assigned during setup. Each side has two enemy-affiliated objectives at 2,000 Points and one Neutral objective."
+  },
+  "specialRules": [
+    "Objective affiliation is fixed during setup and recorded on the layout. Once assigned, it is independent of which side currently controls the objective or which force is physically nearer."
+  ],
+  "designNotes": "Frontlines rewards offensive movement and forces players to commit Units beyond their safest positions. It is especially useful with diagonal, split, or staggered layouts."
+}

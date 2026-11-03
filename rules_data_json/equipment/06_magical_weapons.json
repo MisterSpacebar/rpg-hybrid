@@ -1,0 +1,94 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "MAGICAL EQUIPMENT, Artifact Categories, Item Commands, MAGICAL WEAPONS"
+  },
+  "generalMagicalEquipmentRules": {
+    "description": "Magical equipment provides abilities beyond those of mundane equipment. A magical weapon, armor, or shield normally uses the profile of its mundane equivalent, with the listed additional properties. Unless stated otherwise, magical equipment costs are added to the base equipment cost.",
+    "example": "A magical Longsword with a +20 Point enchantment costs: 10 + 20 = 30 Points.",
+    "notes": ["Magical equipment may also provide Item Commands."]
+  },
+  "artifactCategories": [
+    { "category": "Minor Artifact", "typicalPoints": "10–20", "function": "Small passive improvement or limited utility" },
+    { "category": "Major Artifact", "typicalPoints": "25–40", "function": "Strong combat improvement or specialized Command" },
+    { "category": "Relic", "typicalPoints": "50+", "function": "Powerful, distinctive capabilities" }
+  ],
+  "artifactCategoryNotes": [
+    "Relics are usually earned through adventures or important story events rather than purchased normally."
+  ],
+  "itemCommands": {
+    "description": "Some equipment grants a Command Ability while equipped.",
+    "rules": [
+      "Are available while the item remains equipped.",
+      "Do not occupy the character's four optional prepared Command slots.",
+      "Cost CP normally.",
+      "Follow the normal once-per-Turn rule unless stated otherwise.",
+      "Cannot be used when the equipment is unavailable or disabled."
+    ]
+  },
+  "weaponEnchantments": {
+    "description": "Magical Weapon Enchantments modify an existing weapon. Their Point costs are additional to the base weapon cost.",
+    "enchantments": [
+      {
+        "name": "Flamebrand",
+        "addedPoints": 20,
+        "primaryBenefit": "Magic, Anti-Regeneration 1, Surge Damage",
+        "effect": "The weapon gains Magic, Fire, and Anti-Regeneration 1. Anti-Regeneration grants +1 Attack die against Units possessing a Regeneration ability. When the weapon's Attack Surges, one successful Hit deals +1 Damage."
+      },
+      {
+        "name": "Frostbite",
+        "addedPoints": 20,
+        "primaryBenefit": "Magic, Slow 1, Freezing Strike",
+        "effect": "The weapon gains Magic. When this weapon deals Damage, the target suffers Slow 1 until the end of its next Movement activation.",
+        "command": {
+          "name": "Freezing Strike",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "Before making an Attack with this weapon, empower its slowing effect. If the Attack deals Damage, increase the resulting Slow from 1 to 2."
+        }
+      },
+      {
+        "name": "Stormcaller",
+        "addedPoints": 25,
+        "primaryBenefit": "Magic, nearby Direct Damage on Surge",
+        "effect": "The weapon gains Magic. Once per Round, when its Attack Surges, choose another enemy Unit within 2\" of the original target. That Unit suffers Direct Damage 1. Ward applies."
+      },
+      {
+        "name": "Duelist's Edge",
+        "addedPoints": 30,
+        "primaryBenefit": "Critical 1, Perfect Form",
+        "effect": "The weapon gains Critical 1. If the weapon already possesses Critical, increase its Critical value by 1 instead. An item may only receive Duelist's Edge once.",
+        "command": {
+          "name": "Perfect Form",
+          "cost": "1 CP",
+          "timing": "Combat",
+          "effect": "Before making an Engagement Attack with this weapon, gain Accurate 2 for that Attack."
+        }
+      },
+      {
+        "name": "Giantslayer",
+        "addedPoints": 25,
+        "primaryBenefit": "Anti-Monster 2, better Hit against large creatures",
+        "effect": "The weapon gains Anti-Monster 2. Against a Monster or single Model possessing a Wounds characteristic of 6 or more, improve Hit by 1 step. Anti-Monster 2 grants +2 Attack dice against Monster-tagged Units."
+      },
+      {
+        "name": "Witch-Hunter's Weapon",
+        "addedPoints": 35,
+        "primaryBenefit": "Anti-Magic 1, Critical against Ward users",
+        "effect": "The weapon gains Anti-Magic 1. Anti-Magic applies against Units possessing Spell Attacks or magical abilities. Against a target possessing an applicable Ward, the weapon gains Critical 1. This Critical stacks with existing Critical."
+      },
+      {
+        "name": "Vampiric Weapon",
+        "addedPoints": 30,
+        "primaryBenefit": "Healing after dealing Damage",
+        "effect": "Once per Round, after this weapon Surges or removes at least one model from a unit, Heal 1 Wound to the wielder. This cannot increase the wielder above their normal maximum Wounds."
+      },
+      {
+        "name": "Weapon of Returning",
+        "addedPoints": 15,
+        "primaryBenefit": "Returning thrown weapon, extended Range",
+        "effect": "Choose one thrown Weapon Attack. Increase its Range by 3\". After resolving the Attack, the weapon returns immediately to its wielder. The weapon remains available for subsequent eligible Attacks."
+      }
+    ]
+  }
+}

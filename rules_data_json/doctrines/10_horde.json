@@ -1,0 +1,15 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "10. Horde" },
+  "name": "Horde",
+  "foundationRecruitmentSlot": "C",
+  "strategy": "Use large formations, overlapping engagements, and numerical superiority.",
+  "qualificationNote": "A formation containing four or more surviving Models qualifies for the standard numerical requirements of this doctrine.",
+  "commands": [
+    { "name": "Endless Ranks", "slot": "C", "timing": "Movement", "effect": "One friendly Unit with at least four surviving Models counts as one additional Unit for objective control until the end of the Round." },
+    { "name": "Massed Volley", "slot": "R", "timing": "Assault", "effect": "One friendly Unit with at least four surviving Models gains +2 Attacks on its next ranged Attack this Phase. If another friendly Unit with at least four surviving Models is within Short, gain +3 Attacks instead." },
+    { "name": "Mob Tactics", "slot": "E", "timing": "Combat", "effect": "One friendly Unit gains +2 Attacks on its next Engagement Attack against an enemy also Engaged by a different friendly Unit with at least four surviving Models." },
+    { "name": "Pack Coordination", "slot": "S", "timing": "Assault/Combat Reaction", "effect": "When a friendly Unit within Short of another friendly Unit with at least four surviving Models is attacked, it gains Tough 2 against that Attack." },
+    { "name": "Encirclement", "slot": "V", "timing": "Combat", "effect": "One friendly Unit attacking an enemy also Engaged by a different friendly Unit with at least four surviving Models causes that enemy to worsen Evade by one step against the Attack." }
+  ],
+  "doctrineIdentity": "Numerical advantage and coordinated formations. Standard generic Line Infantry and Ranged Infantry qualify without reinforcement. Larger hordes remain more reliable because they retain their model-count requirements after suffering casualties."
+}

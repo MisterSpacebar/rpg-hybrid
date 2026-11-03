@@ -1,0 +1,222 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/17_bestiary.md",
+    "section": "3. Unusual Creatures, 3.1 Profiles, 3.2 Abilities and Upgrades"
+  },
+  "description": "Creatures relying on deception, mutation, unusual movement, and supernatural control.",
+  "units": [
+    {
+      "name": "Mimic",
+      "tags": ["Monster", "Elite"],
+      "points": 100,
+      "models": 1,
+      "modelProfile": { "move": "3\"", "wounds": 5, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Bite", "range": "Engaged", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Critical 1"] }
+      ],
+      "abilities": [
+        { "name": "Perfect Disguise", "type": "Passive", "effect": "Cannot normally be identified as a creature before moving or attacking without a successful Awareness Check or another appropriate detection effect." },
+        { "name": "Ambush", "type": "Passive", "effect": "The Mimic's first Attack of the encounter gains Accurate 2." }
+      ],
+      "upgrades": [
+        { "name": "Standard Mimic", "cost": "+0", "description": "W5, Bite, Perfect Disguise, Ambush." },
+        { "name": "Adhesive Grip", "cost": "+15", "description": "If Bite inflicts Damage, the target suffers Slow 1." },
+        { "name": "Greater Mimic", "cost": "+25", "description": "Increase Wounds to W7 and gain Impact 1." }
+      ]
+    },
+    {
+      "name": "Ooze",
+      "tags": ["Elite", "Ooze"],
+      "points": 100,
+      "models": 1,
+      "modelProfile": { "move": "2\"", "wounds": 8, "armor": "6+", "evade": null, "ward": null },
+      "attackProfiles": [
+        { "name": "Acidic Mass", "range": "Engaged", "attacks": 6, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 1"] }
+      ],
+      "abilities": [
+        { "name": "Amorphous", "type": "Passive", "effect": "Cannot make Evade Saves and ignores effects that forcibly reposition it. May flow through sufficiently large openings." }
+      ],
+      "upgrades": [
+        { "name": "Standard Ooze", "cost": "+0", "description": "W8, Acidic Mass, Amorphous." },
+        { "name": "Split", "cost": "+30", "description": "Once per battle, at 4 or fewer remaining Wounds, replace this Model with a single Unit of two Lesser Oozes. Distribute its remaining Wounds between them, maximum W2 each. The resulting Unit retains its activation status and cannot gain an additional activation from splitting." },
+        { "name": "Corrosive Body", "cost": "+20", "description": "Once per activation, when an enemy inflicts Damage on the Ooze in Engagement, that enemy suffers one automatic Physical Hit at Damage 1." }
+      ],
+      "spawn": {
+        "name": "Lesser Ooze",
+        "modelProfile": { "move": "2\"", "wounds": 2, "armor": "6+", "evade": null, "ward": null },
+        "attackProfiles": [
+          { "name": "Gnawing Acid", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 1"] }
+        ],
+        "notes": ["Retains Amorphous; cannot Split."]
+      }
+    },
+    {
+      "name": "Lesser Elementals",
+      "tags": ["Elite", "Elemental"],
+      "points": 120,
+      "models": 2,
+      "modelProfile": { "move": "5\"", "wounds": 3, "armor": "5+", "evade": "6+", "ward": "6+ Magic" },
+      "attackProfiles": [
+        { "name": "Elemental Strike", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Elemental Nature", "type": "Passive", "effect": "Choose one element when creating the Unit." }
+      ],
+      "elementOptions": [
+        { "name": "Fire", "cost": "+0", "description": "Elemental Strike gains the Fire attribute. When it Surges, it gains Blast 1\" for that Attack." },
+        { "name": "Ice", "cost": "+0", "description": "Elemental Strike gains the Frost attribute. When it Surges, its target suffers Slow 1." },
+        { "name": "Storm", "cost": "+0", "description": "Elemental Strike gains the Lightning attribute; increase Move to M6\"." },
+        { "name": "Stone", "cost": "+0", "description": "Improve Armor to 4+ but reduce Move to M4\"." }
+      ],
+      "upgrades": [
+        { "name": "Standard Elementals", "cost": "+0", "description": "Two Models with the selected elemental form." },
+        { "name": "Additional Elemental", "cost": "+55", "description": "Add one matching Model, maximum 3." }
+      ]
+    },
+    {
+      "name": "Cockatrice",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 130,
+      "models": 1,
+      "modelProfile": { "move": "6\"", "wounds": 5, "armor": "6+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Beak and Talons", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Critical 1"] }
+      ],
+      "abilities": [
+        { "name": "Flying", "type": "Passive", "effect": "May move over terrain and Models, finishing legally." },
+        { "name": "Petrifying Venom", "type": "Passive", "effect": "If Beak and Talons inflicts an unsaved Hit, the target suffers Slow 1. If it also generated a Surge, apply Slow 2 instead." }
+      ],
+      "upgrades": [
+        { "name": "Standard Cockatrice", "cost": "+0", "description": "Flying, Critical 1, and Petrifying Venom." },
+        { "name": "Stonefeather", "cost": "+15", "description": "Improve Armor to 5+." },
+        { "name": "Greater Cockatrice", "cost": "+25", "description": "Increase Wounds to W7 and gain Impact 1." },
+        { "name": "Venomous Spurs", "cost": "+15", "description": "Beak and Talons gain Accurate 1." }
+      ]
+    },
+    {
+      "name": "Basilisk",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 175,
+      "models": 1,
+      "modelProfile": { "move": "4\"", "wounds": 8, "armor": "4+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Fangs", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Character 2"] },
+        { "name": "Petrifying Gaze", "range": "8\"", "attacks": 2, "hit": "5+", "damage": 0, "damageTypes": ["Magic"], "keywords": [], "effect": "Petrifying Gaze inflicts no ordinary Damage. If it scores at least one Hit, its target suffers Slow 2. If the target was already under Slow 2 from this Basilisk before the Attack began, it also suffers Direct Damage 1. This additional Damage is applied only once per Attack." }
+      ],
+      "abilities": [
+        { "name": "Petrifying Glare", "type": "Command", "cost": "1 CP", "timing": "Movement — Once per Round (provisional)", "effect": "Choose a visible enemy Unit within 8\". Roll 2D6; each 5+ is one Success. On at least one Success, the target becomes Staggered (it forfeits one eligible phase activation). The target may negate the effect with one applicable Magic Ward Save, if any. This is a magical Command, not an ordinary Assault Attack. It does not also apply Slow." },
+        { "name": "Stone Scales", "type": "Passive", "effect": "Temporary effects cannot worsen the Basilisk's Armor by more than one step during a single Round." }
+      ],
+      "upgrades": [
+        { "name": "Standard Basilisk", "cost": "+0", "description": "Fangs, Petrifying Gaze, Stone Scales." },
+        { "name": "Elder Basilisk", "cost": "+30", "description": "Increase Wounds to W10 and Gaze Range to 10\"." },
+        { "name": "Deathly Gaze", "cost": "+25", "description": "Petrifying Gaze gains Accurate 1." },
+        { "name": "Hardened Scales", "cost": "+20", "description": "Gain Tough 1." }
+      ],
+      "notes": ["In Narrative Combat, full petrification may occur after sustained exposure, a special challenge, or a suitable encounter consequence. A single Hit does not permanently petrify a PC."]
+    },
+    {
+      "name": "Rust Eater",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 135,
+      "models": 1,
+      "modelProfile": { "move": "5\"", "wounds": 7, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Corrosive Mandibles", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Anti-Construct 1"] }
+      ],
+      "abilities": [
+        { "name": "Corrosive Bite", "type": "Passive", "effect": "If Corrosive Mandibles inflicts an unsaved Hit against an Armored Unit or Construct, worsen its Armor by one step until the end of its next activation. This effect does not stack with itself." },
+        { "name": "Scent of Iron", "type": "Passive", "effect": "Gain Accurate 1 when attacking Armored Units or Constructs." }
+      ],
+      "upgrades": [
+        { "name": "Standard Rust Eater", "cost": "+0", "description": "Corrosive Mandibles, Corrosive Bite, Scent of Iron." },
+        { "name": "Greater Corrosion", "cost": "+25", "description": "Corrosive Bite's Armor penalty lasts until the end of the next Round." },
+        { "name": "Armored Carapace", "cost": "+20", "description": "Improve Armor to 4+." },
+        { "name": "Iron Maw", "cost": "+15", "description": "Increase Corrosive Mandibles to four Attacks." }
+      ],
+      "notes": ["Corrosion is normally temporary in Structured Combat. Permanent equipment destruction requires a separate narrative or scenario rule."]
+    },
+    {
+      "name": "Phase Stalker",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 160,
+      "models": 1,
+      "modelProfile": { "move": "6\"", "wounds": 6, "armor": "6+", "evade": "4+", "ward": "6+ Magic" },
+      "attackProfiles": [
+        { "name": "Phase Claws", "range": "Engaged", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Flicker", "type": "Passive", "effect": "Once per Round, when targeted by a ranged Attack, improve Evade from 4+ to 3+ against that Attack. Declare before the attacker rolls." },
+        { "name": "Phase Step", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Move up to 4\", ignoring intervening terrain and Models. Must finish legally and cannot finish Engaged. If originally Engaged, the Phase Stalker becomes Withdrawn." }
+      ],
+      "upgrades": [
+        { "name": "Standard Phase Stalker", "cost": "+0", "description": "Phase Claws, Flicker, Phase Step." },
+        { "name": "Ambush Predator", "cost": "+20", "description": "Its next Phase Claws Attack after Phase Step this Round gains Accurate 1." },
+        { "name": "Distorted Form", "cost": "+20", "description": "Increase Wounds to W8." },
+        { "name": "Greater Phasing", "cost": "+15", "description": "Increase Phase Step movement to 6\"." }
+      ]
+    },
+    {
+      "name": "Will-o'-Wisps",
+      "tags": ["Elite", "Spirit"],
+      "points": 110,
+      "models": 3,
+      "modelProfile": { "move": "7\"", "wounds": 1, "armor": "6+", "evade": "4+", "ward": "5+ Magic" },
+      "attackProfiles": [
+        { "name": "Ghostlight", "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] },
+        { "name": "Spark", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Incorporeal Movement", "type": "Passive", "effect": "Ignore intervening terrain and Models when moving, finishing legally." },
+        { "name": "Luring Glow", "type": "Passive", "effect": "When Ghostlight generates a Surge, its target suffers Slow 1." }
+      ],
+      "upgrades": [
+        { "name": "Standard Lights", "cost": "+0", "description": "Three Models with Ghostlight and Luring Glow." },
+        { "name": "Additional Wisp", "cost": "+30 each", "description": "Add one Model, maximum 5." },
+        { "name": "Blinding Flash", "cost": "+20", "description": "On a Ghostlight Surge, the target also worsens Hit by one step on its next Attack this Round." }
+      ]
+    },
+    {
+      "name": "Shambling Mound",
+      "tags": ["Monster", "Elite", "Plant"],
+      "points": 185,
+      "models": 1,
+      "modelProfile": { "move": "3\"", "wounds": 10, "armor": "4+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Crushing Vines", "range": "Engaged 2\"", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] }
+      ],
+      "abilities": [
+        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
+        { "name": "Regrowth", "type": "Passive", "effect": "At the beginning of each Round, Heal 1 if within natural terrain. Regrowth does not trigger if the Mound suffered Fire Damage since its previous activation." },
+        { "name": "Entangling Growth", "type": "Passive", "effect": "If Crushing Vines inflicts an unsaved Hit, its target suffers Slow 1." }
+      ],
+      "upgrades": [
+        { "name": "Standard Mound", "cost": "+0", "description": "W10, Regrowth, Entangling Growth, Impact 1." },
+        { "name": "Deep Roots", "cost": "+20", "description": "Improve Armor to 3+ while within natural terrain." },
+        { "name": "Grasping Tendrils", "cost": "+20", "description": "Increase Crushing Vines Range to Engaged 3\"." },
+        { "name": "Overgrown Mass", "cost": "+25", "description": "Increase Wounds to W12." }
+      ]
+    },
+    {
+      "name": "Gargoyles",
+      "tags": ["Construct", "Elite"],
+      "points": 155,
+      "models": 3,
+      "modelProfile": { "move": "5\"", "wounds": 2, "armor": "4+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Stone Claws", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Flying", "type": "Passive", "effect": "May move over terrain and Models, finishing legally." },
+        { "name": "Stone Stillness", "type": "Passive", "effect": "Gain Concealed while stationary in suitable stone terrain, ending when the Unit Attacks, enters Engagement, or Moves." },
+        { "name": "Unliving Stone", "type": "Passive", "effect": "Gain Tough 1 against Physical Attacks while stationary." }
+      ],
+      "upgrades": [
+        { "name": "Standard Guardians", "cost": "+0", "description": "Three Models with Flying and Stone Stillness." },
+        { "name": "Additional Gargoyle", "cost": "+45", "description": "Add one Model, maximum 4." },
+        { "name": "Razor Claws", "cost": "+20", "description": "Stone Claws gain Accurate 1." },
+        { "name": "Heavy Stone Wings", "cost": "+15", "description": "Gain Impact 1." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "description": "Manifest for Spells data: spell acquisition rules, starting spells (Mage/Priest base and subclass), and the learnable Spell Catalogue (Mage/Priest General and Subclass spells).",
+  "files": [
+    { "id": "overview", "file": "00_overview.json", "description": "Spell acquisition rules, category cost table, Spell Effect Conventions, Elemental Attributes, Narrative Magic, Spell Design Guidelines, consistency check notes." },
+    { "id": "starting-spells", "file": "starting_spells.json", "description": "Mage/Priest Base and Subclass starting Spell Attacks (also mirrored in pc/classes/mage.json and pc/classes/priest.json)." },
+    { "id": "mage-spells", "file": "mage_spells.json", "description": "Learnable Mage Spell Catalogue: General, Elementalist (+ Flame Lance), Necromancer, Illusionist." },
+    { "id": "priest-spells", "file": "priest_spells.json", "description": "Learnable Priest Spell Catalogue: General, Cleric, Druid, Oracle." }
+  ],
+  "sourceFiles": [
+    "rulebooks/chapters/01_rpg/06_spells_and_equipment.md",
+    "rulebooks/chapters/01_rpg/12_spell_catalogue.md"
+  ]
+}

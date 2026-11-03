@@ -1,0 +1,102 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/05_classes.md",
+    "section": "WARRIOR"
+  },
+  "id": "warrior",
+  "name": "Warrior",
+  "role": "Martial combat, durability, direct confrontation",
+  "tags": ["Armored"],
+  "stats": { "move": "4\"", "wounds": 5, "armor": "5+", "evade": "6+", "ward": null },
+  "classAbility": {
+    "name": "Overpower",
+    "timing": "Passive",
+    "effect": "When the Warrior Surges on an attack or charge, for each Surge, reduce the target's Tough by X, where X is the number of Surges."
+  },
+  "subclasses": [
+    {
+      "id": "berserker",
+      "name": "Berserker",
+      "description": "Berserkers sacrifice their own safety for bursts of speed and overwhelming aggression.",
+      "additionalTags": [],
+      "signatureAbility": {
+        "name": "Frenzy",
+        "cost": "1 CP",
+        "timing": "Movement",
+        "effect": [
+          "Suffer 2 Damage that cannot be saved or prevented.",
+          "Until the end of the Round:",
+          "Gain +X\" Move.",
+          "Add X Attacks to your next attack.",
+          "Where X is half your Body characteristic, rounded up.",
+          "The additional Attack dice are consumed when the Attack is resolved."
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Longsword", "standard": true, "profile": { "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 10 },
+          { "name": "Greataxe", "standard": false, "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Monster 2"] }, "points": 20 },
+          { "name": "Maul", "standard": false, "profile": { "range": "Engaged", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Surge: Stagger", "Anti-Armored 2"] }, "points": 20 }
+        ]
+      },
+      "assaultPhaseNote": "The Berserker has no default ranged weapon. Ranged equipment may be acquired normally."
+    },
+    {
+      "id": "knight",
+      "name": "Knight",
+      "description": "Knights specialize in holding positions, controlling Engagements, and resisting enemy advances.",
+      "additionalTags": ["Infantry"],
+      "signatureAbility": {
+        "name": "Hold the Line",
+        "cost": "1 CP",
+        "timing": "Reaction",
+        "effect": [
+          "When targeted by an Attack or Charge, gain Tough X against that Attack or its Charge Impact, where X is half your Body characteristic, rounded up.",
+          "Additionally, ignore any forced movement caused by the triggering Attack or Charge."
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Shortsword", "standard": true, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 },
+          { "name": "Spear", "standard": false, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Brace 1"] }, "points": 10 },
+          { "name": "Warhammer", "standard": false, "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }, "points": 15 }
+        ]
+      },
+      "optionalEquipment": [
+        { "name": "Shield", "points": 15, "effect": "Improves Armor by one step when the equipment restrictions permit it." }
+      ],
+      "assaultPhaseNote": "The Knight has no default ranged weapon. Ranged equipment may be acquired normally."
+    },
+    {
+      "id": "fighter",
+      "name": "Fighter",
+      "description": "Fighters rely on disciplined technique, versatility, and consistent weapon performance.",
+      "additionalTags": ["Mobile"],
+      "signatureAbility": {
+        "name": "Finesse",
+        "cost": "1 CP",
+        "timing": "Assault or Combat",
+        "effect": "Once per Round, when making one Weapon Attack, gain Accurate X, where X is your Agility characteristic. If the rerolled dice Surges, the attack gains Critical 1."
+      },
+      "assaultPhaseWeapons": {
+        "options": [
+          { "name": "Shortbow", "profile": { "range": "6\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 5 },
+          { "name": "Crossbow", "profile": { "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Heavy"] }, "points": 10 }
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Rapier", "standard": true, "profile": { "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Critical 1"] }, "points": 25 },
+          { "name": "Greatsword", "standard": false, "profile": { "range": "Engaged", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] }, "points": 15 },
+          { "name": "Shortsword", "standard": false, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 }
+        ]
+      },
+      "notes": [
+        "The Fighter does not begin with a default ranged weapon, but its Finesse ability may be used with eligible ranged Weapon Attacks."
+      ]
+    }
+  ]
+}

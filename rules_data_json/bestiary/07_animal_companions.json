@@ -1,0 +1,220 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/17_bestiary.md",
+    "section": "7. Animal Companions, 7.1 Small Companions, 7.2 Standard Companions, 7.3 Large Companions, Companion Upgrades, Mount Restrictions"
+  },
+  "description": "Companions are independent friendly Units acquired through the Animal Companion Talents (13_talents.md#animal-companion-talents). They have their own Movement, Assault, and eligible Combat activations, rather than acting alongside their owner's activation for free. Companions cannot independently control objectives or generate CP; they usually remain within Short Range of the owner. They may use specifically printed or acquired CP Commands from the owner's CP pool during their own activation. All companions use the NPC Unit attack profiles below, never the owner's PC equipment attack profiles. Their listed Points are additional to the PC's base Talent XP-derived battlefield value.",
+  "talentGrants": {
+    "tier2": "Grants one unmodified Small/Standard companion.",
+    "tier4": "Grants either two different Training upgrades to the existing companion or a second Small/Standard companion with one Training upgrade on each animal.",
+    "note": "Large companions and mounts require specific acquisition/permission and are not automatically granted by either Talent."
+  },
+  "smallCompanions": {
+    "units": [
+      {
+        "name": "Rat / Ferret",
+        "tags": ["Companion"],
+        "points": 5,
+        "models": 1,
+        "modelProfile": { "move": "5\"", "wounds": 1, "armor": "6+", "evade": "4+", "ward": null },
+        "attackProfiles": [
+          { "name": "Bite", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Small", "description": "Cannot control objectives or meaningfully block larger Models. Can retrieve small objects and enter narrow spaces." }
+      },
+      {
+        "name": "Cat",
+        "tags": ["Companion"],
+        "points": 5,
+        "models": 1,
+        "modelProfile": { "move": "6\"", "wounds": 1, "armor": "6+", "evade": "4+", "ward": null },
+        "attackProfiles": [
+          { "name": "Claws", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Graceful", "description": "Ignore the first 2\" of Difficult Terrain movement penalties each Move." }
+      },
+      {
+        "name": "Raven",
+        "tags": ["Companion"],
+        "points": 10,
+        "models": 1,
+        "modelProfile": { "move": "7\"", "wounds": 1, "armor": "6+", "evade": "4+", "ward": null },
+        "attackProfiles": [
+          { "name": "Peck", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Flying, Keen Eyes", "description": "Fly over terrain and Models. Once per scene, grant +1D6 to an appropriate Awareness Check involving observation." }
+      },
+      {
+        "name": "Hawk / Owl",
+        "tags": ["Companion"],
+        "points": 10,
+        "models": 1,
+        "modelProfile": { "move": "8\"", "wounds": 1, "armor": "6+", "evade": "4+", "ward": null },
+        "attackProfiles": [
+          { "name": "Talons", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Flying, Scout", "description": "Fly over terrain and Models. Once per scene, grant +1D6 to an Awareness or Survival Check involving observation." }
+      },
+      {
+        "name": "Snake",
+        "tags": ["Companion"],
+        "points": 10,
+        "models": 1,
+        "modelProfile": { "move": "4\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+        "attackProfiles": [
+          { "name": "Bite", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Venom", "description": "When Bite generates a Surge, the target suffers Slow 1." }
+      }
+    ],
+    "notes": ["Small companions have no standard combat upgrades. Narrative variations may be granted appropriate utility traits."],
+    "optionalCommand": {
+      "name": "Spot Prey",
+      "cost": "10 Points per eligible companion",
+      "cpCost": "1 CP",
+      "timing": "Assault — Once per Round",
+      "eligibility": "Raven, Hawk and Owl only.",
+      "effect": "During that bird's Assault activation, choose one visible enemy Unit within Medium Range (12\"). Against the next friendly ranged Attack targeting that Unit this Round, reduce its applicable Cover X by 1, to a minimum of zero. This affects the total Cover value from terrain, elevation and other sources; it does not affect Armor or Ward. If no remaining rule permits Evade, the target cannot Evade against that Attack. The bird may still choose one of its normal Assault actions. Multiple Spot Prey effects do not stack on the same Attack."
+    }
+  },
+  "standardCompanions": {
+    "units": [
+      {
+        "name": "Dog",
+        "tags": ["Companion"],
+        "points": 15,
+        "models": 1,
+        "modelProfile": { "move": "6\"", "wounds": 2, "armor": "6+", "evade": "5+", "ward": null },
+        "attackProfiles": [
+          { "name": "Bite", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Keen Senses", "description": "Grant +1D6 to the owner when assisting scent-based Awareness or Survival Checks." }
+      },
+      {
+        "name": "War Hound",
+        "tags": ["Companion"],
+        "points": 30,
+        "models": 1,
+        "modelProfile": { "move": "6\"", "wounds": 3, "armor": "5+", "evade": "5+", "ward": null },
+        "attackProfiles": [
+          { "name": "Bite", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Protective", "description": "Gain Accurate 1 against an enemy Engaged with its owner." }
+      },
+      {
+        "name": "Wolf",
+        "tags": ["Companion"],
+        "points": 20,
+        "models": 1,
+        "modelProfile": { "move": "6\"", "wounds": 2, "armor": "6+", "evade": "5+", "ward": null },
+        "attackProfiles": [
+          { "name": "Bite", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Pack Hunter", "description": "Gain Accurate 1 against enemies Engaged with its owner." }
+      },
+      {
+        "name": "Boar",
+        "tags": ["Companion"],
+        "points": 30,
+        "models": 1,
+        "modelProfile": { "move": "5\"", "wounds": 3, "armor": "5+", "evade": "6+", "ward": null },
+        "attackProfiles": [
+          { "name": "Tusks", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Impact 1", "description": "Add one Hit to the highest-die Charge Impact pool." }
+      },
+      {
+        "name": "Giant Lizard",
+        "tags": ["Companion"],
+        "points": 30,
+        "models": 1,
+        "modelProfile": { "move": "5\"", "wounds": 3, "armor": "5+", "evade": "6+", "ward": null },
+        "attackProfiles": [
+          { "name": "Bite", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Adapted", "description": "Choose Climber or Aquatic when acquired." }
+      },
+      {
+        "name": "Giant Spider",
+        "tags": ["Companion"],
+        "points": 35,
+        "models": 1,
+        "modelProfile": { "move": "5\"", "wounds": 3, "armor": "6+", "evade": "5+", "ward": null },
+        "attackProfiles": [
+          { "name": "Fangs", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Climber, Venom", "description": "Climb vertical terrain at normal movement cost. When Fangs Surge, convert one successful Hit into Direct Damage 1." }
+      }
+    ],
+    "optionalCompanionCommands": [
+      { "eligibleAnimals": "Dog, Wolf, War Hound", "name": "Harry", "cpCost": "1 CP", "timing": "Combat", "cost": "+10", "effect": "Choose an enemy Engaged with this companion; the next friendly Engagement Attack against it this Round gains Accurate 1" },
+      { "eligibleAnimals": "Giant Spider", "name": "Entangling Web", "cpCost": "1 CP", "timing": "Assault", "cost": "+10", "effect": "Choose a visible enemy within Short; roll 2D6, and on at least one 4+, apply Slow 2 until its next Movement activation" }
+    ],
+    "notes": ["These Commands are optional, separately purchased creature-profile improvements, not free Tier 2 benefits. Using a Command does not replace the animal's ordinary Phase action unless its description says otherwise."]
+  },
+  "largeCompanions": {
+    "units": [
+      {
+        "name": "Dire Hound",
+        "tags": ["Companion"],
+        "points": 45,
+        "models": 1,
+        "modelProfile": { "move": "7\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
+        "attackProfiles": [
+          { "name": "Bite", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Critical 1"] }
+        ],
+        "specialRule": { "name": "Savage Predator", "description": "When Bite Surges, gain Critical +1 for that Attack, stacking with its printed Critical 1." }
+      },
+      {
+        "name": "Bear Companion",
+        "tags": ["Companion"],
+        "points": 55,
+        "models": 1,
+        "modelProfile": { "move": "5\"", "wounds": 5, "armor": "5+", "evade": "6+", "ward": null },
+        "attackProfiles": [
+          { "name": "Claws", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+          { "name": "Bite", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+        ],
+        "specialRule": { "name": "Powerful Companion", "description": "May physically obstruct narrow passages more effectively than smaller companions, but cannot independently control objectives." }
+      },
+      {
+        "name": "Riding Horse",
+        "tags": ["Companion"],
+        "points": 35,
+        "models": 1,
+        "modelProfile": { "move": "8\"", "wounds": 3, "armor": "6+", "evade": "5+", "ward": null },
+        "attackProfiles": [
+          { "name": "Hooves", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "Mount, Charge 3", "description": "Used primarily for transportation. While mounted, the rider uses the mount's Move under the mounting rules and gains Charge 3." }
+      },
+      {
+        "name": "Warhorse",
+        "tags": ["Companion"],
+        "points": 55,
+        "models": 1,
+        "modelProfile": { "move": "7\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
+        "attackProfiles": [
+          { "name": "Hooves", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        ],
+        "specialRule": { "name": "War Mount, Charge 3, Impact 1", "description": "While mounted, the rider gains Charge 3. A Warhorse has printed Impact 1, added to the highest Charge die. A qualified mounted rider may receive this bonus through mounted rules instead; it is never counted twice." }
+      }
+    ],
+    "companionUpgrades": {
+      "notes": ["Companions normally do not purchase generic Monster upgrades."],
+      "upgrades": [
+        { "name": "Standard Companion", "cost": "+0", "description": "Retain the listed companion profile and abilities." },
+        { "name": "Trained Companion", "cost": "+10", "description": "Improve one Attack's Hit characteristic by one step, maximum 4+." },
+        { "name": "Durable Companion", "cost": "+15", "description": "Increase Wounds by 1." },
+        { "name": "Specialized Training", "cost": "+10", "description": "Gain one appropriate noncombat utility ability, subject to GM approval." }
+      ],
+      "restriction": "A companion may normally purchase only one of these upgrades."
+    }
+  },
+  "mountRestrictions": [
+    "Mount Wounds do not automatically increase the rider's Wounds.",
+    "A ridden mount does not make its own Hooves Attack unless an appropriate Talent or ability permits it.",
+    "Characters who already purchased a Mounted upgrade do not receive the same benefit twice by acquiring a separate mount.",
+    "Dismounting, targeting mounts, and mount defeat use the campaign's normal mounted-combat rules."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "7. Mission Preparation Checklist" },
+  "intro": "Before the encounter begins, the GM should be able to answer the following:",
+  "checklist": [
+    "What is the Primary Mission?",
+    "Which side is attacking, defending, traveling, retrieving, or negotiating?",
+    "What is the exact Primary victory condition?",
+    "How many Rounds or Exchanges are available?",
+    "Which Battlefield Layout is being used?",
+    "Where are the required Primary and Secondary markers?",
+    "What Secondary Objective belongs to each side?",
+    "What interactions are required to complete each Secondary?",
+    "What counterplay is available to the opposition?",
+    "Are any Special Rules active?",
+    "What happens if the PCs win the Primary?",
+    "What happens if the opposition wins the Primary?",
+    "What happens if either side completes its Secondary?",
+    "Does this Mission resolve a political Stake, Neutral Opportunity, or other established operation?",
+    "Are all military rewards, political consequences, and persistent losses accounted for under the Campaign rules?"
+  ],
+  "closingNote": "The purpose of the Campaign Mission system is to create varied fantasy RPG and wargame encounters from a small set of reusable mechanics while preserving clear victory conditions, meaningful Secondary Objectives, and persistent strategic consequences."
+}

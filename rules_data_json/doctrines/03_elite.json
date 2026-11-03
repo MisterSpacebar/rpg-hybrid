@@ -1,0 +1,14 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "3. Elite" },
+  "name": "Elite",
+  "foundationRecruitmentSlot": "E",
+  "strategy": "Achieve superior performance through disciplined attacks, careful execution, and technical proficiency.",
+  "commands": [
+    { "name": "Veteran Spearhead", "slot": "E", "timing": "Combat", "effect": "One friendly Unit gains +1 Attack and Accurate 2 on its next Engagement Attack this Phase." },
+    { "name": "Find the Opening", "slot": "H", "timing": "Assault/Combat", "effect": "Choose one visible enemy Unit. Worsen its Evade by one step against the next friendly Attack targeting it this Phase. If the target has no Evade, that Attack gains Accurate 1 instead." },
+    { "name": "Perfect Technique", "slot": "E", "timing": "Assault/Combat Reaction", "effect": "After one friendly Unit rolls to Hit, reroll up to two failed Hit dice. Dice already rerolled cannot be selected." },
+    { "name": "Combat Training", "slot": "S", "timing": "Movement", "effect": "Choose one friendly Unit. Its next Attack this Round gains Accurate 2 and ignores one step of Hit worsening caused by a temporary condition." },
+    { "name": "Knightly Order", "slot": "V", "timing": "Assault", "effect": "One friendly Unit gains Charge 1 on its next Charge this Phase. If the Charge succeeds, its first Engagement Attack against that enemy this Round gains Accurate 2." }
+  ],
+  "doctrineIdentity": "Reliable, high-quality combat performance. Elite emphasizes making existing Attacks more effective. Alpha Strike produces larger opening attacks, while Counter Strike and Castling provide more dedicated defensive tools."
+}

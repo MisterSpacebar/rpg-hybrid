@@ -1,0 +1,224 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/04_campaign/Appendix_F.md",
+    "section": "APPENDIX F — NEUTRAL OPPORTUNITIES — Campaign Mode — Revised for Current Campaign Rules"
+  },
+  "overview": {
+    "summary": "Neutral Opportunities are exceptional objectives that provide direct benefits to the PC Company without necessarily advancing the political interests of any Grand Faction.",
+    "rules": [
+      "They compete with the regular political Stake for the Campaign Turn.",
+      "A successful Neutral Opportunity awards one gray Act marker.",
+      "There are twelve Neutral Opportunity cards: four Treasury Opportunities, eight unique Special Opportunities."
+    ]
+  },
+  "neutralOpportunityRules": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_F.md", "section": "F.1 Neutral Opportunity Rules" },
+    "scheduling": {
+      "rules": [
+        "At the beginning of each Act, secretly assign the appropriate Neutral Opportunities to distinct Campaign Turns within that Act.",
+        "Every Act contains one Treasury Opportunity.",
+        "Draw without replacement from the Treasury and Special catalogs until their respective decks require reshuffling.",
+        "A Grand Campaign uses all eight Special Opportunities across its four Acts."
+      ],
+      "table": [
+        { "campaign": "Local", "treasuryPerAct": 1, "specialPerAct": 0, "totalPerAct": 1 },
+        { "campaign": "Standard", "treasuryPerAct": 1, "specialPerAct": 1, "totalPerAct": 2 },
+        { "campaign": "Long", "treasuryPerAct": 1, "specialPerAct": 1, "totalPerAct": 2 },
+        { "campaign": "Grand", "treasuryPerAct": 1, "specialPerAct": 2, "totalPerAct": 3 }
+      ]
+    },
+    "revealingOpportunities": [
+      "Reveal a scheduled Neutral Opportunity during the Preparation Council, before the PCs select their Company Order.",
+      "The normal political Stake is still selected and NPC Maneuvers are committed.",
+      "The players then decide whether to pursue the Neutral Opportunity or concentrate on their regular objectives."
+    ],
+    "resolution": {
+      "onSuccess": [
+        "Awards its listed reward.",
+        "Places one gray Neutral marker on the Act Track.",
+        "Replaces the normal political Stake result for that Turn.",
+        "Does not award an additional Development draw."
+      ],
+      "notes": [
+        "The NPC Maneuver cards still resolve their legal basic map actions.",
+        "If the Neutral Opportunity fails, resolve the ordinary political Stake as normal."
+      ]
+    },
+    "eligibility": [
+      "Each Opportunity lists its suitable Company Orders and target requirements.",
+      "The GM may adapt the scenario's fiction to an equivalent available location without changing the reward's mechanical value.",
+      "The objective must still be completed through a legitimate mission or appropriate strategic action."
+    ],
+    "militaryRewards": [
+      "A formation or Asset received through a Special Opportunity enters the appropriate Company record immediately after the successful mission.",
+      "If the reward instead grants a recruitment Gold credit, immediately select one eligible Unit and apply the credit against its normal Gold recruitment cost. The Company pays any difference when it claims the reward; unused credit is lost. The reward does not grant a separate Recruit Order, unlimited future hiring, additional detachment slots, or extra deployment Points.",
+      "It does not consume a Recruit Order.",
+      "A formation may remain in reserve if no PC can currently deploy it.",
+      "It must still obey normal point ceilings, detachment slots, equipment restrictions, and casualty rules.",
+      "When a reward permits an otherwise unavailable faction's formation, the permission applies only to the specific awarded formation, not to that faction's entire roster."
+    ]
+  },
+  "treasuryOpportunities": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_F.md", "section": "F.2 Treasury Opportunities" },
+    "note": "Each Treasury Opportunity awards 2 Gold per participating PC. The exact objective and story vary, but the payout remains identical.",
+    "cards": [
+      {
+        "id": "F-T1",
+        "name": "The Lost Caravan",
+        "eligibleTarget": "A missing merchant caravan, trade expedition, supply convoy, or other recoverable shipment.",
+        "suggestedOrders": ["Explore", "Mobilize", "Commerce"],
+        "objective": "Locate the caravan and recover its valuable cargo or secure the agreed recovery payment. The mission may involve hostile creatures, raiders, difficult terrain, or competing claimants.",
+        "reward": "2 Gold per PC.",
+        "outcome": "The recovered property is claimed or returned according to the mission's agreed terms. Completing the objective does not automatically provide a permanent mercenary contract."
+      },
+      {
+        "id": "F-T2",
+        "name": "The Great Commission",
+        "eligibleTarget": "A significant public contract from a civic institution, guild, settlement, or commercial sponsor.",
+        "suggestedOrders": ["Commerce", "Politics", "Develop"],
+        "objective": "Complete the commissioned service or deliverable. The commission may require crafting, technical expertise, negotiation, or the recovery of a specific item.",
+        "reward": "2 Gold per PC.",
+        "outcome": "The contract is fulfilled. Any future commercial relationship must be established separately unless explicitly included in the terms."
+      },
+      {
+        "id": "F-T3",
+        "name": "The Salvage Claim",
+        "eligibleTarget": "An abandoned structure, ruined storehouse, damaged transport, shipwreck, or accessible recovery Site.",
+        "suggestedOrders": ["Explore", "Commerce", "Mobilize"],
+        "objective": "Establish a legitimate salvage claim and recover the valuable materials.",
+        "reward": "2 Gold per PC.",
+        "outcome": "The company obtains its Treasury reward. Salvaging the location does not automatically transfer political ownership. If the mission also resolves a separately established exploration Site, apply that Site's ordinary completion rules; the Treasury reward does not itself create a second Site reward."
+      },
+      {
+        "id": "F-T4",
+        "name": "The Bounty Consortium",
+        "eligibleTarget": "A dangerous creature, outlaw band, criminal organization, or comparable recognized bounty.",
+        "suggestedOrders": ["Explore", "Mobilize", "Politics"],
+        "objective": "Fulfill a publicly established bounty by defeating, capturing, or otherwise conclusively resolving the target.",
+        "reward": "2 Gold per PC.",
+        "outcome": "The bounty is paid and its immediate threat is resolved. The company does not automatically acquire the target's territory, followers, or equipment unless the actual mission provides those results. A Treasury Opportunity does not independently award another Campaign Turn's XP; a qualifying separate unique exploration Site can still provide its ordinary one-time Exploration XP."
+      }
+    ]
+  },
+  "specialOpportunities": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_F.md", "section": "F.3 Special Opportunities" },
+    "note": "Each Special Opportunity is unique. Its reward is obtained once when the card is successfully completed. Special formations and Assets are normally persistent after acquisition, although temporary agreements retain their stated duration.",
+    "cards": [
+      {
+        "id": "F-S1",
+        "name": "The Broken Company",
+        "eligibleTarget": "A defeated or disbanded military company, stranded veterans, or survivors of a failed campaign.",
+        "suggestedOrders": ["Explore", "Politics", "Recruit"],
+        "objective": "Rescue, reorganize, or negotiate service with the surviving soldiers.",
+        "specialReward": {
+          "name": "Veteran Survivors",
+          "effect": "The company obtains one eligible Regular or Core formation and receives up to 3 Gold of recruitment credit toward its initial cost. If its normal Gold cost exceeds 3, pay the difference; it counts at its full purchased Points. The formation may originate from a normally unavailable regular faction if appropriate to the survivors. The company receives a one-time exception allowing ownership of that specific formation. The unit occupies its normal slot and uses the normal casualty rules."
+        },
+        "persistentResult": "The rescued survivors become a named company formation."
+      },
+      {
+        "id": "F-S2",
+        "name": "The Abandoned Battery",
+        "eligibleTarget": "A deserted artillery position, buried weapons platform, ruined military depot, or abandoned siege emplacement.",
+        "suggestedOrders": ["Explore", "Mobilize", "Develop"],
+        "objective": "Recover and secure the abandoned weapons and the personnel or expertise needed to operate them.",
+        "specialReward": {
+          "name": "Recovered Battery",
+          "effect": "Obtain one eligible Artillery, ranged Support, or military Asset formation with up to 4 Gold of recruitment credit toward its initial cost. Pay any difference, and record its full purchased Points. The awarded formation may use a one-time outside-faction recruitment exception. All Elite, Support, Asset, and slot restrictions still apply."
+        },
+        "persistentResult": "The battery becomes a named military Asset and requires an appropriate repair source if later Mauled or Destroyed."
+      },
+      {
+        "id": "F-S3",
+        "name": "Riders Without Banners",
+        "eligibleTarget": "An independent cavalry band, displaced riders, or mobile mercenary company without a permanent employer.",
+        "suggestedOrders": ["Politics", "Commerce", "Explore"],
+        "objective": "Secure the riders' voluntary service through negotiation or completion of an appropriate obligation.",
+        "specialReward": {
+          "name": "Free Riders",
+          "effect": "Obtain one eligible Cavalry or similarly mobile formation with up to 4 Gold of recruitment credit toward its initial cost. Pay any difference, and record its full purchased Points. The company may acquire that specific formation even if its original faction is not otherwise available."
+        },
+        "persistentResult": "The riders become a permanent named company formation unless the mission's explicitly negotiated terms instead establish a temporary contract."
+      },
+      {
+        "id": "F-S4",
+        "name": "The Specialist Corps",
+        "eligibleTarget": "A stranded specialist detachment, dissolved military research corps, or group of trained professional soldiers.",
+        "suggestedOrders": ["Politics", "Recruit", "Explore"],
+        "objective": "Persuade the specialists to enter company service or satisfy the requirements for transferring their commission.",
+        "specialReward": {
+          "name": "Specialist Detachment",
+          "effect": "Obtain one eligible Elite Support or other specialist formation with up to 4 Gold of recruitment credit toward its initial cost. Pay any difference, and record its full purchased Points. The formation must occupy an appropriate legal slot and satisfy its normal tags and deployment restrictions."
+        },
+        "persistentResult": "The company gains access to the specific awarded specialists. This does not unlock unrestricted recruitment of additional copies."
+      },
+      {
+        "id": "F-S5",
+        "name": "The Ancient Covenant",
+        "eligibleTarget": "An old diplomatic oath, ancestral agreement, guardian institution, or political obligation that can legitimately be restored.",
+        "suggestedOrders": ["Politics", "Explore"],
+        "objective": "Recover the evidence or fulfill the conditions necessary to reactivate the Covenant.",
+        "specialReward": {
+          "name": "Covenant Ally",
+          "effect": "Secure one temporary allied formation worth up to 125 Points from a suitable participating Grand Faction or Local Authority. This is a firm 125-Point eligibility ceiling, not a Gold credit: a more expensive Unit cannot be selected by paying the difference. The narrower roster choice is intentional. The formation requires no initial Gold payment. Its service continues through the end of the campaign unless the negotiated Covenant explicitly ends earlier or the company breaks its obligations."
+        },
+        "persistentResult": "Record the Covenant as a military agreement. The formation remains owned by its sponsor and returns when the agreement expires. It is not a permanent company acquisition."
+      },
+      {
+        "id": "F-S6",
+        "name": "The Master Artificer",
+        "eligibleTarget": "A renowned craftsperson, unusual workshop, specialist guild, or master whose assistance can be earned.",
+        "suggestedOrders": ["Politics", "Commerce", "Explore"],
+        "objective": "Obtain the Artificer's assistance through an appropriate mission or recognized commission.",
+        "specialReward": {
+          "name": "Master's Commission",
+          "effect": "The company may complete one Major Development project or up to two Minor Development projects, outside its normal Company Order. Waive up to 6 Gold of eligible project costs in total. All normal crafting checks, equipment restrictions, point costs, and project prerequisites still apply. Each Major Project category may be selected only once within the same commission, and it cannot duplicate a project barred by the normal Develop restrictions. The commission provides project opportunities in addition to (and not as a substitute for) any separately legal Company Order. Unused cost reduction is lost when the commission resolves."
+        },
+        "persistentResult": "The produced equipment or upgrades remain with the company. The Artificer does not automatically provide an unrestricted permanent crafting discount."
+      },
+      {
+        "id": "F-S7",
+        "name": "Refugee Engineers",
+        "eligibleTarget": "Displaced builders, siege engineers, infrastructure specialists, or artisans seeking protection.",
+        "suggestedOrders": ["Politics", "Explore", "Commerce"],
+        "objective": "Provide security, safe passage, or an appropriate settlement arrangement for the engineers.",
+        "specialReward": {
+          "name": "Engineering Corps",
+          "effect": "The company may construct one eligible Major Improvement without consuming a Construct Order. Waive up to 4 Gold of that Improvement's cost. The company must have lawful construction rights, legal terrain, and the necessary resource access.",
+          "restriction": "The reward may not construct a Frontier Outpost or independently transfer political control."
+        },
+        "persistentResult": "The completed Improvement remains on the map, subject to the normal rules. The engineers may remain as a narrative contact but do not become an additional free formation."
+      },
+      {
+        "id": "F-S8",
+        "name": "The Forgotten Workshop",
+        "eligibleTarget": "A ruined industrial site, lost forge, abandoned laboratory, or dormant technical facility.",
+        "suggestedOrders": ["Explore", "Construct", "Develop"],
+        "objective": "Recover and restore the site's operational capabilities.",
+        "specialReward": {
+          "name": "Restored Workshop",
+          "effect": "Restore or construct one Workshop at a legal location associated with the mission, without consuming a Construct Order or paying its normal 3-Gold construction cost. The company must secure appropriate operating rights and a legal resource connection. In addition, its next eligible Develop Order receives a one-time 2-Gold discount to project expenditure. That discount expires at the end of the following Act."
+        },
+        "persistentResult": "The Workshop remains a constructed Improvement and may satisfy specialist repair, crafting, and military-access prerequisites. It does not automatically produce formations or Gold."
+      }
+    ]
+  },
+  "neutralOpportunityReference": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_F.md", "section": "F.4 Neutral Opportunity Reference" },
+    "table": [
+      { "card": "Lost Caravan", "category": "Treasury", "mainReward": "2 Gold per PC" },
+      { "card": "Great Commission", "category": "Treasury", "mainReward": "2 Gold per PC" },
+      { "card": "Salvage Claim", "category": "Treasury", "mainReward": "2 Gold per PC" },
+      { "card": "Bounty Consortium", "category": "Treasury", "mainReward": "2 Gold per PC" },
+      { "card": "Broken Company", "category": "Special", "mainReward": "One eligible formation; up to 3G recruitment credit" },
+      { "card": "Abandoned Battery", "category": "Special", "mainReward": "One Artillery/Support/Asset; up to 4G credit" },
+      { "card": "Riders Without Banners", "category": "Special", "mainReward": "One mobile formation; up to 4G credit" },
+      { "card": "Specialist Corps", "category": "Special", "mainReward": "One eligible specialist; up to 4G credit" },
+      { "card": "Ancient Covenant", "category": "Special", "mainReward": "Temporary allied formation, firm 125-Point cap" },
+      { "card": "Master Artificer", "category": "Special", "mainReward": "Development commission, up to 6 Gold" },
+      { "card": "Refugee Engineers", "category": "Special", "mainReward": "One eligible Major Improvement, up to 4 Gold" },
+      { "card": "Forgotten Workshop", "category": "Special", "mainReward": "Restored Workshop and later Develop discount" }
+    ],
+    "reminder": "Special Opportunities can increase the Owned Roster beyond the deployment ceiling, but do not increase how many points or slots may be deployed in a structured battle."
+  }
+}

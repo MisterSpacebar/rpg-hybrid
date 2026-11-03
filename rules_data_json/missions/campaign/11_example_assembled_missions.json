@@ -1,0 +1,58 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "6. Example Assembled Campaign Missions" },
+  "examples": [
+    {
+      "id": "A",
+      "name": "The Siege of Blackthorn Keep",
+      "primary": "Defense",
+      "layout": "C9 — Stronghold Breach",
+      "pcRole": "Attacker",
+      "pcSecondary": "Rescue Captives",
+      "oppositionSecondary": "Secure Supplies",
+      "specialRule": "Fortified",
+      "primaryGoal": "Capture the Keep's designated Command Position. The defenders win if it remains secure through Round 6.",
+      "pcSecondaryDetail": "Free prisoners in a separate holding area and extract them.",
+      "oppositionSecondaryDetail": "Secure a designated storehouse and maintain control through the required Scoring Phase.",
+      "campaignConsequences": "PC Primary success resolves the eligible military Stake concerning the Keep. PC Secondary success preserves the prisoners regardless of the Keep's fate. Opposition Secondary success preserves its specified supplies or logistical advantage, even if the fortress is captured. The two Secondaries do not generate additional Act markers."
+    },
+    {
+      "id": "B",
+      "name": "The Lost Reliquary",
+      "primary": "Extraction",
+      "layout": "R2 — False Reliquaries",
+      "pcSecondary": "Uncover Secrets",
+      "oppositionSecondary": "Gather Intelligence",
+      "specialRule": "Hidden Information",
+      "primaryGoal": "Identify the true Relic among three Reliquaries and extract it.",
+      "pcSecondaryDetail": "Investigate two separate Clues explaining the Relic's history.",
+      "oppositionSecondaryDetail": "Investigate the company's preparations and recover information about its intended extraction route.",
+      "campaignConsequences": "The Primary determines whether the PCs retrieve the Relic. The PC Secondary may reveal information about an associated Site or future discovery. The opposition may learn useful information even if it fails to prevent the Relic's recovery."
+    },
+    {
+      "id": "C",
+      "name": "The Merchant Caravan",
+      "primary": "Passage",
+      "layout": "E2 — Running Battle",
+      "pcSecondary": "Secure Supplies",
+      "oppositionSecondary": "Eliminate Officer",
+      "specialRule": "Reinforcements, using the layout's preallocated interception force.",
+      "primaryGoal": "Escort the caravan to its destination before the pursuing and intercepting forces stop it.",
+      "pcSecondaryDetail": "Secure a designated supply cache along the route.",
+      "oppositionSecondaryDetail": "Defeat a named caravan officer.",
+      "campaignConsequences": "If the caravan escapes, its established commercial or political operation can proceed. The PCs may also secure the supply cache if their Secondary succeeds. If the opposition defeats the officer but fails to stop the caravan, the Primary still belongs to the PCs. The loss of the officer may remain a meaningful persistent consequence."
+    },
+    {
+      "id": "D",
+      "name": "The Forbidden Excavation",
+      "primary": "Expedition",
+      "layout": "A3 — Scattered Patrol",
+      "pcSecondary": "Recover Treasure",
+      "oppositionSecondary": "Disrupt Ritual",
+      "specialRule": "Unstable Magic",
+      "primaryGoal": "Investigate the excavation and resolve the central Discovery.",
+      "pcSecondaryDetail": "Recover and extract a separate treasure cache.",
+      "oppositionSecondaryDetail": "Interrupt an unrelated magical mechanism or research operation maintained by the PCs' allies.",
+      "campaignConsequences": "The PCs may successfully complete the expedition while losing the treasure or allowing the enemy to interrupt allied magical preparations. Each outcome is recorded separately."
+    }
+  ]
+}

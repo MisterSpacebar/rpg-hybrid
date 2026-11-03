@@ -1,0 +1,159 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "4. WILD COURTS"
+  },
+  "name": "Wild Courts",
+  "doctrines": ["Mobility", "Control"],
+  "worldbuilding": "Elven enclaves, fey courts, forest spirits, beast clans, and ancient wilderness kingdoms. Their armies control where Engagements occur, relying on terrain, ambush, and unconventional movement.",
+  "factionRule": {
+    "name": "Paths of the Wild",
+    "effect": "Ignore the first 2\" of Difficult Terrain during each Move activation. Units must finish their moves legally."
+  },
+  "factionCommands": [
+    { "name": "Through the Wild", "timing": "Movement", "cost": "1 CP", "effect": "Reposition one friendly Unit from a terrain feature to another suitable terrain feature within Medium. It cannot finish Engaged." },
+    { "name": "Entangling Growth", "timing": "Assault", "cost": "1 CP", "effect": "One visible enemy within Medium suffers Slow 2 or cannot Charge during the current Phase." },
+    { "name": "Fade into the Wilds", "timing": "Reaction", "cost": "1 CP", "effect": "After being attacked, one unengaged friendly Unit may Move up to 3\"." }
+  ],
+  "signatureCoreUnits": [
+    {
+      "name": "Glade Hunters",
+      "points": 175,
+      "models": 5,
+      "tags": ["Ranged Infantry", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Longbows", "range": "12\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Surge: Direct Damage 1"] },
+        { "name": "Elven Sword", "range": "Engaged", "attacks": 3, "hit": "6+", "damage": 1, "keywords": ["Accurate 1"] }
+      ],
+      "abilities": [
+        { "name": "Woodland Stalker", "type": "Passive", "effect": "Gain Concealed while benefiting from natural Cover." }
+      ]
+    },
+    {
+      "name": "Wild Riders",
+      "points": 165,
+      "models": 3,
+      "tags": ["Infantry", "Cavalry", "Mortal"],
+      "modelProfile": { "move": "7\"", "wounds": 2, "armor": "6+", "evade": "4+", "ward": null },
+      "attackProfiles": [
+        { "name": "Thorn Spears", "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Forest Ambush", "type": "Passive", "effect": "If beginning in Cover, Move up to 2\" before declaring a Charge, ending legally." }
+      ]
+    },
+    {
+      "name": "Briar Stalkers",
+      "points": 165,
+      "models": 4,
+      "tags": ["Infiltrating Infantry", "Mortal", "Fey"],
+      "modelProfile": { "move": "5\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Thorned Blades", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Thicket Ambush", "type": "Passive", "effect": "If this Unit began its activation in Cover, gain Accurate 1 and Charge 1 on its Charge this Phase." }
+      ]
+    }
+  ],
+  "captainAndSpecialists": [
+    {
+      "name": "Huntmaster",
+      "role": "Captain",
+      "points": 175,
+      "tags": ["Infantry", "Hero", "Mortal"],
+      "modelProfile": { "move": "5\"", "wounds": 5, "armor": "5+", "evade": "4+", "ward": null },
+      "attackProfiles": [
+        { "name": "Longbow", "range": "10\"", "attacks": 4, "hit": "4+", "damage": 1, "keywords": ["Long Range 3\""] },
+        { "name": "Hunting Blade", "range": "Engaged", "attacks": 4, "hit": "4+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Mark Prey", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Choose one visible enemy within Medium. Up to two friendly Units within Medium of the Huntmaster gain Accurate 1 on their next Attack against it this Round." }
+      ]
+    },
+    {
+      "name": "Grove Seer",
+      "role": "Wizard",
+      "points": 180,
+      "tags": ["Wizard", "Elite", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "6+", "evade": "5+", "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Thorn Bolt", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Staff", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Renewal", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Heal 1 Damage from each of up to two friendly Units within Short." }
+      ],
+      "upgrades": [
+        {
+          "name": "Veil of Briars",
+          "cost": "+20 Points",
+          "type": "Command",
+          "commandCost": "1 CP",
+          "timing": "Movement",
+          "effect": "Place a 25mm token within Short Range. Until the beginning of this Unit's next Movement activation, the area within 1\" of the token blocks line of sight. The obstruction affects friendly and enemy Units equally. Remove the token when the effect expires."
+        }
+      ]
+    },
+    {
+      "name": "Beastkeeper",
+      "role": "Support",
+      "points": 115,
+      "tags": ["Support", "Elite", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "6+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Hunting Spear", "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Guided Hunt", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One Beast, Cavalry, or Monster Unit within Short gains Accurate 1 on its next Attack and ignores Difficult Terrain during its next Move." }
+      ]
+    }
+  ],
+  "largeAssets": [
+    {
+      "name": "Treant Ancient",
+      "points": 285,
+      "tags": ["Monster", "Fey"],
+      "modelProfile": { "move": "3\"", "wounds": 12, "armor": "3+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Great Limbs", "range": "Engaged 2\"", "attacks": 4, "hit": "4+", "damage": 3, "keywords": ["Anti-Infantry 3"] }
+      ],
+      "abilities": [
+        { "name": "Living Bastion", "type": "Passive", "effect": "Friendly Units immediately behind or adjacent to this Model benefit from Cover against ranged Attacks when physically appropriate." }
+      ]
+    },
+    {
+      "name": "Forest Wurm",
+      "points": 365,
+      "tags": ["Monster"],
+      "modelProfile": { "move": "7\"", "wounds": 11, "armor": "4+", "evade": "5+", "ward": "6+ (Magic +1)" },
+      "attackProfiles": [
+        { "name": "Verdant Breath", "range": "8\"", "attacks": 6, "hit": "5+", "damage": 1, "keywords": ["Magic", "Blast 1\""] },
+        { "name": "Claws", "range": "Engaged", "attacks": 6, "hit": "3+", "damage": 2, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Canopy Flight", "type": "Passive", "effect": "May Move over terrain and Models but must finish legally." }
+      ]
+    }
+  ],
+  "factionLeader": {
+    "name": "Queen of Thorns",
+    "points": 465,
+    "tags": ["Wizard", "Hero", "Fey"],
+    "modelProfile": { "move": "5\"", "wounds": 10, "armor": "5+", "evade": "4+", "ward": "6+ (Magic Ward +1)" },
+    "impact": "+1",
+    "attackProfiles": [
+      { "name": "Thornlash", "range": "9\"", "attacks": 8, "hit": "4+", "damage": 1, "keywords": ["Magic"] },
+      { "name": "Living Briars", "range": "Engaged 2\"", "attacks": 5, "hit": "3+", "damage": 2, "keywords": ["Magic", "Anti-Cavalry 2"] }
+    ],
+    "abilities": [
+      { "name": "Sovereign of the Forest", "type": "Passive", "effect": "Friendly Units within Medium ignore movement penalties from natural Difficult Terrain." },
+      { "name": "Entwined Dominion", "type": "Command", "cost": "2 CP", "timing": "Movement", "frequency": "Once per Battle", "effect": "Choose up to two visible enemy Units within Medium. Each suffers Slow 2 and cannot Charge until the end of the Round." }
+    ]
+  },
+  "genericUnitsWorthTaking": "Shield Infantry, ordinary Longbowmen, Scouts, and Engineers or Medics. The Glade Hunters offer mobility and Concealment, while generic archers can be cheaper or more heavily upgraded for accuracy.",
+  "designNotes": [
+    "v4.2 balance pass: added Briar Stalkers as the faction's Extra Core, a melee ambush-Infiltrating unit reinforcing the terrain/ambush identity rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Infantry on the Treant Ancient's Great Limbs, Anti-Cavalry on the Queen of Thorns' Living Briars) or an improved Hit (Forest Wurm's Claws 4+ -> 3+)."
+  ]
+}

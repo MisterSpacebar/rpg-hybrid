@@ -1,0 +1,18 @@
+{
+  "domain": "units.generic",
+  "sourceFile": "rulebooks/chapters/02_wargame/01_generic_units.md",
+  "description": "Generic (faction-agnostic) battlefield Unit profiles: baseline stat blocks, weapon/equipment options, and upgrades shared across most armies.",
+  "files": [
+    { "file": "00_general_rules.json", "contains": "Unit conventions, keyword-stacking rules, equipment/upgrade cost rules, Command Point economy." },
+    { "file": "01_infantry.json", "contains": "Line Infantry, Ranged Infantry, Elite Infantry." },
+    { "file": "02_cavalry_and_mobile_troops.json", "contains": "Cavalry (Light/standard/Heavy classes)." },
+    { "file": "03_captains.json", "contains": "Captain (Hero-eligible officer)." },
+    { "file": "04_wizards.json", "contains": "Wizard / Master Wizard, generic Arcana." },
+    { "file": "05_support_units.json", "contains": "Field Medics, Engineers, Heralds, Scouts/Spotters, Alchemists, Clerics." },
+    { "file": "06_artillery.json", "contains": "Artillery (Light/Heavy classes and weapon options)." },
+    { "file": "07_large_assets.json", "contains": "Large Asset point-band design reference (not a purchasable profile)." },
+    { "file": "08_generic_upgrade_reference.json", "contains": "Provisional reference costs for common ad hoc upgrades." },
+    { "file": "09_general_point_scale.json", "contains": "Typical Points ranges by battlefield category." },
+    { "file": "10_design_notes_and_playtest_priorities.json", "contains": "Designer commentary and a quick ranged-weapon damage comparison table. Not enforceable rules." }
+  ]
+}

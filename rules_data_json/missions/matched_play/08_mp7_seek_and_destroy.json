@@ -1,0 +1,16 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md", "section": "MP7 — SEEK AND DESTROY" },
+  "id": "MP7",
+  "name": "Seek and Destroy",
+  "tagline": "Target Enemy Formations",
+  "primaryObjective": "Score 1 VP for each controlled objective during every scoring Round.",
+  "tacticalObjective": {
+    "name": "Eliminate Opposition",
+    "effect": "Gain 1 Tactical VP if at least one enemy Unit was defeated during the current Round. A multi-model Unit counts as defeated when its last Model is removed or defeated. A Player Character or other single-model Character counts as defeated for this condition when it becomes Downed."
+  },
+  "specialRules": [
+    "Defeating additional Units during the same Round does not award additional Tactical VP.",
+    "Units escaping the battlefield or returning to Reserves are not considered defeated."
+  ],
+  "designNotes": "Seek and Destroy encourages active combat while preserving the importance of controlling objectives. It is especially suitable for armies designed around decisive engagements and aggressive assaults."
+}

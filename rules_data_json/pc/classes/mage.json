@@ -1,0 +1,129 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/05_classes.md",
+    "section": "MAGE"
+  },
+  "id": "mage",
+  "name": "Mage",
+  "role": "Offensive magic, arcane utility, battlefield manipulation",
+  "tags": ["Wizard"],
+  "stats": { "move": "3\"", "wounds": 3, "armor": "6+", "evade": "6+", "ward": null },
+  "baseSpellAttacks": {
+    "note": "All Mages begin knowing both Spell Attacks. These Spell Attacks are included in the Base Character Value and do not occupy prepared Command Ability slots.",
+    "phase": "Assault",
+    "spells": [
+      { "name": "Magic Missile", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Pinpoint"] }, "cost": "Included" },
+      { "name": "Force Bolt", "profile": { "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Push 1\""] }, "cost": "Included" }
+    ]
+  },
+  "subclasses": [
+    {
+      "id": "elementalist",
+      "name": "Elementalist",
+      "description": "Elementalists manipulate the properties of their magic to produce powerful attacks, elemental effects, and area damage.",
+      "signatureAbility": {
+        "name": "Infusion",
+        "cost": "1 CP",
+        "timing": "Assault",
+        "effect": [
+          "During your own Assault activation, choose one Spell Attack you make as your chosen Assault action this activation. Apply one of the following modifications. Only one Infusion may be applied to an Attack.",
+          "Empower: Gain +1 Attack die.",
+          "Extend: Increase Range by +3\". Ignore Cover.",
+          "Unleash: On Surge, choose one: Gain Direct Damage 1; or Gain Blast 1\", or increase an existing Blast radius by 1\"."
+        ]
+      },
+      "subclassSpellAttacks": {
+        "note": "In addition to the Mage's Base Spell Attacks, pick one of the below.",
+        "phase": "Assault",
+        "chooseCount": 1,
+        "spells": [
+          { "name": "Fireball", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Fire"], "keywords": ["Blast 1\""] }, "cost": "Included (choose one)" },
+          { "name": "Spark", "profile": { "range": "6\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Lightning"], "keywords": ["Surge: Instant"] }, "cost": "Included (choose one)" },
+          { "name": "Ice Shard", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Frost"], "keywords": ["Surge: Slow 2"] }, "cost": "Included (choose one)" }
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Staff", "standard": true, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
+          { "name": "Dagger", "standard": false, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 }
+        ]
+      }
+    },
+    {
+      "id": "necromancer",
+      "name": "Necromancer",
+      "description": "Necromancers specialize in reanimation, attrition, and sustaining themselves through stolen vitality.",
+      "signatureAbility": {
+        "name": "Raise Thrall",
+        "cost": "1 CP",
+        "timing": "Movement",
+        "effect": [
+          "If you do not currently control a Thrall Unit, create one engaged with this character containing X Models, where X equals your Mind characteristic. A newly raised Thrall Unit cannot activate during the Round in which it was created.",
+          "If you already control a Thrall Unit, you may instead target one summoned Thrall unit you control and add one Model to that Unit, provided it is not Engaged with an enemy. New Models must be placed within 3\" of another Model in the same Unit, following normal placement rules.",
+          "A Necromancer may control only one Thrall Unit through Raise Thrall at a time."
+        ]
+      },
+      "subclassSpellAttacks": {
+        "note": "In addition to the Mage's Base Spell Attacks.",
+        "phase": "Assault",
+        "spells": [
+          { "name": "Life Drain", "profile": { "range": "4\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["On Damage: Heal 1"] }, "cost": "Included" }
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Dagger", "standard": true, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 },
+          { "name": "Staff", "standard": false, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
+          { "name": "Shortsword", "standard": false, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 }
+        ]
+      },
+      "summonedUnit": {
+        "name": "Thrall",
+        "stats": { "move": "3\"", "wounds": "1 per Model", "armor": "6+", "evade": "6+", "ward": null },
+        "combatPhaseAttack": {
+          "name": "Claws",
+          "profile": { "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        },
+        "passive": {
+          "name": "Reanimated",
+          "effect": "At the end of the Round, if this Unit still contains at least one Model and lost Models during that Round, roll one D6 for each Model lost. For each natural 6, return one Model to the Unit following normal placement rules. A completely destroyed Thrall Unit cannot benefit from Reanimated."
+        }
+      }
+    },
+    {
+      "id": "illusionist",
+      "name": "Illusionist",
+      "description": "Illusionists manipulate perception, disrupt enemy attacks, and protect allies through deception.",
+      "additionalTags": ["Support"],
+      "signatureAbility": {
+        "name": "Phantasm",
+        "cost": "1 CP",
+        "timing": "Movement",
+        "effect": "Summon one Phantasm token (32mm base) within Short of this Unit and at least 3\" away from any enemy Units. The Illusion counts as a temporary friendly Unit for enemy movement, Charge declarations, and Attacks. Enemy Units declaring a Charge against a friendly Unit within 3\" of the Illusion reduce their total Charge distance by X after rolling for Charge, where X is half of the Illusionist's Mind characteristic."
+      },
+      "subclassSpellAttacks": {
+        "note": "In addition to the Mage's Base Spell Attacks.",
+        "phase": "Assault",
+        "spells": [
+          { "name": "Mind Spike", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Weaken Hit"] }, "cost": "Included" }
+        ]
+      },
+      "combatPhaseOptionalSpell": {
+        "name": "Psychic Blade",
+        "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] },
+        "cost": "10 (optional)",
+        "note": "Psychic Blade is optional and costs its printed 10 Points; the standard Dagger remains an equipment choice, not an additional free Attack."
+      },
+      "combatPhaseWeapons": {
+        "label": "Suggested melee weapons",
+        "chooseCount": 1,
+        "options": [
+          { "name": "Dagger", "standard": true, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 },
+          { "name": "Shortsword", "standard": false, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/17_bestiary.md",
+    "section": "intro, General Bestiary Rules, Tags, Shared Special Effects, Multiple Attack Profiles"
+  },
+  "description": "Integrated rulebook v7. NPC Unit profiles are separate from the PC weapon and spell catalogues. Costs remain provisional unless otherwise stated.",
+  "generalBestiaryRules": {
+    "notes": [
+      "Each Bestiary profile lists Points, number of Models, per-Model Wounds and Saves, and its native Attack profiles.",
+      "Models in a Unit contribute their eligible Attacks to that Unit's combined pool; different target pools are resolved independently.",
+      "These are NPC attacks and use their own Unit profiles rather than PC Equipment Catalogue values.",
+      "v5 Damage-output rebalance: every native Damage 1 Attack profile gained +1 Attack, and every Damage 2+ profile gained a thematic Anti-[Type] 2. Damage 0 profiles are unchanged. Point costs are unchanged pending playtesting."
+    ],
+    "charging": {
+      "structuredCombat": "Roll 2D6 and move up to the total of both dice + CHARGE X; upon a successful Charge, inflict a single Impact pool equal to the highest die + printed Impact X − target's Brace X (minimum zero).",
+      "narrativeCombat": "Charging is success-based, with highest-die Impact on success.",
+      "impactNature": "Impact is Physical Damage 1 automatic Hits, allowing Armor and Ward, never Evade unless another rule expressly permits it. Printed 'Impact 1/2/3' is an additional bonus, not the complete Impact pool. Unit Model count does not multiply the Impact."
+    },
+    "criticalAndSurge": "Critical X converts up to X failed Attack dice into Critical Hits after rerolls without requiring a Surge; only abilities explicitly granting Critical 'on Surge' require one. Attack rolls may generate multiple Surges from complete pairs of natural sixes. Ordinary Skill Checks, Charges, and Command checks normally generate one maximum.",
+    "creatureCommands": "Creature Commands cost the indicated CP from the controlling side's pool, used during that Unit's own phase activation (or at their Reaction trigger). Doctrine cards are not required unless an applicable campaign or faction rule explicitly imposes them."
+  },
+  "tags": {
+    "battlefieldTags": {
+      "description": "Battlefield tags describe battlefield role and roster permissions.",
+      "examples": ["Infantry", "Cavalry", "Mobile", "Elite", "Support", "Wizard", "Monster", "Hero"],
+      "notes": ["Some Units qualify for several tags.", "Armored-tag assignment remains provisional pending generic/faction roster integration; save value alone does not settle the tag."]
+    },
+    "creatureTypes": {
+      "description": "Creature types identify targets for traits and Anti-[Type].",
+      "examples": ["Humanoid", "Beast", "Undead", "Construct", "Elemental", "Spirit", "Plant", "Swarm"]
+    }
+  },
+  "sharedSpecialEffects": [
+    "Slow X only reduces Move. Conditions that skip one eligible phase activation use the provisional Stagger keyword, not Slow.",
+    "A whole-Unit radius effect qualifies when at least half the Unit's current Models (rounded up) lie within the area; resolve Hits once per qualifying Unit.",
+    "Elemental descriptors (Fire, Frost, Lightning, etc.) do not modify Saves on their own. Fire Damage means unsaved Damage from a Fire-attribute Attack.",
+    "Flying traverses terrain and Models, but must finish legally; Blink separately ignores intervening obstacles without ignoring elevation restrictions.",
+    "Damage 0 attacks inflict no Wounds, but may apply explicitly Hit-triggered conditions even if Saves would prevent ordinary Damage; any special protective Save is stated on the effect itself."
+  ],
+  "multipleAttackProfiles": {
+    "description": "A creature with more than one Attack profile normally selects one eligible profile for its ordinary activation.",
+    "notes": [
+      "A rule such as the Hydra's Many Heads or the Kraken's multiple Models may expressly distribute dice among targets; this does not generate extra activations.",
+      "On-Damage effects only trigger after unsaved Damage is inflicted.",
+      "When a special ability replaces a Hit with Direct Damage, remove the replaced Hit from ordinary Save resolution."
+    ]
+  },
+  "files": [
+    { "id": "common-npcs", "file": "01_common_npcs.json" },
+    { "id": "common-creatures", "file": "02_common_creatures.json" },
+    { "id": "unusual-creatures", "file": "03_unusual_creatures.json" },
+    { "id": "large-monsters", "file": "04_large_monsters.json" },
+    { "id": "common-monster-upgrades", "file": "05_common_monster_upgrades.json" },
+    { "id": "elite-and-alpha-creatures", "file": "06_elite_and_alpha_creatures.json" },
+    { "id": "animal-companions", "file": "07_animal_companions.json" },
+    { "id": "encounter-and-army-integration", "file": "08_encounter_and_army_integration.json" },
+    { "id": "balance-priorities", "file": "09_balance_priorities.json" }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "domain": "army_construction",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/04_army_construction.md",
+    "section": "ARMY CONSTRUCTION & LIST BUILDING — 2,000-Point Matched Play — Revised Draft v7"
+  },
+  "description": "Machine-readable constants and legality rules for standard 2,000-point matched-play army construction. Faction/Doctrine Command names and effects remain in factions/ and doctrines/; this file only holds the recruitment-slot data and composition limits needed to validate an army list.",
+  "slotTypes": [
+    { "code": "H", "name": "Headquarters", "eligibleUnits": "Generic Captain with Heroic Commission (a Hero), eligible Hero Wizard, faction Captains and named Leaders." },
+    { "code": "C", "name": "Core", "eligibleUnits": "Generic Line Infantry, or any faction-specific Unit designated Core." },
+    { "code": "E", "name": "Elite", "eligibleUnits": "Generic Elite Infantry, generic Elite Wizard and the generic Captain; faction Elite Units, including eligible Elite Wizards and Supports." },
+    { "code": "R", "name": "Ranged", "eligibleUnits": "Generic Ranged Infantry, or eligible faction Ranged Infantry, including faction Ranged Core." },
+    { "code": "V", "name": "Vanguard", "eligibleUnits": "Generic Cavalry; faction Cavalry, Mobile, Infiltrator, and designated Vanguard Units." },
+    { "code": "S", "name": "Specialist", "eligibleUnits": "Generic non-Elite Support; faction Support or Wizard, including those with the Elite tag." },
+    { "code": "A", "name": "Asset", "eligibleUnits": "Generic Artillery; faction Artillery, Vehicles, War Machines, and designated Large Assets." }
+  ],
+  "standardArmy": {
+    "maxPoints": 2000,
+    "totalRecruitmentSlots": 15,
+    "factionCount": 1,
+    "doctrineCount": 2,
+    "doctrinesMustBeDistinct": true,
+    "factionCommandsAvailable": 3,
+    "factionCommandsSelected": 2,
+    "doctrineCommandsAvailablePerDoctrine": 5,
+    "doctrineCommandsSelectedPerDoctrine": 3,
+    "totalSelectedCommands": 8,
+    "commandPointsPerRound": 8,
+    "minHeadquarters": 1,
+    "minCoreUnits": 3,
+    "maxHeroes": 3,
+    "maxNamedFactionLeaders": 1,
+    "maxLargeAssets": 2,
+    "maxLargeAssetsWithHeavySupport": 3,
+    "heavySupportDoctrineId": "heavy-support"
+  },
+  "slotCalculation": {
+    "universalFoundation": ["H", "C", "C"],
+    "breakdown": [
+      { "source": "Universal Foundation", "slots": 3 },
+      { "source": "Faction Foundation", "slots": 2 },
+      { "source": "First Doctrine Foundation", "slots": 1 },
+      { "source": "Second Doctrine Foundation", "slots": 1 },
+      { "source": "Two selected Faction Commands", "slots": 2 },
+      { "source": "Three selected Commands from the first Doctrine", "slots": 3 },
+      { "source": "Three selected Commands from the second Doctrine", "slots": 3 }
+    ],
+    "notes": [
+      "Slots of the same type are interchangeable regardless of source.",
+      "Slots may be left empty; unused slots grant no Points and cannot be exchanged for other categories.",
+      "A Unit occupies exactly one compatible slot, even if eligible for several categories.",
+      "A Command grants its slot as soon as it is selected, whether or not it is used in battle."
+    ]
+  },
+  "legalityRules": [
+    { "id": "one-faction", "rule": "Exactly one Faction is selected." },
+    { "id": "two-distinct-doctrines", "rule": "Exactly two distinct Non-Faction Doctrines are selected. Any Faction may choose any two of the sixteen." },
+    { "id": "faction-commands", "rule": "Exactly two of the Faction's three Commands are selected." },
+    { "id": "doctrine-commands", "rule": "Exactly three of five Commands are selected from each chosen Doctrine." },
+    { "id": "slot-assignment", "rule": "Every purchased Unit occupies exactly one compatible, otherwise unoccupied Recruitment Slot; the assignment is recorded on the list." },
+    { "id": "min-hq", "rule": "At least one purchased Headquarters Unit (may be non-Hero)." },
+    { "id": "min-core", "rule": "At least three purchased Core-classified Units. Faction Core Units count regardless of slot used; generic Line Infantry is Core; generic Ranged/Elite Infantry, Heroes, Specialists and Large Assets are not Core by keyword alone." },
+    { "id": "max-heroes", "rule": "At most three purchased Hero-classified Units, regardless of slot. A generic Elite Captain without Heroic Commission is not a Hero." },
+    { "id": "max-leaders", "rule": "At most one named Faction Leader, recruited once." },
+    { "id": "max-large-assets", "rule": "At most two Units with the Large Asset classification (three with Heavy Support). Monstrous Core Units in A slots do not count unless also classified Large Asset." },
+    { "id": "unique-units", "rule": "Named Faction Leaders and explicitly Unique Units may be purchased only once; ordinary Units may be repeated." },
+    { "id": "points-cap", "rule": "Total Points (base + equipment + additional Models + upgrades) must not exceed the Points limit." },
+    { "id": "reserves-count", "rule": "Units in Reserve count toward Points, slot usage, Hero and Large Asset limits, and the Core minimum." }
+  ],
+  "unitCostFormula": "Base Cost + Equipment + Additional Models + Other Upgrades",
+  "doubleFormation": {
+    "appliesTo": "Faction-specific Core Units only (not generic Line Infantry), unless the Unit profile prohibits it.",
+    "modelMultiplier": 2,
+    "pointsMultiplier": 2,
+    "maxPerUnit": 1,
+    "notes": "Doubles starting Model count and the standard formation's total Points, including selected packages and fixed-price Unit-wide upgrades. Still one Unit, one slot, one Core Unit. Ranked keywords are not doubled."
+  },
+  "factions": [
+    { "id": "free-realms", "name": "Free Realms", "foundationSlots": ["C", "S"], "commandSlots": [
+      { "name": "Coordinated Advance", "slot": "C" }, { "name": "Covering Fire", "slot": "R" }, { "name": "Secure Ground", "slot": "C" } ],
+      "favoredDoctrines": ["combined-arms", "objective-play"], "compatibleDoctrines": ["firing-line", "mobility"] },
+    { "id": "sacred-orders", "name": "Sacred Orders", "foundationSlots": ["E", "H"], "commandSlots": [
+      { "name": "Stand Fast", "slot": "E" }, { "name": "Righteous Retaliation", "slot": "E" }, { "name": "Heroic Intervention", "slot": "H" } ],
+      "favoredDoctrines": ["elite", "counter-strike"], "compatibleDoctrines": ["castling", "objective-play"] },
+    { "id": "iron-holds", "name": "Iron Holds", "foundationSlots": ["R", "S"], "commandSlots": [
+      { "name": "Hold the Line", "slot": "C" }, { "name": "Concentrated Volley", "slot": "R" }, { "name": "Prepared Position", "slot": "S" } ],
+      "favoredDoctrines": ["castling", "firing-line"], "compatibleDoctrines": ["grinding", "combined-arms"] },
+    { "id": "wild-courts", "name": "Wild Courts", "foundationSlots": ["V", "S"], "commandSlots": [
+      { "name": "Through the Wild", "slot": "V" }, { "name": "Entangling Growth", "slot": "S" }, { "name": "Fade into the Wilds", "slot": "V" } ],
+      "favoredDoctrines": ["mobility", "control"], "compatibleDoctrines": ["objective-play", "slingshot"] },
+    { "id": "warclans", "name": "Warclans", "foundationSlots": ["C", "C"], "commandSlots": [
+      { "name": "Get In There!", "slot": "V" }, { "name": "Overwhelm", "slot": "C" }, { "name": "Keep Fighting!", "slot": "C" } ],
+      "favoredDoctrines": ["alpha-strike", "horde"], "compatibleDoctrines": ["breakthrough", "slingshot"] },
+    { "id": "underclans", "name": "Underclans", "foundationSlots": ["C", "V"], "commandSlots": [
+      { "name": "Dirty Trick", "slot": "S" }, { "name": "Scurry Away", "slot": "V" }, { "name": "Mob Them!", "slot": "C" } ],
+      "favoredDoctrines": ["horde", "deep-strike"], "compatibleDoctrines": ["mobility", "gambit"] },
+    { "id": "death-legions", "name": "Death Legions", "foundationSlots": ["C", "S"], "commandSlots": [
+      { "name": "Rise Again", "slot": "C" }, { "name": "Death March", "slot": "C" }, { "name": "The Dead Do Not Tire", "slot": "S" } ],
+      "favoredDoctrines": ["grinding", "horde"], "compatibleDoctrines": ["horde", "castling"] },
+    { "id": "blood-courts", "name": "Blood Courts", "foundationSlots": ["E", "V"], "commandSlots": [
+      { "name": "Blood Frenzy", "slot": "E" }, { "name": "Predatory Speed", "slot": "V" }, { "name": "Mesmerize", "slot": "H" } ],
+      "favoredDoctrines": ["elite", "slingshot"], "compatibleDoctrines": ["alpha-strike", "grinding"] },
+    { "id": "spirit-hosts", "name": "Spirit Hosts", "foundationSlots": ["V", "S"], "commandSlots": [
+      { "name": "Fade from Reality", "slot": "S" }, { "name": "Spectral Passage", "slot": "V" }, { "name": "Haunting Presence", "slot": "V" } ],
+      "favoredDoctrines": ["deep-strike", "grinding"], "compatibleDoctrines": ["control", "mobility"] },
+    { "id": "infernal-hosts", "name": "Infernal Hosts", "foundationSlots": ["E", "S"], "commandSlots": [
+      { "name": "Unbound Power", "slot": "E" }, { "name": "Blood Offering", "slot": "C" }, { "name": "Open the Rift", "slot": "C" } ],
+      "favoredDoctrines": ["gambit", "alpha-strike"], "compatibleDoctrines": ["slingshot", "horde"] },
+    { "id": "arcane-orders", "name": "Arcane Orders", "foundationSlots": ["R", "S"], "commandSlots": [
+      { "name": "Overchannel", "slot": "S" }, { "name": "Counterspell", "slot": "S" }, { "name": "Spatial Fold", "slot": "V" } ],
+      "favoredDoctrines": ["firing-line", "control"], "compatibleDoctrines": ["castling", "combined-arms"] },
+    { "id": "titan-clans", "name": "Titan Clans", "foundationSlots": ["C", "A"], "commandSlots": [
+      { "name": "Thunderous Advance", "slot": "V" }, { "name": "Smash Through", "slot": "C" }, { "name": "Roar of Dominance", "slot": "S" } ],
+      "favoredDoctrines": ["heavy-support", "breakthrough"], "compatibleDoctrines": ["alpha-strike", "grinding"] }
+  ],
+  "doctrines": [
+    { "id": "combined-arms", "name": "Combined Arms", "foundationSlot": "C", "commandSlots": ["V", "R", "H", "E", "A"] },
+    { "id": "objective-play", "name": "Objective Play", "foundationSlot": "C", "commandSlots": ["V", "C", "R", "S", "A"] },
+    { "id": "elite", "name": "Elite", "foundationSlot": "E", "commandSlots": ["E", "H", "E", "S", "V"] },
+    { "id": "counter-strike", "name": "Counter Strike", "foundationSlot": "S", "commandSlots": ["E", "C", "H", "R", "A"] },
+    { "id": "castling", "name": "Castling", "foundationSlot": "C", "commandSlots": ["H", "C", "A", "R", "S"] },
+    { "id": "firing-line", "name": "Firing Line", "foundationSlot": "R", "commandSlots": ["R", "R", "A", "E", "V"] },
+    { "id": "mobility", "name": "Mobility", "foundationSlot": "V", "commandSlots": ["V", "R", "C", "E", "S"] },
+    { "id": "control", "name": "Control", "foundationSlot": "S", "commandSlots": ["C", "V", "H", "R", "A"] },
+    { "id": "alpha-strike", "name": "Alpha Strike", "foundationSlot": "V", "commandSlots": ["H", "R", "E", "A", "C"] },
+    { "id": "horde", "name": "Horde", "foundationSlot": "C", "commandSlots": ["C", "R", "E", "S", "V"] },
+    { "id": "grinding", "name": "Grinding", "foundationSlot": "C", "commandSlots": ["C", "H", "S", "A", "E"] },
+    { "id": "deep-strike", "name": "Deep Strike", "foundationSlot": "S", "commandSlots": ["C", "R", "V", "A", "H"] },
+    { "id": "slingshot", "name": "Slingshot", "foundationSlot": "V", "commandSlots": ["C", "E", "R", "A", "S"] },
+    { "id": "gambit", "name": "Gambit", "foundationSlot": "C", "commandSlots": ["C", "S", "E", "A", "V"] },
+    { "id": "heavy-support", "name": "Heavy Support", "foundationSlot": "A", "commandSlots": ["C", "H", "A", "V", "S"] },
+    { "id": "breakthrough", "name": "Breakthrough", "foundationSlot": "V", "commandSlots": ["E", "V", "A", "C", "H"] }
+  ],
+  "knownIssues": [
+    "The Markdown Death Legions row lists Horde as both a Favored and a Compatible Doctrine; reproduced as written.",
+    "Doctrine commandSlots are positional and follow the order of the Commands in doctrines/*.json (verified to match).",
+    "The Markdown footer still says 'Standard army construction v6' while the title says v7."
+  ]
+}

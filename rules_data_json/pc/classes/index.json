@@ -1,0 +1,11 @@
+{
+  "description": "Manifest for the five PC Classes and their Subclasses.",
+  "files": [
+    { "id": "overview", "file": "00_overview.json", "description": "Shared starting equipment conventions, Attack profile rules, and shared-reference pointers." },
+    { "id": "warrior", "file": "warrior.json", "description": "Warrior (Berserker, Knight, Fighter)." },
+    { "id": "rogue", "file": "rogue.json", "description": "Rogue (Assassin, Ranger, Bard)." },
+    { "id": "mage", "file": "mage.json", "description": "Mage (Elementalist, Necromancer, Illusionist)." },
+    { "id": "priest", "file": "priest.json", "description": "Priest (Cleric, Druid, Oracle)." },
+    { "id": "artificer", "file": "artificer.json", "description": "Artificer (Alchemist, Machinist, Runesmith) — Formula-based fifth Class." }
+  ]
+}

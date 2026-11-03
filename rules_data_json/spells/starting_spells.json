@@ -1,0 +1,80 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/06_spells_and_equipment.md",
+    "section": "Starting Spell Attacks, Mage: Base Spells, Mage: Subclass Spells, Priest: Base Spells, Priest: Subclass Spells, Elemental Attributes and Assault Timing, Artificer Formulas Are Not Starting Spell Attacks"
+  },
+  "description": "The authoritative PC profiles for Spell Attacks granted by a Base Class or Subclass. These identical profiles are repeated in the Classes chapter (05_classes.md) for ease of character creation, and are also captured in pc/classes/mage.json and pc/classes/priest.json. The A value is the final starting number of Attack dice for a PC before specific Talent, Command, or equipment modifications. Starting spells are included in the PC's base battlefield value unless expressly identified as optional with a separate Point cost. Spell Attacks do not occupy the four optional prepared Command slots.",
+  "mageBaseSpells": {
+    "note": "All Mages know both.",
+    "spells": [
+      { "name": "Magic Missile", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Pinpoint"], "cost": "Included" },
+      { "name": "Force Bolt", "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Push 1\""], "cost": "Included", "effect": "On Surge, push the target 1\" away from the caster, respecting legal placement." }
+    ]
+  },
+  "mageSubclassSpells": {
+    "elementalist": {
+      "note": "Choose one subclass spell at creation. Fireball follows Blast; Spark gains Instant only on Surge; Ice Shard applies Slow 2 on Surge.",
+      "chooseCount": 1,
+      "options": [
+        { "name": "Fireball", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Fire"], "keywords": ["Blast 1\""], "cost": "Included (choose one)" },
+        { "name": "Spark", "range": "6\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Lightning"], "keywords": ["Surge: Instant"], "cost": "Included (choose one)" },
+        { "name": "Ice Shard", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Frost"], "keywords": ["Surge: Slow 2"], "cost": "Included (choose one)" }
+      ]
+    },
+    "necromancer": {
+      "note": "Life Drain Heals 1 Damage to the caster if it deals Damage, once per Attack.",
+      "spells": [
+        { "name": "Life Drain", "range": "4\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["On Damage: Heal 1"], "cost": "Included" }
+      ]
+    },
+    "illusionist": {
+      "note": "Mind Spike worsens the target's next Hit target by one step, if the Attack occurs this Round. Psychic Blade may be acquired separately and is used during the Combat Phase.",
+      "spells": [
+        { "name": "Mind Spike", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Weaken Hit"], "cost": "Included" },
+        { "name": "Psychic Blade", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": [], "cost": "10 Points (optional)" }
+      ]
+    }
+  },
+  "priestBaseSpells": {
+    "note": "All Priests know both.",
+    "spells": [
+      { "name": "Radiant Bolt", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Radiant"], "keywords": [], "cost": "Included" },
+      {
+        "name": "Sacred Brand",
+        "range": "3\"",
+        "attacks": 3,
+        "hit": "6+",
+        "damage": 1,
+        "damageTypes": ["Magic"],
+        "keywords": ["Surge: Accurate 1"],
+        "cost": "Included",
+        "effect": "If the initial post-reroll Hit dice show a Surge, the current Attack gains Accurate 1 and may immediately reroll one natural 1 that has not already been rerolled. This is an exception to the usual order because its Accurate bonus is granted by the Surge itself. Apply any resulting Critical conversions afterward."
+      }
+    ]
+  },
+  "priestSubclassSpells": {
+    "cleric": {
+      "note": "Anti-Undead 1 adds one Attack die against Undead.",
+      "spells": [
+        { "name": "Smite", "range": "6\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Radiant"], "keywords": ["Anti-Undead 1"], "cost": "Included" }
+      ]
+    },
+    "druid": {
+      "note": "On Surge, applies Slow 2 to the target's next Movement activation.",
+      "spells": [
+        { "name": "Thorn Lash", "range": "6\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Nature"], "keywords": ["Surge: Slow 2"], "cost": "Included" }
+      ]
+    },
+    "oracle": {
+      "note": "On Surge, enemies cannot react to that Attack, as for Instant.",
+      "spells": [
+        { "name": "Omen Bolt", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Instant"], "cost": "Included" }
+      ]
+    }
+  },
+  "balanceNote": "These already are complete PC Attack profiles. Only add dice from explicit Talents, Commands, Keywords, or equipment effects. Their provisional Attack counts and the relative strength of low-volume spells still require playtesting.",
+  "elementalAttributesAndAssaultTiming": {
+    "description": "The extra Fire, Frost, Lightning, Radiant and Nature descriptors refer to the shared Attack Types and Elemental Attributes rules (10_keywords.md#attack-types-and-elemental-attributes); they do not change Saves on their own. A Fire spell suppresses an applicable creature's regeneration only if unsaved Damage is actually inflicted. Casting a ranged Spell Attack is the Unit's one ordinary Assault action, rather than a free Attack accompanying an Assault Move. Eligible Assault Commands cost CP separately."
+  },
+  "artificerFormulasNote": "Artificer Subclasses receive Formulas, not the Mage/Priest starting Spell Attacks listed here. Formulas are CP-powered Commands found in Artificer Formulas (18_artificer_formulas.md). Their printed Formula Attack profiles, when applicable, are also repeated in the Artificer Class (05_classes.md#artificer) for ease of selection. See pc/classes/artificer.json for the already-converted Artificer Formulas."
+}

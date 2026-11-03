@@ -1,0 +1,107 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/05_classes.md",
+    "section": "ROGUE"
+  },
+  "id": "rogue",
+  "name": "Rogue",
+  "role": "Mobility, precision, exploiting weaknesses",
+  "tags": ["Mobile"],
+  "stats": { "move": "4\"", "wounds": 4, "armor": "6+", "evade": "5+", "ward": null },
+  "classAbility": {
+    "name": "Exploit Opening",
+    "timing": "Passive",
+    "effect": "Whenever this Character Surges during a Weapon Attack, generate 1 additional normal Hit for each Surge. These additional Hits are subject to Armor, Evade, and Ward saves as normal."
+  },
+  "subclasses": [
+    {
+      "id": "assassin",
+      "name": "Assassin",
+      "description": "Assassins exploit concealment and favorable positioning to eliminate vulnerable enemies.",
+      "signatureAbility": {
+        "name": "Ambush",
+        "cost": "1 CP",
+        "timing": "Assault",
+        "effect": "When making a Weapon Attack or Charge from Concealed this Phase, that Attack gains Attacks +2 or Impact +2, whichever applies."
+      },
+      "assaultPhaseWeapons": {
+        "label": "Optional Weapons",
+        "options": [
+          { "name": "Throwing Knives", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 5 },
+          { "name": "Crossbow", "profile": { "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Heavy"] }, "points": 10 }
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Dagger", "standard": true, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 },
+          { "name": "Shortsword", "standard": false, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 },
+          { "name": "Rapier", "standard": false, "profile": { "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Critical 1"] }, "points": 25 }
+        ]
+      },
+      "notes": [
+        "The Assassin may use Ambush with either ranged or melee Weapon Attacks."
+      ]
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "description": "Rangers specialize in precision shooting, target selection, and exploiting favorable firing positions.",
+      "signatureAbility": {
+        "name": "Hunter's Eye",
+        "cost": null,
+        "timing": "Passive",
+        "effect": "When the Ranger Surges on a ranged attack, for each Surge, reduce the target's Cover by X, where X is the number of Surges."
+      },
+      "assaultPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Shortbow", "standard": true, "profile": { "range": "6\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 5 },
+          { "name": "Longbow", "standard": false, "profile": { "range": "9\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Long Range 3"] }, "points": 10 },
+          { "name": "Heavy Bow", "standard": false, "profile": { "range": "9\"", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] }, "points": 15 }
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Shortsword", "standard": true, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 },
+          { "name": "Dagger", "standard": false, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 },
+          { "name": "Spear", "standard": false, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Brace 1"] }, "points": 10 }
+        ]
+      }
+    },
+    {
+      "id": "bard",
+      "name": "Bard",
+      "description": "Bards support allies through encouragement, performance, improvisation, and battlefield coordination. Their support improves ordinary Skill Checks and the reliability of allied Weapon Attacks rather than creating equipment enchantments.",
+      "additionalTags": ["Support"],
+      "signatureAbility": {
+        "name": "Inspire",
+        "cost": "1 CP",
+        "timing": "Movement",
+        "effect": [
+          "Choose another friendly Unit within Short. That Unit gains one of the following benefits:",
+          "+1D6 on its next Skill Check this Round.",
+          "Choose one Tag possessed by an enemy Unit on the battlefield. The friendly Unit gains Anti-[Chosen Tag] X for its next Weapon or Spell Attack this Round, where X equals half the Bard's Spirit, rounded up.",
+          "The chosen benefit is consumed when its eligible roll resolves. The benefit expires if unused at the end of the Round."
+        ]
+      },
+      "assaultPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Shortbow", "standard": true, "profile": { "range": "6\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 5 },
+          { "name": "Crossbow", "standard": false, "profile": { "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Heavy"] }, "points": 10 },
+          { "name": "Sling", "standard": false, "profile": { "range": "6\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 }
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Staff", "standard": true, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
+          { "name": "Shortsword", "standard": false, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 },
+          { "name": "Dagger", "standard": false, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 }
+        ]
+      }
+    }
+  ]
+}

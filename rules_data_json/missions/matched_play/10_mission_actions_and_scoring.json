@@ -1,0 +1,27 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md",
+    "section": "7. Mission Actions — 8. Scoring and Timing Clarifications"
+  },
+  "missionActions": {
+    "overview": "Certain Missions permit interactions called Mission Actions. A Unit may make at most one Mission Action per Round, in either its Movement activation or its Assault activation. A Mission Action completely replaces the Unit's ordinary action in that selected phase; it does not replace Commands and does not consume CP unless a particular mission says otherwise.",
+    "byPhase": [
+      { "phase": "Movement Mission Action", "rule": "Select an eligible Unit for Movement activation; perform the legal interaction instead of moving, Disengaging, or taking another ordinary Movement action during that activation. It may still perform a legal ordinary Assault action later in the Round." },
+      { "phase": "Assault Mission Action", "rule": "Select an eligible Unit for Assault activation; perform the interaction instead of Assault Moving, attacking, or charging. It cannot combine the interaction with any other ordinary Assault action in the same activation." },
+      { "phase": "Combat", "rule": "No ordinary Mission Actions. Combat activations belong to eligible Engaged Units, and Mission Actions do not occur in Combat." }
+    ],
+    "generalRules": [
+      "Unless a Mission states otherwise, the Unit must be unengaged, have at least one eligible Model within 1\" of the object or objective, and satisfy any interaction restriction.",
+      "Withdrawn Units cannot perform Assault Mission Actions.",
+      "Mission Actions are not Attacks and do not automatically require Skill checks.",
+      "A Unit may perform ordinary eligible Commands with normal timing and CP cost during its activation unless a specific ability says otherwise. A Command never grants an additional ordinary action implicitly."
+    ],
+    "characterSkillAlternatives": "An explicit mission may allow an eligible Character to attempt an interaction through a Movement-phase Skill Action costing 1 CP; this replaces that Character's ordinary Movement action and uses the mission's stated Difficulty (Normal / 2 successes unless specified). The Character must still be in legal interaction range unless the mission expressly grants a remote action. A Character cannot count an interaction twice by using both its Skill Alternative and an ordinary Mission Action in the same Round."
+  },
+  "scoringAndTimingClarifications": {
+    "previousRoundControl": "When a Mission compares objective control with the previous Round, record objective control at the end of every Scoring Phase, including Round 1.",
+    "simultaneousScoring": "Both players determine Primary and Tactical VP for the same Scoring Phase before checking for Decisive Victory.",
+    "multipleObjectives": "A Unit may contribute to only one objective's control during the same Scoring Phase. A single Unit may nevertheless carry a Relic or possess another scenario token while controlling an eligible objective, provided it is not Withdrawn or otherwise ineligible.",
+    "tokensAndScenarioObjects": "Scenario tokens and markers do not block Model movement unless their specific rules say otherwise. A dropped object should be represented by a flat marker where practical."
+  }
+}

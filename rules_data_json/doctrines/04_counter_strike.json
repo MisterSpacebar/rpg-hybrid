@@ -1,0 +1,14 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "4. Counter Strike" },
+  "name": "Counter Strike",
+  "foundationRecruitmentSlot": "S",
+  "strategy": "Respond to enemy aggression through timely defense and retaliation.",
+  "commands": [
+    { "name": "Measured Retaliation", "slot": "E", "timing": "Combat Reaction", "effect": "After a friendly Unit survives an enemy Engagement Attack, its next Engagement Attack against that attacker gains +2 Attacks. The benefit expires after its next Combat activation." },
+    { "name": "Parry and Return", "slot": "C", "timing": "Combat Reaction", "effect": "One friendly Unit gains Tough 2 against an incoming Engagement Attack. If it suffers no unsaved Damage, its next Engagement Attack against that attacker gains Accurate 1." },
+    { "name": "Countermand", "slot": "H", "timing": "Assault/Combat Reaction", "effect": "When an enemy attacks a friendly Unit within Short of friendly Headquarters, discard one successful non-6 Hit die from that Attack after Hit rerolls and before saves." },
+    { "name": "Return Volley", "slot": "R", "timing": "Assault Reaction", "effect": "After a friendly Unit survives a ranged Attack, its next ranged Attack against the attacker gains Accurate 2 and Pinpoint. The effect expires after its next Assault activation." },
+    { "name": "Emergency Screen", "slot": "A", "timing": "Assault/Combat Reaction", "effect": "When a friendly Unit within 2\" of a different friendly Unit is attacked, reduce the incoming Attack by one Attack die, minimum one, before rolling to Hit." }
+  ],
+  "doctrineIdentity": "Defensive reactions followed by opportunities to retaliate. Unlike Castling, Counter Strike does not require advance preparation or holding a position."
+}

@@ -1,0 +1,282 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/04_campaign/Appendix_D.md",
+    "section": "APPENDIX D — GENERAL POLITICAL TASKS — Campaign Mode — Revised for Current Campaign Rules"
+  },
+  "overview": {
+    "summary": "This appendix contains eighteen general political Task cards: six Open Tasks, six Sponsored Tasks, six Exclusive Tasks.",
+    "note": "General Tasks represent conflicts that may arise anywhere in the campaign region, regardless of which Grand Factions participate."
+  },
+  "readingAPoliticalTask": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_D.md", "section": "D.1 Reading a Political Task" },
+    "fields": [
+      { "field": "Suit", "meaning": "The Maneuver suit used for the NPC political trick." },
+      { "field": "Eligible Target", "meaning": "The kind of location, institution, army, agreement, or regional problem that may be selected." },
+      { "field": "Company Orders", "meaning": "The Orders that may ordinarily be used to pursue the political objective directly. An unrelated Order may still accomplish its normal action." },
+      { "field": "Stake Objective", "meaning": "The political result being contested." },
+      { "field": "Material Consequence", "meaning": "An additional map, military, economic, or diplomatic outcome that may be obtained when its requirements are actually fulfilled." }
+    ]
+  },
+  "generalTaskEligibility": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_D.md", "section": "D.2 General Task Eligibility" },
+    "rules": [
+      "When selecting a Task, declare its classification (Open, Sponsored, or Exclusive), suit, primary target, and where applicable its sponsor or beneficiary before NPC cards are committed.",
+      "Identify a legal primary target and a credible political connection for each NPC claimant.",
+      "If a displayed Task has no eligible target or sponsor, replace it with another eligible Task of the same classification, preserving the Act Task pool's intended Open/Sponsored/Exclusive composition.",
+      "A qualifying connection may include existing Political Control, Political Influence, military presence, a recognized agreement, or a legal operation that can reach the objective.",
+      "The GM must not treat every faction as automatically eligible to claim every Task on the map.",
+      "The required sponsoring relationship for Sponsored Tasks must be real; a claimant cannot self-sponsor by default.",
+      "A designated Exclusive beneficiary remains fixed unless a successfully resolved mission explicitly authorizes a different beneficiary.",
+      "For the PC Company, the indicated Orders establish the usual way to complete the Stake's objective through play.",
+      "A qualifying PC mission may determine the Stake directly.",
+      "For NPC factions, eligible matching-suit commitments compete for the political Stake using the normal trick rules.",
+      "Winning the trick awards political recognition and the Act marker. It does not automatically complete the material objective.",
+      "NPCs obtain material consequences only when the printed additional conditions are satisfied through a valid agreement, suitable preparation, the committed Maneuver's actual effect, or another qualifying campaign event."
+    ],
+    "classifications": {
+      "open": "Any eligible participating Grand Faction may receive the marker.",
+      "sponsored": [
+        "Identify a legitimate sponsoring institution or authority when the Task is selected.",
+        "The sponsor must have a genuine interest in the objective.",
+        "A claimant must possess or obtain that sponsor's backing to receive the Task's political marker.",
+        "Self-sponsorship does not satisfy this requirement unless the card specifically permits it."
+      ],
+      "exclusive": [
+        "Identify the named beneficiary when the Task becomes active.",
+        "Only that eligible beneficiary may receive the Task's colored marker unless a specific mission legitimately changes the beneficiary.",
+        "Other factions may contest or obstruct the Task.",
+        "If an opposing faction defeats the beneficiary's commitment without establishing a legitimate alternate beneficiary, the Task receives a Neutral marker rather than transferring the marker to the opposing faction.",
+        "This does not cancel ordinary NPC Maneuver map actions."
+      ]
+    }
+  },
+  "openTasks": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_D.md", "section": "D.3 Open Tasks" },
+    "tasks": [
+      {
+        "id": "G-O1",
+        "name": "The Northern Crossing",
+        "suit": "Warfare",
+        "eligibleTarget": "A disputed crossing, mountain pass, bridge, coastal approach, or important overland route.",
+        "eligibleCompanyOrders": ["Mobilize", "Politics", "Construct"],
+        "stakeObjective": "Establish recognized security, protection, or passage authority over the selected route. A PC mission may resolve the dispute through battle, a negotiated agreement, or construction accompanied by lawful recognition of the new passage arrangement.",
+        "npcEligibility": "A claimant must maintain a plausible military, territorial, or political connection to the route.",
+        "materialConsequence": "Passage rights, military access, or a change in control of a crossing may result from a completed treaty or successful occupation. A Bridge or other Improvement must still be legally constructed. Winning the Stake alone does not transfer ownership of adjacent hexes."
+      },
+      {
+        "id": "G-O2",
+        "name": "The Missing Expedition",
+        "suit": "Discovery",
+        "eligibleTarget": "A missing expedition, lost patrol, unexplored Site, or abandoned route.",
+        "eligibleCompanyOrders": ["Explore", "Politics"],
+        "stakeObjective": "Establish responsibility for finding the missing party or recovering information concerning its disappearance. The PCs may complete the Stake by rescuing survivors, recovering convincing evidence, or negotiating the expedition's release.",
+        "npcEligibility": "A claimant needs an established expeditionary interest or a legal means of investigating the location.",
+        "materialConsequence": "Recover personnel, regional information, equipment, or a Discovery associated with the Site. A normal Discovery reward is awarded only if its own Site or mission requirement is completed."
+      },
+      {
+        "id": "G-O3",
+        "name": "The Foundry Commission",
+        "suit": "Industry",
+        "eligibleTarget": "An industrial guild, manufacturing institution, Workshop, or suitable production settlement.",
+        "eligibleCompanyOrders": ["Commerce", "Politics", "Develop", "Construct"],
+        "stakeObjective": "Obtain recognition as the preferred sponsor, supplier, or administrator of a regional production project.",
+        "npcEligibility": "A faction must have a commercial, industrial, political, or geographic connection to the institution.",
+        "materialConsequence": "A completed manufacturing agreement may unlock access to one specified specialist formation, equipment category, or military repair source. The actual agreement must be negotiated or otherwise secured. A high Industry card does not automatically provide artillery or a Workshop."
+      },
+      {
+        "id": "G-O4",
+        "name": "The Border Wayhouse",
+        "suit": "Industry",
+        "eligibleTarget": "A waystation, trade road, transit settlement, or supply junction.",
+        "eligibleCompanyOrders": ["Commerce", "Construct", "Politics"],
+        "stakeObjective": "Establish responsibility for operating or protecting an important regional logistical connection.",
+        "npcEligibility": "A claimant must have a legal trade, supply, or territorial connection to the route.",
+        "materialConsequence": "Recognized passage rights, access to an appropriate supply connection, or authorization to establish an Improvement. Any constructed Road, Supply Camp, or Trade Hub requires its normal construction action and prerequisites unless an explicit reward waives them."
+      },
+      {
+        "id": "G-O5",
+        "name": "The Great Hunt",
+        "suit": "Warfare",
+        "eligibleTarget": "A region threatened by a suitable monster, raiding warband, or other identifiable hostile force.",
+        "eligibleCompanyOrders": ["Explore", "Mobilize"],
+        "stakeObjective": "Earn recognition for confronting the threat and protecting the affected region. The PCs may complete the Stake through a successful hunt, rescue, or appropriate structured battle.",
+        "npcEligibility": "A claimant must have military access or a real protective obligation concerning the threatened region.",
+        "materialConsequence": "Eliminating or containing the threat may restore access to a Site, route, resource, or settlement. An NPC winning a Warfare trick does not automatically defeat the creature. The threat remains until an actual qualifying resolution occurs."
+      },
+      {
+        "id": "G-O6",
+        "name": "The Merchant Consortium",
+        "suit": "Authority",
+        "eligibleTarget": "A merchants' guild, trading coalition, commercial council, or comparable institution.",
+        "eligibleCompanyOrders": ["Commerce", "Politics"],
+        "stakeObjective": "Gain recognition or representation in an important commercial association.",
+        "npcEligibility": "A claimant must have an eligible trade presence, recognized representative, or existing commercial relationship.",
+        "materialConsequence": "A negotiated contract may grant commercial access, a named mercenary hiring opportunity, or another appropriate economic agreement. Obtaining recruitment rights does not automatically grant a free formation."
+      }
+    ]
+  },
+  "sponsoredTasks": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_D.md", "section": "D.4 Sponsored Tasks" },
+    "tasks": [
+      {
+        "id": "G-S1",
+        "name": "The Provincial Muster",
+        "suit": "Warfare",
+        "eligibleTarget": "A settlement, local militia organization, or regional military authority capable of supporting a muster.",
+        "eligibleCompanyOrders": ["Recruit", "Politics", "Mobilize"],
+        "requiredSponsor": "The relevant Local Authority or an eligible established military command.",
+        "stakeObjective": "Organize a credible defensive or military commitment on behalf of the sponsor.",
+        "npcEligibility": "The claimant must already possess the sponsor's backing or complete the required political arrangement.",
+        "materialConsequence": "The sponsor may grant one specified local recruitment charter or temporary military contingent. The agreement determines whether the formation is loaned, purchased, or granted. The Stake itself does not provide an unrestricted free unit."
+      },
+      {
+        "id": "G-S2",
+        "name": "The Great Survey Commission",
+        "suit": "Discovery",
+        "eligibleTarget": "A frontier district, unknown route, unexplored Site, or significant geographic feature.",
+        "eligibleCompanyOrders": ["Explore", "Commerce"],
+        "requiredSponsor": "A cartographic institution, civic authority, or political power commissioning the survey.",
+        "stakeObjective": "Complete or publicly advance an authorized investigation of the region.",
+        "npcEligibility": "The faction must possess appropriate surveying access and a legitimate commission.",
+        "materialConsequence": "The completed survey may reveal a route, regional resource source, hidden Site, or military approach. Information does not automatically grant control or resource access."
+      },
+      {
+        "id": "G-S3",
+        "name": "The Harvest Delegation",
+        "suit": "Industry",
+        "eligibleTarget": "A Supply-bearing settlement, productive territory, or regional provisioning institution.",
+        "eligibleCompanyOrders": ["Commerce", "Politics", "Construct"],
+        "requiredSponsor": "The producing Local Authority or recognized supplier.",
+        "stakeObjective": "Secure public support for maintaining regional provisions and supply arrangements.",
+        "npcEligibility": "The claimant must possess a legal connection to the source and be accepted by the sponsor.",
+        "materialConsequence": "A completed agreement may provide temporary access to one specified Supply resource symbol or a recognized logistical facility. Political ownership remains unchanged."
+      },
+      {
+        "id": "G-S4",
+        "name": "The Pact of Cities",
+        "suit": "Authority",
+        "eligibleTarget": "Two settlements, councils, or political institutions capable of entering a regional agreement.",
+        "eligibleCompanyOrders": ["Politics", "Commerce"],
+        "requiredSponsor": "At least one of the participating institutions, with the second institution identified when the Stake is declared.",
+        "stakeObjective": "Establish recognition for a proposed cooperative agreement.",
+        "npcEligibility": "Claimants must have genuine political connections to the participating institutions.",
+        "materialConsequence": "A completed treaty may provide mutual passage, defense obligations, resource access, or specified military recruitment rights. The exact terms must be recorded. Winning the Stake does not force unwilling settlements into an alliance."
+      },
+      {
+        "id": "G-S5",
+        "name": "The Lost Supply Column",
+        "suit": "Discovery",
+        "eligibleTarget": "Missing military stores, a supply caravan, abandoned transport, or a recoverable logistical Asset.",
+        "eligibleCompanyOrders": ["Explore", "Mobilize"],
+        "requiredSponsor": "The recognized owner or intended recipient of the missing supplies.",
+        "stakeObjective": "Locate or secure a recovery operation on the sponsor's behalf.",
+        "npcEligibility": "A claimant must have permission from the sponsor and a plausible means of reaching the missing supplies.",
+        "materialConsequence": "Recovering the supplies may restore a named formation, provide a specified repair opportunity, or return equipment to its lawful owner. The recovered property is not automatically transferred to the claimant."
+      },
+      {
+        "id": "G-S6",
+        "name": "The Siege Depot",
+        "suit": "Industry",
+        "eligibleTarget": "A military storehouse, industrial facility, armory, or suitable siege-support location.",
+        "eligibleCompanyOrders": ["Construct", "Develop", "Mobilize"],
+        "requiredSponsor": "A military command or institution with lawful access to the intended depot.",
+        "stakeObjective": "Receive authorization or recognition for maintaining an important military installation.",
+        "npcEligibility": "The claimant requires sponsor support and a valid logistical or military connection.",
+        "materialConsequence": "An operational facility may satisfy the source requirement for one specified siege Asset, specialist Support formation, or repair service. The Asset must still be legitimately obtained and paid for or awarded as specified. The Stake does not construct the facility for free."
+      }
+    ]
+  },
+  "exclusiveTasks": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_D.md", "section": "D.5 Exclusive Tasks" },
+    "tasks": [
+      {
+        "id": "G-X1",
+        "name": "The Disputed Levy",
+        "suit": "Authority",
+        "eligibleTarget": "A settlement whose military recruitment obligations are contested.",
+        "eligibleCompanyOrders": ["Politics", "Recruit"],
+        "exclusiveBeneficiary": "One designated participating Grand Faction claiming the levy.",
+        "stakeObjective": "Secure recognition of the beneficiary's proposed recruitment rights. Other factions may oppose the levy or negotiate its redirection.",
+        "materialConsequence": "A legitimate political agreement may grant one specified local recruitment charter or release the settlement from an existing obligation. A charter does not create a free formation without an explicit agreement."
+      },
+      {
+        "id": "G-X2",
+        "name": "The Restricted Archive",
+        "suit": "Discovery",
+        "eligibleTarget": "A guarded archive, repository, research institution, or Site containing politically valuable information.",
+        "eligibleCompanyOrders": ["Explore", "Politics"],
+        "exclusiveBeneficiary": "The named Grand Faction claiming responsibility for the archive or its contents.",
+        "stakeObjective": "Establish recognition of the beneficiary's custody or investigative rights.",
+        "materialConsequence": "Completing the necessary investigation or obtaining the custodian's authorization may reveal a special military Asset, research secret, or important intelligence. Recognition is not equivalent to possessing the discovered Asset."
+      },
+      {
+        "id": "G-X3",
+        "name": "The Marshal's Standard",
+        "suit": "Warfare",
+        "eligibleTarget": "A named military standard, commander, command post, or disputed military honor.",
+        "eligibleCompanyOrders": ["Mobilize", "Politics"],
+        "exclusiveBeneficiary": "One participating Grand Faction asserting legitimate command.",
+        "stakeObjective": "Establish or defend recognition of the beneficiary's military authority.",
+        "materialConsequence": "A completed campaign mission may recover a named formation, command standard, or other specified military asset. A political victory alone does not restore destroyed troops or grant extra Command Points."
+      },
+      {
+        "id": "G-X4",
+        "name": "The Oath of Passage",
+        "suit": "Authority",
+        "eligibleTarget": "A route controlled by a recognized Local Authority or an established political power.",
+        "eligibleCompanyOrders": ["Politics", "Commerce"],
+        "exclusiveBeneficiary": "The named power claiming a preexisting or newly recognized passage right.",
+        "stakeObjective": "Obtain recognition of that claimant's right to move through the selected territory.",
+        "materialConsequence": "A completed agreement may grant lawful passage or supply access for the specified duration. It does not transfer ownership of the route or override a later military blockade automatically."
+      },
+      {
+        "id": "G-X5",
+        "name": "The Ancient Sentinel",
+        "suit": "Discovery",
+        "eligibleTarget": "A Site, ancient defensive institution, unusual guardian, or recoverable military relic.",
+        "eligibleCompanyOrders": ["Explore", "Develop", "Mobilize"],
+        "exclusiveBeneficiary": "The named political custodian or claimant associated with the Site.",
+        "stakeObjective": "Establish recognized responsibility for the Sentinel or its protection.",
+        "materialConsequence": "Completing the Site or an appropriate restoration mission may provide access to a named guardian formation or special Asset. No unusual military unit becomes available solely because a faction wins the trick."
+      },
+      {
+        "id": "G-X6",
+        "name": "Fortification Rights",
+        "suit": "Industry",
+        "eligibleTarget": "A defensive site, border settlement, or strategically significant controlled region.",
+        "eligibleCompanyOrders": ["Construct", "Politics"],
+        "exclusiveBeneficiary": "One designated participating power seeking recognized construction authority.",
+        "stakeObjective": "Obtain authorization or recognition for a proposed defensive project.",
+        "materialConsequence": "A successful agreement may grant construction rights or restore access to a disputed facility. A Fortress, Watchtower, or other Improvement still requires its normal construction procedure unless an explicit reward provides otherwise."
+      }
+    ]
+  },
+  "taskPoolSuitDiversity": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_D.md", "section": "D.6 Task Pool Suit Diversity" },
+    "rule": "When constructing an Act Task pool, aim to include a reasonable mix of Discovery, Industry, Authority, and Warfare suits among legal available Tasks. Do not forcibly equalize suit counts or change the required Open/Sponsored/Exclusive distribution; legal targets and current political conditions take priority. This is a preparation guideline, not a second numerical balancing requirement."
+  },
+  "generalTaskReference": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_D.md", "section": "D.7 General Task Reference" },
+    "table": [
+      { "id": "G-O1", "task": "The Northern Crossing", "type": "Open", "suit": "Warfare" },
+      { "id": "G-O2", "task": "The Missing Expedition", "type": "Open", "suit": "Discovery" },
+      { "id": "G-O3", "task": "The Foundry Commission", "type": "Open", "suit": "Industry" },
+      { "id": "G-O4", "task": "The Border Wayhouse", "type": "Open", "suit": "Industry" },
+      { "id": "G-O5", "task": "The Great Hunt", "type": "Open", "suit": "Warfare" },
+      { "id": "G-O6", "task": "The Merchant Consortium", "type": "Open", "suit": "Authority" },
+      { "id": "G-S1", "task": "The Provincial Muster", "type": "Sponsored", "suit": "Warfare" },
+      { "id": "G-S2", "task": "The Great Survey Commission", "type": "Sponsored", "suit": "Discovery" },
+      { "id": "G-S3", "task": "The Harvest Delegation", "type": "Sponsored", "suit": "Industry" },
+      { "id": "G-S4", "task": "The Pact of Cities", "type": "Sponsored", "suit": "Authority" },
+      { "id": "G-S5", "task": "The Lost Supply Column", "type": "Sponsored", "suit": "Discovery" },
+      { "id": "G-S6", "task": "The Siege Depot", "type": "Sponsored", "suit": "Industry" },
+      { "id": "G-X1", "task": "The Disputed Levy", "type": "Exclusive", "suit": "Authority" },
+      { "id": "G-X2", "task": "The Restricted Archive", "type": "Exclusive", "suit": "Discovery" },
+      { "id": "G-X3", "task": "The Marshal's Standard", "type": "Exclusive", "suit": "Warfare" },
+      { "id": "G-X4", "task": "The Oath of Passage", "type": "Exclusive", "suit": "Authority" },
+      { "id": "G-X5", "task": "The Ancient Sentinel", "type": "Exclusive", "suit": "Discovery" },
+      { "id": "G-X6", "task": "Fortification Rights", "type": "Exclusive", "suit": "Industry" }
+    ],
+    "note": "When the named target lacks a legal military, political, or geographic connection to a claimant, that claimant cannot simply play a matching-suit card and receive the Stake."
+  }
+}

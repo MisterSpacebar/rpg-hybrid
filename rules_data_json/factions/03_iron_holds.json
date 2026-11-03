@@ -1,0 +1,162 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "3. IRON HOLDS"
+  },
+  "name": "Iron Holds",
+  "doctrines": ["Castling", "Firing Line"],
+  "worldbuilding": "Subterranean kingdoms, mountain citadels, industrial fortress-cities, and heavily defended clan holdings. They emphasize engineering, fortifications, firearms, and resilient infantry.",
+  "factionRule": {
+    "name": "Entrenched",
+    "effect": "Friendly Units that did not Move during the preceding Movement Phase gain Tough 1 against Ranged attacks."
+  },
+  "factionCommands": [
+    { "name": "Hold the Line", "timing": "Reaction", "cost": "1 CP", "effect": "One friendly Unit gains Tough 2 until the end of the Round." },
+    { "name": "Concentrated Volley", "timing": "Assault", "cost": "1 CP", "effect": "One friendly stationary Unit gains Accurate 2 during its next ranged Attack." },
+    { "name": "Prepared Position", "timing": "Movement", "cost": "1 CP", "effect": "Create or activate a small barricade or defensive position according to the terrain rules." }
+  ],
+  "signatureCoreUnits": [
+    {
+      "name": "Ironbreakers",
+      "points": 155,
+      "models": 5,
+      "tags": ["Infantry", "Mortal", "Armored"],
+      "modelProfile": { "move": "3\"", "wounds": 2, "armor": "4+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Hold Axes", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Shieldwall", "type": "Passive", "effect": "If stationary during the preceding Movement Phase, gain Brace 1 until the next Movement Phase." }
+      ]
+    },
+    {
+      "name": "Thunderers",
+      "points": 185,
+      "models": 4,
+      "tags": ["Ranged Infantry", "Mortal", "Armored"],
+      "modelProfile": { "move": "3\"", "wounds": 2, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Musket", "range": "10\"", "attacks": 1, "hit": "4+", "damage": 2, "keywords": ["Firearm", "Heavy", "Anti-Armored 2"] },
+        { "name": "Axes", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Drilled Volley", "type": "Passive", "effect": "If stationary during the preceding Movement phase, gain Accurate 1 when making a ranged Attack." }
+      ]
+    },
+    {
+      "name": "Deep Watch",
+      "points": 160,
+      "models": 5,
+      "tags": ["Ranged Infantry", "Mortal", "Armored"],
+      "modelProfile": { "move": "3\"", "wounds": 1, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Repeater Rifles", "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Firearm"] },
+        { "name": "Axes", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Fortified Volley", "type": "Passive", "effect": "If stationary during the preceding Movement Phase, gain Anti-Armored 1 when making a ranged Attack." }
+      ]
+    }
+  ],
+  "captainAndSpecialists": [
+    {
+      "name": "Hold Captain",
+      "role": "Captain",
+      "points": 205,
+      "tags": ["Infantry", "Hero", "Mortal", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 7, "armor": "3+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Hand Cannon", "range": "8\"", "attacks": 1, "hit": "3+", "damage": 2, "keywords": ["Heavy", "Firearm"] },
+        { "name": "Hold Axe", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Anchor the Line", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One friendly Infantry Unit within Short cannot be displaced by enemy abilities until the end of the Round and may adjust its facing or formation without making a Move." }
+      ]
+    },
+    {
+      "name": "Rune-Smith",
+      "role": "Support",
+      "points": 145,
+      "tags": ["Support", "Elite", "Mortal", "Armored"],
+      "modelProfile": { "move": "3\"", "wounds": 4, "armor": "4+", "evade": "6+", "ward": "6+ (Physical Ward +1)" },
+      "attackProfiles": [
+        { "name": "Rune Bolt", "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Rune Hammer", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Rune of Shelter", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Grant Ward 6+ against Magic to a friendly Unit within Short, or improve its existing Magic Ward by one step until the end of the Round." }
+      ]
+    },
+    {
+      "name": "Forge-Master",
+      "role": "Support",
+      "points": 150,
+      "tags": ["Support", "Elite", "Mortal", "Armored"],
+      "modelProfile": { "move": "3\"", "wounds": 5, "armor": "4+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Forge Tools", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Overcharge", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "One unit within Short with an attack profile that has Heavy gains +2 Attacks. If it Blunders, its Unit suffers Direct Damage 1." }
+      ]
+    }
+  ],
+  "largeAssets": [
+    {
+      "name": "Steam Bastion",
+      "points": 285,
+      "tags": ["Vehicle", "Mechanical", "Armored"],
+      "modelProfile": { "move": "4\"", "wounds": 11, "armor": "3+", "evade": null, "ward": null },
+      "attackProfiles": [
+        { "name": "Heavy Cannon", "range": "15\"", "attacks": 2, "hit": "4+", "damage": 3, "keywords": ["Firearm", "Heavy", "Anti-Monster 2"] },
+        { "name": "Repeater Guns", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Firearm"] }
+      ],
+      "abilities": [
+        { "name": "Armored Engine", "type": "Passive", "effect": "Reduce the first Damage suffered each Round by 1." }
+      ]
+    },
+    {
+      "name": "Great Bombard",
+      "points": 215,
+      "tags": ["Artillery", "Mechanical", "Armored"],
+      "modelProfile": { "move": "2\"", "wounds": 5, "armor": "5+", "evade": null, "ward": null },
+      "attackProfiles": [
+        { "name": "Bombard", "range": "18\"", "attacks": 2, "hit": "4+", "damage": 3, "keywords": ["Blast 1\"", "Firearm", "Heavy"] },
+        { "name": "Crew Weapons", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Grounded Platform", "type": "Passive", "effect": "Gain Accurate 1 on Bombard Attacks if stationary during the preceding Movement phase." }
+      ],
+      "upgrades": [
+        {
+          "name": "Airburst Bombardment",
+          "cost": "+20 Points",
+          "type": "Command",
+          "commandCost": "1 CP",
+          "timing": "Movement",
+          "effect": "During its Movement activation, the Great Bombard may prepare an Airburst Bombardment instead of moving. Place a 25mm token within 18\". At the end of the Assault Phase, every Unit with at least half its surviving Models (rounded up) within 1\" of the token suffers two automatic Physical Hits at Damage 1 total. Resolve Armor then Ward; no Evade. Resolve Saves normally. The Great Bombard cannot use its Bombard Attack during the Assault Phase of this Round. Remove the token after resolving the effect.",
+          "rosterNote": "Optional firing-mode upgrade, +20 Points."
+        }
+      ]
+    }
+  ],
+  "factionLeader": {
+    "name": "High King",
+    "points": 435,
+    "tags": ["Hero", "Mortal", "Armored"],
+    "modelProfile": { "move": "4\"", "wounds": 9, "armor": "3+", "evade": "6+", "ward": "5+" },
+    "impact": "+3",
+    "attackProfiles": [
+      { "name": "Masterwork Hand Cannon", "range": "6\"", "attacks": 4, "hit": "3+", "damage": 2, "keywords": ["Firearm", "Rapid-Fire 2"] },
+      { "name": "Heirloom Axe", "range": "Engaged", "attacks": 6, "hit": "3+", "damage": 2, "keywords": ["Anti-Armored 2"] }
+    ],
+    "abilities": [
+      { "name": "King's Standard", "type": "Passive", "effect": "Friendly Infantry within Short count as one additional Model for determining whether they meet a rule's minimum Unit-size requirement, but gain no actual Models, Attacks, or Wounds." },
+      { "name": "Oaths of Stone", "type": "Command", "cost": "2 CP", "timing": "Reaction", "frequency": "Once per Battle", "effect": "Up to three friendly Units within Medium each reduce the first Damage they suffer during the remainder of the Round by 1." }
+    ]
+  },
+  "genericUnitsWorthTaking": "Line Infantry, Longbowmen, generic Engineers, Scouts, and lighter cavalry. Thunderers are strong stationary gunners, but generic ranged troops are more adaptable.",
+  "designNotes": [
+    "v4.2 balance pass: added Deep Watch as the faction's Extra Core, a second stationary-gunline Ranged unit reinforcing the Entrenched/Firing Line identity rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on Musket and Heirloom Axe, Anti-Monster on the Steam Bastion's Heavy Cannon) or an improved Hit (Hand Cannon 4+ -> 3+)."
+  ]
+}

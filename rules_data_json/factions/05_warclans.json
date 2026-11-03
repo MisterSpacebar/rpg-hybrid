@@ -1,0 +1,167 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "5. WARCLANS"
+  },
+  "name": "Warclans",
+  "doctrines": ["Alpha Strike", "Horde"],
+  "worldbuilding": "Tribal confederations, roaming warbands, warrior societies, and armies united by powerful warlords. They rely on aggression, numbers, and the momentum of powerful Charges. Both signature Core choices are Infantry. Their cavalry and ranged troops remain predominantly generic.",
+  "factionRule": {
+    "name": "Eager for Battle",
+    "effect": "All friendly Units gain Charge 1."
+  },
+  "factionCommands": [
+    { "name": "Get In There!", "timing": "Assault Reaction", "cost": "1 CP", "effect": "When a different friendly Unit successfully completes a Charge, choose one unactivated friendly Unit within Short of the charger. It may immediately make its normal Charge activation, consuming its Assault activation for this Phase; it does not gain a second Charge." },
+    { "name": "Overwhelm", "timing": "Combat", "cost": "2 CP", "effect": "One friendly multi-model Unit gains +1 Attack per Model during its next Combat activation." },
+    { "name": "Keep Fighting!", "timing": "Reaction", "cost": "1 CP", "effect": "After destroying an enemy Unit in Engagement, the attacking Unit may Move up to 2\" toward another enemy." }
+  ],
+  "signatureCoreUnits": [
+    {
+      "name": "Choppa Mob",
+      "points": 130,
+      "models": 10,
+      "tags": ["Horde Infantry", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Choppas", "range": "Engaged", "attacks": 1, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Mob Violence", "type": "Passive", "effect": "When Charging with at least six Models remaining, gain Impact +3." }
+      ]
+    },
+    {
+      "name": "Brutes",
+      "points": 175,
+      "models": 4,
+      "tags": ["Assault Infantry", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 3, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Heavy Choppas", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Keep Swinging", "type": "Passive", "effect": "Once per Attack roll, after destroying an enemy Model during that activation, one natural 6 may generate one additional ordinary Hit." }
+      ]
+    },
+    {
+      "name": "Boar Riders",
+      "points": 190,
+      "models": 3,
+      "tags": ["Cavalry", "Mortal"],
+      "modelProfile": { "move": "7\"", "wounds": 3, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Tusked Spears", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Reckless Charge", "type": "Passive", "effect": "Gain Impact +2 on a successful Charge." }
+      ]
+    }
+  ],
+  "captainAndSpecialists": [
+    {
+      "name": "Warboss",
+      "role": "Captain",
+      "points": 220,
+      "tags": ["Infantry", "Hero", "Mortal", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 7, "armor": "4+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Boss Choppa", "range": "Engaged", "attacks": 4, "hit": "4+", "damage": 2, "keywords": ["Anti-Elite 2"] }
+      ],
+      "abilities": [
+        { "name": "Drive the Mob", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One friendly Infantry Unit within Short gains +2\" Move during its next Move but cannot make a ranged Attack during that activation." }
+      ]
+    },
+    {
+      "name": "Shaman",
+      "role": "Wizard",
+      "points": 175,
+      "tags": ["Wizard", "Elite", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "6+", "evade": "6+", "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Weird Bolt", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Staff", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Brutal Magic", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Roll 1D6. On 3+, inflict Direct Damage 1 on one visible enemy within Medium." }
+      ],
+      "upgrades": [
+        {
+          "name": "Thunderclap",
+          "cost": "+20 Points",
+          "type": "Command",
+          "commandCost": "1 CP",
+          "timing": "Assault",
+          "effect": "Choose one visible enemy Unit within Short Range. Move that Unit up to 2\" directly away from the Shaman, maintaining Unit coherency and ending in legal positions. This counts as forced movement and does not count as Disengaging."
+        }
+      ]
+    },
+    {
+      "name": "Warchanter",
+      "role": "Support",
+      "points": 145,
+      "tags": ["Support", "Elite", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 5, "armor": "6+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Drumsticks", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Rallying Roar", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Remove Withdrawn from a nearby friendly Unit and add one die to its next Charge Pool this Round." }
+      ]
+    }
+  ],
+  "largeAssets": [
+    {
+      "name": "War Beast",
+      "points": 260,
+      "tags": ["Monster", "Beast"],
+      "modelProfile": { "move": "6\"", "wounds": 10, "armor": "4+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Tusks and Claws", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 2, "keywords": ["Anti-Character 2"] }
+      ],
+      "abilities": [
+        { "name": "Unstoppable Charge", "type": "Passive", "effect": "Gain +4 Impact when Charging." }
+      ]
+    },
+    {
+      "name": "Looted Catapult",
+      "points": 155,
+      "tags": ["Artillery"],
+      "modelProfile": { "move": "2\"", "wounds": 5, "armor": "5+", "evade": null, "ward": null },
+      "attackProfiles": [
+        { "name": "Boulder Thrower", "range": "15\"", "attacks": 2, "hit": "4+", "damage": 2, "keywords": ["Heavy", "Blast 1\""] },
+        { "name": "Crew", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Unstable Frame", "type": "Passive", "effect": "On a Blunder, suffer Direct Damage 1." }
+      ],
+      "upgrades": [
+        {
+          "name": "Rockfall",
+          "cost": "+15 Points",
+          "type": "Command",
+          "commandCost": "1 CP",
+          "timing": "Assault",
+          "effect": "Instead of making a Boulder Thrower Attack, place a 25mm token within 15\". At the end of the Combat Phase, every Unit with at least half its surviving Models (rounded up) within 1\" of the token suffers one automatic Physical Hit at Damage 2 total. Resolve Armor then Ward; no Evade. Resolve Saves normally. Remove the token after resolving the effect.",
+          "rosterNote": "Optional firing-mode upgrade, +15 Points."
+        }
+      ]
+    }
+  ],
+  "factionLeader": {
+    "name": "Great Warchief",
+    "points": 470,
+    "tags": ["Hero", "Mortal", "Armored"],
+    "modelProfile": { "move": "5\"", "wounds": 12, "armor": "4+", "evade": "6+", "ward": "6+ (Physical Ward +1)" },
+    "impact": "+5",
+    "attackProfiles": [
+      { "name": "Worldbreaker", "range": "Engaged", "attacks": 10, "hit": "3+", "damage": 1, "keywords": ["Critical 2"] }
+    ],
+    "abilities": [
+      { "name": "Too Big to Ignore", "type": "Passive", "effect": "Enemy Units cannot benefit from Cover against the Warchief's Attacks." },
+      { "name": "Warcry", "type": "Command", "cost": "2 CP", "frequency": "Once per Battle", "effect": "Up to three friendly Units within Medium gain +1 Impact during their next Charge this Round. One of those Units may also immediately Move up to 2\"." }
+    ]
+  },
+  "genericUnitsWorthTaking": "Bow Infantry, Light Cavalry, mounted skirmishing configurations, Medics, and cheap spear formations. This army should not need a unique version of every kind of fighter.",
+  "designNotes": [
+    "v4.2 balance pass: added Boar Riders as the faction's Extra Core, a Charge-focused Cavalry unit reinforcing the aggression/Charge identity rather than patching a weakness. Choppa Mob's Horde Infantry weapon profile was kept unchanged (Models, not Attacks, is this faction's established horde-buff pattern). Other Damage-1 weapons gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Elite on the Warboss' Boss Choppa, Anti-Character on the War Beast's Tusks and Claws) or an improved Hit (Boulder Thrower 5+ -> 4+)."
+  ]
+}

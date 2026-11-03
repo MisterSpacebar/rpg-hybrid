@@ -1,0 +1,219 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/04_campaign/Appendix_C.md",
+    "section": "APPENDIX C — ACT AGENDAS — Campaign Mode — Revised for Current Campaign Rules"
+  },
+  "overview": {
+    "summary": "Act Agendas establish the overarching political conflict of each campaign Act.",
+    "rules": [
+      "Each Act has three possible Agendas. One is selected at the beginning of that Act.",
+      "The Agenda influences which conflicts become prominent, why the Grand Factions are competing, and what the eventual political victor receives.",
+      "An Agenda does not change the normal Company Orders, Faction Maneuvers, or political trick rules."
+    ]
+  },
+  "generalAgendaRules": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_C.md", "section": "C.1 General Agenda Rules" },
+    "selection": "At the beginning of each Act, randomly select one of its three Agendas.",
+    "duration": "The Agenda remains active for the entire Act.",
+    "politicalScoring": "At the end of the Act, count colored Act markers. The participating Grand Faction with the highest total wins the Agenda if it is the unique leader.",
+    "contestedAct": "If the highest total is tied, no faction receives the Agenda's full victory benefit. Resolve the normal Contested Act consolation rewards instead.",
+    "persistentConsequences": "Agenda rewards do not automatically remove existing political control, cancel treaties, or restore destroyed military assets unless explicitly stated.",
+    "rewardTiming": [
+      "Benefits earned from Acts I–III become available when the following Act begins. Single-use benefits normally expire at the end of that following Act.",
+      "Act IV rewards determine political consequences in the campaign epilogue rather than retroactively changing a completed final battle."
+    ],
+    "beneficiary": "An Agenda benefit belongs to the victorious Grand Faction. If the PCs' affiliated Grand Faction wins, the company administers its applicable benefit. NPC benefits are resolved through the same stated effect wherever possible, without maintaining a separate NPC Gold treasury."
+  },
+  "acts": [
+    {
+      "act": "I",
+      "title": "The Gathering Storm",
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_C.md", "section": "C.2 Act I — The Gathering Storm" },
+      "description": "Act I Agendas concern emerging instability, uncertain alliances, and the first discoveries that draw the competing powers into conflict.",
+      "agendas": [
+        {
+          "id": "C-I1",
+          "name": "Whispers of War",
+          "theme": "Rumors of armies, secret preparations, and the approach of a wider conflict.",
+          "campaignSituation": "Military patrols become more active. Local communities report unusual movements, and rival powers seek information about one another's intentions.",
+          "suggestedConflicts": "Reconnaissance, military intelligence, border patrols, missing couriers, clandestine agreements.",
+          "victoryBenefit": {
+            "name": "Early Intelligence",
+            "effect": "At the beginning of Act II, the victor identifies one known rival power and obtains intelligence concerning one of its significant military preparations, named support sources, or intended strategic objectives. The information must be genuine and relevant. If no such preparation exists, the victor may instead Scout one eligible unresolved Site or strategic location without completing its mission or claiming its Discovery.",
+            "limit": "This benefit provides information, not a free formation or political marker."
+          }
+        },
+        {
+          "id": "C-I2",
+          "name": "Broken Accord",
+          "theme": "The breakdown of an established political settlement.",
+          "campaignSituation": "Formerly cooperative towns, guilds, or Grand Factions begin disputing their obligations. Rival powers exploit uncertainty surrounding old agreements.",
+          "suggestedConflicts": "Disputed treaties, territorial recognition, broken promises, local councils, diplomatic mediation.",
+          "victoryBenefit": {
+            "name": "Political Recognition",
+            "effect": "At the beginning of Act II, the victor may place or relocate one of its Political Influence markers at an eligible location where it has a legitimate political connection. The normal maximum of two Political Influence markers remains in effect. This placement does not transfer territorial control or automatically establish a major treaty."
+          }
+        },
+        {
+          "id": "C-I3",
+          "name": "Forgotten Frontier",
+          "theme": "Exploration and the recovery of neglected regional knowledge.",
+          "campaignSituation": "Abandoned routes, unexplored settlements, ruined institutions, and forgotten Sites draw attention from the Grand Factions.",
+          "suggestedConflicts": "Lost expeditions, ancestral sites, territorial surveys, unusual ruins, recovered historical records.",
+          "victoryBenefit": {
+            "name": "Frontier Reconnaissance",
+            "effect": "At the beginning of Act II, the victor may Scout one legally accessible unresolved exploration Site or frontier location. The GM reveals appropriate information about its contents, hazards, or strategic significance. The Site remains unresolved, and its Discovery reward must still be earned through a qualifying operation."
+          }
+        }
+      ]
+    },
+    {
+      "act": "II",
+      "title": "Founding the Company",
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_C.md", "section": "C.3 Act II — Founding the Company" },
+      "description": "Act II Agendas concern the formal establishment of military organizations, recognized economic rights, and the institutions supporting regional expansion.",
+      "agendas": [
+        {
+          "id": "C-II1",
+          "name": "Charter Wars",
+          "theme": "Competition over military charters and organized recruitment.",
+          "campaignSituation": "Grand Factions seek legal recognition, professional troops, militia obligations, and institutions capable of supporting standing forces.",
+          "suggestedConflicts": "Military commissions, mercenary rights, recruitment charters, institutional appointments, recognition of new companies.",
+          "victoryBenefit": {
+            "name": "Recruitment Contacts",
+            "effect": "At the beginning of Act III, the victor receives one Recruitment Contacts Development benefit. For the PCs, this provides the normal 1-Gold recruitment benefit. For a non-PC Grand Faction, resolve the card's appropriate NPC military-support equivalent under Appendix H. No additional formation is created automatically."
+          }
+        },
+        {
+          "id": "C-II2",
+          "name": "Foundry Compact",
+          "theme": "The competition for industrial capacity and useful infrastructure.",
+          "campaignSituation": "Workshops, guilds, production centers, and military suppliers become politically important.",
+          "suggestedConflicts": "Industrial agreements, foundry rights, infrastructure projects, military manufacturing, specialist equipment.",
+          "victoryBenefit": {
+            "name": "Public Works",
+            "effect": "At the beginning of Act III, the victor may construct one eligible Minor Improvement at a location where it already has legal construction rights. The Gold cost of that single Improvement is waived. Resource, geography, and placement requirements still apply.",
+            "restriction": "This benefit cannot construct a Frontier Outpost, transfer territorial ownership, or bypass the normal one-principal-Improvement-per-hex rule. The Improvement does not consume a Company Order or NPC Industry Maneuver."
+          }
+        },
+        {
+          "id": "C-II3",
+          "name": "Harvest Accords",
+          "theme": "Regional supply, agricultural rights, and the economic cooperation required to sustain armies.",
+          "campaignSituation": "Communities negotiate access to provisions and seek protection for their productive territories.",
+          "suggestedConflicts": "Trade agreements, supply routes, food distribution, settlement protection, local markets.",
+          "victoryBenefit": {
+            "name": "Supply Agreement",
+            "effect": "At the beginning of Act III, the victor establishes one temporary, nonexclusive Supply-access agreement with an eligible willing Local Authority or existing political partner. The agreement provides access to one of that partner's printed Supply symbols, subject to a legal connection. It expires at the end of Act III. It does not transfer the source hex's ownership or produce Gold.",
+            "fallback": "If no eligible partner and source exist, replace this benefit with one eligible Work Crews Development benefit."
+          }
+        }
+      ]
+    },
+    {
+      "act": "III",
+      "title": "Rising Powers",
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_C.md", "section": "C.4 Act III — Rising Powers" },
+      "description": "Act III Agendas concern the military and diplomatic preparations that will shape the final conflict.",
+      "agendas": [
+        {
+          "id": "C-III1",
+          "name": "Border Ascendancy",
+          "theme": "Control of defensive frontiers and important military approaches.",
+          "campaignSituation": "Powerful armies advance toward strategic crossings, mountain passes, fortified towns, and contested supply routes.",
+          "suggestedConflicts": "Border defenses, military access, regional garrisons, fortifications, territorial disputes.",
+          "victoryBenefit": {
+            "name": "Defensive Preparations",
+            "effect": "During Act IV, the victor may claim one Battlefield Edge in its first eligible structured battle defending its controlled territory, a protected allied settlement, an established military position, or a legally held strategic route. The qualifying defensive obligation and location must be established before deployment. Declare the Edge's target and affected Round before that battle begins, using the normal campaign Battlefield Edge rules. The normal maximum of two Battlefield Edges per side remains in effect. The Edge does not grant CP: it reduces the specified opposing participant's available CP by 1 (minimum 1) in the declared Round and is spent even if that Round is never reached.",
+            "expiration": "If no such defensive battle occurs before the end of Act IV, this benefit expires."
+          }
+        },
+        {
+          "id": "C-III2",
+          "name": "Pact of Cities",
+          "theme": "Cooperation between independent settlements and competing political institutions.",
+          "campaignSituation": "Towns and regional councils organize for collective security while major powers seek influence over their future.",
+          "suggestedConflicts": "Diplomatic unions, defensive treaties, local autonomy, shared administration, military support agreements.",
+          "victoryBenefit": {
+            "name": "Coalition Recognition",
+            "effect": "At the beginning of Act IV, the victor may establish one Political Influence marker in an eligible settlement or relocate an existing marker there. That settlement must already have a plausible connection to the victorious faction. The normal two-marker limit applies.",
+            "fallback": "If a qualifying location is unavailable, the victor instead establishes one prepared Authority objective, without a Strength bonus.",
+            "limit": "This benefit does not automatically provide a Political Mandate, military contingent, or political control."
+          }
+        },
+        {
+          "id": "C-III3",
+          "name": "Great Survey",
+          "theme": "Regional intelligence and final preparations across the frontier.",
+          "campaignSituation": "Grand Factions seek maps, military intelligence, knowledge of hidden facilities, and information concerning rival plans.",
+          "suggestedConflicts": "Reconnaissance, hidden routes, military archives, exploration, support installations.",
+          "victoryBenefit": {
+            "name": "Strategic Survey",
+            "effect": "At the beginning of Act IV, the victor may Scout up to two eligible unresolved Sites, strategic facilities, or military approach routes. These locations may be different. The benefit reveals information and access opportunities, but does not complete exploration missions, award Discoveries, or automatically disable facilities."
+          }
+        }
+      ]
+    },
+    {
+      "act": "IV",
+      "title": "The Final Reckoning",
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_C.md", "section": "C.5 Act IV — The Final Reckoning" },
+      "description": "Act IV Agendas determine which political vision emerges from the campaign's concluding conflict. Their rewards shape the epilogue and any subsequent campaign, rather than granting an advantage retroactively in the final encounter.",
+      "agendas": [
+        {
+          "id": "C-IV1",
+          "name": "Grand Council",
+          "theme": "Political legitimacy and the establishment of a new regional order.",
+          "campaignSituation": "Representatives from major powers and independent settlements gather to decide how the region should be governed.",
+          "suggestedConflicts": "Recognition of governments, treaties, disputed charters, regional alliances, succession of institutions.",
+          "victoryConsequence": {
+            "name": "Recognized Leadership",
+            "effect": "The victorious Grand Faction becomes the principal recognized convenor of the post-campaign regional council. During the epilogue, it may propose and secure one appropriate nonterritorial political concession from a willing participating authority. This does not automatically annex independent settlements or invalidate agreements established through play."
+          }
+        },
+        {
+          "id": "C-IV2",
+          "name": "Final Siege",
+          "theme": "The military struggle over the region's decisive defensive positions.",
+          "campaignSituation": "The conflict culminates around major strongholds, important supply routes, or a strategically decisive battlefield.",
+          "suggestedConflicts": "Siege warfare, military access, defensive coalitions, supply depots, major field engagements.",
+          "victoryConsequence": {
+            "name": "Military Settlement",
+            "effect": "The victorious Grand Faction gains recognized leadership of the postwar defensive settlement. In the epilogue, it may restore one damaged but surviving strategic military Improvement or named military Asset that it lawfully owns or controls, provided an appropriate repair source exists.",
+            "limit": "This benefit cannot recreate a permanently destroyed unique Asset without a valid replacement source or transfer ownership of a rival's stronghold."
+          }
+        },
+        {
+          "id": "C-IV3",
+          "name": "Reckoning of Crowns",
+          "theme": "Political succession and the future of regional authority.",
+          "campaignSituation": "The contest determines which claims, dynasties, governments, or political principles will define the region.",
+          "suggestedConflicts": "Succession disputes, political legitimacy, competing oaths, final treaties, the fate of Grand Faction leadership.",
+          "victoryConsequence": {
+            "name": "Settlement of Claims",
+            "effect": "The victorious Grand Faction receives priority recognition for one eligible unresolved political claim it legitimately advanced during the campaign. Resolve that claim during the epilogue, taking established territorial ownership, treaties, and completed mission outcomes into account.",
+            "limit": "Recognition does not permit arbitrary annexation of territory or reversal of conclusively resolved RPG events."
+          }
+        }
+      ]
+    }
+  ],
+  "actAgendaReference": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_C.md", "section": "C.6 Act Agenda Reference" },
+    "table": [
+      { "act": "I", "agenda": "Whispers of War", "victoryBenefit": "Military intelligence" },
+      { "act": "I", "agenda": "Broken Accord", "victoryBenefit": "Political Influence placement" },
+      { "act": "I", "agenda": "Forgotten Frontier", "victoryBenefit": "One free Scout" },
+      { "act": "II", "agenda": "Charter Wars", "victoryBenefit": "Recruitment Contacts" },
+      { "act": "II", "agenda": "Foundry Compact", "victoryBenefit": "One eligible free Minor Improvement" },
+      { "act": "II", "agenda": "Harvest Accords", "victoryBenefit": "Temporary Supply access" },
+      { "act": "III", "agenda": "Border Ascendancy", "victoryBenefit": "One conditional Battlefield Edge" },
+      { "act": "III", "agenda": "Pact of Cities", "victoryBenefit": "Political Influence or Authority preparation" },
+      { "act": "III", "agenda": "Great Survey", "victoryBenefit": "Scout up to two locations" },
+      { "act": "IV", "agenda": "Grand Council", "victoryBenefit": "Epilogue diplomatic leadership" },
+      { "act": "IV", "agenda": "Final Siege", "victoryBenefit": "Epilogue military restoration" },
+      { "act": "IV", "agenda": "Reckoning of Crowns", "victoryBenefit": "Epilogue recognition of an unresolved claim" }
+    ],
+    "note": "The Agenda victory reward is separate from individual Task rewards. No Agenda awards additional Act markers."
+  }
+}

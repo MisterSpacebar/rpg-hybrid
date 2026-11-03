@@ -1,0 +1,52 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "14. BALANCE AND DESIGN NOTES"
+  },
+  "genericTroopsRemainImportant": "Signature troops generally cost more than their nearest generic equivalent or exchange conventional advantages for unique abilities. A faction with elite ranged troops should still have a reason to use ordinary archers. A faction with enormous infantry should still benefit from cheap conventional soldiers. This is particularly important for the Free Realms, Sacred Orders, Arcane Orders, and Titan Clans, which otherwise risk concentrating too much of their point budget into expensive specialists.",
+  "smallerAndLargerUnitSizes": {
+    "description": "The signature roster uses a wider spread of starting Model counts.",
+    "table": [
+      { "modelCount": "2", "typicalApplication": "Extremely specialized weapon teams or monstrous cavalry" },
+      { "modelCount": "3", "typicalApplication": "Elite infantry, durable specialists, conventional cavalry" },
+      { "modelCount": "4", "typicalApplication": "Trained ranged troops, assault infantry, infiltrators" },
+      { "modelCount": "5–6", "typicalApplication": "Regular formations and larger specialized infantry" },
+      { "modelCount": "8", "typicalApplication": "Expendable infantry hordes" }
+    ],
+    "note": "Each unit must be balanced by total Wounds, defensive saves, attack output, mobility, and available special abilities—not merely by the number of Models.",
+    "crossCheckNote": "The 8-Model row ('Expendable infantry hordes') does not match any signature Unit's actual Model count transcribed in this conversion: Choppa Mob is 10 Models and Corpse Horde is 12 Models (the two Horde Infantry signature Units), with no 8-Model signature Unit present. This table row may describe a design target/typical range rather than a literal match to a specific printed Unit, or it may be a stale guideline from an earlier draft — flagged, not resolved."
+  },
+  "charactersAndCommandEfficiency": "Faction Captains generally cost 140–225 points and possess one distinctive Command beyond their improved basic characteristics. Faction Wizards and Support specialists cost approximately 135–210 points. Their Commands spend CP represented by cards in matched play (not both resources separately), making their distinctive effects the principal reason to field them. Faction Leaders are priced as major army investments. Their powerful Commands usually cost 2 CP and may be used only once per battle.",
+  "charactersAndCommandEfficiencyCrossCheck": "Spot-checked against the 12 transcribed faction files: Captain costs range from 140 (Mob Boss) to 225 (Vampire Captain, Spellblade Captain), consistent with 140–225. Wizard/Support costs range from 115 (Beastkeeper) to 240 (Master Arcanist) — the Master Arcanist exceeds the stated 135–210 band by 30 points, which may reflect post-playtest rebalancing not yet reflected in this summary paragraph; flagged, not resolved.",
+  "weaponAndKeywordConsistency": [
+    "Accurate and Tough reroll only their specified number of natural 1s per combined Attack/Save pool; printed ranks do not multiply by Model count. Bonuses to the same applicable ranked Keyword are additive.",
+    "Critical X converts up to X failed Hit dice into Critical Hits after rerolls, without requiring a Surge unless an ability explicitly says so; Critical Hits bypass Armor/Evade, but allow applicable Ward Saves.",
+    "Anti-[Type] increases the Attacks characteristic against the designated category.",
+    "Firearm inherently provides Instant.",
+    "Heavy prohibits its Attack after voluntary movement during the preceding Movement Phase unless another ability explicitly overrides the restriction.",
+    "Brace reduces incoming Charge Impact.",
+    "Direct Damage bypasses Armor and Evade, but applicable Ward Saves still apply.",
+    "Healing does not restore defeated Models unless a separate resurrection ability explicitly does so.",
+    "All Units capable of Engagement possess a melee weapon, even if it is an improvised or weak secondary Attack."
+  ],
+  "priorityPlaytesting": {
+    "description": "The first balancing tests should compare signature troops directly against equivalently priced generic configurations, particularly:",
+    "comparisons": [
+      "Greatweapon Guard versus Heavy Weapon Elite Infantry.",
+      "Glade Hunters versus upgraded generic Longbowmen.",
+      "Ironbreakers versus defensive Elite Infantry.",
+      "Brutes versus Dual Weapon Elite Infantry.",
+      "Eight-model hordes versus generic 10-model Infantry.",
+      "Blood Knights versus upgraded Heavy Cavalry.",
+      "The Aether Ballista Team versus Heavy Artillery.",
+      "Signature Support Characters versus generic three-model W2 Support Units."
+    ],
+    "note": "The large faction traits, Command Abilities, and unique Character interactions should then be tested in complete 2,000-point armies under the established CP and Doctrine-card economy."
+  },
+  "v4FactionDamageOutputAndExtraCoreRebalance": {
+    "description": "Following the same post-playtesting concerns that prompted the Generic Units damage rebalance (units taking too long to inflict meaningful damage), this chapter received two coordinated changes.",
+    "extraCoreParity": "Sacred Orders was the only faction with three Signature Core choices instead of two. Rather than reducing Sacred Orders, the other eleven factions each gained one additional Core (or, in a few cases, a different category) unit, bringing every faction to the same three-choice baseline. Each addition was chosen to reinforce what the faction already does well rather than patch a weakness — see each faction file's own designNotes for details, and 13_roster_distribution_summary.json for the consolidated list.",
+    "hordeExclusion": "Horde-style units were excluded from the attack-profile changes below, keeping the Models-not-Attacks design used for the three originally buffed Horde units (Choppa Mob, Corpse Horde) and the two horde-like Core units (Sneaks, Thralls), plus the new Cultist Horde: their weapon dice remain exactly as printed.",
+    "attackProfileRebalance": "Across every other Core, Captain, Wizard/Support, Large Asset, and Faction Leader profile in this domain, Damage 1 weapons gained +1 Attack, while Damage 2+ weapons kept their listed Attacks and instead gained a thematic Anti-[Type] 2 (or 3 on a handful of standout Large Asset/Leader weapons already carrying multiple keywords), chosen to reflect what that unit or faction already hunts or fears most (e.g. Anti-Armored on siege/engineering factions, Anti-Elite on duelist Captains and Leaders, Anti-Monster on anti-Large-Asset specialists). A few weapons that already carried an Anti-[Type] keyword instead had their Hit characteristic improved by one step for variety. Point costs are unchanged pending further playtesting."
+  }
+}

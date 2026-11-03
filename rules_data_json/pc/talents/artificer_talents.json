@@ -1,0 +1,56 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/13_talents.md",
+    "section": "ARTIFICER TALENTS"
+  },
+  "description": "Artificer Talents expand a limited pool of prepared field inventions. They use the normal Talent tier prerequisites and XP costs, rather than a new progression track. The complete Alchemist, Machinist, and Runesmith Formula lists (18_artificer_formulas.md) contain five Formulas each.",
+  "restrictedToClass": "artificer",
+  "talents": [
+    {
+      "id": "formula-study",
+      "name": "Formula Study",
+      "tier": "2+",
+      "type": "Ranked — Passive",
+      "effect": "Each rank teaches one additional Formula from your own Artificer Subclass. You must not already know it. The Formula is not automatically prepared unless selected as Field Specialty or granted an explicit exemption. You begin knowing two of the five, so a maximum of three ranks normally allows you to learn all five."
+    },
+    {
+      "id": "formula-prowess",
+      "name": "Formula Prowess",
+      "tier": "2+",
+      "type": "Ranked — Passive",
+      "effect": "Each rank improves one different known Formula. Choose two different Minor Enhancements or one Major Enhancement and apply them to that Formula whenever it is used. Record the affected Formula and enhancements on the Character Sheet.",
+      "enhancements": [
+        { "name": "Extended Delivery", "size": "Minor", "effect": "Increase the Formula's target, placement, or Attack range by 1\". Does not increase Blast radius or number of targets." },
+        { "name": "Fine Calibration", "size": "Minor", "effect": "An eligible Formula Attack gains Accurate 1; add to other applicable Accurate values." },
+        { "name": "Focused Utility", "size": "Minor", "effect": "Increase one printed movement bonus, Slow value, or Brace value by 1. Applies only to an eligible number in the Formula, and does not bypass any printed maximum." },
+        { "name": "Reliable Trigger", "size": "Minor", "effect": "Increase one trap's trigger radius by 1\"." },
+        { "name": "Forceful Attack", "size": "Major", "effect": "Add 1 Attack die to a Formula Attack or improve its Hit by one step (minimum 2+); choose one." },
+        { "name": "Potent Remedy", "size": "Major", "effect": "Increase a healing Formula's printed Heal cap by 1, to a maximum of 3; does not revive Models or remove Critical Injuries." },
+        { "name": "Amplified Charge", "size": "Major", "effect": "A Formula trap that inflicts automatic Hits gains one additional automatic Hit when triggered." },
+        { "name": "Wide Application", "size": "Major", "effect": "Increase a nondamaging area Formula's radius by 1\", without changing how many times affected Units resolve it." },
+        { "name": "Refined Technique", "size": "Major", "effect": "For an eligible Formula with a Characteristic + Skill Check, after a successful roll, count one additional effective success when resolving that Formula's scaled effect. Does not make a failed Check succeed, generate Surges, or override its printed cap." }
+      ],
+      "notes": [
+        "You cannot select the same named enhancement twice on one Formula.",
+        "Each Formula may benefit from one rank of Formula Prowess, but later ranks can improve other known Formulas.",
+        "Enhancements never remove the Formula's CP cost or any Assault action requirement. They cannot increase printed Damage or grant permanent free equipment.",
+        "If a modification cannot legally affect the chosen Formula, choose another."
+      ]
+    },
+    {
+      "id": "improvised-formula",
+      "name": "Improvised Formula",
+      "tier": 3,
+      "cost": "0 CP",
+      "type": "Movement — Once per Battle",
+      "effect": "During your own Movement activation, exchange one optional prepared Formula for another Formula you already know from your own Subclass. The newly selected Formula becomes prepared immediately; the displaced Formula is no longer prepared. You do not gain another Command slot or extra activation. Your always-prepared Field Specialty is unchanged."
+    },
+    {
+      "id": "cross-discipline",
+      "name": "Cross-Discipline",
+      "tier": 5,
+      "type": "Passive",
+      "effect": "Learn one Formula from another Artificer Subclass. It is always prepared as an additional Field Specialty, without occupying an optional Command slot. Pay the Formula's ordinary CP and Assault action costs when using it. This does not grant access to the other Subclass's full Formula list, equipment, or non-Formula features. It can be chosen for a future eligible Formula Prowess rank if not already improved."
+    }
+  ]
+}

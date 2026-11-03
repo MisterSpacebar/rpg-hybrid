@@ -1,0 +1,129 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/13_talents.md",
+    "section": "MAGE TALENTS"
+  },
+  "description": "Mage Talents represent advanced magical training, arcane manipulation, defensive magic, and control over positioning and supernatural effects.",
+  "restrictedToClass": "mage",
+  "talents": [
+    {
+      "id": "spell-prowess",
+      "name": "Spell Prowess",
+      "tier": "1+",
+      "type": "Ranked — Passive",
+      "effect": [
+        "Choose one Spell Attack when acquiring Rank I.",
+        "Every Rank: Increase that Attack's Attacks by 1, or improve its Hit by 1 step; and improve one Skill by 1 step.",
+        "This Attack must be different from the Attack improved through generic Prowess. All additional Ranks continue improving the selected Attack."
+      ]
+    },
+    {
+      "id": "spell-reach",
+      "name": "Spell Reach",
+      "tier": "1+",
+      "type": "Ranked — Passive",
+      "effect": "Choose one Spell Attack. Increase its Range by 2\" per Rank."
+    },
+    {
+      "id": "arcane-sight",
+      "name": "Arcane Sight",
+      "tier": 1,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Choose one visible enemy Unit within 8\". Your next Spell Attack against that Unit this Round ignores Cover and Evade granted by elevation."
+    },
+    {
+      "id": "haste",
+      "name": "Haste",
+      "tier": 1,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Choose one friendly Unit within Short Range. Roll Mind + Mysticism. The selected Unit gains 1+X\" Move until the end of the Round, where X equals the number of successes. If the targeted unit has already activated in the Movement Phase this round, they instead gain Charge 1+X, if they are eligible to do so."
+    },
+    {
+      "id": "controlled-casting",
+      "name": "Controlled Casting",
+      "tier": 2,
+      "type": "Passive — Once per Activation",
+      "effect": "When making a Spell Attack, that Attack gains Accurate 1."
+    },
+    {
+      "id": "barrier",
+      "name": "Barrier",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When you or an ally within Short Range is targeted by a non-Instant Attack, improve the target's Armor by 1 step against that Attack."
+    },
+    {
+      "id": "hex",
+      "name": "Hex",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Assault",
+      "effect": "Choose one visible enemy Unit within Medium Range. Worsen either its Armor or Evade by 1 step until the end of the Round."
+    },
+    {
+      "id": "binding-field",
+      "name": "Binding Field",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Assault",
+      "effect": "Choose one enemy Unit within Medium Range. Until the end of the Round, that Unit cannot make additional Moves granted by abilities or use movement Reactions. Its normal Movement activation remains unaffected."
+    },
+    {
+      "id": "dispel",
+      "name": "Dispel",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When an enemy within Medium Range activates a non-Instant magical Command Ability, roll Mind + Mysticism. If the Check generates at least one success, the triggering Command fails. Any CP spent on the failed Command remains spent."
+    },
+    {
+      "id": "flicker-step",
+      "name": "Flicker Step",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When targeted by a non-Instant Engagement Attack, immediately perform Blink 2. If the entire defending Unit is outside the Attack's Range after repositioning, the triggering Attack fails. Follow the normal legal-placement, elevation, and Coherency restrictions."
+    },
+    {
+      "id": "teleport",
+      "name": "Teleport",
+      "tier": 3,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Choose yourself or one friendly Unit within Short Range that is not Engaged. The Unit immediately performs Blink X, where X equals your Mind. Use the leading-Model and Coherency procedure in Keywords — Blink X (10_keywords.md#blink-x); the destination must be legal and outside Engagement."
+    },
+    {
+      "id": "arcane-rupture",
+      "name": "Arcane Rupture",
+      "tier": 3,
+      "cost": "1 CP",
+      "type": "Assault",
+      "effect": "Choose one visible enemy Unit within Medium Range. Roll Mind + Mysticism. Choose up to X enemy Units within 2\" of the original target, including the original target, where X equals the number of successes. Each selected Unit suffers Direct Damage 1. Ward applies normally. A Unit cannot be selected more than once by the same use of Arcane Rupture."
+    },
+    {
+      "id": "arcane-penetration",
+      "name": "Arcane Penetration",
+      "tier": 3,
+      "type": "Passive — Once per Round",
+      "effect": "When one of your Spell Attacks Surges, replace one normal successful Hit with Direct Damage 1 against the target. Ward applies normally. The replaced Hit is removed from the normal Attack resolution."
+    },
+    {
+      "id": "effortless-channeling",
+      "name": "Effortless Channeling",
+      "tier": 4,
+      "type": "Passive — Once per Round",
+      "effect": "Reduce the CP cost of your first Mage Class, Subclass, or Talent Command Ability by 1, to a minimum of 0. This does not reduce the CP cost of unrelated Commands granted by other sources."
+    },
+    {
+      "id": "arcane-storm",
+      "name": "Arcane Storm",
+      "tier": 5,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Instead of making your normal Move this phase, place a 25 mm token within Medium Range of this Character. At the end of the Round, determine which Units have at least half their current Models within 3\" of the token, rounding up. A Model counts as within the radius if any part of its base is inside it. Each qualifying Unit suffers X separate automatic Magic Hits at Damage 1, where X equals your Mind characteristic. X is applied once per Unit, not per Model. Resolve each Hit against that Unit using Armor → Ward → Damage; Evade does not apply unless another rule explicitly permits it. Allocate resulting Damage following the normal Unit rules, without limiting Damage allocation to Models inside the radius. The storm affects qualifying friendly and enemy Units alike. Remove the token after resolving all Hits."
+    }
+  ]
+}

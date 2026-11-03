@@ -1,0 +1,43 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "4. Optional Special Rules" },
+  "intro": "Most encounters use zero or one optional Special Rule. Important encounters may use two. Special Rules should introduce tactical variety without unnecessarily increasing bookkeeping.",
+  "rules": [
+    {
+      "name": "Ambush",
+      "effect": "One side is designated the Ambusher. The Ambusher uses the scenario's concealed, flanking, or delayed deployment locations. The GM establishes which Units may begin concealed and when concealed positions are revealed.",
+      "note": "Ambush does not automatically grant additional Units or Battlefield Edges."
+    },
+    {
+      "name": "Fortified",
+      "effect": "One side begins with established defensive structures or prepared positions. The GM places the required fortifications before ordinary terrain placement. Fortifications follow their existing rules and use established profiles where necessary.",
+      "note": "Fortified does not automatically grant an additional Battlefield Edge."
+    },
+    {
+      "name": "Reinforcements",
+      "effect": "Designate eligible reserve Units and their arrival Rounds before deployment. Reinforcements count toward the encounter's army allowance. Unless the scenario explicitly overrides them, use the normal reserve deployment and activation restrictions. The entry locations must be identified before battle."
+    },
+    {
+      "name": "Hazardous Conditions",
+      "effect": "Introduce a defined environmental hazard such as heavy rain, dangerous water, smoke, unstable ground, or extreme conditions. The GM establishes affected areas and effects before play.",
+      "note": "Prefer existing Difficult Terrain, visibility, Damage, and Cover rules rather than inventing additional status conditions."
+    },
+    {
+      "name": "Hidden Information",
+      "effect": "Designate concealed Targets, Sites, traps, or enemy positions before deployment. The GM records the hidden information. Revelation occurs when the stated discovery conditions are satisfied.",
+      "note": "The GM may not relocate concealed objectives in response to player decisions."
+    },
+    {
+      "name": "Moving Objective",
+      "effect": "Introduce a Scenario Model or object that moves according to a predetermined route, trigger, or movement profile. The object's activation or End Step timing must be specified before the encounter."
+    },
+    {
+      "name": "Unstable Magic",
+      "effect": "Designate one magical area or object. At the beginning or end of specified Rounds, resolve a predetermined effect or roll on an established table of magical effects. The possible results must be determined before play."
+    },
+    {
+      "name": "Third Party",
+      "effect": "Introduce one independent force, creature, or group with its own limited objective and activation behavior. The GM determines its behavior before the encounter.",
+      "note": "Third-party Units do not automatically control objectives for either principal side. Additional military strength must be accounted for in the encounter balance."
+    }
+  ]
+}

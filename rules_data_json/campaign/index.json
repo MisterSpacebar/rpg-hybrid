@@ -1,0 +1,24 @@
+{
+  "domain": "campaign",
+  "note": "This covers the card/data-driven appendices of the Campaign chapter (rulebooks/chapters/04_campaign/): the full card catalogues (Appendices A–I) plus three further data/reference appendices (L, M, O). The core campaign rules (00_campaign_core_rules.md) and the remaining procedural/reference appendices (J, K, N, P, Q — Component Setup, Campaign Examples, Council/Turn Procedure, Legacy Captains, and Records/Tracking Sheets) remain in Markdown only, by design, as agreed with the user.",
+  "files": [
+    { "file": "01_company_order_cards.json", "sourceAppendix": "Appendix A", "title": "Company Order Cards" },
+    { "file": "02_grand_faction_maneuver_cards.json", "sourceAppendix": "Appendix B", "title": "Grand Faction Maneuver Cards" },
+    { "file": "03_act_agendas.json", "sourceAppendix": "Appendix C", "title": "Act Agendas" },
+    { "file": "04_general_political_tasks.json", "sourceAppendix": "Appendix D", "title": "General Political Tasks" },
+    { "file": "05_grand_faction_political_tasks.json", "sourceAppendix": "Appendix E", "title": "Grand Faction Political Tasks" },
+    { "file": "06_neutral_opportunities.json", "sourceAppendix": "Appendix F", "title": "Neutral Opportunities" },
+    { "file": "07_exploration_and_discoveries.json", "sourceAppendix": "Appendix G", "title": "Exploration and Discoveries" },
+    { "file": "08_development_rewards.json", "sourceAppendix": "Appendix H", "title": "Development Rewards" },
+    { "file": "09_grand_faction_charters.json", "sourceAppendix": "Appendix I", "title": "Grand Faction Charters" },
+    { "file": "10_quick_reference_sheets.json", "sourceAppendix": "Appendix L", "title": "Quick Reference Sheets" },
+    { "file": "11_optional_dice_tables.json", "sourceAppendix": "Appendix M", "title": "Optional Dice Tables and Randomized Card Selection" },
+    { "file": "12_tri_hex_atlas_and_territorial_development.json", "sourceAppendix": "Appendix O", "title": "Tri-Hex Atlas and Territorial Development" }
+  ],
+  "designNotes": [
+    "The five 'Grand Factions' (Unbound, Conclave, Wayfarers, Legions, Concord) used throughout Appendices B, E, I, and O are a separate campaign-layer concept from the twelve army-list factions documented under rules_data_json/factions/ (Free Realms, Iron Holds, Sacred Orders, Wild Courts, Warclans, Underclans, Death Legions, Blood Courts, Spirit Hosts, Arcane Orders, Infernal Hosts, Titan Clans). They are not the same roster and the names are intentionally distinct — not a naming collision."
+  ],
+  "knownIssues": [
+    "Appendix M's Act Agenda names (M.5 — e.g. 'Whispers of War', 'Broken Accord', 'Charter Wars') do not match the Act Agenda names transcribed from Appendix C in 03_act_agendas.json. Both are faithful transcriptions of their respective source appendices; this is flagged as an inter-appendix inconsistency in the source material rather than resolved by this conversion."
+  ]
+}

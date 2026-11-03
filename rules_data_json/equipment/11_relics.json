@@ -1,0 +1,64 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "RELICS"
+  },
+  "description": "Relics are exceptional magical items. They are normally acquired through major adventures, powerful enemies, ancient ruins, or important narrative events. Relic prices represent battlefield value rather than ordinary market availability.",
+  "relics": [
+    {
+      "id": "blade-of-the-falling-star",
+      "name": "Blade of the Falling Star",
+      "category": "Melee Weapon",
+      "points": 95,
+      "profile": { "range": "Engaged", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Magic"], "keywords": ["Critical 2", "Anti-Elite 2"] },
+      "effect": "When the Attack Surges, one Critical Hit may deal +1 Damage.",
+      "notes": ["This is the weapon's complete Point cost, not an enchantment added to another weapon."]
+    },
+    {
+      "id": "aegis-of-the-first-king",
+      "name": "Aegis of the First King",
+      "category": "Shield",
+      "points": 50,
+      "effect": "Counts as a Shield. Improve Armor by 1 step. Gain Ward 5+ against Magic.",
+      "command": {
+        "name": "Hold the Line",
+        "cost": "1 CP",
+        "timing": "Reaction — Once per Round",
+        "effect": "When you or an ally within 2\" is targeted by a non-Instant Attack, affected friendly Units within 2\" of you gain Tough 2 against the triggering Attack."
+      }
+    },
+    {
+      "id": "crown-of-command",
+      "name": "Crown of Command",
+      "category": "Artifact",
+      "points": 50,
+      "effect": "Increase the Range of friendly-targeted Command Abilities by 2\". Once per Round, reduce the CP cost of one Command Ability targeting an ally by 1, to a minimum of 0."
+    },
+    {
+      "id": "staff-of-the-archmage",
+      "name": "Staff of the Archmage",
+      "category": "Magical Focus",
+      "points": 55,
+      "effect": "Choose one Spell Attack. That Attack gains: +2\" Range; +1 Attack die. Once per Round, when making a Spell Attack, replace one normal successful Hit with Direct Damage 1 against the target. Ward applies normally.",
+      "command": {
+        "name": "Masterful Casting",
+        "cost": "1 CP",
+        "timing": "Assault",
+        "effect": "Your next Spell Attack this Turn gains Accurate 2."
+      }
+    },
+    {
+      "id": "saints-reliquary",
+      "name": "Saint's Reliquary",
+      "category": "Magical Focus",
+      "points": 55,
+      "effect": "Gain Ward 5+ against Magic. Once per Round, when Healing another Unit, Heal 1 Wound to yourself.",
+      "command": {
+        "name": "Greater Miracle",
+        "cost": "2 CP",
+        "timing": "Movement — Once per Battle",
+        "effect": "Choose up to three friendly Units within Short Range. Heal 1 Wound to each selected Unit. This cannot restore removed Models."
+      }
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/05_classes.md",
+    "section": "ARTIFICER"
+  },
+  "id": "artificer",
+  "name": "Artificer",
+  "role": "Field preparation, invention, equipment utility, and adaptable tactical support",
+  "tags": ["Support"],
+  "stats": { "move": "4\"", "wounds": 4, "armor": "6+", "evade": "6+", "ward": null },
+  "classAbility": {
+    "name": "Field Formulae",
+    "effect": [
+      "Choose one of the three Artificer Subclasses, then learn two Formulas from that Subclass's five listed Formulas.",
+      "Designate one known Formula as your Field Specialty: it is always prepared and fills the Artificer's Subclass Signature slot.",
+      "The other is known but must occupy one of the Artificer's four optional prepared Command slots to be used in battle.",
+      "Whenever Commands are prepared outside combat, a different known Formula from the Artificer's own Subclass may be designated as Field Specialty.",
+      "Formula Commands use their own CP costs, activation timing, and occasional Craft/Mysticism Skill Checks.",
+      "Formula-based Assault Attacks replace the Artificer's ordinary Assault action.",
+      "New Formulas and improvements are gained through Artificer Talents (see talents/artificer_talents.json)."
+    ],
+    "fullFormulaListSourceRef": "18_artificer_formulas.md"
+  },
+  "startingEquipment": {
+    "note": "Artificers may choose a Pistol, Dagger, or Shortsword when selecting starting weapons; they may equip one melee weapon and one ranged weapon normally, paying each selected weapon's listed Equipment Points. They may acquire other equipment later under the ordinary equipment rules. There are no free weapons or extra Point charges for starting Formulas.",
+    "assaultPhaseOption": {
+      "name": "Pistol",
+      "profile": { "range": "6\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm", "Instant"] },
+      "points": 10
+    },
+    "combatPhaseOptions": [
+      { "name": "Dagger", "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 },
+      { "name": "Shortsword", "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 }
+    ],
+    "notes": [
+      "Artificers may also use their known Formula Attacks as their selected Assault action, paying CP and satisfying the corresponding Formula's preparation requirements.",
+      "Formula Attack profiles appear in the subclass tables below for convenience and are defined in 18_artificer_formulas.md."
+    ]
+  },
+  "subclasses": [
+    {
+      "id": "alchemist",
+      "name": "Alchemist",
+      "description": "Alchemists create field remedies, smoke, corrosive mixtures, and volatile thrown flasks. Choose two of their five Formulas at creation.",
+      "formulas": [
+        { "name": "Quick Tonic", "timing": "Movement, 1 CP", "summary": "Mind + Craft; next friendly Move bonus scales with successes, max +4\"." },
+        { "name": "Restorative Draught", "timing": "Movement, 1 CP", "summary": "Mind + Craft; Heal up to 2 on one surviving Model." },
+        { "name": "Smoke Vial", "timing": "Movement, 1 CP", "summary": "Create a 2\"-radius smoke area granting Cover 1." },
+        { "name": "Corrosive Flask", "timing": "Assault Attack, 1 CP", "summary": "Physical Attack; on Hit, suppress Tough before Armor and through the Round." },
+        { "name": "Volatile Flask", "timing": "Assault Attack, 1 CP", "summary": "Physical, Fire Attack with Blast 1\"." }
+      ],
+      "formulaAttacks": {
+        "phase": "Assault",
+        "spells": [
+          { "name": "Corrosive Flask", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["on Hit: suppress Tough"] }, "cost": "Included Formula" },
+          { "name": "Volatile Flask", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical", "Fire"], "keywords": ["Blast 1\""] }, "cost": "Included Formula" }
+        ]
+      }
+    },
+    {
+      "id": "machinist",
+      "name": "Machinist",
+      "description": "Machinists specialize in deployable devices, positioning, and targeting. Choose two of their five Formulas at creation.",
+      "formulas": [
+        { "name": "Proximity Charge", "timing": "Movement, 1 CP", "summary": "Trap marker: 2 automatic Physical Hits, Armor/Ward, no Evade." },
+        { "name": "Snare Wire", "timing": "Movement, 1 CP", "summary": "Agility + Craft; trap inflicts Slow based on successes." },
+        { "name": "Spotter Lens", "timing": "Movement, 1 CP", "summary": "Reduce target's effective Cover X by 1 against next allied ranged Attack." },
+        { "name": "Winch Line", "timing": "Movement, 1 CP", "summary": "Body + Craft; reposition an allied Unit according to successes." },
+        { "name": "Rivet Launcher", "timing": "Assault Attack, 1 CP", "summary": "Physical Attack with Accurate 1." }
+      ],
+      "formulaAttacks": {
+        "phase": "Assault",
+        "spells": [
+          { "name": "Rivet Launcher", "profile": { "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "cost": "Included Formula" }
+        ]
+      }
+    },
+    {
+      "id": "runesmith",
+      "name": "Runesmith",
+      "description": "Runesmiths temporarily inscribe equipment to create elemental attacks and defensive safeguards. Choose two of their five Formulas at creation.",
+      "formulas": [
+        { "name": "Ember Rune", "timing": "Movement, 1 CP", "summary": "Next friendly Physical Weapon Attack gains Fire and Accurate 1." },
+        { "name": "Frost Rune", "timing": "Movement, 1 CP", "summary": "Next friendly Physical Weapon Attack gains Frost; unsaved Damage inflicts Slow 1." },
+        { "name": "Hunter's Sigil", "timing": "Movement, 1 CP", "summary": "Mind + Mysticism; next friendly Weapon Attack gains Anti-[type] X based on successes." },
+        { "name": "Warding Etching", "timing": "Movement, 1 CP", "summary": "Grant Ward 6+ against Magic for the Round." },
+        { "name": "Anchor Rune", "timing": "Movement, 1 CP", "summary": "Grant Brace 2 for the Round." }
+      ],
+      "notes": [
+        "A runed Physical Weapon Attack remains Physical, even when it receives Fire or Frost. Elemental attributes may be carried by Physical or Magic Attacks; they do not change defenses unless a specific rule states otherwise."
+      ]
+    }
+  ]
+}

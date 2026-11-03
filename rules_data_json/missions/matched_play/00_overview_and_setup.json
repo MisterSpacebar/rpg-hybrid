@@ -1,0 +1,81 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md",
+    "section": "1. Overview — 5. Victory Conditions"
+  },
+  "title": "MATCHED PLAY MISSIONS",
+  "versionLabel": "Standard Wargame Scenarios — Revised Draft v2 (pre-layout reconciliation)",
+  "overview": {
+    "summary": "Matched Play uses standardized battlefield sizes, army-building rules, and victory conditions for competitive battles.",
+    "gameComponents": [
+      "Two armies built to the agreed Points limit.",
+      "One Battlefield Layout.",
+      "One Matched Play Mission.",
+      "Alternating terrain placement.",
+      "Five Rounds of Structured Combat."
+    ],
+    "layoutVsMission": "The Battlefield Layout determines deployment zones and objective-marker positions. The Mission determines how Victory Points (VP) are scored.",
+    "standardGameSize": {
+      "table": [
+        { "format": "Small", "armyPointsPerSide": 1000, "battlefield": "36\" × 36\"", "objectives": 3 },
+        { "format": "Standard", "armyPointsPerSide": 2000, "battlefield": "36\" × 60\"", "objectives": 5 },
+        { "format": "Grand", "armyPointsPerSide": 3000, "battlefield": "48\" × 72\"", "objectives": 7 }
+      ],
+      "note": "The standard format is 2,000 Points, five objectives, and five Rounds. The eight Missions below are written for this format. Smaller and larger battles may use the scaling guidelines at the end of the chapter (see 11_format_scaling_and_design_principles.json)."
+    }
+  },
+  "settingUpABattle": {
+    "order": [
+      "Agree on the army Points limit.",
+      "Select a Battlefield Layout.",
+      "Select a Matched Play Mission.",
+      "Place objective markers at the layout's designated positions.",
+      "Establish the terrain pool and alternate terrain placement.",
+      "Determine which player uses each deployment zone.",
+      "Declare Reserves and deploy armies.",
+      "Begin Round 1."
+    ],
+    "layoutSelection": "Standard competitive games may use any of the nine numbered M-series layouts, including an agreed alternate version. If selecting a layout randomly, roll D10 and reroll 10. If the players use an alternative variant, such as M2 Staggered Front v2, agree on that variant before rolling or drawing the layout.",
+    "missionSelection": "Roll D8 to determine the Mission, or agree on a Mission before army deployment. The selected Mission applies equally to both players.",
+    "objectiveAffiliationForMissions": "Where a Mission distinguishes friendly-affiliated, enemy-affiliated, and Neutral objectives, determine their affiliation before deployment using the chosen layout. Each side receives the same number of affiliated objectives; for the standard five-objective game, designate two for Side A, two for Side B, and one Neutral. Three-objective games designate one per side and one Neutral; seven-objective games designate three per side and one Neutral. Where the layout lacks explicit affiliation labels, assign each objective to the side with the nearer deployment zone, then resolve ambiguous placements by mutual agreement or a roll-off while retaining equal numbers. Record these assignments at setup; they do not change when control changes. Layouts with numbered objectives may use their printed affiliations when supplied."
+  },
+  "objectiveControl": {
+    "defaultRule": "Unless a Mission states otherwise, an objective is controlled according to the Structured Combat rules.",
+    "rules": [
+      "A Unit contributes to control if at least one eligible Model is within 3\" of the objective.",
+      "Each eligible Unit contributes one to its side's control total, regardless of its number of Models.",
+      "The side with more eligible Units in range controls the objective.",
+      "If both sides have equal eligible Units in range, the objective is Contested and neither side controls it.",
+      "Downed, Withdrawn, and Reserve Units cannot control objectives.",
+      "A Unit may count toward only one objective during the same Scoring Phase. If it is within range of multiple objectives, its controlling player chooses which one it contributes to."
+    ]
+  },
+  "victoryPointScoring": {
+    "primaryVP": {
+      "defaultRule": "Unless a Mission explicitly replaces Primary scoring, each player scores 1 Primary VP for each objective controlled at the end of the Scoring Phase.",
+      "cap": "A player may score up to 5 ordinary objective-control Primary VP per Round in the standard format. Mission-specific one-time bonuses (such as Relic deliveries) are additional only when explicitly stated."
+    },
+    "tacticalVP": {
+      "rule": "Each Mission also provides one Tactical Objective. A player fulfilling that condition during the Round gains 1 Tactical VP.",
+      "cap": "A player may earn no more than 1 Tactical VP per Round, even if the condition is satisfied multiple times."
+    },
+    "scoringSchedule": {
+      "roundSequence": "Priority → Movement → Assault → Combat → Scoring → End Step.",
+      "rule": "Objective control and Mission conditions are evaluated during the Scoring Phase.",
+      "startRound": "VP scoring begins in Round 2. Round 1 establishes battlefield control but awards no VP.",
+      "note": "Conditions referring to the previous Round may use the objective-control state recorded during Round 1."
+    },
+    "maximumOrdinaryScoring": {
+      "table": [
+        { "source": "Primary Objectives", "maxVPPerRound": 5 },
+        { "source": "Tactical Objective", "maxVPPerRound": 1 },
+        { "source": "Total", "maxVPPerRound": 6 }
+      ]
+    }
+  },
+  "victoryConditions": {
+    "standardLength": "A normal battle lasts five Rounds. At the end of Round 5, the player with more VP wins. If both players have equal VP, the result is a Draw.",
+    "decisiveVictory": "Beginning in Round 2, a player immediately wins if they finish a Scoring Phase with a VP lead of 10 or more. This is checked after all Primary and Tactical VP for that Round have been awarded. A Decisive Victory ends the battle regardless of the remaining Rounds.",
+    "armyDestruction": "Destroying the opposing army does not automatically award additional VP. If one army has no remaining eligible Units, continue resolving any remaining scoring necessary to determine victory, or end the battle immediately if no further VP can be earned by that army and the winner is mathematically certain."
+  }
+}

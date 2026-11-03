@@ -1,0 +1,14 @@
+{
+  "description": "Manifest for Player Character data: species (Ancestries), Classes/Subclasses, and Talents.",
+  "files": [
+    { "id": "ancestries", "file": "ancestries.json", "description": "All 11 Ancestries with starting Characteristics, Size, and Ancestry Traits (including Beastfolk Adaptations and Undead Archetypes)." },
+    { "id": "classes", "folder": "classes/", "description": "Base Classes and their Subclasses: index file plus one file per Class (Warrior, Rogue, Mage, Priest, Artificer)." },
+    { "id": "talents", "folder": "talents/", "description": "Talent system rules plus Generic, Specialization, Animal Companion, and per-Class Talent lists." }
+  ],
+  "sourceFiles": [
+    "rulebooks/chapters/01_rpg/04_ancestries.md",
+    "rulebooks/chapters/01_rpg/05_classes.md",
+    "rulebooks/chapters/01_rpg/13_talents.md",
+    "rulebooks/chapters/01_rpg/03_experience_and_advancement.md"
+  ]
+}

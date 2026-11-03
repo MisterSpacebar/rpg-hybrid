@@ -1,0 +1,45 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "MAGICAL SHIELDS"
+  },
+  "description": "Magical Shields provide the normal Shield benefit in addition to their enchantments.",
+  "enchantments": [
+    {
+      "name": "Mirror Shield",
+      "addedPoints": 20,
+      "additionalBenefit": "Magical Ward and reflection",
+      "effect": "Gain Ward 6+ against Magic.",
+      "command": {
+        "name": "Reflect",
+        "cost": "1 CP",
+        "timing": "Reaction",
+        "effect": "After passing a Ward Save against a non-Instant Magic Attack, roll one D6. On 5+, the attacker suffers Direct Damage 1. Ward applies normally."
+      }
+    },
+    {
+      "name": "Shield of the Guardian",
+      "addedPoints": 20,
+      "additionalBenefit": "Ally interception",
+      "effect": null,
+      "command": {
+        "name": "Interpose",
+        "cost": "1 CP",
+        "timing": "Reaction",
+        "effect": "When an ally within 2\" is targeted by an Attack or Charge, move up to 2\" toward that ally. If you finish within 2\", redirect one incoming Hit or Charge Impact Hit to yourself before Saves are rolled. Resolve your own Saves against the redirected Hit."
+      }
+    },
+    {
+      "name": "Spellbreaker Shield",
+      "addedPoints": 25,
+      "additionalBenefit": "Magical Command protection",
+      "effect": null,
+      "command": {
+        "name": "Nullify",
+        "cost": "1 CP",
+        "timing": "Reaction",
+        "effect": "When targeted by a non-Instant magical Command Ability, roll one D6. On 4+, the ability fails against you. Other targets are affected normally."
+      }
+    }
+  ]
+}

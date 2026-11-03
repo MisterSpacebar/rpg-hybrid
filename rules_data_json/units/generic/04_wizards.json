@@ -1,0 +1,90 @@
+{
+  "category": "wizards",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/01_generic_units.md",
+    "section": "4. WIZARDS"
+  },
+  "summary": "Wizards are magical Characters who combine reliable Spell Attacks with offensive, defensive, or utility Arcana.",
+  "units": [
+    {
+      "id": "wizard",
+      "name": "Wizard",
+      "basePoints": 135,
+      "baseModels": 1,
+      "tags": ["Elite", "Wizard"],
+      "description": "Choose one Wizard specialization.",
+      "specialization": {
+        "chooseCount": 1,
+        "options": [
+          {
+            "name": "Wizard",
+            "points": 0,
+            "stats": { "move": "3\"", "wounds": 3, "armor": "6+", "evade": "6+", "ward": "6+ (Magic)" },
+            "arcaneBolt": { "range": "7\"", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Accurate 1"] },
+            "arcanaChoices": 2
+          },
+          {
+            "name": "Master Wizard",
+            "points": 50,
+            "stats": { "move": "3\"", "wounds": 4, "armor": "6+", "evade": "6+", "ward": "5+ (Magic)" },
+            "arcaneBolt": { "range": "9\"", "attacks": 5, "hit": "4+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Accurate 1", "Long Range 3\""] },
+            "arcanaChoices": 3,
+            "tagChange": "Loses Elite tag and gains Hero."
+          }
+        ]
+      },
+      "meleeWeaponOptions": {
+        "chooseCount": 1,
+        "note": "Wizards retain Arcane Bolt alongside their selected melee weapon.",
+        "options": [
+          { "name": "Staff or Dagger", "points": 0, "profile": { "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] } },
+          { "name": "Arcane Blade", "points": 25, "profile": { "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] } },
+          { "name": "Battle Staff", "points": 20, "profile": { "range": "Engaged 2\"", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] } }
+        ]
+      },
+      "masterWizardAbility": {
+        "name": "Arcane Mastery",
+        "type": "Passive",
+        "effect": "When this Model's Spell Attack generates a Surge, one target of that Attack suffers Direct Damage 1 after the Attack resolves. This additional Damage does not replace normal Hits or Damage. Applicable Ward Saves still apply."
+      },
+      "wizardUpgrades": {
+        "options": [
+          { "name": "Standard Arcana", "points": 0, "effect": "Know the number of Arcana provided by the Wizard specialization." },
+          { "name": "Magic Armor", "points": 25, "effect": "Armor and Evade become 5+" },
+          { "name": "Additional Arcana", "pointsEach": 15, "effect": "Learn one additional Arcana. Increases spell options, not CP or Doctrine-card availability." },
+          { "name": "Arcane Training", "points": 15, "effect": "Gain Accurate +1 on offensive spell attacks." },
+          { "name": "Weapon Specialization", "points": 25, "effect": "Choose one Faction, Unit Type, or Trait tag. One offensive Arcana (Arcane Bolt is eligible) gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts. May be purchased once." },
+          { "name": "Veteran", "points": 50, "effect": "Increase Attacks by 1 and improve Hit by one step on one offensive Arcana; Arcane Bolt is eligible." },
+          { "name": "Cantrip", "points": 30, "effect": "Reduce the CP cost of this Model's first eligible Command each Round by 1 (minimum 0). No card is exhausted for a 0 CP use." },
+          { "name": "Greater Ward", "points": 35, "effect": "This unit's Ward improves by 1. This includes both Physical and Magic." }
+        ]
+      },
+      "genericArcana": {
+        "note": "Attack-profile Arcana are alternative weapons for a Wizard's normal Attack and do not require CP unless specified.",
+        "offensive": [
+          { "name": "Arcane Blast", "commandCost": null, "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Blast 1\""] }, "effect": "Area magic that inflicts an automatic Hit on other Units within 1\" of the target if the Attack scores a Hit." },
+          { "name": "Force Bolt", "commandCost": null, "profile": { "range": "10\"", "attacks": 3, "hit": "4+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] } },
+          { "name": "Arcane Lance", "commandCost": null, "profile": { "range": "8\"", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Magic"], "keywords": ["Heavy", "Anti-Monster 2"] } }
+        ],
+        "command": {
+          "note": "Command Arcana require their listed CP cost; a Command card represents that CP in matched play and is not an additional cost.",
+          "options": [
+            { "name": "Arcane Ward", "cpCost": 1, "timing": "Movement", "effect": "Grant Ward 6+ to one friendly Unit within Short, or improve its existing Ward by one step." },
+            { "name": "Haste", "cpCost": 1, "timing": "Movement", "effect": "One friendly Unit within Short gains +2\" Move until the end of the Round." },
+            { "name": "Hex", "cpCost": 1, "timing": "Assault", "effect": "Worsen one visible enemy's Armor or Evade by one step until the end of the Round." },
+            { "name": "Slow", "cpCost": 1, "timing": "Assault", "effect": "One visible enemy within Medium suffers Slow 2, reducing its next Move by 2\"." },
+            { "name": "Teleport", "cpCost": 1, "timing": "Movement", "effect": "Move one friendly Unit within Short up to 3\". It cannot finish Engaged." },
+            { "name": "Dispel", "cpCost": 1, "timing": "Reaction", "effect": "When an enemy within Medium uses a magical Command Ability, roll a D6. On 4+, that ability fails." },
+            { "name": "Arcane Rupture", "cpCost": 1, "timing": "Assault", "effect": "Choose one visible enemy unit within Medium. On 3+, inflict Direct Damage 2. Applicable Ward Saves still apply." },
+            { "name": "Arcane Storm", "cpCost": 1, "timing": "Movement", "effect": "Instead of moving this Phase, place a 25mm token within Medium of this unit. At the end of the Round, each Unit with at least half its surviving Models within 2\" suffers 3 separate automatic Magic Hits at Damage 1 total; Armor and Ward apply, Evade does not. Do not multiply Hits by Models. Remove the token after resolving this effect." }
+          ]
+        }
+      },
+      "battlefieldRole": "Magical attacks, battlefield manipulation, utility, and supporting troops through specialized spells.",
+      "designNotes": [
+        "v4 balance pass (post-playtesting): Damage-1 Attacks (Arcane Bolt, Staff/Dagger, Arcane Blade, Battle Staff, Arcane Blast, Force Bolt) gained +1 Attack; the Damage-2 Arcane Lance kept its listed Attacks and gained Anti-Monster 2.",
+        "v4.1 refinement: the Wizard is a single Model, so Veteran (+50) stays a flat cost rather than the higher per-unit pricing used on larger multi-Model formations like Line/Ranged Infantry. A new Weapon Specialization upgrade (+25) lets the Wizard choose any Faction/Unit Type/Trait tag for one offensive Arcana to gain Anti-[chosen tag] 2."
+      ]
+    }
+  ]
+}

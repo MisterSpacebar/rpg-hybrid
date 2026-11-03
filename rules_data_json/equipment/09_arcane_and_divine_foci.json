@@ -1,0 +1,37 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "ARCANE AND DIVINE FOCI"
+  },
+  "description": "These magical implements occupy the Focus slot.",
+  "foci": [
+    { "name": "Wand of Precision", "points": 15, "benefit": "Accurate 1 on a Spell Attack once per Round", "effect": "Once per Round, one Spell Attack gains Accurate 1." },
+    { "name": "Staff of Reach", "points": 15, "benefit": "+2\" Range to one Spell Attack", "effect": "Choose one Spell Attack. Increase its Range by 2\"." },
+    {
+      "name": "Staff of Echoes",
+      "points": 25,
+      "benefit": "Echo Spell Command",
+      "effect": null,
+      "command": {
+        "name": "Echo Spell",
+        "cost": "1 CP",
+        "timing": "Assault — Once per Round",
+        "effect": "After resolving a Spell Attack, resolve one additional normal Hit against the same target. The target makes its applicable Saves. This additional Hit cannot generate a Surge or Blunder."
+      }
+    },
+    {
+      "name": "Orb of Channeling",
+      "points": 25,
+      "benefit": "Spell reroll and Overchannel Command",
+      "effect": "Once per Round, reroll one natural 1 on a Spell Attack.",
+      "command": {
+        "name": "Overchannel",
+        "cost": "1 CP",
+        "timing": "Assault",
+        "effect": "Your next Spell Attack this Turn gains +1 Attack die."
+      }
+    },
+    { "name": "Holy Reliquary", "points": 20, "benefit": "+1 Heal once per Round", "effect": "Once per Round, when one of your abilities Heals a Unit, increase the amount Healed by 1." },
+    { "name": "Icon of Protection", "points": 20, "benefit": "Nearby allied protection against Magic", "effect": "Friendly Units within 2\" gain Ward 6+ against Magic. This does not improve an already applicable Ward." }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "category": "cavalry-and-mobile-troops",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/01_generic_units.md",
+    "section": "2. CAVALRY AND MOBILE TROOPS"
+  },
+  "units": [
+    {
+      "id": "cavalry",
+      "name": "Cavalry",
+      "basePoints": 115,
+      "baseModels": 3,
+      "maxModels": 5,
+      "tags": ["Cavalry"],
+      "description": "Cavalry profiles represent conventional mounted troops, while faction-specific mobile troops may use different forms of movement. All generic Cavalry classes gain Charge 3. Choose one cavalry class, which determines the Unit's characteristics and base Points.",
+      "cavalryClass": {
+        "chooseCount": 1,
+        "options": [
+          {
+            "name": "Light Cavalry",
+            "points": 0,
+            "totalPoints": 115,
+            "stats": { "move": "7\"", "wounds": 2, "armor": "6+", "evade": "5+", "ward": null },
+            "notes": "Fast, lightly protected troops suited to harassment and flanking."
+          },
+          {
+            "name": "Cavalry",
+            "points": 10,
+            "totalPoints": 125,
+            "stats": { "move": "6\"", "wounds": 2, "armor": "5+", "evade": "5+", "ward": null },
+            "notes": "Conventional cavalry with balanced mobility and protection."
+          },
+          {
+            "name": "Heavy Cavalry",
+            "points": 35,
+            "totalPoints": 150,
+            "stats": { "move": "5\"", "wounds": 3, "armor": "4+", "evade": "5+", "ward": null },
+            "notes": "Durable shock cavalry with reduced movement.",
+            "grantsTags": ["Elite"]
+          }
+        ]
+      },
+      "meleeWeapons": {
+        "chooseCount": 1,
+        "options": [
+          {
+            "name": "Mounted Weapons",
+            "points": 0,
+            "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "notes": "Swords, axes, maces, and conventional mounted weapons."
+          },
+          {
+            "name": "Spears",
+            "points": 10,
+            "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "notes": "Extended reach."
+          },
+          {
+            "name": "Lances",
+            "points": 25,
+            "profile": { "range": "Engaged", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Impact 1", "Anti-Cavalry 2"] }
+          },
+          {
+            "name": "Heavy Mounted Weapons",
+            "points": 25,
+            "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+          }
+        ],
+        "clarification": "Heavy Mounted Weapons do not have the Heavy keyword; their increased cost accounts for their damage without preventing conventional mounted Charges."
+      },
+      "rangedAndDefensiveEquipment": {
+        "chooseCount": 1,
+        "note": "A Unit may take one ranged package in addition to its melee weapon. Shields may be purchased alongside a ranged package where physically appropriate.",
+        "options": [
+          {
+            "name": "No Additional Equipment",
+            "points": 0,
+            "profile": null,
+            "effect": "Retain the chosen melee weapon without ranged or defensive upgrades."
+          },
+          {
+            "name": "Mounted Bows",
+            "points": 10,
+            "profile": { "range": "6\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+          },
+          {
+            "name": "Pistols",
+            "points": 25,
+            "profile": { "range": "6\"", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm"] }
+          },
+          {
+            "name": "Carbines",
+            "points": 25,
+            "profile": { "range": "8\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm"] }
+          },
+          {
+            "name": "Shields",
+            "points": 25,
+            "profile": null,
+            "effect": "Improve Armor by 1 step.",
+            "restriction": "Available to Cavalry and Heavy Cavalry using conventional melee weapons or Lances."
+          }
+        ]
+      },
+      "unitUpgrades": {
+        "options": [
+          { "name": "Standard Formation", "points": 0, "effect": "3 Models using the selected Cavalry class and equipment." },
+          { "name": "Charge Formation", "points": 50, "effect": "Gains Impact +3" },
+          { "name": "Additional Light Cavalry Model", "points": 40, "effect": "Add one matching Light Cavalry Model." },
+          { "name": "Additional Cavalry Model", "points": 50, "effect": "Add one matching Cavalry Model." },
+          { "name": "Additional Heavy Cavalry Model", "points": 55, "effect": "Add one matching Heavy Cavalry Model." },
+          { "name": "Weapon Specialization", "points": 25, "effect": "Choose one Faction, Unit Type, or Trait tag. One selected weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once." },
+          { "name": "Veterans", "points": 50, "effect": "Increase Attacks by 1 per Model and improve Hit by one step." }
+        ],
+        "notes": [
+          "Maximum 5 Models.",
+          "Paid equipment incurs its additional per-Model cost."
+        ]
+      },
+      "battlefieldRole": "Maneuver, Charges, flanking, and exploiting enemy weaknesses.",
+      "designNotes": [
+        "v4 balance pass (post-playtesting): Damage-1 weapons (Mounted Weapons, Spears, Mounted Bows, Pistols, Carbines) gained +1 Attack; Damage-2 weapons (Lances, Heavy Mounted Weapons) kept their listed Attacks and gained a thematic Anti-[Type] 2.",
+        "v4.1 refinement: Cavalry's small 3-5 Model formation keeps a flat +50 Veterans cost, consistent with the new per-unit Veterans pricing philosophy (larger Infantry formations of 4-10 Models pay more). A new Weapon Specialization upgrade (+25) lets the Unit choose any Faction/Unit Type/Trait tag for a weapon to gain Anti-[chosen tag] 2, priced flat since Anti-[Type] applies once to the Unit's whole Attack pool regardless of Model count."
+      ]
+    }
+  ]
+}

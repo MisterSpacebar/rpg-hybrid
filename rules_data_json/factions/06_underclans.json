@@ -1,0 +1,157 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "6. UNDERCLANS"
+  },
+  "name": "Underclans",
+  "doctrines": ["Horde", "Deep Strike"],
+  "worldbuilding": "Underground warrens, scavenger cities, thieves' confederacies, alchemical guilds, and raiding clans. Their armies rely on numbers, dirty tricks, traps, and unconventional equipment.",
+  "factionRule": {
+    "name": "Strength in Numbers",
+    "effect": "Friendly Units containing at least 5 Models gain Accurate 2."
+  },
+  "factionCommands": [
+    { "name": "Dirty Trick", "timing": "Assault", "cost": "1 CP", "effect": "Worsen one visible enemy's Armor or Evade by one step until the end of the Phase." },
+    { "name": "Scurry Away", "timing": "Movement", "cost": "1 CP", "effect": "One friendly Unit may Disengage without becoming Withdrawn." },
+    { "name": "Mob Them!", "timing": "Movement", "cost": "1 CP", "effect": "Up to two friendly Units may each Move up to 2\" toward the same enemy within Medium." }
+  ],
+  "signatureCoreUnits": [
+    {
+      "name": "Sneaks",
+      "points": 120,
+      "models": 7,
+      "tags": ["Infiltrating Infantry", "Mortal"],
+      "modelProfile": { "move": "5\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Knives", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Sneaky", "type": "Passive", "effect": "Gain Concealed while benefiting from Cover." }
+      ]
+    },
+    {
+      "name": "Bombardiers",
+      "points": 140,
+      "models": 5,
+      "tags": ["Ranged Infantry", "Mortal"],
+      "modelProfile": { "move": "3\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Bombs", "range": "6\"", "attacks": 2, "hit": "5+", "damage": 1, "keywords": ["Blast 1\""] },
+        { "name": "Improvised Weapons", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Unstable", "type": "Passive", "effect": "On a Blunder, this Unit suffers one Damage 1 Hit." }
+      ]
+    },
+    {
+      "name": "Tunnel Rats",
+      "points": 125,
+      "models": 6,
+      "tags": ["Infiltrating Infantry", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Rusty Blades", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Tunnel Ambush", "type": "Passive", "effect": "May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. Cannot Charge in that Round." }
+      ]
+    }
+  ],
+  "captainAndSpecialists": [
+    {
+      "name": "Mob Boss",
+      "role": "Captain",
+      "points": 140,
+      "tags": ["Infantry", "Hero", "Mortal"],
+      "modelProfile": { "move": "5\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Hook Blade", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Someone Else's Problem", "type": "Command", "timing": "Reaction", "cost": "1 CP", "effect": "Transfer one Hit suffered by the Mob Boss to an eligible nearby friendly basic Model, which resolves its own saves." }
+      ]
+    },
+    {
+      "name": "Hexer",
+      "role": "Wizard",
+      "points": 165,
+      "tags": ["Wizard", "Elite", "Mortal"],
+      "modelProfile": { "move": "3\"", "wounds": 4, "armor": "6+", "evade": "5+", "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Hex Spark", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Knife", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Bad Luck", "type": "Command", "cost": "1 CP", "timing": "Reaction", "effect": "Force one visible enemy within Medium to reroll one successful die, respecting the once-per-die reroll limit." }
+      ]
+    },
+    {
+      "name": "Trapmaster",
+      "role": "Support",
+      "points": 135,
+      "tags": ["Support", "Elite", "Mortal"],
+      "modelProfile": { "move": "5\"", "wounds": 5, "armor": "6+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Snare Launcher", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] },
+        { "name": "Tools", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Snarefield", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Place a trap marker within Short. The first enemy crossing it before the end of the Round suffers Slow 1 and, on 4+, one Damage 1 Hit. Remove the marker after it triggers." }
+      ],
+      "upgrades": [
+        {
+          "name": "Improvised Traps",
+          "cost": "+15 Points",
+          "type": "Passive",
+          "effect": "The Trapmaster's Snarefield Command gains an additional option. When using Snarefield, choose one: Snarefield (resolve the original Command normally), or Smoke Canister (place a 25mm token within Short Range; the area within 1.5\" blocks line of sight until the end of the Round). The Trapmaster may have only one token created through Improvised Traps on the battlefield at a time. Both options use the same Command and share its normal activation restrictions."
+        }
+      ]
+    }
+  ],
+  "largeAssets": [
+    {
+      "name": "Scrap Tank",
+      "points": 220,
+      "tags": ["Vehicle", "Mechanical", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 8, "armor": "4+", "evade": null, "ward": null },
+      "attackProfiles": [
+        { "name": "Scrap Cannon", "range": "8\"", "attacks": 4, "hit": "4+", "damage": 2, "keywords": ["Blast 1\"", "Heavy"] },
+        { "name": "Ram", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 2, "keywords": ["Anti-Infantry 2"] }
+      ],
+      "abilities": [
+        { "name": "Unreliable", "type": "Passive", "effect": "A Blunder on its Heavy Attack inflicts Direct Damage 1 on the Tank." }
+      ]
+    },
+    {
+      "name": "Burrowing Engine",
+      "points": 225,
+      "tags": ["War Machine", "Mechanical", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 8, "armor": "4+", "evade": null, "ward": null },
+      "attackProfiles": [
+        { "name": "Grinding Drill", "range": "Engaged", "attacks": 4, "hit": "4+", "damage": 2, "keywords": ["Anti-Armored 2"] }
+      ],
+      "abilities": [
+        { "name": "Subterranean Assault", "type": "Passive", "effect": "May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. Cannot Charge in that Round." }
+      ]
+    }
+  ],
+  "factionLeader": {
+    "name": "Underking",
+    "points": 370,
+    "tags": ["Hero", "Mortal"],
+    "modelProfile": { "move": "5\"", "wounds": 8, "armor": "4+", "evade": "4+", "ward": "6+ (Physical Ward +1)" },
+    "impact": "+1",
+    "attackProfiles": [
+      { "name": "Throwing Knives", "range": "6\"", "attacks": 5, "hit": "4+", "damage": 1, "keywords": ["Pinpoint"] },
+      { "name": "Royal Daggers", "range": "Engaged", "attacks": 6, "hit": "3+", "damage": 2, "keywords": ["Critical 2"] }
+    ],
+    "abilities": [
+      { "name": "A Thousand Escape Routes", "type": "Passive", "effect": "Once per Round, the Underking may Disengage without becoming Withdrawn." },
+      { "name": "Ordered Retreat", "type": "Command", "cost": "2 CP", "timing": "Movement", "frequency": "Once per Battle", "effect": "Up to two friendly Units within Medium may immediately Disengage without becoming Withdrawn, then Move up to 2\" and finish legally." }
+    ]
+  },
+  "genericUnitsWorthTaking": "Large generic Line Infantry formations, standard archers and slingers, ordinary Scouts, and Light Cavalry. The Trapmaster is a specialized hybrid Support/Skirmisher without replacing the cheaper generic Scout.",
+  "designNotes": [
+    "v4.2 balance pass: added Tunnel Rats as the faction's Extra Core, a Reserve-deploying Infiltrating unit reinforcing the Deep Strike doctrine rather than patching a weakness. Sneaks' weapon profile was kept unchanged (Models, not Attacks, is this faction's established horde-buff pattern for that Unit). Other Damage-1 weapons gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Infantry on the Scrap Tank's Ram, Anti-Armored on the Burrowing Engine's Grinding Drill) or an improved Hit (Scrap Cannon 5+ -> 4+, Royal Daggers 4+ -> 3+)."
+  ]
+}

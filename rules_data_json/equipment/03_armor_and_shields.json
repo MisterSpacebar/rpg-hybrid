@@ -1,0 +1,42 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "SHIELDS, ARMOR, Armor and Shields, Class Armor Access"
+  },
+  "shields": [
+    { "name": "Shield", "points": 15, "effect": "Improve Armor by 1 step." }
+  ],
+  "shieldRules": [
+    "A Shield may normally be combined with a one-handed melee weapon, Spear, Pistol, or another appropriate one-handed item.",
+    "A character cannot benefit from more than one Shield at a time.",
+    "Shields improve the Armor characteristic after the effects of worn armor are determined."
+  ],
+  "armorRules": [
+    "Armor provides a base Armor Save. When wearing armor, use its Armor value if it is better than the character's existing Armor.",
+    "Armor does not add another Save; it replaces the Armor characteristic when beneficial."
+  ],
+  "armorTypes": [
+    { "name": "Light Armor", "armor": "5+", "points": 10, "additionalRule": null, "description": "Leather, gambeson, reinforced clothing, and light mail." },
+    { "name": "Medium Armor", "armor": "4+", "points": 20, "additionalRule": null, "description": "Mail, brigandine, breastplates, and scale armor." },
+    { "name": "Heavy Armor", "armor": "3+", "points": 35, "additionalRule": "Move −1\"", "description": "Full plate, heavy lamellar, and similarly protective equipment. Heavy Armor reduces Move by 1\" unless an applicable Class, Talent, ancestry ability, or other rule allows the character to ignore that penalty." }
+  ],
+  "armorAndShieldExamples": {
+    "note": "Armor cannot normally improve beyond 2+.",
+    "examples": [
+      { "equipment": "Warrior, no armor", "finalArmor": "5+", "equipmentPoints": 0 },
+      { "equipment": "Medium Armor", "finalArmor": "4+", "equipmentPoints": 20 },
+      { "equipment": "Medium Armor + Shield", "finalArmor": "3+", "equipmentPoints": 35 },
+      { "equipment": "Heavy Armor + Shield", "finalArmor": "2+", "equipmentPoints": 50 }
+    ]
+  },
+  "classArmorAccess": {
+    "note": "These restrictions may be expanded by Class features, Talents, ancestry abilities, specialized equipment, or the GM.",
+    "access": [
+      { "class": "Warrior", "normalArmorAccess": "Light, Medium, Heavy, Shields" },
+      { "class": "Rogue", "normalArmorAccess": "Light, Medium, appropriate Shields" },
+      { "class": "Mage", "normalArmorAccess": "Light" },
+      { "class": "Priest", "normalArmorAccess": "Light, Medium, Shields" },
+      { "class": "Artificer", "normalArmorAccess": "Light, Medium" }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "8. BLOOD COURTS"
+  },
+  "name": "Blood Courts",
+  "doctrines": ["Elite", "Slingshot"],
+  "worldbuilding": "Vampiric dynasties and supernatural aristocracies supported by enthralled mortals, elite retainers, and monstrous predators. They rely on aggressive melee combat, speed, and replenishing themselves through killing.",
+  "factionRule": {
+    "name": "Feast on the Fallen",
+    "effect": "Once per Round, after a friendly Unit defeats an enemy Model in Engagement, Heal 1 Damage from that Unit."
+  },
+  "factionCommands": [
+    { "name": "Blood Frenzy", "timing": "Combat", "cost": "1 CP", "effect": "One friendly Unit gains +1 Attack per Model on its next Engagement Attack this Combat Phase." },
+    { "name": "Predatory Speed", "timing": "Reaction", "cost": "1 CP", "effect": "After destroying an enemy Unit, one friendly Unit may Move up to 2\"." },
+    { "name": "Mesmerize", "timing": "Reaction", "cost": "1 CP", "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Character until the end of the Phase." }
+  ],
+  "signatureCoreUnits": [
+    {
+      "name": "Thralls",
+      "points": 110,
+      "models": 10,
+      "tags": ["Infantry", "Undead"],
+      "modelProfile": { "move": "4\"", "wounds": 1, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Blades", "range": "Engaged", "attacks": 1, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Predatory", "type": "Passive", "effect": "After destroying an enemy Unit, Move up to 1\", ending legally." },
+        { "name": "Unnatural Resilience", "type": "Passive", "effect": "Gain Tough 1." }
+      ]
+    },
+    {
+      "name": "Blood Knights",
+      "points": 270,
+      "models": 3,
+      "tags": ["Elite Cavalry", "Undead", "Armored"],
+      "modelProfile": { "move": "6\"", "wounds": 4, "armor": "4+", "evade": "4+", "ward": null },
+      "attackProfiles": [
+        { "name": "Blood Lances", "range": "Engaged", "attacks": 2, "hit": "4+", "damage": 2, "keywords": ["Anti-Infantry 2"] }
+      ],
+      "abilities": [
+        { "name": "Relentless Hunt", "type": "Passive", "effect": "After successfully Charging, gain Impact +1." }
+      ]
+    },
+    {
+      "name": "Night Stalkers",
+      "points": 150,
+      "models": 4,
+      "tags": ["Infiltrating Infantry", "Undead"],
+      "modelProfile": { "move": "6\"", "wounds": 2, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Twin Fangs", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Pack Hunters", "type": "Passive", "effect": "After this Unit destroys an enemy Model, it may immediately Move up to 1\", ending legally." }
+      ]
+    }
+  ],
+  "captainAndSpecialists": [
+    {
+      "name": "Vampire Captain",
+      "role": "Captain",
+      "points": 225,
+      "tags": ["Infantry", "Hero", "Undead", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 6, "armor": "4+", "evade": "4+", "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Blood Pistol", "range": "6\"", "attacks": 3, "hit": "4+", "damage": 1, "keywords": ["Firearm", "Pinpoint"] },
+        { "name": "Noble Blade", "range": "Engaged", "attacks": 4, "hit": "4+", "damage": 2, "keywords": ["Anti-Elite 2"] }
+      ],
+      "abilities": [
+        { "name": "Challenge Prey", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Choose one enemy Character within Short. The Vampire Captain's next Engagement Attack against it gains Critical 1." }
+      ]
+    },
+    {
+      "name": "Blood Sorcerer",
+      "role": "Wizard",
+      "points": 190,
+      "tags": ["Wizard", "Elite", "Undead"],
+      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": "5+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Sanguine Bolt", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Dagger", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Blood Drain", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Inflict Direct Damage 1 on one enemy within Short. If the Damage is not prevented, Heal 1 on the Sorcerer." }
+      ]
+    },
+    {
+      "name": "Court Seneschal",
+      "role": "Support",
+      "points": 155,
+      "tags": ["Support", "Elite", "Mortal"],
+      "modelProfile": { "move": "4\"", "wounds": 5, "armor": "5+", "evade": "5+", "ward": null },
+      "attackProfiles": [
+        { "name": "Duelling Blade", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Call Retainers", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Add one matching basic Model to a surviving, unengaged friendly Thrall or generic Line Infantry Unit within Short, to a maximum of starting size +2 Models. Place legally in Coherency; no free activation." }
+      ]
+    }
+  ],
+  "largeAssets": [
+    {
+      "name": "Winged Horror",
+      "points": 290,
+      "tags": ["Monster"],
+      "modelProfile": { "move": "8\"", "wounds": 10, "armor": "4+", "evade": "5+", "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Fangs and Talons", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 2, "keywords": ["Anti-Character 2"] }
+      ],
+      "abilities": [
+        { "name": "Predatory Dive", "type": "Passive", "effect": "When Charging from an elevated position, gain +1 Impact and Accurate 1 on its next Attack." }
+      ]
+    },
+    {
+      "name": "Black Coach",
+      "points": 260,
+      "tags": ["Vehicle"],
+      "modelProfile": { "move": "7\"", "wounds": 9, "armor": "4+", "evade": "5+", "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Soul Lanterns", "range": "8\"", "attacks": 4, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Scythes", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 2, "keywords": ["Anti-Infantry 2"] }
+      ],
+      "abilities": [
+        { "name": "Soul Furnace", "type": "Passive", "effect": "Once per Round, when a friendly Unit within Short destroys an enemy Unit, the Coach may Move 2\" without finishing Engaged." }
+      ]
+    }
+  ],
+  "factionLeader": {
+    "name": "Crimson Regent",
+    "points": 455,
+    "tags": ["Hero", "Undead", "Armored"],
+    "modelProfile": { "move": "6\"", "wounds": 9, "armor": "3+", "evade": "4+", "ward": "6+ (Magic Ward +1)" },
+    "impact": "+3",
+    "attackProfiles": [
+      { "name": "Blood Sovereign's Blade", "range": "Engaged", "attacks": 8, "hit": "3+", "damage": 2, "keywords": ["Magic", "Accurate 2", "Anti-Monster 2"] }
+    ],
+    "abilities": [
+      { "name": "Master Predator", "type": "Passive", "effect": "The first time each Round the Regent defeats a unit or removes a model from a unit, Heal 1." },
+      { "name": "Nightfall Hunt", "type": "Command", "cost": "2 CP", "frequency": "Once per Battle", "effect": "Up to two friendly Units within Medium each immediately Move 2\" and gain +1 Attack per Model during their next Combat activation this Round." }
+    ]
+  },
+  "genericUnitsWorthTaking": "Cheap mortal infantry, archers, Medics, Scouts, and Light Cavalry. The expensive Blood Knights cannot efficiently cover all of an army's mobile or objective-control needs.",
+  "designNotes": [
+    "v4.2 balance pass: added Night Stalkers as the faction's Extra Core, a mobile lifesteal-skirmisher Infiltrating unit reinforcing the aggressive/predatory identity rather than patching a weakness. Thralls' weapon profile was kept unchanged (Models, not Attacks, is this faction's established horde-buff pattern). Other Damage-1 weapons gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Infantry on Blood Lances and the Black Coach's Scythes, Anti-Elite on the Vampire Captain's Noble Blade, Anti-Character on the Winged Horror's Fangs and Talons, Anti-Monster on the Crimson Regent's Blood Sovereign's Blade)."
+  ]
+}

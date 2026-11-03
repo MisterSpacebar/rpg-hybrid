@@ -1,0 +1,835 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "Appendix O — Tri-Hex Atlas and Territorial Development" },
+  "title": "Tri-Hex Atlas and Territorial Development",
+  "version": "Campaign Mode v4.4",
+  "overview": [
+    "This appendix defines the strategic map, its eleven available Tri-Hex tiles, political control, regional resources, Local Authorities, exploration Sites, and territorial Improvements.",
+    "The strategic map represents a region divided between competing Grand Factions, independent settlements, and unsettled frontier territories.",
+    "Unlike the Act Track, which measures political victories, the strategic map records the physical and institutional consequences of the campaign.",
+    "A faction may control territory without winning the current Stake. Likewise, it may win a Stake without changing territorial ownership."
+  ],
+  "O1_strategicMapStructure": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.1 Strategic Map Structure" },
+    "O1_1_triHexTiles": {
+      "description": "Each Tri-Hex tile contains three individual hex regions.",
+      "regions": [
+        { "region": "Primary", "designation": "H", "generalPurpose": "Principal settlement, institution, or geographic feature" },
+        { "region": "Secondary", "designation": "A", "generalPurpose": "Secondary territory, resource, or landmark" },
+        { "region": "Secondary", "designation": "B", "generalPurpose": "Secondary territory, resource, or landmark" }
+      ],
+      "notes": [
+        "Every individual hex has its own political controller, resources, Sites, and Improvements.",
+        "The three hexes are distinct territories even when they belong to the same physical tile.",
+        "Tri-Hex tiles may be rotated or arranged differently between campaigns. At setup, record actual hex adjacency, river and coastal crossing edges, and established sea routes on the assembled physical map. A named landmark or narrative description does not itself create a legal edge. The physical map and subsequently acquired passage rights determine adjacency and movement legality."
+      ]
+    },
+    "O1_2_locationIdentifiers": {
+      "description": "Every tile has a permanent identifier. A specific hex is addressed using its tile ID followed by H, A, or B.",
+      "examples": [
+        { "id": "C1-H", "location": "Primary region of Wildheart Reach" },
+        { "id": "N1-A", "location": "Slate Quarry in Stonebridge Corridor" },
+        { "id": "N3-B", "location": "Saltmarsh Wreck in Bluewater Strand" }
+      ],
+      "notes": [
+        "A hex edge may be identified using the two hex addresses it connects. A valid edge must exist on the assembled map.",
+        "These identifiers assist with bookkeeping and scenario preparation. They are not mandatory targets printed on political Task cards."
+      ]
+    },
+    "O1_3_mapComponents": {
+      "description": "The map uses the following physical markers.",
+      "markers": [
+        { "marker": "Political Control", "purpose": "Identifies the Grand Faction controlling an individual hex" },
+        { "marker": "Local Authority", "purpose": "Identifies an independently governed settlement" },
+        { "marker": "Province", "purpose": "Identifies the Grand Faction controlling a majority of a Tri-Hex" },
+        { "marker": "Political Influence", "purpose": "Represents a Grand Faction's established political presence" },
+        { "marker": "Strategic Force", "purpose": "Identifies a faction's principal army position" },
+        { "marker": "PC Party", "purpose": "Identifies the adventurers' current location" },
+        { "marker": "Exploration Site", "purpose": "Marks an unresolved exploratory objective" },
+        { "marker": "Improvement", "purpose": "Represents a constructed strategic facility" },
+        { "marker": "Active Task", "purpose": "Marks the target of the current political Stake" }
+      ],
+      "notes": [
+        "Political Control and Political Influence are different.",
+        "A faction may influence a settlement without governing it.",
+        "Likewise, an army may occupy a region without possessing political control."
+      ]
+    }
+  },
+  "O2_campaignMapSizes": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.2 Campaign Map Sizes" },
+    "tileCountsByFormat": [
+      { "format": "Local", "capital": 3, "developedFrontier": 1, "wildFrontier": 1, "totalTiles": 5, "totalHexes": 15 },
+      { "format": "Standard", "capital": 4, "developedFrontier": 2, "wildFrontier": 1, "totalTiles": 7, "totalHexes": 21 },
+      { "format": "Long", "capital": 4, "developedFrontier": 2, "wildFrontier": 3, "totalTiles": 9, "totalHexes": 27 },
+      { "format": "Grand", "capital": 5, "developedFrontier": 3, "wildFrontier": 3, "totalTiles": 11, "totalHexes": 33 }
+    ],
+    "capitalRule": "Every participating Grand Faction receives one Capital tile. The number of Capital tiles therefore equals the number of participating Grand Factions.",
+    "O2_1_recommendedFrontierSelection": {
+      "table": [
+        { "format": "Local", "frontierTiles": "N1, N2" },
+        { "format": "Standard", "frontierTiles": "N1, N2, N3" },
+        { "format": "Long", "frontierTiles": "N1, N2, N3, N4, N5" },
+        { "format": "Grand", "frontierTiles": "N1, N2, N3, N4, N5, N6" }
+      ],
+      "notes": [
+        "The GM may substitute Frontier tiles when doing so better supports the campaign.",
+        "If tiles are substituted, preserve the same number of Developed and Wild Frontier tiles and verify that the resource distribution remains suitable.",
+        "Capital selection depends on the participating Grand Factions.",
+        "The PCs' affiliated Grand Faction must be represented."
+      ]
+    },
+    "O2_2_startingMapQuantities": {
+      "table": [
+        { "component": "Major-controlled hexes", "local": 9, "standard": 12, "long": 12, "grand": 15 },
+        { "component": "Local Authority hexes", "local": 2, "standard": 3, "long": 5, "grand": 6 },
+        { "component": "Unclaimed hexes", "local": 4, "standard": 6, "long": 10, "grand": 12 },
+        { "component": "Hexes with no printed resource", "local": 3, "standard": 4, "long": 8, "grand": 9 },
+        { "component": "Printed resource symbols", "local": 16, "standard": 22, "long": 26, "grand": 32 },
+        { "component": "Exploration Sites", "local": 5, "standard": 7, "long": 11, "grand": 13 },
+        { "component": "Starting Road edges", "local": 4, "standard": 5, "long": 5, "grand": 6 }
+      ],
+      "notes": [
+        "These counts describe the recommended starting configurations.",
+        "They do not limit the number of changes that can occur through campaign play."
+      ]
+    }
+  },
+  "O3_capitalTiles": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.3 Capital Tiles" },
+    "generalRules": [
+      "Every Capital tile begins entirely controlled by its associated Grand Faction.",
+      "Its three hexes together contain four printed resource symbols, distributed 2/1/1.",
+      "Every Capital begins with one Road connecting H and A.",
+      "Each participating Capital also counts as one controlled Province at campaign setup.",
+      "A Capital's named landmarks are narrative locations, not automatically purchased Improvements."
+    ],
+    "tiles": [
+      {
+        "id": "C1",
+        "name": "Wildheart Reach",
+        "grandFaction": "Unbound",
+        "theme": "Free communities, frontier cooperation, woodlands, and regional autonomy.",
+        "hexes": [
+          { "hex": "C1-H", "location": "Freehold Assembly", "resources": "Supply, Influence", "startingControl": "Unbound" },
+          { "hex": "C1-A", "location": "Greenward Groves", "resources": "Stone", "startingControl": "Unbound" },
+          { "hex": "C1-B", "location": "River Camps", "resources": "Supply", "startingControl": "Unbound" }
+        ],
+        "total": "Stone 1, Supply 2, Influence 1.",
+        "startingInfrastructure": "Road between C1-H and C1-A.",
+        "regionalCharacteristics": "Dispersed settlements, defensible woodlands, and informal frontier connections.",
+        "politicalRole": "The Freehold Assembly coordinates the region but depends heavily on cooperation between local communities.",
+        "potentialObjectives": "Frontier autonomy, settlement protection, exploration rights, negotiations with minor communities, and defense against encroaching armies.",
+        "militaryConnections": "Militia, scouts, irregular formations, and frontier support contracts.",
+        "note": "The Freehold Assembly is not automatically a Fortress or Trade Hub."
+      },
+      {
+        "id": "C2",
+        "name": "Luminarium Enclave",
+        "grandFaction": "Conclave",
+        "theme": "Scholarship, magical research, production, and specialized institutions.",
+        "hexes": [
+          { "hex": "C2-H", "location": "Grand Academy", "resources": "Stone, Influence", "startingControl": "Conclave" },
+          { "hex": "C2-A", "location": "Laboratory District", "resources": "Stone", "startingControl": "Conclave" },
+          { "hex": "C2-B", "location": "Provision Grounds", "resources": "Supply", "startingControl": "Conclave" }
+        ],
+        "total": "Stone 2, Supply 1, Influence 1.",
+        "startingInfrastructure": "Road between C2-H and C2-A.",
+        "regionalCharacteristics": "Concentrated institutions, research facilities, and organized production.",
+        "politicalRole": "The Grand Academy governs through recognized scholarly and institutional authority.",
+        "potentialObjectives": "Research commissions, access to archives, scientific expeditions, military manufacturing agreements, and disputes over specialized knowledge.",
+        "militaryConnections": "Elite Support, specialist equipment, Artillery, and experimental Assets.",
+        "note": "The Laboratory District does not automatically grant the mechanical benefits of a constructed Workshop."
+      },
+      {
+        "id": "C3",
+        "name": "Oathstone Highlands",
+        "grandFaction": "Wayfarers",
+        "theme": "Mountain communities, clan obligations, traditional rights, and ancestral history.",
+        "hexes": [
+          { "hex": "C3-H", "location": "Oathstone Hall", "resources": "Supply, Influence", "startingControl": "Wayfarers" },
+          { "hex": "C3-A", "location": "Mountain Trailhead", "resources": "Stone", "startingControl": "Wayfarers" },
+          { "hex": "C3-B", "location": "Hall of Sagas", "resources": "Influence", "startingControl": "Wayfarers" }
+        ],
+        "total": "Stone 1, Supply 1, Influence 2.",
+        "startingInfrastructure": "Road between C3-H and C3-A.",
+        "regionalCharacteristics": "Mountain routes, defensible passes, clan meeting sites, and difficult approaches.",
+        "politicalRole": "Oathstone Hall represents the authority of traditional agreements between the regional clans.",
+        "potentialObjectives": "Clan allegiance, protection of ancestral Sites, mountain passage agreements, regional musters, and disputes over customary rights.",
+        "militaryConnections": "Mobile formations, clan warriors, cavalry, and allied warbands."
+      },
+      {
+        "id": "C4",
+        "name": "Bastion March",
+        "grandFaction": "Legions",
+        "theme": "Military organization, fortified settlements, logistics, and provincial administration.",
+        "hexes": [
+          { "hex": "C4-H", "location": "Legion Headquarters", "resources": "Stone, Supply", "startingControl": "Legions" },
+          { "hex": "C4-A", "location": "Provision Fields", "resources": "Supply", "startingControl": "Legions" },
+          { "hex": "C4-B", "location": "Civic Forum", "resources": "Influence", "startingControl": "Legions" }
+        ],
+        "total": "Stone 1, Supply 2, Influence 1.",
+        "startingInfrastructure": "Road between C4-H and C4-A.",
+        "regionalCharacteristics": "Established roads, defensible positions, and organized military infrastructure.",
+        "politicalRole": "Legion Headquarters coordinates regional administration and military operations.",
+        "potentialObjectives": "Territorial security, military charters, defensive treaties, strategic crossings, recruitment agreements, and border offensives.",
+        "militaryConnections": "Core infantry, officers, professional formations, organized Support, and siege contingents.",
+        "note": "Legion Headquarters does not automatically count as a constructed Fortress."
+      },
+      {
+        "id": "C5",
+        "name": "Accord Basin",
+        "grandFaction": "Concord",
+        "theme": "Political cooperation, commercial institutions, representative government, and allied settlements.",
+        "hexes": [
+          { "hex": "C5-H", "location": "Concord Hall", "resources": "Supply, Influence", "startingControl": "Concord" },
+          { "hex": "C5-A", "location": "Stoneward District", "resources": "Stone", "startingControl": "Concord" },
+          { "hex": "C5-B", "location": "Union Market", "resources": "Influence", "startingControl": "Concord" }
+        ],
+        "total": "Stone 1, Supply 1, Influence 2.",
+        "startingInfrastructure": "Road between C5-H and C5-A.",
+        "regionalCharacteristics": "Connected communities, established commercial routes, and diplomatic institutions.",
+        "politicalRole": "Concord Hall coordinates the agreements maintaining the regional Compact.",
+        "potentialObjectives": "Commercial treaties, public councils, regional mediation, shared defense agreements, and recognition of independent communities.",
+        "militaryConnections": "Allied contingents, militia charters, specialist contracts, and coalition forces.",
+        "note": "Union Market may serve as a commercial institution without automatically providing the mechanical benefits of a constructed Trade Hub."
+      }
+    ]
+  },
+  "O4_developedFrontierTiles": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.4 Developed Frontier Tiles" },
+    "description": "Developed Frontier tiles represent territories containing an organized Local Authority and some established economic activity.",
+    "composition": [
+      "One locally controlled primary hex.",
+      "Two initially unclaimed secondary hexes.",
+      "Two printed resource symbols.",
+      "One resource-free hex.",
+      "Two unresolved exploration Sites."
+    ],
+    "note": "The Local Authority does not automatically control the two unclaimed secondary regions.",
+    "tiles": [
+      {
+        "id": "N1",
+        "name": "Stonebridge Corridor",
+        "classification": "Developed Frontier",
+        "theme": "Overland trade, river passage, toll collection, and contested regional access.",
+        "localAuthority": "Stonebridge Council",
+        "startingPoliticalStatus": "Independent local government.",
+        "hexes": [
+          { "hex": "N1-H", "location": "Stonebridge Market", "resources": "Influence", "startingControl": "Stonebridge Council", "explorationSite": null },
+          { "hex": "N1-A", "location": "Slate Quarry", "resources": "Stone", "startingControl": "Unclaimed", "explorationSite": "Sealed Mine Gallery" },
+          { "hex": "N1-B", "location": "Old Tollhouse", "resources": "None", "startingControl": "Unclaimed", "explorationSite": "Forgotten Toll Records" }
+        ],
+        "startingInfrastructure": "Road between N1-H and N1-A.",
+        "specialGeography": "A river crossing associated with N1-B may support Bridge construction when the assembled map provides a suitable crossing edge.",
+        "authorityCharacter": "An established merchant and civic council concerned with tolls, passage rights, and commercial independence.",
+        "potentialAgreements": "Passage treaties, toll concessions, militia recruitment, quarry rights, and recognized trade access.",
+        "potentialConflict": "A major faction controlling the quarry may gain valuable resources while Stonebridge Council retains authority over the market.",
+        "note": "Control of N1-A does not grant political control over N1-H."
+      },
+      {
+        "id": "N3",
+        "name": "Bluewater Strand",
+        "classification": "Developed Frontier",
+        "theme": "Coastal trade, maritime settlements, customs administration, and abandoned shipping routes.",
+        "localAuthority": "Bluewater Wardens",
+        "hexes": [
+          { "hex": "N3-H", "location": "Bluewater Ward", "resources": "Supply", "startingControl": "Bluewater Wardens", "explorationSite": null },
+          { "hex": "N3-A", "location": "Customs Quay", "resources": "Influence", "startingControl": "Unclaimed", "explorationSite": "Lost Harbor Ledger" },
+          { "hex": "N3-B", "location": "Saltmarsh Wreck", "resources": "None", "startingControl": "Unclaimed", "explorationSite": "Wreck of the Mariner" }
+        ],
+        "startingInfrastructure": "None.",
+        "specialGeography": "A suitable coastal edge may support construction of a Port.",
+        "authorityCharacter": "Coastal wardens whose authority depends on maritime access and control of local shipping.",
+        "potentialAgreements": "Naval passage, trade contracts, coastal supply, maritime mercenary access, and harbor administration.",
+        "potentialConflict": "A Grand Faction may control the Customs Quay while the Bluewater Wardens retain the settlement.",
+        "note": "A Port must still be constructed before its specific strategic benefits apply."
+      },
+      {
+        "id": "N6",
+        "name": "Ironwood Basin",
+        "classification": "Developed Frontier",
+        "theme": "Timber, machinery, craftspeople, industry, and old religious ruins.",
+        "localAuthority": "Ironwood Guild",
+        "hexes": [
+          { "hex": "N6-H", "location": "Ironwood Guildhall", "resources": "Stone", "startingControl": "Ironwood Guild", "explorationSite": null },
+          { "hex": "N6-A", "location": "Old Sawmill", "resources": "Supply", "startingControl": "Unclaimed", "explorationSite": "Abandoned Mechanisms" },
+          { "hex": "N6-B", "location": "Buried Shrine", "resources": "None", "startingControl": "Unclaimed", "explorationSite": "Forgotten Sanctuary" }
+        ],
+        "startingInfrastructure": "None.",
+        "authorityCharacter": "A regional industrial guild concerned with production rights and independent workshop administration.",
+        "potentialAgreements": "Manufacturing contracts, military equipment supply, industrial recruitment rights, and commercial access.",
+        "potentialConflict": "The guild may supply competing armies unless one power secures an exclusive agreement.",
+        "note": "The Guildhall and Old Sawmill do not automatically provide a constructed Workshop."
+      }
+    ]
+  },
+  "O5_wildFrontierTiles": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.5 Wild Frontier Tiles" },
+    "description": "Wild Frontier tiles represent more isolated or dangerous regions. Their two printed resource symbols are concentrated in the primary hex.",
+    "composition": [
+      "One locally controlled primary hex.",
+      "Two initially unclaimed secondary hexes.",
+      "Two resource-free hexes.",
+      "Two unresolved exploration Sites."
+    ],
+    "note": "Wild Frontier communities tend to have greater independence and weaker established connections to neighboring powers.",
+    "tiles": [
+      {
+        "id": "N2",
+        "name": "Briarwatch Expanse",
+        "classification": "Wild Frontier",
+        "theme": "Isolated freeholds, dense wilderness, abandoned expeditions, and ancient territorial boundaries.",
+        "localAuthority": "Briarwatch Freeholders",
+        "hexes": [
+          { "hex": "N2-H", "location": "Briarwatch Freehold", "resources": "Stone, Supply", "startingControl": "Briarwatch Freeholders", "explorationSite": null },
+          { "hex": "N2-A", "location": "Sunken Patrol Camp", "resources": "None", "startingControl": "Unclaimed", "explorationSite": "Lost Expedition" },
+          { "hex": "N2-B", "location": "Thorn Cairn", "resources": "None", "startingControl": "Unclaimed", "explorationSite": "Ancient Boundary" }
+        ],
+        "startingInfrastructure": "None.",
+        "authorityCharacter": "Established frontier communities with strong local traditions and limited interest in outside rule.",
+        "potentialAgreements": "Frontier scouting, settlement defense, supply access, local militia, and safe passage.",
+        "potentialConflict": "A neighboring army may threaten the freehold even while both surrounding regions remain unclaimed.",
+        "note": "The Freeholders have a strong narrative interest in defending their independence, but do not use a separate numerical Resistance roll."
+      },
+      {
+        "id": "N4",
+        "name": "Ashen Highlands",
+        "classification": "Wild Frontier",
+        "theme": "Mountain passes, forgotten military campaigns, ruined signal systems, and highland settlements.",
+        "localAuthority": "Highridge Council",
+        "hexes": [
+          { "hex": "N4-H", "location": "Highridge Council", "resources": "Stone, Influence", "startingControl": "Highridge Council", "explorationSite": null },
+          { "hex": "N4-A", "location": "Fallen Standard", "resources": "None", "startingControl": "Unclaimed", "explorationSite": "Lost Regiment" },
+          { "hex": "N4-B", "location": "Signal Crag", "resources": "None", "startingControl": "Unclaimed", "explorationSite": "Ancient Signal Beacon" }
+        ],
+        "startingInfrastructure": "None.",
+        "specialGeography": "Signal Crag is a suitable narrative location for an eligible Watchtower.",
+        "authorityCharacter": "An established mountain council concerned with autonomy, defense, and control of important highland routes.",
+        "potentialAgreements": "Military observation, passage through mountain territory, highland recruitment, and access to defensive positions.",
+        "potentialConflict": "The region's abandoned military facilities may attract a Grand Faction seeking strategic advantages.",
+        "note": "The Ancient Signal Beacon is not an operational Watchtower until a qualifying effect restores or constructs one."
+      },
+      {
+        "id": "N5",
+        "name": "Fallow Fen",
+        "classification": "Wild Frontier",
+        "theme": "Wetlands, hidden ruins, isolated communities, and difficult regional travel.",
+        "localAuthority": "Fenstead Commune",
+        "hexes": [
+          { "hex": "N5-H", "location": "Fenstead Commune", "resources": "Stone, Supply", "startingControl": "Fenstead Commune", "explorationSite": null },
+          { "hex": "N5-A", "location": "Drowned Vault", "resources": "None", "startingControl": "Unclaimed", "explorationSite": "Buried Treasury" },
+          { "hex": "N5-B", "location": "Reed Sanctuary", "resources": "None", "startingControl": "Unclaimed", "explorationSite": "Forgotten Guardian" }
+        ],
+        "startingInfrastructure": "None.",
+        "authorityCharacter": "An isolated community accustomed to surviving in dangerous and difficult terrain.",
+        "potentialAgreements": "Local guides, safe routes, supply access, marshland support, and settlement protection.",
+        "potentialConflict": "A military power may attempt to establish strategic access to the fen while local communities resist direct outside control.",
+        "note": "Any exceptional wetlands or water-crossing restrictions should be indicated on the assembled map."
+      }
+    ]
+  },
+  "O6_localAuthorities": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.6 Local Authorities" },
+    "O6_1_independentGovernment": {
+      "description": "Each Frontier tile begins with one Local Authority.",
+      "table": [
+        { "tile": "N1", "localAuthority": "Stonebridge Council", "politicalCharacter": "Commercial and civic" },
+        { "tile": "N2", "localAuthority": "Briarwatch Freeholders", "politicalCharacter": "Established frontier community" },
+        { "tile": "N3", "localAuthority": "Bluewater Wardens", "politicalCharacter": "Coastal administration" },
+        { "tile": "N4", "localAuthority": "Highridge Council", "politicalCharacter": "Established highland government" },
+        { "tile": "N5", "localAuthority": "Fenstead Commune", "politicalCharacter": "Isolated local commune" },
+        { "tile": "N6", "localAuthority": "Ironwood Guild", "politicalCharacter": "Industrial and commercial guild" }
+      ],
+      "distinctionFromGrandFactions": [
+        "Local Authorities are distinct from participating Grand Factions. They do not have:",
+        "Twelve-card Maneuver decks.",
+        "Separate Council Influence turns.",
+        "Colored Act markers.",
+        "Full strategic armies by default.",
+        "A province dividend.",
+        "Independent Company Orders."
+      ],
+      "note": "The GM portrays their leaders, institutions, and interests through the normal RPG and campaign rules."
+    },
+    "O6_2_politicalNegotiation": {
+      "description": "A Grand Faction may establish political or commercial relationships with a Local Authority without annexing its territory.",
+      "possibleAgreements": [
+        "Trade or regional resource access.",
+        "Military recruitment rights.",
+        "Passage through controlled territory.",
+        "Defensive cooperation.",
+        "A local political contact.",
+        "Temporary military support.",
+        "Recognized territorial transfer."
+      ],
+      "notes": [
+        "Every agreement should specify its actual effect.",
+        "A trade agreement does not automatically provide military control.",
+        "A defensive treaty does not automatically transfer political sovereignty."
+      ]
+    },
+    "O6_3_annexationAndPoliticalTransfer": {
+      "rules": [
+        "A Local Authority may transfer control of its hex through an appropriate agreement, completed mission, or legitimate military outcome.",
+        "An ordinary Authority Maneuver cannot annex a settlement merely because its card Strength exceeds a fixed Resistance value.",
+        "The previous numerical Local Resistance 3/4 procedure is not used for automatic political conquest under v4.0.",
+        "Instead, the relevant Task or mission establishes what must be accomplished. For example, a settlement may require a treaty, resolution of a local crisis, or military protection before recognizing outside authority. A hostile takeover may require an actual battle.",
+        "Once ownership legitimately changes, replace the Local Authority marker with the controlling Grand Faction's Political Control marker, and record the agreement or consequences.",
+        "The settlement may continue to exist as an institution even after political control changes."
+      ]
+    }
+  },
+  "O7_politicalControlAndProvinces": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.7 Political Control and Provinces" },
+    "O7_1_individualHexControl": {
+      "rule": "Every hex has one political controller or is unclaimed.",
+      "representedBy": [
+        "A participating Grand Faction's Control marker.",
+        "An independent Local Authority marker.",
+        "No marker for an unclaimed region."
+      ],
+      "note": "Political Influence and strategic Force markers do not replace these markers."
+    },
+    "O7_2_provincialMajority": {
+      "rule": "A participating Grand Faction controls a Tri-Hex Province when it politically controls at least two of that tile's three hexes.",
+      "table": [
+        { "hexOwnership": "Faction A / Faction A / Faction A", "provincialResult": "Faction A controls the Province" },
+        { "hexOwnership": "Faction A / Faction A / Faction B", "provincialResult": "Faction A controls the Province" },
+        { "hexOwnership": "Faction A / Faction A / Unclaimed", "provincialResult": "Faction A controls the Province" },
+        { "hexOwnership": "Faction A / Faction B / Faction C", "provincialResult": "No Provincial Controller" },
+        { "hexOwnership": "Faction A / Unclaimed / Unclaimed", "provincialResult": "No Provincial Controller" },
+        { "hexOwnership": "Local Authority / Faction A / Faction A", "provincialResult": "Faction A controls the Province, Local Authority retains its hex" }
+      ],
+      "notes": [
+        "Provincial control does not alter ownership of a third hex controlled by someone else.",
+        "Place a Province marker outside the tile or beside its identifier.",
+        "The individual hex Control markers remain in place."
+      ]
+    },
+    "O7_3_changingProvincialControl": {
+      "rules": [
+        "Recalculate the Province whenever control of one of its hexes changes.",
+        "If no Grand Faction controls two hexes, remove the Province marker.",
+        "If another Grand Faction obtains two hexes, replace the Province marker.",
+        "Province markers do not need their own conquest or occupation procedure. They are derived from individual hex ownership."
+      ]
+    },
+    "O7_4_provincialDividends": {
+      "rule": "At the beginning of Acts II, III, and IV, the Company receives 1 Gold per participating PC per Province politically controlled by its affiliated Grand Faction. There is no Provincial Dividend cap.",
+      "formula": "Provincial Dividend (Gold) = Participating PCs × Controlled Provinces.",
+      "exampleTable": {
+        "context": "For a four-PC Company:",
+        "rows": [
+          { "controlledProvinces": 0, "companyDividend": "0 Gold" },
+          { "controlledProvinces": 1, "companyDividend": "4 Gold" },
+          { "controlledProvinces": 2, "companyDividend": "8 Gold" },
+          { "controlledProvinces": 3, "companyDividend": "12 Gold" },
+          { "controlledProvinces": 4, "companyDividend": "16 Gold" },
+          { "controlledProvinces": 5, "companyDividend": "20 Gold" }
+        ]
+      },
+      "notes": [
+        "The PCs' affiliated Capital counts while it remains under their sponsoring Grand Faction's control.",
+        "Dividends are paid only at the beginning of Acts II, III, and IV; conquering a Province later in an Act does not immediately award a second Dividend.",
+        "An independent NPC or the Principal Opposition holding at least one Province may repair, restore, or reinforce one eligible existing strategic military Asset or formation at each milestone under its lawful source rules. This benefit is awarded once per milestone, not once per Province, and cannot recreate a permanently Destroyed named Asset without a valid source. NPCs do not track a full separate Gold treasury."
+      ]
+    },
+    "O7_5_provincialControlAndPoliticalTricks": {
+      "rules": [
+        "Controlling a Province grants no separate Strength bonus.",
+        "Only actual Political Control or Political Influence on the Stake's target hex or an adjacent hex can provide the ordinary nonstacking +1 Local Influence bonus.",
+        "The Province marker itself does not count as another source of influence."
+      ]
+    }
+  },
+  "O8_politicalInfluenceMarkers": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.8 Political Influence Markers" },
+    "description": "Each participating Grand Faction may maintain up to two Political Influence markers. These represent local contacts, institutions, representatives, or recognized political relationships. They may be placed through qualifying Authority effects, Company Politics operations, or other explicit agreements.",
+    "O8_1_placement": {
+      "requirement": "A Political Influence marker must be placed on a hex where the faction has an appropriate political connection.",
+      "examples": [
+        "A friendly independent settlement.",
+        "A commercial partner.",
+        "A settlement with an established treaty.",
+        "A region adjacent to the faction's territory where representatives can reasonably operate.",
+        "Another location authorized by a successful political action."
+      ],
+      "notes": [
+        "Political Influence markers may coexist with a different faction's Political Control marker when the political circumstances allow it.",
+        "A faction cannot gain additional +1 bonuses by placing multiple markers near the same target."
+      ]
+    },
+    "O8_2_politicalInfluenceIsNotOwnership": {
+      "limitations": [
+        "Does not count toward Provincial Control.",
+        "Does not generate Provincial Gold.",
+        "Does not automatically provide resource access.",
+        "Does not permit construction without legal rights.",
+        "Does not create a Force marker.",
+        "Does not transfer ownership."
+      ],
+      "note": "It establishes political presence and may provide Stake eligibility or Local Influence."
+    },
+    "O8_3_timing": {
+      "rules": [
+        "When a Stake is declared, determine which factions already possess qualifying Local Influence.",
+        "New Influence markers placed by Maneuvers later that Turn cannot modify the trick already being resolved.",
+        "They may affect future Turns."
+      ]
+    }
+  },
+  "O9_regionalResourcesAndSupplyAccess": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.9 Regional Resources and Supply Access" },
+    "O9_1_resourceTypes": {
+      "table": [
+        { "resource": "Stone", "generalUses": "Construction, fortifications, industrial works" },
+        { "resource": "Supply", "generalUses": "Military logistics, transport, settlement support" },
+        { "resource": "Influence", "generalUses": "Political institutions, commercial development, selected Improvements" }
+      ],
+      "notes": [
+        "Each printed resource symbol represents one regional source.",
+        "A source is not consumed when used to meet a project requirement.",
+        "A source does not automatically produce Gold."
+      ]
+    },
+    "O9_2_resourceRatings": {
+      "rule": "The company tracks an accessible rating for each resource. Each rating ranges from 0 to 3. Count the accessible printed resource symbols of that type, up to a maximum rating of 3.",
+      "example": "For example, a company with access to two Stone sources and one Supply source has: Stone 2 / Supply 1 / Influence 0. It may construct an eligible project requiring Stone 2 and Supply 1, provided it also has the necessary Gold and location. The sources remain available after construction."
+    },
+    "O9_3_establishingResourceAccess": {
+      "conditions": [
+        "Its affiliated Grand Faction controls the source hex; or",
+        "A valid agreement expressly provides access to that resource."
+      ],
+      "additionalRequirement": "The source must also have a legal supply connection to the company's established network. A connected route may travel through controlled territory, authorized allied territory, or otherwise traversable unclaimed regions.",
+      "notes": [
+        "Enemy occupation, impassable terrain, forbidden passage, and blocked crossings may interrupt a route.",
+        "Roads, Bridges, Ports, and suitable agreements can establish or improve legal connections.",
+        "An unclaimed resource does not become available merely because an army passes through it."
+      ]
+    },
+    "O9_4_resourceAgreements": {
+      "rules": [
+        "Commerce or Politics may establish resource access without changing political control.",
+        "For example, a company controlling the Slate Quarry may possess Stone access while Stonebridge Council continues controlling Stonebridge Market.",
+        "Alternatively, the company may negotiate access to Stonebridge Market's printed Influence resource without annexing the settlement.",
+        "The agreement must remain valid and connected."
+      ]
+    },
+    "O9_5_resourceDistributionByMap": {
+      "rule": "Every Capital provides four printed symbols. Every Frontier provides two.",
+      "totalSymbolsByCampaign": [
+        { "campaign": "Local", "totalPrintedResourceSymbols": 16 },
+        { "campaign": "Standard", "totalPrintedResourceSymbols": 22 },
+        { "campaign": "Long", "totalPrintedResourceSymbols": 26 },
+        { "campaign": "Grand", "totalPrintedResourceSymbols": 32 }
+      ],
+      "fullMapTotals": {
+        "note": "When all eleven tiles are used, the map contains:",
+        "table": [
+          { "resource": "Stone", "printedSymbols": 11 },
+          { "resource": "Supply", "printedSymbols": 11 },
+          { "resource": "Influence", "printedSymbols": 10 },
+          { "resource": "Total", "printedSymbols": 32 }
+        ]
+      },
+      "note2": "These are map-wide totals, not resources automatically available to the company."
+    }
+  },
+  "O10_roadsBridgesAndMovement": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.10 Roads, Bridges, and Movement" },
+    "O10_1_ordinaryMovement": [
+      "The PC Party and Company Force normally move up to two legal hexes during an appropriate Company operation.",
+      "A non-PC Grand Faction's ordinary Warfare Maneuver moves one legal hex.",
+      "Terrain restrictions, hostile occupation, and legal access must still be respected."
+    ],
+    "O10_2_roads": {
+      "cost": "1 Gold.",
+      "requiredAccess": "Stone 1.",
+      "effect": "A force using at least one qualifying Road during its permitted movement may increase its maximum movement distance by one hex. This bonus applies at most once per movement operation.",
+      "notes": [
+        "Using two or more Roads does not grant multiple additional hexes.",
+        "A Road does not permit movement through otherwise impassable or hostile-controlled terrain without appropriate access."
+      ]
+    },
+    "O10_3_bridges": {
+      "cost": "2 Gold.",
+      "requiredAccess": "Stone 1, Supply 1.",
+      "effect": "A Bridge permits legal movement and supply connections across its crossing according to the applicable terrain rules.",
+      "notes": [
+        "A Bridge does not grant an additional movement bonus unless the crossing also contains a qualifying Road.",
+        "A Bridge may become a target of political or military operations."
+      ]
+    },
+    "O10_4_portsAndSeaConnections": [
+      "Ports may be constructed only at eligible coastal locations.",
+      "A Port connects to sea routes established by the campaign map. It does not create unrestricted movement between every coastal hex.",
+      "The GM should identify important sea routes during map setup or through appropriate exploration.",
+      "Existing maritime agreements may grant passage without transferring ownership of a Port."
+    ]
+  },
+  "O11_strategicImprovements": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.11 Strategic Improvements" },
+    "O11_1_improvementTable": {
+      "table": [
+        { "improvement": "Road", "type": "Minor", "cost": "1 G", "requiredAccess": "Stone 1" },
+        { "improvement": "Bridge", "type": "Minor", "cost": "2 G", "requiredAccess": "Stone 1, Supply 1" },
+        { "improvement": "Watchtower", "type": "Minor", "cost": "2 G", "requiredAccess": "Stone 1, Influence 1" },
+        { "improvement": "Supply Camp", "type": "Minor", "cost": "2 G", "requiredAccess": "Supply 2" },
+        { "improvement": "Frontier Outpost", "type": "Minor", "cost": "2 G", "requiredAccess": "Stone 1, Supply 1" },
+        { "improvement": "Fortress", "type": "Major", "cost": "4 G", "requiredAccess": "Stone 2, Supply 1" },
+        { "improvement": "Workshop", "type": "Major", "cost": "3 G", "requiredAccess": "Stone 2, Supply 1" },
+        { "improvement": "Trade Hub", "type": "Major", "cost": "3 G", "requiredAccess": "Supply 1, Influence 2" },
+        { "improvement": "Port", "type": "Major", "cost": "3 G", "requiredAccess": "Stone 1, Supply 1" }
+      ],
+      "notes": [
+        "Each Improvement requires a legal location and sufficient Gold.",
+        "Improvements may provide narrative benefits in addition to their mechanical effects."
+      ]
+    },
+    "O11_2_watchtower": [
+      "A Watchtower provides strategic observation and local defensive preparation.",
+      "A friendly defender fighting in the Watchtower's hex or an adjacent eligible controlled hex may receive one Battlefield Edge if the Watchtower can reasonably support the battle. Before deployment the defender publicly commits the Edge, its target participant, and the Round it affects; it reduces the participant's available CP by 1 that Round, to a minimum of 1.",
+      "Several qualifying defensive Improvements may provide multiple Edges, but the ordinary maximum of two per side still applies.",
+      "A Watchtower does not automatically grant political control of neighboring regions."
+    ],
+    "O11_3_supplyCamp": [
+      "A Supply Camp establishes a recognized local logistical base.",
+      "It may support appropriate supply connections, military preparation, and casualty recovery where its owner has access.",
+      "A Supply Camp does not create additional printed Supply resource symbols or a free formation.",
+      "It may satisfy a specified supply-base prerequisite for a military operation or recruitment agreement."
+    ],
+    "O11_4_fortress": [
+      "A Fortress is a Major defensive Improvement.",
+      "When defending its own hex, a faction may receive one Battlefield Edge from the Fortress. Declare the affected opposing participant and exact Round before deployment, following the ordinary Battlefield Edge limits and CP-reduction rules.",
+      "A Fortress may also establish a legitimate defensive or garrison position for relevant military missions.",
+      "It does not make a hex unconquerable. The attacker must still satisfy the appropriate combat or scenario conditions."
+    ],
+    "O11_5_workshop": [
+      "A Workshop provides a developed site for eligible industrial, equipment, or military support activities.",
+      "It may satisfy the facility prerequisite for relevant crafting projects, specialist repairs, industrial contracts, or military agreements.",
+      "A Workshop does not automatically generate Gold, free units, or unrestricted access to every specialist formation.",
+      "Specific military benefits must be identified by the associated agreement or campaign effect."
+    ],
+    "O11_6_tradeHub": [
+      "A Trade Hub is a major commercial institution.",
+      "It may serve as the required institution for significant Commerce agreements, regional contracts, and trade-related military access.",
+      "It does not automatically increase the company's ordinary Gold income every Turn.",
+      "Any income or contractual benefit must be specified by the successful commercial operation."
+    ],
+    "O11_7_port": [
+      "A Port provides an eligible coastal supply and transport connection.",
+      "It may support maritime Commerce, movement along established sea routes, and appropriate military transport arrangements.",
+      "It does not automatically provide naval units or access to unrelated sea routes."
+    ],
+    "O11_8_frontierOutpost": {
+      "description": "A Frontier Outpost establishes political control over one eligible unclaimed hex.",
+      "cost": "2 Gold.",
+      "requiredAccess": "Stone 1, Supply 1.",
+      "requirements": [
+        "The hex is unclaimed.",
+        "It contains no Local Authority.",
+        "It contains no conflicting principal Improvement.",
+        "It borders territory controlled by the company's affiliated Grand Faction, or the company legally occupies it with a Force and maintains a valid supply connection."
+      ],
+      "uponCompletion": [
+        "Place the Frontier Outpost Improvement.",
+        "Place the affiliated Grand Faction's Political Control marker.",
+        "Recalculate Provincial Control.",
+        "Recalculate the company's resource access."
+      ],
+      "notes": [
+        "The Outpost does not grant an additional free resource symbol.",
+        "It does not automatically resolve any exploration Site located in the same hex.",
+        "A Frontier Outpost may later be replaced by an eligible permanent structure through Construct. The replacement pays its normal cost and retains political ownership unless another effect changes that ownership.",
+        "An NPC's routine Industry Maneuver cannot construct Frontier Outposts to annex territory."
+      ]
+    }
+  },
+  "O12_constructionAndTerritorialRequirements": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.12 Construction and Territorial Requirements" },
+    "O12_1_constructionRights": {
+      "validSources": [
+        "Territory controlled by its affiliated Grand Faction where its Charter or agreement grants development rights.",
+        "Territory where a valid agreement grants construction rights.",
+        "Eligible unclaimed territory claimed through Frontier Outpost construction."
+      ],
+      "notes": [
+        "Political Influence alone does not grant unrestricted construction rights.",
+        "The company must also satisfy resource, Gold, and location requirements."
+      ]
+    },
+    "O12_2_occupiedTerritory": [
+      "Construction in another political power's controlled territory requires appropriate authorization or another explicit campaign effect.",
+      "A temporary army occupation is not automatically permission to construct a permanent institution."
+    ],
+    "O12_3_existingStructures": [
+      "A hex normally holds one principal Improvement.",
+      "Roads and Bridges occupy edges and may coexist with a hex's principal Improvement.",
+      "An Outpost may be replaced through a legal upgrade.",
+      "Other structure replacements require a suitable Construct project, permission, and the normal cost of the replacement unless specified otherwise.",
+      "Replacing a structure does not automatically refund its original cost."
+    ],
+    "O12_4_npcConstruction": [
+      "A participating NPC power may construct one free Minor Improvement through its Industry Maneuver per Act.",
+      "Additional Industry cards may establish industrial contacts or prepare future projects instead.",
+      "NPC Improvements must be placed where the faction has legal rights and plausible access.",
+      "This free construction does not bypass the prohibition against routine Frontier Outpost annexation.",
+      "Major NPC infrastructure requires an explicit campaign development, qualifying Task consequence, Act reward, or comparable approved event."
+    ]
+  },
+  "O13_explorationSites": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.13 Exploration Sites" },
+    "O13_1_siteAllocation": {
+      "rules": [
+        "Every Frontier tile contains two unresolved exploration Sites.",
+        "In addition, the campaign places one Founder's Legacy Site in an appropriate hex of the PCs' affiliated Capital."
+      ],
+      "table": [
+        { "campaign": "Local", "frontierSites": 4, "foundersLegacy": 1, "total": 5 },
+        { "campaign": "Standard", "frontierSites": 6, "foundersLegacy": 1, "total": 7 },
+        { "campaign": "Long", "frontierSites": 10, "foundersLegacy": 1, "total": 11 },
+        { "campaign": "Grand", "frontierSites": 12, "foundersLegacy": 1, "total": 13 }
+      ],
+      "notes": [
+        "The Founder's Legacy Site should be selected and placed during setup.",
+        "It should have an appropriate relationship to the company's future Charter or regional history."
+      ]
+    },
+    "O13_2_siteResolution": {
+      "rules": [
+        "An unresolved Site may be investigated through an eligible Explore operation or another expressly qualifying mission.",
+        "A Site may be located in a controlled or unclaimed hex. Political ownership does not automatically resolve it.",
+        "Constructing an Outpost on a hex containing an unresolved Site does not complete the exploration objective."
+      ],
+      "whenCompleted": [
+        "Resolve its narrative result.",
+        "Award its eligible Discovery or mission reward.",
+        "Record any permanent map consequences.",
+        "Remove or mark the Site as resolved."
+      ],
+      "note": "A resolved Site does not ordinarily award another Discovery."
+    },
+    "O13_3_siteAvailability": {
+      "rule": "The normal Explore Order may be played once per Campaign Year. Because Company Orders refresh each Spring, one ordinary Explore Order can be selected in each Campaign Year. With Turn 1 starting in Spring, a company using only ordinary Explore Orders can undertake at most:",
+      "table": [
+        { "campaign": "Local", "ordinaryExploreOrdersOverCampaign": 5 },
+        { "campaign": "Standard", "ordinaryExploreOrdersOverCampaign": 7 },
+        { "campaign": "Long", "ordinaryExploreOrdersOverCampaign": 8 },
+        { "campaign": "Grand", "ordinaryExploreOrdersOverCampaign": 9 }
+      ],
+      "notes": [
+        "These maxima are based on the number of Springs within each full campaign (Local 5, Standard 7, Long 8, Grand 9); they do not restrict Sites resolved through separately qualifying missions or exceptional opportunities.",
+        "Additional Sites provide choices, competing objectives, and opportunities for exceptional investigations.",
+        "The company is not expected to resolve every Site in every campaign."
+      ]
+    }
+  },
+  "O14_mapSetupProcedure": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.14 Map Setup Procedure" },
+    "steps": [
+      "Choose the campaign format.",
+      "Identify the participating Grand Factions.",
+      "Select one Capital tile for each participating Grand Faction.",
+      "Select the required Developed and Wild Frontier tiles.",
+      "Arrange all tiles into one connected map.",
+      "Confirm meaningful routes between Capitals and the frontier.",
+      "Identify rivers, coastlines, passes, and significant crossing edges.",
+      "Place all starting political Control markers.",
+      "Place Local Authority markers.",
+      "Place unresolved exploration Sites.",
+      "Place the Founder's Legacy Site.",
+      "Place all printed starting Roads.",
+      "Place the non-PC Grand Faction Force markers.",
+      "Place the PC Party marker.",
+      "Mark the starting Provinces.",
+      "Record starting resource access and any established agreements."
+    ],
+    "notes": [
+      "When preparing the map, avoid creating an arrangement where a required starting Capital is functionally isolated from the rest of the campaign.",
+      "Record all real hex adjacencies and significant crossing and sea-route connections before play; later discoveries and agreements can change legal passage, not retroactively the printed tile locations.",
+      "The map need not be perfectly symmetrical, but each participating power should have meaningful strategic opportunities."
+    ]
+  },
+  "O15_workedExampleStonebridgeDevelopment": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.15 Worked Example — Stonebridge Development" },
+    "setup": [
+      "The company is affiliated with Concord.",
+      "Stonebridge Corridor begins with: N1-H controlled by Stonebridge Council. N1-A unclaimed, containing the Slate Quarry and its unresolved Site. N1-B unclaimed, containing the Old Tollhouse and its unresolved Site."
+    ],
+    "operations": [
+      {
+        "operation": "First Operation — Explore",
+        "narrative": [
+          "The PCs investigate the Sealed Mine Gallery at N1-A.",
+          "They complete the expedition and obtain its Discovery reward.",
+          "Exploration does not change ownership of the quarry."
+        ]
+      },
+      {
+        "operation": "Second Operation — Construct",
+        "narrative": [
+          "The PCs construct a Frontier Outpost at N1-A for 2 Gold, satisfying the Stone 1 and Supply 1 requirements from their existing accessible resources.",
+          "The quarry is legally unclaimed and connected to the company's established territory or supply network.",
+          "Concord gains Political Control of N1-A.",
+          "The company now has access to the quarry's Stone resource if the supply connection remains valid.",
+          "Stonebridge Council retains N1-H."
+        ]
+      },
+      {
+        "operation": "Third Operation — Commerce",
+        "narrative": [
+          "The PCs negotiate with Stonebridge Council for access to the Market's Influence resource.",
+          "The agreement succeeds.",
+          "The company now has a commercial right to that resource while the settlement remains independently governed.",
+          "The PCs have expanded their resource access without annexing Stonebridge."
+        ]
+      },
+      {
+        "operation": "Fourth Operation — Politics",
+        "narrative": [
+          "The PCs later negotiate a military protection agreement.",
+          "The agreement provides access to one specified Stonebridge militia contingent during the remainder of the Act.",
+          "The militia is recorded as a temporary allied formation. It belongs to Stonebridge Council and does not become permanent company property.",
+          "The PCs must still satisfy legal slots and deployment points to field it."
+        ]
+      },
+      {
+        "operation": "Fifth Operation — Provincial Control",
+        "narrative": [
+          "Suppose the PCs subsequently gain control of N1-B through another legitimate territorial effect.",
+          "Concord now controls N1-A and N1-B.",
+          "Concord therefore becomes the Provincial Controller of Stonebridge Corridor.",
+          "Place a Concord Province marker beside N1.",
+          "Stonebridge Council still controls N1-H.",
+          "At the next eligible Act milestone, the Province contributes to the company's Provincial Dividend."
+        ]
+      }
+    ]
+  },
+  "O16_mapRulesQuickReference": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_O.md", "section": "O.16 Map Rules Quick Reference" },
+    "table": [
+      { "rule": "Hexes per Tri-Hex", "standard": "3" },
+      { "rule": "Provincial Control", "standard": "At least 2 controlled hexes" },
+      { "rule": "Company Dividend", "standard": "1 Gold per PC per controlled Province; uncapped" },
+      { "rule": "Dividend Timing", "standard": "Beginning of Acts II, III, IV" },
+      { "rule": "Political Influence markers", "standard": "Maximum 2 per Grand Faction" },
+      { "rule": "Local Influence", "standard": "+1 on target or adjacent hex, nonstacking" },
+      { "rule": "Resource ratings", "standard": "0–3 each" },
+      { "rule": "Printed resources", "standard": "Stone, Supply, Influence" },
+      { "rule": "Routine Company construction", "standard": "One Major or two Minor Improvements" },
+      { "rule": "Routine NPC Industry construction", "standard": "One Minor Improvement per Act" },
+      { "rule": "Frontier Outpost", "standard": "Claims one eligible unclaimed hex" },
+      { "rule": "Military occupation", "standard": "Does not automatically transfer control" },
+      { "rule": "Exploration", "standard": "Does not automatically transfer control" },
+      { "rule": "Provincial ownership", "standard": "Does not override individual hex ownership" },
+      { "rule": "Road movement bonus", "standard": "+1 hex maximum per qualifying movement" }
+    ]
+  },
+  "closingNote": "End of Appendix O — revised atlas and territorial development.",
+  "knownIssues": [
+    "O.2's tile-count table for the 'Long' campaign format uses the same labels/columns as the other three formats but is transcribed verbatim from a source table that used a slightly irregular column header ('Long' with extra trailing spaces in the Markdown); no numeric discrepancy was found, this is purely a source formatting artifact.",
+    "This appendix's 'Grand Factions' (Unbound, Conclave, Wayfarers, Legions, Concord) are the same five-faction campaign-layer roster used in Appendices B, E, and I — not the twelve army-list factions in `factions/`. See campaign/index.json's designNotes."
+  ]
+}

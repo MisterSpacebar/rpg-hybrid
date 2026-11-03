@@ -1,0 +1,76 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/12_spell_catalogue.md",
+    "section": "PRIEST SPELLS, General Priest Spells, Cleric Spells, Druid Spells, Oracle Spells"
+  },
+  "description": "Priest spells draw upon divine, spiritual, natural, or prophetic powers. They may represent prayers, miracles, spiritual manifestations, or supernatural techniques depending on the character's beliefs and traditions.",
+  "generalPriestSpells": {
+    "description": "Available to all Priest Subclasses.",
+    "spells": [
+      {
+        "name": "Judgment Bolt",
+        "range": "8\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Radiant"], "keywords": [], "points": 10,
+        "effect": "A straightforward offensive miracle, providing a more attack-focused alternative to Radiant Bolt."
+      },
+      {
+        "name": "Guiding Ray",
+        "range": "8\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Guidance"], "points": 20,
+        "effect": "On a Surge, the next friendly Attack against the target during this Round gains +1 Attack die."
+      },
+      {
+        "name": "Sun Lance",
+        "range": "9\"", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Magic", "Radiant"], "keywords": ["Heavy", "Anti-Undead 2"], "points": 30,
+        "effect": "A powerful concentrated beam of divine energy, dealing substantial Damage at extended Range. It follows normal Heavy restrictions."
+      }
+    ]
+  },
+  "clericSpells": {
+    "description": "Cleric spells emphasize divine punishment, protection against supernatural threats, and holy energy.",
+    "spells": [
+      {
+        "name": "Hallowed Sweep",
+        "range": "6\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Radiant"], "keywords": ["Blast 1\""], "points": 20,
+        "effect": "A wave of divine energy strikes the target and nearby Units. Resolve Blast 1\" normally."
+      },
+      {
+        "name": "Banishing Light",
+        "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Radiant"], "keywords": ["Anti-Demon 2"], "points": 20,
+        "effect": "A specialized Attack designed to combat demons and other Units possessing the Demon category. Anti-Demon 2 grants two additional Attack dice against eligible targets."
+      }
+    ]
+  },
+  "druidSpells": {
+    "description": "Druid spells manipulate natural forces, vegetation, and the surrounding environment.",
+    "spells": [
+      {
+        "name": "Briarstorm",
+        "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Nature"], "keywords": ["Blast 1\""], "points": 20,
+        "effect": "The caster summons a violent burst of thorns, roots, and vines around the target. Resolve Blast 1\" normally."
+      },
+      {
+        "name": "Vine Snare",
+        "range": "8\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Nature"], "keywords": ["On Damage: Slow 2"], "points": 20,
+        "effect": "If the Attack deals Damage, the target suffers Slow 2 until the end of its next Movement activation."
+      }
+    ]
+  },
+  "oracleSpells": {
+    "description": "Oracle spells manipulate fate, perception, and the immediate outcomes of battle.",
+    "spells": [
+      {
+        "name": "Fate Needle",
+        "range": "9\"", "attacks": 3, "hit": "4+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Pinpoint"], "points": 20,
+        "effect": "A precise supernatural strike guided toward an anticipated weakness. Pinpoint ignores the usual penalty for firing into an Engagement."
+      },
+      {
+        "name": "Doom Mark",
+        "range": "6\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["On Damage: Misfortune"], "points": 20,
+        "effect": "If the Attack deals Damage, the target worsens Hit by 1 step during its next Attack, provided that Attack occurs before the end of the Round."
+      }
+    ]
+  },
+  "designNotes": [
+    "v4 balance pass (post-playtesting): Damage-1 spells gained +1 Attack; the Damage-2/Heavy Sun Lance kept its listed Attacks and gained Anti-Undead 1, matching the equivalent policy applied to PC equipment and Generic Units.",
+    "v5 balance pass (second damage-output pass): Damage-1 spells gained a further +1 Attack; Sun Lance raised its Anti-Undead to 2."
+  ]
+}

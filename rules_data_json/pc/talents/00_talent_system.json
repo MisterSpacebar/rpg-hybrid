@@ -1,0 +1,96 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/13_talents.md",
+    "section": "intro, TALENT PROGRESSION, COMMAND ABILITIES, TALENT AND ATTACK INTERACTIONS"
+  },
+  "description": [
+    "Talents represent a character's training, experience, exceptional abilities, and personal development.",
+    "Characters acquire Talents by spending Experience Points (XP). Talents provide permanent improvements, new capabilities, or Command Abilities that may be used during combat."
+  ],
+  "categories": [
+    { "id": "generic", "name": "Generic Talents", "description": "Available to all characters." },
+    { "id": "class", "name": "Class Talents", "description": "Available to characters belonging to the specified Class." },
+    { "id": "specialization", "name": "Specialization Talents", "description": "Optional Talents representing particular combat techniques, social capabilities, or other specialized training." }
+  ],
+  "progression": {
+    "description": "All Generic, Class, and Specialization Talents share the 6/5/4/3/2 trapezoid, costing up to 250 XP. Each additional Talent at Tier N requires one additional Talent in Tier N−1, after two lower-Tier Talents unlock the first slot. These lower-tier Talents are not exclusive pairs or consumed.",
+    "fullTableSourceRef": "03_experience_and_advancement.md#2-talent-tiers-and-costs",
+    "xpCostByTier": [
+      { "tier": 1, "xpCost": 5, "maxTalents": 6, "xpSubtotal": 30 },
+      { "tier": 2, "xpCost": 10, "maxTalents": 5, "xpSubtotal": 50 },
+      { "tier": 3, "xpCost": 15, "maxTalents": 4, "xpSubtotal": 60 },
+      { "tier": 4, "xpCost": 20, "maxTalents": 3, "xpSubtotal": 60 },
+      { "tier": 5, "xpCost": 25, "maxTalents": 2, "xpSubtotal": 50 }
+    ],
+    "totalMaxTalents": 20,
+    "totalMaxXp": 250,
+    "prerequisiteRule": "Talent prerequisites are cumulative, not exclusive pairs. To purchase the first Talent in Tier N (N > 1), own two Talents in Tier N−1. Each additional Talent in Tier N requires one additional Talent in Tier N−1. Lower-tier Talents are not consumed and can support multiple higher-tier purchases. General requirement: to own k Talents in Tier N, you must own at least k + 1 Talents in Tier N−1. You must also satisfy any Talent-specific prerequisite. Tier 1 has no preceding-tier prerequisite.",
+    "rankedTalentRule": "Ranked Talents may be purchased more than once. Each additional Rank is purchased at the next Tier above the preceding Rank (up to Tier 5) and must satisfy that Tier's normal slot and lower-tier prerequisites. For example, a Tier 1+ Ranked Talent costs 5 XP for Rank I, then 10 XP for Rank II, 15 XP for Rank III, 20 XP for Rank IV, and 25 XP for Rank V. Ranks are bought in order, with each Rank occupying one Talent slot at its Tier.",
+    "skillAdvancementRule": "Skills improve one threshold step at a time (6+ → 5+ → 4+ → 3+ → 2+) unless stated otherwise. Skills cannot normally improve beyond 2+. A Characteristic cannot normally exceed 6."
+  },
+  "pcBattlefieldPointValue": {
+    "sourceRef": "03_experience_and_advancement.md#4-character-battlefield-point-values",
+    "basePoints": 100,
+    "formula": "max(100, XP spent on Talents) + currently equipped Equipment Points + other explicitly additional Point costs",
+    "notes": [
+      "The 100-point starting base is a floor, not an extra cost added to talent progression. Once a PC has spent at least 100 XP on Talents, replace the base with the total XP spent. Unspent XP is not included.",
+      "XP-funded Talent effects are not charged again individually above the base. Equipment does not cost XP; acquire, replace, or remove it through play, adjusting Point Value to match the equipment that currently counts.",
+      "Additional known Spell Attacks and Animal Companions use their explicitly assigned Point costs."
+    ]
+  },
+  "commandAbilities": {
+    "description": "Talents may grant new Command Abilities. A character permanently learns any Command Ability granted by a Talent they possess. Characters may know any number of Command Abilities, but may normally prepare only four optional Command Abilities for battle. Subclass Signature Commands and the Artificer's Field Specialty are always prepared and do not occupy these slots. Passive Talents and Weapon or Spell Attack profiles do not occupy prepared Command slots.",
+    "activationTimings": [
+      { "timing": "Movement", "use": "During the character's Movement activation" },
+      { "timing": "Assault", "use": "During the character's Assault activation" },
+      { "timing": "Combat", "use": "During the character's Combat activation" },
+      { "timing": "Reaction", "use": "In response to the stated trigger" },
+      { "timing": "Passive", "use": "Applies automatically under its stated conditions" }
+    ],
+    "activationRules": [
+      "Abilities may normally be used once per Turn unless their descriptions specify otherwise.",
+      "A Reaction may be used during another Unit's Turn when its trigger occurs. The reacting Unit does not need to be the active Unit.",
+      "Abilities explicitly limited to once per Round, once per battle, or another frequency retain those restrictions.",
+      "Repeatable abilities explicitly permit additional uses, with each use paying its normal CP cost.",
+      "Continuous passive bonuses apply normally and are not expended."
+    ],
+    "skillBasedCommands": {
+      "rules": [
+        "Roll D6 equal to the specified Characteristic.",
+        "Each die meeting or exceeding the Skill rating generates one success.",
+        "Resolve the ability using either the number of successes or the highest die, as specified.",
+        "There is no additional Difficulty requirement for these Commands."
+      ],
+      "successesX": "When an ability uses X, X equals the number of successful dice. An ability might Move X inches, affect X Hits, or remove X conditions. Zero successes normally means the scaled effect is zero.",
+      "highestDie": "When an ability uses the highest die, use the highest result in the rolled pool. Unless otherwise stated, at least one successful die is required for the effect to occur."
+    },
+    "otherRules": [
+      "Command Skill Checks may generate Surges and Blunders normally. A Command does not receive an additional Surge benefit unless a rule grants one.",
+      "The CP cost is paid even when a Command Check produces no successes.",
+      "Command effects affecting an Attack pool modify the Unit's combined Attack pool unless explicitly stated otherwise.",
+      "Repeated applications of the same temporary effect do not stack unless a rule permits it."
+    ],
+    "prepared": {
+      "note": "Personal phase Commands require that Unit to be the one currently activated. A Command targeting another friendly Unit does not let the owner activate an unselected Unit's own personal Command. Faction and Doctrine Commands instead require controlling-side priority; Reactions follow their triggers. Command use does not consume the selected Unit's one Assault action unless the Command explicitly replaces it.",
+      "slots": "Optional Command Abilities learned from Generic, Class, or Specialization Talents all share the same four prepared Command slots. Subclass Signature Commands and the Artificer's Field Specialty remain automatically prepared. A character may exchange which optional Commands are prepared before a battle, following the normal preparation rules."
+    }
+  },
+  "talentAvailability": "Generic and Specialization Talents are available to all Classes unless otherwise specified. Class Talents are restricted to their corresponding Classes, except where another Talent explicitly grants access. Animal Companion Talents are Generic Talents and may be acquired by any Class.",
+  "spellAcquisition": "Talents no longer directly grant additional known Spell Attacks unless explicitly stated. New Spell Attacks are acquired through scrolls, magical texts, training, or other sources described in the Items and Spells rules. Spell Attacks do not occupy prepared Command slots and may be improved through appropriate Prowess Talents.",
+  "attackInteractions": {
+    "prowessAndPcAttackProfiles": "Player Characters use the complete printed Attack values in Equipment, Starting Spell Attacks, and Spell Catalogue. Prowess and Martial or Spell Prowess improve the selected PC Attack beyond the printed profile, as specified by each Talent. These personal improvements do not apply to summoned Units, Animal Companions, or allied Units unless a rule explicitly states otherwise.",
+    "criticalAndSurges": "Attack rolls may generate one Surge or Blunder per complete pair of natural sixes or ones, after permitted rerolls. An ability worded 'when the Attack Surges' triggers only once per Attack, whereas an effect explicitly worded 'for each Surge' may scale with every Surge. Ordinary Skill Checks and Charges normally generate at most one instance of each. After all rerolls, Critical X converts up to X failed Hit dice into successful Critical Hits without requiring a Surge. If a Talent grants Critical +X on Surge, that bonus stacks for the triggering Attack. Ward applies to these Hits; Armor and Evade do not.",
+    "skillBasedAbilities": "When a Talent refers to X successes, X equals the number of successful dice in the specified Characteristic + Skill roll. No additional Difficulty is imposed unless an exceptional rule explicitly requires one. Effects remain limited naturally by the number of dice rolled and the character's Skill rating."
+  },
+  "talentFiles": [
+    { "id": "generic", "file": "generic_talents.json" },
+    { "id": "critical-specialization", "file": "critical_specialization.json" },
+    { "id": "social-specialization", "file": "social_specialization.json" },
+    { "id": "animal-companion", "file": "animal_companion_talents.json" },
+    { "id": "warrior", "file": "warrior_talents.json" },
+    { "id": "rogue", "file": "rogue_talents.json" },
+    { "id": "mage", "file": "mage_talents.json" },
+    { "id": "priest", "file": "priest_talents.json" },
+    { "id": "artificer", "file": "artificer_talents.json" }
+  ]
+}

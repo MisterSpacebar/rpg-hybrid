@@ -1,0 +1,55 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/13_talents.md",
+    "section": "ANIMAL COMPANION TALENTS"
+  },
+  "description": "Any Class may learn these Talents. The animal uses its own NPC Unit profile, not the owner's PC weapon/spell profiles, and is an independent friendly Unit. A companion may use a Command only when its profile or an acquired upgrade expressly grants it one; such Commands use the controlling player's CP and follow normal personal-Unit activation timing.",
+  "talents": [
+    {
+      "id": "animal-companion",
+      "name": "Animal Companion",
+      "tier": 2,
+      "type": "Passive",
+      "effect": [
+        "Gain one bonded Small or Standard Animal Companion from the Bestiary (17_bestiary.md#7-animal-companions), as printed, without free Training upgrades. Add that companion's listed Points to the PC's battlefield value. It:",
+        "Activates independently during Movement, Assault, and eligible Combat Phases, following the chosen combat mode's normal Unit order.",
+        "Makes its own Move, one Assault action, Charge, and Engagement Attack when eligible; it does not attack alongside its owner's activation for free.",
+        "Maintains its own Wounds, Saves, Keywords and equipment/Attack profiles.",
+        "Remains within Short Range of its owner whenever reasonably possible.",
+        "Cannot control objectives independently, contribute Command Points, or use Commands that it has not explicitly learned.",
+        "Does not receive the owner's personal Prowess, equipment improvements, or Talents unless a rule states otherwise.",
+        "If Defeated, it is unavailable for the remainder of that encounter; recovery or replacement is settled between adventures. Only one bonded companion is gained through this Tier 2 Talent."
+      ]
+    },
+    {
+      "id": "greater-animal-companion",
+      "name": "Greater Animal Companion",
+      "tier": 4,
+      "prerequisite": "Animal Companion",
+      "type": "Passive",
+      "effect": "Choose one of the following options when acquiring this Talent.",
+      "options": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Develop one companion", "effect": "Keep the existing companion and give it two different Companion Training upgrades from the Companion Training table." },
+          { "name": "Bond a second companion", "effect": "Gain a second Small or Standard Animal Companion as printed; give one Companion Training upgrade to each of the two companions." }
+        ]
+      },
+      "notes": [
+        "Both companions remain separate friendly Units with independent activations, and both have their listed Bestiary Points added to the PC's battlefield value.",
+        "Training benefits are part of this 20-XP Talent and do not add an extra Point surcharge.",
+        "A PC may have at most two bonded companions from these Talents.",
+        "A specific Training benefit may be selected only once per companion. Separate Bestiary upgrades purchased for Points remain subject to their own limits; identical benefits may not be taken twice merely by changing their source.",
+        "Training does not allow an animal to use a Command it does not normally possess. Creature-specific CP Commands, such as a bird's Spot Prey, may be bought when allowed by its Bestiary entry."
+      ],
+      "companionTraining": [
+        { "name": "Hardy", "effect": "+1 maximum Wound" },
+        { "name": "Swift", "effect": "+1\" Move" },
+        { "name": "Ferocious", "effect": "+1 Attack die on one chosen Engagement Attack profile" },
+        { "name": "Precise", "effect": "One chosen Attack profile gains Accurate 1" },
+        { "name": "Resilient", "effect": "Gain Tough 1" },
+        { "name": "Protective", "effect": "Gain Cover 1 against eligible ranged Attacks" }
+      ]
+    }
+  ]
+}

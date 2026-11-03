@@ -1,0 +1,82 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/12_spell_catalogue.md",
+    "section": "MAGE SPELLS, General Mage Spells, Elementalist Spells, Additional Fire Spell — Flame Lance, Necromancer Spells, Illusionist Spells"
+  },
+  "description": "Mage spells manipulate arcane energy, elemental forces, life and death, and perception.",
+  "generalMageSpells": {
+    "description": "Available to all Mage Subclasses.",
+    "spells": [
+      {
+        "name": "Seeking Darts",
+        "range": "9\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Pinpoint"], "points": 10,
+        "effect": "Small projectiles of arcane energy pursue exposed targets. Pinpoint allows the spell to ignore the normal penalty for attacking enemies Engaged with another Unit."
+      },
+      {
+        "name": "Concussive Pulse",
+        "range": "6\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["On Damage: Push 1\""], "points": 20,
+        "effect": "When the Attack deals Damage, push the target up to 1\" directly away from the caster. This is forced movement and does not count as Disengaging."
+      },
+      {
+        "name": "Arcane Lance",
+        "range": "8\"", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Magic"], "keywords": ["Heavy", "Anti-Armored 2"], "points": 30,
+        "effect": "A concentrated magical projectile designed to inflict significant Damage. Its Heavy restriction prevents normal use after moving."
+      }
+    ]
+  },
+  "elementalistSpells": {
+    "description": "Elementalist spells emphasize elemental destruction, environmental hazards, and forced movement.",
+    "spells": [
+      {
+        "name": "Chain Lightning",
+        "range": "8\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Lightning"], "keywords": ["Surge: Blast 1\""], "points": 20,
+        "effect": "A bolt of electricity arcs through nearby targets. On a Surge, resolve Blast 1\" around the original target."
+      },
+      {
+        "name": "Glacial Lance",
+        "range": "8\"", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Magic", "Frost"], "keywords": ["Heavy", "Surge: Slow 2", "Anti-Monster 2"], "points": 30,
+        "effect": "A large magical projectile capable of piercing armor and freezing enemies. On a Surge, the target suffers Slow 2 until the end of its next Movement activation."
+      }
+    ],
+    "additionalFireSpell": {
+      "name": "Flame Lance",
+      "range": "8\"", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Magic", "Fire"], "keywords": ["Heavy", "Anti-Elite 2"], "points": 30,
+      "effect": "A concentrated Fire Attack with strong single-target Damage. It follows the normal Heavy restriction. Because it has only one Attack die, Flame Lance cannot naturally Surge without an explicit Attack-dice increase. It counts as Fire Damage only when the target takes unsaved Damage.",
+      "notes": ["This new option is provisionally priced and is available to Elementalists through normal additional-spell acquisition."]
+    }
+  },
+  "necromancerSpells": {
+    "description": "Necromancer spells manipulate deathly energies, weaken living defenses, and overwhelm enemies with supernatural projectiles.",
+    "spells": [
+      {
+        "name": "Withering Grasp",
+        "range": "6\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["On Damage: Weaken Armor"], "points": 20,
+        "effect": "If this Attack deals Damage, worsen the target's Armor by 1 step until the end of the Round. The penalty applies after this Attack resolves."
+      },
+      {
+        "name": "Bone Volley",
+        "range": "8\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Critical 1"], "points": 20,
+        "effect": "The caster launches a cloud of magically animated bone fragments. On a Surge, the Attack gains Critical 1, converting up to one failed Hit die into a Critical Hit after rerolls."
+      }
+    ]
+  },
+  "illusionistSpells": {
+    "description": "Illusionist spells employ psychic force, false sensory information, and supernatural misdirection.",
+    "spells": [
+      {
+        "name": "Phantasmal Blade",
+        "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Critical 1"], "points": 20,
+        "effect": "The caster manifests an illusory weapon capable of inflicting real injury. On a Surge, gain Critical 1 for this Attack."
+      },
+      {
+        "name": "Nightmare Gaze",
+        "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["On Damage: Suppress Reactions"], "points": 20,
+        "effect": "If this Attack deals Damage, the target cannot use Reaction abilities until the end of the Round. Passive abilities remain unaffected."
+      }
+    ]
+  },
+  "designNotes": [
+    "v4 balance pass (post-playtesting): Damage-1 spells gained +1 Attack; Damage-2/Heavy spells (Arcane Lance, Glacial Lance, Flame Lance) kept their listed Attacks and gained a thematic Anti-[Type] 1, matching the equivalent policy applied to PC equipment and Generic Units.",
+    "v5 balance pass (second damage-output pass): Damage-1 spells gained a further +1 Attack; Damage-2/Heavy spells (Arcane Lance, Glacial Lance, Flame Lance) raised their Anti-[Type] to 2."
+  ]
+}

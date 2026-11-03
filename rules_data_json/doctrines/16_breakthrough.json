@@ -1,0 +1,14 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "16. Breakthrough" },
+  "name": "Breakthrough",
+  "foundationRecruitmentSlot": "V",
+  "strategy": "Reach resistant positions, overcome defenders, and maintain pressure after entering Engagement.",
+  "commands": [
+    { "name": "Breach Guard", "slot": "E", "timing": "Combat", "effect": "One friendly Unit that successfully Charged this Round gains Accurate 2 on its next Engagement Attack against an Armored target. If the target had Brace during that Charge, also gain +1 Attack." },
+    { "name": "Momentum Drive", "slot": "V", "timing": "Assault", "effect": "One friendly Unit gains Charge 2 when declaring its next Charge this Phase. Charge Impact is unchanged." },
+    { "name": "Siege Breaker", "slot": "A", "timing": "Assault/Combat", "effect": "One friendly Unit gains Anti-[Target Type] 1 on its next Attack against an Armored Unit, Monster, Vehicle, War Machine, or Fortification this Phase. Against a Structure or Fortification, the Attack also gains +1 Damage." },
+    { "name": "Press the Breach", "slot": "C", "timing": "Combat", "effect": "After a friendly Unit inflicts unsaved Damage in Engagement, the target loses one bonus Unit of objective-control counting until the end of the Round, to a minimum of its normal count." },
+    { "name": "Command the Breach", "slot": "H", "timing": "Combat Reaction", "effect": "When a friendly Unit within Short of friendly Headquarters that successfully Charged this Round is attacked in Engagement, grant it Tough 2 against that Attack." }
+  ],
+  "doctrineIdentity": "Charge reliability and overcoming defended positions. Breakthrough differs from Alpha Strike by concentrating on reaching and penetrating targets rather than maximizing immediate Attack volume."
+}

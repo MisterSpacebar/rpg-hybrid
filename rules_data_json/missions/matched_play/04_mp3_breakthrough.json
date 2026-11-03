@@ -1,0 +1,30 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md", "section": "MP3 — BREAKTHROUGH" },
+  "id": "MP3",
+  "name": "Breakthrough",
+  "tagline": "Escape Through Enemy Positions",
+  "primaryObjective": {
+    "name": "Breach the Line",
+    "note": "This Mission replaces ordinary objective-control scoring. Each side must move its Units through the opponent's designated breakthrough points.",
+    "breakthroughPoints": "Each side treats its enemy-affiliated objectives as its Breakthrough Points. At 2,000 Points there are two such points for each side; the central Neutral objective cannot be a Breakthrough Point.",
+    "breakThroughEligibility": [
+      "It is within 3\" of one of its assigned Breakthrough Points.",
+      "Its side controls that objective during the Scoring Phase.",
+      "The Unit is not Engaged, Downed, or Withdrawn.",
+      "The Unit has not previously scored through Breakthrough."
+    ],
+    "resolution": "When a Unit Breaks Through, remove it from the battlefield. It counts as having successfully escaped, not as being defeated. Each successfully escaped Unit awards 2 Primary VP.",
+    "cap": "A player may earn up to the format's normal Primary VP cap per Scoring Phase from Breakthrough (5 VP in a standard 2,000-point game). If multiple Units escape simultaneously, they all leave the battlefield, but only up to that format's Primary VP cap is awarded that Phase. The escaped Units are not Defeated and cannot return to play. Units that have escaped no longer participate in the battle."
+  },
+  "tacticalObjective": {
+    "name": "Successful Penetration",
+    "effect": "Gain 1 Tactical VP if at least one friendly Unit Breaks Through during the current Scoring Phase."
+  },
+  "specialRules": [
+    "The same Unit cannot score more than once.",
+    "A Unit that Breaks Through cannot return through Reserves or other ordinary redeployment rules.",
+    "A player may Break Through with multiple eligible Units at the same controlled objective, subject to the per-Round VP limit."
+  ],
+  "designNotes": "Breakthrough rewards maneuvering and reaching enemy positions rather than holding territory indefinitely. Using objective markers as Breakthrough Points makes it compatible with layouts where the armies do not begin along conventional opposing board edges.",
+  "knownIssues": ["Shares its name with Doctrine 16 'Breakthrough' (rules_data_json/doctrines/16_breakthrough.json), but the two are unrelated: this is a Matched Play scoring Mission about escaping Units off the battlefield, while the Doctrine is a Command-selection package about Charge reliability. Likely an intentional thematic echo, not a cross-reference."]
+}

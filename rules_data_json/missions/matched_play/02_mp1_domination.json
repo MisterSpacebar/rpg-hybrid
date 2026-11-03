@@ -1,0 +1,16 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md", "section": "MP1 — DOMINATION" },
+  "id": "MP1",
+  "name": "Domination",
+  "tagline": "Capture and Recapture",
+  "primaryObjective": "Score 1 VP for each controlled objective during every scoring Round.",
+  "tacticalObjective": {
+    "name": "Seize the Initiative",
+    "effect": "Gain 1 Tactical VP if you control at least one objective that your opponent controlled at the end of the previous Round. The objective must have changed from enemy control to your control. Taking a previously Neutral or Contested objective does not satisfy this condition unless the opponent controlled it during the preceding Round."
+  },
+  "specialRules": [
+    "Record objective control at the end of Round 1, even though no VP is awarded.",
+    "From Round 2 onward, compare each objective's current control with its recorded control from the previous Round."
+  ],
+  "designNotes": "Domination rewards aggressive territorial play and counterattacks. It is the simplest Matched Play Mission and serves as the baseline for evaluating army balance across different layouts."
+}

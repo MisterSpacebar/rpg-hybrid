@@ -1,0 +1,19 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md", "section": "MP8 — ARCANE SUPREMACY" },
+  "id": "MP8",
+  "name": "Arcane Supremacy",
+  "tagline": "Attune and Control",
+  "primaryObjective": {
+    "name": "Magical Control",
+    "note": "This Mission modifies ordinary objective scoring. Each objective begins Unattuned.",
+    "rule": "A player scores 1 Primary VP for each objective that is both: Controlled by their side, and Attuned to their side. An Unattuned objective awards no VP, even if controlled."
+  },
+  "specialRules": {
+    "attuneObjective": "An eligible unengaged Unit within 1\" of an objective may perform an Attune Mission Action in Movement or Assault, replacing its normal action in that phase. Place that side's Attunement token on the objective. Attunement persists until an opposing Unit successfully Attunes the same objective. Each objective can be Attuned to only one side at a time. Attuning an objective does not automatically grant control over it."
+  },
+  "tacticalObjective": {
+    "name": "Establish Attunement",
+    "effect": "Gain 1 Tactical VP if you successfully Attuned at least one objective during the current Round and control that objective during the Scoring Phase."
+  },
+  "designNotes": "Arcane Supremacy requires players to commit Units to establishing control before collecting VP. A side may hold an Attuned objective without controlling it temporarily, but only the side matching the Attunement can score from it. The objective's magical state creates a persistent strategic consideration beyond ordinary occupation."
+}

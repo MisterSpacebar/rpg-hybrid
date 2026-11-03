@@ -1,0 +1,299 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "Appendix L — Quick Reference Sheets" },
+  "title": "Quick Reference Sheets",
+  "version": "Campaign Mode v4.3",
+  "description": [
+    "A consolidated set of condensed reference tables summarizing campaign-length structure, the Campaign Turn sequence, Company Orders, Develop Projects, Hero Points, XP awards, deployment limits, Gold income, formation costs/recovery, territory/resources, Political Stakes, NPC Maneuvers, the Principal Opposition, the GM campaign checklist, Battlefield Edges, and PC detachment/Charter entitlements.",
+    "Most entries here duplicate tables defined in full elsewhere (Appendices A–K, N, O) and are reproduced here only in their condensed reference form; where they differ in wording, the fuller source appendix is authoritative."
+  ],
+  "sections": {
+    "L1_campaignLengths": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.1 Campaign Lengths" },
+      "turnRepresents": "One Season.",
+      "seasonOrder": ["Spring", "Summer", "Autumn", "Winter"],
+      "companyOrdersRefresh": "Every Spring.",
+      "npcManeuverDecksRefresh": "At each new Act.",
+      "lengthsByAct": [
+        { "format": "Local", "actI": 3, "actII": 4, "actIII": 5, "actIV": 6, "total": 18 },
+        { "format": "Standard", "actI": 4, "actII": 5, "actIII": 7, "actIV": 9, "total": 25 },
+        { "format": "Long", "actI": 5, "actII": 6, "actIII": 8, "actIV": 10, "total": 29 },
+        { "format": "Grand", "actI": 6, "actII": 7, "actIII": 9, "actIV": 11, "total": 33 }
+      ]
+    },
+    "L2_campaignTurn": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.2 Campaign Turn" },
+      "steps": [
+        "Reveal Task Display and scheduled Neutral Opportunity.",
+        "Council Influence holder chooses the Active Stake, target, suit, and Lead.",
+        "Each participating non-PC Grand Faction commits one Maneuver.",
+        "PCs choose one available Company Order and determine Supremacy.",
+        "Resolve the Company's operation.",
+        "Determine any successful Neutral Opportunity or PC political claim.",
+        "Resolve eligible NPC commitments if necessary.",
+        "Award exactly one colored or gray Act marker.",
+        "Award one Development draw to the winner of a colored Stake.",
+        "Resolve legal NPC basic map actions.",
+        "Update campaign records and Upkeep.",
+        "Award applicable XP.",
+        "Advance Season and pass Council Influence."
+      ]
+    },
+    "L3_companyOrderReference": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.3 Company Order Reference" },
+      "orders": [
+        { "number": 1, "order": "Explore", "normalEffect": "One expedition/Site/reconnaissance", "supremacy": "Two Discovery choices, keep one" },
+        { "number": 2, "order": "Commerce", "normalEffect": "1G/PC income or one contract", "supremacy": "+1G or −1G contract" },
+        { "number": 3, "order": "Develop", "normalEffect": "1 + PCs project capacity", "supremacy": "−2G" },
+        { "number": 4, "order": "Construct", "normalEffect": "One Major or two Minor Improvements", "supremacy": "−1G" },
+        { "number": 5, "order": "Recruit", "normalEffect": "One eligible formation per PC", "supremacy": "−2G" },
+        { "number": 6, "order": "Politics", "normalEffect": "One significant political agreement/objective", "supremacy": "One minor concession" },
+        { "number": 7, "order": "Mobilize", "normalEffect": "Move Force and resolve military operation", "supremacy": "One Battlefield Edge" }
+      ],
+      "supremacyRule": "Supremacy applies when the Order number exceeds every previously played Order number that Year.",
+      "firstOrderRule": "The first Order each Year automatically qualifies."
+    },
+    "L4_developProjects": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.4 Develop Projects" },
+      "capacity": "Capacity = 1 + participating PCs.",
+      "minorProjectCost": "One Minor Project consumes one opportunity.",
+      "majorProjectCost": "One Major Project consumes two opportunities.",
+      "minorProjectRepeat": "Minor Projects may repeat.",
+      "majorProjectCategoryLimit": "Each Major Project category may be used once per Develop Order.",
+      "minorProjects": ["Craft Equipment", "Upgrade Equipment", "Upgrade Formation", "Refit Formation", "Eligible standard training"],
+      "majorProjects": ["Expand Detachment", "Talent Retraining", "Asset Research", "Asset Development"],
+      "flexSlot": {
+        "cost": "2 Gold",
+        "grants": "One fixed C, E, R, V, S, or A category; cannot be H.",
+        "maximum": "Two per PC."
+      },
+      "existingFormationUpgradeCost": "Normally cost 1 Gold per 25 Points added, rounded up; their Points also increase the formation value.",
+      "talentRetraining": "Costs 2 Gold and requires a fully legal resulting Talent structure.",
+      "assetResearch": "Normally costs 2 Gold plus any special requirements.",
+      "note": "Normal character XP spending does not consume Develop capacity."
+    },
+    "L5_heroPointValue": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.5 Hero Point Value" },
+      "baseHeroPoints": "Base Hero Points = max(100, XP spent on Talents)",
+      "finalHeroPoints": "Final Hero Points = Base Hero Points + Equipped Equipment Points + other explicit Point costs",
+      "exampleTable": [
+        { "xpEarned": 50, "xpSpentOnTalents": 25, "baseHeroPoints": 100 },
+        { "xpEarned": 110, "xpSpentOnTalents": 85, "baseHeroPoints": 100 },
+        { "xpEarned": 110, "xpSpentOnTalents": 110, "baseHeroPoints": 110 },
+        { "xpEarned": 150, "xpSpentOnTalents": 125, "baseHeroPoints": 125 },
+        { "xpEarned": 175, "xpSpentOnTalents": 150, "baseHeroPoints": 150 },
+        { "xpEarned": 200, "xpSpentOnTalents": 200, "baseHeroPoints": 200 },
+        { "xpEarned": 250, "xpSpentOnTalents": 225, "baseHeroPoints": 225 }
+      ],
+      "notes": [
+        "Earned-but-unspent XP does not raise battlefield value.",
+        "Ordinary Talent effects are already reflected in spent Talent XP; don't add their XP cost again.",
+        "Equipment and explicitly additional Point costs still apply.",
+        "Spend and record XP, then finalize the Hero's Points before each deployment."
+      ]
+    },
+    "L6_xpAwards": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.6 XP Awards" },
+      "awards": [
+        { "achievement": "Completed Campaign Turn", "award": "5 XP/PC" },
+        { "achievement": "Newly resolved unique Site", "award": "5 XP/PC" },
+        { "achievement": "Beginning Act II", "award": "5 XP/PC" },
+        { "achievement": "Beginning Act III", "award": "5 XP/PC" },
+        { "achievement": "Beginning Act IV", "award": "5 XP/PC" },
+        { "achievement": "Resolved Act II Pivotal Objective", "award": "5 XP/PC" },
+        { "achievement": "Resolved Act III Pivotal Objective", "award": "5 XP/PC" }
+      ],
+      "notes": [
+        "Political Stake victories do not independently provide XP.",
+        "Scouting a Site does not award exploration XP."
+      ]
+    },
+    "L7_deploymentLimits": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.7 Deployment Limits" },
+      "table": [
+        { "campaign": "Local", "actII_perPC": 200, "actIII_perPC": 275, "actIV_perPC": 375 },
+        { "campaign": "Standard", "actII_perPC": 250, "actIII_perPC": 375, "actIV_perPC": 500 },
+        { "campaign": "Long", "actII_perPC": 325, "actIII_perPC": 475, "actIV_perPC": 625 },
+        { "campaign": "Grand", "actII_perPC": 375, "actIII_perPC": 575, "actIV_perPC": 750 }
+      ],
+      "notes": [
+        "The Hero counts toward the individual allowance.",
+        "Owned formations may exceed deployment capacity but cannot all be deployed simultaneously."
+      ]
+    },
+    "L8_goldIncome": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.8 Gold Income" },
+      "sources": [
+        { "source": "Province dividend", "gold": "1G/PC/majority-controlled Province at Acts II–IV" },
+        { "source": "Commerce", "gold": "1G/PC" },
+        { "source": "Commerce with Supremacy", "gold": "1G/PC + 1G" },
+        { "source": "Treasury Opportunity", "gold": "2G/PC" },
+        { "source": "War Chest", "gold": "1G" },
+        { "source": "Windfall", "gold": "2G" },
+        { "source": "Site or mission", "gold": "Stated reward" }
+      ],
+      "note": "All ordinary strategic income enters the shared Company treasury."
+    },
+    "L9_formationCostsAndRecovery": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.9 Formation Costs and Recovery" },
+      "newRecruitment": "Gold = ceil(Formation Points / 25).",
+      "purchasedUpgrades": "Gold = ceil(Added Points / 25); any printed equipment or per-Model surcharges add their Points normally. Upgrades do not refund already spent Gold.",
+      "recruitmentGoldTable": [
+        { "points": 50, "recruitmentGold": 2 },
+        { "points": 75, "recruitmentGold": 3 },
+        { "points": 100, "recruitmentGold": 4 },
+        { "points": 125, "recruitmentGold": 5 },
+        { "points": 150, "recruitmentGold": 6 },
+        { "points": 200, "recruitmentGold": 8 }
+      ],
+      "survivingFormation": "If its purchased Models or Wounds need restoration, pay half its normal full recruitment Gold cost, rounded up, as one flat replenishment payment per formation at eligible Upkeep. Until replenished, it may deploy with reduced Model count; ordinary Wounds of surviving Models recover under campaign rules.",
+      "completelyDefeatedFormation": {
+        "procedure": "Roll one D6 after battle.",
+        "table": [
+          { "roll": "1", "result": "Destroyed", "consequence": "Remove from Owned Roster; legal full-cost replacement or explicit Reconstitution exception" },
+          { "roll": "2–4", "result": "Mauled", "consequence": "Unavailable until paid recovery at half recruitment Gold, rounded up" },
+          { "roll": "5–6", "result": "Scattered", "consequence": "Unavailable; returns after one completed Turn or eligible early recovery for 1 Gold" }
+        ]
+      },
+      "doubleFormations": "Pay recovery as one formation using their full doubled purchased Points; they roll one casualty die, not one per half.",
+      "pcs": "PCs use Critical Injuries, not formation casualty rolls."
+    },
+    "L10_territoryAndResources": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.10 Territory and Resources" },
+      "provinceControl": "A Grand Faction controls a Province if it controls at least two of its three hexes.",
+      "hexOwnership": "Individual hex ownership remains distinct.",
+      "resources": ["Stone", "Supply", "Influence"],
+      "resourceRatingRange": "0 to 3",
+      "note": "Political Influence markers are not printed Influence resources and do not grant territorial ownership."
+    },
+    "L11_improvementCosts": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.11 Improvement Costs" },
+      "improvements": [
+        { "improvement": "Road", "type": "Minor", "gold": 1 },
+        { "improvement": "Bridge", "type": "Minor", "gold": 2 },
+        { "improvement": "Watchtower", "type": "Minor", "gold": 2 },
+        { "improvement": "Supply Camp", "type": "Minor", "gold": 2 },
+        { "improvement": "Frontier Outpost", "type": "Minor", "gold": 2 },
+        { "improvement": "Fortress", "type": "Major", "gold": 4 },
+        { "improvement": "Workshop", "type": "Major", "gold": 3 },
+        { "improvement": "Trade Hub", "type": "Major", "gold": 3 },
+        { "improvement": "Port", "type": "Major", "gold": 3 }
+      ],
+      "note": "See Appendix O for resource requirements and detailed effects."
+    },
+    "L12_politicalStakes": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.12 Political Stakes" },
+      "stakeTypes": {
+        "open": "Any eligible claimant.",
+        "sponsored": "Requires an appropriate sponsor.",
+        "exclusive": "Political recognition belongs to its specified eligible beneficiary."
+      },
+      "actMarker": "Every Turn awards exactly one colored or gray Act marker.",
+      "coloredReward": "A colored winner receives one Development draw.",
+      "neutralOpportunityReward": "Completing a Neutral Opportunity instead awards its stated reward and a gray marker.",
+      "note": "A political victory does not automatically grant territorial or material outcomes.",
+      "localInfluence": {
+        "bonus": "A qualifying faction receives +1 nonstacking Strength for controlling or maintaining Political Influence at or adjacent to the target.",
+        "priority": "Matching-suit eligible NPC commitments take priority.",
+        "tieBreak": "Ties favor the qualifying incumbent, then the eligible Lead, then Neutral."
+      }
+    },
+    "L13_npcManeuverReference": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.13 NPC Maneuver Reference" },
+      "basicActionsBySuit": [
+        { "suit": "Discovery", "basicAction": "Scout eligible Site or establish intelligence" },
+        { "suit": "Industry", "basicAction": "Eligible Minor Improvement or industrial preparation" },
+        { "suit": "Authority", "basicAction": "Political Influence placement/relocation or minor contact" },
+        { "suit": "Warfare", "basicAction": "Move one Force one legal hex" }
+      ],
+      "notes": [
+        "Each NPC faction uses one card and one basic action per Turn.",
+        "Its twelve-card deck refreshes every Act."
+      ]
+    },
+    "L14_principalOpposition": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.14 Principal Opposition" },
+      "identity": "Under the standard setup, the Principal Opposition Grand Faction is public. Its home military faction may remain concealed, but must be revealed by the end of Act II. The Campaign Core permits an agreed concealed-identity variant as long as at least one identity is revealed by the end of Act I and both by the end of Act II, with Council participation handled fairly.",
+      "doctrineOrder": "The GM reveals its first Doctrine and chosen Commands at the start of Act III before PCs select theirs. The GM selects its second, distinct Doctrine at the start of Act IV, after seeing PC strategy.",
+      "slotsAndDoctrineCommandsTable": [
+        { "campaign": "Local", "actIISlots": 8, "actIIISlots": 11, "actIVSlots": 13, "doctrineCommandsIIIAndIV": "2 + 1" },
+        { "campaign": "Standard", "actIISlots": 8, "actIIISlots": 12, "actIVSlots": 15, "doctrineCommandsIIIAndIV": "2 + 2" },
+        { "campaign": "Long", "actIISlots": 8, "actIIISlots": 13, "actIVSlots": 17, "doctrineCommandsIIIAndIV": "3 + 2" },
+        { "campaign": "Grand", "actIISlots": 8, "actIIISlots": 13, "actIVSlots": 19, "doctrineCommandsIIIAndIV": "3 + 3" }
+      ],
+      "armyStructure": "The Opposition uses one shared army, not one detachment per PC. Faction, Doctrine and campaign expansion slots never provide free Units or bypass access, Point, Hero or Asset limits. Outside-faction allied or contracted formations normally remain limited to two deployed Units. Important military Assets persist across encounters.",
+      "campaignTacticalCP": {
+        "perPC": "Each PC normally receives 2 CP per Round, refreshing at the start of the Round whether or not physical Command cards exist.",
+        "table": [
+          { "pcs": 2, "totalPCCP": 4, "gmCPLocalStandardLong": 3, "gmCPGrand": 5 },
+          { "pcs": 3, "totalPCCP": 6, "gmCPLocalStandardLong": 5, "gmCPGrand": 7 },
+          { "pcs": 4, "totalPCCP": 8, "gmCPLocalStandardLong": 7, "gmCPGrand": 9 },
+          { "pcs": 5, "totalPCCP": 10, "gmCPLocalStandardLong": 9, "gmCPGrand": 11 }
+        ],
+        "gmFormula": "Local/Standard/Long: max(2, 2 × PCs − 1); Grand: max(2, 2 × PCs + 1).",
+        "notes": [
+          "This is not matched play's eight-card CP pool.",
+          "The Grand exception is provisional for balance testing."
+        ]
+      }
+    },
+    "L15_gmCampaignChecklist": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.15 GM Campaign Checklist" },
+      "beginningAnAct": [
+        "Resolve previous Act.",
+        "Award Act Advancement XP, if entering Acts II–IV.",
+        "Award Provincial Dividend, if eligible.",
+        "Update Charter, Patron, Doctrine, and deployment progression, plus Opposition slots and identity disclosure.",
+        "At Act III, choose the GM first Doctrine before PC Doctrines; at Act IV, choose GM second Doctrine.",
+        "Prepare Agenda and Task pool.",
+        "Refresh NPC Maneuver decks.",
+        "Establish Pivotal Objective in Acts II and III.",
+        "Review Opposition Operation and agreements."
+      ],
+      "preparationCouncil": [
+        "Reveal scheduled Neutral Opportunity.",
+        "Choose Stake and legal target.",
+        "Record Local Influence.",
+        "Commit NPC Maneuvers.",
+        "Choose Company Order and Supremacy.",
+        "Establish the operation."
+      ],
+      "resolutionCouncil": [
+        "Resolve Company objective.",
+        "Determine Neutral or political winner.",
+        "Award one Act marker.",
+        "Award Development draw when colored.",
+        "Resolve NPC basic actions.",
+        "Update map, roster, and agreements.",
+        "Resolve Gold, surviving-formation flat replenishment, and defeated-formation casualty rolls.",
+        "Award Turn, Site, and Pivotal XP.",
+        "Advance calendar and pass Council Influence."
+      ]
+    },
+    "L16_battlefieldEdgeQuickReference": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.16 Battlefield Edge Quick Reference" },
+      "steps": [
+        "Before deployment, publicly commit each Edge, name the exact Round and one opposing participant.",
+        "When that Round's CP refreshes, that participant receives 1 fewer CP, to a minimum of 1. Against the GM, target the shared pool; against PCs, target one named PC.",
+        "A maximum of two Edges per side may be committed to one battle. Both may affect one target subject to the CP floor.",
+        "An Edge is spent upon commitment even if its Round is never reached.",
+        "The Edge works without physical cards, does not pre-exhaust a Command, and does not award extra CP."
+      ]
+    },
+    "L17_pcDetachmentAndCharterReference": {
+      "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_L.md", "section": "L.17 PC Detachment and Charter Reference" },
+      "table": [
+        { "stage": "Act I", "typicalPCDetachmentEntitlement": "Personal H for the PC Hero only (1 slot)" },
+        { "stage": "Act II", "typicalPCDetachmentEntitlement": "Two Patron slots; two standard-size free Patron formations shared by the entire Company (3 slots per PC)" },
+        { "stage": "Act III", "typicalPCDetachmentEntitlement": "One Doctrine foundation and first selected Command slot (5 slots per PC)" },
+        { "stage": "Act IV", "typicalPCDetachmentEntitlement": "Another selected Doctrine Command slot (6 slots per PC)" },
+        { "stage": "Grand special progression", "typicalPCDetachmentEntitlement": "Third Doctrine Command slot (7 slots per PC)" },
+        { "stage": "Develop", "typicalPCDetachmentEntitlement": "Up to two additional C/E/R/V/S/A Flex slots (8 ordinary maximum; 9 Grand)" }
+      ],
+      "doubleFormationRule": "A legal Double Formation consumes one compatible slot, pays its full doubled Points and Gold, and remains one Unit for activations, Unit-wide keywords and objective control.",
+      "sharedCharterCommand": "The Company's single shared Grand Faction Charter Command costs 1 CP from the using PC, can be activated at its stated timing, and may be used once per Round across the whole Company. A Charter Command doesn't add another CP or grant a free ordinary action."
+    }
+  },
+  "knownIssues": [
+    "L.1 and L.17's \"H\" Foundation Recruitment Slot letter, and the C/E/R/V/S/A category letters referenced throughout (L.4, L.17), are defined in full in doctrines/00_general_rules.json; this file assumes that context rather than redefining the letters."
+  ]
+}

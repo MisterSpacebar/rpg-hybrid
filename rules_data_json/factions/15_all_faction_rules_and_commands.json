@@ -1,0 +1,117 @@
+{
+  "description": "Consolidated, cross-faction reference listing every faction's Faction Rule (passive) and Faction Commands (active) in one place, for quick lookup without opening all 12 individual faction files. This is a derived convenience view — the per-faction files (01_free_realms.json … 12_titan_clans.json) remain authoritative for any other faction content (Signature Units, Captains, Large Assets, Faction Leaders).",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "Faction Rule and Faction Commands subsections of each of the 12 faction entries"
+  },
+  "factions": [
+    {
+      "faction": "Free Realms",
+      "factionRule": { "name": "Combined Arms", "effect": "A friendly Unit gains Accurate 1 when attacking an enemy already Engaged by another friendly Unit." },
+      "factionCommands": [
+        { "name": "Coordinated Advance", "timing": "Movement", "cost": "1 CP", "effect": "Choose up to two friendly Units within Short. Each may immediately Move up to 2\", ending legally." },
+        { "name": "Covering Fire", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit Disengages, choose a different friendly Unit within Short of it that has not yet used its Assault activation. That Unit immediately makes an eligible ranged Attack against the enemy left behind, consuming its normal Assault activation. This does not grant a second Attack." },
+        { "name": "Secure Ground", "timing": "Movement", "cost": "1 CP", "effect": "One friendly Unit counts as one additional Unit for objective control until the end of the Round." }
+      ]
+    },
+    {
+      "faction": "Sacred Orders",
+      "factionRule": { "name": "Unyielding", "effect": "Once per Round, each friendly Core or Elite Unit reduces the first instance of Damage it suffers by 1, minimum 0. This applies after Saves and cannot reduce a Critical Injury." },
+      "factionCommands": [
+        { "name": "Stand Fast", "timing": "Reaction", "cost": "1 CP", "effect": "Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase." },
+        { "name": "Righteous Retaliation", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit survives an Engagement Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round." },
+        { "name": "Heroic Intervention", "timing": "Reaction", "cost": "1 CP", "effect": "When a nearby ally is attacked, one friendly Character may Move up to 3\" toward it." }
+      ]
+    },
+    {
+      "faction": "Iron Holds",
+      "factionRule": { "name": "Entrenched", "effect": "Friendly Units that did not Move during the preceding Movement Phase gain Tough 1 against Ranged attacks." },
+      "factionCommands": [
+        { "name": "Hold the Line", "timing": "Reaction", "cost": "1 CP", "effect": "One friendly Unit gains Tough 2 until the end of the Round." },
+        { "name": "Concentrated Volley", "timing": "Assault", "cost": "1 CP", "effect": "One friendly stationary Unit gains Accurate 2 during its next ranged Attack." },
+        { "name": "Prepared Position", "timing": "Movement", "cost": "1 CP", "effect": "Create or activate a small barricade or defensive position according to the terrain rules." }
+      ]
+    },
+    {
+      "faction": "Wild Courts",
+      "factionRule": { "name": "Paths of the Wild", "effect": "Ignore the first 2\" of Difficult Terrain during each Move activation. Units must finish their moves legally." },
+      "factionCommands": [
+        { "name": "Through the Wild", "timing": "Movement", "cost": "1 CP", "effect": "Reposition one friendly Unit from a terrain feature to another suitable terrain feature within Medium. It cannot finish Engaged." },
+        { "name": "Entangling Growth", "timing": "Assault", "cost": "1 CP", "effect": "One visible enemy within Medium suffers Slow 2 or cannot Charge during the current Phase." },
+        { "name": "Fade into the Wilds", "timing": "Reaction", "cost": "1 CP", "effect": "After being attacked, one unengaged friendly Unit may Move up to 3\"." }
+      ]
+    },
+    {
+      "faction": "Warclans",
+      "factionRule": { "name": "Eager for Battle", "effect": "All friendly Units gain Charge 1." },
+      "factionCommands": [
+        { "name": "Get In There!", "timing": "Assault Reaction", "cost": "1 CP", "effect": "When a different friendly Unit successfully completes a Charge, choose one unactivated friendly Unit within Short of the charger. It may immediately make its normal Charge activation, consuming its Assault activation for this Phase; it does not gain a second Charge." },
+        { "name": "Overwhelm", "timing": "Combat", "cost": "2 CP", "effect": "One friendly multi-model Unit gains +1 Attack per Model during its next Combat activation." },
+        { "name": "Keep Fighting!", "timing": "Reaction", "cost": "1 CP", "effect": "After destroying an enemy Unit in Engagement, the attacking Unit may Move up to 2\" toward another enemy." }
+      ]
+    },
+    {
+      "faction": "Underclans",
+      "factionRule": { "name": "Strength in Numbers", "effect": "Friendly Units containing at least 5 Models gain Accurate 2." },
+      "factionCommands": [
+        { "name": "Dirty Trick", "timing": "Assault", "cost": "1 CP", "effect": "Worsen one visible enemy's Armor or Evade by one step until the end of the Phase." },
+        { "name": "Scurry Away", "timing": "Movement", "cost": "1 CP", "effect": "One friendly Unit may Disengage without becoming Withdrawn." },
+        { "name": "Mob Them!", "timing": "Movement", "cost": "1 CP", "effect": "Up to two friendly Units may each Move up to 2\" toward the same enemy within Medium." }
+      ]
+    },
+    {
+      "faction": "Death Legions",
+      "factionRule": { "name": "Endless Dead", "effect": "The first time each Round an Undead Unit with more than one starting Model survives an Attack that defeats one or more of its basic Models, roll 1D6 for each Model defeated by that Attack. For each 6+, restore one defeated basic Model to that surviving Unit, up to its starting size, placing returned Models legally in Coherency. This passive effect may return Models while Engaged but cannot restore a completely destroyed Unit." },
+      "factionCommands": [
+        { "name": "Rise Again", "timing": "Movement", "cost": "1 CP", "effect": "Either restore one defeated basic Model to a surviving, unengaged friendly Undead Unit (up to starting size), or once per battle, return one completely destroyed friendly Undead Core Unit with two original basic Models in legal Coherency, wholly within the friendly Deployment Zone at the end of Movement. That returned Unit cannot activate, Charge, or control objectives this Round. Both uses retain normal CP/card requirements." },
+        { "name": "Death March", "timing": "Movement", "cost": "1 CP", "effect": "One eligible Undead Unit may immediately make an additional normal Move, ending legally; it cannot make a ranged Attack this Round." },
+        { "name": "The Dead Do Not Tire", "timing": "Movement", "cost": "1 CP", "effect": "Remove one negative condition from one friendly Undead Unit." }
+      ]
+    },
+    {
+      "faction": "Blood Courts",
+      "factionRule": { "name": "Feast on the Fallen", "effect": "Once per Round, after a friendly Unit defeats an enemy Model in Engagement, Heal 1 Damage from that Unit." },
+      "factionCommands": [
+        { "name": "Blood Frenzy", "timing": "Combat", "cost": "1 CP", "effect": "One friendly Unit gains +1 Attack per Model on its next Engagement Attack this Combat Phase." },
+        { "name": "Predatory Speed", "timing": "Reaction", "cost": "1 CP", "effect": "After destroying an enemy Unit, one friendly Unit may Move up to 2\"." },
+        { "name": "Mesmerize", "timing": "Reaction", "cost": "1 CP", "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Character until the end of the Phase." }
+      ]
+    },
+    {
+      "faction": "Spirit Hosts",
+      "factionRule": { "name": "Incorporeal", "effect": "Friendly Spirit Units gain Ward 6+ against Physical Damage, or their Ward is improved by 1 against incoming Physical damage. This effect is already marked on the faction datasheets and is not applied a second time to those printed Ward values." },
+      "factionCommands": [
+        { "name": "Fade from Reality", "timing": "Reaction", "cost": "1 CP", "effect": "Improve one friendly Unit's applicable Ward by one step until the end of the Phase." },
+        { "name": "Spectral Passage", "timing": "Movement", "cost": "1 CP", "effect": "One friendly Unit gains Move +2\" and may move through terrain and Models this activation, finishing legally." },
+        { "name": "Haunting Presence", "timing": "Assault", "cost": "1 CP", "effect": "One nearby enemy cannot benefit from Cover and worsens Evade by one step until the end of the Round." }
+      ]
+    },
+    {
+      "faction": "Infernal Hosts",
+      "factionRule": { "name": "Dark Bargain", "effect": "Once per activation, a friendly Infernal Unit may suffer 1 Damage to reroll one die, obeying the normal once-per-die reroll limitation." },
+      "factionCommands": [
+        { "name": "Unbound Power", "timing": "Assault", "cost": "1 CP", "effect": "One Attack gains +2 Attacks. If it Blunders, its Unit suffers 1 Damage." },
+        { "name": "Blood Offering", "timing": "Assault", "cost": "1 CP", "effect": "Damage or remove one friendly basic Model. One nearby friendly Unit gains Accurate 2 on its next Attack." },
+        { "name": "Open the Rift", "timing": "Movement", "cost": "1 CP", "effect": "Deploy one eligible, already paid-for minor Infernal Unit from Reserve according to its summoning restrictions." }
+      ]
+    },
+    {
+      "faction": "Arcane Orders",
+      "factionRule": { "name": "Arcane Discipline", "effect": "Friendly Spell Attacks gain Accurate 1." },
+      "factionCommands": [
+        { "name": "Overchannel", "timing": "Assault", "cost": "1 CP", "effect": "Increase either Attacks or Damage of one Spell Attack by 1." },
+        { "name": "Counterspell", "timing": "Reaction", "cost": "1 CP", "effect": "When a friendly unit is being affected by an enemy Magic attack or ability that involves saves, reroll all 1s rolled for saves to that attack or ability." },
+        { "name": "Spatial Fold", "timing": "Movement", "cost": "1 CP", "effect": "One unit gets Blink 3. Reposition one friendly Unit up to 3\" without this counting as a normal Move. It cannot finish Engaged." }
+      ]
+    },
+    {
+      "faction": "Titan Clans",
+      "factionRule": { "name": "Massive Momentum", "effect": "All friendly Units gain Impact 1." },
+      "factionCommands": [
+        { "name": "Thunderous Advance", "timing": "Assault", "cost": "1 CP", "effect": "One friendly Unit makes an additional Move before declaring a Charge." },
+        { "name": "Smash Through", "timing": "Assault", "cost": "1 CP", "effect": "One friendly Unit's next Charge Impact this Phase ignores one step of temporary Armor improvement on the target (use its normal printed Armor for this Impact if a bonus improved it). Impact already ignores Evade and Cover." },
+        { "name": "Roar of Dominance", "timing": "Assault", "cost": "1 CP", "effect": "Choose one friendly Monster. Enemies cannot use Reactions against that Monster until the end of the Phase." }
+      ]
+    }
+  ]
+}

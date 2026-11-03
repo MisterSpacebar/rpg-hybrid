@@ -1,0 +1,129 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/13_talents.md",
+    "section": "WARRIOR TALENTS"
+  },
+  "description": "Warrior Talents emphasize durability, direct confrontation, battlefield control, and protecting allies.",
+  "restrictedToClass": "warrior",
+  "talents": [
+    {
+      "id": "martial-prowess",
+      "name": "Martial Prowess",
+      "tier": "1+",
+      "type": "Ranked — Passive",
+      "effect": [
+        "Choose one Weapon Attack when acquiring Rank I.",
+        "Every Rank: Increase that Attack's Attacks by 1, or improve its Hit by 1 step; and improve one Skill by 1 step.",
+        "This Attack must be different from the Attack improved through generic Prowess. All additional Ranks continue improving the selected Attack."
+      ]
+    },
+    {
+      "id": "hold-fast",
+      "name": "Hold Fast",
+      "tier": 1,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When targeted by an Attack, gain Tough 1 against that Attack."
+    },
+    {
+      "id": "press-forward",
+      "name": "Press Forward",
+      "tier": 1,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Choose yourself or one friendly Unit within Short Range. Roll Body + Athletics. Move the chosen Unit up to X inches, where X equals the number of successes. This movement cannot enter Engagement."
+    },
+    {
+      "id": "guarded-advance",
+      "name": "Guarded Advance",
+      "tier": 1,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Choose yourself or one friendly Unit within Short Range. Move the selected Unit up to 2\". It gains Tough 1 against the next ranged Attack targeting it this Round. This movement cannot enter Engagement."
+    },
+    {
+      "id": "extended-shot",
+      "name": "Extended Shot",
+      "tier": "1+",
+      "type": "Ranked — Passive",
+      "effect": "Choose one non-Firearm ranged Weapon Attack. Increase its Range by 2\" per Rank."
+    },
+    {
+      "id": "counterattack",
+      "name": "Counterattack",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "After surviving an Engagement Attack, gain +1 Attack die on your next Engagement Weapon Attack against the attacker. This bonus expires at the end of your next Combat activation."
+    },
+    {
+      "id": "bodyguard",
+      "name": "Bodyguard",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When an allied Unit within 2\" is targeted by an Attack or Charge, you may move up to 2\" toward that ally. Roll Body + Athletics. After the incoming Hits or Charge Impact are determined, but before Saves, redirect up to X Hits to yourself, where X equals the number of successes. Resolve your own Saves against the redirected Hits. Hits not redirected remain allocated to the original target. A redirected Hit cannot be redirected again."
+    },
+    {
+      "id": "challenge",
+      "name": "Challenge",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Assault",
+      "effect": "Choose one enemy Unit within Short Range. Until the end of the Round, that Unit worsens its Hit by 1 step when attacking another target, provided you are a legal target for its Attack."
+    },
+    {
+      "id": "driving-blow",
+      "name": "Driving Blow",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Combat",
+      "effect": "After your Engagement Weapon Attack deals Damage to an enemy, roll Body + Athletics. If the Check generates at least one success, push the target directly away up to X inches, where X is the highest die rolled. You may follow the target by up to 2\". This is forced movement. The follow-up movement does not count as Disengaging."
+    },
+    {
+      "id": "breakthrough",
+      "name": "Breakthrough",
+      "tier": 2,
+      "type": "Passive",
+      "effect": "After defeating an enemy Unit in Engagement, move up to 2\". This movement may enter Engagement with another enemy."
+    },
+    {
+      "id": "dig-in",
+      "name": "Dig In",
+      "tier": 2,
+      "type": "Passive",
+      "effect": "If you did not Move during the Movement Phase, improve Armor by 1 step against ranged Attacks until your next Movement activation."
+    },
+    {
+      "id": "mighty-impact",
+      "name": "Mighty Impact",
+      "tier": "2+",
+      "type": "Passive, Ranked",
+      "effect": "Gain Impact X, where X equals the Rank of Mighty Impact. This adds X Hits to the normal highest-die Charge Impact pool following a successful Charge; Armor and Ward apply, but Evade does not."
+    },
+    {
+      "id": "second-wind",
+      "name": "Second Wind",
+      "tier": 3,
+      "cost": "1 CP",
+      "type": "Movement — Once per Battle",
+      "effect": "Heal 2 Wounds to yourself."
+    },
+    {
+      "id": "unyielding",
+      "name": "Unyielding",
+      "tier": 3,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When Damage from an incoming Attack against you is about to be applied, after Saves have been resolved, roll Body + Survival. Reduce the Damage of up to X unsaved Hits by 1 each, to a minimum of 0, where X equals the number of successes."
+    },
+    {
+      "id": "last-stand",
+      "name": "Last Stand",
+      "tier": 4,
+      "cost": "2 CP",
+      "type": "Reaction — Once per Battle",
+      "effect": "When you would become Defeated, remain with accumulated Damage equal to one less than your Wounds characteristic instead."
+    }
+  ]
+}

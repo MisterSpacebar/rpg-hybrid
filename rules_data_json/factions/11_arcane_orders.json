@@ -1,0 +1,166 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "11. ARCANE ORDERS"
+  },
+  "name": "Arcane Orders",
+  "doctrines": ["Firing Line", "Control"],
+  "worldbuilding": "Magical academies, wizard kingdoms, enchanted soldiers, and construct armies supported by specialized arcane machinery. Their forces combine organized magical firepower with battlefield manipulation.",
+  "factionRule": {
+    "name": "Arcane Discipline",
+    "effect": "Friendly Spell Attacks gain Accurate 1."
+  },
+  "factionCommands": [
+    { "name": "Overchannel", "timing": "Assault", "cost": "1 CP", "effect": "Increase either Attacks or Damage of one Spell Attack by 1." },
+    { "name": "Counterspell", "timing": "Reaction", "cost": "1 CP", "effect": "When a friendly unit is being affected by an enemy Magic attack or ability that involves saves, reroll all 1s rolled for saves to that attack or ability." },
+    { "name": "Spatial Fold", "timing": "Movement", "cost": "1 CP", "effect": "One unit gets Blink 3. Reposition one friendly Unit up to 3\" without this counting as a normal Move. It cannot finish Engaged." }
+  ],
+  "signatureCoreUnits": [
+    {
+      "name": "Spellguard",
+      "points": 165,
+      "models": 3,
+      "tags": ["Elite Infantry", "Mortal", "Armored"],
+      "modelProfile": { "move": "3\"", "wounds": 2, "armor": "4+", "evade": "5+", "ward": "5+" },
+      "attackProfiles": [
+        { "name": "Arcane Blades", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Spell Shield", "type": "Passive", "effect": "This unit gains Tough 1 against Magic." }
+      ]
+    },
+    {
+      "name": "Aether Ballista Team",
+      "points": 210,
+      "models": 2,
+      "tags": ["Elite Ranged Infantry"],
+      "modelProfile": { "move": "2\"", "wounds": 4, "armor": "4+", "evade": "6+", "ward": "5+ (Ward Magic +1)" },
+      "attackProfiles": [
+        { "name": "Bound Ballista", "range": "14\"", "attacks": 2, "hit": "4+", "damage": 2, "keywords": ["Magic", "Heavy", "Anti-Armored 2"] },
+        { "name": "Shortsword", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Anchored Array", "type": "Passive", "effect": "Ignore Cover when resolving the Ballista Attack." }
+      ],
+      "note": "The Aether Ballista Team counts as Ranged Infantry, not Artillery. Its two Models attack individually, and losing one Model halves its Attack dice."
+    },
+    {
+      "name": "Animated Guardians",
+      "points": 180,
+      "models": 3,
+      "tags": ["Construct", "Infantry", "Armored"],
+      "modelProfile": { "move": "3\"", "wounds": 4, "armor": "4+", "evade": null, "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Stone Fists", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Arcane Binding", "type": "Passive", "effect": "Immune to Slow and forced-movement effects." }
+      ]
+    }
+  ],
+  "captainAndSpecialists": [
+    {
+      "name": "Spellblade Captain",
+      "role": "Captain",
+      "points": 205,
+      "tags": ["Infantry", "Hero", "Mortal", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 5, "armor": "4+", "evade": "5+", "ward": "6+ (Magic Ward +1)" },
+      "attackProfiles": [
+        { "name": "Arcane Spark", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Spellblade", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Disrupting Strike", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Target one unit within Short of this unit. That unit cannot use personal Command Abilities until the end of the Phase." },
+        { "name": "Flash Step", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Blink 3. Reposition this unit within 3\" of its original position before the activation of this Ability." }
+      ]
+    },
+    {
+      "name": "Master Arcanist",
+      "role": "Wizard",
+      "points": 240,
+      "tags": ["Wizard", "Hero", "Mortal"],
+      "modelProfile": { "move": "3\"", "wounds": 4, "armor": "6+", "evade": "6+", "ward": "4+" },
+      "attackProfiles": [
+        { "name": "Arcane Bolt", "range": "10\"", "attacks": 5, "hit": "4+", "damage": 1, "keywords": ["Magic", "Accurate 1"] },
+        { "name": "Melee", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Arcane Mastery", "type": "Passive", "effect": "When a Spell Attack Surges, one target suffers Direct Damage 1 after resolving the Attack." },
+        { "name": "Spell Cascade", "type": "Command", "cost": "1 CP", "timing": "Assault Reaction", "effect": "After another nearby friendly Unit resolves a Spell Attack, one different friendly Unit within Short gains Critical 1 on its next Spell Attack this Round." },
+        { "name": "Flash Step", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Blink 3. Reposition this unit within 3\" of its original position before the activation of this Ability." }
+      ]
+    },
+    {
+      "name": "Artificer",
+      "role": "Support",
+      "points": 165,
+      "tags": ["Support", "Elite", "Mortal"],
+      "modelProfile": { "move": "3\"", "wounds": 5, "armor": "5+", "evade": "6+", "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Arcane Tools", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+      ],
+      "abilities": [
+        { "name": "Power Cores", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "One friendly Construct, Artillery, or Ranged Infantry Unit within Short may use one Heavy Magic Attack after moving, but worsens Hit by one step." }
+      ]
+    }
+  ],
+  "largeAssets": [
+    {
+      "name": "Arcane Golem",
+      "points": 340,
+      "tags": ["Construct", "Armored"],
+      "modelProfile": { "move": "4\"", "wounds": 14, "armor": "3+", "evade": null, "ward": "6+" },
+      "attackProfiles": [
+        { "name": "Arcane Cannon", "range": "12\"", "attacks": 3, "hit": "4+", "damage": 2, "keywords": ["Magic", "Heavy", "Anti-Monster 2"] },
+        { "name": "Stone Fists", "range": "Engaged", "attacks": 4, "hit": "4+", "damage": 2, "keywords": ["Anti-Armored 2"] }
+      ],
+      "abilities": [
+        { "name": "Arcane Shield", "type": "Passive", "effect": "Nearby friendly units in Short of this unit gain Ward 6+ or improve their existing Ward +1 against Magic Attacks." }
+      ]
+    },
+    {
+      "name": "Aether Battery",
+      "points": 195,
+      "tags": ["Artillery"],
+      "modelProfile": { "move": "2\"", "wounds": 6, "armor": "5+", "evade": null, "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Ley Lance", "range": "16\"", "attacks": 7, "hit": "4+", "damage": 1, "keywords": ["Magic", "Heavy"] },
+        { "name": "Crew", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Ley-Line Surge", "type": "Passive", "effect": "Before firing, may gain +1 Damage; on a Blunder, suffer Direct Damage 1." }
+      ],
+      "upgrades": [
+        {
+          "name": "Ley-Line Rupture",
+          "cost": "+20 Points",
+          "type": "Command",
+          "commandCost": "1 CP",
+          "timing": "Assault",
+          "effect": "Instead of making a Ley Lance Attack, place a 25mm token within 16\". At the end of the Combat Phase, every Unit with at least half its surviving Models (rounded up) within 2\" of the token suffers two automatic Magic Hits at Damage 1 total. Resolve Armor then Ward; no Evade. Resolve Saves normally. Remove the token after resolving the effect.",
+          "rosterNote": "Optional firing-mode upgrade, +20 Points."
+        }
+      ]
+    }
+  ],
+  "factionLeader": {
+    "name": "Grand Magus",
+    "points": 575,
+    "tags": ["Wizard", "Hero", "Mortal"],
+    "modelProfile": { "move": "3\"", "wounds": 7, "armor": "5+", "evade": "5+", "ward": "5+ (Magic Ward +2)" },
+    "attackProfiles": [
+      { "name": "Celestial Discharge", "range": "12\"", "attacks": 6, "hit": "3+", "damage": 2, "keywords": ["Magic", "Critical 1", "Anti-Elite 2"] },
+      { "name": "Staff", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+    ],
+    "abilities": [
+      { "name": "High Thaumaturgy", "type": "Passive", "effect": "Once per Round, reduce the CP cost of an Ability of a model within Medium of this model by 1. This only applies to the first ability you have used this turn." },
+      { "name": "Supreme Arcana", "type": "Command", "cost": "2 CP", "timing": "Assault", "frequency": "Once per Battle", "effect": "All allied units wholly within Short of this model gains Direct Damage 1 for each Surge they generate on a magical attack or Ability against a non-friendly model until the end of the turn." },
+      { "name": "Flicker Step", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Blink 6. Reposition this unit within 6\" of its original location." }
+    ],
+    "knownIssues": ["No printed Impact value, consistent with being a pure Wizard Hero rather than a melee/Charge-oriented Faction Leader — likely intentional, unlike the Archfiend/Pale Monarch omissions flagged elsewhere."]
+  },
+  "genericUnitsWorthTaking": "Ordinary shield Infantry, cheaper Wizards, Medics, generic Ranged Infantry, and conventional Cavalry. The Aether Ballista is far more specialized than generic archers and loses substantial output to a single casualty.",
+  "designNotes": [
+    "v4.2 balance pass: added Animated Guardians as the faction's Extra Core, a Construct Infantry unit immune to Control effects, reinforcing the 'construct armies' worldbuilding and Firing Line/Control doctrines rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on Bound Ballista and the Arcane Golem's Stone Fists, Anti-Monster on the Arcane Golem's Arcane Cannon, Anti-Elite on the Grand Magus' Celestial Discharge)."
+  ]
+}

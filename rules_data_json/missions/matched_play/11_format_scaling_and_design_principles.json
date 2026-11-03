@@ -1,0 +1,32 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md",
+    "section": "9. Optional Format Scaling — 10. Matched Play Design Principles"
+  },
+  "optionalFormatScaling": {
+    "intro": "For nonstandard army sizes, the recommended adjustments are:",
+    "table": [
+      { "format": 1000, "objectives": 3, "maxPrimaryVPPerRound": 3, "maxTacticalVPPerRound": 1, "decisiveVictoryLead": "6 VP" },
+      { "format": 2000, "objectives": 5, "maxPrimaryVPPerRound": 5, "maxTacticalVPPerRound": 1, "decisiveVictoryLead": "10 VP" },
+      { "format": 3000, "objectives": 7, "maxPrimaryVPPerRound": 7, "maxTacticalVPPerRound": 1, "decisiveVictoryLead": "14 VP" }
+    ],
+    "notes": [
+      "For Missions using objective affiliation, assign an equal number of objectives to the two sides before deployment and designate the remaining central or otherwise agreed objective Neutral. Do not assume fixed numbering across different layouts.",
+      "For Missions requiring physical markers, use the same number of objects as objectives unless otherwise stated."
+    ]
+  },
+  "matchedPlayDesignPrinciples": {
+    "intro": "Matched Play Missions are intended to:",
+    "principles": [
+      "Use the same Structured Combat rules as Campaign battles.",
+      "Function across different Standard Battlefield Layouts.",
+      "Reward objective control and meaningful tactical decisions.",
+      "Avoid excessive bookkeeping or additional turn sequences.",
+      "Provide ways for disadvantaged armies to recover through aggressive play.",
+      "Keep mission-specific bonuses small relative to Primary scoring.",
+      "Preserve meaningful differences between army mobility, durability, and offensive power.",
+      "Produce a decisive result within approximately five Rounds."
+    ],
+    "closingNote": "The eight Missions provide distinct scoring incentives without requiring separate army-building or combat systems."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "description": "Manifest for the 12 Core Factions and their Signature Rosters: faction rules, Faction Commands, Signature Core Units, Captains/Specialists, Large Assets, and Faction Leaders.",
+  "files": [
+    { "id": "general-roster-rules", "file": "00_general_roster_rules.json", "description": "General Roster Rules, Recruitment Classification, Signature Core Recruitment Reference table, Command economy, and Reinforcement rules shared by all factions." },
+    { "id": "free-realms", "file": "01_free_realms.json", "description": "Faction 1: Free Realms — Combined Arms / Objective Play." },
+    { "id": "sacred-orders", "file": "02_sacred_orders.json", "description": "Faction 2: Sacred Orders — Elite / Counter Strike." },
+    { "id": "iron-holds", "file": "03_iron_holds.json", "description": "Faction 3: Iron Holds — Castling / Firing Line." },
+    { "id": "wild-courts", "file": "04_wild_courts.json", "description": "Faction 4: Wild Courts — Mobility / Control." },
+    { "id": "warclans", "file": "05_warclans.json", "description": "Faction 5: Warclans — Alpha Strike / Horde." },
+    { "id": "underclans", "file": "06_underclans.json", "description": "Faction 6: Underclans — Horde / Deep Strike." },
+    { "id": "death-legions", "file": "07_death_legions.json", "description": "Faction 7: Death Legions — Grinding / Horde." },
+    { "id": "blood-courts", "file": "08_blood_courts.json", "description": "Faction 8: Blood Courts — Elite / Slingshot." },
+    { "id": "spirit-hosts", "file": "09_spirit_hosts.json", "description": "Faction 9: Spirit Hosts — Deep Strike / Grinding." },
+    { "id": "infernal-hosts", "file": "10_infernal_hosts.json", "description": "Faction 10: Infernal Hosts — Gambit / Alpha Strike." },
+    { "id": "arcane-orders", "file": "11_arcane_orders.json", "description": "Faction 11: Arcane Orders — Firing Line / Control." },
+    { "id": "titan-clans", "file": "12_titan_clans.json", "description": "Faction 12: Titan Clans — Heavy Support / Breakthrough." },
+    { "id": "roster-distribution-summary", "file": "13_roster_distribution_summary.json", "description": "Summary table of each faction's Signature Core choices." },
+    { "id": "balance-and-design-notes", "file": "14_balance_and_design_notes.json", "description": "Design philosophy, Unit-size spread, Character pricing bands, keyword consistency rules, and priority playtesting comparisons." },
+    { "id": "all-faction-rules-and-commands", "file": "15_all_faction_rules_and_commands.json", "description": "Convenience reference consolidating every faction's Faction Rule (passive) and Faction Commands (active) in one place, without the rest of each faction's content." }
+  ],
+  "sourceFiles": [
+    "rulebooks/chapters/02_wargame/02_core_factions.md"
+  ],
+  "relatedNotConverted": [
+    "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md — the 16 generic Doctrines (two per faction, e.g. 'Combined Arms', 'Objective Play') referenced by each faction's 'doctrines' field here. Not yet converted to JSON; faction files only record the Doctrine names, not their Command tables."
+  ]
+}

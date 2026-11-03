@@ -1,0 +1,42 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "GENERAL ARTIFACTS"
+  },
+  "description": "A character may normally equip up to two General Artifacts.",
+  "artifacts": [
+    { "name": "Ring of Accuracy", "points": 15, "benefit": "Accurate 1 once per Round", "effect": "Once per Round, before making an Attack, gain Accurate 1 for that Attack." },
+    { "name": "Ring of Fortitude", "points": 15, "benefit": "Tough 1 once per Round", "effect": "Once per Round, when making Armor Saves, gain Tough 1 for that Save pool." },
+    { "name": "Boots of Swiftness", "points": 15, "benefit": "+1\" Move", "effect": "Increase Move by 1\"." },
+    { "name": "Boots of Leaping", "points": 10, "benefit": "Ignore 2\" of Difficult Terrain each Move", "effect": "Ignore the first 2\" of Difficult Terrain during each Move." },
+    { "name": "Cloak of Shadows", "points": 20, "benefit": "Concealed while unengaged until attacking", "effect": "If you begin the Round outside of Short Range of any enemy, gain Concealed until you Attack or enter Engagement." },
+    { "name": "Cloak of Displacement", "points": 25, "benefit": "Improve applicable Evade once per Round", "effect": "Once per Round, when targeted by an Attack against which you may use Evade, improve Evade by 1 step for that Attack." },
+    { "name": "Amulet of Warding", "points": 20, "benefit": "Ward 6+ against Physical or Magic", "effect": "Choose Physical or Magic when acquiring this Artifact. Gain Ward 6+ against that Attack type." },
+    { "name": "Charm of Second Chances", "points": 20, "benefit": "Reroll one die once per Round", "effect": "Once per Round, reroll one die you have rolled. The new result must be kept. A die may only be rerolled once." },
+    {
+      "name": "Commander's Horn",
+      "points": 20,
+      "benefit": "Sound the Advance Command",
+      "effect": null,
+      "command": {
+        "name": "Sound the Advance",
+        "cost": "1 CP",
+        "timing": "Movement",
+        "effect": "Choose one friendly Unit within Short Range. Move that Unit up to 2\". This movement cannot enter Engagement."
+      }
+    },
+    { "name": "Banner of Defiance", "points": 25, "benefit": "Nearby allies ignore a temporary penalty", "effect": "Friendly Units within 2\" may ignore the first temporary Hit or Move penalty applied to them each Round." },
+    {
+      "name": "Hourglass of Haste",
+      "points": 30,
+      "benefit": "Borrowed Time Command",
+      "effect": null,
+      "command": {
+        "name": "Borrowed Time",
+        "cost": "1 CP",
+        "timing": "Movement — Once per Round",
+        "effect": "Choose yourself or one friendly Unit within Short Range. Increase its Move by 2\" until the end of the Round."
+      }
+    }
+  ]
+}

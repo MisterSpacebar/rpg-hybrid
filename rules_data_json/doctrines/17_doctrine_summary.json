@@ -1,0 +1,35 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "Doctrine Summary / Playtesting Priorities" },
+  "doctrineSummary": [
+    { "doctrine": "Combined Arms", "foundation": "C", "primaryStrength": "Coordinating different Units" },
+    { "doctrine": "Objective Play", "foundation": "C", "primaryStrength": "Objectives and scoring" },
+    { "doctrine": "Elite", "foundation": "E", "primaryStrength": "Precision and reliable attacks" },
+    { "doctrine": "Counter Strike", "foundation": "S", "primaryStrength": "Reactions and retaliation" },
+    { "doctrine": "Castling", "foundation": "C", "primaryStrength": "Prepared defensive positions" },
+    { "doctrine": "Firing Line", "foundation": "R", "primaryStrength": "Ranged combat" },
+    { "doctrine": "Mobility", "foundation": "V", "primaryStrength": "Independent movement and Blink" },
+    { "doctrine": "Control", "foundation": "S", "primaryStrength": "Disruption and denial" },
+    { "doctrine": "Alpha Strike", "foundation": "V", "primaryStrength": "Opening attack power" },
+    { "doctrine": "Horde", "foundation": "C", "primaryStrength": "Numerical superiority" },
+    { "doctrine": "Grinding", "foundation": "C", "primaryStrength": "Endurance and attrition" },
+    { "doctrine": "Deep Strike", "foundation": "S", "primaryStrength": "Unexpected Reserve arrivals and positioning" },
+    { "doctrine": "Slingshot", "foundation": "V", "primaryStrength": "Sequential unit cooperation" },
+    { "doctrine": "Gambit", "foundation": "C", "primaryStrength": "Reckless dice and consequential failures" },
+    { "doctrine": "Heavy Support", "foundation": "A", "primaryStrength": "Heavy weapons and battlefield assets" },
+    { "doctrine": "Breakthrough", "foundation": "V", "primaryStrength": "Charge reliability and penetration" }
+  ],
+  "crossCheck": "Every doctrine's Foundation Recruitment Slot in this summary table matches the Foundation Recruitment Slot listed in that doctrine's own file (01_combined_arms.json through 16_breakthrough.json). No discrepancies found.",
+  "playtestingPriorities": {
+    "intro": "The following effects should be monitored particularly closely.",
+    "items": [
+      { "topic": "Gambit — Double Down", "note": "Evaluate its performance against both low-Damage attacks and high-Damage attacks. Backlash is independent of Armor quality, so heavily armored Units may benefit disproportionately." },
+      { "topic": "Gambit — Expend the Reserve", "note": "Three additional Attack dice can generate substantial damage with powerful single-model weapons. Its lack of rerolls and Blunder penalty should be evaluated against this upside." },
+      { "topic": "Heavy Support — Fire Control", "note": "Two friendly Attacks gaining Accurate 1 may be efficient, particularly when one attacks with a large dice pool." },
+      { "topic": "Breakthrough — Momentum Drive", "note": "Charge 2 on standard 2D6 Charges substantially improves reliability while extending their maximum reach. Monitor its effects on the frequency of successful Engagements." },
+      { "topic": "Horde — Massed Volley", "note": "Standard four-model generic Ranged Infantry now qualify. Test whether its conditional +3 Attacks creates too much ranged output when paired with inexpensive formations." },
+      { "topic": "Castling — Hold Formation", "note": "Tough 2 over an entire Combat Phase can prevent considerable damage if one Unit is attacked multiple times. Compare it against one-Attack defensive Reactions." },
+      { "topic": "General Command Targeting", "note": "Most commands are usable by any suitable Unit, regardless of its recruitment category. Monitor whether certain expensive Characters and high-Damage Assets consistently become the optimal recipients of generic offensive buffs." }
+    ],
+    "draftStatus": "All sixteen doctrines and eighty selectable commands are included. Existing recruitment-slot distributions are preserved. Numerical balance remains provisional pending tabletop testing."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/17_bestiary.md",
+    "section": "9. Balance Priorities"
+  },
+  "description": "The bestiary's Point costs are provisional.",
+  "testingPriorities": [
+    "Universal highest-die Charge Impact (particularly when combined with printed Impact 2–4).",
+    "Multiple Surges on combined Attack pools.",
+    "Creatures with unconditional Critical.",
+    "The Hydra's attack degradation.",
+    "Kraken's distributed Models.",
+    "Extra action economy from bonded companions.",
+    "A bird's Cover reduction before pricing it as a universal support feature.",
+    "Monster movement/control Commands — especially Stagger — need scenario-level testing against both solo PCs and larger parties."
+  ]
+}

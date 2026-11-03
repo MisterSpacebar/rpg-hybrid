@@ -1,0 +1,15 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md", "section": "MP5 — SUPPLY REQUISITION" },
+  "id": "MP5",
+  "name": "Supply Requisition",
+  "tagline": "Gather and Hold",
+  "primaryObjective": "Score 1 VP for each controlled objective during every scoring Round.",
+  "specialRules": {
+    "gatherSupplies": "Each objective also represents a Supply Location. An eligible unengaged Unit within 1\" of an objective may perform a Gather Supplies Mission Action in Movement or Assault, replacing its normal action in that phase. Place a Supply token belonging to that side at the objective. Supply tokens last until the end of the current Round. Each side may place at most one Supply token at each objective per Round."
+  },
+  "tacticalObjective": {
+    "name": "Secure the Supplies",
+    "effect": "Gain 1 Tactical VP if, during Scoring, you control at least one objective containing your Supply token. Remove all Supply tokens during the End Step."
+  },
+  "designNotes": "Supply Requisition requires a Unit to devote its Assault activation to an objective interaction. It rewards controlling ground while performing logistical tasks, rather than merely standing within control range."
+}

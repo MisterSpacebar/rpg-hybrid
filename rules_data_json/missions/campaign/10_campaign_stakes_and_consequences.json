@@ -1,0 +1,87 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "5. Campaign Stakes and Consequences" },
+  "intro": "The tactical outcome of a Mission and its broader campaign consequences are separate. The Mission determines what happened. The Campaign rules determine what the result means strategically.",
+  "primarySuccess": {
+    "rule": "Primary success resolves the encounter's principal objective. A successful mission may satisfy the requirements of an eligible political Stake, established Neutral Opportunity, exploration Site, or strategic operation.",
+    "doesNotAutomaticallyGrant": [
+      "Political territory.",
+      "Recruitment rights.",
+      "An additional Company Order.",
+      "Unspecified Gold or equipment.",
+      "An additional Act marker.",
+      "An additional Development reward."
+    ],
+    "note": "These benefits require an established legal source."
+  },
+  "secondarySuccess": {
+    "rule": "Secondary success is recorded separately for each side.",
+    "outcomeCombinations": [
+      { "primaryWinner": "PCs", "pcSecondary": "Success", "oppositionSecondary": "Failure" },
+      { "primaryWinner": "PCs", "pcSecondary": "Failure", "oppositionSecondary": "Success" },
+      { "primaryWinner": "Opposition", "pcSecondary": "Success", "oppositionSecondary": "Failure" },
+      { "primaryWinner": "Opposition", "pcSecondary": "Failure", "oppositionSecondary": "Success" },
+      { "primaryWinner": "Either side", "pcSecondary": "Success", "oppositionSecondary": "Success" },
+      { "primaryWinner": "Either side", "pcSecondary": "Failure", "oppositionSecondary": "Failure" }
+    ],
+    "notes": [
+      "Completing a Secondary may provide a limited tactical or narrative consequence, or an explicitly established strategic benefit.",
+      "A Secondary does not independently win a political Stake unless the campaign has expressly defined that action as the Stake's actual completion requirement. In that case, it should normally be treated as part of the Primary instead."
+    ]
+  },
+  "recommendedConsequenceScale": {
+    "table": [
+      { "consequenceType": "Tactical", "examples": "Disable an emplacement, protect a Scenario Model", "generalUse": "Common" },
+      { "consequenceType": "Narrative", "examples": "Rescue an NPC, uncover evidence, reveal information", "generalUse": "Common" },
+      { "consequenceType": "Limited Strategic", "examples": "Preserve an agreement, identify a future route, secure a named advantage", "generalUse": "Occasional" },
+      { "consequenceType": "Battlefield Edge", "examples": "Advantage in a specified future battle", "generalUse": "Only when explicitly awarded" },
+      { "consequenceType": "Material Reward", "examples": "Gold, equipment, named Unit, Asset", "generalUse": "Requires an established reward source" },
+      { "consequenceType": "Political Stake", "examples": "Act marker and applicable Development reward", "generalUse": "Resolved through the Campaign system" }
+    ],
+    "notes": [
+      "Opposing success should be meaningful without automatically undoing the PCs' Primary victory.",
+      "For instance, the PCs may capture a fortress while the opposition successfully evacuates an important commander or preserves a supply asset. Both results remain true."
+    ]
+  },
+  "politicalStakes": {
+    "rules": [
+      "The current political Stake, its target, and its eligibility requirements are established through the Campaign Council before the company commits its Order.",
+      "A successful PC mission takes precedence over abstract political resolution only when the PCs satisfy the Stake's actual requirements.",
+      "A participating faction may receive the colored Act marker for the Stake it legally wins.",
+      "A mission supporting an independent Grand Faction does not transfer that faction's marker to the PCs.",
+      "Each Campaign Turn awards exactly one Act marker.",
+      "Winning the political Stake awards its normal political recognition and Development reward where applicable.",
+      "Physical results such as territorial transfers, damaged infrastructure, and military losses are recorded separately according to what actually happened."
+    ]
+  },
+  "neutralOpportunities": {
+    "definition": "A Neutral Opportunity is an alternative strategic objective, not an ordinary encounter Secondary.",
+    "rules": [
+      "Successfully resolving an eligible Neutral Opportunity awards one gray Neutral Act marker for the Campaign Turn instead of the normal colored political result.",
+      "An eligible Treasury Opportunity awards 2 Gold per participating PC as its full Treasury reward.",
+      "A Special Opportunity awards the specifically established equipment, formation, Asset, or other benefit.",
+      "An unrelated Secondary Objective does not automatically become a Neutral Opportunity or prevent a political faction from contesting the current Stake."
+    ]
+  },
+  "companyOrders": {
+    "intro": "Campaign Missions may be undertaken through an appropriate Company Order. The seven Company Orders are:",
+    "table": [
+      { "order": "Explore", "typicalMissionApplication": "Expedition, investigation, reconnaissance" },
+      { "order": "Commerce", "typicalMissionApplication": "Contracts, escorts, economic negotiations" },
+      { "order": "Develop", "typicalMissionApplication": "Training, crafting, special projects" },
+      { "order": "Construct", "typicalMissionApplication": "Infrastructure and construction operations" },
+      { "order": "Recruit", "typicalMissionApplication": "Recruitment and replenishment" },
+      { "order": "Politics", "typicalMissionApplication": "Negotiation, alliances, political disputes" },
+      { "order": "Mobilize", "typicalMissionApplication": "Military engagements, escorts, relief operations" }
+    ],
+    "note": "A Mission may include activities associated with several Orders without granting the company additional strategic actions. For example, recovering supplies during a Mobilize battle does not automatically grant an additional Commerce or Recruit operation."
+  },
+  "casualtiesAndPersistence": {
+    "rules": [
+      "Campaign casualties follow the normal Character and Formation recovery rules.",
+      "Defeated non-PC formations use the established Destroyed, Mauled, and Scattered results.",
+      "PCs use their normal Critical Injury system.",
+      "Important enemy commanders, named formations, and special Assets remain persistent campaign entities where appropriate.",
+      "A completed Secondary may preserve or recover a named entity if that is the explicitly established objective."
+    ]
+  }
+}

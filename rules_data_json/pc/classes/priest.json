@@ -1,0 +1,116 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/05_classes.md",
+    "section": "PRIEST"
+  },
+  "id": "priest",
+  "name": "Priest",
+  "role": "Support magic, protection, healing, supernatural intervention",
+  "tags": ["Support"],
+  "stats": { "move": "3\"", "wounds": 5, "armor": "6+", "evade": "6+", "ward": null },
+  "classAbility": {
+    "name": "Divine Ward",
+    "cost": "1 CP",
+    "timing": "Movement",
+    "effect": [
+      "Choose yourself or one friendly Unit within 6\". Until the beginning of your next activation:",
+      "If the Unit has no Ward, grant Ward 6+.",
+      "If the Unit already possesses Ward, improve its Ward by 1 step.",
+      "Repeated applications refresh the duration rather than stacking."
+    ]
+  },
+  "baseSpellAttacks": {
+    "note": "All Priests begin knowing both Spell Attacks. These Spell Attacks are included in the Base Character Value and do not occupy prepared Command Ability slots.",
+    "phase": "Assault",
+    "spells": [
+      { "name": "Radiant Bolt", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Radiant"], "keywords": [] }, "cost": "Included" },
+      { "name": "Sacred Brand", "profile": { "range": "3\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Accurate 1"] }, "cost": "Included" }
+    ]
+  },
+  "subclasses": [
+    {
+      "id": "cleric",
+      "name": "Cleric",
+      "description": "Clerics specialize in healing, restoration, and protecting allies from supernatural threats.",
+      "signatureAbility": {
+        "name": "Mend",
+        "cost": "1 CP",
+        "timing": "Assault",
+        "effect": [
+          "Choose yourself or one friendly Unit within 6\".",
+          "Heal X, where X equals your Spirit characteristic.",
+          "If you choose yourself, you lose your activation for the Phase.",
+          "Mend cannot restore removed Models."
+        ]
+      },
+      "subclassSpellAttacks": {
+        "note": "In addition to the Priest's Base Spell Attacks.",
+        "phase": "Assault",
+        "spells": [
+          { "name": "Smite", "profile": { "range": "6\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Radiant"], "keywords": ["Anti-Undead 1"] }, "cost": "Included" }
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Mace", "standard": true, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 1", "Surge: Slow 1"] }, "points": 15 },
+          { "name": "Staff", "standard": false, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
+          { "name": "Dagger", "standard": false, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 }
+        ]
+      }
+    },
+    {
+      "id": "druid",
+      "name": "Druid",
+      "description": "Druids manipulate the natural environment, restrict enemy movement, and shape the battlefield.",
+      "additionalTags": ["Wizard"],
+      "signatureAbility": {
+        "name": "Overgrowth",
+        "cost": "1 CP",
+        "timing": "Movement",
+        "effect": "Choose a point within 6\". Create a 2\" radius area of Obstructing Terrain until the end of the round. Units may treat the area to be counted as being in Cover. This applies to friendly and enemy Units equally."
+      },
+      "subclassSpellAttacks": {
+        "note": "In addition to the Priest's Base Spell Attacks.",
+        "phase": "Assault",
+        "spells": [
+          { "name": "Thorn Lash", "profile": { "range": "6\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Nature"], "keywords": ["Surge: Slow 2"] }, "cost": "Included" }
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Axe", "standard": true, "profile": { "range": "Engaged", "attacks": 5, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 10 },
+          { "name": "Staff", "standard": false, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
+          { "name": "Dagger", "standard": false, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 }
+        ]
+      }
+    },
+    {
+      "id": "oracle",
+      "name": "Oracle",
+      "description": "Oracles specialize in foresight, changing outcomes, and interfering with enemy intentions.",
+      "signatureAbility": {
+        "name": "Foretell",
+        "cost": "1 CP",
+        "timing": "Reaction",
+        "effect": "Once per Round, after you or an ally within 6\" rolls an Attack, Skill Check, or Save pool, but before resolving the result: Change one failed die into a normal success. This does not generate a Surge."
+      },
+      "subclassSpellAttacks": {
+        "note": "In addition to the Priest's Base Spell Attacks.",
+        "phase": "Assault",
+        "spells": [
+          { "name": "Omen Bolt", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Instant"] }, "cost": "Included" }
+        ]
+      },
+      "combatPhaseWeapons": {
+        "chooseCount": 1,
+        "options": [
+          { "name": "Dagger", "standard": true, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 },
+          { "name": "Shortsword", "standard": false, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 },
+          { "name": "Staff", "standard": false, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 }
+        ]
+      }
+    }
+  ]
+}

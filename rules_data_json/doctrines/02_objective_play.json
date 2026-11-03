@@ -1,0 +1,14 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "2. Objective Play" },
+  "name": "Objective Play",
+  "foundationRecruitmentSlot": "C",
+  "strategy": "Capture, contest, and maintain control of valuable battlefield positions.",
+  "commands": [
+    { "name": "Seize the Opening", "slot": "V", "timing": "Movement", "effect": "One unengaged friendly Unit within Short of an objective may immediately Move up to 2\" toward that objective, ending legally and unengaged." },
+    { "name": "Dig In", "slot": "C", "timing": "Assault/Combat Reaction", "effect": "When a friendly Unit within 2\" of an objective is attacked, it gains Tough 2 against that Attack. If the Attack is a Charge, also gain Brace 1 before resolving Impact." },
+    { "name": "Deny the Ground", "slot": "R", "timing": "Assault", "effect": "If one friendly Unit inflicts unsaved Damage with a ranged Attack against an enemy within 2\" of an objective, that enemy cannot count as more than one Unit for objective control until the end of the Round." },
+    { "name": "Supply Point", "slot": "S", "timing": "Movement", "effect": "Choose one friendly Unit within 2\" of an objective. Either Heal 2 accumulated Damage from it or remove Withdrawn from it." },
+    { "name": "Clear the Position", "slot": "A", "timing": "Assault/Combat", "effect": "One friendly Unit gains +2 Attacks on its next Attack this Phase against an enemy contesting an objective." }
+  ],
+  "doctrineIdentity": "Scenario scoring and battlefield positioning. Objective Play does not need to be particularly effective at destroying enemies, provided its commands create meaningful opportunities to score or deny Victory Points."
+}

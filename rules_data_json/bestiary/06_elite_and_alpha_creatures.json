@@ -1,0 +1,29 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/17_bestiary.md",
+    "section": "6. Elite and Alpha Creatures"
+  },
+  "description": "Eligible multi-model Beast Units may designate one Alpha, using the existing +25 Point package. Its +2 maximum Wounds apply only to the chosen Model; a single Unit may contain only one Alpha. Alpha granted Unit-wide effects end if that Model is removed. Printed Impact bonuses add to normal highest-die Charge Impact.",
+  "notes": ["Some ordinary Beast Units can be upgraded to include an unusually large or dominant member of their species."],
+  "alphaPackage": {
+    "name": "Alpha",
+    "cost": "+25 Points",
+    "procedure": [
+      "Choose one Model in an eligible multi-model Beast Unit.",
+      "That Model gains +2 maximum Wounds.",
+      "Then choose one Alpha trait."
+    ],
+    "alphaTraits": [
+      { "name": "Pack Leader", "cost": "+0", "description": "While this Model remains alive, the Unit's Engagement Attacks gain Accurate 1." },
+      { "name": "Armored Alpha", "cost": "+0", "description": "The Alpha Model gains Tough 2." },
+      { "name": "Savage Alpha", "cost": "+0", "description": "The Alpha Model's primary Engagement weapon gains +1 Attack." },
+      { "name": "Charging Alpha", "cost": "+0", "description": "While the Alpha remains alive, the Unit gains Impact 1. If it already has Impact X, increase X by 1 instead." },
+      { "name": "Swift Alpha", "cost": "+0", "description": "While the Alpha remains alive, increase the Unit's Move by 1\"." }
+    ],
+    "rules": [
+      "A Unit may normally contain only one Alpha.",
+      "The Alpha's additional Wounds and personal defenses apply only to that Model. Any Unit-wide benefits end when the Alpha is removed.",
+      "Single-model Monsters generally use their own upgrade tables instead."
+    ]
+  }
+}

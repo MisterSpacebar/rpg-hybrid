@@ -1,0 +1,131 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/13_talents.md",
+    "section": "PRIEST TALENTS"
+  },
+  "description": "Priest Talents emphasize restoration, protection, blessings, supernatural intervention, and support.",
+  "restrictedToClass": "priest",
+  "talents": [
+    {
+      "id": "spell-prowess",
+      "name": "Spell Prowess",
+      "tier": "1+",
+      "type": "Ranked — Passive",
+      "effect": "Functions identically to the Mage's Spell Prowess. Choose one Spell Attack different from that improved through generic Prowess. Each Rank improves either Attacks by 1 or Hit by 1 step, and improves one Skill."
+    },
+    {
+      "id": "sacred-reach",
+      "name": "Sacred Reach",
+      "tier": "1+",
+      "type": "Ranked — Passive",
+      "effect": "Choose one Priest Spell Attack. Increase its Range by 2\" per Rank."
+    },
+    {
+      "id": "guidance",
+      "name": "Guidance",
+      "tier": 1,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": {
+        "narrativeCombat": "The target gains +1D6 on its next Skill Check.",
+        "structuredCombat": "The target gains Accurate 1 on its next Attack this Round."
+      },
+      "target": "Choose one friendly Unit within Short Range."
+    },
+    {
+      "id": "intercession",
+      "name": "Intercession",
+      "tier": 1,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When a friendly Unit within Short Range suffers Damage from a non-Instant Attack, reduce one instance of that Damage by 1, to a minimum of 0."
+    },
+    {
+      "id": "sanctuary",
+      "name": "Sanctuary",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When a friendly Unit within Short Range suffers a Critical Hit from a non-Instant Attack, convert one Critical Hit into a normal Hit. The defender may resolve Armor and Evade against that Hit normally."
+    },
+    {
+      "id": "purification",
+      "name": "Purification",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Choose one friendly Unit within Short Range. Roll Spirit + Medicine. Remove up to X eligible temporary conditions or penalties from that Unit, where X equals the number of successes.",
+      "eligibleEffects": [
+        "Magical or supernatural conditions.",
+        "Curses.",
+        "Temporary Hit penalties.",
+        "Temporary Move penalties."
+      ],
+      "notes": [
+        "Purification cannot remove permanent conditions or effects that explicitly require special treatment."
+      ]
+    },
+    {
+      "id": "hallowed-ground",
+      "name": "Hallowed Ground",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Place a 25mm token within Short Range of this character. Until the beginning of your next Movement activation, the area within 2\" of the token counts as Difficult Terrain for enemy Units. Friendly Units ignore this effect. Hallowed Ground does not block line of sight or grant Cover. Remove the token when the effect expires."
+    },
+    {
+      "id": "guiding-light",
+      "name": "Guiding Light",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Assault",
+      "effect": "Choose one visible enemy Unit within Medium range. Until the end of the Round, friendly Attacks targeting that enemy ignore Cover and Evade granted by elevation."
+    },
+    {
+      "id": "divine-rebuke",
+      "name": "Divine Rebuke",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When an enemy within Short Range deals Damage to you or an ally with a non-Instant Attack, roll Spirit + Mysticism. If the Check generates at least one success, that enemy suffers Direct Damage 1. Ward applies normally."
+    },
+    {
+      "id": "martyrs-grace",
+      "name": "Martyr's Grace",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When a friendly Unit within Short Range suffers an unsaved Hit, transfer one such Hit to yourself before Damage is applied. Any applicable Ward Save may be resolved against the transferred Hit. The Hit cannot be transferred again."
+    },
+    {
+      "id": "consecrate",
+      "name": "Consecrate",
+      "tier": 3,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Choose one nearby point or terrain feature. Until the beginning of your next Movement activation, friendly Units occupying or adjacent to it gain Ward 6+. Units already possessing an applicable Ward instead improve that Ward by 1 step. These benefits do not stack with additional applications of Consecrate."
+    },
+    {
+      "id": "renewal",
+      "name": "Renewal",
+      "tier": 3,
+      "cost": "2 CP",
+      "type": "Movement",
+      "effect": "Choose up to two friendly Units within Short Range. Heal 1 Wound to each selected Unit. Renewal cannot restore removed Models."
+    },
+    {
+      "id": "miracle-worker",
+      "name": "Miracle Worker",
+      "tier": 3,
+      "type": "Passive",
+      "effect": "Your Healing Command Abilities may be used one additional time during the same Turn. Each use requires its normal CP expenditure and is resolved separately. Additionally, once per Round, when one of your abilities Heals a Unit, increase the amount Healed by 1. This additional healing applies to one Unit affected by that use of the ability. Miracle Worker does not remove any other restrictions on the Healing Command."
+    },
+    {
+      "id": "effortless-channeling",
+      "name": "Effortless Channeling",
+      "tier": 4,
+      "type": "Passive — Once per Round",
+      "effect": "Reduce the CP cost of your first Priest Class, Subclass, or Talent Command Ability by 1, to a minimum of 0. This does not reduce the CP cost of unrelated Commands granted by other sources."
+    }
+  ]
+}

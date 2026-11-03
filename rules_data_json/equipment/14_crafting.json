@@ -1,0 +1,124 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "CRAFTING, CRAFTING QUALITIES, CRAFTING FLAWS, REPAIRING EQUIPMENT, CRAFTING EXAMPLE, Artificer Formulae and Permanent Crafting"
+  },
+  "description": "Crafting allows characters to create, repair, and improve equipment using materials, tools, training, and appropriate facilities. Crafting uses the normal Characteristic + Skill rules. A character does not require a separate crafting progression system. A skilled character with improved Craft or Mysticism naturally becomes more capable of producing exceptional equipment.",
+  "craftingProcedure": {
+    "steps": [
+      "Choose the equipment being created.",
+      "Obtain appropriate materials, tools, and any necessary recipe.",
+      "Determine the item's Crafting Difficulty.",
+      "Roll the appropriate Characteristic + Skill.",
+      "Compare the number of successes to the item's Difficulty.",
+      "Resolve any excess successes, Surges, and Blunders."
+    ]
+  },
+  "craftingDifficulty": {
+    "description": "Unlike Skill-scaled Commands, crafting is a task with an explicit Difficulty representing the complexity of the work.",
+    "levels": [
+      { "difficulty": "Simple", "successesRequired": 1, "typicalEquipment": "Clubs, simple tools, ordinary supplies" },
+      { "difficulty": "Standard", "successesRequired": 2, "typicalEquipment": "Martial weapons, bows, shields, Light Armor" },
+      { "difficulty": "Complex", "successesRequired": 3, "typicalEquipment": "Heavy weapons, firearms, mechanical equipment, Medium Armor" },
+      { "difficulty": "Advanced", "successesRequired": 4, "typicalEquipment": "Heavy Armor, intricate machinery, minor magical equipment" },
+      { "difficulty": "Exceptional", "successesRequired": 5, "typicalEquipment": "Major magical equipment, advanced constructs, exceptional enchantments" }
+    ],
+    "notes": [
+      "Relics generally require unique materials, specialized knowledge, and significant narrative effort rather than being available through ordinary crafting alone.",
+      "The GM may adjust Difficulty to reflect unusual designs or circumstances."
+    ]
+  },
+  "craftingChecks": {
+    "defaultSkill": "Craft, paired with whichever Characteristic best represents the work being performed.",
+    "suggestedPairings": [
+      { "approach": "Forging and metalworking", "check": "Body + Craft" },
+      { "approach": "Fine mechanisms and delicate work", "check": "Agility + Craft" },
+      { "approach": "Engineering, design, and assembly", "check": "Mind + Craft" },
+      { "approach": "Magical enchantment", "check": "Mind + Mysticism" },
+      { "approach": "Sacred or spiritual enchantment", "check": "Spirit + Mysticism" }
+    ],
+    "notes": [
+      "The GM chooses the most appropriate pairing.",
+      "A character must have access to reasonable tools and materials for the proposed item."
+    ]
+  },
+  "craftingResults": {
+    "success": {
+      "rule": "If the Check generates successes equal to or greater than the Difficulty, the item is completed. It receives its normal equipment profile and battlefield Point value. For every success beyond the required Difficulty, gain one Crafting Quality.",
+      "example": "A character attempts to craft a Longsword, Difficulty 2. They roll four successes. The Longsword is completed with two Crafting Qualities available."
+    },
+    "surge": "If the Crafting Check generates a Surge, gain one additional Crafting Quality on a successful craft. This is in addition to any Qualities earned through excess successes. A Surge on an unsuccessful craft may instead preserve valuable materials, reveal a better technique, or provide another reasonable narrative benefit.",
+    "blunder": "A Crafting Blunder creates a complication. A successful craft may still Blunder. If the item is completed despite the Blunder, it gains one Flaw. If the craft fails and Blunders, the GM may instead introduce wasted materials, damaged tools, additional work, or another appropriate setback. A Check may generate both a Surge and a Blunder. Resolve both independently."
+  },
+  "craftingQualities": {
+    "description": "Crafting Qualities represent superior workmanship. They may improve an item's performance, durability, handling, or other appropriate characteristics. Unspent Qualities may instead represent exceptional appearance, craftsmanship, or narrative value.",
+    "commonQualities": [
+      { "name": "Balanced", "effect": "Accurate 1", "qualitiesRequired": 1, "addedPoints": 10 },
+      { "name": "Extended", "effect": "+1\" Range", "qualitiesRequired": 1, "addedPoints": 5 },
+      { "name": "Specialized", "effect": "Anti-[Category] 1", "qualitiesRequired": 1, "addedPoints": 10 },
+      { "name": "Reinforced", "effect": "Tough 1 on Armor", "qualitiesRequired": 1, "addedPoints": 15 },
+      { "name": "Swift", "effect": "+1\" Move while equipped", "qualitiesRequired": 1, "addedPoints": 10 },
+      { "name": "Deadly", "effect": "+1 Attack die", "qualitiesRequired": 2, "addedPoints": 15 },
+      { "name": "Precise", "effect": "Improve Hit by 1 step", "qualitiesRequired": 2, "addedPoints": 20 },
+      { "name": "Destructive", "effect": "+1 Damage", "qualitiesRequired": 2, "addedPoints": 30 },
+      { "name": "Protective", "effect": "Improve Armor by 1 step", "qualitiesRequired": 2, "addedPoints": 20 }
+    ],
+    "notes": [
+      "A Quality may only be applied to compatible equipment. Balanced and Deadly apply to Weapon Attacks. Reinforced applies to Armor. Protective applies to Armor or appropriate protective equipment. Extended applies to ranged or extended-reach weapons. Swift applies to equipment suitable for improving movement.",
+      "A named Quality may normally be applied only once per item.",
+      "Crafting Qualities providing magical effects require appropriate supernatural materials and magical craftsmanship.",
+      "Magical Enchantments remain subject to their normal crafting requirements."
+    ],
+    "pointsFormula": "Base Equipment Points + Added Quality Points + Enchantment Points",
+    "pointsFormulaNote": "Crafting does not make improved equipment free for battlefield balance purposes. A masterwork weapon may cost little XP to create, but its superior effectiveness still contributes to its owner's final battlefield value."
+  },
+  "craftingFlaws": {
+    "description": "Blunders may introduce defects or unexpected properties. The GM selects a Flaw appropriate to the item and the circumstances of its creation.",
+    "flaws": [
+      { "name": "Unwieldy", "effect": "Worsen the item's Hit by 1 step" },
+      { "name": "Cumbersome", "effect": "Reduce Move by 1\" while equipped" },
+      { "name": "Fragile", "effect": "When an Attack using this item Blunders, the item becomes unusable until repaired" },
+      { "name": "Unreliable", "effect": "When an Attack using this item Blunders, the wielder becomes Off-Balance" },
+      { "name": "Noisy", "effect": "Using the item immediately ends the wielder's Concealed condition" },
+      { "name": "Unstable", "effect": "When the item's magical effect Blunders, its wielder suffers 1 Damage" },
+      { "name": "Imperfect", "effect": "One selected Crafting Quality remains inactive until the item is repaired" }
+    ],
+    "notes": [
+      "Flaws should be selected based on the item's nature. For example, Cumbersome may be appropriate for poorly fitted armor, while Unreliable may suit a badly constructed firearm.",
+      "A Blunder does not automatically negate an otherwise successful craft.",
+      "Flaws generally do not reduce battlefield Points until they are deliberately incorporated into a separately balanced item profile."
+    ]
+  },
+  "repairingEquipment": {
+    "rules": [
+      "Repairing an item normally requires appropriate tools, materials, and a Craft Check.",
+      "The Difficulty is normally the same as crafting the original item.",
+      "On success, remove one applicable Flaw or restore the item to normal use.",
+      "Excess successes may reduce the time or materials required, or provide an appropriate narrative benefit.",
+      "Repairs do not automatically grant new Crafting Qualities.",
+      "A character may attempt to improve an existing item as a separate crafting project, using an appropriate Difficulty determined by the proposed improvement."
+    ]
+  },
+  "craftingExample": {
+    "description": "A skilled Warrior wants to forge an exceptional Longsword. The Longsword normally costs 10 Points and has: Engaged / 4 / 5+ / 1. The GM assigns Difficulty 2. The Warrior has: Body 5, Craft 4+. The Warrior rolls five dice: 1, 4, 5, 6, 6. Four successes are generated, and the Check also Surges.",
+    "resolution": [
+      "Two successes satisfy the Difficulty.",
+      "Two excess successes grant two Qualities.",
+      "The Surge grants one additional Quality.",
+      "No Blunder occurs."
+    ],
+    "result": {
+      "name": "Masterwork Longsword",
+      "qualitiesChosen": ["Deadly (2 Qualities) — +1 Attack die", "Balanced (1 Quality) — Accurate 1"],
+      "profile": { "range": "Engaged", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] },
+      "pointsBreakdown": [
+        { "component": "Longsword", "points": 10 },
+        { "component": "Deadly", "points": 15 },
+        { "component": "Balanced", "points": 10 }
+      ],
+      "totalPoints": 35,
+      "note": "A PC wielding this Masterwork Longsword rolls 5 Attack dice, exactly as shown in its final profile, before any additional modifiers granted by Talents, Commands, or other applicable effects."
+    }
+  },
+  "artificerFormulaeNote": "Artificer Formulas provide temporary battlefield effects and are learned through Class features and Talents; they do not require creating, carrying, or purchasing a permanent potion or device for each use. A lasting crafted item or enchanted weapon still follows the ordinary Crafting Difficulty, Qualities, Flaws, Equipment Points, and slot rules above. A Physical weapon temporarily granted Fire or Frost by a Runesmith keeps its primary Physical Attack type."
+}

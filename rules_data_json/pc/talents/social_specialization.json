@@ -1,0 +1,65 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/13_talents.md",
+    "section": "SOCIAL SPECIALIZATION"
+  },
+  "description": "Social Talents improve a character's ability to influence, deceive, intimidate, organize, and understand others. They also provide limited battlefield applications.",
+  "talents": [
+    {
+      "id": "menacing-presence",
+      "name": "Menacing Presence",
+      "tier": 2,
+      "type": "Passive",
+      "combatBenefitSummary": "Successful Charge worsens the target's Hit on its next Attack",
+      "effect": {
+        "narrative": "When an intimidation-based Influence Check Surges, the target may hesitate, reveal information, back down temporarily, or expose something it fears.",
+        "structuredCombat": "After successfully Charging an enemy, worsen its Hit by 1 step on its next Attack this Round."
+      }
+    },
+    {
+      "id": "tactical-deception",
+      "name": "Tactical Deception",
+      "tier": 2,
+      "type": "Passive",
+      "combatBenefitSummary": "Allows access to Tactical Feint outside the Rogue Class",
+      "effect": {
+        "narrative": "When a deception-based Influence Check Surges, establish one minor false assumption that the target accepts until contradicted. If the Check Blunders, you may choose which part of the deception creates suspicion.",
+        "structuredCombat": "You may purchase Tactical Feint as a Talent even if you are not a Rogue."
+      }
+    },
+    {
+      "id": "rallying-voice",
+      "name": "Rallying Voice",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "combatBenefitSummary": "Reaction removing temporary penalties through Influence",
+      "effect": {
+        "structuredCombat": "Choose yourself or one friendly Unit within Short Range. Roll Spirit + Influence. Remove up to X temporary penalties or conditions from that Unit, where X equals the number of successes. Eligible effects include temporary Hit, Move, and Evade penalties, and Off-Balance.",
+        "narrative": "When an Influence Check to encourage, inspire, or organize others Surges, one affected ally gains +1D6 on its next related Skill Check."
+      }
+    },
+    {
+      "id": "read-the-room",
+      "name": "Read the Room",
+      "tier": 2,
+      "type": "Passive",
+      "combatBenefitSummary": "Gain Accurate 1 on your first Attack against a selected enemy",
+      "effect": {
+        "narrative": "When an Awareness or Influence Check in a social situation Surges, ask one additional question concerning motives, deception, relationships, discomfort, or leverage.",
+        "structuredCombat": "During the first Round, choose one visible enemy Unit. Your first Attack against that Unit gains Accurate 1."
+      }
+    },
+    {
+      "id": "master-orator",
+      "name": "Master Orator",
+      "tier": 3,
+      "type": "Passive",
+      "combatBenefitSummary": "Extend a Command's secondary accuracy benefit to another ally",
+      "effect": {
+        "narrative": "When an Influence Check Surges, extend one beneficial Surge consequence to another relevant person or group. When the Check Blunders, choose one ally present who is not affected by the resulting complication.",
+        "structuredCombat": "Once per Round, after using a Command Ability on another friendly Unit, choose a second friendly Unit within 2\" of the original target. The second Unit gains Accurate 1 on its next Attack this Round."
+      }
+    }
+  ]
+}

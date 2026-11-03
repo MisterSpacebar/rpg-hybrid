@@ -1,0 +1,115 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/13_talents.md",
+    "section": "ROGUE TALENTS"
+  },
+  "description": "Rogue Talents emphasize mobility, concealment, accuracy, opportunism, and exploiting enemy weaknesses.",
+  "restrictedToClass": "rogue",
+  "talents": [
+    {
+      "id": "martial-prowess",
+      "name": "Martial Prowess",
+      "tier": "1+",
+      "type": "Ranked — Passive",
+      "effect": "Functions identically to the Warrior's Martial Prowess. Choose one Weapon Attack different from that improved through generic Prowess. Each Rank improves either Attacks by 1 or Hit by 1 step, and improves one Skill."
+    },
+    {
+      "id": "extended-shot",
+      "name": "Extended Shot",
+      "tier": "1+",
+      "type": "Ranked — Passive",
+      "effect": "Choose one non-Firearm ranged Weapon Attack. Increase its Range by 2\" per Rank."
+    },
+    {
+      "id": "quick-draw",
+      "name": "Quick Draw",
+      "tier": 1,
+      "type": "Passive",
+      "effect": "After choosing Assault Move, your next non-Heavy ranged Weapon Attack before the end of your next Assault activation gains Accurate 1. This does not permit an Attack during the same ordinary Assault activation as the Move; the bonus expires if unused."
+    },
+    {
+      "id": "tactical-feint",
+      "name": "Tactical Feint",
+      "tier": 1,
+      "cost": "1 CP",
+      "type": "Assault or Combat",
+      "effect": "Choose an enemy Unit you are Engaged with. Roll Agility + Stealth. The enemy worsens its Evade by X steps against your next Weapon Attack targeting it this Turn, where X equals the number of successes."
+    },
+    {
+      "id": "smoke-bomb",
+      "name": "Smoke Bomb",
+      "tier": 1,
+      "cost": "1 CP",
+      "type": "Movement",
+      "effect": "Choose yourself or one friendly Unit within 2\". The selected Unit gains Concealed until it Attacks, enters Engagement, or the Round ends."
+    },
+    {
+      "id": "mobile-assault",
+      "name": "Mobile Assault",
+      "tier": 2,
+      "type": "Passive — Once per Activation",
+      "effect": "After making a Weapon Attack, move up to 1\". This movement cannot leave Engagement or enter a new Engagement."
+    },
+    {
+      "id": "skirmisher",
+      "name": "Skirmisher",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Assault",
+      "effect": "After making a ranged Weapon Attack, move up to 2\". This movement cannot enter Engagement."
+    },
+    {
+      "id": "precise-fire",
+      "name": "Precise Fire",
+      "tier": 2,
+      "type": "Passive",
+      "effect": "Choose one ranged Weapon Attack. That Attack gains Pinpoint."
+    },
+    {
+      "id": "covering-fire",
+      "name": "Covering Fire",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When a friendly Unit within Short Range Disengages, make one eligible ranged Weapon Attack against an enemy it was Engaged with. Resolve the Attack normally."
+    },
+    {
+      "id": "slip-away",
+      "name": "Slip Away",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "After completely Evading an Engagement Attack, move up to 2\". You may leave Engagement without becoming Withdrawn."
+    },
+    {
+      "id": "hamstring",
+      "name": "Hamstring",
+      "tier": 2,
+      "cost": "1 CP",
+      "type": "Combat",
+      "effect": "After your Engagement Weapon Attack deals Damage, the target suffers Slow 2 until the end of its next Movement activation."
+    },
+    {
+      "id": "retaliatory-step",
+      "name": "Retaliatory Step",
+      "tier": 2,
+      "type": "Passive",
+      "effect": "After dealing Damage to an enemy in Engagement, move up to 1\". This movement may leave Engagement without making you Withdrawn, but cannot enter Engagement with another enemy."
+    },
+    {
+      "id": "opportunist",
+      "name": "Opportunist",
+      "tier": 3,
+      "cost": "1 CP",
+      "type": "Reaction — Once per Round",
+      "effect": "When another friendly Unit deals Damage to an enemy you are Engaged with, make one Engagement Weapon Attack against that enemy."
+    },
+    {
+      "id": "close-quarters-shooter",
+      "name": "Close-Quarters Shooter",
+      "tier": 3,
+      "type": "Passive",
+      "effect": "When making a ranged Weapon Attack against an enemy you are Engaged with, gain Accurate 1. The target may still use Evade normally."
+    }
+  ]
+}

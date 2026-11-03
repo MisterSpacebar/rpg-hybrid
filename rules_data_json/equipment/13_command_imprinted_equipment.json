@@ -1,0 +1,13 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "Command-Imprinted Equipment"
+  },
+  "description": "Some magical equipment enhances a Universal Command already known to the character. Because all PCs already possess Universal Commands, an item merely granting the same Command provides no additional benefit. Instead, an imprinted item may improve one aspect of that Command when used with the item.",
+  "examples": [
+    { "name": "Blade of Focus", "addedPoints": 15, "effect": "When using Focus with this weapon, increase its Accurate value from 2 to 3." },
+    { "name": "Shield of Bracing", "addedPoints": 15, "effect": "When using Brace while equipped with this Shield, increase Tough from 2 to 3." },
+    { "name": "Boots of Quickening", "addedPoints": 15, "effect": "When using Quick Step while wearing these Boots, increase its movement by 1\"." }
+  ],
+  "notes": ["These improvements do not grant additional Command uses."]
+}

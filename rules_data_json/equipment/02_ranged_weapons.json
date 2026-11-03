@@ -1,0 +1,66 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "RANGED WEAPONS"
+  },
+  "description": "Ranged weapons normally attack during the Assault Phase.",
+  "categories": [
+    {
+      "id": "thrown-and-simple",
+      "name": "Thrown and Simple Weapons",
+      "weapons": [
+        { "name": "Sling", "profile": { "range": "6\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
+        { "name": "Throwing Knives", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 5 },
+        {
+          "name": "Javelins",
+          "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+          "points": 5,
+          "combatProfile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+          "notes": "Purchasing Javelins grants both the Assault profile and the Combat profile above. Their Point cost is counted only once."
+        }
+      ]
+    },
+    {
+      "id": "bows",
+      "name": "Bows",
+      "weapons": [
+        { "name": "Shortbow", "profile": { "range": "6\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 5 },
+        { "name": "Longbow", "profile": { "range": "9\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Long Range 3"] }, "points": 10 },
+        { "name": "Heavy Bow", "profile": { "range": "9\"", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] }, "points": 15 }
+      ],
+      "notes": [
+        "Long Range increases the Longbow's maximum effective distance to 12\", but Attacks beyond 9\" worsen Hit by one step."
+      ]
+    },
+    {
+      "id": "crossbows",
+      "name": "Crossbows",
+      "weapons": [
+        { "name": "Crossbow", "profile": { "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Heavy"] }, "points": 10 },
+        { "name": "Repeating Crossbow", "profile": { "range": "8\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 15 },
+        { "name": "Heavy Crossbow", "profile": { "range": "10\"", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Elite 2"] }, "points": 15 }
+      ]
+    },
+    {
+      "id": "firearms",
+      "name": "Firearms",
+      "note": "All Firearms possess Instant in addition to their listed Keywords.",
+      "weapons": [
+        { "name": "Pistol", "profile": { "range": "6\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm", "Instant"] }, "points": 10 },
+        { "name": "Carbine", "profile": { "range": "8\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm", "Instant"] }, "points": 15 },
+        { "name": "Musket", "profile": { "range": "10\"", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Instant", "Anti-Character 2"] }, "points": 20 },
+        { "name": "Blunderbuss", "profile": { "range": "6\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm", "Rapid-Fire 2", "Instant"] }, "points": 20 }
+      ],
+      "notes": [
+        "Firearm identifies the Attack as a firearm for rules and Talent interactions. Firearm Attacks remain Physical unless another rule grants Magic.",
+        "Instant prevents the Attack from being responded to with Command Abilities.",
+        "Rapid-Fire 2 grants two additional Attack dice when the target is within half the weapon's normal Range.",
+        "Firearms generally have strong immediate effectiveness but are harder to improve through Talents that specifically benefit bows and other non-Firearm ranged weapons."
+      ]
+    }
+  ],
+  "designNotes": [
+    "v4 balance pass (post-playtesting): Damage-1 weapons gained +1 Attack; Damage-2/Heavy weapons (Heavy Bow, Heavy Crossbow, Musket) kept their listed Attacks and gained a thematic Anti-[Type] 1.",
+    "v5 balance pass (second damage-output pass): Damage-1 weapons gained a further +1 Attack; Damage-2/Heavy weapons (Heavy Bow, Heavy Crossbow, Musket) raised their Anti-[Type] to 2. The Handgun was removed as redundant with the Pistol, and the Pistol and Carbine were then trimmed by 1 Attack each."
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "7. DEATH LEGIONS"
+  },
+  "name": "Death Legions",
+  "doctrines": ["Grinding", "Horde"],
+  "worldbuilding": "Organized undead kingdoms, ancient tomb empires, necromantic city-states, and endless armies of skeletons and corpses. Their forces win through persistence, attrition, and the replacement of casualties. Both signature Core choices are Infantry, leaving conventional undead archers and mounted warriors to generic profiles.",
+  "factionRule": {
+    "name": "Endless Dead",
+    "effect": "The first time each Round an Undead Unit with more than one starting Model survives an Attack that defeats one or more of its basic Models, roll 1D6 for each Model defeated by that Attack. For each 6+, restore one defeated basic Model to that surviving Unit, up to its starting size, placing returned Models legally in Coherency. This passive effect may return Models while Engaged but cannot restore a completely destroyed Unit."
+  },
+  "factionCommands": [
+    { "name": "Rise Again", "timing": "Movement", "cost": "1 CP", "effect": "Either restore one defeated basic Model to a surviving, unengaged friendly Undead Unit (up to starting size), or once per battle, return one completely destroyed friendly Undead Core Unit with two original basic Models in legal Coherency, wholly within the friendly Deployment Zone at the end of Movement. That returned Unit cannot activate, Charge, or control objectives this Round. Both uses retain normal CP/card requirements." },
+    { "name": "Death March", "timing": "Movement", "cost": "1 CP", "effect": "One eligible Undead Unit may immediately make an additional normal Move, ending legally; it cannot make a ranged Attack this Round." },
+    { "name": "The Dead Do Not Tire", "timing": "Movement", "cost": "1 CP", "effect": "Remove one negative condition from one friendly Undead Unit." }
+  ],
+  "signatureCoreUnits": [
+    {
+      "name": "Corpse Horde",
+      "points": 80,
+      "models": 12,
+      "tags": ["Horde Infantry", "Undead"],
+      "modelProfile": { "move": "3\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Claws", "range": "Engaged", "attacks": 1, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Mass of Dead", "type": "Passive", "effect": "Gain Accurate 2 while this unit still has more than half its starting models." }
+      ]
+    },
+    {
+      "name": "Grave Guard",
+      "points": 165,
+      "models": 3,
+      "tags": ["Elite Infantry", "Undead"],
+      "modelProfile": { "move": "4\"", "wounds": 3, "armor": "4+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Ancient Blades", "range": "Engaged", "attacks": 3, "hit": "4+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Deathless Discipline", "type": "Passive", "effect": "Ignore the first Slow effect applied each Round." }
+      ]
+    },
+    {
+      "name": "Bone Archers",
+      "points": 110,
+      "models": 6,
+      "tags": ["Ranged Infantry", "Undead"],
+      "modelProfile": { "move": "3\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Bone Bows", "range": "8\"", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] },
+        { "name": "Improvised Weapons", "range": "Engaged", "attacks": 1, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Ranks of the Dead", "type": "Passive", "effect": "Gain Accurate 1 while at least 4 Models remain." }
+      ]
+    }
+  ],
+  "captainAndSpecialists": [
+    {
+      "name": "Death Captain",
+      "role": "Captain",
+      "points": 155,
+      "tags": ["Infantry", "Hero", "Undead", "Armored"],
+      "modelProfile": { "move": "5\"", "wounds": 5, "armor": "4+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Ancient Halberd", "range": "Engaged 2\"", "attacks": 5, "hit": "4+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Relentless Formation", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One friendly Undead Infantry Unit within Short ignores Slow and Difficult Terrain movement penalties during its next Move." }
+      ]
+    },
+    {
+      "name": "Necromancer-Lord",
+      "role": "Wizard",
+      "points": 205,
+      "tags": ["Wizard", "Hero", "Mortal*"],
+      "modelProfile": { "move": "3\"", "wounds": 4, "armor": "6+", "evade": "6+", "ward": "5+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Withering Bolt", "range": "10\"", "attacks": 5, "hit": "4+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Staff", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Raise Dead", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Return up to two defeated basic Models to one surviving, unengaged friendly Undead Core Unit within Short, up to its starting size. Cannot restore a completely destroyed Unit." }
+      ],
+      "note": "The Necromancer-Lord and Ossuary Keeper could have different Mortal or Undead traits depending on their lore."
+    },
+    {
+      "name": "Ossuary Keeper",
+      "role": "Wizard",
+      "points": 140,
+      "tags": ["Wizard", "Elite", "Undead*"],
+      "modelProfile": { "move": "3\"", "wounds": 5, "armor": "5+", "evade": "6+", "ward": null },
+      "attackProfiles": [
+        { "name": "Binding Ray", "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic", "Surge: Slow 3"] },
+        { "name": "Bone Staff", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Rebind Bones", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One friendly Undead Unit within Short that has lost a Model this Round gains Tough 2 until the end of the Round." }
+      ],
+      "note": "The Necromancer-Lord and Ossuary Keeper could have different Mortal or Undead traits depending on their lore."
+    }
+  ],
+  "largeAssets": [
+    {
+      "name": "Bone Colossus",
+      "points": 280,
+      "tags": ["Construct", "Undead", "Armored"],
+      "modelProfile": { "move": "4\"", "wounds": 12, "armor": "3+", "evade": null, "ward": null },
+      "attackProfiles": [
+        { "name": "Colossal Blade", "range": "Engaged 2\"", "attacks": 4, "hit": "4+", "damage": 3, "keywords": ["Anti-Elite 3"] }
+      ],
+      "abilities": [
+        { "name": "Reassembled", "type": "Passive", "effect": "The first time this Unit would be defeated, roll a D6. On 4+, remain at 1 Wound instead." }
+      ]
+    },
+    {
+      "name": "Corpse Engine",
+      "points": 225,
+      "tags": ["War Machine", "Construct", "Undead", "Armored"],
+      "modelProfile": { "move": "3\"", "wounds": 9, "armor": "5+", "evade": null, "ward": "6+ (Magic)" },
+      "attackProfiles": [
+        { "name": "Grave Pulse", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
+        { "name": "Crew", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+      ],
+      "abilities": [
+        { "name": "Necrotic Conduit", "type": "Passive", "effect": "Once per Round, after a nearby friendly Undead Unit returns a basic Model, Heal 1 Damage from that Unit if it has a wounded Model." }
+      ]
+    }
+  ],
+  "factionLeader": {
+    "name": "Deathless King",
+    "points": 485,
+    "tags": ["Hero", "Undead", "Armored"],
+    "modelProfile": { "move": "4\"", "wounds": 10, "armor": "3+", "evade": "6+", "ward": "4+" },
+    "impact": "+2",
+    "attackProfiles": [
+      { "name": "Deathly Gaze", "range": "8\"", "attacks": 2, "hit": "3+", "damage": 2, "keywords": ["Magic", "Critical 1"] },
+      { "name": "Sepulchral Greatblade", "range": "Engaged", "attacks": 8, "hit": "3+", "damage": 2, "keywords": ["Magic", "Anti-Monster 2"] }
+    ],
+    "abilities": [
+      { "name": "The King's Will", "type": "Passive", "effect": "Friendly Undead Units within Short ignore one negative condition caused by enemy auras." },
+      { "name": "Unbroken Legion", "type": "Command", "cost": "2 CP", "timing": "End Step", "frequency": "Once per Battle", "effect": "After objectives are scored, return one defeated basic Model to each of up to four surviving, unengaged friendly Undead Units within Medium, up to their starting sizes." }
+    ]
+  },
+  "genericUnitsWorthTaking": "Basic spear Infantry, skeleton archers, conventional undead Cavalry, and ordinary Support specialists. The signature units emphasize massed corpses or elite tomb guardians, not every undead battlefield role.",
+  "designNotes": [
+    "v4.2 balance pass: added Bone Archers as the faction's Extra Core, a Ranged Undead unit reinforcing attritional numbers rather than patching a weakness. Corpse Horde's weapon profile was kept unchanged (Models, not Attacks, is this faction's established horde-buff pattern). Other Damage-1 weapons gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Elite on the Bone Colossus' Colossal Blade, Anti-Monster on the Deathless King's Sepulchral Greatblade) or an improved Hit (Deathly Gaze 4+ -> 3+)."
+  ]
+}

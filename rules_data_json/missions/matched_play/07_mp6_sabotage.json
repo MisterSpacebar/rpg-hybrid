@@ -1,0 +1,16 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md", "section": "MP6 — SABOTAGE" },
+  "id": "MP6",
+  "name": "Sabotage",
+  "tagline": "Disrupt Enemy Infrastructure",
+  "primaryObjective": "Score 1 VP for each controlled objective during every scoring Round, except objectives disabled by Sabotage during that Round.",
+  "specialRules": {
+    "sabotageObjective": "An eligible unengaged Unit within 1\" of an enemy-affiliated objective may perform a Sabotage Mission Action in Movement or Assault, replacing its normal action in that phase. Place a Disabled token on that objective. A side may Sabotage an enemy-affiliated objective as assigned at setup. The Neutral objective cannot be Sabotaged.",
+    "disabledObjectives": "A Disabled objective awards no Primary VP to either player during the current Scoring Phase. The objective may still be controlled, contested, or interacted with for other applicable effects. Remove all Disabled tokens during the End Step."
+  },
+  "tacticalObjective": {
+    "name": "Successful Sabotage",
+    "effect": "Gain 1 Tactical VP if you successfully disabled at least one objective during the current Round."
+  },
+  "designNotes": "Sabotage rewards infiltrating enemy positions and temporarily denying territorial scoring. Because disabling an objective denies scoring to both sides, a successful Sabotage action must be timed carefully."
+}

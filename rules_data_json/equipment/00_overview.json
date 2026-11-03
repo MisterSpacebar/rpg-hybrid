@@ -1,0 +1,93 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "intro, EQUIPMENT AND CHARACTER VALUE, Equipment Slots, Using Weapons, WEAPON KEYWORDS, EQUIPMENT RULES SUMMARY, Combat Timing and Elemental Equipment"
+  },
+  "description": "Equipment represents weapons, armor, magical implements, artifacts, and other possessions used by Player Characters. A character's equipment influences their battlefield capabilities and contributes to their total Points value. Equipment may be purchased, found, crafted, improved, exchanged, or awarded during play.",
+  "characterValue": {
+    "formula": "max(100, XP spent on Talents) + Equipment Points + other explicit Points",
+    "formulaSourceRef": "03_experience_and_advancement.md",
+    "notes": [
+      "Equipment does not cost XP. Equipped weapons, armor, shields, foci, and artifacts add their listed Points.",
+      "Replacing or removing equipment adjusts battlefield value.",
+      "Permanently learned additional spells contribute their assigned Points as described in the Spell Catalogue (12_spell_catalogue.md).",
+      "The Attack value (A) shown for every weapon in this catalogue is the complete Attack dice value when a PC uses that weapon, before specific modifiers from Talents, Commands, Keywords, or equipment. Classes use these exact profiles and pay their listed Point costs.",
+      "NPCs, allied generic Units, Thralls, and Companions use their own Unit Attack profiles instead of inheriting PC equipment/spell profiles."
+    ],
+    "provisionalGrowthRebalance": "Compared with the earlier catalogue, weapon/spell profiles formerly showing 2–3 Attacks were reduced by 1 die, profiles with 4 or more by 2 dice, and profiles with only 1 remain at 1. The minimum is 1 Attack die. These revised Attack values already include all baseline PC attack capacity. Equipment and spell Point costs are temporarily unchanged pending playtesting. This lowers starting PC attack volume while leaving room for Prowess and other advances.",
+    "v4DamageOutputRebalance": "Following playtesting that found combat took too long to inflict meaningful damage, Damage 1 weapon profiles gained +1 Attack from their previously listed values. Damage 2 and Heavy profiles instead kept their listed Attacks and gained a thematic Anti-[Type] 1 (or, where one already existed, it increased to Anti-[Type] 2), matching the equivalent policy applied to Generic Units. Point costs are unchanged pending further playtesting.",
+    "v5DamageOutputRebalance": "The same policy was applied once more to every weapon profile in this catalogue, to the Spell Attacks in the Spell Catalogue and Starting Spells, and to the Bestiary. Damage 1 profiles gained a further +1 Attack. Damage 2 and Heavy profiles instead raised their Anti-[Type] to 2 (an existing Anti-[Type] 1 rose to 2); the Warhammer, which already had Anti-Armored 2, gained +1 Attack instead. Damage 0 profiles are unchanged. The Class reference tables, which had not received the v4 Attack increase, were synchronized to these catalogue profiles. The Handgun was removed as redundant with the Pistol, the Pistol and Carbine were then trimmed by 1 Attack each, and the Mace now costs 15 Points. Other Point costs are unchanged pending further playtesting."
+  },
+  "equipmentSlots": [
+    { "slot": "Primary melee weapon", "limit": 1 },
+    { "slot": "Ranged weapon", "limit": 1 },
+    { "slot": "Backup weapons", "limit": "Reasonable number" },
+    { "slot": "Armor", "limit": "1 set" },
+    { "slot": "Shield or off-hand equipment", "limit": 1 },
+    { "slot": "Magical Focus", "limit": 1 },
+    { "slot": "General Artifacts", "limit": 2 }
+  ],
+  "equipmentSlotNotes": [
+    "These limits describe equipment available for normal battlefield use rather than everything a character may physically carry.",
+    "An enchanted weapon occupies its normal weapon slot, not an Artifact slot. Enchanted armor and shields follow the same principle. Magical foci occupy the Focus slot.",
+    "A magical staff may also function as a mundane Staff weapon where appropriate, but equipping it does not grant additional weapon activations.",
+    "A character cannot normally benefit from multiple Shields, armor sets, or magical foci simultaneously."
+  ],
+  "usingWeapons": {
+    "assaultPhase": "Ranged Weapon Attacks and ranged Spell Attacks.",
+    "combatPhase": "Melee Weapon Attacks and Spell Attacks with an Engaged Range.",
+    "notes": [
+      "A character normally chooses one eligible Attack profile when making an Attack. Equipping multiple weapons does not grant additional Attacks or activations.",
+      "All weapon profiles use: Range / Attacks / Hit / Damage / Keywords."
+    ]
+  },
+  "weaponKeywords": {
+    "note": "Equipment uses the standard Keywords described in the Combat Rules. For full timing, stacking, and saves use Keywords (10_keywords.md). A weapon's keywords normally apply only to its own Attack.",
+    "keywords": [
+      { "keyword": "Accurate X", "effect": "Reroll up to X natural 1s on the Attack's Hit roll" },
+      { "keyword": "Tough X", "effect": "Reroll up to X natural 1s on Armor Saves" },
+      { "keyword": "Critical X", "effect": "After rerolls, convert up to X failed Hit dice into Critical Hits; no inherent Surge prerequisite" },
+      { "keyword": "Anti-[Category] X", "effect": "Gain +X Attack dice against the indicated category" },
+      { "keyword": "Heavy", "effect": "Subject to normal Heavy movement restrictions" },
+      { "keyword": "Brace X", "effect": "Reduce incoming Charge Impact Hits by X, minimum 0" },
+      { "keyword": "Long Range X", "effect": "Extend maximum Range by X\"; attacking beyond normal Range worsens Hit by 1 step" },
+      { "keyword": "Rapid-Fire X", "effect": "Gain +X Attacks against targets within half the weapon's normal Range" },
+      { "keyword": "Instant", "effect": "Cannot be responded to with Command Abilities" },
+      { "keyword": "Pinpoint", "effect": "Ignore the Hit penalty for attacking enemies Engaged with another Unit" },
+      { "keyword": "Magic", "effect": "The Attack counts as Magic rather than Physical" }
+    ]
+  },
+  "combatTimingNotes": [
+    "Making an ordinary ranged Weapon Attack uses the Unit's Assault Attack action; it is not combined with an ordinary Assault Move.",
+    "Weapon profiles are already final PC attack profiles and are unrelated to NPC Unit weapons.",
+    "The normal Charge uses Move + 2D6, base Impact equal to the highest Charge die, and printed Impact X as an additional bonus.",
+    "Enchanted weapons may gain Fire, Frost, Lightning or another elemental attribute in addition to Physical or Magic if their specific effect names that attribute; no attribute creates a separate Save."
+  ],
+  "summary": [
+    "Equipment adds Points, not XP. Printed Weapon profiles are complete PC Attack profiles.",
+    "Melee Attacks use the Combat Phase; ranged Attacks use the Assault Phase.",
+    "Only equipped weapons and relevant equipment contribute their equipment Points.",
+    "Starting spells are included in Base Character Value except when expressly optional with a separate cost. Additional learned spells have assigned Points values.",
+    "Magical equipment may provide passive benefits or Item Commands. Item Commands do not occupy prepared Command slots.",
+    "Enchantments and Crafting Qualities add their listed Points. Crafting Difficulty determines whether an item is successfully produced. Excess crafting successes and Surges grant Qualities. Blunders may introduce Flaws. Repairs remove defects; equipment improvements are separate projects."
+  ],
+  "files": [
+    { "id": "melee-weapons", "file": "01_melee_weapons.json" },
+    { "id": "ranged-weapons", "file": "02_ranged_weapons.json" },
+    { "id": "armor-and-shields", "file": "03_armor_and_shields.json" },
+    { "id": "magical-foci", "file": "04_magical_foci.json" },
+    { "id": "learning-spells", "file": "05_learning_spells.json" },
+    { "id": "magical-weapons", "file": "06_magical_weapons.json" },
+    { "id": "magical-armor", "file": "07_magical_armor.json" },
+    { "id": "magical-shields", "file": "08_magical_shields.json" },
+    { "id": "arcane-and-divine-foci", "file": "09_arcane_and_divine_foci.json" },
+    { "id": "general-artifacts", "file": "10_general_artifacts.json" },
+    { "id": "relics", "file": "11_relics.json" },
+    { "id": "enchantment-components", "file": "12_enchantment_components.json" },
+    { "id": "command-imprinted-equipment", "file": "13_command_imprinted_equipment.json" },
+    { "id": "crafting", "file": "14_crafting.json" }
+  ],
+  "knownIssues": [
+    "The source Markdown's 'Minor Enchantments' and 'Major Enchantments' tables (ENCHANTMENT COMPONENTS section) had lost their Markdown pipe formatting and rendered as a single run-on line (e.g. 'Enchantment Added Points Accurate 1 10 Tough 1 15 ...'). This was corrected directly in the Markdown (restored as proper tables) as part of this conversion pass, rather than just flagged, since it was an unambiguous formatting artifact with no information loss."
+  ]
+}

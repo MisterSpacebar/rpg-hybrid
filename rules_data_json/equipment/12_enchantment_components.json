@@ -1,0 +1,35 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "ENCHANTMENT COMPONENTS"
+  },
+  "description": "Rather than requiring every magical item to have its own unique rules, ordinary equipment may receive additional Enchantments. Enchantments increase the equipment's battlefield value by their listed Points. A normal item may receive multiple compatible Enchantments, provided the equipment and enchantments are narratively appropriate. An individual Enchantment cannot normally be applied more than once to the same item.",
+  "minorEnchantments": {
+    "description": "Minor Enchantments generally provide modest improvements or a narrow specialization.",
+    "enchantments": [
+      { "name": "Accurate 1", "addedPoints": 10 },
+      { "name": "Tough 1", "addedPoints": 15 },
+      { "name": "+1\" Attack Range", "addedPoints": 5 },
+      { "name": "+1\" Move while equipped", "addedPoints": 10 },
+      { "name": "Anti-[Category] 1", "addedPoints": 10 },
+      { "name": "Magic Attack keyword", "addedPoints": 10 }
+    ]
+  },
+  "majorEnchantments": {
+    "enchantments": [
+      { "name": "Critical 1", "addedPoints": 30 },
+      { "name": "Ward 6+ against one type", "addedPoints": 20 },
+      { "name": "+1 Maximum Wound", "addedPoints": 15 },
+      { "name": "+1 Attack die on one profile", "addedPoints": 15 },
+      { "name": "Improve Hit by 1 step", "addedPoints": 20 },
+      { "name": "+1 Damage on one profile", "addedPoints": 30 },
+      { "name": "Improve Armor by 1 step", "addedPoints": 20 },
+      { "name": "Conditional Direct Damage 1", "addedPoints": 25 },
+      { "name": "Minor Item Command", "addedPoints": "15–25" }
+    ],
+    "notes": ["The GM may adjust the Points of unusual Enchantments based on their scope and interaction with other properties. Items still follow normal characteristic limits."]
+  },
+  "knownIssues": [
+    "The source Markdown's 'Minor Enchantments' and 'Major Enchantments' tables had lost their pipe-table formatting and rendered as a single run-on line of text. This was corrected directly in the Markdown as part of this conversion pass (restored as proper tables); no values were changed, only formatting."
+  ]
+}

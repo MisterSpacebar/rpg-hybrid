@@ -1,0 +1,34 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "MAGICAL ARMOR"
+  },
+  "description": "Magical Armor uses the normal Armor value of its base equipment unless otherwise specified.",
+  "enchantments": [
+    {
+      "name": "Armor of Resilience",
+      "addedPoints": 20,
+      "effect": "Gain Tough 1 while wearing this armor."
+    },
+    {
+      "name": "Spellguard Armor",
+      "addedPoints": 20,
+      "effect": "Gain Ward 6+ against Magic. If you already possess an applicable Ward against Magic, improve it by 1 step instead."
+    },
+    {
+      "name": "Armor of the Bastion",
+      "addedPoints": 25,
+      "effect": "If you did not Move during the Movement Phase, improve Armor by 1 step until your next Movement activation."
+    },
+    {
+      "name": "Armor of Endurance",
+      "addedPoints": 25,
+      "effect": "Gain +1 maximum Wound. Once per Round, reduce the first instance of Direct Damage you suffer by 1, to a minimum of 0."
+    },
+    {
+      "name": "Shadow Armor",
+      "addedPoints": 25,
+      "effect": "Improve Evade by 1 step. After Disengaging, gain Concealed until you Attack, enter Engagement, or the Round ends."
+    }
+  ]
+}

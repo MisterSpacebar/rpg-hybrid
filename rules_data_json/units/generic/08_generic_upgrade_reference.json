@@ -1,0 +1,32 @@
+{
+  "category": "generic-upgrade-reference",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/01_generic_units.md",
+    "section": "8. GENERIC UPGRADE REFERENCE"
+  },
+  "note": "These values are provisional design references, not a universal purchasable upgrade list. A Unit may purchase only upgrades specifically made available by its profile or another applicable rule. Reference costs generally assume a single Character or Model. Applying improvements to every Model in a multi-model Unit requires separate pricing.",
+  "referenceUpgrades": [
+    { "name": "+1\" Move", "referenceCost": "+20", "description": "Increase a unit's Movement by 1\". Particularly valuable for mobile Units." },
+    { "name": "Improve Armor", "referenceCost": "+15–25", "description": "Improve a single Model's Armor Save by one step. Value scales with existing Wounds and defenses." },
+    { "name": "Improve Evade", "referenceCost": "+15", "description": "Improve a single Model's Evade Save by one step." },
+    { "name": "Specialized Ward 6+", "referenceCost": "+15", "description": "Gain Ward 6+ against one specified Damage type." },
+    { "name": "Universal Ward 6+", "referenceCost": "+25", "description": "Gain Ward 6+ against all applicable Damage types." },
+    { "name": "+1 Wound", "referenceCost": "+15", "description": "Increase one Model's maximum Wounds by 1." },
+    { "name": "Accurate 1", "referenceCost": "+10", "description": "Reroll up to one natural 1 during an Attack with the specified weapon." },
+    { "name": "Tough 1", "referenceCost": "+15", "description": "Reroll up to one natural 1 when making Armor Saves." },
+    { "name": "Brace 1", "referenceCost": "+10", "description": "Reduce incoming Impact by 1 when successfully Charged." },
+    { "name": "+1 Attack", "referenceCost": "+15", "description": "Increase one Model's specified weapon Attacks by 1." },
+    { "name": "Improve Hit", "referenceCost": "+15–20", "description": "Improve a single Model's specified Attack Hit characteristic by one step." },
+    { "name": "+1 Damage", "referenceCost": "+25", "description": "Increase the Damage of one specified weapon by 1 for a single Model." },
+    { "name": "+2\" normal Range", "referenceCost": "+15–20", "description": "Extend the printed normal Range of a Unit's selected weapon by 2\"; does not itself create a Long Range penalty." },
+    { "name": "Minor Mobility Trait", "referenceCost": "+5–10", "description": "Gain a limited movement or terrain-related benefit." },
+    { "name": "Concealed", "referenceCost": "+15", "description": "Gain Concealed under specified circumstances, restricting ordinary targeting." },
+    { "name": "Pinpoint", "referenceCost": "+10", "description": "Ignore the normal Hit penalty when attacking an enemy Engaged with another Unit." },
+    { "name": "Critical 1", "referenceCost": "+15", "description": "Convert up to one failed Hit die into a Critical Hit after rerolls; no Surge is required. Bypasses Armor and Evade; Ward applies." },
+    { "name": "Anti-[Type] 1", "referenceCost": "+15", "description": "Increase the weapon's Attacks by 1 against the specified Unit category." },
+    { "name": "Weapon Specialization (Anti-[Type] 2, Unit-wide, choice of tag)", "referenceCost": "+25", "description": "See Weapon Specialization on individual Unit profiles: a broader, Unit-wide version applicable once to a multi-Model formation's combined Attack pool." },
+    { "name": "Minor Passive Ability", "referenceCost": "+10–20", "description": "Gain one narrowly defined passive battlefield benefit." },
+    { "name": "Strong Passive Ability", "referenceCost": "+25+", "description": "Gain a substantial passive ability requiring individual balance review." },
+    { "name": "Additional Command", "referenceCost": "+15–25", "description": "Learn another eligible Command Ability without increasing CP or available Doctrine cards." }
+  ]
+}

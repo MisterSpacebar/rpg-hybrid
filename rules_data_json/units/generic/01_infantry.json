@@ -1,0 +1,307 @@
+{
+  "category": "infantry",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/01_generic_units.md",
+    "section": "1. INFANTRY"
+  },
+  "units": [
+    {
+      "id": "line-infantry",
+      "name": "Line Infantry",
+      "basePoints": 75,
+      "baseModels": 5,
+      "maxModels": 10,
+      "tags": ["Infantry", "Unarmored"],
+      "recruitmentSlots": ["C"],
+      "stats": { "move": "4\"", "wounds": 2, "armor": "6+", "evade": "6+", "ward": null },
+      "description": "Regular soldiers, militia, footmen, skeleton warriors, and other conventional infantry. Line Infantry are inexpensive screening and objective-holding troops that may be trained for greater offense, improved defense against Charges, or more reliable Charges of their own. In their base equipment they carry no substantial armor or shield, gaining the Unarmored tag instead; purchasing the Armor upgrade removes Unarmored and grants Armored.",
+      "meleeWeaponPackages": {
+        "chooseCount": 1,
+        "note": "All listed Attacks are per Model.",
+        "options": [
+          {
+            "name": "Hand Weapons",
+            "points": 0,
+            "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "notes": "Standard sword, axe, or similar weapon."
+          },
+          {
+            "name": "Spears",
+            "points": 10,
+            "profile": { "range": "Engaged 2\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Brace 1"] },
+            "notes": "Defensive reach and resistance to Charge Impact."
+          },
+          {
+            "name": "Polearms",
+            "points": 25,
+            "profile": { "range": "Engaged 2\"", "attacks": 1, "hit": "6+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Brace 1", "Anti-Cavalry 2"] },
+            "notes": "Less reliable and no added Attack volume, but devastating reach weapons against mounted and multi-Wound Charging threats."
+          },
+          {
+            "name": "Heavy Weapons",
+            "points": 25,
+            "profile": { "range": "Engaged", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] },
+            "notes": "Stronger individual Hits and extra dice against Armored targets; the Heavy restriction balances its circumstantial extra-dice potential on a multi-Model Unit."
+          },
+          {
+            "name": "Dual Weapons",
+            "points": 25,
+            "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "notes": "Greater volume of Hits; cannot take Shields."
+          }
+        ],
+        "clarification": "Polearms do not possess the Heavy keyword despite their weight; Heavy Weapons do possess Heavy. Their physical weight is represented by their printed Hit, Damage, Anti-[Type], and costs; normal melee combat after movement remains legal except where Heavy restricts it."
+      },
+      "defensiveUpgrades": {
+        "options": [
+          {
+            "name": "Armor",
+            "points": 15,
+            "effect": "Improve the Unit's Armor one step (6+ to 5+ alone, or 5+ to 4+ if combined with Shields). Gain the Armored tag; lose Unarmored. Available with any melee weapon package."
+          },
+          {
+            "name": "Shields",
+            "points": 15,
+            "effect": "Improve the Unit's Armor one step (6+ to 5+ alone, or 5+ to 4+ if combined with Armor). Does not itself grant or remove Armored/Unarmored.",
+            "restriction": "Available only with Hand Weapons or Spears."
+          }
+        ],
+        "notes": [
+          "Armor and Shields may be purchased independently or together; together they improve Armor by two total steps (6+ to 4+), matching the previous single Shields ceiling.",
+          "Each is a paid defensive package subject to the normal +5-Point per-added-Model surcharge described in the General Rules."
+        ]
+      },
+      "formationAndTrainingUpgrades": {
+        "options": [
+          { "name": "Standard Formation", "points": 0, "effect": "Five Models with the chosen equipment." },
+          { "name": "Additional Model", "pointsPerModel": 25, "maxModels": 10, "effect": "Add a matching Model, up to 10 Models." },
+          { "name": "Veterans", "points": 75, "effect": "The selected melee weapon gains +1 Attack per Model, and its Hit characteristic improves by one step. Each Model added after Veterans is purchased pays an additional +10 Points Veteran reinforcement surcharge." },
+          { "name": "Weapon Specialization", "points": 25, "effect": "Choose one Faction, Unit Type, or Trait tag. One selected weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once." },
+          { "name": "Charge Drill", "points": 15, "effect": "Gain Charge 1. Adds 1\" to final Charge distance, not to Charge Impact." },
+          { "name": "Shock Training", "points": 25, "effect": "Gain Impact 1 on successful Charges. It increases the Unit's one shared Impact pool, not Impact per Model." },
+          { "name": "Brace Training", "points": 15, "effect": "Gain Brace 1, additive with a spear's Brace 1 or other eligible sources." }
+        ],
+        "restrictions": [
+          "A Line Infantry Unit may purchase one of Charge Drill, Shock Training, or Brace Training.",
+          "It may purchase Veterans, Weapon Specialization, Armor, and Shields independently.",
+          "Training effects and ranked Keywords apply once to the Unit, not once per Model; Charge distance and Impact follow the standard combat rules."
+        ]
+      },
+      "reinforcementExample": "A seven-Model Veteran Unit with Hand Weapons costs 75 + 75 + (2 x 25) + (2 x 10) = 220 Points. Paid weapon, Armor, and Shield packages incur their normal +5-Point per-added-Model surcharge in addition.",
+      "battlefieldRole": "Screens, objective control, massed melee, anti-Charge formations, and modest shock infantry.",
+      "designNotes": [
+        "v4 balance pass (post-playtesting): reworked from a flat W1/Arm5+/Eva6+ profile with a bundled +25 Shields weapon-package option into a W2/Arm6+/Eva6+/Unarmored baseline with independent +15 Armor and +15 Shields upgrades, alongside +1 Attack on Damage-1 weapons and new Anti-Cavalry/Anti-Armored keywords on Polearms/Heavy Weapons.",
+        "v4.1 refinement: Veterans pricing is per-unit, not uniform — it scales with Model count because +1 Attack per Model is worth more on a 5-10 Model formation than a single-Model Character. Line Infantry's larger formation therefore pays +75 (not a flat +50 shared with small/single-Model Units), consistent with the per-added-Model Veteran reinforcement surcharge it already carried. A new Weapon Specialization upgrade (+25) lets the Unit choose any Faction/Unit Type/Trait tag for a weapon to gain Anti-[chosen tag] 2; because Anti-[Type] applies once to the whole Unit's pool rather than per Model, it is priced flat rather than per-unit like Veterans. Heavy Weapons also gained the Heavy keyword, since its circumstantial +2-Attack-equivalent potential (Anti-Armored 2) was judged too strong on a multi-Model Unit without the movement tradeoff."
+      ]
+    },
+    {
+      "id": "ranged-infantry",
+      "name": "Ranged Infantry",
+      "basePoints": 100,
+      "baseModels": 4,
+      "maxModels": 9,
+      "tags": ["Infantry", "Ranged Infantry"],
+      "recruitmentSlots": ["R"],
+      "stats": { "move": "3\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "description": "Ranged Infantry specialize in mobile short-range shooting, massed arrows, prepared crossbow fire, and specialized firearms. Their starting formation is four Models, but can grow to ten at an increasing price.",
+      "rangedWeaponPackages": {
+        "chooseCount": 1,
+        "note": "Choose one primary ranged weapon package. Attacks are per Model; Heavy and Firearm have their ordinary shared keyword meanings.",
+        "options": [
+          {
+            "name": "Shortbows",
+            "points": 0,
+            "profile": { "range": "8\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "notes": "Affordable, mobile baseline weapon."
+          },
+          {
+            "name": "Longbows",
+            "points": 25,
+            "profile": { "range": "10\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Long Range 3\""] },
+            "notes": "Mobile volleys with extended reach; beyond 10\" Hit worsens one step."
+          },
+          {
+            "name": "Crossbows",
+            "points": 25,
+            "profile": { "range": "9\"", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] },
+            "notes": "Compact, accurate shots that punch through armor plating; stationary firing."
+          },
+          {
+            "name": "Heavy Crossbows",
+            "points": 50,
+            "profile": { "range": "11\"", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Elite 2"] },
+            "notes": "Sustained anti-elite fire, at high cost and with Heavy restrictions."
+          },
+          {
+            "name": "Muskets",
+            "points": 50,
+            "profile": { "range": "11\"", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Anti-Character 1"] },
+            "notes": "Accurate, reaction-proof shooting against valuable individual targets."
+          },
+          {
+            "name": "Pistols",
+            "points": 25,
+            "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm"] },
+            "notes": "Mobile close-range shooting with Instant from Firearm."
+          },
+          {
+            "name": "Javelins",
+            "points": 10,
+            "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "notes": "Thrown volleys; also gain Javelin Melee instead of the default melee weapon.",
+            "alternateMeleeProfile": { "name": "Javelin Melee", "range": "Engaged 2\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+          },
+          {
+            "name": "Slings",
+            "points": 10,
+            "profile": { "range": "7\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "notes": "High-volume, low-accuracy short-range attacks."
+          }
+        ],
+        "distinctions": "Longbows have greater effective reach and do not require stationary firing; Crossbows trade movement flexibility for concentrated Damage 2 Hits with extra dice against Armored targets; Heavy Crossbows deliver more dice against tough and Elite targets; Muskets gain Firearm's Instant and extra dice against Characters; Pistols and Javelins favor close-range mobile play. Weapon range does not modify Hit unless Long Range X is used beyond the printed range."
+      },
+      "meleeWeapon": {
+        "name": "Short Blade",
+        "points": 0,
+        "profile": { "range": "Engaged", "attacks": 1, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+        "notes": "All Ranged Infantry receive this unless using Javelin Melee."
+      },
+      "multiProfileNote": "A Unit carrying multiple profiles selects one eligible Attack when it uses an Attack action; it does not combine its ranged and melee profiles.",
+      "formationAndShootingUpgrades": {
+        "options": [
+          { "name": "Standard Formation", "points": 0, "effect": "Four Models with the selected ranged package." },
+          { "name": "Additional Model", "pointsPerModel": 25, "maxModels": 9, "effect": "Add a matching Model, up to 9 Models." },
+          { "name": "Rangefinder Training", "points": 20, "effect": "Increase the primary ranged weapon's printed normal Range by 2\". It remains at its listed Hit within this improved range; existing Long Range X begins beyond the improved normal Range." },
+          { "name": "Longshot Training", "points": 10, "effect": "Gain Long Range 2\". If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range worsen Hit by one step." },
+          { "name": "Marksman Training", "points": 25, "effect": "The selected ranged weapon gains Accurate 1 for its combined Unit Attack pool." },
+          { "name": "Expert Marksmen", "points": 35, "effect": "The primary ranged weapon gains Pinpoint." },
+          { "name": "Weapon Specialization", "points": 25, "effect": "Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once." },
+          { "name": "Veterans", "points": 75, "effect": "The selected ranged weapon gains +1 Attack per Model and improves Hit by one step." }
+        ],
+        "notes": [
+          "Veterans and Weapon Specialization may each be purchased once and apply only to the selected primary ranged weapon.",
+          "Rangefinder and Longshot Training may be combined; they alter different portions of a weapon's range. Rangefinder increases normal Range and does not grant or remove the Long Range Hit penalty; Longshot affects only the additional extended band.",
+          "These range upgrades apply once to the chosen primary weapon profile, regardless of Models.",
+          "Veteran pricing: the upgrade costs 75 Points for any primary weapon, reflecting the strong scaling effect of a flat +1 Attack per Model across a four-to-nine-Model formation. Veteran reinforcements pay +15 Points each because the extra die and improved Hit apply to every added Model."
+        ]
+      },
+      "formationExample": "Eight Veteran Shortbow Models cost 100 + 75 + (4 x 25) + (4 x 15) = 335 Points before other packages. Eight Veteran Musket Models cost 100 + 75 + 50 + (4 x 25) + (4 x 15) + (4 x 5) = 405 Points, including the paid-weapon reinforcement surcharge.",
+      "battlefieldRole": "Formed shooting, precision ranged damage, mobile skirmish volleys, and specialized heavy fire.",
+      "designNotes": [
+        "v4 balance pass (post-playtesting): Damage-1 weapons (Shortbows, Longbows, Pistols, Javelins, Slings, Improvised Weapons) gained +1 Attack; Damage-2/Heavy weapons (Crossbows, Heavy Crossbows, Muskets) kept their listed Attacks and gained a thematic Anti-[Type] 2.",
+        "v4.1 refinement: Veterans pricing is per-unit, not uniform. Ranged Infantry's 4-9 Model formation pays +75 (not a flat +50 shared with small/single-Model Units), matching Line Infantry's pricing logic and this Unit's own per-added-Model Veteran reinforcement surcharge (+15/Model). A new Weapon Specialization upgrade (+25) lets the Unit choose any Faction/Unit Type/Trait tag for the primary weapon to gain Anti-[chosen tag] 2; it is priced flat (not per-unit like Veterans) because Anti-[Type] applies once to the whole Unit's Attack pool regardless of Model count."
+      ],
+      "knownIssues": [
+        "The intro description states the formation 'can grow to ten' Models, but the Formation and Shooting Upgrades table caps Additional Model purchases at 9 Models. This JSON uses the table's explicit cap (maxModels: 9); the two figures conflict in the source and should be reconciled."
+      ]
+    },
+    {
+      "id": "elite-infantry",
+      "name": "Elite Infantry",
+      "basePoints": 120,
+      "baseModels": 3,
+      "maxModels": 5,
+      "tags": ["Elite", "Infantry"],
+      "recruitmentSlots": ["E"],
+      "stats": { "move": "4\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
+      "description": "Elite Infantry are durable close-combat specialists with twelve total starting Wounds. Weapon packages emphasize a clear choice between melee volume, reach, defensive Brace, and stronger Hits.",
+      "meleeWeaponPackages": {
+        "chooseCount": 1,
+        "note": "Shields may accompany only Hand Weapons or Spears.",
+        "options": [
+          {
+            "name": "Hand Weapons",
+            "points": 0,
+            "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "notes": "Reliable baseline."
+          },
+          {
+            "name": "Spears",
+            "points": 10,
+            "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Brace 1"] },
+            "notes": "Reach and defense."
+          },
+          {
+            "name": "Polearms",
+            "points": 25,
+            "profile": { "range": "Engaged 2\"", "attacks": 2, "hit": "6+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Brace 1", "Anti-Cavalry 2"] },
+            "notes": "Heavy Hits, reach, extra dice against mounted Charges, and Charge protection at reduced accuracy."
+          },
+          {
+            "name": "Dual Weapons",
+            "points": 25,
+            "profile": { "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] },
+            "notes": "High-volume specialist melee."
+          },
+          {
+            "name": "Heavy Weapons",
+            "points": 25,
+            "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] },
+            "notes": "Reliable high-Damage melee Hits with extra dice against Armored targets."
+          },
+          {
+            "name": "Shields",
+            "points": 25,
+            "profile": null,
+            "effect": "Improve Armor from 5+ to 4+.",
+            "restriction": "Hand Weapons or Spears only."
+          }
+        ],
+        "clarification": "These melee weapons do not inherently gain Heavy. The higher-Damage profiles already trade off Points, accuracy, or defensive equipment."
+      },
+      "optionalRangedWeaponPackages": {
+        "chooseCount": 1,
+        "note": "Any Elite Infantry Unit may buy one eligible ranged package without first buying Veterans. This provides a secondary Assault Attack profile and adds the Ranged tag, but does not change the Unit's default E recruitment eligibility. These are Elite Infantry equipment costs, not an alternative Ranged Infantry roster. A Unit makes one eligible weapon Attack when selected to Attack in its phase; carrying a ranged weapon does not add its dice to a melee Attack.",
+        "options": [
+          {
+            "name": "Shortbow",
+            "points": 25,
+            "profile": { "range": "8\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "notes": "Inexpensive secondary fire."
+          },
+          {
+            "name": "Longbow",
+            "points": 50,
+            "profile": { "range": "10\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Long Range 3\""] },
+            "notes": "Mobile, longer-range fire."
+          },
+          {
+            "name": "Pistols",
+            "points": 25,
+            "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm", "Pinpoint"] },
+            "notes": "Short-range ranged utility."
+          },
+          {
+            "name": "Musket",
+            "points": 50,
+            "profile": { "range": "11\"", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Anti-Elite 2"] },
+            "notes": "Stationary anti-elite fire."
+          }
+        ]
+      },
+      "formationAndCombatUpgrades": {
+        "options": [
+          { "name": "Standard Formation", "points": 0, "effect": "Three Models at W4 each (twelve total Wounds)." },
+          { "name": "Additional Model", "pointsPerModel": 50, "maxModels": 5, "effect": "Add a matching Model, up to 5 Models." },
+          { "name": "Weapon Mastery", "points": 10, "effect": "Selected melee weapon gains Accurate 1 for the Unit's combined melee Attack pool." },
+          { "name": "Armored", "points": 25, "effect": "Improve Armor one step; gain the Armored tag." },
+          { "name": "Quick", "points": 50, "effect": "Increase Move by 2\" and improve Evade one step; gain Mobile." },
+          { "name": "Deadly Precision", "points": 25, "effect": "One selected weapon gains Critical 1 (converts one failed Hit die after rerolls; no Surge required)." },
+          { "name": "Hunters", "points": 25, "effect": "Choose one Faction or Trait tag. This unit gains Anti-[chosen tag] 3." },
+          { "name": "Veterans", "points": 50, "effect": "One selected weapon gains +1 Attack per Model and improves its Hit characteristic one step." },
+          { "name": "Brace Drill", "points": 25, "effect": "Gain Brace 1; adds to other applicable sources and reduces Charge Impact once per receiving Unit." }
+        ],
+        "restrictions": [
+          "A Unit may purchase either Weapon Mastery or Deadly Precision, not both.",
+          "Veterans and Weapon Specialization each affect one selected weapon profile, chosen when the upgrade is purchased. If an Elite Infantry Unit buys a ranged package, Veterans must specify whether the melee or ranged profile benefits.",
+          "Bonuses and ranked Keywords are never multiplied by its Model count unless expressly written per Model."
+        ]
+      },
+      "battlefieldRole": "Durable infantry, tactical melee specialists, and resilient mixed-weapon formations.",
+      "designNotes": [
+        "v4 balance pass (post-playtesting): Damage-1 weapons gained +1 Attack; Damage-2 weapons (Polearms, Heavy Weapons, Musket) kept their listed Attacks and gained a thematic Anti-[Type] 2.",
+        "v4.1 refinement: Elite Infantry's smaller 3-5 Model formation keeps a flat +50 Veterans cost (not the higher +75 used by larger Line/Ranged Infantry formations), since Veterans pricing now scales per-unit with Model count rather than being uniform across all Units. A new Weapon Specialization upgrade (+25) lets the Unit choose any Faction/Unit Type/Trait tag for a weapon to gain Anti-[chosen tag] 2, priced flat since Anti-[Type] applies once to the Unit's whole Attack pool regardless of Model count."
+      ]
+    }
+  ]
+}

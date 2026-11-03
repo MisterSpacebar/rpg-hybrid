@@ -1,0 +1,54 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
+    "section": "MELEE WEAPONS"
+  },
+  "categories": [
+    {
+      "id": "simple",
+      "name": "Simple Weapons",
+      "description": "Simple weapons require little specialized training and are commonly available.",
+      "weapons": [
+        { "name": "Staff", "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
+        { "name": "Club", "profile": { "range": "Engaged", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
+        { "name": "Dagger", "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 },
+        { "name": "Whip", "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 5 }
+      ]
+    },
+    {
+      "id": "martial",
+      "name": "Martial Weapons",
+      "weapons": [
+        { "name": "Shortsword", "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 },
+        { "name": "Longsword", "profile": { "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 10 },
+        { "name": "Axe", "profile": { "range": "Engaged", "attacks": 5, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 10 },
+        { "name": "Spear", "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Brace 1"] }, "points": 10 },
+        { "name": "Mace", "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 1", "Surge: Slow 1"] }, "points": 15 },
+        { "name": "Warhammer", "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }, "points": 15 },
+        { "name": "Rapier", "profile": { "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Critical 1"] }, "points": 25 }
+      ],
+      "notes": [
+        "Anti-Armored X checks for the Armored Trait tag, not a target's Armor Save characteristic (see Unit Tags).",
+        "The Rapier's increased cost reflects its unconditional Critical 1, which converts one failed Hit die after rerolls even without a Surge. As always, Critical Hits bypass Armor/Evade but allow Ward."
+      ]
+    },
+    {
+      "id": "heavy",
+      "name": "Heavy Melee Weapons",
+      "weapons": [
+        { "name": "Greatsword", "profile": { "range": "Engaged", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] }, "points": 15 },
+        { "name": "Greataxe", "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Monster 2"] }, "points": 20 },
+        { "name": "Maul", "profile": { "range": "Engaged", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Surge: Stagger", "Anti-Armored 2"] }, "points": 20 },
+        { "name": "Halberd", "profile": { "range": "Engaged 2\"", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Brace 1", "Anti-Cavalry 2"] }, "points": 20 }
+      ],
+      "notes": [
+        "Heavy weapons follow the normal Heavy restrictions. A Heavy Attack cannot normally be used if the Unit voluntarily Moved or performed a Movement Action during the previous Movement Phase.",
+        "Abilities explicitly overriding Heavy restrictions take precedence."
+      ]
+    }
+  ],
+  "designNotes": [
+    "v4 balance pass (post-playtesting): Damage-1 weapons gained +1 Attack; Damage-2/Heavy weapons kept their listed Attacks and gained a thematic Anti-[Type] 1 (or, where one already existed, it increased to Anti-[Type] 2, as on the Warhammer), matching the equivalent policy applied to Generic Units.",
+    "v5 balance pass (second damage-output pass): Damage-1 weapons gained a further +1 Attack; Damage-2/Heavy weapons raised their Anti-[Type] to 2, except the Warhammer, which already had Anti-Armored 2 and gained +1 Attack instead. The Mace now costs 15 Points."
+  ]
+}

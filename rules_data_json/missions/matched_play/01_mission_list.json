@@ -1,0 +1,16 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/03_missions/01_matched_play_missions.md",
+    "section": "6. Matched Play Mission List"
+  },
+  "missionList": [
+    { "d8": 1, "mission": "Domination", "tacticalFocus": "Capture and recapture territory" },
+    { "d8": 2, "mission": "Frontlines", "tacticalFocus": "Advance into enemy positions" },
+    { "d8": 3, "mission": "Breakthrough", "tacticalFocus": "Push Units through contested objectives" },
+    { "d8": 4, "mission": "Recover the Relics", "tacticalFocus": "Collect and transport objectives" },
+    { "d8": 5, "mission": "Supply Requisition", "tacticalFocus": "Gather supplies while controlling territory" },
+    { "d8": 6, "mission": "Sabotage", "tacticalFocus": "Disable enemy objectives" },
+    { "d8": 7, "mission": "Seek and Destroy", "tacticalFocus": "Defeat opposing formations" },
+    { "d8": 8, "mission": "Arcane Supremacy", "tacticalFocus": "Attune and defend magical sites" }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/04_campaign/Appendix_B.md",
+    "section": "APPENDIX B — GRAND FACTION MANEUVER CARDS — Campaign Mode — Revised for Current Campaign Rules"
+  },
+  "overview": {
+    "summary": "Grand Faction Maneuver cards represent the strategic commitments of participating non-PC powers.",
+    "distinctionFromOtherCardTypes": "They are not tactical Command Point cards or Company Order cards: Maneuvers exhaust once per Act, Company Orders once per Campaign Year, and tactical CP refresh at the beginning of every battle Round.",
+    "rules": [
+      "Each non-PC Grand Faction plays one Maneuver card per Campaign Turn.",
+      "A Maneuver serves two purposes: (1) It may compete for the current political Stake; (2) It permits one basic strategic action associated with its suit. These effects are separate.",
+      "A faction may lose the political trick while still completing its legal strategic action."
+    ]
+  },
+  "deckConstruction": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.1 Deck Construction" },
+    "rules": [
+      "Each Grand Faction possesses twelve Maneuver cards.",
+      "Every deck contains exactly three cards from each of four suits.",
+      "Each card has a printed Strength between 2 and 6.",
+      "Every Grand Faction has the same twelve-card numerical distribution.",
+      "The distribution of these values among suits differs by faction.",
+      "The numerical value of a card applies to political contests. It does not increase the size of the card's basic map action.",
+      "A Warfare 6 card still provides the normal one-hex Warfare maneuver, not six hexes of movement."
+    ],
+    "suits": [
+      { "suit": "Discovery", "theme": "Investigation, scouting, and regional knowledge." },
+      { "suit": "Industry", "theme": "Infrastructure, production, logistics, and commerce." },
+      { "suit": "Authority", "theme": "Diplomacy, political institutions, and local influence." },
+      { "suit": "Warfare", "theme": "Military movement, force positioning, and strategic threats." }
+    ],
+    "strengthDistribution": [
+      { "strength": 2, "numberOfCards": 3 },
+      { "strength": 3, "numberOfCards": 3 },
+      { "strength": 4, "numberOfCards": 3 },
+      { "strength": 5, "numberOfCards": 2 },
+      { "strength": 6, "numberOfCards": 1 }
+    ],
+    "totalStrength": 43
+  },
+  "playingAndRefreshingCards": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.2 Playing and Refreshing Cards" },
+    "rules": [
+      "Each participating non-PC Grand Faction commits one available Maneuver card during every Campaign Turn.",
+      "The card is exhausted after the Turn and cannot be played again during the current Act.",
+      "All twelve cards refresh at the beginning of the next Act.",
+      "Cards do not refresh at the beginning of Spring unless Spring also begins a new Act.",
+      "Since even the Grand Campaign contains only eleven Turns per Act, every faction retains at least one unplayed card at the end of the Act.",
+      "Committed cards should be placed face up in the faction's used-card area after resolution.",
+      "Remaining cards should remain concealed from the opposing side unless another rule provides that information.",
+      "The GM's Principal Opposition and each independent Grand Faction maintain separate hands.",
+      "The PC-affiliated Grand Faction does not receive a separate NPC Maneuver play; the company uses its Company Orders instead. It can claim a political Stake through a qualifying Company mission, not by submitting a separate Maneuver card on the PCs' behalf."
+    ]
+  },
+  "politicalTrick": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.3 The Political Trick" },
+    "rules": [
+      "Each Campaign Turn has one Active Stake.",
+      "The Stake determines the leading suit.",
+      "The Council Influence holder nominates an eligible non-PC Grand Faction as the Lead when declaring the Stake.",
+      "A nominated Lead must have a plausible political interest in the objective and a legal route to participating. Nomination does not guarantee it wins.",
+      "The Lead may be the Principal Opposition or an independent Grand Faction.",
+      "The Principal Opposition's card is always chosen by the GM.",
+      "An independent power's card may be chosen by the Council Influence holder, through a Political Mandate, or through the independent faction procedure."
+    ],
+    "following": {
+      "definition": "A faction Follows when it commits a card matching the Stake's suit and declares that it is competing for the Stake.",
+      "rules": [
+        "It must satisfy the Stake's eligibility conditions.",
+        "A matching-suit commitment can win the Stake even when played by a faction other than the Lead."
+      ]
+    },
+    "pivoting": {
+      "definition": "A faction Pivots when it commits a card without contesting the Stake.",
+      "rules": [
+        "Its card still provides its normal suit-based strategic action.",
+        "A Pivot does not earn a political Act marker.",
+        "A faction may Pivot with any available suit unless a binding defensive obligation requires an eligible Follow."
+      ]
+    },
+    "leadingOffSuit": {
+      "definition": "A Lead may commit a card that does not match the Stake's suit.",
+      "rules": [
+        "An off-suit Lead loses against any eligible matching-suit commitment.",
+        "If no eligible matching-suit commitment exists, the off-suit Lead may win the Stake, provided it independently satisfies the Task's claim requirements.",
+        "An off-suit Lead cannot use card Strength to bypass a mandatory mission, agreement, geographic prerequisite, or military objective.",
+        "All other off-suit commitments are Pivots and cannot claim the Stake."
+      ]
+    }
+  },
+  "localInfluence": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.4 Local Influence" },
+    "rules": [
+      "The only ordinary numerical modifier to a Maneuver card is Local Influence.",
+      "A faction receives +1 Strength if it has political control or a Political Influence marker on the Stake's primary target hex or an adjacent hex.",
+      "For edge targets, either endpoint may establish Local Influence.",
+      "The bonus does not stack. A faction with several qualifying hexes or Influence markers still receives only +1.",
+      "The modifier is checked using the political map at the time the Stake is committed, before the current Turn's Maneuver map actions.",
+      "Printed regional Influence resources do not grant this bonus by themselves.",
+      "Council Influence and Political Mandates do not provide a numerical Strength bonus.",
+      "Preparation, leading the trick, and controlling the wider Province also provide no additional numerical bonuses."
+    ]
+  },
+  "determiningTheWinner": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.5 Determining the Winner" },
+    "procedure": [
+      "Identify all factions that satisfy the Stake's claim eligibility.",
+      "Identify the eligible matching-suit commitments.",
+      "If matching-suit commitments exist, disregard off-suit commitments for victory.",
+      "Compare printed Strength plus any one applicable Local Influence bonus.",
+      "Award the Stake to the highest eligible commitment.",
+      "Resolve ties if necessary."
+    ],
+    "tieBreakingOrder": [
+      "An eligible incumbent defending a relevant existing position or right wins the tie, if exactly one tied contender qualifies as that incumbent.",
+      "Otherwise, the designated Lead wins if it is among the tied contenders.",
+      "Otherwise, the Stake becomes Neutral."
+    ],
+    "rules": [
+      "If there are no eligible matching-suit commitments, an eligible off-suit Lead may claim the Stake.",
+      "If there is no eligible claimant, the Stake becomes Neutral.",
+      "A successfully completed PC mission may determine the Stake before card comparison, provided it satisfies the Task's requirements."
+    ],
+    "rewards": {
+      "normalColoredStakeWin": "The winner of a normal colored political Stake receives one appropriately colored Act marker and one Development reward draw, according to the current Campaign Core and Appendix H. It also receives any separately specified political recognition or Agenda-related result. An independent faction directed by the PCs still receives its own marker and Development draw.",
+      "winningTrickLimits": "Winning the trick does not by itself provide a new territory, building, military formation, completed agreement, or material Task consequence.",
+      "neutralOpportunityWin": "A successfully completed Neutral Opportunity awards a gray Act marker and its stated reward instead, with no automatic Development draw.",
+      "actMarkersPerTurn": "Each Campaign Turn awards exactly one Act marker."
+    }
+  },
+  "commonManeuverEffects": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.6 Common Maneuver Effects" },
+    "note": "All cards of a suit share the same basic strategic effect. The individual card's title and printed Strength do not modify this effect.",
+    "bySuit": [
+      {
+        "suit": "Discovery",
+        "name": "Scout",
+        "rules": [
+          "Choose one eligible reachable Site or region associated with the faction's presence or established access.",
+          "The faction may reveal relevant information, scout an unresolved Site, or prepare a specific future investigative objective.",
+          "Scouting does not automatically complete an exploration adventure or claim its Discovery reward.",
+          "A successful Scout may identify a previously hidden danger, route, political connection, or military preparation.",
+          "If no legal Site is available, the faction may instead gather regional intelligence relevant to an existing objective."
+        ]
+      },
+      {
+        "suit": "Industry",
+        "name": "Develop",
+        "rules": [
+          "Complete one eligible Minor Improvement in territory where the faction has construction rights and meets the geographic requirements.",
+          "Each NPC faction may receive at most one free Minor Improvement from Industry Maneuvers per Act.",
+          "After using this construction benefit, additional Industry cards may instead: establish a commercial or industrial contact; prepare a named future industrial objective; investigate a supply or production connection; establish the groundwork for a later military contract or construction project.",
+          "These alternatives may satisfy prerequisites for future Tasks, but do not themselves grant a second free Improvement, a new formation, or a numerical Strength bonus.",
+          "A faction may have at most one outstanding prepared objective recorded at a time.",
+          "An Industry Maneuver cannot use Frontier Outpost construction to claim new territory."
+        ]
+      },
+      {
+        "suit": "Authority",
+        "name": "Establish Influence",
+        "rules": [
+          "Place or relocate one Political Influence marker at an eligible location.",
+          "Each Grand Faction may maintain at most two such markers on the map.",
+          "The destination must have a plausible political connection to the faction.",
+          "Alternatively, establish an appropriate minor political contact or prepare an Authority objective.",
+          "A basic Authority Maneuver cannot automatically annex a Local Authority, establish a major military treaty, or grant a free allied formation."
+        ]
+      },
+      {
+        "suit": "Warfare",
+        "name": "Reposition Force",
+        "rules": [
+          "Move one eligible faction Force marker up to one legal hex.",
+          "The movement must follow the ordinary strategic geography and any applicable route restrictions.",
+          "A Warfare Maneuver may position an army near a contested location, reinforce an approach, or withdraw from danger.",
+          "Movement alone does not transfer political control.",
+          "A consequential attack, conquest, or siege requires a qualifying campaign objective, military operation, or resolved battle.",
+          "If the faction has no legal movement, the maneuver may be used to maintain or establish a defensible position at its current legal location, without receiving a free fortification or Battlefield Edge."
+        ]
+      }
+    ]
+  },
+  "grandFactionDecks": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.7 The Five Grand Faction Decks" },
+    "note": "Card titles provide thematic identity but do not add unique mechanics. The card's suit determines its basic action; its printed Strength determines its political contest value.",
+    "decks": [
+      {
+        "faction": "Unbound — The Free Peoples",
+        "primaryInterest": "Frontier independence, exploration, local communities, and resistance to outside control.",
+        "secondaryInterest": "Protecting independent settlements and securing useful regional agreements.",
+        "cards": [
+          { "card": "Paths of the Untamed", "suit": "Discovery", "strength": 3 },
+          { "card": "Voices Beyond the Border", "suit": "Discovery", "strength": 5 },
+          { "card": "Secrets of the Wildheart", "suit": "Discovery", "strength": 6 },
+          { "card": "Gather the Freeholders", "suit": "Industry", "strength": 2 },
+          { "card": "Frontier Workshops", "suit": "Industry", "strength": 3 },
+          { "card": "Communal Provisioning", "suit": "Industry", "strength": 4 },
+          { "card": "Council of the Free", "suit": "Authority", "strength": 3 },
+          { "card": "Oaths of Fellowship", "suit": "Authority", "strength": 4 },
+          { "card": "Rights of the Unbound", "suit": "Authority", "strength": 5 },
+          { "card": "Border Skirmishers", "suit": "Warfare", "strength": 2 },
+          { "card": "Defend the Homesteads", "suit": "Warfare", "strength": 2 },
+          { "card": "Rise of the Free Companies", "suit": "Warfare", "strength": 4 }
+        ],
+        "summary": "The Unbound excel at Discovery and political cooperation. Their military strength depends on local initiative, terrain, and external support rather than large organized field armies."
+      },
+      {
+        "faction": "Conclave — The Learned Orders",
+        "primaryInterest": "Research, industrial production, magical knowledge, and access to specialized institutions.",
+        "secondaryInterest": "Securing valuable discoveries and protecting major research facilities.",
+        "cards": [
+          { "card": "Cartographers' Inquiry", "suit": "Discovery", "strength": 3 },
+          { "card": "Expedition of Scholars", "suit": "Discovery", "strength": 4 },
+          { "card": "Forbidden Observations", "suit": "Discovery", "strength": 5 },
+          { "card": "Laboratory Production", "suit": "Industry", "strength": 3 },
+          { "card": "Master Artificers", "suit": "Industry", "strength": 5 },
+          { "card": "Grand Works Commission", "suit": "Industry", "strength": 6 },
+          { "card": "Academic Delegation", "suit": "Authority", "strength": 2 },
+          { "card": "Assembly of Masters", "suit": "Authority", "strength": 3 },
+          { "card": "Privileges of the Conclave", "suit": "Authority", "strength": 4 },
+          { "card": "Auxiliary Defenders", "suit": "Warfare", "strength": 2 },
+          { "card": "Emergency Muster", "suit": "Warfare", "strength": 2 },
+          { "card": "Arcane War Council", "suit": "Warfare", "strength": 4 }
+        ],
+        "summary": "The Conclave excels at Industry and possesses strong exploratory capabilities. It is comparatively vulnerable in direct military contests without adequate preparation or allied forces."
+      },
+      {
+        "faction": "Wayfarers — The Oathbound Clans",
+        "primaryInterest": "Clan allegiance, political obligations, traditional rights, and protection of allied communities.",
+        "secondaryInterest": "Exploration, access to ancestral Sites, and control of important regional passages.",
+        "cards": [
+          { "card": "Wanderers' Tales", "suit": "Discovery", "strength": 3 },
+          { "card": "Seek the Ancestors", "suit": "Discovery", "strength": 4 },
+          { "card": "Far Horizon Expedition", "suit": "Discovery", "strength": 5 },
+          { "card": "Traveling Artisans", "suit": "Industry", "strength": 2 },
+          { "card": "Common Provisioning", "suit": "Industry", "strength": 2 },
+          { "card": "Oathbound Workshops", "suit": "Industry", "strength": 4 },
+          { "card": "Clan Council", "suit": "Authority", "strength": 3 },
+          { "card": "Gathering of the Oaths", "suit": "Authority", "strength": 5 },
+          { "card": "Voice of the Highlands", "suit": "Authority", "strength": 6 },
+          { "card": "Border Riders", "suit": "Warfare", "strength": 2 },
+          { "card": "Muster of the Clans", "suit": "Warfare", "strength": 3 },
+          { "card": "Warbands of the Oath", "suit": "Warfare", "strength": 4 }
+        ],
+        "summary": "The Wayfarers are strongest in Authority and support that position through exploration and mobile regional military forces."
+      },
+      {
+        "faction": "Legions — The Organized Hosts",
+        "primaryInterest": "Military security, territorial expansion, fortified positions, and control of important strategic routes.",
+        "secondaryInterest": "Maintaining supply infrastructure and acquiring military recruitment agreements.",
+        "cards": [
+          { "card": "Frontier Reconnaissance", "suit": "Discovery", "strength": 2 },
+          { "card": "Military Surveyors", "suit": "Discovery", "strength": 2 },
+          { "card": "Strategic Intelligence", "suit": "Discovery", "strength": 4 },
+          { "card": "Quartermaster Corps", "suit": "Industry", "strength": 2 },
+          { "card": "Supply Administration", "suit": "Industry", "strength": 3 },
+          { "card": "Imperial Foundries", "suit": "Industry", "strength": 4 },
+          { "card": "Provincial Administration", "suit": "Authority", "strength": 3 },
+          { "card": "Military Governorship", "suit": "Authority", "strength": 4 },
+          { "card": "Decree of Command", "suit": "Authority", "strength": 5 },
+          { "card": "Muster the Standards", "suit": "Warfare", "strength": 3 },
+          { "card": "Coordinated Offensive", "suit": "Warfare", "strength": 5 },
+          { "card": "Grand Legion Campaign", "suit": "Warfare", "strength": 6 }
+        ],
+        "summary": "The Legions excel at Warfare and use their institutional strength to sustain organized military campaigns. They are comparatively weaker in exploration and irregular frontier discovery."
+      },
+      {
+        "faction": "Concord — The Allied Compact",
+        "primaryInterest": "Political cooperation, institutional agreements, diplomacy, and stable regional alliances.",
+        "secondaryInterest": "Commerce, development, and the security of allied settlements.",
+        "cards": [
+          { "card": "Delegated Survey", "suit": "Discovery", "strength": 2 },
+          { "card": "Civic Investigators", "suit": "Discovery", "strength": 2 },
+          { "card": "Shared Archives", "suit": "Discovery", "strength": 4 },
+          { "card": "Guild Partnership", "suit": "Industry", "strength": 3 },
+          { "card": "Commercial Assembly", "suit": "Industry", "strength": 4 },
+          { "card": "Unified Markets", "suit": "Industry", "strength": 5 },
+          { "card": "Diplomatic Mission", "suit": "Authority", "strength": 3 },
+          { "card": "Council of Representatives", "suit": "Authority", "strength": 5 },
+          { "card": "Grand Concordance", "suit": "Authority", "strength": 6 },
+          { "card": "Treaty Garrison", "suit": "Warfare", "strength": 2 },
+          { "card": "Allied Muster", "suit": "Warfare", "strength": 3 },
+          { "card": "Defense of the Compact", "suit": "Warfare", "strength": 4 }
+        ],
+        "summary": "Concord excels at Authority and economic cooperation. Its military commitments are most effective when supported by treaties, allied contingents, and regional institutions."
+      }
+    ]
+  },
+  "independentFactionDecisionProcedure": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.8 Independent Faction Decision Procedure" },
+    "note": "Independent Grand Factions are administered by the GM but follow public strategic priorities. They are not treated as additional fully GM-controlled opponents.",
+    "steps": [
+      {
+        "step": 1,
+        "name": "Check Direct Control",
+        "rules": [
+          "If the faction has been selected through Council Influence or an active Political Mandate, the controlling side chooses its legal available card.",
+          "The commitment must remain consistent with the faction's interests and binding obligations."
+        ]
+      },
+      {
+        "step": 2,
+        "name": "Check Defensive Obligations",
+        "rules": [
+          "If the Active Stake directly threatens a region, institution, protected population, or agreement the faction is obligated to defend, it must Follow if: it has an available matching-suit card; it is eligible to contest the Stake; Following does not violate a higher-priority binding obligation.",
+          "Use its strongest available matching card unless a specific established strategy justifies conserving that card."
+        ]
+      },
+      {
+        "step": 3,
+        "name": "Check Primary Interest",
+        "rules": [
+          "If the Stake advances the faction's primary interest and the faction can legally compete, it normally Follows.",
+          "It ordinarily commits its strongest available matching-suit card when the objective has immediate major consequences."
+        ]
+      },
+      {
+        "step": 4,
+        "name": "Consider Secondary Interests",
+        "rules": [
+          "If the Stake is not sufficiently important, the faction may Pivot toward an appropriate secondary-interest objective.",
+          "Prefer the lowest-strength available card of a suitable suit, preserving stronger cards when possible."
+        ]
+      },
+      {
+        "step": 5,
+        "name": "Resolve Remaining Choices",
+        "rules": [
+          "If no meaningful Follow or prepared objective applies, perform a legal basic Maneuver that improves the faction's position.",
+          "When multiple choices are equally appropriate, select the nearest eligible location, then the lowest map location ID.",
+          "Independent factions should not be made to spend powerful cards pointlessly when a weaker available card can accomplish the same minor action."
+        ]
+      }
+    ]
+  },
+  "councilInfluenceAndPoliticalMandates": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.9 Council Influence and Political Mandates" },
+    "rules": [
+      "The Council Influence token alternates between PCs and GM after completed Campaign Turns.",
+      "The holder chooses the Active Stake and may direct one independent faction's Maneuver.",
+      "This includes choosing whether that power Follows or Pivots, subject to its obligations.",
+      "The GM always selects the Principal Opposition's card.",
+      "A Political Mandate guarantees the PCs control the named faction's next eligible commitment, even on a GM-initiative Turn.",
+      "A Mandate does not add a second card.",
+      "If a Mandate reserves one independent power for the PCs, the Council holder may direct another eligible independent power when available.",
+      "No side may control a faction in violation of its existing binding agreements."
+    ]
+  },
+  "preparationAndFutureObjectives": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.10 Preparation and Future Objectives" },
+    "rules": [
+      "A faction may establish one prepared objective through an eligible Maneuver or campaign development.",
+      "Record the objective's target and intended purpose.",
+      "Preparation may: establish an otherwise missing political contact; reveal intelligence needed for a future mission; satisfy an explicit Task prerequisite; support a future commercial or military agreement.",
+      "Preparation does not increase Maneuver Strength and does not grant special tie-breaking precedence.",
+      "Replace an old prepared objective when establishing a new one.",
+      "A preparation is consumed when its relevant objective is resolved, becomes impossible, or no longer provides a meaningful connection."
+    ]
+  },
+  "workedTrickExample": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.11 Worked Trick Example" },
+    "setup": "The active Stake is an Authority Task involving a disputed regional council. The Conclave is designated Lead and commits Authority 4. The Wayfarers Follow with Authority 5. The Legions play Warfare 6 and Pivot to reposition their army. Concord, if participating as an independent power rather than the PC sponsor, Follows with Authority 3. The Wayfarers have qualifying Local Influence and gain +1 Strength.",
+    "table": [
+      { "faction": "Conclave", "card": "Authority 4", "localInfluence": 0, "finalStrength": "4" },
+      { "faction": "Wayfarers", "card": "Authority 5", "localInfluence": "+1", "finalStrength": "6" },
+      { "faction": "Legions", "card": "Warfare 6", "localInfluence": 0, "finalStrength": "Ineligible off-suit Pivot" },
+      { "faction": "Concord", "card": "Authority 3", "localInfluence": "+1", "finalStrength": "4" }
+    ],
+    "resolution": [
+      "The Wayfarers win the Stake and receive one Wayfarer-colored Act marker.",
+      "The Legions' Warfare 6 does not defeat the Wayfarers' Authority 5 because the Legions chose to Pivot rather than Follow.",
+      "Nevertheless: the Conclave may complete its legal Authority action; the Wayfarers may complete their legal Authority action; the Legions may move one Force marker; Concord may complete its legal Authority action.",
+      "The political trick awards only one Act marker.",
+      "No faction automatically gains control of the disputed council merely from winning."
+    ]
+  },
+  "factionCardQuickReference": {
+    "sourceRef": { "file": "rulebooks/chapters/04_campaign/Appendix_B.md", "section": "B.12 Faction Card Quick Reference" },
+    "table": [
+      { "rule": "Cards per faction", "effect": "12" },
+      { "rule": "Suits", "effect": "Discovery, Industry, Authority, Warfare" },
+      { "rule": "Cards per suit", "effect": "3" },
+      { "rule": "Strength", "effect": "2–6" },
+      { "rule": "Cards committed per Turn", "effect": "1 per participating non-PC power" },
+      { "rule": "Refresh", "effect": "Beginning of each Act" },
+      { "rule": "Matching suit", "effect": "Eligible to Follow and win" },
+      { "rule": "Off-suit Pivot", "effect": "Performs basic action but cannot win" },
+      { "rule": "Off-suit Lead", "effect": "May win only if no eligible matching-suit commitment exists" },
+      { "rule": "Local Influence", "effect": "+1, nonstacking" },
+      { "rule": "Primary victory tie-breaker", "effect": "Eligible incumbent" },
+      { "rule": "Secondary tie-breaker", "effect": "Designated Lead" },
+      { "rule": "Final unresolved result", "effect": "Neutral" },
+      { "rule": "Basic map action", "effect": "One per played card, regardless of trick result" },
+      { "rule": "Automatic political conquest", "effect": "None" }
+    ]
+  }
+}

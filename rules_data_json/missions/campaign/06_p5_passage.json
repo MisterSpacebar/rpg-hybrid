@@ -1,0 +1,30 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "P5 — PASSAGE" },
+  "id": "P5",
+  "name": "Passage",
+  "tagline": "Escort, Journey, Pursuit, or Retreat",
+  "defaultDuration": "7 Rounds",
+  "setup": [
+    "One Passage Target.",
+    "One Starting Location.",
+    "One Exit Area.",
+    "An eligible route between them.",
+    "One Traveling side and one Intercepting side."
+  ],
+  "noncombatTargetMovement": {
+    "rule": "A noncombat Passage Target advances up to its Move value during the End Step if: at least one friendly unengaged escort Unit is within 6\"; no enemy Unit is Engaged with the Target; its movement path is legal and unobstructed. Otherwise, it does not advance.",
+    "note": "The Target follows the designated route. For Pursuit and Retreat variants using ordinary combat Units, those Units use their own legal activations rather than the End Step movement specified for noncombat Scenario Models. It does not make ordinary Assault Moves or Charge unless a specific rule permits this."
+  },
+  "victory": {
+    "travelingSideWins": "The Traveling side wins by moving the Passage Target into the Exit Area before the Round limit.",
+    "interceptingSideWins": "The Intercepting side wins if the Target is destroyed or prevented from escaping."
+  },
+  "variants": [
+    { "name": "Escort", "description": "Use a noncombat Scenario Model." },
+    { "name": "Pursuit", "description": "Use an ordinary moving Unit as the Target." },
+    { "name": "Retreat", "description": "Designate up to three Priority Units. At least two must escape, or all if fewer than two are designated." },
+    { "name": "Multiple Escort", "description": "Use two or more Passage Targets with an explicit required number of successful extractions." }
+  ],
+  "recommendedSecondaries": ["Protect VIP", "Secure Supplies", "Rescue Captives", "Gather Intelligence", "Sabotage Target", "Survive Environment"],
+  "campaignNotes": "Passage represents convoys, refugees, supply movements, escapes, military withdrawals, and dangerous journeys. A normal M4\" Passage Target should ordinarily have a route no longer than 24\" for a seven-Round encounter if one stalled Round is intended to remain survivable."
+}

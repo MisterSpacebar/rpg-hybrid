@@ -1,0 +1,23 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
+    "section": "13. ROSTER DISTRIBUTION SUMMARY"
+  },
+  "description": "Summary table of each faction's two base Signature Core choices and one Extra Core/alternate-category choice (originally only Sacred Orders had an Extra Core; the v4.2 balance pass brought the other eleven factions to parity).",
+  "table": [
+    { "faction": "Free Realms", "signatureCore1": "Greatweapon Guard — Infantry", "signatureCore2": "Outriders — Mobile", "extraCore": "Vanguard Skirmishers — Ranged" },
+    { "faction": "Sacred Orders", "signatureCore1": "Temple Guard — Elite Infantry", "signatureCore2": "Sanctified Arbalests — Elite Ranged", "extraCore": "Consecrated Knights" },
+    { "faction": "Iron Holds", "signatureCore1": "Ironbreakers — Infantry", "signatureCore2": "Thunderers — Ranged", "extraCore": "Deep Watch — Ranged" },
+    { "faction": "Wild Courts", "signatureCore1": "Glade Hunters — Ranged", "signatureCore2": "Wild Riders — Mobile", "extraCore": "Briar Stalkers — Infiltrating Infantry" },
+    { "faction": "Warclans", "signatureCore1": "Choppa Mob — Horde Infantry", "signatureCore2": "Brutes — Assault Infantry", "extraCore": "Boar Riders — Cavalry" },
+    { "faction": "Underclans", "signatureCore1": "Sneaks — Infiltrating Infantry", "signatureCore2": "Bombardiers — Ranged", "extraCore": "Tunnel Rats — Infiltrating Infantry" },
+    { "faction": "Death Legions", "signatureCore1": "Corpse Horde — Horde Infantry", "signatureCore2": "Grave Guard — Elite Infantry", "extraCore": "Bone Archers — Ranged" },
+    { "faction": "Blood Courts", "signatureCore1": "Thralls — Infantry", "signatureCore2": "Blood Knights — Elite Cavalry", "extraCore": "Night Stalkers — Infiltrating Infantry" },
+    { "faction": "Spirit Hosts", "signatureCore1": "Wraith Guard — Elite Infantry", "signatureCore2": "Haunters — Mobile", "extraCore": "Keening Archers — Ranged" },
+    { "faction": "Infernal Hosts", "signatureCore1": "Hellguard — Elite Infantry", "signatureCore2": "Rift Stalkers — Infiltrators", "extraCore": "Cultist Horde — Horde Infantry" },
+    { "faction": "Arcane Orders", "signatureCore1": "Spellguard — Elite Infantry", "signatureCore2": "Aether Ballista Team — Elite Ranged", "extraCore": "Animated Guardians — Construct Infantry" },
+    { "faction": "Titan Clans", "signatureCore1": "Ogre Warriors — Monstrous Infantry", "signatureCore2": "Beast Riders — Monstrous Cavalry", "extraCore": "Stone Hurlers — Monstrous Ranged Infantry" }
+  ],
+  "note": "This gives 36 signature Core choices across 12 factions, each qualifying for C and other applicable recruitment slots as described above. Their starting Model counts, equipment, durability, and mobility differ substantially. Sacred Orders was already the three-Core exception; the other eleven factions each gained one additional Core choice in the v4.2 balance pass to bring parity with that elite-army baseline, each chosen to reinforce what the faction already does well rather than patch a weakness.",
+  "crossCheck": "36 = (2 per faction × 12 factions = 24) + 12 Extra Core choices (one per faction, including Sacred Orders' pre-existing Consecrated Knights) — consistent with the table and with each faction file's Signature Core Units section."
+}

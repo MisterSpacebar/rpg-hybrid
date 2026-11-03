@@ -1,0 +1,112 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/03_missions/02_campaign_missions.md",
+    "section": "1. Overview — 1.7 Mission Duration and Victory"
+  },
+  "title": "CAMPAIGN MISSIONS",
+  "versionLabel": "Primary Missions, Secondary Objectives & Special Rules — Revised Draft v2 (pre-layout reconciliation)",
+  "overview": {
+    "summary": "Campaign Missions represent adventures, military conflicts, investigations, rescues, expeditions, and political encounters undertaken during Campaign Play. Unlike Matched Play, Campaign Missions do not require both sides to have identical objectives.",
+    "fourElements": [
+      { "name": "Primary Mission", "description": "The main encounter objective and victory condition." },
+      { "name": "Secondary Objectives", "description": "Additional tasks assigned independently to the participating sides." },
+      { "name": "Special Rules", "description": "Optional rules representing unusual conditions." },
+      { "name": "Campaign Stakes", "description": "The political, economic, military, or narrative consequences of the encounter." }
+    ],
+    "successNote": "Primary success determines the winner of the encounter. Secondary success is recorded independently, including when the side completing it loses the Primary Mission."
+  },
+  "missionConstruction": {
+    "gmPreparationOrder": [
+      "Establish the relevant Campaign Stake, Company Order, or narrative situation.",
+      "Identify the participants and the strategic objective.",
+      "Select a Primary Mission.",
+      "Select a Battlefield Layout or Narrative environment.",
+      "Assign one Secondary Objective to each side.",
+      "Add any required Scenario Models, markers, and optional Special Rules.",
+      "Determine duration, deployment, and army allowances.",
+      "Record the Primary and Secondary consequences for both sides."
+    ],
+    "notes": [
+      "Where appropriate, the players may select their Secondary Objective from two or three available choices.",
+      "The GM ordinarily selects the opposition's Secondary Objective according to its established interests."
+    ],
+    "standardEncounter": [
+      "One Primary Mission.",
+      "One PC Secondary Objective.",
+      "One opposing Secondary Objective.",
+      "Zero or one optional Special Rule."
+    ],
+    "majorEncounter": {
+      "description": "An important military engagement, Act finale, or extended adventure may use:",
+      "composition": [
+        "One Primary Mission.",
+        "Up to two Secondary Objectives per side.",
+        "Up to two optional Special Rules."
+      ],
+      "note": "The GM should avoid combining more objectives than the participating forces can realistically pursue."
+    }
+  },
+  "independentObjectives": {
+    "rules": [
+      "Secondary Objectives do not determine Primary victory unless the Primary specifically says otherwise.",
+      "Both sides may complete their own Secondaries.",
+      "A side that loses the Primary retains any Secondary success already achieved.",
+      "A Secondary Objective cannot be completed automatically by performing the same action required to complete the Primary.",
+      "If the two objectives would otherwise be identical, assign a separate Target, location, or task."
+    ],
+    "example": "An Extraction Primary that requires recovering a magical artifact cannot also award Recover Treasure simply for extracting that same artifact. The GM must designate an additional treasure or select another Secondary."
+  },
+  "missionActions": {
+    "definition": "A Mission Action is a meaningful interaction with a scenario objective. A Unit may perform at most one Mission Action per Round, choosing either its Movement activation or its Assault activation, but never during Combat.",
+    "generalRequirement": "Unless a specific Mission states otherwise, the Unit must be unengaged, have an eligible Model within 1\" of the Target or Site, and be legally capable of interacting with it.",
+    "byPhase": [
+      { "phase": "Movement Mission Action", "rule": "Replaces the Unit's normal Movement action for that activation. It cannot also Move, Disengage, or make another ordinary Movement action during the same activation. Its subsequent Assault activation remains available, if eligible." },
+      { "phase": "Assault Mission Action", "rule": "Replaces the Unit's normal Assault action. It cannot be combined with an Assault Move, ranged or Spell Attack, or Charge during that activation. A Withdrawn Unit cannot perform an Assault Mission Action." },
+      { "phase": "Combat Phase", "rule": "A Unit cannot use an ordinary Mission Action during Combat, even if a specific interaction is adjacent to an Engaged Unit." }
+    ],
+    "costAndCommands": "Mission Actions normally require no CP and no Skill check. Eligible Unit or army Commands may still be used with their normal CP cost and timing; they do not grant an additional ordinary phase action unless explicitly stated. Only one ordinary Mission Action may be attempted by the same Unit in the Round.",
+    "characterSkillActions": "A Primary or Secondary permitting a Character Skill Alternative allows an eligible Character to spend 1 CP during its Movement activation to make the stated Skill check in place of its normal Movement action. The default Difficulty is Normal (2 successes) unless the Mission states otherwise. On success, resolve the specified interaction; on failure, no progress is earned. The Character must still satisfy the interaction's normal range and positioning requirements unless that Mission explicitly permits a remote effect. A Character cannot advance the same interaction twice during the Round through its Skill Alternative and a Mission Action. Other ordinary Movement-phase Skill Checks remain governed by the Structured Combat rules.",
+    "narrativeEncounters": "In Narrative Play, Mission Actions represent equivalent meaningful actions or scene interactions. The GM determines whether positioning, preparation, or a Skill check is needed. Where an objective measures progress by Round, use a comparable meaningful Narrative Exchange or encounter stage."
+  },
+  "secondaryProgress": {
+    "rules": [
+      "Some Secondary Objectives require multiple successful actions. Each successful action generates 1 Progress unless otherwise stated.",
+      "A side may gain at most 1 Progress toward the same Secondary Objective per Round.",
+      "Several Units may attempt the action, but only the first successful contribution can increase its Progress that Round.",
+      "Progress persists unless an opposing action or Special Rule explicitly removes it.",
+      "The side completing an objective records one Secondary Success.",
+      "A completed Secondary cannot be completed again for additional rewards during the same encounter."
+    ]
+  },
+  "carriedObjectives": {
+    "rules": [
+      "Some objectives must be recovered and transported.",
+      "An eligible Unit may carry one Scenario Object at a time."
+    ],
+    "carrierRules": [
+      "May move normally.",
+      "Cannot Charge.",
+      "May perform other legal actions.",
+      "Drops the object if defeated.",
+      "May voluntarily drop the object during its activation."
+    ],
+    "recovery": "An unengaged Unit within 1\" of a dropped object may recover it using a Mission Action. An object is extracted when its carrier reaches the appropriate Extraction Area and satisfies the Primary or Secondary's conditions. A carried objective does not count as a Unit for objective control.",
+    "escortingLivingTargets": "Portable objects and living Targets are distinct. A Relic, document, supply cache, or similar item uses Carried Objective rules. A prisoner, civilian, creature, or caravan uses a Scenario Model or a designated escorting Unit with its own Movement, Wounds, and survival conditions; it is not literally picked up or dropped as a token. A Mission must state how a living Target follows an escort, can be transferred, and reaches an Exit. If an ordinary Unit is the designated Target, it retains its normal activation rules subject to the Mission's listed restrictions."
+  },
+  "scenarioModels": {
+    "rules": "Some Missions use noncombatants, vehicles, creatures, or other Scenario Models. Their profiles must be established before the encounter.",
+    "defaultNoncombatEscortTarget": "M4\" / W10 / Armor 5+ / Evade — / Ward — / no Attacks.",
+    "notes": "A Scenario Model does not automatically activate like a combat Unit. Its Mission specifies when and how it moves, interacts, or suffers damage. Destroying a Scenario Model does not automatically award VP unless the Mission specifically provides for it."
+  },
+  "missionDurationAndVictory": {
+    "rules": [
+      "Each Primary Mission specifies its normal duration.",
+      "Ordinary tactical Campaign Missions generally last five to seven Rounds.",
+      "The Primary determines when the encounter ends and which side wins.",
+      "Unlike Matched Play, Campaign Missions do not automatically use the five-objective scoring system or the 10-VP Decisive Victory threshold.",
+      "A Primary with a physical victory condition ends when that condition is fulfilled, unless the Mission specifies an end-of-Round check.",
+      "Unfinished Secondary Objectives fail when the encounter ends.",
+      "Previously completed Secondary Objectives remain successful."
+    ]
+  }
+}

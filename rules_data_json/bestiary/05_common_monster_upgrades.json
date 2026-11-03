@@ -1,0 +1,31 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/17_bestiary.md",
+    "section": "5. Common Monster Upgrades"
+  },
+  "description": "This table provides reference prices for GM-designed variants, not a universally available shopping list. A monster normally takes no more than two optional upgrades, each once, unless its entry permits otherwise.",
+  "upgrades": [
+    { "name": "No Upgrade", "referenceCost": "+0", "effect": "Retain the creature's standard profile." },
+    { "name": "+1 Wound", "referenceCost": "+15", "effect": "Increase a single Monster's maximum Wounds by 1." },
+    { "name": "+1\" Move", "referenceCost": "+10", "effect": "Increase Movement by 1\"." },
+    { "name": "Improve Armor", "referenceCost": "+20", "effect": "Improve Armor by one step." },
+    { "name": "Improve Evade", "referenceCost": "+15", "effect": "Improve Evade by one step." },
+    { "name": "Specialized Ward 6+", "referenceCost": "+15", "effect": "Gain Ward 6+ against one specified Damage type." },
+    { "name": "Broad Ward 6+", "referenceCost": "+25", "effect": "Gain Ward 6+ against all applicable Damage types." },
+    { "name": "Accurate 1", "referenceCost": "+10–15", "effect": "Add Accurate 1 to one Attack profile, allowing up to one natural 1 to be rerolled." },
+    { "name": "Tough 1", "referenceCost": "+15–20", "effect": "Gain Tough 1 when making Armor Saves." },
+    { "name": "Critical 1", "referenceCost": "+15–20", "effect": "One selected Attack gains Critical 1 unconditionally, converting one failed Hit die after rerolls." },
+    { "name": "+2 Attacks", "referenceCost": "+30–40", "effect": "Increase one Attack profile by two Attacks." },
+    { "name": "+1 Damage", "referenceCost": "+35–45", "effect": "Increase one Attack profile's Damage by 1." },
+    { "name": "Gain Impact 1", "referenceCost": "+20–25", "effect": "Gain printed Impact 1, adding one automatic Hit to the normal highest-die Impact." },
+    { "name": "+1 Impact", "referenceCost": "+20–25", "effect": "Increase printed Impact X by 1, adding one Hit to the usual highest-die base." },
+    { "name": "Flying", "referenceCost": "+30–50", "effect": "Ignore intervening terrain and Models during movement, finishing legally." },
+    { "name": "Climber", "referenceCost": "+10", "effect": "Climb vertical terrain at normal movement cost." },
+    { "name": "Aquatic", "referenceCost": "+5", "effect": "Ignore ordinary swimming penalties." },
+    { "name": "Regeneration 1", "referenceCost": "+30", "effect": "Heal 1 at the beginning of each Round, subject to applicable weaknesses." },
+    { "name": "Minor Ranged Attack", "referenceCost": "+15–25", "effect": "Gain one modest ranged Attack profile." },
+    { "name": "Minor Command Ability", "referenceCost": "+15–25", "effect": "Learn one additional limited Command Ability. Requires its printed CP expenditure; Doctrine cards only if an applicable campaign/faction rule explicitly demands them." }
+  ],
+  "restrictions": ["A Monster normally takes a maximum of two optional upgrades, each once, unless its entry states otherwise."],
+  "designNotes": ["Additional Damage and Attacks should be more expensive on high-output weapons. Flying, Wards, and Regeneration are particularly valuable on Monsters with many Wounds."]
+}

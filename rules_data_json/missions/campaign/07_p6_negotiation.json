@@ -1,0 +1,36 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "P6 — NEGOTIATION" },
+  "id": "P6",
+  "name": "Negotiation",
+  "tagline": "Diplomacy, Bargaining, or Political Conflict",
+  "defaultDuration": "5 Exchanges",
+  "setup": {
+    "identify": [
+      "The neutral party or institution being persuaded.",
+      "The two competing positions.",
+      "The agreement or concession being contested.",
+      "The principal Negotiator for each side."
+    ],
+    "note": "Negotiation normally uses Narrative Play."
+  },
+  "negotiationExchanges": {
+    "procedure": "During each Exchange, each side presents its arguments, evidence, demands, or concessions. Each principal Negotiator rolls a number of D6 equal to the relevant Characteristic, counting each die meeting the appropriate Skill threshold as one success. This is an ordinary contested Skill Check; use the normal Surge and Blunder rules when applicable. The usual Difficulty is Normal (2 successes).",
+    "influenceAwarding": [
+      "If only one Negotiator succeeds, that side gains 1 Influence.",
+      "If both succeed, the side with more successes gains 1 Influence.",
+      "If both achieve the same number of successes, neither gains Influence.",
+      "If neither succeeds, neither gains Influence."
+    ],
+    "cap": "Each side can gain at most 1 Influence per Exchange."
+  },
+  "victory": {
+    "rule": "The first side to reach 3 Influence wins. If neither reaches 3 after five Exchanges, the side with more Influence wins.",
+    "tie": "A tie means no new agreement is secured and the existing arrangement remains in place."
+  },
+  "supportingActions": {
+    "rule": "A Character may undertake an appropriate supporting action instead of acting as the principal Negotiator. A successful supporting action may reveal useful information, satisfy a Secondary Objective, or provide a declared situational benefit (for example, one additional die on a subsequent Negotiation Skill Check) at the GM's discretion. State the permitted benefit before the supporting roll.",
+    "note": "Supporting actions do not automatically award extra Influence."
+  },
+  "recommendedSecondaries": ["Win Local Support", "Gather Intelligence", "Expose Conspiracy", "Uncover Secrets", "Protect VIP", "Recover Treasure"],
+  "campaignNotes": "Negotiation can resolve treaties, faction relationships, recruitment rights, institutional decisions, and other political objectives. Political agreements must remain consistent with the Campaign's eligibility, sponsorship, and institutional rules."
+}

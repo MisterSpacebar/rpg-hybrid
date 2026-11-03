@@ -1,0 +1,147 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/13_talents.md",
+    "section": "GENERIC TALENTS"
+  },
+  "description": "Generic Talents are available to all Classes. They represent broad improvements in physical ability, combat skill, resilience, leadership, and general expertise.",
+  "talents": [
+    {
+      "id": "combat-prowess",
+      "name": "Combat Prowess",
+      "tier": "1+",
+      "type": "Ranked — Passive",
+      "effect": [
+        "Choose one Weapon or Spell Attack when acquiring Rank I.",
+        "Every Rank: Increase that Attack's Attacks by 1, or improve its Hit by 1 step; and improve one Skill by 1 step not improved by a lower rank of this skill.",
+        "The same Attack is improved by every Rank of this Talent. Prowess applies to the chosen Attack profile regardless of whether it is used during Assault or Combat.",
+        "Prowess may not improve the same Attack as Martial Prowess or Spell Prowess."
+      ]
+    },
+    {
+      "id": "mobility-training",
+      "name": "Mobility Training",
+      "tier": "1+",
+      "type": "Ranked",
+      "effect": "Each Rank: +1\" Move and improve one Skill not improved by a lower rank of this skill."
+    },
+    {
+      "id": "toughened",
+      "name": "Toughened",
+      "tier": "1+",
+      "type": "Ranked",
+      "effect": "Each Rank: +1 Wound and improve one Skill not improved by a lower rank of this skill."
+    },
+    {
+      "id": "commanding-presence",
+      "name": "Commanding Presence",
+      "tier": "1+",
+      "type": "Ranked",
+      "effect": "Each Rank: improve Influence 1 step and increase friendly-targeted Command ranges by 1\"."
+    },
+    {
+      "id": "sharpeye",
+      "name": "Sharpeye",
+      "tier": "1+",
+      "type": "Ranked",
+      "effect": "Each Rank: choose one ranged weapon or ranged spell attack: it gains Accurate +1. Each rank must choose a different weapon or spell."
+    },
+    {
+      "id": "critical-prowess",
+      "name": "Critical Prowess",
+      "tier": "2+",
+      "type": "Ranked — Passive",
+      "effect": "Choose one Attack when purchasing Rank I. When it generates at least one Surge, gain Critical +X for that Attack, where X equals the Talent's Rank. It triggers once per Attack, even if multiple Surges are generated, unless another rule expressly permits repeated activation. This stacks with inherent Critical and converts eligible failed dice after rerolls. Ward still applies."
+    },
+    {
+      "id": "long-range",
+      "name": "Long Range",
+      "tier": "2+",
+      "type": "Ranked",
+      "effect": "Choose one ranged Weapon Attack or ranged Spell Attack; increase its Long Range value by +3\" per Rank."
+    },
+    {
+      "id": "favored-enemy",
+      "name": "Favored Enemy",
+      "tier": "2+",
+      "type": "Ranked",
+      "effect": "Gain Anti-[TYPE] X, where X equals Rank + 1 (Anti-[TYPE] 2 at Rank I, 3 at Rank II, and so on)."
+    },
+    {
+      "id": "evasive-training",
+      "name": "Evasive Training",
+      "tier": "3+",
+      "type": "Ranked",
+      "effect": "Improve Evade by 1 step per Rank."
+    },
+    {
+      "id": "nimble",
+      "name": "Nimble",
+      "tier": "3+",
+      "type": "Ranked",
+      "effect": "Gain Cover +1 for each rank."
+    },
+    {
+      "id": "weapon-mastery",
+      "name": "Weapon Mastery",
+      "tier": "3+",
+      "type": "Ranked",
+      "effect": "Each Rank: +1 Damage to one different melee Weapon Attack."
+    },
+    {
+      "id": "warded",
+      "name": "Warded",
+      "tier": 4,
+      "type": "Passive",
+      "effect": "Gain Ward 6+, or improve an existing Ward by 1 step."
+    },
+    {
+      "id": "exceptional-development",
+      "name": "Exceptional Development",
+      "tier": "4+",
+      "type": "Ranked — Passive",
+      "effect": "Each Rank increases one Characteristic not previously improved by this Talent by 1, to a maximum of 6. Each Characteristic may only be selected once through Exceptional Development. The improved Characteristic also grants:",
+      "characteristicBenefits": [
+        { "characteristic": "Body", "benefit": "+1 Wound" },
+        { "characteristic": "Agility", "benefit": "+1\" Move" },
+        { "characteristic": "Mind", "benefit": "Improve Evade by 1 step" },
+        { "characteristic": "Spirit", "benefit": "If the character possesses Warded, improve Ward by 1 step" }
+      ]
+    },
+    {
+      "id": "greater-ward",
+      "name": "Greater Ward",
+      "tier": 5,
+      "type": "Passive",
+      "prerequisite": "Warded",
+      "effect": "Improve Ward by 1 step against Physical or Magic Attacks."
+    },
+    {
+      "id": "silver-tongue",
+      "name": "Silver Tongue",
+      "tier": 1,
+      "type": "Passive",
+      "effect": {
+        "narrative": "When an Influence Check Surges, choose one: Gain +1D6 on the next Influence Check against the same target; Learn something useful about the target's motives, fears, or intentions; Improve the target's disposition where appropriate.",
+        "structuredCombat": "Once per Round, after using a Command Ability on another friendly Unit, that Unit gains Accurate 1 on its next Attack this Round."
+      }
+    },
+    {
+      "id": "composed",
+      "name": "Composed",
+      "tier": 1,
+      "type": "Passive",
+      "effect": {
+        "narrative": "Once per scene, reduce the severity of a complication caused by an Influence Check Blunder. The Blunder still occurs.",
+        "structuredCombat": "Once per Round, reroll the first natural 1 you encounter on a check, attack, charge, or save."
+      }
+    },
+    {
+      "id": "perfect-opening",
+      "name": "Perfect Opening",
+      "tier": 3,
+      "cost": "1 CP",
+      "type": "Reaction",
+      "effect": "When making an Attack roll, Save roll, or Skill Check, but before resolving its result, reroll up to three dice. The new results must be kept. A die may only be rerolled once."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "sourceRef": {
+    "file": "rulebooks/chapters/01_rpg/12_spell_catalogue.md",
+    "section": "intro, Spell Acquisition, Spell Effect Conventions, Elemental Attributes, NARRATIVE MAGIC, SPELL DESIGN GUIDELINES"
+  },
+  "description": "Spell Attacks are magical techniques that characters may learn and use during combat. Spell Attacks follow the normal Attack rules and are considered Magic Attacks unless explicitly stated otherwise. A character may learn additional Spell Attacks from scrolls, magical texts, teachers, ancient inscriptions, or other suitable sources. Once learned, a Spell Attack is permanently known.",
+  "spellAcquisition": {
+    "notes": [
+      "Starting spells granted by a Class or Subclass are included in the character's Base Character Value unless expressly optional with a listed cost.",
+      "Additional learned Spell Attacks add their listed Points to the character's battlefield value.",
+      "The printed A value is the complete Attack dice value for a PC before specific modifiers. These profiles use the provisional lower-dice rebalance described in Equipment (11_equipment_and_crafting.md), subsequently adjusted upward again by the v4 Damage-output rebalance (also described there): Damage 1 spells gained +1 Attack, while Damage 2/Heavy spells kept their listed Attacks and gained a thematic Anti-[Type] 1. The v5 Damage-output rebalance (second pass) then gave Damage 1 spells a further +1 Attack and raised the Damage 2/Heavy spells' Anti-[Type] to 2.",
+      "NPC spell attacks use their own Unit profiles.",
+      "Characters normally learn spells from their Class list and their own Subclass list. Spells from other subclasses may be made available through exceptional training, rare scrolls, or GM permission."
+    ],
+    "categoryCosts": [
+      { "category": "Basic Spell", "points": 10, "typicalEffect": "Straightforward attack or minor specialization" },
+      { "category": "Specialized Spell", "points": 20, "typicalEffect": "Additional Keywords, control, or conditional effects" },
+      { "category": "Powerful Spell", "points": 30, "typicalEffect": "High Damage, strong effects, or unusual capabilities" }
+    ],
+    "rules": [
+      "Do not occupy prepared Command Ability slots.",
+      "Do not normally cost CP.",
+      "May be improved through Prowess or Spell Prowess.",
+      "Do not grant additional Attack actions or activations.",
+      "Use the Assault Phase unless their Range is Engaged, in which case they use the Combat Phase."
+    ],
+    "crossCheck": "This category cost table (Basic 10 / Specialized 20 / Powerful 30) is identical to the provisional Additional Spells cost table in Equipment and Crafting (11_equipment_and_crafting.md) — confirmed consistent, no issue."
+  },
+  "startingSpellsCrossReference": {
+    "note": "Starting Spell Attacks (the Mage/Priest Base and Subclass spells automatically known at character creation) are authoritatively defined in Starting Spell Attacks (06_spells_and_equipment.md) and repeated verbatim in the Classes chapter for character creation convenience. To avoid duplicating that data a third time, this JSON domain stores starting spells in spells/starting_spells.json, and the full per-class profiles are also already present in pc/classes/mage.json and pc/classes/priest.json. All three sources were cross-checked and are consistent.",
+    "files": ["rulebooks/chapters/01_rpg/06_spells_and_equipment.md", "rulebooks/chapters/01_rpg/05_classes.md", "pc/classes/mage.json", "pc/classes/priest.json"]
+  },
+  "spellEffectConventions": {
+    "note": "Spell Attacks follow the universal Keywords (10_keywords.md), including Critical X, Blast X, Slow X, and Anti-[Type] X.",
+    "conventions": [
+      { "term": "On Damage", "effect": "Triggers only if the original target suffers at least one unsaved damaging Hit; it normally triggers once per Attack." },
+      { "term": "Surge", "effect": "Activates only on a Surge, after rerolls." },
+      { "term": "Push X", "effect": "Forced movement directly away from the caster, without illegal placements." },
+      { "term": "Area effects", "effect": "Unless stated otherwise, area effects may affect friendly Units. For radius-based damage to whole Units (including secondary Blast Hits), use the half-of-current-Models threshold (10_keywords.md#area-effects-against-units); each qualifying Unit receives only the listed Hits once, with no extra Hits or Saves per Model." }
+    ]
+  },
+  "elementalAttributes": {
+    "description": "Spells may be both Magic and Fire, Frost, Lightning, Radiant, or Nature. The elemental descriptor adds no automatic mechanical effect; it matters only to abilities that reference it.",
+    "example": "Troll and Hydra Regeneration is interrupted by unsaved Damage from attacks with the Fire attribute, not merely by a Fire Hit that was fully saved.",
+    "assaultTimingNote": "New learned spells are used as the Unit's single Assault Attack action (or its Combat Attack action when Engaged), never as a free extra attack after Assault movement."
+  },
+  "narrativeMagic": {
+    "description": "Not every magical effect needs a dedicated Spell Attack or Command Ability. Characters may use Mysticism and other appropriate Skills to attempt ordinary magical tasks outside combat.",
+    "examples": [
+      "Igniting candles or small unattended objects.",
+      "Producing harmless magical lights.",
+      "Detecting traces of supernatural energy.",
+      "Recognizing enchantments or magical symbols.",
+      "Manipulating minor sounds or visual effects.",
+      "Encouraging nearby plants to grow.",
+      "Performing short prayers, blessings, or funeral rites.",
+      "Communicating with cooperative spirits when narratively appropriate."
+    ],
+    "notes": [
+      "The GM determines what is reasonable based on the character's Class, training, and the circumstances.",
+      "These effects generally do not cost CP, require separate Spell Attacks, or add battlefield Points.",
+      "They cannot replace the mechanical effects of an existing Attack, Talent, or Command Ability without appropriate authorization."
+    ]
+  },
+  "spellDesignGuidelines": {
+    "description": "The spell profiles in the catalogue illustrate the intended range of ordinary magical attacks.",
+    "roles": [
+      { "role": "Basic Attack", "typicalProfile": "2–3 Attacks, Hit 5+ or 6+, Damage 1" },
+      { "role": "Accurate Attack", "typicalProfile": "Fewer Attacks, better Hit, or Pinpoint" },
+      { "role": "Control Attack", "typicalProfile": "Damage 1 with Slow, Push, or a conditional penalty" },
+      { "role": "Area Attack", "typicalProfile": "Damage 1 with Blast, often fewer or less accurate Attacks" },
+      { "role": "Heavy Attack", "typicalProfile": "Damage 2, with Heavy or another meaningful limitation" },
+      { "role": "Specialized Attack", "typicalProfile": "Anti-[Category], conditional Critical, or a particular tactical effect" }
+    ],
+    "tradeoffPrinciples": [
+      "Higher Damage may require Heavy.",
+      "Longer Range may come with fewer Attacks.",
+      "Reliable control may require the Attack to deal Damage.",
+      "Stronger secondary effects may require a Surge.",
+      "Area Attacks should usually have weaker individual-target performance."
+    ],
+    "designPhilosophy": "Additional spells should generally trade one advantage for another. Spell Attacks should provide meaningful alternatives rather than simply replacing the starting spells with numerically superior versions. Powerful battlefield effects such as substantial healing, teleportation, broad protection, counterspelling, and major changes to terrain are generally better represented as Command Abilities granted through Talents or magical equipment."
+  },
+  "consistencyCheck": "Every Mage and Priest Catalogue spell (General/Elementalist/Necromancer/Illusionist/Cleric/Druid/Oracle, including the Additional Fire Spell Flame Lance) was individually checked against these category-cost/profile guidelines: all Basic Spells (10 pts) are low-complexity single-effect Attacks, all Specialized Spells (20 pts) add a Keyword/conditional/control effect, and all Powerful Spells (30 pts) combine Damage 2 with Heavy. No drift was found.",
+  "files": [
+    { "id": "starting-spells", "file": "starting_spells.json" },
+    { "id": "mage-spells", "file": "mage_spells.json" },
+    { "id": "priest-spells", "file": "priest_spells.json" }
+  ]
+}

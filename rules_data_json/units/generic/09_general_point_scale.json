@@ -1,0 +1,22 @@
+{
+  "category": "general-point-scale",
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/01_generic_units.md",
+    "section": "9. GENERAL POINT SCALE"
+  },
+  "note": "Reference table of typical Points ranges by battlefield category, for balance comparison across generic and faction-specific Units.",
+  "categories": [
+    { "name": "Basic Infantry", "typicalPoints": "60–100" },
+    { "name": "Elite Infantry", "typicalPoints": "120–170" },
+    { "name": "Cavalry / Mobile", "typicalPoints": "115–175" },
+    { "name": "Support Units", "typicalPoints": "80–125" },
+    { "name": "Captains", "typicalPoints": "125–190" },
+    { "name": "Wizards", "typicalPoints": "145–220" },
+    { "name": "Lesser Assets", "typicalPoints": "125–150" },
+    { "name": "Standard Assets", "typicalPoints": "175–225" },
+    { "name": "Greater Assets", "typicalPoints": "250–350" },
+    { "name": "Centerpiece Assets", "typicalPoints": "400+" },
+    { "name": "Faction Leaders", "typicalPoints": "Individually balanced" },
+    { "name": "Late-Campaign PCs", "typicalPoints": "Approximately 200–250" }
+  ]
+}

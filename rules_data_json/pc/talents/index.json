@@ -1,0 +1,15 @@
+{
+  "description": "Manifest for the Talent system and all Talent lists.",
+  "files": [
+    { "id": "talent-system", "file": "00_talent_system.json", "description": "Progression/XP costs, prerequisites, Command Ability rules, Talent/Attack interactions." },
+    { "id": "generic", "file": "generic_talents.json", "description": "Generic Talents available to all Classes." },
+    { "id": "critical-specialization", "file": "critical_specialization.json", "description": "Critical Specialization Talents." },
+    { "id": "social-specialization", "file": "social_specialization.json", "description": "Social Specialization Talents." },
+    { "id": "animal-companion", "file": "animal_companion_talents.json", "description": "Animal Companion Talents (Generic; any Class)." },
+    { "id": "warrior", "file": "warrior_talents.json", "description": "Warrior Class Talents." },
+    { "id": "rogue", "file": "rogue_talents.json", "description": "Rogue Class Talents." },
+    { "id": "mage", "file": "mage_talents.json", "description": "Mage Class Talents." },
+    { "id": "priest", "file": "priest_talents.json", "description": "Priest Class Talents." },
+    { "id": "artificer", "file": "artificer_talents.json", "description": "Artificer Class Talents." }
+  ]
+}

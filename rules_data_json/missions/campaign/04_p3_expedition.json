@@ -1,0 +1,21 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "P3 — EXPEDITION" },
+  "id": "P3",
+  "name": "Expedition",
+  "tagline": "Exploration, Investigation, or Dungeon Delving",
+  "defaultDuration": "6 Rounds or equivalent Narrative stages",
+  "setup": "Place three Investigation Sites and one central Discovery. The Discovery begins Locked.",
+  "investigationRules": {
+    "actions": "An eligible Unit may investigate a Site using a Mission Action. A Character may instead attempt an appropriate Awareness, Survival, or Mysticism check through a Character Skill Action.",
+    "limits": "Each Site can contribute one completed Investigation per side. A side may complete at most one Investigation per Round.",
+    "unlocking": "Once a side has completed two different Investigation Sites, it unlocks the Discovery for itself. An eligible Unit may then perform a Resolve Discovery Mission Action at the Discovery."
+  },
+  "victory": {
+    "exploringSideWins": "The Exploring side wins by resolving the Discovery before the encounter ends.",
+    "oppositionWins": "The opposition wins if it prevents this.",
+    "competingExplorers": "If both sides are competing Explorers, the first to resolve the Discovery wins."
+  },
+  "narrativePlay": "Investigation Sites may instead represent separate rooms, clues, NPC encounters, or exploration challenges. The required actions are resolved through appropriate Narrative scenes.",
+  "recommendedSecondaries": ["Recover Treasure", "Uncover Secrets", "Explore Hidden Site", "Track Quarry", "Survive Environment", "Attune Site"],
+  "campaignNotes": "Completing an Expedition may resolve an unexplored Site, recover an established Discovery reward, or reveal information relevant to the strategic map. Ordinary occupation of the Site does not automatically complete it."
+}

@@ -1,0 +1,19 @@
+{
+  "sourceRef": { "file": "rulebooks/chapters/03_missions/02_campaign_missions.md", "section": "P2 — DEFENSE" },
+  "id": "P2",
+  "name": "Defense",
+  "tagline": "Holdout, Siege, or Protection",
+  "defaultDuration": "6 Rounds",
+  "setup": "Designate one Primary Position. One side is the Attacker; the other is the Defender. The Defender begins in control of the Primary Position.",
+  "captureRules": {
+    "recordingRule": "Beginning with Round 2, record control of the Primary Position during each Scoring Phase.",
+    "captureCondition": "The Attacker captures the position by controlling it at the end of two consecutive Scoring Phases.",
+    "interruption": "The sequence is interrupted if the position becomes Contested or Defender-controlled."
+  },
+  "victory": {
+    "attackerWins": "The Attacker wins by capturing the position. The Attacker also wins if it controls the position at the end of Round 6.",
+    "defenderWins": "The Defender wins if neither condition is achieved."
+  },
+  "recommendedSecondaries": ["Protect VIP", "Secure Supplies", "Rescue Captives", "Disable Defenses", "Disrupt Ritual"],
+  "campaignNotes": "Defense can represent holding a settlement, assaulting a fortress, securing a strategic route, or protecting a political institution. The actual strategic consequences depend on the established Stake."
+}
