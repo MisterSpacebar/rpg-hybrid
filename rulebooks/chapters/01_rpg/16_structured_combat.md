@@ -105,93 +105,92 @@ An ordinary Assault Move cannot enter Engagement.
 
 ## 3. Deployment and Reserves
 
-Before the first Round, each side deploys its army according to the scenario's Deployment Zones and any special deployment rules.
+Before the first Round, each side deploys its army according to the scenario's Deployment Zones and any special deployment rules. Standard five-Round matched battles use **Staggered Deployment** and **Escalating Reinforcements** unless their mission explicitly overrides these rules.
 
-### Initial Deployment
+### Initial Deployment — Staggered Deployment
 
-Each side may deploy its Units in alternating order unless the scenario states otherwise. Player A deploys a unit in their deployment zone and then Player B does the same, until each player has deployed all of their units or announced which units are in Reserves.
+Each player must place **half of their purchased Units in Reserve, rounded up**. All remaining Units deploy on the battlefield. Count **Units, not Models or Point Value**; a reinforced or multi-model Unit counts as one Unit.
 
-All Models belonging to a Unit must begin wholly within their designated Deployment Zone and maintain normal Unit Coherency.
+Sides alternate deploying one starting Unit at a time unless the scenario specifies otherwise. Every starting Unit must be placed wholly within its owner's Deployment Zone, without overlapping Models and while maintaining Unit Coherency.
 
-Units not deployed at the beginning of the battle must be declared as Reserves.
+If the army contains a Headquarters Unit, **at least one Headquarters Unit must deploy normally**. This requirement takes precedence if a very small army would otherwise have no Headquarters on the battlefield; such an exceptional army places as many Units in Reserve as possible.
 
-### Reserves
+Units designated as Reserve do not start on the battlefield. Both sides declare their Reserve Units during initial deployment. A player cannot voluntarily start with more Units on the battlefield than permitted by the mandatory Reserve requirement unless a mission says otherwise.
 
-Each side may place up to half of its army's total Point Value into Reserves.
+### Units in Reserve
 
-Units in Reserves begin the battle off the battlefield and do not participate until deployed.
+A Unit in Reserve:
 
-At least half of each army's Point Value must therefore begin on the battlefield.
-
-Units in Reserves:
-
-- Cannot activate or make Attacks.
-- Cannot use abilities or Reactions unless specifically permitted.
-- Cannot be targeted by enemy effects.
+- Is included in the army's normal points, Recruitment Slots, and composition limits.
+- Cannot activate, attack, or use abilities or Reactions unless expressly permitted.
+- Cannot be targeted by effects that require a Unit to be on the battlefield.
 - Cannot control or contest objectives.
-- Do not provide auras, Commands, or other positional battlefield effects unless specifically permitted.
+- Does not provide battlefield auras, Headquarters ranges, or other positional effects unless a specific rule says otherwise.
 
-Reserves do not require additional CP to deploy.
+Ordinary Reserve deployment costs no CP. There is **one shared Reserve pool** for each army; Deep Strike does not create a separate pool.
 
-### Deploying Reserves
+### Escalating Reinforcements
 
-At the end of each Movement Phase, after both sides have finished their normal Movement activations, each side may deploy any number of its remaining Reserve Units.
+At the **end of each Movement Phase**, each player may deploy a number of Units from Reserve **up to the current Round number**. This is a per-player maximum across **all methods of Reserve arrival**, including ordinary arrivals and Deep Strike, unless a special rule explicitly grants an additional arrival.
 
-Reserve Units must be placed:
+| Round | Maximum ordinary/scheduled Reserve arrivals that Round |
+| --- | ---: |
+| 1 | 1 Unit |
+| 2 | 2 Units |
+| 3 | 3 Units |
+| 4 | 4 Units |
+| 5 | 5 Units |
 
-- Wholly within their controlling side's Deployment Zone.
-- In legal positions without overlapping other Models.
-- Outside Engagement with enemy Models.
-- In normal Unit Coherency.
+A player may deploy fewer than the maximum or none at all. **Unused reinforcement allowances do not accumulate** or increase later limits. A Unit cannot enter from Reserve more than once unless a specific rule permits its return and redeployment.
 
-If both sides deploy Reserves during the same Phase, they alternate placing one Reserve Unit at a time.
+*Example:* In a 15-Unit army, 8 Units begin in Reserve and 7 start on the battlefield. A player can bring in 1 in Round 1, 2 in Round 2, 3 in Round 3, and the remaining 2 in Round 4.
 
-The side that held First Activation during that Movement Phase places the first Reserve Unit.
+### Deploying Ordinary Reserves
 
-Either side may stop deploying at any time. If one side stops, the other may continue placing its remaining eligible Reserves.
+After all Movement activations end and Assault Phase Priority is determined, resolve Reserve deployment:
 
-A Unit that cannot be placed legally must remain in Reserves.
+1. Each side selects how many eligible Reserve Units it wishes to bring in, up to its remaining allowance for the Round.
+2. Alternate placing one arriving Unit at a time, beginning with the side that held **First Activation in Movement**. If only one side has arriving Units, it places them without alternating.
+3. Place each ordinary Reserve Unit **wholly within its owner's Deployment Zone**, in legal positions outside Engagement and with normal Unit Coherency.
+4. Complete all legal Reserve arrivals, then begin the Assault Phase with the priority already determined.
 
-### Reserve Activation Restrictions
+Ordinary Reserves do not gain permission to enter from battlefield edges or forward positions outside their own Deployment Zone. Such placement requires a mission, Doctrine, Keyword, or other explicit exception.
 
-A Unit deployed from Reserves counts as having completed its Movement activation for the current Round.
+A Unit that cannot be placed legally remains in Reserve. A player may choose not to deploy all permitted Units. If a side elects to stop placing Units, the other side may finish its own legal placements up to its allowance.
 
-It cannot:
+### Reserve Arrival Restrictions
 
-- Make a normal Move or Engage during that Movement Phase.
-- Perform a Combat Skill Action.
-- Use Movement Phase Command Abilities.
-- Perform another action requiring its Movement activation.
+An ordinarily arriving Reserve Unit counts as having **voluntarily Moved during the Movement Phase** and as having completed its Movement activation for the Round. Consequently, on the Round it arrives:
 
-Deployment counts as a Movement Action for determining eligibility to use Heavy during the subsequent Assault Phase.
+- It cannot perform a Movement Phase activation or Combat Skill Action, make another normal Move, Engage, Disengage, or use an ability requiring its Movement activation.
+- It **cannot declare a Charge** during Assault.
+- It **cannot use Heavy** Attacks requiring it not to have Moved.
+- It **may** use eligible Assault actions other than Charge (such as an Assault Move or a ranged/Spell Attack), and may act in Combat if otherwise eligible.
+- It can use legal Reactions and other abilities after arrival, subject to their normal requirements.
 
-A deployed Reserve Unit may otherwise act normally during Assault and Combat, provided it is eligible.
+Deployment does not itself create an extra Unit activation. An arriving Unit is never eligible to act while it remains off the battlefield.
 
-Reactions and eligible abilities may be used normally after the Unit enters the battlefield.
+### Special Reserve Deployment and Doctrines
 
-### Remaining in Reserves
+Specific missions, Keywords, or Command abilities can modify the arrival location, timing, limits, or activation restrictions **only where explicitly stated**. Unless an exception says the arrival is *additional* to the Round's normal reinforcement allowance, it consumes one of that allowance's slots.
 
-Units may remain in Reserves for any number of Rounds unless the scenario specifies otherwise.
+**Alpha Strike — Rapid Mobilization (Rapid Deployment):** Once per battle, in **Round 1**, the player may use the selected Doctrine Command during one of their Movement activation opportunities to deploy **one additional** Reserve Unit wholly within the friendly Deployment Zone. It performs that Unit's normal Movement activation and **may Charge** in the ensuing Assault Phase. This arrival is expressly **outside** the Round 1 reinforcement allowance. It does not grant an extra Movement activation, and all Command costs and card-use requirements still apply.
 
-A Unit remaining in Reserves when the battle ends is not considered defeated merely because it was never deployed.
+**Deep Strike:** From **Round 2**, eligible selected Deep Strike Commands may designate a Unit from the same shared Reserve pool for an alternative insertion location. This designation occurs during Movement under the Command's normal timing and priority; the Unit is placed **at the end of Movement** as part of the ordinary alternating Reserve placement procedure. It uses one of the Round's reinforcement allowances, and **at most one Unit per Round** may arrive through Deep Strike deployment Commands. Unless overridden by the Command, a Deep Strike arrival must be wholly more than **9"** from enemy Models, outside the enemy Deployment Zone, legally coherent, and unengaged. The Unit cannot Charge or control/contest objectives during its arrival Round, counts as having Moved for Heavy, and may make eligible non-Heavy ranged or Spell Attacks.
 
-However, it cannot contribute to battlefield objectives, territorial control, or other conditions requiring its presence.
+A Deep Strike Command may expressly vary placement restrictions (for example, **Flanking Insertion** permits edge entry with a more-than-6" enemy exclusion distance). **Heavy Descent** permits eligible Large Assets to arrive through Deep Strike. Normal Reserve deployment of a Large Asset does not require Heavy Descent.
 
-### Special Deployment Rules
+For the full effects, conditions, and costs, use the current *Non-Faction Doctrines* rules. This chapter provides the universal procedures; specific Doctrine wording governs its stated exceptions.
 
-Certain Units, Keywords, Doctrines, and scenarios may modify normal Reserve rules.
+### Remaining in Reserve
 
-These may allow Units to deploy outside their normal Deployment Zone, deploy during another Phase, or perform additional actions when deployed.
-
-Where a specific deployment rule conflicts with the normal Reserve rules, follow the specific rule.
-
-Unless explicitly stated, special deployment abilities do not increase the maximum Point Value permitted in Reserves.
+Reserve Units may remain off the battlefield for any number of Rounds unless the mission specifies otherwise. Any Unit still in Reserve when the battle ends is not automatically Defeated, but it cannot contribute to objective control or any other condition requiring battlefield presence.
 
 ## 4. Priority Step
 
 Priority determines which side receives First Activation during a Phase.
 
-At the beginning of each Round, compare both sides' Victory Points.
+At the beginning of each Round, compare both sides' Victory Points. The current Round number also determines each player's Reserve reinforcement allowance under Section 3.
 
 The side with fewer Victory Points chooses which side receives First Activation during Movement.
 
@@ -242,7 +241,7 @@ At the end of Movement and Assault, the first side to become Finished chooses wh
 
 For example, if the Players finish Movement before the GM, they choose whether the Players or GM activate first during Assault.
 
-Reserve deployment occurs after determining the next Phase's Priority and does not alter which side became Finished first.
+Reserve deployment occurs after determining the next Phase's Priority and does not alter which side became Finished first. Reserve Units arriving at the end of Movement do not receive Movement activations; the special Round 1 Alpha Strike Rapid Deployment exception expressly uses a normal Movement activation opportunity.
 
 If both sides become Finished simultaneously, retain the current Phase's First Activation side for the next Phase unless a scenario rule states otherwise.
 
@@ -383,7 +382,7 @@ Special rules such as Climber may modify vertical movement.
 
 After both sides become Finished, determine Assault Phase Priority.
 
-Then resolve Reserve deployments for both sides.
+Then resolve permitted Reserve deployments for both sides, including any previously designated Deep Strike arrivals, following **Section 3**. The maximum number of scheduled arrivals is the current Round number; unused allowances expire.
 
 Once Reserve deployment is complete, proceed to Assault.
 
@@ -432,7 +431,7 @@ During Assault, the two sides alternate selecting eligible Units according to Ph
 | **Assault Attack** | Make one eligible ranged Weapon or Spell Attack; Models using different profiles resolve them separately as required |
 | **Charge** | Roll the standard Charge and attempt to enter Engagement; resolve Impact on success |
 
-A Unit may forgo its action. It does **not** make an Assault Move and Attack in the same activation without an explicit special rule. Using a legal Assault Command costs CP and is **separate from the chosen action**, unless that Command says it replaces or prevents the ordinary action. See [Command timing and priority](#command-timing-and-priority).
+A Unit may forgo its action. It does **not** make an Assault Move and Attack in the same activation without an explicit special rule. **Ordinary Reserves and Deep Strike arrivals cannot Charge on the Round they arrive; Alpha Strike Rapid Deployment expressly overrides this for its one special arrival.** Using a legal Assault Command costs CP and is **separate from the chosen action**, unless that Command says it replaces or prevents the ordinary action. See [Command timing and priority](#command-timing-and-priority).
 
 ### Assault Move
 
@@ -524,7 +523,7 @@ Cover does not permit Evade against Charge Impact unless a special rule explicit
 
 An Attack, Spell, or Action with Heavy may only be used if the Unit did not voluntarily move or perform another Movement Action during the immediately preceding Movement Phase.
 
-This includes normal Moves, Disengaging, and deployment from Reserves.
+This includes normal Moves, Disengaging, and any arrival from Reserves during the current Round, including Deep Strike or Rapid Deployment. The latter overrides Movement and Charge restrictions but does **not** waive Heavy unless stated.
 
 Forced movement caused by an enemy does not normally prevent Heavy.
 
@@ -534,7 +533,7 @@ Heavy does not itself prevent an Assault Move unless another rule states otherwi
 
 A Charge allows an unengaged Unit to close with an enemy and inflict Impact.
 
-During Assault, **Charge is one of three mutually exclusive ordinary actions:** Move, Attack, or Charge.
+During Assault, **Charge is one of three mutually exclusive ordinary actions:** Assault Move, Assault Attack, or Charge.
 
 The target must be:
 
@@ -542,7 +541,7 @@ The target must be:
 - Wholly within 12".
 - Reachable through a legal movement path.
 
-A Withdrawn Unit cannot Charge.
+A Withdrawn Unit cannot Charge. A Unit that arrived from ordinary Reserves or through Deep Strike this Round also cannot Charge unless a specific exception, such as Rapid Deployment, explicitly grants permission.
 
 ### Universal Charge Roll
 
@@ -556,7 +555,7 @@ For a multi-model Unit, make **one Charge roll for the Unit**, not a separate ro
 
 ### Charge Impact
 
-Every successful Charge generates **Impact equal to the highest of the two Charge dice**. A Unit with printed **Impact X** adds X Hits to that base amount; other explicitly applicable bonuses or reductions then apply.
+Every successful Charge generates **Impact equal to the highest of the two Charge dice**. A Unit with printed **Impact X** adds X Hits to that base amount; other explicitly applicable bonuses or reductions (including applicable Doctrine bonuses) then apply.
 
 **Final Impact Hits = max(0, highest Charge die + printed Impact X + other Impact bonuses − Brace X).**
 
@@ -850,7 +849,7 @@ Applicable sources stack unless specified otherwise. Each die may only be reroll
 
 ### Other Keywords
 
-Other Keywords follow their normal definitions.
+Other Keywords follow their normal definitions. **Doctrine-granted Impact +X** (such as Alpha Strike’s Shock Assault) adds automatic Charge Impact Hits; it does not add Charge distance or extra Engagement Attack dice.
 
 Where a Keyword conflicts with a general rule, follow the more specific rule.
 

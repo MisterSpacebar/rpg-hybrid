@@ -1,31 +1,34 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "12. Deep Strike" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "12. Deep Strike"
+  },
   "name": "Deep Strike",
   "foundationRecruitmentSlot": "S",
   "strategy": "Deploy reserve formations into unexpected battlefield positions, launch flanking attacks, and establish forward landing zones.",
-  "designNote": "Deep Strike provides alternative deployment opportunities rather than simply granting additional normal movement.",
+  "designNote": "Deep Strike changes where ordinary reinforcements may arrive. It does not create an additional Reserve pool or raise the universal reinforcement allowance.",
   "deepStrikeDeployment": {
     "deepStrikeReserve": {
-      "rule": "During initial deployment, an army with Deep Strike may designate purchased Units as Deep Strike Reserves within the normal Reserves limit described in Structured Combat. Deep Strike does not grant an additional Reserve allowance.",
+      "rule": "All Units designated as Reserve under the universal Staggered Deployment rules form one shared Reserve pool. An army with Deep Strike does not designate a second or separate Deep Strike Reserve. Any eligible Unit in that pool may enter normally or through an appropriate Deep Strike Command.",
       "theseUnits": [
-        "Count toward the normal combined Reserve Point Value limit.",
-        "Are included in the army's normal Points, Recruitment Slot, and composition limits.",
+        "Count toward the universal mandatory Reserve Unit count, not a separate Reserve Point Value limit.",
+        "Are included in the army’s normal Points, Recruitment Slot, and composition limits.",
         "Begin the battle off the battlefield.",
         "Cannot perform actions or use abilities while in Reserve unless explicitly permitted.",
-        "May enter the battlefield through selected Deep Strike Commands beginning in Round 2."
+        "May enter normally beginning in Round 1, or through a selected Deep Strike Command beginning in Round 2.",
+        "A Deep Strike arrival counts against that Round’s normal reinforcement allowance unless a rule expressly says otherwise."
       ],
       "additionalRules": [
-        "At least one Headquarters Unit must deploy normally.",
-        "Large Assets may enter Deep Strike Reserve only if the army has selected a Command that explicitly permits their deployment."
+        "Half of the army’s purchased Units, rounded up, must begin in Reserve under universal Staggered Deployment rules; if the army includes a Headquarters Unit, at least one must deploy normally.",
+        "Large Assets may arrive as ordinary Reserves, but may arrive using Deep Strike deployment only through Heavy Descent or another ability expressly permitting it."
       ]
     },
     "arrivingFromDeepStrikeReserve": {
       "procedure": [
-        "Select an eligible purchased Unit in Deep Strike Reserve.",
-        "Activate it during the Movement Phase.",
-        "Spend the Command's listed CP (represented by exhausting its selected card in matched play).",
-        "Place its Models in the location permitted by the Command.",
-        "The Unit's Movement activation ends."
+        "During the Movement Phase, select an eligible Unit still in Reserve and declare an eligible Deep Strike deployment Command. Pay the Command’s CP cost and exhaust its card as normal.",
+        "Count this Unit against the current Round’s normal reinforcement allowance.",
+        "At the end of the Movement Phase, place that Unit at a legal location permitted by the Command, rather than the ordinary deployment zone. If other Reserve Units arrive, place them in the normal alternating placement order.",
+        "The Unit does not receive a Movement activation upon entry."
       ],
       "defaultPlacementRequirements": [
         "Wholly more than 9\" from every enemy Model.",
@@ -33,7 +36,7 @@
         "In legal positions with normal Unit coherency.",
         "Without becoming Engaged."
       ],
-      "note": "Unless a Command says otherwise, the arriving Unit must satisfy the above placement requirements."
+      "note": "Unless a Command says otherwise, the arriving Unit must satisfy the above placement requirements. Deep Strike deployment begins in Round 2."
     },
     "arrivalRestrictions": {
       "unitArrivingThroughDeepStrike": [
@@ -44,31 +47,83 @@
         "Cannot use a Heavy Attack that requires it not to have Moved, unless an ability explicitly permits otherwise."
       ],
       "additionalRules": [
-        "Only one Unit may arrive through Deep Strike Commands per Round.",
-        "An army is not required to place any Units in Deep Strike Reserve.",
-        "If a legal position is unavailable, the Unit cannot be deployed using that Command and remains in Reserve. An illegal placement cannot be declared."
+        "Only one Unit may arrive through Deep Strike deployment Commands per Round. Other arriving Units may use ordinary Reserve deployment, up to the Round’s total allowance.",
+        "If a legal insertion position is unavailable, the Unit cannot be deployed using that Command; it remains in Reserve.",
+        "A player cannot declare an illegal placement, and no extra deployment allowance is granted."
       ]
     }
   },
   "commands": [
-    { "name": "Forward Insertion", "slot": "C", "timing": "Movement", "effect": "Deploy one eligible Unit from Deep Strike Reserve using the normal Deep Strike placement rules. It may be placed anywhere on the battlefield that satisfies those rules." },
-    { "name": "Landing Fire", "slot": "R", "timing": "Assault", "effect": "One friendly Unit that arrived through Deep Strike this Round gains Accurate 2 and Pinpoint on its next ranged Attack this Phase. This Command does not override Heavy restrictions." },
-    { "name": "Flanking Insertion", "slot": "V", "timing": "Movement", "effect": "Deploy one eligible Unit from Deep Strike Reserve wholly within 3\" of any battlefield edge and more than 6\" from every enemy Model. It may enter the enemy deployment zone. All other arrival restrictions apply." },
-    { "name": "Heavy Descent", "slot": "A", "timing": "Movement", "effect": "Deploy one eligible Unit, including a Large Asset, from Deep Strike Reserve using the normal Deep Strike placement rules. The Unit gains Tough 2 against the first Attack it suffers before the beginning of its next Movement activation." },
-    { "name": "Signal Beacon", "slot": "H", "timing": "Movement", "effect": "Choose one friendly Unit already on the battlefield. During this Movement Phase, the next friendly Unit arriving through Deep Strike within Short of that Unit may be placed more than 6\" from enemy Models instead of 9\". It must still satisfy all other placement restrictions." }
+    {
+      "name": "Forward Insertion",
+      "slot": "C",
+      "timing": "Movement",
+      "effect": "Designate one eligible Reserve Unit to deploy at the end of this Movement Phase using the normal Deep Strike placement rules. It may be placed anywhere on the battlefield that satisfies those rules. Counts toward the normal reinforcement allowance."
+    },
+    {
+      "name": "Landing Fire",
+      "slot": "R",
+      "timing": "Assault",
+      "effect": "One friendly Unit that arrived through Deep Strike this Round gains Accurate 2 and Pinpoint on its next ranged Attack this Phase. This Command does not override Heavy restrictions."
+    },
+    {
+      "name": "Flanking Insertion",
+      "slot": "V",
+      "timing": "Movement",
+      "effect": "Designate one eligible Reserve Unit to deploy at the end of this Movement Phase wholly within 3\" of any battlefield edge and more than 6\" from every enemy Model. It may enter the enemy deployment zone. All other arrival restrictions apply. Counts toward the normal reinforcement allowance."
+    },
+    {
+      "name": "Heavy Descent",
+      "slot": "A",
+      "timing": "Movement",
+      "effect": "Designate one eligible Reserve Unit, including a Large Asset, to deploy at the end of this Movement Phase using normal Deep Strike placement rules. The Unit gains Tough 2 against the first Attack it suffers before the beginning of its next Movement activation. Counts toward the normal reinforcement allowance."
+    },
+    {
+      "name": "Signal Beacon",
+      "slot": "H",
+      "timing": "Movement",
+      "effect": "Choose one friendly Unit already on the battlefield. During this Movement Phase, the next friendly Unit designated to arrive through Deep Strike within Short of that Unit may be placed more than 6\" from enemy Models instead of 9\". All other placement restrictions apply."
+    }
   ],
   "commandClarifications": [
-    { "command": "Forward Insertion", "clarification": "Provides the basic ability to deploy purchased reserve Units into the center of the battlefield or another legal forward position." },
-    { "command": "Landing Fire", "clarification": "Improves ranged attacks by recently deployed Units. It is usable by any arriving Unit with an eligible ranged weapon, not only Ranged Infantry." },
-    { "command": "Flanking Insertion", "clarification": "Allows Units to appear behind or beside enemy formations, but requires placement near the battlefield edge. It is particularly useful for threatening exposed support Units." },
-    { "command": "Heavy Descent", "clarification": "Allows a Large Asset to arrive through Deep Strike and provides temporary protection for the arriving Unit. It does not allow the Unit to bypass movement restrictions on Heavy weapons." },
-    { "command": "Signal Beacon", "clarification": "Rewards first establishing a forward presence before inserting reinforcements nearby. It must be activated before the deployment it modifies. Signal Beacon does not deploy a Unit itself; another selected Deep Strike Command must perform the deployment." }
+    {
+      "command": "Forward Insertion",
+      "clarification": "Provides basic forward deployment, allowing a Unit to bypass the distance and terrain between the player’s deployment zone and a legal insertion point."
+    },
+    {
+      "command": "Landing Fire",
+      "clarification": "Improves a recently inserted Unit’s ranged attack. Any eligible Unit with a ranged weapon may benefit, not only Ranged Infantry."
+    },
+    {
+      "command": "Flanking Insertion",
+      "clarification": "Provides alternate access to battlefield edges, including enemy deployment territory, subject to its more-than-6\" exclusion distance."
+    },
+    {
+      "command": "Heavy Descent",
+      "clarification": "Is the usual Deep Strike method for Large Assets. Its Tough bonus is temporary and does not override Heavy weapon restrictions."
+    },
+    {
+      "command": "Signal Beacon",
+      "clarification": "Must be used during the Movement Phase before declaring the insertion it modifies. The designated insertion still requires a separate Deep Strike deployment Command and still consumes one of that Round’s reinforcement allowances. Signal Beacon does not insert an additional Unit by itself."
+    }
   ],
-  "doctrineIdentity": "Deep Strike focuses on reinforcements, deployment flexibility, and unexpected battlefield positioning. It gives up the immediate battlefield presence of reserve Units in exchange for the ability to introduce them at important locations later in the battle. Unlike ordinary movement abilities, Deep Strike permits Units to arrive from off the battlefield and bypass the intervening distance and terrain.",
+  "doctrineIdentity": "Deep Strike rewards flexible reserve arrival, battlefield penetration, and unexpected angles of attack. Unlike Alpha Strike, it does not accelerate the overall reinforcement schedule; its advantage is positional, and it can use that advantage repeatedly from Round 2 onward while sufficient Reserve Units and Commands remain.",
   "distinctionFromOtherDoctrines": [
-    { "doctrine": "Mobility", "distinction": "Improves the movement of Units already on the battlefield." },
-    { "doctrine": "Slingshot", "distinction": "Uses friendly Units to create additional movement opportunities." },
-    { "doctrine": "Alpha Strike", "distinction": "Enhances attacks during first contact." },
-    { "doctrine": "Deep Strike", "distinction": "Changes where and when purchased Units enter the battle." }
+    {
+      "doctrine": "Mobility",
+      "distinction": "Improves the movement of Units already on the battlefield."
+    },
+    {
+      "doctrine": "Slingshot",
+      "distinction": "Uses friendly Units to create additional movement opportunities."
+    },
+    {
+      "doctrine": "Alpha Strike",
+      "distinction": "Maximizes early-Round offense and can bring in one extra Round 1 reinforcement."
+    },
+    {
+      "doctrine": "Deep Strike",
+      "distinction": "Changes where purchased Reserve Units enter the battle, within the normal arrival allowance."
+    }
   ]
 }

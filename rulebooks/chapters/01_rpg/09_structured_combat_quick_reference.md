@@ -4,14 +4,14 @@
 
 ### Battle Setup
 
-- Deployment: Place Units wholly within friendly Deployment Zones, maintaining Unit Coherency.
-- Reserves: Up to 50% of an army's total Point Value may begin off-table.
+- **Staggered deployment:** Half of purchased Units, **rounded up**, must begin in Reserve (count Units, not Points or Models); the rest deploy wholly in friendly Deployment Zones. At least one Headquarters deploys normally if present.
+- **Reinforcement allowance:** Beginning in Round 1, each player may bring in up to **the current Round number** of Reserve Units (R1: 1; R2: 2; R3: 3; R4: 4; R5: 5). Unused allowances do not carry over.
 
 ### Round Sequence
 
 - Priority: Determine first Movement activation.
 - Movement: Alternate Unit activations.
-- Reserves: Deploy reinforcements at the end of Movement.
+- Reserves: Deploy reinforcements at the end of Movement (up to the Round allowance).
 - Assault: Alternate Unit activations.
 - Combat: Alternate eligible Unit activations.
 - Scoring: Resolve objectives and Victory Points.
@@ -42,27 +42,26 @@ Each Unit may choose one eligible action:
 
 ### Reserve Deployment
 
-- At the end of Movement, both sides may deploy any remaining Reserves.
-- Deploy wholly within friendly Deployment Zones.
-- Maintain Coherency and remain outside Engagement.
-- Alternate placing Reserve Units, starting with the side that held Movement First Activation.
-- Deployed Reserves count as having completed Movement.
-- Cannot use Movement abilities or Combat Skill Actions on arrival.
-- May act normally during Assault and Combat.
-- Cannot use Heavy during the Round they arrive.
-- Undeployed Units cannot act or control objectives.
+- **All armies:** Beginning in Round 1, deploy up to **Round number** Reserve Units per player at the end of Movement; **no banking** unused arrivals. All arrivals share this limit unless expressly additional.
+- **Normal arrival:** Deploy wholly within friendly Deployment Zones, legally coherent and outside Engagement. Ordinary Reserves cannot enter via battlefield edges without an explicit special rule.
+- **Order:** Alternate Reserve placements, starting with the side that held Movement First Activation; Assault Priority was already determined.
+- **Arrival limits:** Arriving Units count as having Moved and as having completed their Movement activation. No Movement phase actions, Combat Skill Actions, or Charges that Round; no Heavy unless explicitly waived.
+- **After arrival:** Eligible Assault Move, ranged/Spell Attack, Combat activation, and Reactions remain possible.
+- **Deep Strike:** From Round 2, may designate a Reserve Unit during Movement for legal special insertion at end of Movement; counts toward normal allowance, maximum **one Deep Strike arrival per Round**. Deep Strike arrivals also cannot control or contest objectives until the next Round.
+- **Alpha Strike — Rapid Deployment:** Once per battle in Round 1, one **additional** Reserve Unit may deploy through a Command during its normal Movement activation opportunity, then Move and Charge normally. This is outside the regular allowance, but does not waive Heavy or grant an extra activation.
+- Units still in Reserve cannot act or control objectives; undeployed Units are not automatically Defeated at battle end.
 
 ### Assault
 
-Each Unit chooses **one** ordinary Assault action: **Assault Move (up to Move)**, **ranged Weapon/Spell Attack**, or **Charge**. No free Assault Move alongside an Attack. Personal CP Commands may be used during that selected Unit's own activation, independently of its chosen action unless an ability specifies otherwise. Faction/Doctrine Commands use the controlling side's priority; Reactions interrupt eligible triggers.
+Each Unit chooses **one** ordinary Assault action: **Assault Move (up to Move)**, **ranged Weapon/Spell Attack**, or **Charge**. No free Assault Move alongside an Attack. Ordinary Reserve and Deep Strike arrivals cannot Charge that Round; Alpha Strike Rapid Deployment is an explicit exception. Personal CP Commands may be used during that selected Unit's own activation, independently of its chosen action unless an ability specifies otherwise. Faction/Doctrine Commands use the controlling side's priority; Reactions interrupt eligible triggers.
 
 ### Charge
 
 - Declare a legal visible target wholly within 12"; the charging Unit cannot already be Engaged or Withdrawn.
 - **Every Unit:** roll 2D6; Charge Distance = **sum of both dice + CHARGE X** (Move is not added).
-- Success: move into Engagement; Impact Hits = **highest of the two dice + printed Impact X − Brace X**, minimum 0.
+- Success: move into Engagement; Impact Hits = **highest of the two dice + printed Impact X + other applicable Impact bonuses − Brace X**, minimum 0.
 - Failure: stay in place; Assault activation ends.
-- Resolve Impact once per charging Unit, not per Model: **Armor → Ward → Damage**, ignoring Evade.
+- Resolve Impact once per charging Unit, not per Model: **Armor → Ward → Damage**, ignoring Evade. Alpha Strike Shock Assault increases Impact Hits, not distance.
 - Two natural sixes/ones can Surge/Blunder; successful Charge with Blunder causes Off-Balance. Eligible Chargers can fight in Combat.
 
 ### Range Bands

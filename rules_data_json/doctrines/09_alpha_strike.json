@@ -1,14 +1,117 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "9. Alpha Strike" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "9. Alpha Strike"
+  },
   "name": "Alpha Strike",
   "foundationRecruitmentSlot": "V",
-  "strategy": "Deliver powerful opening attacks and exploit the first moments of an Engagement.",
+  "strategy": "Overwhelm the enemy during the opening Rounds through rapid mobilization, accurate attacks, concentrated volleys, and decisive Charges. Its offensive bonuses decline as the battle develops.",
   "commands": [
-    { "name": "First Strike Orders", "slot": "H", "timing": "Assault", "effect": "One friendly Unit within Short of friendly Headquarters gains Accurate 2 on its next Attack against an enemy it has not previously attacked this battle." },
-    { "name": "Opening Volley", "slot": "R", "timing": "Assault", "effect": "One friendly Unit gains +3 Attacks on its first ranged Attack of the battle." },
-    { "name": "Shock Assault", "slot": "E", "timing": "Combat", "effect": "One friendly Unit that Charged this Round gains +2 Attacks on its first Engagement Attack this Combat Phase." },
-    { "name": "Opening Barrage", "slot": "A", "timing": "Assault", "effect": "One friendly Unit gains +2 Attacks on its first Attack against a target it has not previously attacked this battle." },
-    { "name": "Ferocious Opening", "slot": "C", "timing": "Combat", "effect": "One friendly Unit gains Accurate 2 and Critical 1 on its first Engagement Attack against a target it has not previously attacked this battle." }
+    {
+      "name": "First Strike Orders",
+      "slot": "H",
+      "timing": "Assault",
+      "effect": "Choose one friendly Unit within Short of a friendly Headquarters. Its next Attack this Round gains Accurate X, where X is determined by the current Round."
+    },
+    {
+      "name": "Opening Volley",
+      "slot": "R",
+      "timing": "Assault",
+      "effect": "One friendly Unit gains +X Attacks on its next ranged Attack this Phase, where X is determined by the current Round."
+    },
+    {
+      "name": "Shock Assault",
+      "slot": "E",
+      "timing": "Assault",
+      "effect": "When one friendly Unit declares a Charge, increase its Charge Impact by X for that Charge, where X is determined by the current Round. This does not increase its Charge distance."
+    },
+    {
+      "name": "Rapid Mobilization",
+      "slot": "A",
+      "timing": "Movement / Assault / Combat",
+      "effect": "Choose either Rapid Deployment (Movement, once per battle, Round 1 only) or Standard Orders (Assault/Combat). See rapidMobilizationModes."
+    },
+    {
+      "name": "Ferocious Opening",
+      "slot": "C",
+      "timing": "Combat",
+      "effect": "Choose one friendly Unit making an Engagement Attack. The attacker selects up to X successful Armor or Evade Save dice made against that Attack; the defender must reroll those dice, and the new results stand. X is determined by the current Round. Ward Saves are unaffected. Dice already rerolled cannot be selected."
+    }
   ],
-  "doctrineIdentity": "Front-loaded damage and decisive first contact. Alpha Strike is less effective during prolonged engagements because many of its bonuses depend on making initial attacks."
+  "doctrineIdentity": "Alpha Strike rewards seizing the initiative early in the battle. Its Round 1 offense is strongest, its benefits fall progressively through Round 3, and it retains smaller offensive benefits in Rounds 4–5. Rapid Mobilization offers a once-per-battle way to add one mobile reinforcement during the first Round without changing ordinary Reserves for the rest of the army. It differs from Firing Line through its decreasing ranged bonuses, from Breakthrough through its immediate offensive emphasis rather than sustained Charge reliability, and from Deep Strike because it adds a single early reinforcement instead of placing Units in unexpected locations.",
+  "decliningOffensiveBonuses": {
+    "rule": "Unless noted otherwise, the following Alpha Strike bonuses depend on the current Round. The Round determines the bonus each time the Command is used; the bonus does not depend on whether the attacking Unit has previously attacked or fought its target.",
+    "byRound": [
+      {
+        "round": 1,
+        "firstStrikeOrdersAccurate": 3,
+        "openingVolleyBonusAttacks": 4,
+        "shockAssaultImpactBonus": 4,
+        "ferociousOpeningSuccessfulSaveRerolls": 3
+      },
+      {
+        "round": 2,
+        "firstStrikeOrdersAccurate": 2,
+        "openingVolleyBonusAttacks": 3,
+        "shockAssaultImpactBonus": 3,
+        "ferociousOpeningSuccessfulSaveRerolls": 2
+      },
+      {
+        "round": 3,
+        "firstStrikeOrdersAccurate": 1,
+        "openingVolleyBonusAttacks": 2,
+        "shockAssaultImpactBonus": 2,
+        "ferociousOpeningSuccessfulSaveRerolls": 1
+      },
+      {
+        "round": 4,
+        "firstStrikeOrdersAccurate": 1,
+        "openingVolleyBonusAttacks": 1,
+        "shockAssaultImpactBonus": 1,
+        "ferociousOpeningSuccessfulSaveRerolls": 1
+      },
+      {
+        "round": 5,
+        "firstStrikeOrdersAccurate": 1,
+        "openingVolleyBonusAttacks": 1,
+        "shockAssaultImpactBonus": 1,
+        "ferociousOpeningSuccessfulSaveRerolls": 1
+      }
+    ]
+  },
+  "rapidMobilizationModes": {
+    "rapidDeployment": {
+      "timing": "Movement",
+      "oncePerBattle": true,
+      "roundRestriction": 1,
+      "effect": "When you would activate a friendly Unit during the Round 1 Movement Phase, you may instead select one Unit in Reserve. Deploy it wholly within your deployment zone, then perform its normal Movement activation. This arrival is in addition to your normal Round 1 reinforcement allowance, and it ignores the ordinary restrictions preventing Reserve Units from performing Movement actions or declaring Charges on the Round they arrive. The Unit may declare a legal Charge during the ensuing Assault Phase. It does not receive an additional activation. Rapid Deployment may be used only once per battle, even if this Command card later becomes available again."
+    },
+    "standardOrders": {
+      "timing": "Assault / Combat",
+      "effect": "Choose one friendly Unit. It gains +1 Attack on its next eligible Attack this Phase."
+    },
+    "commonRules": "Both modes use the normal Command CP and card-exhaustion cost. Each use resolves only one of the two modes. Once Rapid Deployment has been used, Standard Orders remains available on later uses of the Command."
+  },
+  "commandClarifications": [
+    {
+      "command": "First Strike Orders",
+      "clarification": "Provides reliable Hits, but the recipient must be within Short of a friendly Headquarters when the Command is used. Its bonus can apply to an otherwise eligible Attack later in the same Round."
+    },
+    {
+      "command": "Opening Volley",
+      "clarification": "Adds Attack dice to a single ranged Attack by the Unit, not to every Model."
+    },
+    {
+      "command": "Shock Assault",
+      "clarification": "Modifies only the Charge Impact of one declared Charge. It does not increase the Charge distance or the Unit’s later Engagement Attack dice."
+    },
+    {
+      "command": "Ferocious Opening",
+      "clarification": "Applies to Armor or Evade Saves as appropriate. It cannot force Ward rerolls or reroll a die a second time."
+    },
+    {
+      "command": "All offensive Commands",
+      "clarification": "None of the four offensive Commands requires that the Unit or its target be attacked for the first time. Only the Round-dependent bonuses decline."
+    }
+  ]
 }
