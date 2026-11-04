@@ -1,5 +1,6 @@
 import { flat } from './data.js'
 import { SLOT_LIMITS, combineMods } from './magic.js'
+import { canonicalTags } from '../tags.js'
 import { choiceSpecs, emptyTalents, normalizeTalents, rankInfo, talentPool, TIERS, xpSpent } from './talents.js'
 
 export const CHARACTERISTICS = ['body', 'agility', 'mind', 'spirit']
@@ -239,7 +240,12 @@ function finishAttack(a, m = {}) {
     else out.keywords.push(`${label} ${n}`)
   }
   if (m.critical) stack(/^Critical\s+\d+/i, 'Critical', m.critical)
-  for (const [type, n] of Object.entries(m.anti ?? {})) stack(new RegExp(`^Anti-${type}\\s+\\d+`, 'i'), `Anti-${type}`, n)
+  for (const [type, n] of Object.entries(m.anti ?? {})) {
+    const re = new RegExp(`^Anti-${type}\\s+\\d+`, 'i')
+    const i = out.keywords.findIndex((k) => re.test(k))
+    if (i >= 0) out.keywords[i] = `Anti-${type} ${Math.max(num(out.keywords[i]), n)}`
+    else out.keywords.push(`Anti-${type} ${n}`)
+  }
   for (const k of m.keywords ?? []) if (!out.keywords.includes(k)) out.keywords.push(k)
   for (const t of m.types ?? []) if (!out.damageTypes.includes(t)) out.damageTypes.push(t)
   out.hit = plus(out.hit)
@@ -515,7 +521,7 @@ export function derive(char, data) {
   if (cls.classAbility && cls.id !== 'artificer') traits.push({ source: `${cls.name} Class Ability`, name: cls.classAbility.name, text: flat(cls.classAbility.effect), timing: [cls.classAbility.cost, cls.classAbility.timing].filter(Boolean).join(' · '), klass: true })
   // Character denotes a PC or an explicitly named/legendary figure, not a generic
   // Hero. Ancestry and creature-type tags are independent of army allegiance.
-  const tags = [...new Set([...(ancestry.tags ?? []), ...(archetype?.tags ?? []), ...(cls.tags ?? []), ...(sub.additionalTags ?? []), 'Character', 'Hero'])]
+  const tags = canonicalTags([...(ancestry.tags ?? []), ...(archetype?.tags ?? []), ...(cls.tags ?? []), ...(sub.additionalTags ?? []), 'Character', 'Hero'])
 
   const commands = []
   const signature = sub.signatureAbility
