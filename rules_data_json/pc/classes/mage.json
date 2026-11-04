@@ -253,7 +253,7 @@
           "name": "Claws",
           "profile": {
             "range": "Engaged",
-            "attacks": 2,
+            "attacks": 1,
             "hit": "6+",
             "damage": 1,
             "damageTypes": [
