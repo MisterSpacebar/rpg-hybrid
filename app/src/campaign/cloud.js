@@ -3,6 +3,7 @@ import {
   setDoc, updateDoc, deleteDoc, where,
 } from 'firebase/firestore'
 import { db } from '../firebase.js'
+import { FORMATS, baseXp, bonusXp } from './limits.js'
 
 const root = collection(db, 'campaigns')
 const campaignRef = (id) => doc(db, 'campaigns', id)
@@ -10,12 +11,7 @@ const membersRef = (id) => collection(db, 'campaigns', id, 'joinRequests')
 const heroesRef = (id) => collection(db, 'campaigns', id, 'heroes')
 const approvedRef = (id, uid) => doc(db, 'campaigns', id, 'approvedHeroes', uid)
 
-export const FORMATS = {
-  local: [3, 4, 5, 6],
-  standard: [4, 5, 7, 9],
-  long: [5, 6, 8, 10],
-  grand: [6, 7, 9, 11],
-}
+export { FORMATS }
 
 export async function createCampaign(uid, name, format = 'standard') {
   if (!FORMATS[format]) throw new Error('Invalid campaign format')
@@ -27,6 +23,7 @@ export async function createCampaign(uid, name, format = 'standard') {
     act: 1,
     turn: 1,
     xpTotal: 0,
+    bonusXp: 0,
     status: 'active',
     patronFactionId: null,
     createdAt: serverTimestamp(),
@@ -73,8 +70,16 @@ export async function rejectJoin(campaignId, uid) {
 }
 
 export async function updateCampaignProgress(campaign, patch) {
-  const permitted = ['xpTotal', 'act', 'turn', 'status', 'patronFactionId']
-  const update = Object.fromEntries(Object.entries(patch).filter(([key]) => permitted.includes(key)))
+  const next = { ...campaign, ...patch }
+  if (!FORMATS[next.format] || next.turn < 1) throw new Error('Invalid campaign position')
+  const bonus = Number.isInteger(patch.bonusXp) ? patch.bonusXp : bonusXp(campaign)
+  if (bonus < 0) throw new Error('Bonus XP cannot be negative')
+  const xpTotal = baseXp(next.format, next.act, next.turn) + bonus
+  if (xpTotal < campaign.xpTotal) throw new Error('Campaign XP cannot decrease; progress only moves forward')
+  const update = {
+    act: next.act, turn: next.turn, status: next.status ?? 'active',
+    patronFactionId: next.patronFactionId || null, bonusXp: bonus, xpTotal: Math.min(xpTotal, 250),
+  }
   await updateDoc(campaignRef(campaign.id), { ...update, updatedAt: serverTimestamp() })
 }
 

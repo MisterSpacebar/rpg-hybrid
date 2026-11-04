@@ -1,6 +1,20 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { campaignSlots, allowedDoctrineCommands, deploymentCap, detachmentView } from './limits.js'
+import { campaignSlots, allowedDoctrineCommands, deploymentCap, detachmentView, baseXp, advanceTurn, bonusXp } from './limits.js'
+
+test('XP follows completed turns and Act advancement', () => {
+  assert.equal(baseXp('standard', 1, 1), 0)
+  assert.equal(baseXp('standard', 1, 4), 15)
+  assert.equal(baseXp('standard', 2, 1), 4 * 5 + 5)
+  assert.equal(baseXp('standard', 4, 9), (4 + 5 + 7 + 8) * 5 + 15)
+})
+
+test('advanceTurn rolls over Acts and ends the campaign', () => {
+  assert.deepEqual(advanceTurn({ format: 'local', act: 1, turn: 3 }), { act: 2, turn: 1, status: 'active' })
+  assert.deepEqual(advanceTurn({ format: 'local', act: 4, turn: 6 }), { act: 4, turn: 7, status: 'completed' })
+  assert.equal(bonusXp({ format: 'local', act: 2, turn: 1, xpTotal: 20 }), 0)
+  assert.equal(bonusXp({ format: 'local', act: 2, turn: 1, xpTotal: 30, bonusXp: 10 }), 10)
+})
 
 const catalog = {
   factions: [

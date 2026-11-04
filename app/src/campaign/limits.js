@@ -9,6 +9,41 @@ export const CAMPAIGN_CAPS = {
   long: [null, 325, 475, 625],
   grand: [null, 375, 575, 750],
 }
+
+// Turns per Act for each campaign length.
+export const FORMATS = {
+  local: [3, 4, 5, 6],
+  standard: [4, 5, 7, 9],
+  long: [5, 6, 8, 10],
+  grand: [6, 7, 9, 11],
+}
+export const XP_PER_TURN = 5
+export const XP_PER_ACT_ADVANCE = 5
+export const XP_CAP = 250
+
+// Base XP is fully determined by position: 5 per completed Turn plus 5 on entering each of Acts II-IV.
+// Exploration and Pivotal Objective XP are tracked separately as bonus XP.
+export function baseXp(format, act, turn) {
+  const turns = FORMATS[format]
+  if (!turns) return 0
+  const completed = turns.slice(0, act - 1).reduce((a, b) => a + b, 0) + (turn - 1)
+  return completed * XP_PER_TURN + (act - 1) * XP_PER_ACT_ADVANCE
+}
+
+export function bonusXp(campaign) {
+  return Number.isInteger(campaign.bonusXp)
+    ? campaign.bonusXp
+    : Math.max(0, campaign.xpTotal - baseXp(campaign.format, campaign.act, campaign.turn))
+}
+
+// Completing a Turn moves to the next Turn, then the next Act; completing the last Turn of Act IV ends the campaign.
+export function advanceTurn(campaign) {
+  const turns = FORMATS[campaign.format]
+  if (campaign.turn < turns[campaign.act - 1]) return { act: campaign.act, turn: campaign.turn + 1, status: 'active' }
+  if (campaign.act < 4) return { act: campaign.act + 1, turn: 1, status: 'active' }
+  return { act: 4, turn: campaign.turn + 1, status: 'completed' }
+}
+
 export const FIELD_SLOTS = ['C', 'E', 'R', 'V', 'S', 'A']
 
 export const emptyDetachment = () => ({ doctrineId: null, commands: [], selections: [] })

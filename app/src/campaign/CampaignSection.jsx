@@ -14,6 +14,7 @@ import {
   saveHeroDraft, updateCampaignProgress, listInventory, listDetachments, listApprovedHeroes,
 } from './cloud.js'
 import { validateCampaignSheet } from './equipment.js'
+import { advanceTurn, baseXp, bonusXp } from './limits.js'
 
 const errorMessage = (e) => e?.message || 'Something went wrong. Please try again.'
 const actName = ['The Gathering Storm', 'Founding the Company', 'Rising Powers', 'The Final Reckoning']
@@ -38,8 +39,13 @@ export default function CampaignSection({ hash }) {
 
   const submit = async (fn) => {
     setBusy(true); setNotice('')
-    try { await fn() } catch (e) { setNotice(errorMessage(e)) }
-    finally { setBusy(false) }
+    // Firestore writes wait forever when the backend is unreachable or blocked, so surface that instead of hanging silently.
+    let timer
+    const timeout = new Promise((_, reject) => {
+      timer = setTimeout(() => reject(new Error('The server did not respond. Check your connection, ad/privacy blockers, and that the Firestore rules are deployed.')), 15000)
+    })
+    try { await Promise.race([fn(), timeout]) } catch (e) { console.error(e); setNotice(errorMessage(e)) }
+    finally { clearTimeout(timer); setBusy(false) }
   }
 
   if (loading) return <div className="builder-wrap"><p className="muted">Loading…</p></div>
@@ -97,13 +103,13 @@ function Workspace({ id, user }) {
   const [error, setError] = useState('')
   const [working, setWorking] = useState(false)
   const [sheet, setSheet] = useState(null)
-  const [progress, setProgress] = useState({ xpTotal: 0, act: 1, turn: 1, patronFactionId: '' })
+  const [progress, setProgress] = useState({ bonusXp: 0, patronFactionId: '' })
 
   const isGm = campaign?.gmUid === user.uid
   const refresh = useCallback(async () => {
     const c = await loadCampaign(id)
     setCampaign(c)
-    setProgress({ xpTotal: c.xpTotal, act: c.act, turn: c.turn, patronFactionId: c.patronFactionId ?? '' })
+    setProgress({ bonusXp: bonusXp(c), patronFactionId: c.patronFactionId ?? '' })
     const [hs, d, approval, registered, deployed, approvals] = await Promise.all([listCampaignHeroes(id), loadCharacterData(), loadApprovedHero(id, user.uid), listInventory(id), listDetachments(id), listApprovedHeroes(id)])
     setHeroes(hs); setData(d); setApproved(approval); setInventory(registered); setDetachments(deployed); setApprovedHeroes(approvals)
     setSheet((previous) => previous ?? normalizeCharacter({ ...emptyCharacter(), ...(hs.find((h) => h.ownerUid === user.uid)?.sheet ?? {}), ownerUid: user.uid }, d))
@@ -126,7 +132,7 @@ function Workspace({ id, user }) {
 
   return <div className="builder-wrap campaign-page">
     <p className="small"><a href="#/campaign">Campaigns</a> / {campaign.name}</p>
-    <div className="campaign-heading"><div><h1>{campaign.name}</h1><p className="muted">{isGm ? 'Game Master' : 'Player'} · {campaign.format} · Act {campaign.act}: {actName[campaign.act - 1]} · Turn {campaign.turn}/{actMax}</p></div>
+    <div className="campaign-heading"><div><h1>{campaign.name}</h1><p className="muted">{isGm ? 'Game Master' : 'Player'} · {campaign.format} · Act {campaign.act}: {actName[campaign.act - 1]} · Turn {Math.min(campaign.turn, actMax)}/{actMax}{campaign.status === 'completed' ? ' · Completed' : ''}</p></div>
       {isGm && <button onClick={() => copyId(id)}>Copy invite ID</button>}
     </div>
     {error && <p className="bad" role="alert">{error}</p>}
@@ -148,13 +154,15 @@ function Workspace({ id, user }) {
     </div>}
     {tab === 'army' && <CampaignArmy campaign={campaign} user={user} isGm={isGm} heroes={heroes} inventory={inventory} detachments={detachments} approvedHeroes={approvedHeroes} onRefresh={refresh} />}
     {tab === 'gm' && isGm && <div className="panel-grid">
-      <section className="panel"><h2>Progression</h2><p className="muted small">Adjust manually for the first milestone. Only the GM may change campaign XP or Act progression.</p>
-        <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); run(() => updateCampaignProgress(campaign, progress)) }}>
-          <label className="field">Total earned XP<input type="number" min={campaign.xpTotal} max={250} step={5} value={progress.xpTotal} onChange={(e) => setProgress({ ...progress, xpTotal: Number(e.target.value) })} /></label>
-          <label className="field">Act<select value={progress.act} onChange={(e) => setProgress({ ...progress, act: Number(e.target.value), turn: 1 })}>{[1,2,3,4].map((a) => <option value={a} key={a}>Act {a}</option>)}</select></label>
-          <label className="field">Turn<input type="number" min={1} max={FORMATS[campaign.format][progress.act - 1]} value={progress.turn} onChange={(e) => setProgress({ ...progress, turn: Number(e.target.value) })} /></label>
+      <section className="panel"><h2>Progression</h2><p className="muted small">XP follows the campaign position: 5 XP per completed Turn and 5 XP on beginning Acts II, III and IV. Add exploration and Pivotal Objective XP below. Progress only moves forward.</p>
+        <p>Earned XP: <strong>{campaign.xpTotal}</strong> <span className="muted small">({baseXp(campaign.format, campaign.act, campaign.turn)} from progression + {bonusXp(campaign)} bonus)</span></p>
+        <button className="primary" disabled={working || campaign.status === 'completed' || (campaign.act === 1 && campaign.turn >= actMax && !progress.patronFactionId)} onClick={() => run(() => updateCampaignProgress(campaign, { ...advanceTurn(campaign), patronFactionId: progress.patronFactionId }))}>
+          {campaign.status === 'completed' ? 'Campaign complete' : campaign.act === 4 && campaign.turn >= actMax ? 'Complete final Turn (+5 XP)' : campaign.turn >= actMax ? `Complete Turn (+5 XP) and begin Act ${campaign.act + 1} (+5 XP)` : 'Complete Turn (+5 XP)'}
+        </button>
+        <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); run(() => updateCampaignProgress(campaign, { bonusXp: progress.bonusXp, patronFactionId: progress.patronFactionId })) }}>
+          <label className="field">Bonus XP (exploration Sites and Pivotal Objectives, 5 each)<input type="number" min={0} step={5} value={progress.bonusXp} onChange={(e) => setProgress({ ...progress, bonusXp: Number(e.target.value) })} /></label>
           <label className="field">Company sponsoring faction (Act II onward)<select value={progress.patronFactionId} onChange={(e) => setProgress({ ...progress, patronFactionId: e.target.value })}><option value="">Select when Company is founded…</option>{['free-realms','sacred-orders','iron-holds','wild-courts','warclans','underclans','death-legions','blood-courts','spirit-hosts','infernal-hosts','arcane-orders','titan-clans'].map((id) => <option key={id} value={id}>{id.replace(/-/g, ' ')}</option>)}</select></label>
-          <button className="primary" disabled={working || (progress.act >= 2 && !progress.patronFactionId)}>Save progress</button>
+          <button className="primary" disabled={working || (campaign.act >= 2 && !progress.patronFactionId)}>Save progress</button>
         </form>
       </section>
       <section className="panel"><h2>Join requests</h2>{!requests.length && <p className="muted">No pending requests.</p>}

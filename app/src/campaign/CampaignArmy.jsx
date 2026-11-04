@@ -122,6 +122,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
     {isGm && <section className="panel span-all">
       <h2>GM — Manage Company formations</h2>
       <p className="muted small">Only the GM can register acquired units. Use a recruitment, Patron grant, mission reward, or approved agreement before adding them. Gold expenditure and recruiting eligibility are not yet automatically enforced.</p>
+      {!canRecruit && <p className="bad" role="status">{campaign.act < 2 ? 'Formations can be granted once the campaign reaches Act II (complete every Turn of Act I in GM Controls).' : 'Choose a sponsoring faction in GM Controls → Progression before granting formations.'}</p>}
       <label className="field">Grant formation
         <select value={selectedKey} onChange={(e) => setSelectedKey(e.target.value)}>
           <option value="">Choose a formation…</option>
