@@ -28,6 +28,9 @@ export function validateCampaignSheet(char, data, earnedXp) {
       errors.push(`Equipment acquisition is not enabled: ${item.name ?? 'unknown item'}`)
       continue
     }
+    if ((item.enchants ?? []).length || (item.qualities ?? []).length || item.crafted || item.customProfile) {
+      errors.push(`${item.name} has an upgrade requiring campaign acquisition`)
+    }
     counts[item.kind]++
     if (item.kind === 'melee' || item.kind === 'ranged') {
       const found = data[item.kind].some((w) => w.name === item.name)
