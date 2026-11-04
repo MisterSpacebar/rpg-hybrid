@@ -129,7 +129,7 @@ export const WARD_CHOICES = [{ value: 'physical', label: 'Physical' }, { value: 
 // Which slot an owned magic item occupies: 'focus', 'artifact', or (relics) 'weapon' / 'shield'.
 export const slotOf = (item, entry) => (item.kind === 'relic' ? entry?.slot : item.kind)
 
-// Combines per-attack modifiers; numbers add, lists concatenate and Anti-[Type] values add per type.
+// Combines per-attack modifiers. Same-type Anti ranks use the highest, not the sum.
 export function combineMods(a = {}, b = {}) {
   const out = { ...a }
   for (const [k, v] of Object.entries(b)) {
@@ -137,7 +137,7 @@ export function combineMods(a = {}, b = {}) {
     else if (Array.isArray(v)) out[k] = [...(out[k] ?? []), ...v]
     else if (v && typeof v === 'object') {
       const merged = { ...(out[k] ?? {}) }
-      for (const [t, n] of Object.entries(v)) merged[t] = (merged[t] ?? 0) + n
+      for (const [t, n] of Object.entries(v)) merged[t] = k === 'anti' ? Math.max(merged[t] ?? 0, n) : (merged[t] ?? 0) + n
       out[k] = merged
     }
   }
