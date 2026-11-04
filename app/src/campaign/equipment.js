@@ -48,6 +48,13 @@ export function validateCampaignSheet(char, data, earnedXp, inventory = [], othe
   if (!cls || !sub || !Array.isArray(char.gear)) return ['Invalid class, subclass or equipment']
   const allowed = startingWeaponNames(cls, sub)
   const original = approved?.sheet?.gear
+  if (approved?.sheet) {
+    for (const key of ['ancestry', 'classId', 'subclassId', 'size', 'humanBoost', 'adaptations', 'archetype', 'skillPicks', 'subclassSpell', 'formulas']) {
+      if (JSON.stringify(char[key] ?? null) !== JSON.stringify(approved.sheet[key] ?? null)) {
+        return [`Starting character choice ${key} is locked after GM approval`]
+      }
+    }
+  }
   const known = new Map(inventory.filter((i) => i.kind === 'equipment').map((i) => [i.id, i]))
   const claimed = new Set(otherHeroes.flatMap((h) => (h.sheet?.gear ?? []).map((g) => g.inventoryId).filter(Boolean)))
   const errors = []
