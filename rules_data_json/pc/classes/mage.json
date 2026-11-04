@@ -242,6 +242,7 @@
       },
       "summonedUnit": {
         "name": "Thrall",
+        "tags": ["Infantry", "Undead", "Summoned"],
         "stats": {
           "move": "3\"",
           "wounds": "1 per Model",
