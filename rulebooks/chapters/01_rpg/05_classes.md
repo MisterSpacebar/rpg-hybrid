@@ -319,9 +319,11 @@ Necromancers specialize in reanimation, attrition, and sustaining themselves thr
 
 **1 CP — Movement**
 
-If you do not currently control a Thrall Unit, create one engaged with this character containing X Models, where X equals your Mind characteristic. A newly raised Thrall Unit cannot activate during the Round in which it was created. If you already control a Thrall Unit, you may instead target one summoned Thrall unit you control and add one Model to that Unit, provided it is not Engaged with an enemy. New Models must be placed within 3" of another Model in the same Unit, following normal placement rules.
+If you do not currently control a Thrall Unit, create one Engaged with the Necromancer containing up to **Mind Models (maximum six)**. The newly summoned Unit cannot activate during the Round it is created.
 
-A Necromancer may control only one Thrall Unit through Raise Thrall at a time.
+If you control a surviving Thrall Unit that is not Engaged with an enemy, restore **up to two defeated Models** to it, to a maximum of **six Models**, even if that exceeds the number originally summoned. Place restored Models legally in Coherency within 3" of an existing Thrall Model. A fully destroyed Unit cannot be reinforced, but a new Thrall Unit may be summoned on a later eligible use.
+
+A Necromancer controls **at most one Thrall Unit** through this ability. Follow the ordinary CP and placement restrictions.
 
 #### Assault Phase — Subclass Spell Attacks
 
@@ -342,6 +344,8 @@ In addition to the Mage's Base Spell Attacks:
 
 
 #### Summoned Unit — Thrall
+
+**Tags:** Infantry, Undead, Summoned. These apply to the entire Unit. A Thrall is not a Hero or Unique Unit, and does not automatically inherit the Necromancer's ancestry or creature tags.
 
 | Move | Wounds | Armor | Evade | Ward |
 | --- | --- | --- | --- | --- |
@@ -614,6 +618,6 @@ The tables repeated in this chapter are player-facing quick references, not alte
 
 **Raise Thrall:** 1 CP, Movement. Summon a new Thrall Unit with Models equal to Mind (maximum **six**); newly summoned Thralls cannot activate that Round. If you already control a surviving Thrall Unit that is not enemy-Engaged, instead restore **up to two Models**, up to six total. Reinforcement can grow a surviving Unit above its initial Mind-based count, but not above six; completely destroyed Units cannot be reinforced. Only one summoned Thrall Unit per Necromancer.
 
-**Thrall derived profile:** Move 3", W1, Claws 1 Attack per Model, Damage 1. Claws **Hit = Necromancer's Mysticism threshold +1**; Armor = **Medicine threshold +2**; Evade = **Stealth threshold +3**. Clamp resulting thresholds to the ordinary 2+ through 6+ range. Thralls inherit each **Anti-tag possessed by the Necromancer at rank−1**, ignoring any resulting rank 0. Matching Anti ranks never stack; one highest rank adds its dice once to the combined pool. Temporary one-attack Command bonuses are not inherited by default. Reanimated and all restoration respect the six-Model maximum.
+**Thrall tags:** Infantry, Undead, Summoned (and faction allegiance only when explicitly assigned).\n\n**Thrall derived profile:** Move 3", W1, Claws 1 Attack per Model, Damage 1. Claws **Hit = Necromancer's Mysticism threshold +1**; Armor = **Medicine threshold +2**; Evade = **Stealth threshold +3**. Clamp resulting thresholds to the ordinary 2+ through 6+ range. Thralls inherit each **Anti-tag possessed by the Necromancer at rank−1**, ignoring any resulting rank 0. Matching Anti ranks never stack; one highest rank adds its dice once to the combined pool. Temporary one-attack Command bonuses are not inherited by default. Reanimated and all restoration respect the six-Model maximum.
 
 **PC offensive specialization:** Favored Enemy selects a DIFFERENT tag at each Rank, each at permanent Anti 3. Tier 3 Master Hunter upgrades ONE chosen Favored Enemy tag to Anti 4. Tier 2 Precision Shooting grants Pinpoint to one selected ranged Weapon/Spell Attack. Tier 3 Decisive Strike is a 1 CP Combat Command adding +1 Damage to ONE unsaved Melee Hit, if any. Tier 3 Critical Force gives +1 total Damage to ONE surviving Critical Hit per Attack, not +1 per Critical. Tier 4 Greater Critical Force can increase this to +2 total. Direct Damage and Perfect Strike remain available through the existing magical/offensive talent system.
