@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import ArmySection from './components/ArmySection.jsx'
 import CharacterSection from './components/CharacterSection.jsx'
 import MyLibrary from './components/MyLibrary.jsx'
+import CampaignSection from './campaign/CampaignSection.jsx'
 import UserMenu from './components/UserMenu.jsx'
 import RulesPage from './components/RulesPage.jsx'
 
@@ -21,6 +22,7 @@ const TABS = [
   { id: 'appendices', label: 'Appendices' },
   { id: 'builder', label: 'Army Builder' },
   { id: 'character', label: 'Characters' },
+  { id: 'campaign', label: 'Campaigns' },
   { id: 'library', label: 'My Library' },
 ]
 
@@ -46,6 +48,7 @@ export default function App() {
       {activeTab === 'builder' && <ArmySection hash={hash} />}
       {activeTab === 'character' && <CharacterSection hash={hash} />}
       {activeTab === 'library' && <MyLibrary hash={hash} />}
+      {activeTab === 'campaign' && <CampaignSection hash={hash} />}
       {(activeTab === 'rules' || activeTab === 'appendices') && <RulesPage key={activeTab} tab={activeTab} hash={hash} />}
     </div>
   )
