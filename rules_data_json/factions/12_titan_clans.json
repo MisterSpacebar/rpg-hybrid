@@ -381,7 +381,7 @@
       "Infantry",
       "Hero",
       "Mortal",
-      "Character",
+      "Unique",
       "Officer"
     ],
     "modelProfile": {
@@ -405,7 +405,7 @@
       {
         "name": "Supreme Bully",
         "type": "Passive",
-        "effect": "The Overtyrant's Melee Attacks gain Anti-Monster 2 and Anti-Character 2."
+        "effect": "The Overtyrant's Melee Attacks gain Anti-Monster 2 and Anti-Unique 2."
       },
       {
         "name": "The Crushing Tide",
@@ -422,6 +422,6 @@
   },
   "genericUnitsWorthTaking": "Cheap auxiliaries, conventional Ranged Infantry, light mobile troops, Scouts, and ordinary Support Units. Ogre Warriors and Beast Riders are devastating but too expensive to efficiently cover every objective.",
   "designNotes": [
-    "v4.2 balance pass: added Stone Hurlers as the faction's Extra Core, a stationary ranged-support Monster unit reinforcing the Heavy Support doctrine rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on Ogre Warriors' Heavy Clubs and the Giant's Massive Club, Anti-Infantry on Beast Riders' Mauling Harness, Anti-Elite on the Tyrant's Great Weapon) or an improved Hit (War Mammoth's Crushing Tusks 4+ -> 3+). The Overtyrant's Supreme Bully passive also had its Anti-Monster/Anti-Character values doubled from 1 to 2."
+    "v4.2 balance pass: added Stone Hurlers as the faction's Extra Core, a stationary ranged-support Monster unit reinforcing the Heavy Support doctrine rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on Ogre Warriors' Heavy Clubs and the Giant's Massive Club, Anti-Infantry on Beast Riders' Mauling Harness, Anti-Elite on the Tyrant's Great Weapon) or an improved Hit (War Mammoth's Crushing Tusks 4+ -> 3+). The Overtyrant's Supreme Bully passive also had its Anti-Monster/Anti-Unique values doubled from 1 to 2."
   ]
 }
