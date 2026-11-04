@@ -28,10 +28,12 @@ export function campaignSlots(campaign, entitlement = {}, detachment = {}, catal
   const sources = [{ slot: 'H', source: 'Personal PC Hero (reserved)' }]
   slots.H = 1
   if (campaign.act >= 2) {
-    for (const s of (entitlement.patronSlots ?? []).slice(0, 2)) {
+    // Campaign Patron entitlements use the normal foundation slots of the sponsoring faction.
+    const sponsor = catalog.factions.find((f) => f.id === campaign.patronFactionId)
+    for (const s of (sponsor?.foundationSlots ?? [])) {
       if (!FIELD_SLOTS.includes(s)) continue
       slots[s] += 1
-      sources.push({ slot: s, source: 'Patron (individual PC)' })
+      sources.push({ slot: s, source: 'Faction foundation (Patron)' })
     }
   }
   const doctrine = campaign.act >= 3
@@ -86,7 +88,7 @@ export function detachmentView(campaign, entitlement, detachment, inventory, cat
   check(!units.some((u) => !u.missing && u.pointsVary), 'A formation has an unresolved variable Point cost')
   check(SLOT_ORDER.every((s) => used[s] <= budget.unitSlots[s]), 'Detachment exceeds its available recruitment slots')
   check(campaign.act >= 2 || selections.length === 0, 'Military formations unlock in Act II')
-  if (campaign.act >= 2) check((entitlement.patronSlots ?? []).length === 2, 'GM must assign two Patron slots')
+  if (campaign.act >= 2) check(!!catalog.factions.some((f) => f.id === campaign.patronFactionId), 'GM must choose a sponsoring faction')
   if (campaign.act < 3) check(!detachment.doctrineId && !(detachment.commands ?? []).length, 'Doctrine unlocks in Act III')
   if (campaign.act >= 3) {
     check(!!budget.doctrine, 'Choose your personal Doctrine')
