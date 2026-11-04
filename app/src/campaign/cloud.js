@@ -208,9 +208,14 @@ export async function deleteCampaign(id) {
 }
 
 // Live listeners: each returns an unsubscribe function.
+export const watchMyCampaigns = (uid, cb, onError) => onSnapshot(
+  query(root, where('memberUids', 'array-contains', uid)),
+  (snapshot) => cb(docs(snapshot)), onError,
+)
+
 const docs = (snap) => snap.docs.map((d) => ({ id: d.id, ...d.data() }))
 const owned = (snap) => snap.docs.map((d) => ({ ownerUid: d.id, ...d.data() }))
-export const watchCampaign = (id, cb, onError) => onSnapshot(campaignRef(id), (s) => s.exists() && cb({ id: s.id, ...s.data() }), onError)
+export const watchCampaign = (id, cb, onError) => onSnapshot(campaignRef(id), (s) => cb(s.exists() ? { id: s.id, ...s.data() } : null), onError)
 export const watchHeroes = (id, cb, onError) => onSnapshot(heroesRef(id), (s) => cb(docs(s)), onError)
 export const watchInventory = (id, cb, onError) => onSnapshot(inventoryRef(id), (s) => cb(docs(s)), onError)
 export const watchDetachments = (id, cb, onError) => onSnapshot(collection(db, 'campaigns', id, 'detachments'), (s) => cb(owned(s)), onError)
