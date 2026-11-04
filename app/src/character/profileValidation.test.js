@@ -60,6 +60,35 @@ test('all battle profile JSON files use current Unique targeting and tags', () =
   assert.ok(scanned >= 30)
 })
 
+test('all five Player Character classes and their subclasses resolve Unique independently of Hero', () => {
+  const human = readJson('pc/ancestries.json').ancestries.find((a) => a.id === 'human')
+  assert.ok(human)
+  for (const classId of ['warrior', 'rogue', 'mage', 'priest', 'artificer']) {
+    const klass = readJson(`pc/classes/${classId}.json`)
+    assert.ok(klass.subclasses.length >= 3, `${classId} subclasses exist`)
+    for (const subclass of klass.subclasses) {
+      const tags = canonicalTags([...human.tags, ...(klass.tags ?? []), ...(subclass.additionalTags ?? []), 'Unique', 'Hero'])
+      assert.ok(tags.includes('Unique'), `${classId}/${subclass.id}`)
+      assert.ok(tags.includes('Hero'), `${classId}/${subclass.id}`)
+      assert.ok(tags.includes('Human'), `${classId}/${subclass.id}`)
+      assert.ok(tags.includes('Mortal'), `${classId}/${subclass.id}`)
+      assert.ok(!tags.includes('Character'))
+      assert.equal(tags.length, new Set(tags).size)
+    }
+  }
+})
+
+test('real generic Captain profile remains Officer, with no Unique status', () => {
+  const data = readJson('units/generic/03_captains.json')
+  const captain = data.units.find((unit) => unit.id === 'captain')
+  assert.ok(captain.tags.includes('Officer'))
+  assert.ok(!captain.tags.includes('Unique'))
+  assert.ok(!captain.tags.includes('Hero'))
+  const tags = canonicalTags(captain.tags, 'free-realms')
+  assert.ok(tags.includes('Free Realms'))
+  assert.ok(!tags.includes('Unique'))
+})
+
 test('legacy Character targeting remains readable but newly offered choices use Unique', () => {
   assert.ok(ANTI_TAGS.includes('Unique'))
   assert.ok(ANTI_TAGS.includes('Summoned'))
