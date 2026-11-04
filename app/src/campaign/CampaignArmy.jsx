@@ -73,7 +73,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       <p><strong>{inventory.filter((i) => i.kind === 'unit').length}</strong> owned formations · <strong>{campaign.act >= 2 ? sponsor?.name ?? 'Sponsor not chosen' : 'Company not founded'}</strong> · {deploymentCap(campaign) ?? 'Hero only'} deployment points per PC</p>
       {message && <p className={message === 'Saved' ? 'ok' : 'bad'} role="status">{message}</p>}
     </section>
-    <section className="panel">
+    {!isGm && <section className="panel">
       <h2>My Detachment</h2>
       <p className="muted small">{result.total} / {result.cap ?? 'Hero only'} points, including {hero?.points.total ?? '?'} Hero points</p>
       {campaign.act >= 3 && <label className="field">Personal Doctrine
@@ -94,13 +94,15 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       <h3>Recruitment slots</h3>
       <div className="slot-count">{result.slots.sources.map((s, i) => <span key={i} className="tag" title={s.source}>{s.slot} ({s.source}) </span>)}</div>
       <ul className="saved-list">{result.units.filter((u) => !u.missing).map((u) => <li key={u.poolId}>
-        <span><strong>{u.name}</strong> · {u.points} points · {u.slot}</span>
-        <button onClick={() => remove(u.poolId)}>Remove</button>
+        <span><strong>{u.name}</strong> · {u.points} points</span>
+        <div className="saved-actions"><select aria-label={`Recruitment slot for ${u.name}`} value={u.slot} onChange={(e) => setDraft((d) => ({ ...d, selections: d.selections.map((s) => s.id === u.poolId ? { ...s, slot: e.target.value } : s) }))}>
+          {u.eligibleSlots.map((s) => <option key={s} value={s}>{s}{result.slots.unitSlots[s] === 0 ? ' (locked)' : ''}</option>)}
+        </select><button onClick={() => remove(u.poolId)}>Remove</button></div>
       </li>)}</ul>
       {result.errors.length > 0 && <ul className="checks">{result.errors.map((e, i) => <li className="bad" key={i}>{e}</li>)}</ul>}
       <button className="primary" disabled={saving || !result.legal} onClick={() => perform(() => saveDetachment(campaign.id, user.uid, draft))}>Save legal detachment</button>
-    </section>
-    <section className="panel">
+    </section>}
+    {!isGm && <section className="panel">
       <h2>Select owned formations</h2>
       {campaign.act === 1 && <p className="muted">Act I uses your Hero. Military deployments begin in Act II.</p>}
       {campaign.act >= 2 && !sponsor && <p className="muted">The GM must select a sponsoring faction before military deployment.</p>}
@@ -116,7 +118,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         </li>
       })}</ul>
       {canRecruit && !inventory.some((i) => i.kind === 'unit') && <p className="muted">No formations have been recruited into the Company pool.</p>}
-    </section>
+    </section>}
     {isGm && <section className="panel span-all">
       <h2>GM — Manage Company formations</h2>
       <p className="muted small">Only the GM can register acquired units. Use a recruitment, Patron grant, mission reward, or approved agreement before adding them. Gold expenditure and recruiting eligibility are not yet automatically enforced.</p>
