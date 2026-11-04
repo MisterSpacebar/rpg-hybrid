@@ -58,7 +58,7 @@ Faction tags can be targeted directly, for example by **Anti-Death Legions 1**.
 | --- | --- |
 | **Infantry** | Conventional foot troops, including ranged infantry and elite foot formations. |
 | **Cavalry** | Mounted troops and equivalent mobile combat formations. |
-| **Character** | Explicitly designated significant individuals: PCs, named legendary figures, and named legacy Captains. Does **not** automatically apply to generic officers, Wizards, or every Hero. |
+| **Unique** | Explicitly designated one-of-a-kind individuals or entities: PCs, named legendary figures, named legacy Captains, and singular monsters. A Unique profile may be purchased only once per army. Unique does not automatically confer Hero, Officer, or recruitment eligibility. |
 | **Support** | Personnel primarily providing healing, engineering, reconnaissance, or battlefield assistance. |
 | **Creature** | Independent animals and other non-Monster creatures that are not conventional military formations. |
 | **Artillery** | Crewed or stationary weapons designed for long-range fire support. |
@@ -66,7 +66,7 @@ Faction tags can be targeted directly, for example by **Anti-Death Legions 1**.
 | **Monster** | Exceptional creatures or similarly powerful living or supernatural battlefield threats. |
 | **Construct** | Animated objects, golems, automatons, and magically or mechanically sustained beings. |
 
-Unit Types may overlap. An individual Artificer might be `Character, Support`; an Arcane Golem could be `Construct, Monster` if its profile assigns both. A mounted Character could possess both `Character` and `Cavalry`.
+Unit Types may overlap. An individual Artificer might be `Unique, Support`; an Arcane Golem could be `Construct, Monster` if its profile assigns both. A mounted Unique Unit could possess both `Character` and `Cavalry`.
 
 **Monster** and **Beast** are different tags: Monster is a Unit Type, whereas Beast is a Trait. Neither automatically grants the other.
 
@@ -90,7 +90,7 @@ Unit Types may overlap. An individual Artificer might be `Character, Support`; a
 | **Humanoid** | Humanoid physical form. May coexist with Mortal, Undead, Infernal, or other creature types. |
 | **Flying** | Units explicitly able to fly. The tag does not itself provide movement rules. |
 
-Additional Traits—such as **Elemental**, **Plant**, or **Swarm**—may appear when specific rosters or rules require them. An additional Trait has no inherent effect until a rule references it.
+Additional Traits—such as **Elemental**, **Plant**, **Swarm**, or **Summoned**—may appear when specific rosters or rules require them. An additional Trait has no inherent effect until a rule references it.
 
 A Unit may have multiple Traits. For example, a spectral skeleton might be `Undead, Spirit`; a mechanized tank might be `Armored, Mechanical`.
 
@@ -121,6 +121,12 @@ A Unit may have multiple Traits. For example, a spectral skeleton might be `Unde
 
 ---
 
+### Summoned
+
+**Summoned** identifies a Unit created by an ability rather than recruited from an army list. It does not by itself grant immunity, additional actions, or recruitment slots. Summoned Units use their own explicitly assigned creature tags, and inherit faction allegiance only when a rule supplies it.
+
+---
+
 ## 5. Role Tags and Roster Designations
 
 Some existing army profiles use additional battlefield labels or army-list classifications. These remain meaningful but are **not interchangeable with Unit Type or Trait tags**.
@@ -129,8 +135,8 @@ Some existing army profiles use additional battlefield labels or army-list class
 | --- | --- |
 | **Core** | A designated Core Unit; counts toward the required number of Core Units in applicable army formats. |
 | **Elite** | A higher-grade Unit or specialist. Elite does not imply Hero. Elite-subtype tags (Elite Infantry, Elite Cavalry, Elite Ranged Infantry) also satisfy Commands requiring an Elite Unit. |
-| **Hero** | A designated Hero, subject to the army's Hero limits where applicable. **Hero does not imply Character.** |
-| **Officer** | A leader entrusted with military command, whether or not they are a Hero or named Character. |
+| **Hero** | A designated Hero, subject to the army's Hero limits where applicable. **Hero does not imply Unique.** |
+| **Officer** | A leader entrusted with military command, whether or not they are a Hero or named Unique individual. |
 | **Wizard** | A designated spellcasting Unit eligible for rules specifically referencing Wizards. |
 | **Ranged / Ranged Infantry** | Identifies Units with a specialized ranged role; ordinary possession of a ranged weapon does not automatically change recruitment eligibility. |
 | **Mobile / Infiltrator** | Specialized mobility or infiltration labels used where explicitly assigned. |
@@ -170,7 +176,7 @@ Examples include:
 - **Anti-Construct 1** — extra Attack die against Construct Units.
 - **Anti-Infernal 1** — extra Attack die against Infernal Units.
 - **Anti-Spirit 1** — extra Attack die against Spirit Units.
-- **Anti-Character 1** — extra Attack die against Units explicitly tagged Character.
+- **Anti-Unique 1** — extra Attack die against Units explicitly tagged Unique.
 - **Anti-Death Legions 1** — extra Attack die against Units whose Faction is Death Legions.
 
 ### Multiple Applicable Anti Keywords
@@ -258,14 +264,14 @@ When preparing or revising a datasheet, separately record:
 4. Role or roster designations, such as Core, Elite, Hero, Wizard, and Large Asset.
 5. Eligible Recruitment Slot(s), where army construction is used.
 
-Older references that infer **Armored** from Armor Save, treat **Hero** and **Character** as interchangeable, or grant Recruitment Slots automatically from Tags should be updated to this chapter's definitions.
+Older references that infer **Armored** from Armor Save, treat **Hero** and **Unique** as interchangeable, or grant Recruitment Slots automatically from Tags should be updated to this chapter's definitions.
 
 ---
 
-## v0.7: Canonical Tags and Explicit Character Status
+## Canonical Tags and Explicit Unique Status
 
 * A compound role (Elite Infantry, Ranged Infantry, Elite Ranged Infantry, Elite Cavalry, Infiltrating Infantry, Horde Infantry) always **satisfies its constituent terms** for Anti-tag matching. Add the constituent tags to data records; retain old compounds as legacy aliases where needed.
-* **Character is explicit and narrative, not a synonym for Hero.** All PCs are Characters. Named/legendary faction leaders and named legacy Captains are Characters. Ordinary generic Captains and Wizards are not Characters simply for being single Models; generic Captains are Officers. Heroic Commission adds Hero but not Character.
+* **Unique is explicit, not a synonym for Hero or Officer.** PCs and named/legendary faction leaders are Unique, as are named legacy Captains and explicitly one-of-a-kind monsters. Generic Captains, Wizards, and commissioned Heroes are not Unique unless their datasheet says so. The former Character battlefield tag is a legacy alias for Unique when reading older saved profiles.
 * **Faction does not imply creature type.** Do not turn a Sacred Orders Unit into Mortal, a Death Legions Unit into Undead, or a Blood Courts Unit into Undead based solely on allegiance. Creature identities are set per datasheet or chosen ancestry/conversion.
 * PCs gain their chosen **ancestry name** and appropriate physical/creature descriptors as separate tags. Human, Dwarf, Elf, Orc, Goblin, Halfling, Gnome, Kobold etc. ordinarily also have Humanoid and Mortal. Tiefling need not be Infernal; Beastfolk need not be Beast. Undead ancestry adds Undead; Spirit ancestry option also adds Spirit. Transformations or equipment explicitly change only the named tags.
 * **Ranged** applies consistently to dedicated ranged-role Units. A secondary ranged weapon grants Ranged only when its upgrade explicitly says so; it does not automatically change recruitment eligibility.
