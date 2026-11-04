@@ -58,7 +58,6 @@ export default function CampaignSection({ hash }) {
     <div className="panel-grid">
       <section className="panel">
         <h2>Create campaign</h2>
-        {progressDraft?.conflict && <div role="status" className="bad small">Campaign settings changed elsewhere while you were editing. Your inputs were preserved. <button onClick={() => setProgressDraft(discardDraft)}>Load current settings</button></div>}
         <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); submit(async () => {
           const created = await createCampaign(user.uid, name, format)
           window.location.hash = `#/campaign/${created}`
@@ -120,6 +119,7 @@ function Workspace({ id, user }) {
   }, [])
   useEffect(() => {
     const fail = (e) => { setError(errorMessage(e)); setCampaignReady(true) }
+    const campaignFail = (e) => { setCampaign(null); fail(e) }
     const stops = [
       watchCampaign(id, (c) => {
         setCampaign(c)
@@ -127,7 +127,7 @@ function Workspace({ id, user }) {
         if (c) setProgressDraft((prev) => acceptSnapshot(prev, {
           bonusXp: bonusXp(c), patronFactionId: c.patronFactionId ?? '',
         }))
-      }, fail),
+      }, campaignFail),
       watchHeroes(id, (list) => { setHeroes(list); setHeroesReady(true) }, fail),
       watchInventory(id, setInventory, fail),
       watchDetachments(id, setDetachments, fail),
@@ -212,6 +212,7 @@ function Workspace({ id, user }) {
         <button className="primary" disabled={working || progressDraft?.conflict || campaign.status === 'completed' || (campaign.act === 1 && campaign.turn >= actMax && !progress.patronFactionId)} onClick={() => run(() => updateCampaignProgress(campaign, { ...advanceTurn(campaign), patronFactionId: progress.patronFactionId }))}>
           {campaign.status === 'completed' ? 'Campaign complete' : campaign.act === 4 && campaign.turn >= actMax ? 'Complete final Turn (+5 XP)' : campaign.turn >= actMax ? `Complete Turn (+5 XP) and begin Act ${campaign.act + 1} (+5 XP)` : 'Complete Turn (+5 XP)'}
         </button>
+        {progressDraft?.conflict && <div role="status" className="bad small">Campaign settings changed elsewhere while you were editing. Your inputs were preserved. <button onClick={() => setProgressDraft(discardDraft)}>Load current settings</button></div>}
         <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); run(() => updateCampaignProgress(campaign, { bonusXp: progress.bonusXp, patronFactionId: progress.patronFactionId })) }}>
           <label className="field">Bonus XP (exploration Sites and Pivotal Objectives, 5 each)<input type="number" min={0} step={5} value={progress.bonusXp} onChange={(e) => updateProgress({ bonusXp: Number(e.target.value) })} /></label>
           <label className="field">Company sponsoring faction (Act II onward)<select value={progress.patronFactionId} onChange={(e) => updateProgress({ patronFactionId: e.target.value })}><option value="">Select when Company is founded…</option>{['free-realms','sacred-orders','iron-holds','wild-courts','warclans','underclans','death-legions','blood-courts','spirit-hosts','infernal-hosts','arcane-orders','titan-clans'].map((id) => <option key={id} value={id}>{id.replace(/-/g, ' ')}</option>)}</select></label>
