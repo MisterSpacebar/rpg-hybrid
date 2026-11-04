@@ -39,8 +39,9 @@ export function modifyStats(base, options) {
     } else if ((m = t.match(/Increase Move (?:from \d+" )?to M?(\d+)"/i))) {
       set('move', `${m[1]}"`)
     }
-    if (typeof stats.wounds === 'number' && (m = t.match(/increase Wounds by (\d+)|\+(\d+) Wounds?\b/i))) {
-      set('wounds', stats.wounds + Number(m[1] ?? m[2]))
+    if (typeof stats.wounds === 'number') {
+      if ((m = t.match(/increase Wounds by (\d+)|\+(\d+) Wounds?\b/i))) set('wounds', stats.wounds + Number(m[1] ?? m[2]))
+      else if (/\+1 maximum Wound|W3\s*(?:to|→)\s*W4/i.test(t)) set('wounds', stats.wounds + 1)
     }
     if (/Ward improves by 1/i.test(t)) set('ward', stepUp(stats.ward))
   }
@@ -52,8 +53,8 @@ const isMelee = (a) => attackPhase(a) === 'Combat'
 // Picks the single weapon a specific upgrade applies to: the chosen package first, then the unit's default weapon.
 function targetOf(attacks, text) {
   const preferPicked = (fn) => attacks.find((a) => a.origin === 'pick' && fn(a)) ?? attacks.find(fn)
-  if (/Arcana|Arcane Bolt/i.test(text)) return attacks.find((a) => a.name === 'Arcane Bolt')
-  if (/ranged|Long Range|Range by/i.test(text)) return preferPicked((a) => !isMelee(a))
+  if (/Arcana|Arcane Bolt/i.test(text)) return attacks.find((a) => a.name === 'Arcane Bolt') ?? preferPicked((a) => !isMelee(a))
+  if (/ranged|Spell Attack|Long Range|Range by/i.test(text)) return preferPicked((a) => !isMelee(a))
   if (/melee/i.test(text)) return preferPicked(isMelee)
   return preferPicked(isMelee) ?? attacks[0]
 }
@@ -75,7 +76,9 @@ function applyTo(a, t) {
   if (/\+1 Attack|Increase Attacks by 1/i.test(t)) a.attacks = Number(a.attacks) + 1
   if (/improves?\b[^.]*\bHit|Hit\b[^.]*\bimproves/i.test(t)) a.hit = stepUp(a.hit)
   if ((m = t.match(/Range by (\d+)"/i)) && /^\d+"$/.test(a.range)) a.range = `${parseInt(a.range, 10) + Number(m[1])}"`
-  if ((m = t.match(/gains? (Accurate|Critical|Anti-Monster|Pinpoint) (\d)/i))) addKeyword(a, m[1], Number(m[2]))
+  if ((m = t.match(/gains? (Accurate|Critical|Anti-Monster) (\d+)/i))) addKeyword(a, m[1], Number(m[2]))
+  if (/\b(?:gain|gains|give|gives)\s+Pinpoint\b/i.test(t) && !a.keywords.includes('Pinpoint')) a.keywords.push('Pinpoint')
+  if (!a.keywords.some((k) => /^Critical\s+\d+/i.test(k)) && /\bCritical\s+1\s+per\s+Surge/i.test(t)) a.keywords.push('Critical 1')
   if ((m = t.match(/Gain Long Range (\d)"/i))) {
     const i = a.keywords.findIndex((k) => /^Long Range/.test(k))
     if (i >= 0) a.keywords[i] = `Long Range ${parseInt(a.keywords[i].slice(11), 10) + 1}"`
@@ -93,7 +96,9 @@ export function modifyAttacks(attacks, options, { allWeapons = [] } = {}) {
       /\+1 Attack|Increase Attacks by 1/i.test(t) ||
       /improves?\b[^.]*\bHit|Hit\b[^.]*\bimproves/i.test(t) ||
       /Range by \d+"/i.test(t) ||
-      /gains? (Accurate|Critical|Anti-Monster|Pinpoint) \d/i.test(t) ||
+      /gains? (Accurate|Critical|Anti-Monster) \d/i.test(t) ||
+      /\b(?:gain|gains|give|gives)\s+Pinpoint\b/i.test(t) ||
+      /\bCritical\s+1\s+per\s+Surge/i.test(t) ||
       /Gain Long Range \d"/i.test(t)
     if (!touches) continue
     if (!allWeapons.includes(o.name) && (SPECIFIC.test(t) || /Range by|Long Range/i.test(t))) {
@@ -112,6 +117,9 @@ export function modifyTags(tags, options) {
     let m
     if ((m = t.match(/gain(?:s)? (?:the )?(Armored|Mobile)\b/i)) && !out.includes(m[1])) out.push(m[1])
     if ((m = t.match(/Loses (\w+) tag and gains (\w+)/i))) out = [...out.filter((x) => x !== m[1]), m[2]]
+    if (/\blose\s+Unarmored\b/i.test(t)) out = out.filter((x) => x !== 'Unarmored')
+    if (o.tagChange?.remove) out = out.filter((x) => !o.tagChange.remove.includes(x))
+    if (o.tagChange?.add) for (const tag of o.tagChange.add) if (!out.includes(tag)) out.push(tag)
   }
   return out
 }
@@ -128,9 +136,10 @@ export const ANTI_TAGS = [
 // An upgrade whose text says "Anti-[chosen tag] N" or "Anti-[Type] N" lets the player pick the tag.
 // "This unit gains ..." applies to every weapon; otherwise it applies to one selected weapon.
 export function tagChoiceOf(effect) {
-  const m = String(effect ?? '').match(/Anti-\[(?:chosen tag|Type)\]\s*(\d+)/i)
+  const m = String(effect ?? '').match(/Anti-\[(?:selected tag|chosen tag|Type)\]\s*(\d+)/i)
   if (!m) return null
-  return { rank: Number(m[1]), scope: /\b(?:this|the) unit gains\b|unit-wide/i.test(effect) ? 'unit' : 'weapon' }
+  const aura = /other friendly Units wholly within|at list construction choose/i.test(effect)
+  return { rank: Number(m[1]), scope: aura ? 'aura' : /\b(?:this|the) unit gains\b|unit-wide/i.test(effect) ? 'unit' : 'weapon' }
 }
 
 // Anti-[Type] sources never stack on the same target: only the higher value counts.
@@ -151,6 +160,7 @@ export function applyTagChoices(attacks, options, choices = {}) {
     if (!o.tagChoice) continue
     const { tag, weapon } = choices?.[o.id] ?? {}
     if (!tag || !list.length) continue
+    if (o.tagChoice.scope === 'aura') { applied[o.id] = null; continue }
     if (o.tagChoice.scope === 'unit') {
       list.forEach((a) => setAnti(a, tag, o.tagChoice.rank))
       applied[o.id] = null
