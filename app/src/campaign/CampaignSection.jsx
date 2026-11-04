@@ -172,8 +172,8 @@ function CharacterEditor({ data, sheet, view, update }) {
     gear: [...c.gear.filter((g) => g.kind !== item.kind), newGearItem(item.kind, item.name)],
   }))
   return <>
-    <nav className="subtabs nested">{['stats','talents','equipment','sheet'].map((t) => <button key={t} className={page===t?'active':''} onClick={() => setPage(t)}>{t[0].toUpperCase()+t.slice(1)}</button>)}</nav>
-    {page === 'stats' && <CharacterStats data={data} character={sheet} view={view} update={(patch) => {
+    <nav className="subtabs nested">{['stats','talents','equipment','magic','sheet'].map((t) => <button key={t} className={page===t?'active':''} onClick={() => setPage(t)}>{t[0].toUpperCase()+t.slice(1)}</button>)}</nav>
+    {page === 'stats' && <CharacterStats campaignMode data={data} character={sheet} view={view} update={(patch) => {
       const prospective = typeof patch === 'function' ? patch(sheet) : patch
       if (prospective.classId && prospective.classId !== sheet.classId || prospective.subclassId && prospective.subclassId !== sheet.subclassId) {
         update({ ...prospective, gear: [], spells: [], otherPoints: 0 })
@@ -185,6 +185,21 @@ function CharacterEditor({ data, sheet, view, update }) {
       <section className="panel"><h2>Basic armor and shield</h2><p className="muted small">Armor access follows your Class. Acquired magical equipment is managed later.</p><ul className="picker one-col">{armor.map((w) => <li key={w.name}><span><strong>{w.name}</strong> · {w.points} pts</span><button disabled={sheet.gear.some((g) => g.name === w.name)} onClick={() => addGear(w)}>Choose</button></li>)}</ul></section>
       <section className="panel span-all"><h2>Selected equipment</h2><ul className="saved-list">{sheet.gear.map((g) => <li key={g.uid}><strong>{g.name}</strong><button className="danger" onClick={() => update((c) => ({ gear: c.gear.filter((x) => x.uid !== g.uid) }))}>Remove</button></li>)}</ul></section>
     </div>}
+    {page === 'magic' && <section className="panel">
+      <h2>Starting magic and formulas</h2>
+      <p className="muted small">Only the included starting choices are available. Additional spells, magical equipment, and permanent crafting must be acquired during the campaign.</p>
+      {view.sub.subclassSpellAttacks?.chooseCount && <div><h3>Subclass Spell Attack — choose one</h3>
+        {view.sub.subclassSpellAttacks.spells.map((spell) => <label className="choice" key={spell.name}><input type="radio" name="campaign-starting-spell" checked={sheet.subclassSpell === spell.name} onChange={() => update({ subclassSpell: spell.name })} />{spell.name}</label>)}
+      </div>}
+      {view.cls.id === 'artificer' && <div><h3>Choose two starting formulas</h3>
+        {(view.sub.formulas ?? []).map((formula) => <label className="choice" key={formula.name}><input type="checkbox" checked={sheet.formulas.includes(formula.name)} disabled={!sheet.formulas.includes(formula.name) && sheet.formulas.length >= 2} onChange={() => update((char) => ({
+          formulas: char.formulas.includes(formula.name) ? char.formulas.filter((f) => f !== formula.name) : [...char.formulas, formula.name],
+          fieldSpecialty: char.fieldSpecialty === formula.name ? null : char.fieldSpecialty,
+        }))} />{formula.name}</label>)}
+        <label className="field">Field Specialty<select value={sheet.fieldSpecialty ?? ''} onChange={(e) => update({ fieldSpecialty: e.target.value || null })}><option value="">Choose…</option>{sheet.formulas.map((name) => <option key={name} value={name}>{name}</option>)}</select></label>
+      </div>}
+      {!view.sub.subclassSpellAttacks?.chooseCount && view.cls.id !== 'artificer' && <p>Any included base Spell Attacks are automatically available to this character.</p>}
+    </section>}
     {page === 'sheet' && <CharacterDatasheet character={sheet} view={view} />}
   </>
 }
