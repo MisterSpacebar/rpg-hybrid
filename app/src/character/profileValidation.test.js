@@ -45,7 +45,7 @@ test('all battle profile JSON files use current Unique targeting and tags', () =
         assert.ok(!item.includes('Character'), `${path}: legacy Character tag`)
       }
       if (key === 'keywords' && Array.isArray(item)) {
-        assert.ok(!item.some((k) => /^Anti-Character(?:\\s|$)/.test(k)), `${path}: legacy Anti-Character`)
+        assert.ok(!item.some((k) => k === 'Anti-Character' || k.startsWith('Anti-Character ')), `${path}: legacy Anti-Character`)
       }
       walk(item, `${path}.${key}`)
     }
