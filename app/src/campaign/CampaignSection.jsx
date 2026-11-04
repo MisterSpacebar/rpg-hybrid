@@ -93,6 +93,7 @@ export default function CampaignSection({ hash }) {
 function Workspace({ id, user }) {
   const [campaign, setCampaign] = useState(null)
   const [campaignReady, setCampaignReady] = useState(false)
+  const [connection, setConnection] = useState({ fromCache: false, hasPendingWrites: false })
   const [heroes, setHeroes] = useState([])
   const [heroesReady, setHeroesReady] = useState(false)
   const [requests, setRequests] = useState([])
@@ -121,7 +122,8 @@ function Workspace({ id, user }) {
     const fail = (e) => { setError(errorMessage(e)); setCampaignReady(true) }
     const campaignFail = (e) => { setCampaign(null); fail(e) }
     const stops = [
-      watchCampaign(id, (c) => {
+      watchCampaign(id, (c, status) => {
+        setConnection(status)
         setCampaign(c)
         setCampaignReady(true)
         if (c) setProgressDraft((prev) => acceptSnapshot(prev, {
@@ -183,6 +185,8 @@ function Workspace({ id, user }) {
       {isGm && <button onClick={() => copyId(id)}>Copy invite ID</button>}
     </div>
     {error && <p className="bad" role="alert">{error}</p>}
+    {connection.fromCache && <p className="bad small" role="status">Showing locally cached campaign data. Updates from other players may be delayed until Firestore reconnects.</p>}
+    {!connection.fromCache && connection.hasPendingWrites && <p className="muted small" role="status">Synchronizing campaign changes…</p>}
     <nav className="subtabs">
       {['overview', ...(!isGm ? ['character'] : []), 'army', ...(isGm ? ['gm'] : [])].map((t) => <button key={t} className={tab === t ? 'active' : ''} onClick={() => setTab(t)}>{t === 'gm' ? 'GM Controls' : t === 'character' ? 'My Character' : t === 'army' ? (isGm ? 'Company Arsenal' : 'My Army') : 'Overview'}</button>)}
     </nav>
