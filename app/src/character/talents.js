@@ -69,7 +69,7 @@ export function normalizeTalents(talents, pool) {
 // ---------- choices a talent needs ----------
 
 // Battlefield tags and creature types an Anti-[Type] ability can name (Keywords: Creature Types and Battlefield Tags).
-export const ENEMY_TAGS = ['Armored', 'Beast', 'Cavalry', 'Construct', 'Demon', 'Elemental', 'Elite', 'Hero', 'Humanoid', 'Infantry', 'Mobile', 'Monster', 'Plant', 'Spirit', 'Support', 'Swarm', 'Undead', 'Wizard']
+export const ENEMY_TAGS = ['Armored', 'Artillery', 'Beast', 'Cavalry', 'Character', 'Construct', 'Creature', 'Elite', 'Elemental', 'Fey', 'Flying', 'Hero', 'Humanoid', 'Infantry', 'Infernal', 'Mechanical', 'Mobile', 'Monster', 'Mortal', 'Officer', 'Ooze', 'Plant', 'Ranged', 'Spirit', 'Support', 'Swarm', 'Undead', 'Unarmored', 'Vehicle', 'Wizard']
 
 const SKILL = { key: 'skill', kind: 'skill', label: 'Skill to improve' }
 const MODE = {
@@ -100,6 +100,8 @@ export const TALENT_CHOICES = {
   'exceptional-development': { perRank: [{ key: 'characteristic', kind: 'characteristic', unique: true, label: 'Characteristic' }] },
   'favored-enemy': { perRank: [{ key: 'enemy', kind: 'select', unique: true, label: 'Anti-[Type] 3 against (different each rank)', options: ENEMY_TAGS.map((t) => ({ value: t, label: t })) }] },
   'master-hunter': { perRank: [{ key: 'tag', kind: 'favoredTag', label: 'Favored Enemy tag raised to Anti 4' }] },
+  'precision-shooting': { perRank: [attack('ranged', { label: 'Ranged Weapon or Spell Attack gaining Pinpoint' })] },
+  'critical-force': { perRank: [attack('weapon', { label: 'Weapon Attack gaining Critical Force' })] },
   'greater-ward': {
     perRank: [{
       key: 'ward',

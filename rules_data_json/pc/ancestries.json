@@ -11,87 +11,172 @@
     {
       "id": "human",
       "name": "Human",
-      "characteristics": { "body": 3, "agility": 3, "mind": 3, "spirit": 3 },
+      "characteristics": {
+        "body": 3,
+        "agility": 3,
+        "mind": 3,
+        "spirit": 3
+      },
       "size": "M",
       "traitName": "Adaptable",
       "traits": [
         "At Character Creation, increase one Characteristic from 3 to 4."
+      ],
+      "tags": [
+        "Human",
+        "Humanoid",
+        "Mortal"
       ]
     },
     {
       "id": "dwarf",
       "name": "Dwarf",
-      "characteristics": { "body": 4, "agility": 2, "mind": 3, "spirit": 4 },
+      "characteristics": {
+        "body": 4,
+        "agility": 2,
+        "mind": 3,
+        "spirit": 4
+      },
       "size": "M",
       "traitName": "Stout",
       "traits": [
         "Gain +1 Wound."
+      ],
+      "tags": [
+        "Dwarf",
+        "Humanoid",
+        "Mortal"
       ]
     },
     {
       "id": "elf",
       "name": "Elf",
-      "characteristics": { "body": 2, "agility": 4, "mind": 4, "spirit": 2 },
+      "characteristics": {
+        "body": 2,
+        "agility": 4,
+        "mind": 4,
+        "spirit": 2
+      },
       "size": "M",
       "traitName": "Graceful",
       "traits": [
         "Gain +1\" Move."
+      ],
+      "tags": [
+        "Elf",
+        "Humanoid",
+        "Mortal"
       ]
     },
     {
       "id": "orc",
       "name": "Orc",
-      "characteristics": { "body": 4, "agility": 3, "mind": 2, "spirit": 3 },
+      "characteristics": {
+        "body": 4,
+        "agility": 3,
+        "mind": 2,
+        "spirit": 3
+      },
       "size": "L",
       "traitName": "Ferocious",
       "traits": [
         "When a melee Attack Surges, that Attack gains Critical 1."
+      ],
+      "tags": [
+        "Orc",
+        "Humanoid",
+        "Mortal"
       ]
     },
     {
       "id": "halfling",
       "name": "Halfling",
-      "characteristics": { "body": 2, "agility": 4, "mind": 2, "spirit": 4 },
+      "characteristics": {
+        "body": 2,
+        "agility": 4,
+        "mind": 2,
+        "spirit": 4
+      },
       "size": "S",
       "traitName": "Fortunate",
       "traits": [
         "Once per session, reroll one natural 1."
+      ],
+      "tags": [
+        "Halfling",
+        "Humanoid",
+        "Mortal"
       ]
     },
     {
       "id": "gnome",
       "name": "Gnome",
-      "characteristics": { "body": 2, "agility": 3, "mind": 4, "spirit": 3 },
+      "characteristics": {
+        "body": 2,
+        "agility": 3,
+        "mind": 4,
+        "spirit": 3
+      },
       "size": "S",
       "traitName": "Ingenious",
       "traits": [
         "Once per session, before making a Mind-based Check, gain +1D6."
+      ],
+      "tags": [
+        "Gnome",
+        "Humanoid",
+        "Mortal"
       ]
     },
     {
       "id": "goblin",
       "name": "Goblin",
-      "characteristics": { "body": 2, "agility": 4, "mind": 3, "spirit": 3 },
+      "characteristics": {
+        "body": 2,
+        "agility": 4,
+        "mind": 3,
+        "spirit": 3
+      },
       "size": "S",
       "traitName": "Scurry",
       "traits": [
         "After completely Evading an Attack, Move up to 1\"."
+      ],
+      "tags": [
+        "Goblin",
+        "Humanoid",
+        "Mortal"
       ]
     },
     {
       "id": "tiefling",
       "name": "Tiefling",
-      "characteristics": { "body": 2, "agility": 2, "mind": 4, "spirit": 4 },
+      "characteristics": {
+        "body": 2,
+        "agility": 2,
+        "mind": 4,
+        "spirit": 4
+      },
       "size": "M",
       "traitName": "Otherworldly",
       "traits": [
         "Gain Ward 6+ against Magic Attacks."
+      ],
+      "tags": [
+        "Tiefling",
+        "Humanoid",
+        "Mortal"
       ]
     },
     {
       "id": "beastfolk",
       "name": "Beastfolk",
-      "characteristics": { "body": 3, "agility": 3, "mind": 3, "spirit": 3 },
+      "characteristics": {
+        "body": 3,
+        "agility": 3,
+        "mind": 3,
+        "spirit": 3
+      },
       "size": "S–L",
       "traitName": null,
       "traits": [
@@ -100,33 +185,83 @@
       "adaptations": {
         "chooseCount": 1,
         "options": [
-          { "name": "Scaled Skin", "effect": "Gain Tough 1." },
-          { "name": "Aquatic", "effect": "Ignore swimming movement penalties and remain underwater indefinitely." },
-          { "name": "Climber", "effect": "Treat vertical terrain as normal movement unless a specific Check is required." },
-          { "name": "Leaper", "effect": "Ignore the first 2\" of Difficult Terrain during each Move." },
-          { "name": "Keen Senses", "effect": "Improve Awareness by 1 step." },
-          { "name": "Predator", "effect": "Improve Stealth by 1 step." },
-          { "name": "Tracker", "effect": "Improve Survival by 1 step." },
-          { "name": "Sure-Footed", "effect": "Improve Athletics by 1 step." },
-          { "name": "Herbal Instinct", "effect": "Improve Medicine by 1 step." },
-          { "name": "Spirit-Touched", "effect": "Improve Mysticism by 1 step." }
+          {
+            "name": "Scaled Skin",
+            "effect": "Gain Tough 1."
+          },
+          {
+            "name": "Aquatic",
+            "effect": "Ignore swimming movement penalties and remain underwater indefinitely."
+          },
+          {
+            "name": "Climber",
+            "effect": "Treat vertical terrain as normal movement unless a specific Check is required."
+          },
+          {
+            "name": "Leaper",
+            "effect": "Ignore the first 2\" of Difficult Terrain during each Move."
+          },
+          {
+            "name": "Keen Senses",
+            "effect": "Improve Awareness by 1 step."
+          },
+          {
+            "name": "Predator",
+            "effect": "Improve Stealth by 1 step."
+          },
+          {
+            "name": "Tracker",
+            "effect": "Improve Survival by 1 step."
+          },
+          {
+            "name": "Sure-Footed",
+            "effect": "Improve Athletics by 1 step."
+          },
+          {
+            "name": "Herbal Instinct",
+            "effect": "Improve Medicine by 1 step."
+          },
+          {
+            "name": "Spirit-Touched",
+            "effect": "Improve Mysticism by 1 step."
+          }
         ]
-      }
+      },
+      "tags": [
+        "Beastfolk",
+        "Humanoid",
+        "Mortal"
+      ]
     },
     {
       "id": "kobold",
       "name": "Kobold",
-      "characteristics": { "body": 2, "agility": 4, "mind": 3, "spirit": 2 },
+      "characteristics": {
+        "body": 2,
+        "agility": 4,
+        "mind": 3,
+        "spirit": 2
+      },
       "size": "S",
       "traitName": "Pack Fighter",
       "traits": [
         "Weapon Attacks gain Accurate +1 against enemies Engaged with another friendly Unit."
+      ],
+      "tags": [
+        "Kobold",
+        "Humanoid",
+        "Mortal"
       ]
     },
     {
       "id": "undead",
       "name": "Undead",
-      "characteristics": { "body": 3, "agility": 3, "mind": 3, "spirit": 3 },
+      "characteristics": {
+        "body": 3,
+        "agility": 3,
+        "mind": 3,
+        "spirit": 3
+      },
       "size": "S–L",
       "traitName": null,
       "traits": [
@@ -139,25 +274,43 @@
           {
             "id": "skeleton",
             "name": "Skeleton",
-            "effect": "Gain Tough 1 against ranged Weapon Attacks."
+            "effect": "Gain Tough 1 against ranged Weapon Attacks.",
+            "tags": [
+              "Humanoid",
+              "Skeleton"
+            ]
           },
           {
             "id": "zombie",
             "name": "Zombie",
-            "effect": "The first time each session you would be reduced to 0 Wounds, make a Hard Body + Survival Check. On success, remain at X Wounds, where X is your Body characteristic."
+            "effect": "The first time each session you would be reduced to 0 Wounds, make a Hard Body + Survival Check. On success, remain at X Wounds, where X is your Body characteristic.",
+            "tags": [
+              "Humanoid",
+              "Zombie"
+            ]
           },
           {
             "id": "spirit",
             "name": "Spirit",
-            "effect": "Gain Ward 6+ against non-Magic Weapon Attacks."
+            "effect": "Gain Ward 6+ against non-Magic Weapon Attacks.",
+            "tags": [
+              "Spirit"
+            ]
           },
           {
             "id": "vampire",
             "name": "Vampire",
-            "effect": "Once per Round, when you destroy an enemy Unit with an Melee Attack, Heal 1."
+            "effect": "Once per Round, when you destroy an enemy Unit with an Melee Attack, Heal 1.",
+            "tags": [
+              "Humanoid",
+              "Vampire"
+            ]
           }
         ]
-      }
+      },
+      "tags": [
+        "Undead"
+      ]
     }
   ]
 }

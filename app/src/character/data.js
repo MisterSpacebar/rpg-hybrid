@@ -108,6 +108,20 @@ async function build() {
       components: raw['equipment/12_enchantment_components.json'],
       imprint: raw['equipment/13_command_imprinted_equipment.json'],
     }),
-    spells: { mage: spellCatalog(raw['spells/mage_spells.json']), priest: spellCatalog(raw['spells/priest_spells.json']) },
+    spells: {
+      mage: (() => {
+        const catalog = spellCatalog(raw['spells/mage_spells.json'])
+        // Optional base Mage Spell Attacks are stored with the class, not the
+        // broader spell catalog; expose them in the normal learned-spell UI.
+        const mage = classes.find((c) => c.id === 'mage')
+        for (const spell of mage?.optionalSpellAttacks?.spells ?? []) {
+          if (!catalog.general.some((s) => s.name === spell.name)) {
+            catalog.general.push({ name: spell.name, ...spell.profile, points: spell.points })
+          }
+        }
+        return catalog
+      })(),
+      priest: spellCatalog(raw['spells/priest_spells.json']),
+    },
   }
 }

@@ -28,6 +28,7 @@ function optionOf(o, groupKey) {
     name: o.name,
     points: o.points ?? o.pointsEach ?? 0,
     each: o.pointsEach != null,
+    extraModelSurcharge: o.extraModelSurcharge ?? 0,
     varies: o.points == null && o.pointsEach == null && o.pointsPerModel == null && !/commands?$/i.test(groupKey),
     arcanaChoices: o.arcanaChoices ?? null,
     tagChoice: tagChoiceOf(o.effect),

@@ -68,7 +68,7 @@ function addKeyword(a, keyword, rank) {
 
 // Upgrades that name a weapon ("selected", "chosen", "primary", "one weapon") change only that weapon;
 // unspecific ones, such as the Cavalry Veterans upgrade, change every weapon the unit has.
-const SPECIFIC = /\b(selected|chosen|primary)\b|\bone (?:selected |melee |ranged |offensive )?(?:weapon|Arcana)\b|Arcane Bolt/i
+const SPECIFIC = /\b(selected|chosen|primary)\b|\bone (?:selected |melee |ranged |offensive )?(?:weapon|Arcana|Spell Attack)\b|Arcane Bolt/i
 
 function applyTo(a, t) {
   let m

@@ -127,7 +127,7 @@ Choose **one** primary ranged weapon package. Attacks are **per Model**; Heavy a
 | Weapon | Points | Profile / Role |
 | --- | ---: | --- |
 | **Shortbows** | **+0** | **8" / 2 / 5+ / 1**. Affordable, mobile baseline weapon. |
-| Longbows | +25 | **10" / 3 / 5+ / 1 / Long Range 3"**. Mobile volleys with extended reach; beyond 10" reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units (minimum 1). |
+| Longbows | +35 | **12" / 3 / 5+ / 1 / Long Range 6"**. Mobile volleys with extended reach; beyond 12" reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units (minimum 1). |
 | Crossbows | +25 | **9" / 1 / 4+ / 2 / Heavy / Anti-Armored 2**. Compact, accurate shots that punch through armor plating; stationary firing. |
 | Heavy Crossbows | +50 | **11" / 2 / 5+ / 2 / Heavy / Anti-Elite 2**. Sustained anti-elite fire, at high cost and with Heavy restrictions. |
 | Muskets | +50 | **11" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Character 1**. Accurate, reaction-proof shooting against valuable individual targets. |
@@ -171,7 +171,7 @@ Veterans and Weapon Specialization may each be purchased once and apply only to 
 ## Elite Infantry — 105 Points
 
 **3 Models · Elite, Infantry · Recruitment E**  
-**M4" / W4 / Arm 5+ / Eva 5+**
+**M4" / W3 / Arm 5+ / Eva 5+**
 
 Elite Infantry are durable close-combat specialists with nine total starting Wounds (W3 per Model), with an optional paid upgrade to W4. Weapon packages emphasize a clear choice between melee volume, reach, defensive Brace, and stronger Hits.
 
@@ -333,7 +333,7 @@ Choose one melee weapon.
 | Musket             | +25  | 8" / 3 / 4+ / 1 / Firearm, Heavy                                                                             |
 | Defensive          | +10  | Gain Brace 1, reducing incoming Charge Impact by 1.                                                          |
 | Battle-Hardened    | +15  | Gain Tough 1, rerolling up to one natural 1 on Armor Saves.                                                  |
-| Deadly Strikes     | +15  | One melee weapon gains Critical 1, converting up to one failed Hit die into a Critical Hit after rerolls; no Surge is required. |
+| Deadly Strikes     | +15  | One melee weapon gains Critical 1 per Surge, converting up to one failed Hit die for EACH Surge after rerolls; no passive conversion without a Surge. |
 | Monster Hunter     | +15  | One melee weapon gains Anti-Monster 1, increasing its Attacks by 1 against Monsters.                         |
 | Master Hunter      | +25  | This unit gains Anti-[Type] 2. |
 | Survivor           | +15  | Increase Wounds from 4 to 5.                                                                                 |
@@ -702,8 +702,8 @@ A Unit may purchase only upgrades specifically made available by its profile or 
 | +2" normal Range       | +15–20         | Extend the printed normal Range of a Unit's selected weapon by 2"; does not itself create a Long Range penalty. |
 | Minor Mobility Trait   | +5–10          | Gain a limited movement or terrain-related benefit.                                              |
 | Concealed              | +15            | Gain Concealed under specified circumstances, restricting ordinary targeting.                    |
-| Pinpoint               | +10            | Ignore the normal Hit penalty when attacking an enemy Engaged with another Unit.                 |
-| Critical 1             | +15            | Convert up to one failed Hit die into a Critical Hit after rerolls; no Surge is required. Bypasses Armor and Evade; Ward applies.           |
+| Pinpoint               | +10            | Ignore both the Hit penalty and engagement-related Direct Damage 2 per Blunder when attacking an enemy Engaged with a different friendly Unit. |
+| Critical 1             | +15            | Convert up to one failed Hit die per Surge after rerolls. No Surge means no passive conversion. Bypasses Armor and Evade; Ward applies. |
 | Anti-[Type] 1          | +15            | Increase the weapon's Attacks by 1 against the specified Unit category.                          |
 | Weapon Specialization (Anti-[Type] 2, Unit-wide, choice of tag) | +25 | See Weapon Specialization on individual Unit profiles: a broader, Unit-wide version applicable once to a multi-Model formation's combined Attack pool. |
 | Minor Passive Ability  | +10–20         | Gain one narrowly defined passive battlefield benefit.                                           |
@@ -723,7 +723,7 @@ Reference costs generally assume a single Character or Model. Applying improveme
 | Category           | Typical Points        |
 | ------------------ | --------------------- |
 | Basic Infantry     | 60–100                |
-| Elite Infantry     | 120–170               |
+| Elite Infantry     | 105–210+              |
 | Cavalry / Mobile   | 115–175               |
 | Support Units      | 80–125                |
 | Captains           | 125–190               |

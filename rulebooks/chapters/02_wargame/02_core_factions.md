@@ -91,7 +91,7 @@ The Free Realms emphasize cooperation between different battlefield roles rather
 
 ### Faction Rule — Combined Arms
 
-A friendly Unit gains Accurate 1 when attacking an enemy already Engaged by another friendly Unit.
+A friendly Unit gains **+1 Attack die to its combined Melee Attack** against an enemy already Engaged by another friendly Unit, or **+1 Attack die to a ranged Weapon Attack** while wholly within Short of another friendly Unit. Apply the bonus once per Attack, not per Model.
 
 ### Faction Commands
 
@@ -583,7 +583,7 @@ Both signature Core choices are Infantry. Their cavalry and ranged troops remain
 
 ### Faction Rule — Eager for Battle
 
-All friendly Units gain **Charge 1**.
+All friendly Units gain **Charge 2**.
 
 ### Faction Commands
 
@@ -1422,7 +1422,7 @@ Ogre kingdoms, giant tribes, monstrous nomads, and beast clans. Their ordinary w
 
 ### Faction Rule — Massive Momentum
 
-All friendly Units gain **Impact 1**.
+All friendly Units gain **Impact 2**.
 
 ### Faction Commands
 
