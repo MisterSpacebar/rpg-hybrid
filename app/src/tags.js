@@ -20,7 +20,7 @@ export const FACTION_TAGS = {
 export const COMPOUND_TAGS = {
   'Elite Infantry': ['Elite', 'Infantry'],
   'Ranged Infantry': ['Ranged', 'Infantry'],
-  'Elite Ranged Infantry': ['Elite', 'Ranged', 'Infantry'],
+  'Elite Ranged Infantry': ['Elite', 'Ranged', 'Infantry', 'Elite Infantry', 'Ranged Infantry'],
   'Elite Cavalry': ['Elite', 'Cavalry'],
   'Infiltrating Infantry': ['Infiltrator', 'Infantry'],
   'Horde Infantry': ['Horde', 'Infantry'],
@@ -44,6 +44,7 @@ export function canonicalTags(tags = [], factionId = null) {
 
 export const ANTI_TAGS = [
   ...Object.values(FACTION_TAGS),
+  ...Object.keys(COMPOUND_TAGS),
   'Artillery', 'Beast', 'Cavalry', 'Character', 'Construct', 'Creature',
   'Elite', 'Hero', 'Infantry', 'Monster', 'Support', 'Vehicle',
   'Armored', 'Unarmored', 'Mortal', 'Undead', 'Spirit', 'Infernal', 'Fey',
