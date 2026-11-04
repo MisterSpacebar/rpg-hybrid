@@ -66,7 +66,7 @@ Faction tags can be targeted directly, for example by **Anti-Death Legions 1**.
 | **Monster** | Exceptional creatures or similarly powerful living or supernatural battlefield threats. |
 | **Construct** | Animated objects, golems, automatons, and magically or mechanically sustained beings. |
 
-Unit Types may overlap. An individual Artificer might be `Unique, Support`; an Arcane Golem could be `Construct, Monster` if its profile assigns both. A mounted Unique Unit could possess both `Character` and `Cavalry`.
+Unit Types may overlap. An individual Artificer might be `Unique, Support`; an Arcane Golem could be `Construct, Monster` if its profile assigns both. A mounted Unique Unit could possess both `Unique` and `Cavalry`.
 
 **Monster** and **Beast** are different tags: Monster is a Unit Type, whereas Beast is a Trait. Neither automatically grants the other.
 
