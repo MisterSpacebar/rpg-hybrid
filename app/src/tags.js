@@ -26,12 +26,16 @@ export const COMPOUND_TAGS = {
   'Horde Infantry': ['Horde', 'Infantry'],
 }
 
+// Legacy saved Character tags and Anti-Character selections resolve to Unique.
+export const normalizeTag = (tag) => tag === 'Character' ? 'Unique' : tag
+
 export function canonicalTags(tags = [], factionId = null) {
   const result = new Set()
   for (const tag of tags ?? []) {
     if (!tag) continue
-    result.add(tag)
-    for (const part of COMPOUND_TAGS[tag] ?? []) result.add(part)
+    const normalized = normalizeTag(tag)
+    result.add(normalized)
+    for (const part of COMPOUND_TAGS[normalized] ?? []) result.add(part)
   }
   const faction = FACTION_TAGS[factionId]
   // A faction choice identifies allegiance, not whether a Unit is Undead, Fey, etc.
@@ -45,9 +49,9 @@ export function canonicalTags(tags = [], factionId = null) {
 export const ANTI_TAGS = [
   ...Object.values(FACTION_TAGS),
   ...Object.keys(COMPOUND_TAGS),
-  'Artillery', 'Beast', 'Cavalry', 'Character', 'Construct', 'Creature',
+  'Artillery', 'Beast', 'Cavalry', 'Unique', 'Construct', 'Creature',
   'Elite', 'Hero', 'Infantry', 'Monster', 'Support', 'Vehicle',
-  'Armored', 'Unarmored', 'Mortal', 'Undead', 'Spirit', 'Infernal', 'Fey',
+  'Armored', 'Unarmored', 'Mortal', 'Undead', 'Summoned', 'Spirit', 'Infernal', 'Fey',
   'Humanoid', 'Mechanical', 'Flying', 'Elemental', 'Plant', 'Swarm',
   'Giant', 'Ooze', 'Demon',
   'Core', 'Officer', 'Wizard', 'Ranged', 'Mobile', 'Infiltrator', 'Horde',
@@ -62,7 +66,7 @@ export function antiBonus(keywords = [], targetTags = []) {
   const targets = new Set(canonicalTags(targetTags))
   return keywords.reduce((best, keyword) => {
     const match = /^Anti-(.+?)\s+(\d+)$/i.exec(keyword)
-    return match && targets.has(match[1])
+    return match && targets.has(normalizeTag(match[1]))
       ? Math.max(best, Number(match[2]))
       : best
   }, 0)
