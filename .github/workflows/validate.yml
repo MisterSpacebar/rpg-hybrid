@@ -1,0 +1,58 @@
+name: Validate RPG rules and builders
+
+on:
+  push:
+    branches:
+      - main
+      - fix/**
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Validate all JSON rules files
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          paths = sorted(Path("rules_data_json").rglob("*.json"))
+          for path in paths:
+              json.loads(path.read_text(encoding="utf-8"))
+          print(f"Validated {len(paths)} JSON rules files")
+          army = json.loads(Path("rules_data_json/army_construction.json").read_text())
+          for path in sorted(Path("rules_data_json/factions").glob("[0-9][0-9]_*.json")):
+              faction = json.loads(path.read_text())
+              if "factionCommands" not in faction:
+                  continue
+              entry = next(x for x in army["factions"] if x["name"] == faction["name"])
+              names = {x["name"] for x in entry["commandSlots"]}
+              missing = {x["name"] for x in faction["factionCommands"]} - names
+              assert not missing, (path, sorted(missing))
+          mage = json.loads(Path("rules_data_json/pc/classes/mage.json").read_text())
+          nec = next(s for s in mage["subclasses"] if s["id"] == "necromancer")
+          assert nec["summonedUnit"]["combatPhaseAttack"]["profile"]["attacks"] == 1
+          print("All faction Command slots present; Thralls remain 1 Attack/Model")
+          PY
+      - name: Install frontend dependencies
+        working-directory: app
+        run: npm ci
+      - name: Run builder regression tests
+        working-directory: app
+        run: npm test
+      - name: Build frontend
+        working-directory: app
+        run: npm run build

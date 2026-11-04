@@ -319,9 +319,9 @@ Necromancers specialize in reanimation, attrition, and sustaining themselves thr
 
 **1 CP — Movement**
 
-If you do not currently control a Thrall Unit, create one engaged with this character containing X Models, where X equals your Mind characteristic. A newly raised Thrall Unit cannot activate during the Round in which it was created. If you already control a Thrall Unit, you may instead target one summoned Thrall unit you control and add one Model to that Unit, provided it is not Engaged with an enemy. New Models must be placed within 3" of another Model in the same Unit, following normal placement rules.
+If you do not currently control a Thrall Unit, create one within Engagement Range of this Necromancer containing up to **min(Mind, 6) Models**. A newly raised Thrall Unit cannot activate during the Round in which it was created. If you control a surviving Thrall Unit that is **not Engaged with an enemy**, instead restore up to **two defeated Models** to it, to a maximum of **six Models**, placing them legally in Coherency within 3" of an existing Thrall Model. This may increase the formation beyond its original summoned size. A fully destroyed Thrall Unit cannot be reinforced, but may be summoned anew on a later eligible use.
 
-A Necromancer may control only one Thrall Unit through Raise Thrall at a time.
+A Necromancer may control only one Thrall Unit through Raise Thrall at a time. The Thrall Unit activates independently in subsequent Rounds; it is designed for screening, recursion and chip damage rather than the output of normal infantry.
 
 #### Assault Phase — Subclass Spell Attacks
 
@@ -345,17 +345,19 @@ In addition to the Mage's Base Spell Attacks:
 
 | Move | Wounds | Armor | Evade | Ward |
 | --- | --- | --- | --- | --- |
-| 3" | 1/Model | 6+ | 6+ | — |
+| Athletics-based (3–5") | 1/Model | Medicine threshold +2 (max 6+, min 2+) | Stealth threshold +3 (max 6+, min 2+) | — |
 
 #### Combat Phase — Thrall Attack
 
 | Attack | Range | A | Hit | Dmg | Keywords |
 | --- | --- | --- | --- | --- | --- |
-| Claws | Engaged | 2 | 6+ | 1 | — |
+| Claws | Engaged | **1 per Model** | Mysticism threshold +1 (max 6+, min 2+) | 1 | Inherit the Necromancer's Anti-tags at rank −1 |
+
+**Athletics and Movement:** Thrall Move is **3"** at Athletics 4+, 5+ or 6+; **4"** at Athletics 3+; **5"** at Athletics 2+. Equivalently, Move = clamp(7 − Athletics threshold, 3, 5) inches. Fully improving Athletics to 2+ is required to reach Move 5". Thralls may inherit several Anti-tags, but only the highest applicable rank adds dice against a target; temporary bonuses on the Necromancer are not inherited unless expressly applied to Thralls. At Mysticism 2+, Thrall Claws Hit is 3+.
 
 #### Reanimated — Passive
 
-At the end of the Round, if this Unit still contains at least one Model and lost Models during that Round, roll one D6 for each Model lost. For each natural 6, return one Model to the Unit following normal placement rules. A completely destroyed Thrall Unit cannot benefit from Reanimated.
+At the end of the Round, if this Unit still contains at least one Model and lost Models during that Round, roll one D6 for each Model lost. For each natural 6, return one Model to the Unit following normal placement rules. A completely destroyed Thrall Unit cannot benefit from Reanimated. A Thrall Unit cannot exceed six Models, including those restored by Reanimated.
 
 ### ILLUSIONIST
 

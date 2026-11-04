@@ -253,7 +253,7 @@
           "name": "Claws",
           "profile": {
             "range": "Engaged",
-            "attacks": 2,
+            "attacks": 1,
             "hit": "6+",
             "damage": 1,
             "damageTypes": [
@@ -272,10 +272,12 @@
           "hit": "Necromancer Mysticism skill threshold +1 (6+ at Mysticism 5+ or 6+; 3+ at Mysticism 2+)",
           "armor": "Necromancer Medicine skill threshold +2, capped to range 2+...6+",
           "evade": "Necromancer Stealth skill threshold +3, capped to range 2+...6+",
-          "inheritedAnti": "Inherit EVERY Anti-[tag] possessed by the Necromancer at rank max(0, rank-1). On a target with several matching tags, use only highest rank. Cannot inherit temporary one-Attack Command bonuses unless explicitly granted to Thralls."
+          "inheritedAnti": "Inherit EVERY Anti-[tag] possessed by the Necromancer at rank max(0, rank-1). On a target with several matching tags, use only highest rank. Cannot inherit temporary one-Attack Command bonuses unless explicitly granted to Thralls.",
+          "move": "max(3\", min(5\", (7 - Necromancer Athletics skill threshold) inches)); Athletics 4+ or worse => M3\", Athletics 3+ => M4\", Athletics 2+ => M5\""
         },
         "notes": [
-          "Printed 6+ Hit, Armor 6+, Evade 6+ are fallback minima for legacy tools; dynamically derive from Necromancer skills when resolving the Unit. Thralls remain W1, maximum six Models; Reanimated does not exceed six."
+          "Printed 6+ Hit, Armor 6+, Evade 6+ are fallback minima for legacy tools; dynamically derive from Necromancer skills when resolving the Unit. Thralls remain W1, maximum six Models; Reanimated does not exceed six.",
+          "One Claws Attack per surviving Thrall Model (before explicit bonuses); movement is derived from Athletics and capped at M5. Thralls are independent screening and attrition assets, not primary damage dealers."
         ]
       }
     },

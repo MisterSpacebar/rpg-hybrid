@@ -112,7 +112,7 @@ export default function CharacterDatasheet({ character, view }) {
               </tbody>
             </table>
             <p><strong>{view.thrall.passive.name}</strong><br />{view.thrall.passive.effect}</p>
-            <p className="muted small">Armor, Evade and Hit follow the Necromancer's Medicine, Stealth and Mysticism skills.</p>
+            <p className="muted small">Move, Armor, Evade and Hit follow the Necromancer's Athletics, Medicine, Stealth and Mysticism skills.</p>
           </div>
         )}
 

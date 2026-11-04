@@ -120,7 +120,7 @@ export function CharacterDocument({ character, view }) {
         {view.thrall && (
           <View wrap={false}>
             <Text style={st.h}>{s(view.thrall.name.toUpperCase())} UNIT</Text>
-            <Text style={st.muted}>{s(`Starts with ${view.thrall.startingModels} Models (max ${view.thrall.maxModels}). Armor, Evade and Hit follow the Necromancer's Medicine, Stealth and Mysticism skills.`)}</Text>
+            <Text style={st.muted}>{s(`Starts with ${view.thrall.startingModels} Models (max ${view.thrall.maxModels}). Move, Armor, Evade and Hit follow the Necromancer's Athletics, Medicine, Stealth and Mysticism skills.`)}</Text>
             <View style={st.tableRow}>
               <Text style={st.th}>MOVE {s(view.thrall.stats.move)}   WOUNDS {s(view.thrall.stats.wounds)} per Model   ARMOR {s(view.thrall.stats.armor)}   EVADE {s(view.thrall.stats.evade)}   WARD {s(view.thrall.stats.ward ?? '-')}</Text>
             </View>

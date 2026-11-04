@@ -55,7 +55,8 @@ export const emptyCharacter = () => ({
 
 export const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1)
 
-// A summoned Thrall unit takes its Hit, Armor and Evade from the summoner's skill thresholds (clamped to 2+ ... 6+),
+// A summoned Thrall unit derives Move, Hit, Armor and Evade from the summoner's
+// Athletics, Mysticism, Medicine and Stealth skill thresholds, respectively.
 // and inherits each of the summoner's Anti-[tag] ranks at one rank lower.
 const clampThreshold = (n) => Math.min(6, Math.max(2, n))
 export function buildThrall(unit, characteristics, skills, traits, attacks) {
@@ -72,7 +73,7 @@ export function buildThrall(unit, characteristics, skills, traits, attacks) {
     name: unit.name,
     startingModels: Math.min(characteristics.mind, unit.maxModels ?? 6),
     maxModels: unit.maxModels ?? 6,
-    stats: { ...unit.stats, wounds: 1, armor: `${clampThreshold(skills.medicine + 2)}+`, evade: `${clampThreshold(skills.stealth + 3)}+` },
+    stats: { ...unit.stats, move: `${Math.max(3, Math.min(5, 7 - skills.athletics))}"`, wounds: 1, armor: `${clampThreshold(skills.medicine + 2)}+`, evade: `${clampThreshold(skills.stealth + 3)}+` },
     attack: { ...claws.profile, name: claws.name, hit: `${clampThreshold(skills.mysticism + 1)}+`, keywords: [...(claws.profile.keywords ?? []), ...anti] },
     passive: unit.passive,
   }
