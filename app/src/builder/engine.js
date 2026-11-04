@@ -143,6 +143,9 @@ export function resolveUnit(entry, cfg, factionId = null) {
   // Hero and Character are distinct. A commissioned Captain or Master Wizard
   // gains Hero but not Character; named PCs/legendary figures gain Character explicitly.
   if (isHero && !tags.includes('Hero')) tags.push('Hero')
+  // Roster classifications are explicit and independent of the chosen recruitment slot.
+  if (entry.isCore && !tags.includes('Core')) tags.push('Core')
+  if (entry.isLargeAsset && !tags.includes('Large Asset')) tags.push('Large Asset')
   const fx = applyFactionEffects(factionId, { source: entry.source, models: finalModels, stats, attacks, tags: canonicalTags(tags, factionId ?? entry.factionId) })
 
   return {
