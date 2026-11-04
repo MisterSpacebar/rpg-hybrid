@@ -345,7 +345,7 @@ Creatures relying on deception, mutation, unusual movement, and supernatural con
 | **Ooze** (*Elite, Ooze*) | 100 / 1 | M2" / W8 / Arm 6+ / Eva — | Acidic Mass: Engaged / 6 / 5+ / 1 / Anti-Armored 1 |
 | **Lesser Elementals** (*Elite, Elemental*) | 120 / 2 | M5" / W3 / Arm 5+ / Eva 6+ / Ward 6+ Magic | Elemental Strike: Engaged / 4 / 5+ / 1 / Magic |
 | **Cockatrice** (*Monster, Elite, Beast*) | 130 / 1 | M6" / W5 / Arm 6+ / Eva 5+ | Beak and Talons: Engaged / 4 / 5+ / 1 / Critical 1 |
-| **Basilisk** (*Monster, Elite, Beast*) | 175 / 1 | M4" / W8 / Arm 4+ / Eva 6+ | Fangs: Engaged / 3 / 5+ / 2 / Anti-Character 2; Petrifying Gaze: 8" / 2 / 5+ / 0 / Magic |
+| **Basilisk** (*Monster, Elite, Beast*) | 175 / 1 | M4" / W8 / Arm 4+ / Eva 6+ | Fangs: Engaged / 3 / 5+ / 2 / Anti-Unique 2; Petrifying Gaze: 8" / 2 / 5+ / 0 / Magic |
 | **Rust Eater** (*Monster, Elite, Beast*) | 135 / 1 | M5" / W7 / Arm 5+ / Eva 5+ | Corrosive Mandibles: Engaged / 4 / 5+ / 1 / Anti-Construct 1 |
 | **Phase Stalker** (*Monster, Elite, Beast*) | 160 / 1 | M6" / W6 / Arm 6+ / Eva 4+ / Ward 6+ Magic | Phase Claws: Engaged / 5 / 5+ / 1 / Magic |
 | **Will-o'-Wisps** (*Elite, Spirit*) | 110 / 3 | M7" / W1 / Arm 6+ / Eva 4+ / Ward 5+ Magic | Ghostlight: 8" / 3 / 5+ / 1 / Magic; Spark: Engaged / 2 / 6+ / 1 / Magic |
