@@ -37,7 +37,7 @@ test('valid starting gear passes, unrestricted and duplicated gear is rejected',
     { kind: 'armor', name: 'Heavy Armor' },
   ]), data, 0)
   assert(errors.some((e) => e.includes('not an available starting item')))
-  assert(errors.some((e) => e.includes('one melee')))
+  assert(errors.some((e) => e.includes('one equipped melee')))
   assert(errors.some((e) => e.includes('not an available starting item')))
 })
 
