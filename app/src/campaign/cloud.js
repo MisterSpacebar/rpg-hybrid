@@ -91,6 +91,11 @@ export async function saveHeroDraft(id, uid, sheet) {
   }, { merge: true })
 }
 
+export async function listApprovedHeroes(id) {
+  const snap = await getDocs(collection(db, 'campaigns', id, 'approvedHeroes'))
+  return snap.docs.map((d) => ({ ownerUid: d.id, ...d.data() }))
+}
+
 export async function loadApprovedHero(id, uid) {
   const snap = await getDoc(approvedRef(id, uid))
   return snap.exists() ? snap.data() : null
