@@ -1,4 +1,4 @@
-import { ANTI_TAGS, canonicalTags } from '../tags.js'
+import { canonicalTags } from '../tags.js'
 export { ANTI_TAGS } from '../tags.js'
 
 // Applies purchased upgrades to a unit's printed stats, attacks, and tags.
@@ -120,6 +120,9 @@ export function modifyTags(tags, options) {
     if ((m = t.match(/Loses (\w+) tag and gains (\w+)/i))) out = [...out.filter((x) => x !== m[1]), m[2]]
     if ((m = t.match(/\blose(?:s)? (\w+)(?: tag)?\b/i))) out = out.filter((x) => x !== m[1])
   }
+  // Armored and Unarmored are mutually exclusive even when an upgrade omits
+  // the explicit phrase 'lose Unarmored'.
+  if (out.includes('Armored')) out = out.filter((tag) => tag !== 'Unarmored')
   return canonicalTags(out)
 }
 
