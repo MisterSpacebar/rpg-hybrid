@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { loadCatalog } from '../builder/catalog.js'
-import { newUnitConfig, resolveUnit } from '../builder/engine.js'
+import { newUnitConfig, resolveUnit, SLOT_ORDER } from '../builder/engine.js'
 import { detachmentView, deploymentCap, allowedDoctrineCommands, FIELD_SLOTS } from './limits.js'
-import { grantEquipment, grantFormation, removeInventoryItem, saveDetachment, loadEntitlement, setEntitlement } from './cloud.js'
+import { grantEquipment, grantFormation, removeInventoryItem, saveDetachment, setEntitlement, watchEntitlements } from './cloud.js'
 import { loadCharacterData } from '../character/data.js'
 import { derive, normalizeCharacter } from '../character/engine.js'
 
@@ -24,9 +24,8 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
   useEffect(() => { setDraft({ ...empty, ...my, selections: [...(my.selections ?? [])], commands: [...(my.commands ?? [])] }) }, [campaign.id, JSON.stringify(my)])
   useEffect(() => {
     if (!campaign) return
-    Promise.all(campaign.memberUids.map(async (uid) => [uid, await loadEntitlement(campaign.id, uid)]))
-      .then((pairs) => setEntitlements(Object.fromEntries(pairs))).catch((e) => setMessage(e.message))
-  }, [campaign.id, campaign.memberUids.join(',')])
+    return watchEntitlements(campaign.id, setEntitlements, (e) => setMessage(e.message))
+  }, [campaign.id])
 
   const approved = approvedHeroes.find((h) => h.ownerUid === user.uid)
   const hero = approved && charData ? derive(normalizeCharacter(approved.sheet, charData), charData) : null
@@ -92,7 +91,31 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         </label>)}
       </section>}
       <h3>Recruitment slots</h3>
-      <div className="slot-count">{result.slots.sources.map((s, i) => <span key={i} className="tag" title={s.source}>{s.slot} ({s.source}) </span>)}</div>
+      <div className="slot-count muted small">{result.units.filter((u) => !u.missing).length} of {result.slots.total - 1} Recruitment Slots used (plus Hero)</div>
+      <div className="rack">
+        {SLOT_ORDER.map((slot) => {
+          const units = result.units.filter((u) => !u.missing && u.slot === slot)
+          const sources = result.slots.sources.filter((s) => s.slot === slot)
+          const heroBox = slot === 'H' ? 1 : 0
+          const available = result.slots.unitSlots[slot]
+          const count = Math.max(available, units.length) + heroBox
+          if (!count) return null
+          return <div key={slot} className="rack-group">
+            {Array.from({ length: count }, (_, i) => {
+              if (heroBox && i === 0) return <div key="hero" className="rack-box slot-H lit" style={{ cursor: 'default' }} title="Your Hero (reserved)">
+                <span className="rack-letter">H</span><span className="rack-unit">{approved?.sheet?.name || 'Hero'}</span>
+              </div>
+              const unit = units[i - heroBox]
+              const over = i - heroBox >= available
+              return <div key={i} className={`rack-box slot-${slot} ${unit ? 'lit' : ''} ${over ? 'over' : ''}`}
+                title={unit ? `Click to remove ${unit.name}` : over ? `${slot}: no slot available` : `${slot} from ${sources[i]?.source}`}
+                onClick={unit ? () => remove(unit.poolId) : undefined}>
+                <span className="rack-letter">{slot}</span><span className="rack-unit">{unit ? unit.name : ''}</span>
+              </div>
+            })}
+          </div>
+        })}
+      </div>
       <ul className="saved-list">{result.units.filter((u) => !u.missing).map((u) => <li key={u.poolId}>
         <span><strong>{u.name}</strong> · {u.points} points</span>
         <div className="saved-actions"><select aria-label={`Recruitment slot for ${u.name}`} value={u.slot} onChange={(e) => setDraft((d) => ({ ...d, selections: d.selections.map((s) => s.id === u.poolId ? { ...s, slot: e.target.value } : s) }))}>

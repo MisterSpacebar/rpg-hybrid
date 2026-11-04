@@ -1,5 +1,5 @@
 import {
-  addDoc, collection, doc, getDoc, getDocs, query, serverTimestamp,
+  addDoc, collection, doc, getDoc, getDocs, onSnapshot, query, serverTimestamp,
   setDoc, updateDoc, deleteDoc, where,
 } from 'firebase/firestore'
 import { db } from '../firebase.js'
@@ -165,3 +165,55 @@ export async function saveDetachment(id, uid, data) {
     updatedAt: serverTimestamp(),
   })
 }
+
+// Campaigns the user belongs to, with their own campaign character where one exists.
+export async function listMyCampaignsWithHeroes(uid) {
+  const campaigns = await listMyCampaigns(uid)
+  return Promise.all(campaigns.map(async (c) => {
+    const snap = await getDoc(doc(heroesRef(c.id), uid))
+    return { ...c, role: c.gmUid === uid ? 'GM' : 'PC', hero: snap.exists() ? snap.data().sheet : null }
+  }))
+}
+
+// Removal helpers. Subdocuments are deleted before the parent because security rules look up the campaign document.
+const removeDocs = async (refs) => { await Promise.all(refs.map((ref) => deleteDoc(ref))) }
+
+// A player deleting their own character also releases their reserved formations and equipment.
+export async function deleteMyHero(id, uid) {
+  await removeDocs([doc(heroesRef(id), uid), detachmentRef(id, uid)])
+}
+
+// Revoking an approval leaves the player's draft in place so they can be re-approved after edits.
+export async function revokeApproval(id, uid) {
+  await deleteDoc(approvedRef(id, uid))
+}
+
+export async function removePlayer(campaign, uid) {
+  if (uid === campaign.gmUid) throw new Error('The GM cannot be removed')
+  await removeDocs([
+    doc(heroesRef(campaign.id), uid), approvedRef(campaign.id, uid),
+    detachmentRef(campaign.id, uid), entitlementsRef(campaign.id, uid), doc(membersRef(campaign.id), uid),
+  ])
+  await updateDoc(campaignRef(campaign.id), {
+    memberUids: campaign.memberUids.filter((m) => m !== uid), updatedAt: serverTimestamp(),
+  })
+}
+
+export async function deleteCampaign(id) {
+  for (const name of ['heroes', 'approvedHeroes', 'detachments', 'entitlements', 'inventory', 'joinRequests']) {
+    const snap = await getDocs(collection(db, 'campaigns', id, name))
+    await removeDocs(snap.docs.map((d) => d.ref))
+  }
+  await deleteDoc(campaignRef(id))
+}
+
+// Live listeners: each returns an unsubscribe function.
+const docs = (snap) => snap.docs.map((d) => ({ id: d.id, ...d.data() }))
+const owned = (snap) => snap.docs.map((d) => ({ ownerUid: d.id, ...d.data() }))
+export const watchCampaign = (id, cb, onError) => onSnapshot(campaignRef(id), (s) => s.exists() && cb({ id: s.id, ...s.data() }), onError)
+export const watchHeroes = (id, cb, onError) => onSnapshot(heroesRef(id), (s) => cb(docs(s)), onError)
+export const watchInventory = (id, cb, onError) => onSnapshot(inventoryRef(id), (s) => cb(docs(s)), onError)
+export const watchDetachments = (id, cb, onError) => onSnapshot(collection(db, 'campaigns', id, 'detachments'), (s) => cb(owned(s)), onError)
+export const watchApprovedHeroes = (id, cb, onError) => onSnapshot(collection(db, 'campaigns', id, 'approvedHeroes'), (s) => cb(owned(s)), onError)
+export const watchJoinRequests = (id, cb, onError) => onSnapshot(membersRef(id), (s) => cb(docs(s)), onError)
+export const watchEntitlements = (id, cb, onError) => onSnapshot(collection(db, 'campaigns', id, 'entitlements'), (s) => cb(Object.fromEntries(s.docs.map((d) => [d.id, d.data()]))), onError)

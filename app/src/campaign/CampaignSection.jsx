@@ -12,6 +12,8 @@ import {
   approveHero, approveJoin, createCampaign, FORMATS, listCampaignHeroes, listJoinRequests,
   listMyCampaigns, loadApprovedHero, loadCampaign, rejectJoin, requestToJoin,
   saveHeroDraft, updateCampaignProgress, listInventory, listDetachments, listApprovedHeroes,
+  watchCampaign, watchHeroes, watchInventory, watchDetachments, watchApprovedHeroes, watchJoinRequests,
+  deleteMyHero, revokeApproval, removePlayer, deleteCampaign,
 } from './cloud.js'
 import { validateCampaignSheet } from './equipment.js'
 import { advanceTurn, baseXp, bonusXp } from './limits.js'
@@ -117,11 +119,25 @@ function Workspace({ id, user }) {
   }, [id, user.uid])
 
   useEffect(() => { refresh().catch((e) => setError(errorMessage(e))) }, [refresh])
+
+  // Live updates so GM and PC screens reflect each other's changes without a manual reload.
+  useEffect(() => {
+    const fail = (e) => setError(errorMessage(e))
+    const stops = [
+      watchCampaign(id, (c) => { setCampaign(c); setProgress({ bonusXp: bonusXp(c), patronFactionId: c.patronFactionId ?? '' }) }, fail),
+      watchHeroes(id, setHeroes, fail),
+      watchInventory(id, setInventory, fail),
+      watchDetachments(id, setDetachments, fail),
+      watchApprovedHeroes(id, (list) => { setApprovedHeroes(list); setApproved(list.find((h) => h.ownerUid === user.uid) ?? null) }, fail),
+      watchJoinRequests(id, setRequests, () => {}),
+    ]
+    return () => stops.forEach((stop) => stop())
+  }, [id, user.uid])
   const actMax = campaign ? FORMATS[campaign.format][campaign.act - 1] : 0
   const myHero = heroes.find((h) => h.ownerUid === user.uid)
   const myUpdate = (patch) => setSheet((s) => normalizeCharacter({ ...s, ...(typeof patch === 'function' ? patch(s) : patch), ownerUid: user.uid }, data))
   const view = useMemo(() => sheet && data ? derive(sheet, data) : null, [sheet, data])
-  const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved) : [], [sheet, data, campaign])
+  const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved) : [], [sheet, data, campaign, inventory, heroes, approved])
   const isValid = view && view.checks.every((c) => c.ok) && !creationErrors.length && view.points.spent <= campaign.xpTotal
   const run = async (fn) => {
     setWorking(true); setError('')
@@ -146,7 +162,11 @@ function Workspace({ id, user }) {
     </div>}
     {tab === 'character' && <div>
       <div className="panel campaign-character-actions"><div><h2>{sheet.name}</h2><div className="muted small">{view.points.total} points · {view.points.spent}/{campaign.xpTotal} XP spent · {campaign.xpTotal - view.points.spent} XP unspent</div><p className="small">{myHero ? 'Saved campaign draft' : 'New campaign character'} · {approved ? 'An approved snapshot exists' : 'Not yet approved by GM'}</p></div>
-        <button className="primary" disabled={working || !isValid} onClick={() => run(() => saveHeroDraft(id, user.uid, sheet))}>Save draft</button>
+        <div className="saved-actions"><button className="primary" disabled={working || !isValid} onClick={() => run(() => saveHeroDraft(id, user.uid, sheet))}>Save draft</button>
+          {myHero && <button className="danger" disabled={working} onClick={() => {
+            if (!window.confirm('Delete your campaign character draft and release your reserved formations? A GM-approved snapshot stays until the GM revokes it. This cannot be undone.')) return
+            run(async () => { await deleteMyHero(id, user.uid); setSheet(normalizeCharacter({ ...emptyCharacter(), ownerUid: user.uid }, data)) })
+          }}>Delete character</button>}</div>
       </div>
       {!isValid && <section className="panel"><h3>Before saving</h3><ul className="checks">{[...creationErrors, ...(view.checks.filter((c) => !c.ok).map((c) => c.label + ': ' + c.detail)), ...(view.points.spent > campaign.xpTotal ? ['Talent XP exceeds campaign earned XP'] : [])].map((m, i) => <li key={i} className="bad">{m}</li>)}</ul></section>}
       <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
@@ -172,8 +192,21 @@ function Workspace({ id, user }) {
         const v = derive(normalizeCharacter({ ...h.sheet, xpEarned: campaign.xpTotal }, data), data)
         const issues = validateCampaignSheet({ ...h.sheet, ownerUid: h.ownerUid }, data, campaign.xpTotal, inventory, heroes.filter((other) => other.ownerUid !== h.ownerUid), approvedHeroes.find((a) => a.ownerUid === h.ownerUid))
         const eligible = v.checks.every((c) => c.ok) && !issues.length && v.points.spent <= campaign.xpTotal
-        return <li key={h.id}><div><strong>{h.sheet.name}</strong><div className="muted small">{v.points.total} pts · {v.points.spent}/{campaign.xpTotal} XP spent · {eligible ? 'Valid' : 'Needs corrections'}</div></div><button className="primary" disabled={working || !eligible} onClick={() => run(() => approveHero(id, h.ownerUid, h.sheet))}>Approve snapshot</button></li>
+        return <li key={h.id}><div><strong>{h.sheet.name}</strong><div className="muted small">{v.points.total} pts · {v.points.spent}/{campaign.xpTotal} XP spent · {eligible ? 'Valid' : 'Needs corrections'}</div></div>        <button className="primary" disabled={working || !eligible} onClick={() => run(() => approveHero(id, h.ownerUid, h.sheet))}>Approve snapshot</button>{approvedHeroes.some((a) => a.ownerUid === h.ownerUid) && <button disabled={working} onClick={() => window.confirm('Revoke this approved snapshot? The player will be unable to deploy this Hero until re-approved.') && run(() => revokeApproval(id, h.ownerUid))}>Revoke approval</button>}</li>
       })}</ul></section>
+              <section className="panel span-all"><h2>Players</h2><p className="muted small">Removing a player deletes their character, approval, detachment and slot entitlements, and releases any formations or equipment they reserved.</p>
+                <ul className="saved-list">{campaign.memberUids.filter((uid) => uid !== campaign.gmUid).map((uid) => <li key={uid}>
+                  <span>{heroes.find((h) => h.ownerUid === uid)?.sheet?.name ?? 'No character yet'} <span className="muted small">({uid.slice(0, 7)})</span></span>
+                  <button className="danger" disabled={working} onClick={() => window.confirm('Remove this player and their character from the campaign?') && run(() => removePlayer(campaign, uid))}>Remove player</button>
+                </li>)}</ul>
+                {campaign.memberUids.length <= 1 && <p className="muted">No players have joined.</p>}
+              </section>
+              <section className="panel span-all"><h2>Danger zone</h2>
+                <button className="danger" disabled={working} onClick={() => {
+                  if (window.prompt(`Type the campaign name to permanently delete "${campaign.name}" and everything in it.`) !== campaign.name) return
+                  run(async () => { await deleteCampaign(id); window.location.hash = '#/campaign' })
+                }}>Delete campaign</button>
+              </section>
     </div>}
   </div>
 }

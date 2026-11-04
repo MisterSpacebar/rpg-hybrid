@@ -8,6 +8,7 @@ import { loadCharacterData } from '../character/data.js'
 import { normalizeCharacter } from '../character/engine.js'
 import { hasUnsavedCharacter, loadLocalCharacter, saveLocalCharacter, setCharacterSnapshot } from '../character/storage.js'
 import { SignInButton } from './UserMenu.jsx'
+import { listMyCampaignsWithHeroes } from '../campaign/cloud.js'
 
 const FACTION_NAMES = {}
 
@@ -129,6 +130,7 @@ function SavedArmies({ user }) {
 
 function SavedCharacters({ user }) {
   const { items: characters, problem, refresh } = useSaved(user, listCharacters, 'characters')
+  const { items: campaignHeroes } = useSaved(user, listMyCampaignsWithHeroes, 'campaign characters')
 
   const open = async (saved) => {
     if (hasUnsavedCharacter(loadLocalCharacter()) && !window.confirm('Replace the character you are currently editing? Its unsaved changes will be lost.')) return
@@ -173,15 +175,50 @@ function SavedCharacters({ user }) {
           </li>
         ))}
       </ul>
+      {campaignHeroes?.some((c) => c.hero) && <>
+        <h3>Campaign characters</h3>
+        <ul className="saved-list">
+          {campaignHeroes.filter((c) => c.hero).map((c) => (
+            <li key={c.id}>
+              <div>
+                <strong>{c.hero.name}</strong> <span className="tag">PC</span> <span className="tag">{c.name}</span>
+                <div className="muted small">{[`${c.hero.ancestry} ${c.hero.classId}`, c.hero.subclassId, `Act ${c.act}`].filter(Boolean).join(' · ')}</div>
+              </div>
+              <div className="saved-actions"><a className="button primary" href={`#/campaign/${c.id}`}>Open in campaign</a></div>
+            </li>
+          ))}
+        </ul>
+      </>}
     </section>
   )
 }
 
-function Campaigns() {
+function CampaignBadge({ role }) {
+  return <span className="tag" title={role === 'GM' ? 'You run this campaign' : 'You play a character in this campaign'}>{role === 'GM' ? 'GM' : 'PC'}</span>
+}
+
+function Campaigns({ user }) {
+  const { items: campaigns, problem } = useSaved(user, listMyCampaignsWithHeroes, 'campaigns')
   return (
     <section className="panel">
-      <h2>Campaigns</h2>
-      <p className="muted">Saved campaigns will live here. Nothing to show yet.</p>
+      <h2>Campaigns {campaigns && <span className="muted">({campaigns.length})</span>}</h2>
+      {problem && <p className="bad small">{problem}</p>}
+      {campaigns && !campaigns.length && (
+        <p className="muted">You are not in any campaigns. Create or join one on the <a href="#/campaign">Campaigns</a> tab.</p>
+      )}
+      <ul className="saved-list">
+        {campaigns?.map((c) => (
+          <li key={c.id}>
+            <div>
+              <strong>{c.name}</strong> <CampaignBadge role={c.role} />
+              <div className="muted small">
+                {[c.format, `Act ${c.act}`, c.status === 'completed' ? 'Completed' : null, c.role === 'PC' ? (c.hero ? `Playing ${c.hero.name}` : 'No character yet') : null, when(c.updatedAt)].filter(Boolean).join(' · ')}
+              </div>
+            </div>
+            <div className="saved-actions"><a className="button primary" href={`#/campaign/${c.id}`}>Open</a></div>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
@@ -213,7 +250,7 @@ export default function MyLibrary({ hash }) {
             <a key={s.id} href={s.href} className={s.id === section ? 'active' : ''}>{s.label}</a>
           ))}
         </nav>
-        {section === 'characters' ? <SavedCharacters user={user} /> : section === 'campaigns' ? <Campaigns /> : <SavedArmies user={user} />}
+        {section === 'characters' ? <SavedCharacters user={user} /> : section === 'campaigns' ? <Campaigns user={user} /> : <SavedArmies user={user} />}
       </div>
     </div>
   )

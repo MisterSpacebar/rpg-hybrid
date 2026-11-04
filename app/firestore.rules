@@ -81,7 +81,7 @@ service cloud.firestore {
         && request.resource.data.turn is int && request.resource.data.turn >= 1
         && request.resource.data.format == resource.data.format
         && (request.resource.data.patronFactionId == null || request.resource.data.patronFactionId is string);
-      allow delete: if false;
+      allow delete: if gm();
 
       match /joinRequests/{uid} {
         allow create: if isOwner(uid)
@@ -111,7 +111,7 @@ service cloud.firestore {
           && request.resource.data.sheet.gear is list
           && request.resource.data.sheet.gear.size() <= 60
           && request.resource.data.sheet.xpEarned == null;
-        allow delete: if false;
+        allow delete: if (isOwner(uid) && memberOfCampaign()) || gmOfCampaign();
       }
 
       // The company owns permanent inventory; players only select items when deploying.
@@ -132,7 +132,7 @@ service cloud.firestore {
           && request.resource.data.flexSlots is list
           && request.resource.data.flexSlots.size() <= 2
           && request.resource.data.grandThirdCommand is bool;
-        allow delete: if false;
+        allow delete: if gmOfCampaign();
       }
       match /detachments/{uid} {
         allow get, list: if memberOfCampaign();
@@ -150,7 +150,7 @@ service cloud.firestore {
           && request.resource.data.commands.size() <= 3
           && request.resource.data.selections is list
           && request.resource.data.selections.size() <= 12;
-        allow delete: if false;
+        allow delete: if (isOwner(uid) && memberOfCampaign()) || gmOfCampaign();
       }
 
       // GM-approved snapshots cannot be edited by PCs.
@@ -159,7 +159,7 @@ service cloud.firestore {
         allow create, update: if gmOfCampaign()
           && request.resource.data.ownerUid == uid
           && request.resource.data.sheet is map;
-        allow delete: if false;
+        allow delete: if gmOfCampaign();
       }
     }
 
