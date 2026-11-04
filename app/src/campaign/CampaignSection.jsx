@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useAuth } from '../auth/AuthContext.jsx'
 import { loadCharacterData } from '../character/data.js'
 import { derive, emptyCharacter, normalizeCharacter } from '../character/engine.js'
@@ -9,14 +9,14 @@ import GearTab from '../components/GearTab.jsx'
 import CampaignArmy from './CampaignArmy.jsx'
 import { SignInButton } from '../components/UserMenu.jsx'
 import {
-  approveHero, approveJoin, createCampaign, FORMATS, listCampaignHeroes, listJoinRequests,
-  listMyCampaigns, loadApprovedHero, loadCampaign, rejectJoin, requestToJoin,
-  saveHeroDraft, updateCampaignProgress, listInventory, listDetachments, listApprovedHeroes,
+  approveHero, approveJoin, createCampaign, FORMATS, rejectJoin, requestToJoin,
+  saveHeroDraft, updateCampaignProgress, watchMyCampaigns,
   watchCampaign, watchHeroes, watchInventory, watchDetachments, watchApprovedHeroes, watchJoinRequests,
   deleteMyHero, revokeApproval, removePlayer, deleteCampaign,
 } from './cloud.js'
 import { validateCampaignSheet } from './equipment.js'
 import { advanceTurn, baseXp, bonusXp } from './limits.js'
+import { acceptSnapshot, discardDraft, editDraft } from './sync.js'
 
 const errorMessage = (e) => e?.message || 'Something went wrong. Please try again.'
 const actName = ['The Gathering Storm', 'Founding the Company', 'Rising Powers', 'The Final Reckoning']
@@ -32,12 +32,10 @@ export default function CampaignSection({ hash }) {
   const [busy, setBusy] = useState(false)
   const id = hash.match(/^#\/campaign\/([^/]+)/)?.[1]
 
-  const refresh = useCallback(async () => {
-    if (!user) return
-    try { setCampaigns(await listMyCampaigns(user.uid)) }
-    catch (e) { setNotice(errorMessage(e)) }
-  }, [user])
-  useEffect(() => { refresh() }, [refresh])
+  useEffect(() => {
+    if (!user) { setCampaigns([]); return }
+    return watchMyCampaigns(user.uid, setCampaigns, (e) => setNotice(errorMessage(e)))
+  }, [user?.uid])
 
   const submit = async (fn) => {
     setBusy(true); setNotice('')
@@ -94,7 +92,10 @@ export default function CampaignSection({ hash }) {
 
 function Workspace({ id, user }) {
   const [campaign, setCampaign] = useState(null)
+  const [campaignReady, setCampaignReady] = useState(false)
+  const [connection, setConnection] = useState({ fromCache: false, hasPendingWrites: false })
   const [heroes, setHeroes] = useState([])
+  const [heroesReady, setHeroesReady] = useState(false)
   const [requests, setRequests] = useState([])
   const [approved, setApproved] = useState(null)
   const [approvedHeroes, setApprovedHeroes] = useState([])
@@ -104,47 +105,79 @@ function Workspace({ id, user }) {
   const [tab, setTab] = useState('overview')
   const [error, setError] = useState('')
   const [working, setWorking] = useState(false)
-  const [sheet, setSheet] = useState(null)
-  const [progress, setProgress] = useState({ bonusXp: 0, patronFactionId: '' })
+  const [sheetDraft, setSheetDraft] = useState(null)
+  const [progressDraft, setProgressDraft] = useState(null)
 
   const isGm = campaign?.gmUid === user.uid
-  const refresh = useCallback(async () => {
-    const c = await loadCampaign(id)
-    setCampaign(c)
-    setProgress({ bonusXp: bonusXp(c), patronFactionId: c.patronFactionId ?? '' })
-    const [hs, d, approval, registered, deployed, approvals] = await Promise.all([listCampaignHeroes(id), loadCharacterData(), loadApprovedHero(id, user.uid), listInventory(id), listDetachments(id), listApprovedHeroes(id)])
-    setHeroes(hs); setData(d); setApproved(approval); setInventory(registered); setDetachments(deployed); setApprovedHeroes(approvals)
-    setSheet((previous) => previous ?? normalizeCharacter({ ...emptyCharacter(), ...(hs.find((h) => h.ownerUid === user.uid)?.sheet ?? {}), ownerUid: user.uid }, d))
-    if (c.gmUid === user.uid) setRequests(await listJoinRequests(id))
-  }, [id, user.uid])
-
-  useEffect(() => { refresh().catch((e) => setError(errorMessage(e))) }, [refresh])
-
-  // Live updates so GM and PC screens reflect each other's changes without a manual reload.
+  // Firestore snapshots are the only source of remote state. One-time reloads
+  // could resolve out of order and replace a newer snapshot with stale data.
   useEffect(() => {
-    const fail = (e) => setError(errorMessage(e))
+    let cancelled = false
+    loadCharacterData().then((result) => {
+      if (!cancelled) setData(result)
+    }).catch((e) => { if (!cancelled) setError(errorMessage(e)) })
+    return () => { cancelled = true }
+  }, [])
+  useEffect(() => {
+    const fail = (e) => { setError(errorMessage(e)); setCampaignReady(true) }
+    const campaignFail = (e) => { setCampaign(null); fail(e) }
     const stops = [
-      watchCampaign(id, (c) => { setCampaign(c); setProgress({ bonusXp: bonusXp(c), patronFactionId: c.patronFactionId ?? '' }) }, fail),
-      watchHeroes(id, setHeroes, fail),
+      watchCampaign(id, (c, status) => {
+        setConnection(status)
+        setCampaign(c)
+        setCampaignReady(true)
+        if (c) setProgressDraft((prev) => acceptSnapshot(prev, {
+          bonusXp: bonusXp(c), patronFactionId: c.patronFactionId ?? '',
+        }))
+      }, campaignFail),
+      watchHeroes(id, (list) => { setHeroes(list); setHeroesReady(true) }, fail),
       watchInventory(id, setInventory, fail),
       watchDetachments(id, setDetachments, fail),
-      watchApprovedHeroes(id, (list) => { setApprovedHeroes(list); setApproved(list.find((h) => h.ownerUid === user.uid) ?? null) }, fail),
-      watchJoinRequests(id, setRequests, () => {}),
+      watchApprovedHeroes(id, (list) => {
+        setApprovedHeroes(list)
+        setApproved(list.find((h) => h.ownerUid === user.uid) ?? null)
+      }, fail),
     ]
     return () => stops.forEach((stop) => stop())
   }, [id, user.uid])
-  const actMax = campaign ? FORMATS[campaign.format][campaign.act - 1] : 0
+  // Join requests are GM-only in Firestore. A PC subscription is denied and
+  // cannot recover after approval; never attach that listener for PCs.
+  useEffect(() => {
+    if (!isGm) { setRequests([]); return }
+    return watchJoinRequests(id, setRequests, (e) => setError(errorMessage(e)))
+  }, [id, isGm])
+
+  useEffect(() => {
+    if (!data || !heroesReady) return
+    const saved = heroes.find((h) => h.ownerUid === user.uid)?.sheet ?? emptyCharacter()
+    const normalized = normalizeCharacter({ ...saved, ownerUid: user.uid }, data)
+    setSheetDraft((prev) => acceptSnapshot(prev, normalized))
+  }, [heroes, heroesReady, data, user.uid])
+
+  const actMax = campaign ? FORMATS[campaign.format]?.[campaign.act - 1] ?? 0 : 0
   const myHero = heroes.find((h) => h.ownerUid === user.uid)
-  const myUpdate = (patch) => setSheet((s) => normalizeCharacter({ ...s, ...(typeof patch === 'function' ? patch(s) : patch), ownerUid: user.uid }, data))
+  const sheet = sheetDraft?.value
+  const progress = progressDraft?.value ?? { bonusXp: 0, patronFactionId: '' }
+  const updateProgress = (patch) => setProgressDraft((prev) => editDraft(prev, patch))
+  const myUpdate = (patch) => setSheetDraft((prev) => editDraft(prev, (current) => {
+    const change = typeof patch === 'function' ? patch(current) : patch
+    return normalizeCharacter({ ...current, ...change, ownerUid: user.uid }, data)
+  }))
   const view = useMemo(() => sheet && data ? derive(sheet, data) : null, [sheet, data])
-  const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved) : [], [sheet, data, campaign, inventory, heroes, approved])
-  const isValid = view && view.checks.every((c) => c.ok) && !creationErrors.length && view.points.spent <= campaign.xpTotal
+  const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(
+    sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved,
+  ) : [], [sheet, data, campaign, inventory, heroes, approved, user.uid])
+  const isValid = !!(view && view.checks.every((c) => c.ok) &&
+    !creationErrors.length && view.points.spent <= (campaign?.xpTotal ?? 0))
   const run = async (fn) => {
     setWorking(true); setError('')
-    try { await fn(); await refresh() } catch (e) { setError(errorMessage(e)) }
+    try { await fn() } catch (e) { setError(errorMessage(e)) }
     finally { setWorking(false) }
   }
-  if (!campaign || !data) return <div className="builder-wrap"><p>{error || 'Loading campaign…'}</p><a href="#/campaign">Back to campaigns</a></div>
+  if (!campaign || !data || !sheet || !progressDraft) return <div className="builder-wrap">
+    <p role="status">{error || (campaignReady && !campaign ? 'Campaign no longer exists or you no longer have access.' : 'Loading live campaign data…')}</p>
+    <a href="#/campaign">Back to campaigns</a>
+  </div>
 
   return <div className="builder-wrap campaign-page">
     <p className="small"><a href="#/campaign">Campaigns</a> / {campaign.name}</p>
@@ -152,6 +185,8 @@ function Workspace({ id, user }) {
       {isGm && <button onClick={() => copyId(id)}>Copy invite ID</button>}
     </div>
     {error && <p className="bad" role="alert">{error}</p>}
+    {connection.fromCache && <p className="bad small" role="status">Showing locally cached campaign data. Updates from other players may be delayed until Firestore reconnects.</p>}
+    {!connection.fromCache && connection.hasPendingWrites && <p className="muted small" role="status">Synchronizing campaign changes…</p>}
     <nav className="subtabs">
       {['overview', ...(!isGm ? ['character'] : []), 'army', ...(isGm ? ['gm'] : [])].map((t) => <button key={t} className={tab === t ? 'active' : ''} onClick={() => setTab(t)}>{t === 'gm' ? 'GM Controls' : t === 'character' ? 'My Character' : t === 'army' ? (isGm ? 'Company Arsenal' : 'My Army') : 'Overview'}</button>)}
     </nav>
@@ -162,12 +197,14 @@ function Workspace({ id, user }) {
     </div>}
     {tab === 'character' && <div>
       <div className="panel campaign-character-actions"><div><h2>{sheet.name}</h2><div className="muted small">{view.points.total} points · {view.points.spent}/{campaign.xpTotal} XP spent · {campaign.xpTotal - view.points.spent} XP unspent</div><p className="small">{myHero ? 'Saved campaign draft' : 'New campaign character'} · {approved ? 'An approved snapshot exists' : 'Not yet approved by GM'}</p></div>
-        <div className="saved-actions"><button className="primary" disabled={working || !isValid} onClick={() => run(() => saveHeroDraft(id, user.uid, sheet))}>Save draft</button>
+        <div className="saved-actions"><button className="primary" disabled={working || !isValid || sheetDraft?.conflict} onClick={() => run(() => saveHeroDraft(id, user.uid, sheet))}>Save draft</button>
           {myHero && <button className="danger" disabled={working} onClick={() => {
             if (!window.confirm('Delete your campaign character draft and release your reserved formations? A GM-approved snapshot stays until the GM revokes it. This cannot be undone.')) return
-            run(async () => { await deleteMyHero(id, user.uid); setSheet(normalizeCharacter({ ...emptyCharacter(), ownerUid: user.uid }, data)) })
+            run(() => deleteMyHero(id, user.uid))
           }}>Delete character</button>}</div>
       </div>
+      {sheetDraft?.conflict && <section className="panel"><h3>Updated from another session</h3><p className="bad small">A newer character sheet was saved elsewhere. Your local edits were preserved; load the saved sheet to resolve the conflict.</p><button onClick={() => setSheetDraft(discardDraft)}>Load saved character</button></section>}
+      {sheetDraft?.dirty && !sheetDraft?.conflict && <p className="muted small">Unsaved character changes</p>}
       {!isValid && <section className="panel"><h3>Before saving</h3><ul className="checks">{[...creationErrors, ...(view.checks.filter((c) => !c.ok).map((c) => c.label + ': ' + c.detail)), ...(view.points.spent > campaign.xpTotal ? ['Talent XP exceeds campaign earned XP'] : [])].map((m, i) => <li key={i} className="bad">{m}</li>)}</ul></section>}
       <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
       {approved && <section className="panel"><h2>Last GM-approved character</h2><CharacterDatasheet character={approved.sheet} view={derive(normalizeCharacter(approved.sheet, data), data)} /></section>}
@@ -176,13 +213,14 @@ function Workspace({ id, user }) {
     {tab === 'gm' && isGm && <div className="panel-grid">
       <section className="panel"><h2>Progression</h2><p className="muted small">XP follows the campaign position: 5 XP per completed Turn and 5 XP on beginning Acts II, III and IV. Add exploration and Pivotal Objective XP below. Progress only moves forward.</p>
         <p>Earned XP: <strong>{campaign.xpTotal}</strong> <span className="muted small">({baseXp(campaign.format, campaign.act, campaign.turn)} from progression + {bonusXp(campaign)} bonus)</span></p>
-        <button className="primary" disabled={working || campaign.status === 'completed' || (campaign.act === 1 && campaign.turn >= actMax && !progress.patronFactionId)} onClick={() => run(() => updateCampaignProgress(campaign, { ...advanceTurn(campaign), patronFactionId: progress.patronFactionId }))}>
+        <button className="primary" disabled={working || progressDraft?.conflict || campaign.status === 'completed' || (campaign.act === 1 && campaign.turn >= actMax && !progress.patronFactionId)} onClick={() => run(() => updateCampaignProgress(campaign, { ...advanceTurn(campaign), patronFactionId: progress.patronFactionId }))}>
           {campaign.status === 'completed' ? 'Campaign complete' : campaign.act === 4 && campaign.turn >= actMax ? 'Complete final Turn (+5 XP)' : campaign.turn >= actMax ? `Complete Turn (+5 XP) and begin Act ${campaign.act + 1} (+5 XP)` : 'Complete Turn (+5 XP)'}
         </button>
+        {progressDraft?.conflict && <div role="status" className="bad small">Campaign settings changed elsewhere while you were editing. Your inputs were preserved. <button onClick={() => setProgressDraft(discardDraft)}>Load current settings</button></div>}
         <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); run(() => updateCampaignProgress(campaign, { bonusXp: progress.bonusXp, patronFactionId: progress.patronFactionId })) }}>
-          <label className="field">Bonus XP (exploration Sites and Pivotal Objectives, 5 each)<input type="number" min={0} step={5} value={progress.bonusXp} onChange={(e) => setProgress({ ...progress, bonusXp: Number(e.target.value) })} /></label>
-          <label className="field">Company sponsoring faction (Act II onward)<select value={progress.patronFactionId} onChange={(e) => setProgress({ ...progress, patronFactionId: e.target.value })}><option value="">Select when Company is founded…</option>{['free-realms','sacred-orders','iron-holds','wild-courts','warclans','underclans','death-legions','blood-courts','spirit-hosts','infernal-hosts','arcane-orders','titan-clans'].map((id) => <option key={id} value={id}>{id.replace(/-/g, ' ')}</option>)}</select></label>
-          <button className="primary" disabled={working || (campaign.act >= 2 && !progress.patronFactionId)}>Save progress</button>
+          <label className="field">Bonus XP (exploration Sites and Pivotal Objectives, 5 each)<input type="number" min={0} step={5} value={progress.bonusXp} onChange={(e) => updateProgress({ bonusXp: Number(e.target.value) })} /></label>
+          <label className="field">Company sponsoring faction (Act II onward)<select value={progress.patronFactionId} onChange={(e) => updateProgress({ patronFactionId: e.target.value })}><option value="">Select when Company is founded…</option>{['free-realms','sacred-orders','iron-holds','wild-courts','warclans','underclans','death-legions','blood-courts','spirit-hosts','infernal-hosts','arcane-orders','titan-clans'].map((id) => <option key={id} value={id}>{id.replace(/-/g, ' ')}</option>)}</select></label>
+          <button className="primary" disabled={working || progressDraft?.conflict || (campaign.act >= 2 && !progress.patronFactionId)}>Save progress</button>
         </form>
       </section>
       <section className="panel"><h2>Join requests</h2>{!requests.length && <p className="muted">No pending requests.</p>}

@@ -5,26 +5,50 @@ import { detachmentView, deploymentCap, allowedDoctrineCommands, FIELD_SLOTS } f
 import { grantEquipment, grantFormation, removeInventoryItem, saveDetachment, setEntitlement, watchEntitlements } from './cloud.js'
 import { loadCharacterData } from '../character/data.js'
 import { derive, normalizeCharacter } from '../character/engine.js'
+import { acceptSnapshot, discardDraft, editDraft } from './sync.js'
 
 const empty = { doctrineId: null, commands: [], selections: [] }
 const labelSlot = (s) => ({ C: 'Core', E: 'Elite', R: 'Ranged', V: 'Mobile', S: 'Support', A: 'Asset', H: 'Headquarters' }[s] || s)
 
-export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHeroes, inventory, detachments, onRefresh }) {
+export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHeroes, inventory, detachments }) {
   const [catalog, setCatalog] = useState(null)
   const [charData, setCharData] = useState(null)
   const [entitlements, setEntitlements] = useState({})
-  const [draft, setDraft] = useState(null)
+  const [draftState, setDraftState] = useState(null)
+  const [entitlementDrafts, setEntitlementDrafts] = useState({})
   const [selectedKey, setSelectedKey] = useState('')
   const [selectedGear, setSelectedGear] = useState('')
   const [message, setMessage] = useState('')
   const [saving, setSaving] = useState(false)
   const my = detachments.find((d) => d.ownerUid === user.uid) ?? empty
+  const mySaved = { doctrineId: my.doctrineId ?? null, commands: my.commands ?? [], selections: my.selections ?? [] }
+  const draft = draftState?.value
+  const setDraft = (change) => setDraftState((prev) => editDraft(prev, change))
+  const editEntitlement = (uid, change) => setEntitlementDrafts((prev) => ({ ...prev,
+    [uid]: editDraft(prev[uid] ?? acceptSnapshot(null, { flexSlots: [], grandThirdCommand: false }), change),
+  }))
 
   useEffect(() => { loadCatalog().then(setCatalog).catch((e) => setMessage(e.message)); loadCharacterData().then(setCharData).catch((e) => setMessage(e.message)) }, [])
-  useEffect(() => { setDraft({ ...empty, ...my, selections: [...(my.selections ?? [])], commands: [...(my.commands ?? [])] }) }, [campaign.id, JSON.stringify(my)])
+  useEffect(() => {
+    setDraftState((previous) => acceptSnapshot(previous, mySaved))
+  }, [campaign.id, JSON.stringify(mySaved)])
   useEffect(() => {
     if (!campaign) return
-    return watchEntitlements(campaign.id, setEntitlements, (e) => setMessage(e.message))
+    return watchEntitlements(campaign.id, (remote) => {
+      setEntitlements(remote)
+      setEntitlementDrafts((previous) => {
+        const next = { ...previous }
+        for (const [uid, value] of Object.entries(remote)) {
+          next[uid] = acceptSnapshot(previous[uid], {
+            flexSlots: value.flexSlots ?? [], grandThirdCommand: value.grandThirdCommand === true,
+          })
+        }
+        for (const uid of Object.keys(next)) if (!(uid in remote) && previous[uid]?.remoteSignature !== JSON.stringify({ flexSlots: [], grandThirdCommand: false })) {
+          next[uid] = acceptSnapshot(previous[uid], { flexSlots: [], grandThirdCommand: false })
+        }
+        return next
+      })
+    }, (e) => setMessage(e.message))
   }, [campaign.id])
 
   const approved = approvedHeroes.find((h) => h.ownerUid === user.uid)
@@ -49,7 +73,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
 
   const perform = async (callback) => {
     setSaving(true); setMessage('')
-    try { await callback(); await onRefresh(); setMessage('Saved') }
+    try { await callback(); setMessage('Saved — changes sync automatically') }
     catch (e) { setMessage(e.message ?? 'Could not save') }
     finally { setSaving(false) }
   }
@@ -70,10 +94,12 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         while each PC chooses their own Doctrine. Purchasing a formation does not automatically grant another slot.
       </p>
       <p><strong>{inventory.filter((i) => i.kind === 'unit').length}</strong> owned formations · <strong>{campaign.act >= 2 ? sponsor?.name ?? 'Sponsor not chosen' : 'Company not founded'}</strong> · {deploymentCap(campaign) ?? 'Hero only'} deployment points per PC</p>
-      {message && <p className={message === 'Saved' ? 'ok' : 'bad'} role="status">{message}</p>}
+      {message && <p className={message.startsWith('Saved') ? 'ok' : 'bad'} role="status">{message}</p>}
     </section>
     {!isGm && <section className="panel">
       <h2>My Detachment</h2>
+      {draftState?.conflict && <div className="bad small" role="status">Your detachment was changed elsewhere. Your unsaved selections are preserved. <button onClick={() => setDraftState(discardDraft)}>Load saved detachment</button></div>}
+      {draftState?.dirty && !draftState?.conflict && <p className="muted small">Unsaved detachment changes</p>}
       <p className="muted small">{result.total} / {result.cap ?? 'Hero only'} points, including {hero?.points.total ?? '?'} Hero points</p>
       {campaign.act >= 3 && <label className="field">Personal Doctrine
         <select value={draft.doctrineId ?? ''} onChange={(e) => setDraft({ ...draft, doctrineId: e.target.value || null, commands: [] })}>
@@ -123,7 +149,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         </select><button onClick={() => remove(u.poolId)}>Remove</button></div>
       </li>)}</ul>
       {result.errors.length > 0 && <ul className="checks">{result.errors.map((e, i) => <li className="bad" key={i}>{e}</li>)}</ul>}
-      <button className="primary" disabled={saving || !result.legal} onClick={() => perform(() => saveDetachment(campaign.id, user.uid, draft))}>Save legal detachment</button>
+      <button className="primary" disabled={saving || !result.legal || draftState?.conflict} onClick={() => perform(() => saveDetachment(campaign.id, user.uid, draft))}>Save legal detachment</button>
     </section>}
     {!isGm && <section className="panel">
       <h2>Select owned formations</h2>
@@ -182,16 +208,19 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       <h2>GM — Personal detachment upgrades</h2>
       <p className="muted small">Each player inherits the same two foundation slots from the sponsoring faction. Flex slots are purchased individually through Develop (2 Gold each, maximum two). Grand's third Doctrine Command requires a separate unlock.</p>
       {campaign.memberUids.filter((uid) => uid !== campaign.gmUid).map((uid) => {
-        const entitlement = entitlements[uid] ?? {}
+        const current = entitlementDrafts[uid] ?? acceptSnapshot(null, { flexSlots: [], grandThirdCommand: false })
+        const entitlement = current.value
         return <div key={uid} className="group">
           <div className="group-label">{heroes.find((h) => h.ownerUid === uid)?.sheet?.name ?? uid.slice(0, 8)}</div>
-          <label className="field">Flex slot 1<select value={entitlement.flexSlots?.[0] ?? ''} onChange={(e) => setEntitlements((prev) => {
-            const slots = [e.target.value, entitlement.flexSlots?.[1] ?? ''].filter(Boolean)
-            return { ...prev, [uid]: { ...entitlement, flexSlots: slots } }
-          })}><option value="">None</option>{FIELD_SLOTS.map((s) => <option key={s} value={s}>{labelSlot(s)}</option>)}</select></label>
-          <label className="field">Flex slot 2<select value={entitlement.flexSlots?.[1] ?? ''} onChange={(e) => setEntitlements((prev) => ({ ...prev, [uid]: { ...entitlement, flexSlots: [entitlement.flexSlots?.[0] ?? '', e.target.value].filter(Boolean) } }))}><option value="">None</option>{FIELD_SLOTS.map((s) => <option key={s} value={s}>{labelSlot(s)}</option>)}</select></label>
-          {campaign.format === 'grand' && <label className="choice"><input type="checkbox" checked={!!entitlement.grandThirdCommand} onChange={(e) => setEntitlements((prev) => ({ ...prev, [uid]: { ...entitlement, grandThirdCommand: e.target.checked } }))} />Grand third Doctrine Command unlocked</label>}
-          <button disabled={saving} onClick={() => perform(() => setEntitlement(campaign.id, uid, entitlements[uid] ?? {}))}>Save entitlement</button>
+          {current.conflict && <div className="bad small">Entitlement updated in another session. <button onClick={() => setEntitlementDrafts((p) => ({ ...p, [uid]: discardDraft(p[uid]) }))}>Load saved entitlement</button></div>}
+          <label className="field">Flex slot 1<select value={entitlement.flexSlots?.[0] ?? ''} onChange={(e) => editEntitlement(uid, {
+            flexSlots: [e.target.value, entitlement.flexSlots?.[1] ?? ''].filter(Boolean),
+          })}><option value="">None</option>{FIELD_SLOTS.map((slot) => <option key={slot} value={slot}>{labelSlot(slot)}</option>)}</select></label>
+          <label className="field">Flex slot 2<select value={entitlement.flexSlots?.[1] ?? ''} onChange={(e) => editEntitlement(uid, {
+            flexSlots: [entitlement.flexSlots?.[0] ?? '', e.target.value].filter(Boolean),
+          })}><option value="">None</option>{FIELD_SLOTS.map((slot) => <option key={slot} value={slot}>{labelSlot(slot)}</option>)}</select></label>
+          {campaign.format === 'grand' && <label className="choice"><input type="checkbox" checked={!!entitlement.grandThirdCommand} onChange={(e) => editEntitlement(uid, { grandThirdCommand: e.target.checked })} />Grand third Doctrine Command unlocked</label>}
+          <button disabled={saving || current.conflict} onClick={() => perform(() => setEntitlement(campaign.id, uid, entitlement))}>Save entitlement</button>
         </div>
       })}
     </section>}

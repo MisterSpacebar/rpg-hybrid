@@ -208,12 +208,59 @@ export async function deleteCampaign(id) {
 }
 
 // Live listeners: each returns an unsubscribe function.
+export const watchMyCampaigns = (uid, cb, onError) => onSnapshot(
+  query(root, where('memberUids', 'array-contains', uid)),
+  (snapshot) => cb(docs(snapshot)), onError,
+)
+
 const docs = (snap) => snap.docs.map((d) => ({ id: d.id, ...d.data() }))
 const owned = (snap) => snap.docs.map((d) => ({ ownerUid: d.id, ...d.data() }))
-export const watchCampaign = (id, cb, onError) => onSnapshot(campaignRef(id), (s) => s.exists() && cb({ id: s.id, ...s.data() }), onError)
+export const watchCampaign = (id, cb, onError) => onSnapshot(
+  campaignRef(id), { includeMetadataChanges: true },
+  (snapshot) => cb(snapshot.exists() ? { id: snapshot.id, ...snapshot.data() } : null, {
+    fromCache: snapshot.metadata.fromCache,
+    hasPendingWrites: snapshot.metadata.hasPendingWrites,
+  }), onError,
+)
 export const watchHeroes = (id, cb, onError) => onSnapshot(heroesRef(id), (s) => cb(docs(s)), onError)
 export const watchInventory = (id, cb, onError) => onSnapshot(inventoryRef(id), (s) => cb(docs(s)), onError)
 export const watchDetachments = (id, cb, onError) => onSnapshot(collection(db, 'campaigns', id, 'detachments'), (s) => cb(owned(s)), onError)
 export const watchApprovedHeroes = (id, cb, onError) => onSnapshot(collection(db, 'campaigns', id, 'approvedHeroes'), (s) => cb(owned(s)), onError)
 export const watchJoinRequests = (id, cb, onError) => onSnapshot(membersRef(id), (s) => cb(docs(s)), onError)
 export const watchEntitlements = (id, cb, onError) => onSnapshot(collection(db, 'campaigns', id, 'entitlements'), (s) => cb(Object.fromEntries(s.docs.map((d) => [d.id, d.data()]))), onError)
+
+// Subscribe to Library campaign rows and the current user's character in each.
+// Both membership changes and character edits are reflected without a reload.
+export function watchMyCampaignsWithHeroes(uid, onChange, onError) {
+  let campaigns = []
+  const heroes = new Map()
+  const listeners = new Map()
+  let active = true
+  const emit = () => {
+    if (!active) return
+    onChange(campaigns.map((c) => ({
+      ...c, role: c.gmUid === uid ? 'GM' : 'PC', hero: heroes.get(c.id) ?? null,
+    })))
+  }
+  const stopCampaigns = watchMyCampaigns(uid, (list) => {
+    campaigns = list
+    const ids = new Set(list.map((c) => c.id))
+    for (const [id, stop] of listeners) {
+      if (!ids.has(id)) { stop(); listeners.delete(id); heroes.delete(id) }
+    }
+    for (const c of list) {
+      if (listeners.has(c.id)) continue
+      listeners.set(c.id, onSnapshot(doc(heroesRef(c.id), uid), (snap) => {
+        heroes.set(c.id, snap.exists() ? snap.data().sheet : null)
+        emit()
+      }, onError))
+    }
+    emit()
+  }, onError)
+  return () => {
+    active = false
+    stopCampaigns()
+    for (const stop of listeners.values()) stop()
+    listeners.clear()
+  }
+}

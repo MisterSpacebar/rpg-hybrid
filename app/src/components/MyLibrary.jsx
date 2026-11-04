@@ -8,7 +8,7 @@ import { loadCharacterData } from '../character/data.js'
 import { normalizeCharacter } from '../character/engine.js'
 import { hasUnsavedCharacter, loadLocalCharacter, saveLocalCharacter, setCharacterSnapshot } from '../character/storage.js'
 import { SignInButton } from './UserMenu.jsx'
-import { listMyCampaignsWithHeroes } from '../campaign/cloud.js'
+import { listMyCampaignsWithHeroes, watchMyCampaignsWithHeroes } from '../campaign/cloud.js'
 
 const FACTION_NAMES = {}
 
@@ -60,7 +60,7 @@ const SECTIONS = [
 const sectionOf = (hash) => (hash.startsWith('#/library/characters') ? 'characters' : hash.startsWith('#/library/campaigns') ? 'campaigns' : 'armies')
 
 // Loads a list of saved documents and exposes a refresh, so each section handles its own errors.
-function useSaved(user, list, noun) {
+function useSaved(user, list, noun, subscribe = null) {
   const [items, setItems] = useState(null)
   const [problem, setProblem] = useState(null)
   const refresh = useCallback(async () => {
@@ -73,8 +73,12 @@ function useSaved(user, list, noun) {
     }
   }, [user, list, noun])
   useEffect(() => {
-    refresh()
-  }, [refresh])
+    if (!subscribe) { refresh(); return }
+    return subscribe(user.uid, (next) => { setItems(next); setProblem(null) }, (err) => {
+      console.error(err)
+      setProblem(`Could not sync your ${noun}. Check Firestore permissions or connectivity.`)
+    })
+  }, [refresh, subscribe, user.uid, noun])
   return { items, problem, refresh }
 }
 
@@ -130,7 +134,7 @@ function SavedArmies({ user }) {
 
 function SavedCharacters({ user }) {
   const { items: characters, problem, refresh } = useSaved(user, listCharacters, 'characters')
-  const { items: campaignHeroes } = useSaved(user, listMyCampaignsWithHeroes, 'campaign characters')
+  const { items: campaignHeroes } = useSaved(user, listMyCampaignsWithHeroes, 'campaign characters', watchMyCampaignsWithHeroes)
 
   const open = async (saved) => {
     if (hasUnsavedCharacter(loadLocalCharacter()) && !window.confirm('Replace the character you are currently editing? Its unsaved changes will be lost.')) return
@@ -198,7 +202,7 @@ function CampaignBadge({ role }) {
 }
 
 function Campaigns({ user }) {
-  const { items: campaigns, problem } = useSaved(user, listMyCampaignsWithHeroes, 'campaigns')
+  const { items: campaigns, problem } = useSaved(user, listMyCampaignsWithHeroes, 'campaigns', watchMyCampaignsWithHeroes)
   return (
     <section className="panel">
       <h2>Campaigns {campaigns && <span className="muted">({campaigns.length})</span>}</h2>
