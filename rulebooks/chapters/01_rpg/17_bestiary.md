@@ -72,7 +72,7 @@ Ordinary opposition, mercenaries, and minor magical adversaries.
 | --- | --- | --- |
 | Ordinary Bandits | +0 | Five Models with Hand Weapons and Shortbows. |
 | Additional Bandit | +15 each | Add one Model, maximum 8. |
-| Longbows | +15 | Replace Shortbows with 10" / 2 / 5+ / 1 / Long Range 3. Attacks beyond 10" worsen Hit by one step. |
+| Longbows | +15 | Replace Shortbows with 10" / 2 / 5+ / 1 / Long Range 3. Attacks beyond 10" lose 1 Attack die for a single-model Unit or 3 for a multi-model Unit (minimum 1). |
 | Experienced Ambushers | +20 | The Unit's first ranged Attack of the battle gains Accurate 1. |
 
 #### Cultists
@@ -934,3 +934,9 @@ Bestiary Points approximate Structured Combat cost and are useful as a baseline 
 ## 9. Balance Priorities
 
 The bestiary's Point costs are **provisional**. Test universal highest-die Charge Impact (particularly when combined with printed Impact 2–4), multiple Surges on combined Attack pools, creatures with unconditional Critical, the Hydra's attack degradation, Kraken's distributed Models, and extra action economy from bonded companions. Test a bird's Cover reduction before pricing it as a universal support feature. Monster movement/control Commands—especially Stagger—need scenario-level testing against both solo PCs and larger parties.
+
+---
+
+## v0.7 Bestiary Tag Classification
+
+Small independent animal Units formerly listed solely with the **Beast** trait gain **Creature** as a battlefield Unit Type, without automatically becoming Monsters. Ordinary Humanoid NPCs gain **Humanoid, Mortal**, and foot-form NPCs qualify as **Infantry** where their profile permits. Monster remains a separate Unit Type. All tags are descriptive classifications and do not independently grant movement or combat abilities. Creature-specific Anti-tags check actual traits on the datasheet, and multiple matching Anti bonuses never stack.

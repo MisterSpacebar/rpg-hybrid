@@ -55,12 +55,35 @@ export const emptyCharacter = () => ({
 
 export const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1)
 
+// A summoned Thrall unit takes its Hit, Armor and Evade from the summoner's skill thresholds (clamped to 2+ ... 6+),
+// and inherits each of the summoner's Anti-[tag] ranks at one rank lower.
+const clampThreshold = (n) => Math.min(6, Math.max(2, n))
+export function buildThrall(unit, characteristics, skills, traits, attacks) {
+  const ranks = {}
+  const note = (text) => {
+    const m = /^Anti-(.+?)\s+(\d+)/.exec(text)
+    if (m) ranks[m[1]] = Math.max(ranks[m[1]] ?? 0, Number(m[2]))
+  }
+  traits.forEach((t) => note(t.name))
+  attacks.forEach((a) => (a.keywords ?? []).forEach(note))
+  const anti = Object.entries(ranks).map(([tag, r]) => `Anti-${tag} ${r - 1}`).filter((a) => !a.endsWith(' 0'))
+  const claws = unit.combatPhaseAttack
+  return {
+    name: unit.name,
+    startingModels: Math.min(characteristics.mind, unit.maxModels ?? 6),
+    maxModels: unit.maxModels ?? 6,
+    stats: { ...unit.stats, wounds: 1, armor: `${clampThreshold(skills.medicine + 2)}+`, evade: `${clampThreshold(skills.stealth + 3)}+` },
+    attack: { ...claws.profile, name: claws.name, hit: `${clampThreshold(skills.mysticism + 1)}+`, keywords: [...(claws.profile.keywords ?? []), ...anti] },
+    passive: unit.passive,
+  }
+}
+
 const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V']
 export const talentTitle = (e) => `${e.def.name}${e.def.ranked ? ` ${ROMAN[e.rank]}` : ''}`
 
 // Type, CP cost and the choices made for a talent, for compact display.
 export const talentDetail = (e) =>
-  [e.def.type, e.def.cost, e.entry.attack ?? e.first.attack, e.entry.skill && cap(e.entry.skill), e.entry.characteristic && cap(e.entry.characteristic), e.entry.formula, e.first.enemy, e.entry.option]
+  [e.def.type, e.def.cost, e.entry.attack ?? e.first.attack, e.entry.skill && cap(e.entry.skill), e.entry.characteristic && cap(e.entry.characteristic), e.entry.formula, e.entry.enemy, e.entry.tag, e.entry.option]
     .filter(Boolean)
     .join(' · ')
 
@@ -469,14 +492,15 @@ export function derive(char, data) {
   const traits = [{ source: ancestry.name, name: ancestry.traitName ?? 'Ancestry', text: ancestry.traits.join(' '), ancestry: true }]
   for (const n of adaptations) traits.push({ source: 'Adaptation', name: n, text: ancestry.adaptations.options.find((o) => o.name === n).effect, ancestry: true })
   if (archetype) traits.push({ source: 'Undead Archetype', name: archetype.name, text: archetype.effect, ancestry: true })
-  const favored = entries.filter((e) => e.def.id === 'favored-enemy')
-  if (favored.length && favored[0].entry.enemy) {
-    // Anti-[Type] starts at 2 on Rank I and rises by 1 per further rank.
-    const x = favored.length + 1
+  // Each Favored Enemy rank names a different tag at Anti 3; Master Hunter raises one of those tags to Anti 4.
+  const huntedTag = entries.find((e) => e.def.id === 'master-hunter')?.entry.tag
+  for (const { entry } of entries.filter((e) => e.def.id === 'favored-enemy')) {
+    if (!entry.enemy) continue
+    const x = entry.enemy === huntedTag ? 4 : 3
     traits.push({
-      source: 'Favored Enemy',
-      name: `Anti-${favored[0].entry.enemy} ${x}`,
-      text: `Gain ${x} additional Attack dice against Units with the ${favored[0].entry.enemy} tag. This does not raise Damage.`,
+      source: entry.enemy === huntedTag ? 'Favored Enemy · Master Hunter' : 'Favored Enemy',
+      name: `Anti-${entry.enemy} ${x}`,
+      text: `Gain ${x} additional Attack dice against Units with the ${entry.enemy} tag. This does not raise Damage.`,
     })
   }
   // The Artificer's Field Formulae ability just says how to pick Formulas, so the sheet lists the Formulas themselves instead.
@@ -581,10 +605,12 @@ export function derive(char, data) {
   const toughTotal = fx.defenses.filter((d) => /^Tough \d+$/.test(d)).reduce((sum, d) => sum + num(d), 0)
   const defenses = [...(toughTotal ? [`Tough ${toughTotal}`] : []), ...new Set(fx.defenses.filter((d) => !/^Tough \d+$/.test(d)))]
 
+  const thrall = sub.summonedUnit ? buildThrall(sub.summonedUnit, characteristics, skills, traits, attacks) : null
+
   return {
     ancestry, cls, sub, size, sizeChoice, tags, adaptations, archetype,
     characteristics, baseChar, skills, skillSteps: steps, skillsAtCreation, classList, classPicks, extraPicks,
     stats, printedStats, changed, defenses, attacks, carried, attackOptions: candidates, gear, points, learned,
-    traits, commands, prepared, formulas, formulaList, entries, checks, pool,
+    traits, commands, prepared, formulas, formulaList, entries, checks, pool, thrall,
   }
 }

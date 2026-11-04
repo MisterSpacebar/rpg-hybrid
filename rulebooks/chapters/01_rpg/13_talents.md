@@ -85,7 +85,9 @@ The same Attack is improved by every Rank of this Talent. Prowess applies to the
 | Sharpeye — Ranked | 1+ | Each Rank: choose one ranged weapon or ranged spell attack: it gains Accurate +1. Each rank must choose a different weapon or spell. |
 | Critical Prowess — Ranked | 2+ | Choose one Attack; on Surge, gain Critical X, where X equals Rank |
 | Long Range — Ranked | 2+ | Choose one ranged Weapon Attack or ranged Spell Attack; increase its Long Range value by +3" per Rank. |
-| Favored Enemy — Ranked | 2+ | Gain Anti-[TYPE] X, where X equals Rank + 1 (Anti-[TYPE] 2 at Rank I, 3 at Rank II, and so on). |
+| Favored Enemy — Ranked | 2+ | Each Rank: choose a DIFFERENT matching Faction, Unit Type, Role, or Trait tag; permanently gain Anti-[chosen tag] 3. Only the highest applicable Anti rank applies. |
+| Precision Shooting | 2 | Choose one ranged Weapon or Spell Attack; it gains Pinpoint. |
+| Master Hunter | 3 | Requires Favored Enemy. Improve one already-chosen Favored Enemy tag from Anti 3 to permanent Anti 4. |
 | Evasive Training — Ranked | 3+ | Improve Evade by 1 step per Rank |
 | Nimble — Ranked | 3+ | Gain Cover +1 for each rank |
 | Weapon Mastery — Ranked | 3+ | Each Rank: +1 Damage to one different melee Weapon Attack |
@@ -827,3 +829,13 @@ Generic and Specialization Talents are available to all Classes unless otherwise
 ### Spell Acquisition
 
 Talents no longer directly grant additional known Spell Attacks unless explicitly stated. New Spell Attacks are acquired through scrolls, magical texts, training, or other sources described in the Items and Spells rules. Spell Attacks do not occupy prepared Command slots and may be improved through appropriate Prowess Talents.
+
+---
+
+## v0.7 Critical Force (Critical Specialization)
+
+**Critical Force — Tier 3, passive:** Choose one Weapon Attack. Once per Attack, if at least one of its Critical Hits survives Ward, **increase the Damage of ONE such Critical Hit by 1**. This is +1 **total Damage in the Critical pool**, not +1 per Critical Hit. Works with passive per-Surge and explicitly CP-granted Critical.
+
+**Greater Critical Force — Tier 4, passive:** Requires Critical Force. The once-per-Attack bonus becomes +2 total Damage instead of +1, still applied to a single surviving Critical Hit.
+
+This specialized Critical-damage improvement does **not** replace the existing magical Direct Damage options, Exploit Weakness, or Perfect Strike. Different ability names should be checked for normal Command/action stacking limits.

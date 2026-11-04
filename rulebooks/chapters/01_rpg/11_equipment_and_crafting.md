@@ -50,7 +50,7 @@ Equipment uses the standard Keywords described in the Combat Rules.
 | Anti-[Category] X | Gain +X Attack dice against the indicated category |
 | Heavy | Subject to normal Heavy movement restrictions |
 | Brace X | Reduce incoming Charge Impact Hits by X, minimum 0 |
-| Long Range X | Extend maximum Range by X"; attacking beyond normal Range worsens Hit by 1 step |
+| Long Range X | Extend maximum Range by X"; attacking beyond normal Range reduces the combined Attack pool by 1 die (single-model Unit) or 3 dice (multi-model Unit), minimum 1 |
 | Rapid-Fire X | Gain +X Attacks against targets within half the weapon's normal Range |
 | Instant | Cannot be responded to with Command Abilities |
 | Pinpoint | Ignore the Hit penalty for attacking enemies Engaged with another Unit |
@@ -126,7 +126,7 @@ Purchasing Javelins grants both profiles. Their Point cost is counted only once.
 | Longbow | 9" | 4 | 6+ | 1 | Long Range 3 | 10 |
 | Heavy Bow | 9" | 1 | 5+ | 2 | Heavy, Anti-Armored 2 | 15 |
 
-Long Range increases the Longbow's maximum effective distance to 12", but Attacks beyond 9" worsen Hit by one step.
+Long Range increases the Longbow's maximum effective distance to 12", but Attacks beyond 9" roll 1 fewer Attack die (minimum 1).
 
 ### Crossbows
 

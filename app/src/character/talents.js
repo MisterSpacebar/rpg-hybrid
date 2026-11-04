@@ -23,10 +23,9 @@ export function blockedReason(def, tier, talents, pool) {
     if (owned) return 'Already taken'
     if (def.baseTier !== tier) return `Tier ${def.baseTier} talent`
   }
-  if (def.prerequisite && !allEntries(withNames(talents, pool)).some((x) => x.entry.name === def.prerequisite)) {
-    return `Requires ${def.prerequisite}`
-  }
-  return null
+  const held = allEntries(withNames(talents, pool))
+  const missing = (def.prerequisites ?? []).filter((name) => !held.some((x) => x.entry.name === name))
+  return missing.length ? `Requires ${missing.join(', ')}` : null
 }
 
 // A tier's next slot is open once the tier below holds count + 2 talents (k talents need k + 1 beneath).
@@ -99,7 +98,8 @@ export const TALENT_CHOICES = {
   'sacred-reach': { sticky: [attack('spell')] },
   'weapon-mastery': { perRank: [attack('melee', { unique: true, label: 'Melee weapon (different each rank)' })] },
   'exceptional-development': { perRank: [{ key: 'characteristic', kind: 'characteristic', unique: true, label: 'Characteristic' }] },
-  'favored-enemy': { sticky: [{ key: 'enemy', kind: 'select', label: 'Anti-[Type] against', options: ENEMY_TAGS.map((t) => ({ value: t, label: t })) }] },
+  'favored-enemy': { perRank: [{ key: 'enemy', kind: 'select', unique: true, label: 'Anti-[Type] 3 against (different each rank)', options: ENEMY_TAGS.map((t) => ({ value: t, label: t })) }] },
+  'master-hunter': { perRank: [{ key: 'tag', kind: 'favoredTag', label: 'Favored Enemy tag raised to Anti 4' }] },
   'greater-ward': {
     perRank: [{
       key: 'ward',

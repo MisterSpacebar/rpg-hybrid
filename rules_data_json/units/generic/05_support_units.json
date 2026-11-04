@@ -7,9 +7,19 @@
   "summary": "Generic Support Units are small groups of battlefield specialists. Their CP Commands apply once per Unit activation, regardless of how many Models they contain; additional Models primarily provide durability and eligible weapon attacks rather than additional command uses.",
   "sharedProfile": {
     "baseModels": 2,
-    "tags": ["Support"],
-    "recruitmentSlots": ["S"],
-    "stats": { "move": "3\"", "wounds": "3 per Model", "armor": "6+", "evade": "6+", "ward": null },
+    "tags": [
+      "Support"
+    ],
+    "recruitmentSlots": [
+      "S"
+    ],
+    "stats": {
+      "move": "3\"",
+      "wounds": "3 per Model",
+      "armor": "6+",
+      "evade": "6+",
+      "ward": null
+    },
     "note": "Choose one Support specialization. All start with six total Wounds. Unless specified, melee and ranged weapons are used per Model, while Commands are resolved once per Unit. A Support's role is distinct from the player-character Artificer/Alchemist or Priest/Cleric subclass. These generic Units use their limited printed Commands, not PC Formulas, spells, or talents."
   },
   "specializations": [
@@ -17,47 +27,184 @@
       "id": "field-medics",
       "name": "Field Medics",
       "basePoints": 80,
-      "defaultMeleeWeapon": { "name": "Surgical Tools", "profile": { "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] } },
+      "defaultMeleeWeapon": {
+        "name": "Surgical Tools",
+        "profile": {
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
+      },
       "primaryRole": "Healing and conditions",
       "abilities": [
-        { "name": "Triage", "points": 0, "cpCost": 1, "timing": "Movement", "effect": "Heal 2 accumulated Damage from one surviving friendly Unit within Engagement Range. Does not restore defeated Models." },
-        { "name": "Field Treatment", "points": 25, "effect": "Triage's range becomes Short and it can also remove one temporary physical condition, Move penalty, or Hit penalty." },
-        { "name": "Rapid Treatment", "points": 35, "cpCost": 1, "timing": "Reaction", "effect": "After an eligible friendly non-Artillery, non-Construct, non-Vehicle, non-War Machine Unit within Short survives an Attack, Heal 3 accumulated Damage. Does not restore Models." }
+        {
+          "name": "Triage",
+          "points": 0,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "Heal 2 accumulated Damage from one surviving friendly Unit within Engagement Range. Does not restore defeated Models."
+        },
+        {
+          "name": "Field Treatment",
+          "points": 25,
+          "effect": "Triage's range becomes Short and it can also remove one temporary physical condition, Move penalty, or Hit penalty."
+        },
+        {
+          "name": "Rapid Treatment",
+          "points": 35,
+          "cpCost": 1,
+          "timing": "Reaction",
+          "effect": "After an eligible friendly non-Artillery, non-Construct, non-Vehicle, non-War Machine Unit within Short survives an Attack, Heal 3 accumulated Damage. Does not restore Models."
+        }
       ],
-      "notes": ["Medics supply stronger restoration than generic Clerics but must initially operate at much closer distances."]
+      "notes": [
+        "Medics supply stronger restoration than generic Clerics but must initially operate at much closer distances."
+      ]
     },
     {
       "id": "engineers",
       "name": "Engineers",
       "basePoints": 90,
-      "defaultMeleeWeapon": { "name": "Workshop Tools", "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] } },
+      "defaultMeleeWeapon": {
+        "name": "Workshop Tools",
+        "profile": {
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
+      },
       "primaryRole": "Repair and fortifications",
       "abilities": [
-        { "name": "Repair", "points": 0, "cpCost": 1, "timing": "Movement", "effect": "Heal 2 accumulated Damage from a friendly Construct, Vehicle, Artillery, or War Machine within Engagement Range. Does not return removed Models." },
-        { "name": "Field Works", "points": 0, "cpCost": 1, "timing": "Movement", "effect": "Place one Temporary Barricade within 2\". The Unit may maintain only one of its barricades at a time." },
-        { "name": "Pistols", "points": 25, "effect": "All Models gain Pistol: 6\" / 2 / 5+ / 1 / Firearm as their eligible Assault Attack. They retain their melee tools and Repair/Field Works.", "profile": { "range": "6\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm"] } },
-        { "name": "Demolitions", "points": 15, "effect": "Gain Demolition Charge: Engaged / 1 / 4+ / Direct Damage 2 against Structures, Fortifications, Barricades, Vehicles, War Machines, and suitable scenario objects." },
-        { "name": "Target Analysis", "points": 20, "cpCost": 1, "timing": "Assault", "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Mechanical 3." }
+        {
+          "name": "Repair",
+          "points": 0,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "Heal 2 accumulated Damage from a friendly Construct, Vehicle, Artillery, or War Machine within Engagement Range. Does not return removed Models."
+        },
+        {
+          "name": "Field Works",
+          "points": 0,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "Place one Temporary Barricade within 2\". The Unit may maintain only one of its barricades at a time."
+        },
+        {
+          "name": "Pistols",
+          "points": 25,
+          "effect": "All Models gain Pistol: 6\" / 2 / 5+ / 1 / Firearm as their eligible Assault Attack. They retain their melee tools and Repair/Field Works.",
+          "profile": {
+            "range": "6\"",
+            "attacks": 2,
+            "hit": "5+",
+            "damage": 1,
+            "damageTypes": [
+              "Physical"
+            ],
+            "keywords": [
+              "Firearm"
+            ]
+          }
+        },
+        {
+          "name": "Demolitions",
+          "points": 15,
+          "effect": "Gain Demolition Charge: Engaged / 1 / 4+ / Direct Damage 2 against Structures, Fortifications, Barricades, Vehicles, War Machines, and suitable scenario objects."
+        },
+        {
+          "name": "Target Analysis",
+          "points": 20,
+          "cpCost": 1,
+          "timing": "Assault",
+          "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Mechanical 3."
+        },
+        {
+          "name": "Tactical Guidance",
+          "points": 25,
+          "type": "Passive — Aura",
+          "effect": "At list construction choose one creature or material Trait tag (Mortal, Undead, Beast, Spirit, Infernal, Fey, Humanoid, Construct, Mechanical, Armored, Unarmored, or another GM-approved Trait). Other friendly Units wholly within 3\" of this Support gain Anti-[selected tag] 2 on their Weapon and Spell Attacks. The Support itself does not benefit; where multiple Anti keywords apply, use only the highest rank. One such upgrade per Support Unit."
+        }
       ],
       "temporaryBarricade": {
         "size": "Approximately 3\" long x 1\" deep",
-        "stats": { "wounds": 3, "armor": "4+", "evade": null },
+        "stats": {
+          "wounds": 3,
+          "armor": "4+",
+          "evade": null
+        },
         "notes": "Provides ordinary Cover when physically applicable and counts as Difficult Terrain when crossed. A destroyed barricade cannot be repaired to create extra maintained barricades without using Field Works again."
       },
-      "notes": ["Engineer Pistols are an optional weapon package, not a Command; shooting them uses the normal Assault Attack action. Adding Engineer Models to a Unit with Pistols incurs the ordinary +5 paid-weapon surcharge per new Model."]
+      "notes": [
+        "Engineer Pistols are an optional weapon package, not a Command; shooting them uses the normal Assault Attack action. Adding Engineer Models to a Unit with Pistols incurs the ordinary +5 paid-weapon surcharge per new Model."
+      ]
     },
     {
       "id": "heralds",
       "name": "Heralds",
       "basePoints": 85,
-      "defaultMeleeWeapon": { "name": "Banner Staff", "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] } },
+      "defaultMeleeWeapon": {
+        "name": "Banner Staff",
+        "profile": {
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
+      },
       "primaryRole": "Unit-wide morale and defense",
       "abilities": [
-        { "name": "Rally the Line", "points": 0, "cpCost": 1, "timing": "Assault or Combat", "effect": "One friendly Unit within Short gains Tough 1 until the end of the Phase." },
-        { "name": "Sound the Advance", "points": 10, "cpCost": 1, "timing": "Movement", "effect": "One friendly Unit within Short may immediately Move up to 2\", ending legally." },
-        { "name": "Battle Standard", "points": 15, "effect": "While the Herald is within 3\" of an objective, one friendly Unit controlling it counts as one additional Unit for objective control." },
-        { "name": "Inspiring Standard", "points": 25, "effect": "Gain Raise the Standard.", "unlocks": "raise-the-standard" },
-        { "name": "Target Analysis", "points": 20, "cpCost": 1, "timing": "Assault", "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Infantry 3 or Anti-Cavalry 3 (choose when activating)." }
+        {
+          "name": "Rally the Line",
+          "points": 0,
+          "cpCost": 1,
+          "timing": "Assault or Combat",
+          "effect": "One friendly Unit within Short gains Tough 1 until the end of the Phase."
+        },
+        {
+          "name": "Sound the Advance",
+          "points": 10,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "One friendly Unit within Short may immediately Move up to 2\", ending legally."
+        },
+        {
+          "name": "Battle Standard",
+          "points": 15,
+          "effect": "While the Herald is within 3\" of an objective, one friendly Unit controlling it counts as one additional Unit for objective control."
+        },
+        {
+          "name": "Inspiring Standard",
+          "points": 25,
+          "effect": "Gain Raise the Standard.",
+          "unlocks": "raise-the-standard"
+        },
+        {
+          "name": "Target Analysis",
+          "points": 20,
+          "cpCost": 1,
+          "timing": "Assault",
+          "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Infantry 3 or Anti-Cavalry 3 (choose when activating)."
+        },
+        {
+          "name": "Tactical Guidance",
+          "points": 25,
+          "type": "Passive — Aura",
+          "effect": "At list construction choose one creature or material Trait tag (Mortal, Undead, Beast, Spirit, Infernal, Fey, Humanoid, Construct, Mechanical, Armored, Unarmored, or another GM-approved Trait). Other friendly Units wholly within 3\" of this Support gain Anti-[selected tag] 2 on their Weapon and Spell Attacks. The Support itself does not benefit; where multiple Anti keywords apply, use only the highest rank. One such upgrade per Support Unit."
+        }
       ],
       "unlockableAbilities": [
         {
@@ -73,64 +220,260 @@
       "id": "scouts-spotters",
       "name": "Scouts / Spotters",
       "basePoints": 85,
-      "defaultMeleeWeapon": { "name": "Field Blades", "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] } },
+      "defaultMeleeWeapon": {
+        "name": "Field Blades",
+        "profile": {
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
+      },
       "primaryRole": "Target marking and reconnaissance",
       "abilities": [
-        { "name": "Mark Target", "points": 0, "cpCost": 1, "timing": "Assault", "effect": "Choose one visible enemy within Medium. The next friendly ranged Attack against it this Round gains Accurate 2." },
-        { "name": "Concealed Position", "points": 10, "cpCost": 1, "timing": "Movement", "effect": "If this Unit begins beyond Short of enemies, it gains Concealed until it Attacks, becomes Engaged, or the Round ends." },
-        { "name": "Forward Observer", "points": 15, "effect": "Mark Target also causes that ranged Attack to ignore applicable Cover benefits." },
-        { "name": "Pathfinder Training", "points": 15, "effect": "Increase Move from 3\" to 5\"." },
-        { "name": "Scout Bow", "points": 25, "effect": "The Unit gains Scout Bow as an alternative Assault Attack.", "profile": { "range": "9\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] } },
-        { "name": "Target Analysis", "points": 20, "cpCost": 1, "timing": "Assault", "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Elite 3 or Anti-Ranged 3 (choose when activating)." }
+        {
+          "name": "Mark Target",
+          "points": 0,
+          "cpCost": 1,
+          "timing": "Assault",
+          "effect": "Choose one visible enemy within Medium. The next friendly ranged Attack against it this Round gains Accurate 2."
+        },
+        {
+          "name": "Concealed Position",
+          "points": 10,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "If this Unit begins beyond Short of enemies, it gains Concealed until it Attacks, becomes Engaged, or the Round ends."
+        },
+        {
+          "name": "Forward Observer",
+          "points": 25,
+          "effect": "Mark Target also gives the affected ranged or Spell Attack Pinpoint and ignores the target’s applicable Cover benefits. Pinpoint negates the shooting-into-Engagement Hit penalty and friendly-fire Blunders."
+        },
+        {
+          "name": "Pathfinder Training",
+          "points": 15,
+          "effect": "Increase Move from 3\" to 5\"."
+        },
+        {
+          "name": "Scout Bow",
+          "points": 25,
+          "effect": "The Unit gains Scout Bow as an alternative Assault Attack.",
+          "profile": {
+            "range": "9\"",
+            "attacks": 3,
+            "hit": "5+",
+            "damage": 1,
+            "damageTypes": [
+              "Physical"
+            ],
+            "keywords": []
+          }
+        },
+        {
+          "name": "Target Analysis",
+          "points": 20,
+          "cpCost": 1,
+          "timing": "Assault",
+          "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Elite 3 or Anti-Ranged 3 (choose when activating)."
+        },
+        {
+          "name": "Tactical Guidance",
+          "points": 25,
+          "type": "Passive — Aura",
+          "effect": "At list construction choose one creature or material Trait tag (Mortal, Undead, Beast, Spirit, Infernal, Fey, Humanoid, Construct, Mechanical, Armored, Unarmored, or another GM-approved Trait). Other friendly Units wholly within 3\" of this Support gain Anti-[selected tag] 2 on their Weapon and Spell Attacks. The Support itself does not benefit; where multiple Anti keywords apply, use only the highest rank. One such upgrade per Support Unit."
+        }
       ],
-      "notes": ["Scouts remain target-designation specialists rather than a separate generic Skirmisher formation."]
+      "notes": [
+        "Scouts remain target-designation specialists rather than a separate generic Skirmisher formation."
+      ]
     },
     {
       "id": "alchemists",
       "name": "Alchemists",
       "basePoints": 105,
       "description": "Alchemists are support crews carrying standardized field mixtures. They do not gain the player-character Artificer's Formula list or improvement talents.",
-      "defaultMeleeWeapon": { "name": "Flask Tools", "profile": { "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] } },
-      "defaultRangedWeapon": { "name": "Reagent Flasks", "note": "per Model", "profile": { "range": "6\"", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] } },
+      "defaultMeleeWeapon": {
+        "name": "Flask Tools",
+        "profile": {
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
+      },
+      "defaultRangedWeapon": {
+        "name": "Reagent Flasks",
+        "note": "per Model",
+        "profile": {
+          "range": "6\"",
+          "attacks": 2,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
+      },
       "primaryRole": "Corrosion and battlefield mixtures",
       "abilities": [
-        { "name": "Corrosive Preparation", "points": 0, "cpCost": 1, "timing": "Assault", "effect": "Choose a visible enemy Unit within 6\" and roll 2D6. If either die is 4+, suppress its Tough against the next friendly Attack targeting it in this Phase. Treat all applicable Tough X values as 0 for that Attack, including newly gained Tough; no separate Acid keyword is introduced." },
-        { "name": "Restorative Mixture", "points": 25, "cpCost": 1, "timing": "Movement", "effect": "Heal 1 accumulated Damage from one surviving Model in a friendly Unit within Short. Cannot return removed Models." },
-        { "name": "Smoke Vials", "points": 25, "cpCost": 1, "timing": "Movement", "effect": "One friendly Unit within Short gains Cover 1 against its next eligible ranged Attack this Round. This may grant an otherwise eligible Evade Save, according to the normal Cover rules." },
-        { "name": "Target Analysis", "points": 20, "cpCost": 1, "timing": "Assault", "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Monster 3 or Anti-Armored 3 (choose when activating)." }
+        {
+          "name": "Corrosive Preparation",
+          "points": 0,
+          "cpCost": 1,
+          "timing": "Assault",
+          "effect": "Choose a visible enemy Unit within 6\" and roll 2D6. If either die is 4+, suppress its Tough against the next friendly Attack targeting it in this Phase. Treat all applicable Tough X values as 0 for that Attack, including newly gained Tough; no separate Acid keyword is introduced."
+        },
+        {
+          "name": "Restorative Mixture",
+          "points": 25,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "Heal 1 accumulated Damage from one surviving Model in a friendly Unit within Short. Cannot return removed Models."
+        },
+        {
+          "name": "Smoke Vials",
+          "points": 25,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "One friendly Unit within Short gains Cover 1 against its next eligible ranged Attack this Round. This may grant an otherwise eligible Evade Save, according to the normal Cover rules."
+        },
+        {
+          "name": "Target Analysis",
+          "points": 20,
+          "cpCost": 1,
+          "timing": "Assault",
+          "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Monster 3 or Anti-Armored 3 (choose when activating)."
+        },
+        {
+          "name": "Tactical Guidance",
+          "points": 25,
+          "type": "Passive — Aura",
+          "effect": "At list construction choose one creature or material Trait tag (Mortal, Undead, Beast, Spirit, Infernal, Fey, Humanoid, Construct, Mechanical, Armored, Unarmored, or another GM-approved Trait). Other friendly Units wholly within 3\" of this Support gain Anti-[selected tag] 2 on their Weapon and Spell Attacks. The Support itself does not benefit; where multiple Anti keywords apply, use only the highest rank. One such upgrade per Support Unit."
+        }
       ],
-      "notes": ["A Unit may use Corrosive Preparation during its own Assault activation without replacing its chosen Assault action. The effect still expires at the end of the Phase if not used. Reagent Flasks require the ordinary Assault Attack action."]
+      "notes": [
+        "A Unit may use Corrosive Preparation during its own Assault activation without replacing its chosen Assault action. The effect still expires at the end of the Phase if not used. Reagent Flasks require the ordinary Assault Attack action."
+      ]
     },
     {
       "id": "clerics",
       "name": "Clerics",
       "basePoints": 110,
       "description": "Clerics maintain blessings and restorative rites. Their Command abilities are support effects rather than a full spell catalogue.",
-      "defaultMeleeWeapon": { "name": "Blessed Mace", "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical", "Radiant"], "keywords": [] } },
+      "defaultMeleeWeapon": {
+        "name": "Blessed Mace",
+        "profile": {
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical",
+            "Radiant"
+          ],
+          "keywords": []
+        }
+      },
       "primaryRole": "Protective rites and limited restoration",
       "abilities": [
-        { "name": "Protective Rite", "points": 0, "cpCost": 1, "timing": "Movement", "effect": "One friendly Unit within Short gains Ward 6+ against Magic, or improves its existing applicable Magic Ward by one step, until the end of the Round." },
-        { "name": "Healing Prayer", "points": 25, "cpCost": 1, "timing": "Movement", "effect": "Heal 1 accumulated Damage from one surviving Model in a friendly Unit within Short. Does not restore defeated Models or Critical Injuries." },
-        { "name": "Purifying Prayer", "points": 15, "cpCost": 1, "timing": "Movement", "effect": "Remove Slow or one temporary Move or Hit penalty from one friendly Unit within Short." },
-        { "name": "Target Analysis", "points": 20, "cpCost": 1, "timing": "Assault", "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Monster 3 or Anti-Undead 3 (choose when activating)." }
+        {
+          "name": "Protective Rite",
+          "points": 0,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "One friendly Unit within Short gains Ward 6+ against Magic, or improves its existing applicable Magic Ward by one step, until the end of the Round."
+        },
+        {
+          "name": "Healing Prayer",
+          "points": 25,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "Heal 1 accumulated Damage from one surviving Model in a friendly Unit within Short. Does not restore defeated Models or Critical Injuries."
+        },
+        {
+          "name": "Purifying Prayer",
+          "points": 15,
+          "cpCost": 1,
+          "timing": "Movement",
+          "effect": "Remove Slow or one temporary Move or Hit penalty from one friendly Unit within Short."
+        },
+        {
+          "name": "Target Analysis",
+          "points": 20,
+          "cpCost": 1,
+          "timing": "Assault",
+          "effect": "Choose one friendly Unit within Medium. Its next Attack this Round gains Anti-Monster 3 or Anti-Undead 3 (choose when activating)."
+        },
+        {
+          "name": "Tactical Guidance",
+          "points": 25,
+          "type": "Passive — Aura",
+          "effect": "At list construction choose one creature or material Trait tag (Mortal, Undead, Beast, Spirit, Infernal, Fey, Humanoid, Construct, Mechanical, Armored, Unarmored, or another GM-approved Trait). Other friendly Units wholly within 3\" of this Support gain Anti-[selected tag] 2 on their Weapon and Spell Attacks. The Support itself does not benefit; where multiple Anti keywords apply, use only the highest rank. One such upgrade per Support Unit."
+        }
       ],
-      "notes": ["A Cleric's basic rite is better at protecting against Magic than repairing physical injuries. Field Medics remain the stronger generic healers, while Alchemists provide flexible preparations and Tough suppression."]
+      "notes": [
+        "A Cleric's basic rite is better at protecting against Magic than repairing physical injuries. Field Medics remain the stronger generic healers, while Alchemists provide flexible preparations and Tough suppression."
+      ]
     }
   ],
   "commonSupportUpgrades": {
     "options": [
-      { "name": "Standard Formation", "points": 0, "effect": "Two Models with W3 each, for six total Wounds." },
-      { "name": "Additional Model", "pointsPerModel": 50, "maxModels": 4, "effect": "Add one matching W3 Model, maximum 4 Models. Does not multiply Unit Commands. Paid weapon surcharges apply." },
-      { "name": "Reinforced Equipment", "points": 10, "effect": "Improve Armor from 6+ to 5+." },
-      { "name": "Mounted Support", "points": 25, "effect": "Increase Move to 6\" and gain Charge 3." },
-      { "name": "Cross-Training", "points": 15, "effect": "Learn one additional eligible Support Command with GM approval; does not grant another activation." },
-      { "name": "Specialist Training", "points": 25, "effect": "Once per battle, reduce the CP cost of one eligible Command used by this Unit by 1, to a minimum of 0. A 0 CP Command consumes no CP/card." },
-      { "name": "Concealment Training", "points": 25, "effect": "Gain Concealed while benefiting from suitable Cover." },
-      { "name": "Veteran", "points": 25, "effect": "Choose one weapon: +1 Attack per eligible Model and improve Hit by one step. For each Model beyond the starting two, pay another +10 Points for Veterans." }
+      {
+        "name": "Standard Formation",
+        "points": 0,
+        "effect": "Two Models with W3 each, for six total Wounds."
+      },
+      {
+        "name": "Additional Model",
+        "pointsPerModel": 50,
+        "maxModels": 4,
+        "effect": "Add one matching W3 Model, maximum 4 Models. Does not multiply Unit Commands. Paid weapon surcharges apply."
+      },
+      {
+        "name": "Reinforced Equipment",
+        "points": 10,
+        "effect": "Improve Armor from 6+ to 5+."
+      },
+      {
+        "name": "Mounted Support",
+        "points": 25,
+        "effect": "Increase Move to 6\" and gain Charge 3."
+      },
+      {
+        "name": "Cross-Training",
+        "points": 15,
+        "effect": "Learn one additional eligible Support Command with GM approval; does not grant another activation."
+      },
+      {
+        "name": "Specialist Training",
+        "points": 25,
+        "effect": "Once per battle, reduce the CP cost of one eligible Command used by this Unit by 1, to a minimum of 0. A 0 CP Command consumes no CP/card."
+      },
+      {
+        "name": "Concealment Training",
+        "points": 25,
+        "effect": "Gain Concealed while benefiting from suitable Cover."
+      },
+      {
+        "name": "Veteran",
+        "points": 25,
+        "effect": "Choose one weapon: +1 Attack per eligible Model and improve Hit by one step. For each Model beyond the starting two, pay another +10 Points for Veterans."
+      }
     ],
     "notes": [
       "Support reinforcement: a third Engineer Model costs +50, or +55 if equipped with Pistols, plus +10 if the Unit has Veterans.",
-      "A third Support Model does not create another Repair, Blessing, Triage, or other personal Command activation."
+      "A third Support Model does not create another Repair, Blessing, Triage, or other personal Command activation.",
+      "Tactical Guidance costs +25 on five specialized Supports; it is a passive Anti 2 aura against one selected creature/material Trait. Target Analysis remains +20 and Anti 3 for a CP-powered single Attack. Auras do not stack with other Anti ranks."
     ]
   },
   "battlefieldRole": "Specialist utility, repair, healing, reconnaissance, corrosive preparation, and supernatural protection.",

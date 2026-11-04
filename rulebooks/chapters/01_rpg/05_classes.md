@@ -255,12 +255,12 @@ The chosen benefit is consumed when its eligible roll resolves. The benefit expi
 
 ### Base Spell Attacks — Assault Phase
 
-All Mages begin knowing both Spell Attacks.
+All Mages begin knowing **Magic Missile**. **Force Bolt is optional**, learned for +10 Points through the usual spell-learning rules. Subclass Spell Attacks remain granted as printed.
 
 | Spell | Range | A | Hit | Dmg | Keywords | Pts |
 | --- | --- | ---: | --- | ---: | --- | --- |
 | Magic Missile | 6" | 3 | 5+ | 1 | Magic, Pinpoint | Included |
-| Force Bolt | 8" | 3 | 5+ | 1 | Magic, Surge: Push 1" | Included |
+| Force Bolt (optional) | 8" | 3 | 5+ | 1 | Magic, Surge: Push 1" | +10 Points to learn |
 
 
 These Spell Attacks are included in the Base Character Value and do not occupy prepared Command Ability slots.
@@ -607,3 +607,13 @@ A runed Physical Weapon Attack remains **Physical**, even when it receives Fire 
 ## Shared References
 
 The tables repeated in this chapter are player-facing quick references, not alternate profiles. They must be updated whenever their source catalogue changes. Use the [Equipment Catalogue](11_equipment_and_crafting.md) for all PC weapon Attack dice and prices, [Starting Spell Attacks](06_spells_and_equipment.md) for Class/Subclass starting spell profiles, and [Spell Catalogue](12_spell_catalogue.md) for additional learned spells including **Flame Lance (Magic, Fire)**, and [Artificer Formulas](18_artificer_formulas.md) for the fifth Class. All personal CP Commands follow the active Unit timing in the [full combat chapters](16_structured_combat.md); spell Attacks use the chosen Assault Attack action, not a free Attack following an Assault Move.
+
+---
+
+## v0.7 Necromancer Thralls and Critical Specialization
+
+**Raise Thrall:** 1 CP, Movement. Summon a new Thrall Unit with Models equal to Mind (maximum **six**); newly summoned Thralls cannot activate that Round. If you already control a surviving Thrall Unit that is not enemy-Engaged, instead restore **up to two Models**, up to six total. Reinforcement can grow a surviving Unit above its initial Mind-based count, but not above six; completely destroyed Units cannot be reinforced. Only one summoned Thrall Unit per Necromancer.
+
+**Thrall derived profile:** Move 3", W1, Claws 2 Attacks per Model, Damage 1. Claws **Hit = Necromancer's Mysticism threshold +1**; Armor = **Medicine threshold +2**; Evade = **Stealth threshold +3**. Clamp resulting thresholds to the ordinary 2+ through 6+ range. Thralls inherit each **Anti-tag possessed by the Necromancer at rank−1**, ignoring any resulting rank 0. Matching Anti ranks never stack; one highest rank adds its dice once to the combined pool. Temporary one-attack Command bonuses are not inherited by default. Reanimated and all restoration respect the six-Model maximum.
+
+**PC offensive specialization:** Favored Enemy selects a DIFFERENT tag at each Rank, each at permanent Anti 3. Tier 3 Master Hunter upgrades ONE chosen Favored Enemy tag to Anti 4. Tier 2 Precision Shooting grants Pinpoint to one selected ranged Weapon/Spell Attack. Tier 3 Decisive Strike is a 1 CP Combat Command adding +1 Damage to ONE unsaved Melee Hit, if any. Tier 3 Critical Force gives +1 total Damage to ONE surviving Critical Hit per Attack, not +1 per Critical. Tier 4 Greater Critical Force can increase this to +2 total. Direct Damage and Perfect Strike remain available through the existing magical/offensive talent system.

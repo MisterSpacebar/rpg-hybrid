@@ -7,267 +7,835 @@
   "units": [
     {
       "name": "Giant Rats",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 45,
       "models": 6,
-      "modelProfile": { "move": "5\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Bites", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Bites",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Swarm the Weak", "type": "Passive", "effect": "Gain Accurate 1 if the Unit has more remaining Models than the target Unit." }
+        {
+          "name": "Swarm the Weak",
+          "type": "Passive",
+          "effect": "Gain Accurate 1 if the Unit has more remaining Models than the target Unit."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Pack", "cost": "+0", "description": "Six Models." },
-        { "name": "Additional Rat", "cost": "+7 each", "description": "Add one Model, maximum 10." },
-        { "name": "Alpha Rat", "cost": "+25", "description": "One Model gains +2 Wounds and one eligible Alpha trait." }
+        {
+          "name": "Standard Pack",
+          "cost": "+0",
+          "description": "Six Models."
+        },
+        {
+          "name": "Additional Rat",
+          "cost": "+7 each",
+          "description": "Add one Model, maximum 10."
+        },
+        {
+          "name": "Alpha Rat",
+          "cost": "+25",
+          "description": "One Model gains +2 Wounds and one eligible Alpha trait."
+        }
       ]
     },
     {
       "name": "Rat Swarm",
-      "tags": ["Horde", "Beast"],
+      "tags": [
+        "Horde",
+        "Beast",
+        "Creature"
+      ],
       "points": 40,
       "models": "1 Swarm",
-      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "6+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 4,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Gnawing Swarm", "range": "Engaged", "attacks": 5, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Gnawing Swarm",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Swarm", "type": "Passive", "effect": "May Move through other Models, but must finish legally. Cannot control objectives alone." }
+        {
+          "name": "Swarm",
+          "type": "Passive",
+          "effect": "May Move through other Models, but must finish legally. Cannot control objectives alone."
+        }
       ],
-      "notes": ["The Swarm Base is a single Model with four Wounds; individual rats are not removed as casualties."],
+      "notes": [
+        "The Swarm Base is a single Model with four Wounds; individual rats are not removed as casualties."
+      ],
       "upgrades": [
-        { "name": "Ordinary Swarm", "cost": "+0", "description": "W4 with four Gnawing Swarm Attacks." },
-        { "name": "Larger Swarm", "cost": "+15", "description": "Increase Wounds to W6." },
-        { "name": "Ravenous Swarm", "cost": "+15", "description": "Gnawing Swarm gains Anti-Armored 1." }
+        {
+          "name": "Ordinary Swarm",
+          "cost": "+0",
+          "description": "W4 with four Gnawing Swarm Attacks."
+        },
+        {
+          "name": "Larger Swarm",
+          "cost": "+15",
+          "description": "Increase Wounds to W6."
+        },
+        {
+          "name": "Ravenous Swarm",
+          "cost": "+15",
+          "description": "Gnawing Swarm gains Anti-Armored 1."
+        }
       ]
     },
     {
       "name": "Wolves",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 75,
       "models": 3,
-      "modelProfile": { "move": "6\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "6\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Bite", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Bite",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Pack Hunter", "type": "Passive", "effect": "Gain Accurate 1 against enemies Engaged with another friendly Beast Unit." }
+        {
+          "name": "Pack Hunter",
+          "type": "Passive",
+          "effect": "Gain Accurate 1 against enemies Engaged with another friendly Beast Unit."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Pack", "cost": "+0", "description": "Three Models with Bite." },
-        { "name": "Additional Wolf", "cost": "+25 each", "description": "Add one Model, maximum 5." },
-        { "name": "Alpha Wolf", "cost": "+25", "description": "One Model gains +2 Wounds and one eligible Alpha trait." }
+        {
+          "name": "Standard Pack",
+          "cost": "+0",
+          "description": "Three Models with Bite."
+        },
+        {
+          "name": "Additional Wolf",
+          "cost": "+25 each",
+          "description": "Add one Model, maximum 5."
+        },
+        {
+          "name": "Alpha Wolf",
+          "cost": "+25",
+          "description": "One Model gains +2 Wounds and one eligible Alpha trait."
+        }
       ]
     },
     {
       "name": "Giant Bats",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 65,
       "models": 3,
-      "modelProfile": { "move": "7\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "7\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Bite", "range": "Engaged", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Bite",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Flying", "type": "Passive", "effect": "Ignore intervening Models and terrain during movement, finishing legally." },
-        { "name": "Echolocation", "type": "Passive", "effect": "Ignore Concealed when targeting enemies within Short." }
+        {
+          "name": "Flying",
+          "type": "Passive",
+          "effect": "Ignore intervening Models and terrain during movement, finishing legally."
+        },
+        {
+          "name": "Echolocation",
+          "type": "Passive",
+          "effect": "Ignore Concealed when targeting enemies within Short."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Flock", "cost": "+0", "description": "Three Models with Flying and Echolocation." },
-        { "name": "Additional Bat", "cost": "+20 each", "description": "Add one Model, maximum 5." },
-        { "name": "Blood Bats", "cost": "+20", "description": "Gain Accurate 1 against damaged Units." }
+        {
+          "name": "Standard Flock",
+          "cost": "+0",
+          "description": "Three Models with Flying and Echolocation."
+        },
+        {
+          "name": "Additional Bat",
+          "cost": "+20 each",
+          "description": "Add one Model, maximum 5."
+        },
+        {
+          "name": "Blood Bats",
+          "cost": "+20",
+          "description": "Gain Accurate 1 against damaged Units."
+        }
       ]
     },
     {
       "name": "Giant Spiders",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 80,
       "models": 3,
-      "modelProfile": { "move": "5\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Fangs", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Fangs",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Climber", "type": "Passive", "effect": "Vertical terrain costs normal movement rather than additional movement." },
-        { "name": "Venom", "type": "Passive", "effect": "When Fangs generate a Surge, gain Critical 1 for that Attack, converting one failed Hit die after rerolls." }
+        {
+          "name": "Climber",
+          "type": "Passive",
+          "effect": "Vertical terrain costs normal movement rather than additional movement."
+        },
+        {
+          "name": "Venom",
+          "type": "Passive",
+          "effect": "When Fangs generate a Surge, gain Critical 1 for that Attack, converting one failed Hit die after rerolls."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Nest", "cost": "+0", "description": "Three Models with Fangs and Venom." },
-        { "name": "Web Spit", "cost": "+15", "description": "Gain 6\" / 1 / 5+ / 0. If the Attack scores a Hit, the target suffers Slow 2." },
-        { "name": "Additional Spider", "cost": "+25 each", "description": "Add one Model, maximum 5." }
+        {
+          "name": "Standard Nest",
+          "cost": "+0",
+          "description": "Three Models with Fangs and Venom."
+        },
+        {
+          "name": "Web Spit",
+          "cost": "+15",
+          "description": "Gain 6\" / 1 / 5+ / 0. If the Attack scores a Hit, the target suffers Slow 2."
+        },
+        {
+          "name": "Additional Spider",
+          "cost": "+25 each",
+          "description": "Add one Model, maximum 5."
+        }
       ]
     },
     {
       "name": "Wild Boars",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 80,
       "models": 2,
-      "modelProfile": { "move": "5\"", "wounds": 2, "armor": "5+", "evade": "6+", "ward": null },
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 2,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Tusks", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Tusks",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
-        { "name": "Headlong Charge", "type": "Passive", "effect": "If at least one Impact Hit causes Damage after saves, increase the Damage inflicted by one such Hit from 1 to 2." }
+        {
+          "name": "Impact 1",
+          "type": "Passive",
+          "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)."
+        },
+        {
+          "name": "Headlong Charge",
+          "type": "Passive",
+          "effect": "If at least one Impact Hit causes Damage after saves, increase the Damage inflicted by one such Hit from 1 to 2."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Pair", "cost": "+0", "description": "Two Models with Impact 1 and Headlong Charge." },
-        { "name": "Additional Boar", "cost": "+35", "description": "Add one Model, maximum 3." },
-        { "name": "Armored Hide", "cost": "+15", "description": "Gain Tough 1." }
+        {
+          "name": "Standard Pair",
+          "cost": "+0",
+          "description": "Two Models with Impact 1 and Headlong Charge."
+        },
+        {
+          "name": "Additional Boar",
+          "cost": "+35",
+          "description": "Add one Model, maximum 3."
+        },
+        {
+          "name": "Armored Hide",
+          "cost": "+15",
+          "description": "Gain Tough 1."
+        }
       ]
     },
     {
       "name": "Giant Snake",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 70,
       "models": 1,
-      "modelProfile": { "move": "5\"", "wounds": 4, "armor": "6+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 4,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Fangs", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Fangs",
+          "range": "Engaged",
+          "attacks": 4,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Venom", "type": "Passive", "effect": "When Fangs generate a Surge, convert one successful Hit into Direct Damage 1. Applicable Ward Saves still apply." }
+        {
+          "name": "Venom",
+          "type": "Passive",
+          "effect": "When Fangs generate a Surge, convert one successful Hit into Direct Damage 1. Applicable Ward Saves still apply."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Snake", "cost": "+0", "description": "W4 with Venomous Fangs." },
-        { "name": "Constrictor", "cost": "+15", "description": "Gain Constrict: Engaged / 3 / 5+ / 1. If it inflicts Damage, the target suffers Slow 1." },
-        { "name": "Giant Constrictor", "cost": "+20", "description": "Increase Wounds to W6." }
+        {
+          "name": "Standard Snake",
+          "cost": "+0",
+          "description": "W4 with Venomous Fangs."
+        },
+        {
+          "name": "Constrictor",
+          "cost": "+15",
+          "description": "Gain Constrict: Engaged / 3 / 5+ / 1. If it inflicts Damage, the target suffers Slow 1."
+        },
+        {
+          "name": "Giant Constrictor",
+          "cost": "+20",
+          "description": "Increase Wounds to W6."
+        }
       ]
     },
     {
       "name": "Crocodile",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 90,
       "models": 1,
-      "modelProfile": { "move": "4\"", "wounds": 5, "armor": "4+", "evade": "6+", "ward": null },
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 5,
+        "armor": "4+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Bite", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] }
+        {
+          "name": "Bite",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 2,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Anti-Infantry 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
-        { "name": "Aquatic", "type": "Passive", "effect": "Ignore ordinary swimming movement penalties." },
-        { "name": "Death Roll", "type": "Passive", "effect": "Bite gains Critical 1 against enemies with accumulated Damage." }
+        {
+          "name": "Impact 1",
+          "type": "Passive",
+          "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)."
+        },
+        {
+          "name": "Aquatic",
+          "type": "Passive",
+          "effect": "Ignore ordinary swimming movement penalties."
+        },
+        {
+          "name": "Death Roll",
+          "type": "Passive",
+          "effect": "Bite gains Critical 1 against enemies with accumulated Damage."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Crocodile", "cost": "+0", "description": "W5, Bite, Death Roll, Aquatic." },
-        { "name": "Armored Scales", "cost": "+20", "description": "Gain Tough 1." },
-        { "name": "Greater Crocodile", "cost": "+25", "description": "Increase Wounds to W7 and Bite to four Attacks." }
+        {
+          "name": "Standard Crocodile",
+          "cost": "+0",
+          "description": "W5, Bite, Death Roll, Aquatic."
+        },
+        {
+          "name": "Armored Scales",
+          "cost": "+20",
+          "description": "Gain Tough 1."
+        },
+        {
+          "name": "Greater Crocodile",
+          "cost": "+25",
+          "description": "Increase Wounds to W7 and Bite to four Attacks."
+        }
       ]
     },
     {
       "name": "Bear",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 110,
       "models": 1,
-      "modelProfile": { "move": "5\"", "wounds": 6, "armor": "5+", "evade": "6+", "ward": null },
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 6,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Claws", "range": "Engaged", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
-        { "name": "Bite", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+        {
+          "name": "Claws",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        },
+        {
+          "name": "Bite",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 2,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Anti-Armored 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
-        { "name": "Fury", "type": "Passive", "effect": "When reduced to three or fewer remaining Wounds, Claws gain +1 Attack." }
+        {
+          "name": "Impact 1",
+          "type": "Passive",
+          "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)."
+        },
+        {
+          "name": "Fury",
+          "type": "Passive",
+          "effect": "When reduced to three or fewer remaining Wounds, Claws gain +1 Attack."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Bear", "cost": "+0", "description": "W6 with Claws, Bite, and Fury." },
-        { "name": "Greater Bear", "cost": "+20", "description": "Increase Wounds to W8." },
-        { "name": "Savage Bear", "cost": "+20", "description": "Claws gain Accurate 1 while Fury is active." }
+        {
+          "name": "Standard Bear",
+          "cost": "+0",
+          "description": "W6 with Claws, Bite, and Fury."
+        },
+        {
+          "name": "Greater Bear",
+          "cost": "+20",
+          "description": "Increase Wounds to W8."
+        },
+        {
+          "name": "Savage Bear",
+          "cost": "+20",
+          "description": "Claws gain Accurate 1 while Fury is active."
+        }
       ]
     },
     {
       "name": "Dire Wolf",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 105,
       "models": 1,
-      "modelProfile": { "move": "7\"", "wounds": 5, "armor": "5+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "7\"",
+        "wounds": 5,
+        "armor": "5+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Bite", "range": "Engaged", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Critical 1"] }
+        {
+          "name": "Bite",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Critical 1"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
-        { "name": "Predator", "type": "Passive", "effect": "Bite gains Accurate 1 against Units with accumulated Damage." }
+        {
+          "name": "Impact 1",
+          "type": "Passive",
+          "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)."
+        },
+        {
+          "name": "Predator",
+          "type": "Passive",
+          "effect": "Bite gains Accurate 1 against Units with accumulated Damage."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Dire Wolf", "cost": "+0", "description": "W5, Critical 1 Bite, Predator." },
-        { "name": "Alpha Predator", "cost": "+20", "description": "Increase Impact to 2." },
-        { "name": "Dire Alpha", "cost": "+20", "description": "Increase Wounds to W7." }
+        {
+          "name": "Standard Dire Wolf",
+          "cost": "+0",
+          "description": "W5, Critical 1 Bite, Predator."
+        },
+        {
+          "name": "Alpha Predator",
+          "cost": "+20",
+          "description": "Increase Impact to 2."
+        },
+        {
+          "name": "Dire Alpha",
+          "cost": "+20",
+          "description": "Increase Wounds to W7."
+        }
       ]
     },
     {
       "name": "Giant Scorpion",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 120,
       "models": 1,
-      "modelProfile": { "move": "5\"", "wounds": 6, "armor": "4+", "evade": "6+", "ward": null },
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 6,
+        "armor": "4+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Claws", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
-        { "name": "Stinger", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+        {
+          "name": "Claws",
+          "range": "Engaged",
+          "attacks": 4,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        },
+        {
+          "name": "Stinger",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 2,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Anti-Armored 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Venom", "type": "Passive", "effect": "When Stinger generates a Surge, convert one successful Hit into Direct Damage 2. Applicable Ward Saves still apply." }
+        {
+          "name": "Venom",
+          "type": "Passive",
+          "effect": "When Stinger generates a Surge, convert one successful Hit into Direct Damage 2. Applicable Ward Saves still apply."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Scorpion", "cost": "+0", "description": "Claws, Stinger, Venom." },
-        { "name": "Armored Carapace", "cost": "+20", "description": "Gain Tough 1." },
-        { "name": "Crushing Claws", "cost": "+20", "description": "Claws gain +1 Damage." }
+        {
+          "name": "Standard Scorpion",
+          "cost": "+0",
+          "description": "Claws, Stinger, Venom."
+        },
+        {
+          "name": "Armored Carapace",
+          "cost": "+20",
+          "description": "Gain Tough 1."
+        },
+        {
+          "name": "Crushing Claws",
+          "cost": "+20",
+          "description": "Claws gain +1 Damage."
+        }
       ]
     },
     {
       "name": "Giant Centipedes",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 65,
       "models": 4,
-      "modelProfile": { "move": "4\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Venomous Bite", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Venomous Bite",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Venomous Swarm", "type": "Passive", "effect": "When Venomous Bite generates a Surge, the target suffers Slow 1." },
-        { "name": "Tunnel Crawlers", "type": "Passive", "effect": "Ignore the first 2\" of Difficult Terrain movement penalties from rubble, earth, and similar terrain." }
+        {
+          "name": "Venomous Swarm",
+          "type": "Passive",
+          "effect": "When Venomous Bite generates a Surge, the target suffers Slow 1."
+        },
+        {
+          "name": "Tunnel Crawlers",
+          "type": "Passive",
+          "effect": "Ignore the first 2\" of Difficult Terrain movement penalties from rubble, earth, and similar terrain."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Colony", "cost": "+0", "description": "Four Models with Venomous Bite." },
-        { "name": "Additional Centipede", "cost": "+15 each", "description": "Add one Model, maximum 6." },
-        { "name": "Toxic Venom", "cost": "+15", "description": "Surge inflicts Slow 2 instead of Slow 1." }
+        {
+          "name": "Standard Colony",
+          "cost": "+0",
+          "description": "Four Models with Venomous Bite."
+        },
+        {
+          "name": "Additional Centipede",
+          "cost": "+15 each",
+          "description": "Add one Model, maximum 6."
+        },
+        {
+          "name": "Toxic Venom",
+          "cost": "+15",
+          "description": "Surge inflicts Slow 2 instead of Slow 1."
+        }
       ]
     },
     {
       "name": "Cave Toads",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 85,
       "models": 2,
-      "modelProfile": { "move": "4\"", "wounds": 3, "armor": "5+", "evade": "6+", "ward": null },
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 3,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Bite", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
-        { "name": "Sticky Tongue", "range": "6\"", "attacks": 1, "hit": "5+", "damage": 0, "damageTypes": ["Physical"], "keywords": [], "effect": "If this Damage 0 Attack scores a Hit, the target suffers Slow 1. Saves against Damage do not cancel this condition unless specifically permitted." }
+        {
+          "name": "Bite",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        },
+        {
+          "name": "Sticky Tongue",
+          "range": "6\"",
+          "attacks": 1,
+          "hit": "5+",
+          "damage": 0,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [],
+          "effect": "If this Damage 0 Attack scores a Hit, the target suffers Slow 1. Saves against Damage do not cancel this condition unless specifically permitted."
+        }
       ],
       "abilities": [
-        { "name": "Amphibious", "type": "Passive", "effect": "Ignore ordinary swimming penalties and movement penalties from shallow water." }
+        {
+          "name": "Amphibious",
+          "type": "Passive",
+          "effect": "Ignore ordinary swimming penalties and movement penalties from shallow water."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Pair", "cost": "+0", "description": "Two W3 Models with Bite and Sticky Tongue." },
-        { "name": "Giant Bullfrogs", "cost": "+20", "description": "Increase each Model's Wounds to W4." },
-        { "name": "Crushing Jaws", "cost": "+15", "description": "Bite gains +1 Damage." }
+        {
+          "name": "Standard Pair",
+          "cost": "+0",
+          "description": "Two W3 Models with Bite and Sticky Tongue."
+        },
+        {
+          "name": "Giant Bullfrogs",
+          "cost": "+20",
+          "description": "Increase each Model's Wounds to W4."
+        },
+        {
+          "name": "Crushing Jaws",
+          "cost": "+15",
+          "description": "Bite gains +1 Damage."
+        }
       ]
     },
     {
       "name": "Hunting Raptors",
-      "tags": ["Beast"],
+      "tags": [
+        "Beast",
+        "Creature"
+      ],
       "points": 110,
       "models": 3,
-      "modelProfile": { "move": "6\"", "wounds": 2, "armor": "6+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "6\"",
+        "wounds": 2,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Talons", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Talons",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
-        { "name": "Pack Ambush", "type": "Passive", "effect": "If the Unit begins its Charge within natural Cover, increase its Impact to 2 for that Charge." }
+        {
+          "name": "Impact 1",
+          "type": "Passive",
+          "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)."
+        },
+        {
+          "name": "Pack Ambush",
+          "type": "Passive",
+          "effect": "If the Unit begins its Charge within natural Cover, increase its Impact to 2 for that Charge."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Pack", "cost": "+0", "description": "Three W2 Models with Pack Ambush." },
-        { "name": "Additional Raptor", "cost": "+30 each", "description": "Add one Model, maximum 5." },
-        { "name": "Alpha Hunter", "cost": "+20", "description": "Gain Accurate 1 against damaged Units." }
+        {
+          "name": "Standard Pack",
+          "cost": "+0",
+          "description": "Three W2 Models with Pack Ambush."
+        },
+        {
+          "name": "Additional Raptor",
+          "cost": "+30 each",
+          "description": "Add one Model, maximum 5."
+        },
+        {
+          "name": "Alpha Hunter",
+          "cost": "+20",
+          "description": "Gain Accurate 1 against damaged Units."
+        }
       ]
     }
   ]

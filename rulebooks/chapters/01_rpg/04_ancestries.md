@@ -92,3 +92,9 @@ Gain Ward 6+ against non-Magic Weapon Attacks.
 ### Vampire
 
 Once per Round, when you destroy an enemy Unit with an Melee Attack, Heal 1.
+
+---
+
+## v0.7 Ancestry and Creature Tags
+
+At Character Creation, PCs gain the **Character** designation and their selected **ancestry tag**. Most living Humanoid ancestries also gain **Humanoid, Mortal** (for example Human, Elf, Dwarf, Orc, Goblin, Gnome, Halfling and Kobold). This does not automatically make Beastfolk **Beast** or Tieflings **Infernal**. Undead ancestry adds **Undead**; its Spirit archetype additionally gains **Spirit**. Physical/creature classification and faction allegiance are independent. Armor grants **Armored** only when an explicit equipment upgrade says so. Ancestry tags alone grant no new saves, damage, or recruitment slots.

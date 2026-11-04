@@ -24,7 +24,7 @@
       "name": "Mob Tactics",
       "slot": "E",
       "timing": "Combat",
-      "effect": "One friendly Unit gains +2 Attacks on its next Melee Attack against an enemy also Engaged by a different friendly Unit with at least four surviving Models."
+      "effect": "One friendly Unit gains Anti-Infantry 4 on its next Melee Attack against an Infantry enemy also Engaged by a different friendly Unit with at least four surviving Models."
     },
     {
       "name": "Pack Coordination",

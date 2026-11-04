@@ -345,7 +345,7 @@ A formation containing four or more surviving Models qualifies for the standard 
 | ----------------- | ---- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Endless Ranks     | C    | Movement                | One friendly Unit with at least four surviving Models counts as one additional Unit for objective control until the end of the Round.                                                                               |
 | Massed Volley     | R    | Assault                 | One friendly Unit with at least four surviving Models gains +2 Attacks on its next ranged Attack this Phase. If another friendly Unit with at least four surviving Models is within Short, also gain **Accurate 1** on that Attack. |
-| Mob Tactics       | E    | Combat                  | One friendly Unit gains +2 Attacks on its next Melee Attack against an enemy also Engaged by a different friendly Unit with at least four surviving Models.                                                    |
+| Mob Tactics       | E    | Combat                  | One friendly Unit gains **Anti-Infantry 4** on its next Melee Attack against an Infantry enemy also Engaged by a different friendly Unit with at least four surviving Models.                                                    |
 | Pack Coordination | S    | Assault/Combat Reaction | When a friendly Unit within Short of another friendly Unit with at least four surviving Models is attacked, it gains Tough 2 against that Attack.                                                                   |
 | Encirclement      | V    | Combat                  | One friendly Unit attacking an enemy also Engaged by a different friendly Unit with at least four surviving Models causes that enemy to worsen Evade by one step against the Attack.                                |
 
@@ -538,7 +538,7 @@ Strategy: Reach resistant positions, overcome defenders, and maintain pressure a
 | ------------------ | ---- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Breach Guard       | E    | Combat          | One friendly Unit that successfully Charged this Round gains Accurate 2 on its next Melee Attack against an Armored target. If the target had Brace during that Charge, also gain +1 Attack.                           |
 | Momentum Drive     | V    | Assault         | One friendly Unit gains Charge 2 when declaring its next Charge this Phase. Charge Impact is unchanged.                                                                                                                     |
-| Siege Breaker      | A    | Assault/Combat  | One friendly Unit gains Anti-[Target Type] 1 on its next Attack against an Armored Unit, Monster, Vehicle, War Machine, or Fortification this Phase. Against a Structure or Fortification, the Attack also gains +1 Damage. |
+| Siege Breaker      | A    | Assault/Combat  | One friendly Unit gains **Anti-[chosen matching type] 4** on its next Attack against an Armored Unit, Monster, Vehicle, War Machine, or Fortification this Phase. Against a Structure or Fortification, the Attack also gains +1 Damage. |
 | Press the Breach   | C    | Combat          | After a friendly Unit inflicts unsaved Damage in Engagement, the target loses one bonus Unit of objective-control counting until the end of the Round, to a minimum of its normal count.                                    |
 | Command the Breach | H    | Combat Reaction | When a friendly Unit within Short of friendly Headquarters that successfully Charged this Round is attacked in Engagement, grant it Tough 2 against that Attack.                                                            |
 
@@ -603,7 +603,7 @@ Deep Strike — Reinforcement Competition: Confirm that forward insertion is wor
 
 - **Command limits:** one Command (personal Unit, Faction, or Doctrine) per friendly Unit activation, with one eligible opposing Reaction; an Attack, Charge, or Save sequence benefits from at most one friendly Command effect, including effects prepared in an earlier Phase.
 - **Critical X:** printed and passive sources now require a Surge; Critical explicitly granted by a CP-paid Command does not.
-- **Long Range X:** beyond normal Range the combined Attack pool loses 2 dice (minimum 1) instead of worsening Hit.
+- **Long Range X:** beyond normal Range the combined Attack pool loses 1 die for single-model Units or 3 dice for multi-model Units (minimum 1) instead of worsening Hit.
 - **Elite:** replaced the five Commands with revisions emphasizing Critical, Accurate, Tough, Brace and defensive keyword manipulation; Veteran Spearhead applies to Elite and Elite-subtype Units.
 - **Alpha Strike:** revised Opening Volley and Shock Assault; Ferocious Opening is again a Round-based keyword grant (Critical 2 in Round 1, Critical 1 in Rounds 2–3, Accurate 1 in Rounds 4–5) on one Melee Attack, replacing the v6 reroll effect.
 - **Horde:** Massed Volley grants +2 Attacks and Accurate 1 in formation instead of +3 Attacks.
@@ -622,4 +622,8 @@ Deep Strike — Reinforcement Competition: Confirm that forward insertion is wor
 
 Draft Status: All sixteen doctrines and eighty selectable commands are included. Existing recruitment-slot distributions are preserved. Numerical balance remains provisional pending tabletop testing.
 
+---
 
+## v0.7 Doctrine Tactical Anti-tag Notes
+
+**Breakthrough — Siege Breaker:** the next eligible Attack gains temporary **Anti-[one chosen applicable defender type] 4** against an Armored Unit, Monster, Vehicle, War Machine, or Fortification; when attacking a Structure/Fortification the printed +1 Damage rider remains. Select the matching type when using the Command. **Horde — Mob Tactics:** instead of a generic +2 Attack dice, the selected friendly Unit gains **Anti-Infantry 4** on its next Melee Attack against enemy Infantry also Engaged by a second friendly Unit with at least four surviving Models. Faction and doctrine tactical counters use highest applicable Anti only, never additive stacks. The other doctrines retain their existing Command choices for this playtest.

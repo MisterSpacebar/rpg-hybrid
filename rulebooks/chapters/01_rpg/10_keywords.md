@@ -20,13 +20,13 @@ When rolling Evade Saves, reroll up to X natural 1s. Cover and elevation can gra
 
 ## Critical X
 
-After Hit-die rerolls (including Accurate), convert up to X failed Hit dice into successful Critical Hits **only when the Attack generates a Surge**, unless Critical X was explicitly granted by a CP-paid Command. Printed weapon Keywords, passive Unit abilities, passive Talents, and other passive sources of Critical X require a Surge; a Command explicitly granting Critical X as part of its CP-paid effect does not. Spending CP on an unrelated Command does not bypass a passive Critical source's Surge requirement.
+After Hit-die rerolls (including Accurate), each complete pair of natural sixes generates one Surge. **Printed and passive Critical X converts up to X failed Hit dice for EACH Surge**. Multiple Surges therefore produce additional conversion capacity, limited by the number of failed Hit dice. Converted dice do not produce new Surges or Blunders.
 
-Critical Hits ignore Armor and Evade, but applicable Ward Saves still apply. They retain the Attack's normal Damage and damage type. Converted dice do not change face values or generate new Surges or Blunders. All eligible Critical ranks add together when a Surge occurs; without a Surge, only ranks explicitly granted by CP-paid Commands can convert failed dice. A source worded **on Surge** normally triggers once per Attack unless stated otherwise.
+**Critical X explicitly granted by a CP-paid Command is guaranteed for that one Attack even without a Surge**, and provides X conversions once (not X per Surge), unless the Command explicitly states otherwise. This command-granted capacity is in addition to any printed/passive conversions earned through actual Surges. An unrelated CP expenditure never makes passive Critical automatic.
 
-**Example — passive Critical:** An Attack with printed Critical 2 rolls 2, 3, 4, 5 against Hit 4+. Without a Surge, the failed dice remain failures. If the pool contains two natural sixes, up to two remaining failures may instead be converted to Critical Hits.
+Critical Hits bypass Armor and Evade; applicable Ward Saves still apply. A converted Hit retains its printed Damage and Damage type. Other effects worded **when the Attack Surges** still trigger only once unless explicitly written **for each Surge**.
 
-**Example — CP-granted Critical:** A 1 CP Command grants Critical 1. After rerolls, one failed Hit die converts to a Critical Hit, even without a Surge. Printed Critical 1 on the same weapon contributes another conversion only if the Attack also Surges.
+Example: Eight Attack dice produce two complete pairs of natural sixes and three failed Hit dice. Critical 1 converts two failures; Critical 2 would convert all three (not four, because only three failures exist).
 
 ## Blast X
 
@@ -42,7 +42,7 @@ A Concealed Unit cannot normally be chosen as an Attack target unless the attack
 
 ## Pinpoint
 
-Ignore the normal Hit penalty when targeting an enemy Engaged with another Unit. Defenses are unaffected.
+When making a Ranged or Spell Attack against an enemy Engaged with a different friendly Unit, **ignore both the shooting-into-Engagement Hit penalty and the Direct Damage 2 friendly-fire consequence of each Blunder**. Other Blunder consequences still apply. Pinpoint does not prevent Blast, area effects, or other abilities from harming friendly Units. Defenses are otherwise unchanged.
 
 ## Heal X
 
@@ -62,7 +62,7 @@ A Firearm Attack automatically gains Instant. It remains Physical unless another
 
 ## Long Range X
 
-Extend the weapon's printed maximum Range by X inches. An Attack made **beyond the printed normal Range but within extended Range** rolls **2 fewer Attack dice from its combined Unit Attack pool**, minimum 1 die. Apply this reduction once per Attack, not once per Model, after other applicable Attack-dice modifiers. Long Range does not worsen Hit and does not change the normal Range used by Rapid-Fire.
+Extend the weapon's printed maximum Range by X inches. An Attack made **beyond the printed normal Range but within extended Range** rolls **1 fewer Attack die if the attacking Unit has one Model, or 3 fewer Attack dice if the Unit has multiple Models**, minimum 1 die. Apply this reduction once to the combined Attack pool, after applicable Attack-dice modifiers; not per Model. It does not worsen Hit. Long Range does not worsen Hit and does not change the normal Range used by Rapid-Fire.
 
 ## Rapid-Fire X
 
@@ -133,3 +133,9 @@ Units may have **battlefield tags** (Infantry, Cavalry, Mobile, Elite, Support, 
 ## Stagger (provisional control keyword)
 
 A **Staggered** Unit forfeits one eligible activation: if it has not yet activated in the current Phase, it forfeits that activation; otherwise it forfeits its next eligible phase activation. Remove Stagger after forfeiting one activation. Repeated applications do not stack. The Unit may still make eligible Reactions unless a separate rule prohibits them. If a Unit has no eligible activation in the current Phase, carry Stagger forward to its next eligible Phase. This is a **provisional playtest rule**, used by certain proposed Monster Commands, and is not automatically applied to abilities that currently cause Slow.
+
+---
+
+## v0.7: Engagement Shooting and Blunders
+
+If a Ranged or Spell Attack targets an enemy Engaged with a different friendly Unit, it suffers the usual one-step Hit penalty. **For EACH Blunder on that Attack roll, one friendly Unit Engaged with the target suffers one instance of Direct Damage 2 (Physical for ordinary ranged weapons; Magic for Spell Attacks), with applicable Ward Saves.** The attacking player designates the endangered friendly Unit when declaring the Attack; each Blunder damages that designated Unit. This applies even if all enemy Hits are saved. Pinpoint negates both the Hit penalty and this friendly-fire consequence; other Blunders and Blast effects are unaffected. An Attack by a Unit against the enemy with which it is itself Engaged is not subject to this special friendly-fire rule.

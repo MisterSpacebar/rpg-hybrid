@@ -110,7 +110,7 @@ For radius-based effects that apply to whole Units, a Unit qualifies when **at l
 - Blunder: Two natural 1s.
 - Each die may only be rerolled once.
 - Printed/passive Critical X requires a Surge; Critical X explicitly granted by a CP-paid Command does not.
-- Long Range X subtracts 2 dice from the combined Attack pool at extended range (minimum 1), without worsening Hit.
+- Long Range X subtracts **1 die for single-model Units** or **3 dice for multi-model Units** (minimum 1) from the combined Attack pool at extended range, without worsening Hit.
 - Multiple Evade permissions do not provide additional Evade rolls.
 
 ### Command Points
@@ -129,3 +129,9 @@ For radius-based effects that apply to whole Units, a Unit qualifies when **at l
 - Begin the next Priority Step.
 
 **Authority:** See full [Structured Combat](16_structured_combat.md) and [Keywords](10_keywords.md).
+
+---
+
+## v0.7 quick reference: Pinpoint and Friendly Fire
+
+When shooting or casting a Spell Attack into an enemy Engaged with another friendly Unit: worsen Hit one step; **each Blunder inflicts Direct Damage 2 on a friendly Unit Engaged with the target**, designated before rolling. Ward applies. **Pinpoint ignores BOTH effects**; it does not suppress other Blunder or Blast consequences. Printed/passive Critical X converts up to X failures **per Surge**; CP-granted Critical converts its printed rank once even without Surge.

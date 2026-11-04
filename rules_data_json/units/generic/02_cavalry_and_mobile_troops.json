@@ -11,7 +11,9 @@
       "basePoints": 115,
       "baseModels": 3,
       "maxModels": 5,
-      "tags": ["Cavalry"],
+      "tags": [
+        "Cavalry"
+      ],
       "description": "Cavalry profiles represent conventional mounted troops, while faction-specific mobile troops may use different forms of movement. All generic Cavalry classes gain Charge 3. Choose one cavalry class, which determines the Unit's characteristics and base Points.",
       "cavalryClass": {
         "chooseCount": 1,
@@ -20,23 +22,43 @@
             "name": "Light Cavalry",
             "points": 0,
             "totalPoints": 115,
-            "stats": { "move": "7\"", "wounds": 2, "armor": "6+", "evade": "5+", "ward": null },
+            "stats": {
+              "move": "7\"",
+              "wounds": 2,
+              "armor": "6+",
+              "evade": "5+",
+              "ward": null
+            },
             "notes": "Fast, lightly protected troops suited to harassment and flanking."
           },
           {
             "name": "Cavalry",
             "points": 10,
             "totalPoints": 125,
-            "stats": { "move": "6\"", "wounds": 2, "armor": "5+", "evade": "5+", "ward": null },
+            "stats": {
+              "move": "6\"",
+              "wounds": 2,
+              "armor": "5+",
+              "evade": "5+",
+              "ward": null
+            },
             "notes": "Conventional cavalry with balanced mobility and protection."
           },
           {
             "name": "Heavy Cavalry",
             "points": 35,
             "totalPoints": 150,
-            "stats": { "move": "5\"", "wounds": 3, "armor": "4+", "evade": "5+", "ward": null },
+            "stats": {
+              "move": "5\"",
+              "wounds": 3,
+              "armor": "4+",
+              "evade": "5+",
+              "ward": null
+            },
             "notes": "Durable shock cavalry with reduced movement.",
-            "grantsTags": ["Elite"]
+            "grantsTags": [
+              "Elite"
+            ]
           }
         ]
       },
@@ -46,24 +68,65 @@
           {
             "name": "Mounted Weapons",
             "points": 0,
-            "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "profile": {
+              "range": "Engaged",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
             "notes": "Swords, axes, maces, and conventional mounted weapons."
           },
           {
             "name": "Spears",
             "points": 10,
-            "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "profile": {
+              "range": "Engaged 2\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
             "notes": "Extended reach."
           },
           {
             "name": "Lances",
             "points": 25,
-            "profile": { "range": "Engaged", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Impact 1", "Anti-Cavalry 2"] }
+            "profile": {
+              "range": "Engaged",
+              "attacks": 1,
+              "hit": "5+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Impact 1",
+                "Anti-Cavalry 2"
+              ]
+            }
           },
           {
             "name": "Heavy Mounted Weapons",
             "points": 25,
-            "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+            "profile": {
+              "range": "Engaged",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Anti-Armored 2"
+              ]
+            }
           }
         ],
         "clarification": "Heavy Mounted Weapons do not have the Heavy keyword; their increased cost accounts for their damage without preventing conventional mounted Charges."
@@ -81,17 +144,48 @@
           {
             "name": "Mounted Bows",
             "points": 10,
-            "profile": { "range": "6\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+            "profile": {
+              "range": "9\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            }
           },
           {
             "name": "Pistols",
             "points": 25,
-            "profile": { "range": "6\"", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm"] }
+            "profile": {
+              "range": "6\"",
+              "attacks": 2,
+              "hit": "6+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm"
+              ]
+            }
           },
           {
             "name": "Carbines",
             "points": 25,
-            "profile": { "range": "8\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm"] }
+            "profile": {
+              "range": "9\"",
+              "attacks": 3,
+              "hit": "6+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm"
+              ]
+            }
           },
           {
             "name": "Shields",
@@ -104,13 +198,47 @@
       },
       "unitUpgrades": {
         "options": [
-          { "name": "Standard Formation", "points": 0, "effect": "3 Models using the selected Cavalry class and equipment." },
-          { "name": "Charge Formation", "points": 50, "effect": "Gains Impact +3" },
-          { "name": "Additional Light Cavalry Model", "points": 40, "effect": "Add one matching Light Cavalry Model." },
-          { "name": "Additional Cavalry Model", "points": 50, "effect": "Add one matching Cavalry Model." },
-          { "name": "Additional Heavy Cavalry Model", "points": 55, "effect": "Add one matching Heavy Cavalry Model." },
-          { "name": "Weapon Specialization", "points": 25, "effect": "Choose one Faction, Unit Type, or Trait tag. One selected weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once." },
-          { "name": "Veterans", "points": 50, "effect": "Increase Attacks by 1 per Model and improve Hit by one step." }
+          {
+            "name": "Standard Formation",
+            "points": 0,
+            "effect": "3 Models using the selected Cavalry class and equipment."
+          },
+          {
+            "name": "Charge Formation",
+            "points": 50,
+            "effect": "Gains Impact +3"
+          },
+          {
+            "name": "Additional Light Cavalry Model",
+            "points": 40,
+            "effect": "Add one matching Light Cavalry Model."
+          },
+          {
+            "name": "Additional Cavalry Model",
+            "points": 50,
+            "effect": "Add one matching Cavalry Model."
+          },
+          {
+            "name": "Additional Heavy Cavalry Model",
+            "points": 55,
+            "effect": "Add one matching Heavy Cavalry Model."
+          },
+          {
+            "name": "Weapon Specialization",
+            "points": 25,
+            "effect": "Choose one Faction, Unit Type, or Trait tag. One selected weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once."
+          },
+          {
+            "name": "Veterans",
+            "points": 50,
+            "effect": "Increase Attacks by 1 per Model and improve Hit by one step."
+          },
+          {
+            "name": "Deadly Precision",
+            "points": 30,
+            "extraModelSurcharge": 5,
+            "effect": "One selected melee or ranged weapon gains Critical 1 per Surge; any additional Model purchased with this training incurs +5 extra Points."
+          }
         ],
         "notes": [
           "Maximum 5 Models.",

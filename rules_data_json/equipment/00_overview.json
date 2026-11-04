@@ -50,7 +50,7 @@
       { "keyword": "Anti-[Category] X", "effect": "Gain +X Attack dice against the indicated category" },
       { "keyword": "Heavy", "effect": "Subject to normal Heavy movement restrictions" },
       { "keyword": "Brace X", "effect": "Reduce incoming Charge Impact Hits by X, minimum 0" },
-      { "keyword": "Long Range X", "effect": "Extend maximum Range by X\"; attacking beyond normal Range worsens Hit by 1 step" },
+      { "keyword": "Long Range X", "effect": "Extend maximum Range by X\"; attacking beyond normal Range reduces the combined Attack pool by 1 die (single-model Unit) or 3 dice (multi-model Unit), minimum 1" },
       { "keyword": "Rapid-Fire X", "effect": "Gain +X Attacks against targets within half the weapon's normal Range" },
       { "keyword": "Instant", "effect": "Cannot be responded to with Command Abilities" },
       { "keyword": "Pinpoint", "effect": "Ignore the Hit penalty for attacking enemies Engaged with another Unit" },

@@ -7,175 +7,561 @@
   "units": [
     {
       "name": "Civilians",
-      "tags": ["Humanoid"],
+      "tags": [
+        "Humanoid",
+        "Mortal",
+        "Infantry"
+      ],
       "points": 30,
       "models": 5,
-      "modelProfile": { "move": "3\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Improvised Weapons", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Improvised Weapons",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Noncombatants", "type": "Passive", "effect": "Civilians cannot voluntarily Charge unless a scenario or another ability permits it." }
+        {
+          "name": "Noncombatants",
+          "type": "Passive",
+          "effect": "Civilians cannot voluntarily Charge unless a scenario or another ability permits it."
+        }
       ],
       "upgrades": [
-        { "name": "Ordinary Civilians", "cost": "+0", "description": "Five Models with Improvised Weapons and Noncombatants." },
-        { "name": "Additional Civilian", "cost": "+5 each", "description": "Add one Model, maximum 10." }
+        {
+          "name": "Ordinary Civilians",
+          "cost": "+0",
+          "description": "Five Models with Improvised Weapons and Noncombatants."
+        },
+        {
+          "name": "Additional Civilian",
+          "cost": "+5 each",
+          "description": "Add one Model, maximum 10."
+        }
       ]
     },
     {
       "name": "Thugs",
-      "tags": ["Humanoid"],
+      "tags": [
+        "Humanoid",
+        "Mortal",
+        "Infantry"
+      ],
       "points": 55,
       "models": 5,
-      "modelProfile": { "move": "3\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Clubs and Knives", "range": "Engaged", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Clubs and Knives",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Dirty Fighting", "type": "Passive", "effect": "Gain Accurate 1 when attacking an enemy already Engaged with another friendly Unit." }
+        {
+          "name": "Dirty Fighting",
+          "type": "Passive",
+          "effect": "Gain Accurate 1 when attacking an enemy already Engaged with another friendly Unit."
+        }
       ],
       "upgrades": [
-        { "name": "Ordinary Thugs", "cost": "+0", "description": "Five Models with Clubs and Knives." },
-        { "name": "Additional Thug", "cost": "+10 each", "description": "Add one Model, maximum 10." }
+        {
+          "name": "Ordinary Thugs",
+          "cost": "+0",
+          "description": "Five Models with Clubs and Knives."
+        },
+        {
+          "name": "Additional Thug",
+          "cost": "+10 each",
+          "description": "Add one Model, maximum 10."
+        }
       ]
     },
     {
       "name": "Bandits",
-      "tags": ["Humanoid"],
+      "tags": [
+        "Humanoid",
+        "Mortal",
+        "Infantry"
+      ],
       "points": 75,
       "models": 5,
-      "modelProfile": { "move": "4\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Hand Weapons", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
-        { "name": "Shortbows", "range": "6\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Hand Weapons",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        },
+        {
+          "name": "Shortbows",
+          "range": "6\"",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Ambushers", "type": "Passive", "effect": "Begin Concealed if deployed in suitable terrain. Concealed ends when this Unit Attacks, enters Engagement, or leaves that terrain." }
+        {
+          "name": "Ambushers",
+          "type": "Passive",
+          "effect": "Begin Concealed if deployed in suitable terrain. Concealed ends when this Unit Attacks, enters Engagement, or leaves that terrain."
+        }
       ],
       "upgrades": [
-        { "name": "Ordinary Bandits", "cost": "+0", "description": "Five Models with Hand Weapons and Shortbows." },
-        { "name": "Additional Bandit", "cost": "+15 each", "description": "Add one Model, maximum 8." },
-        { "name": "Longbows", "cost": "+15", "description": "Replace Shortbows with 10\" / 2 / 5+ / 1 / Long Range 3. Attacks beyond 10\" worsen Hit by one step." },
-        { "name": "Experienced Ambushers", "cost": "+20", "description": "The Unit's first ranged Attack of the battle gains Accurate 1." }
+        {
+          "name": "Ordinary Bandits",
+          "cost": "+0",
+          "description": "Five Models with Hand Weapons and Shortbows."
+        },
+        {
+          "name": "Additional Bandit",
+          "cost": "+15 each",
+          "description": "Add one Model, maximum 8."
+        },
+        {
+          "name": "Longbows",
+          "cost": "+15",
+          "description": "Replace Shortbows with 10\" / 2 / 5+ / 1 / Long Range 3. Attacks beyond 10\" lose 1 Attack die for a single-model Unit or 3 for a multi-model Unit (minimum 1)."
+        },
+        {
+          "name": "Experienced Ambushers",
+          "cost": "+20",
+          "description": "The Unit's first ranged Attack of the battle gains Accurate 1."
+        }
       ]
     },
     {
       "name": "Cultists",
-      "tags": ["Humanoid"],
+      "tags": [
+        "Humanoid",
+        "Mortal",
+        "Infantry"
+      ],
       "points": 60,
       "models": 5,
-      "modelProfile": { "move": "3\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Ritual Blades", "range": "Engaged", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Ritual Blades",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Fanatic", "type": "Passive", "effect": "Once per Round, the Unit may suffer 1 Damage to gain Accurate 1 on its next Attack that Round." }
+        {
+          "name": "Fanatic",
+          "type": "Passive",
+          "effect": "Once per Round, the Unit may suffer 1 Damage to gain Accurate 1 on its next Attack that Round."
+        }
       ],
       "upgrades": [
-        { "name": "Ordinary Cultists", "cost": "+0", "description": "Five Models with Ritual Blades." },
-        { "name": "Additional Cultist", "cost": "+12 each", "description": "Add one Model, maximum 10." },
-        { "name": "Sacrificial Daggers", "cost": "+15", "description": "Ritual Blades gain Critical 1 on their next Attack after the Unit voluntarily suffers Damage through Fanatic, provided the Attack generates a Surge." }
+        {
+          "name": "Ordinary Cultists",
+          "cost": "+0",
+          "description": "Five Models with Ritual Blades."
+        },
+        {
+          "name": "Additional Cultist",
+          "cost": "+12 each",
+          "description": "Add one Model, maximum 10."
+        },
+        {
+          "name": "Sacrificial Daggers",
+          "cost": "+15",
+          "description": "Ritual Blades gain Critical 1 on their next Attack after the Unit voluntarily suffers Damage through Fanatic, provided the Attack generates a Surge."
+        }
       ]
     },
     {
       "name": "Acolytes",
-      "tags": ["Wizard", "Humanoid"],
+      "tags": [
+        "Wizard",
+        "Humanoid",
+        "Mortal",
+        "Infantry"
+      ],
       "points": 85,
       "models": 3,
-      "modelProfile": { "move": "3\"", "wounds": 2, "armor": "6+", "evade": "6+", "ward": "6+ Magic" },
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 2,
+        "armor": "6+",
+        "evade": "6+",
+        "ward": "6+ Magic"
+      },
       "attackProfiles": [
-        { "name": "Ceremonial Weapons", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
-        { "name": "Minor Bolt", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] }
+        {
+          "name": "Ceremonial Weapons",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        },
+        {
+          "name": "Minor Bolt",
+          "range": "6\"",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Magic"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Chant", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One friendly Unit within Short gains Ward 6+ against Magic until the beginning of the next Round. An existing better Magic Ward is not worsened." }
+        {
+          "name": "Chant",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "One friendly Unit within Short gains Ward 6+ against Magic until the beginning of the next Round. An existing better Magic Ward is not worsened."
+        }
       ],
       "upgrades": [
-        { "name": "Ordinary Acolytes", "cost": "+0", "description": "Three Models with Minor Bolt and Chant." },
-        { "name": "Additional Acolyte", "cost": "+25 each", "description": "Add one Model, maximum 4." },
-        { "name": "Stronger Chant", "cost": "+20", "description": "Chant instead improves the target's existing Magic Ward by one step, or grants Ward 6+ if it has none." }
+        {
+          "name": "Ordinary Acolytes",
+          "cost": "+0",
+          "description": "Three Models with Minor Bolt and Chant."
+        },
+        {
+          "name": "Additional Acolyte",
+          "cost": "+25 each",
+          "description": "Add one Model, maximum 4."
+        },
+        {
+          "name": "Stronger Chant",
+          "cost": "+20",
+          "description": "Chant instead improves the target's existing Magic Ward by one step, or grants Ward 6+ if it has none."
+        }
       ]
     },
     {
       "name": "Veteran Guard",
-      "tags": ["Infantry", "Elite", "Humanoid"],
+      "tags": [
+        "Infantry",
+        "Elite",
+        "Humanoid",
+        "Mortal"
+      ],
       "points": 120,
       "models": 4,
-      "modelProfile": { "move": "3\"", "wounds": 2, "armor": "5+", "evade": "5+", "ward": null },
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 2,
+        "armor": "5+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Veteran Weapons", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Veteran Weapons",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Disciplined", "type": "Passive", "effect": "Veteran Weapons gain Accurate 1." }
+        {
+          "name": "Disciplined",
+          "type": "Passive",
+          "effect": "Veteran Weapons gain Accurate 1."
+        }
       ],
       "upgrades": [
-        { "name": "Ordinary Veterans", "cost": "+0", "description": "Four W2 Models with Veteran Weapons." },
-        { "name": "Crossbows", "cost": "+15", "description": "Gain Crossbows: 8\" / 2 / 4+ / 1 / Heavy." },
-        { "name": "Shields", "cost": "+20", "description": "Improve Armor to 4+." },
-        { "name": "Additional Veteran", "cost": "+30", "description": "Add one Model, maximum 5. Add +5 for each paid equipment package." }
+        {
+          "name": "Ordinary Veterans",
+          "cost": "+0",
+          "description": "Four W2 Models with Veteran Weapons."
+        },
+        {
+          "name": "Crossbows",
+          "cost": "+15",
+          "description": "Gain Crossbows: 8\" / 2 / 4+ / 1 / Heavy."
+        },
+        {
+          "name": "Shields",
+          "cost": "+20",
+          "description": "Improve Armor to 4+."
+        },
+        {
+          "name": "Additional Veteran",
+          "cost": "+30",
+          "description": "Add one Model, maximum 5. Add +5 for each paid equipment package."
+        }
       ]
     },
     {
       "name": "Assassin",
-      "tags": ["Mobile", "Elite", "Humanoid"],
+      "tags": [
+        "Mobile",
+        "Elite",
+        "Humanoid",
+        "Mortal",
+        "Infantry"
+      ],
       "points": 100,
       "models": 1,
-      "modelProfile": { "move": "5\"", "wounds": 4, "armor": "6+", "evade": "4+", "ward": null },
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 4,
+        "armor": "6+",
+        "evade": "4+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Daggers", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1", "Critical 1"] }
+        {
+          "name": "Daggers",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "4+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Accurate 1",
+            "Critical 1"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Hidden Killer", "type": "Passive", "effect": "Begins Concealed when deployed in suitable terrain." },
-        { "name": "Vanish", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "If not Engaged, gain Concealed until the Assassin Attacks, enters Engagement, or the Round ends." }
+        {
+          "name": "Hidden Killer",
+          "type": "Passive",
+          "effect": "Begins Concealed when deployed in suitable terrain."
+        },
+        {
+          "name": "Vanish",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "If not Engaged, gain Concealed until the Assassin Attacks, enters Engagement, or the Round ends."
+        }
       ],
       "upgrades": [
-        { "name": "Standard Assassin", "cost": "+0", "description": "Daggers with Accurate 1 and Critical 1." },
-        { "name": "Throwing Knives", "cost": "+10", "description": "Gain 6\" / 4 / 5+ / 1 / Pinpoint." },
-        { "name": "Master Assassin", "cost": "+25", "description": "Increase Wounds to W5 and Daggers to five Attacks." }
+        {
+          "name": "Standard Assassin",
+          "cost": "+0",
+          "description": "Daggers with Accurate 1 and Critical 1."
+        },
+        {
+          "name": "Throwing Knives",
+          "cost": "+10",
+          "description": "Gain 6\" / 4 / 5+ / 1 / Pinpoint."
+        },
+        {
+          "name": "Master Assassin",
+          "cost": "+25",
+          "description": "Increase Wounds to W5 and Daggers to five Attacks."
+        }
       ]
     },
     {
       "name": "Hedge Mage",
-      "tags": ["Wizard", "Elite", "Humanoid"],
+      "tags": [
+        "Wizard",
+        "Elite",
+        "Humanoid",
+        "Mortal",
+        "Infantry"
+      ],
       "points": 105,
       "models": 1,
-      "modelProfile": { "move": "3\"", "wounds": 3, "armor": "6+", "evade": "6+", "ward": "6+ Magic" },
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 3,
+        "armor": "6+",
+        "evade": "6+",
+        "ward": "6+ Magic"
+      },
       "attackProfiles": [
-        { "name": "Arcane Bolt", "range": "8\"", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] },
-        { "name": "Staff", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        {
+          "name": "Arcane Bolt",
+          "range": "8\"",
+          "attacks": 4,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Magic"
+          ],
+          "keywords": []
+        },
+        {
+          "name": "Staff",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       ],
       "abilities": [],
       "minorArcana": {
         "description": "Choose one magical Command when creating the Mage.",
         "options": [
-          { "name": "Ward", "cost": "+0", "effect": "1 CP, Movement: Grant Ward 6+ against Magic to one friendly Unit within Short until the end of the Round." },
-          { "name": "Hex", "cost": "+0", "effect": "1 CP, Assault: Worsen one visible enemy's Armor or Evade by one step until the end of the Round." },
-          { "name": "Haste", "cost": "+0", "effect": "1 CP, Movement: One friendly Unit within Short gains +2\" Move during its next Move this Round." }
+          {
+            "name": "Ward",
+            "cost": "+0",
+            "effect": "1 CP, Movement: Grant Ward 6+ against Magic to one friendly Unit within Short until the end of the Round."
+          },
+          {
+            "name": "Hex",
+            "cost": "+0",
+            "effect": "1 CP, Assault: Worsen one visible enemy's Armor or Evade by one step until the end of the Round."
+          },
+          {
+            "name": "Haste",
+            "cost": "+0",
+            "effect": "1 CP, Movement: One friendly Unit within Short gains +2\" Move during its next Move this Round."
+          }
         ]
       },
       "upgrades": [
-        { "name": "One Minor Arcana", "cost": "+0", "description": "Know one Arcana from the table." },
-        { "name": "Additional Arcana", "cost": "+15 each", "description": "Learn another Minor Arcana." }
+        {
+          "name": "One Minor Arcana",
+          "cost": "+0",
+          "description": "Know one Arcana from the table."
+        },
+        {
+          "name": "Additional Arcana",
+          "cost": "+15 each",
+          "description": "Learn another Minor Arcana."
+        }
       ]
     },
     {
       "name": "Ogre Mercenary",
-      "tags": ["Monster", "Elite", "Humanoid"],
+      "tags": [
+        "Monster",
+        "Elite",
+        "Humanoid",
+        "Mortal"
+      ],
       "points": 120,
       "models": 1,
-      "modelProfile": { "move": "4\"", "wounds": 6, "armor": "5+", "evade": "6+", "ward": null },
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 6,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Heavy Club", "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+        {
+          "name": "Heavy Club",
+          "range": "Engaged",
+          "attacks": 4,
+          "hit": "5+",
+          "damage": 2,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Anti-Armored 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
-        { "name": "Massive", "type": "Passive", "effect": "Counts as two Units for objective control where appropriate." }
+        {
+          "name": "Impact 1",
+          "type": "Passive",
+          "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)."
+        },
+        {
+          "name": "Massive",
+          "type": "Passive",
+          "effect": "Counts as two Units for objective control where appropriate."
+        }
       ],
       "upgrades": [
-        { "name": "Heavy Club", "cost": "+0", "description": "Engaged / 4 / 5+ / 2 / Anti-Armored 2." },
-        { "name": "Heavy Armor", "cost": "+20", "description": "Improve Armor to 4+." },
-        { "name": "Crushing Maul", "cost": "+20", "description": "Replace Heavy Club with Engaged / 3 / 5+ / 3 / Anti-Armored 2." },
-        { "name": "Throwing Stones", "cost": "+10", "description": "Gain 6\" / 1 / 5+ / 2 / Anti-Cavalry 2." }
+        {
+          "name": "Heavy Club",
+          "cost": "+0",
+          "description": "Engaged / 4 / 5+ / 2 / Anti-Armored 2."
+        },
+        {
+          "name": "Heavy Armor",
+          "cost": "+20",
+          "description": "Improve Armor to 4+."
+        },
+        {
+          "name": "Crushing Maul",
+          "cost": "+20",
+          "description": "Replace Heavy Club with Engaged / 3 / 5+ / 3 / Anti-Armored 2."
+        },
+        {
+          "name": "Throwing Stones",
+          "cost": "+10",
+          "description": "Gain 6\" / 1 / 5+ / 2 / Anti-Cavalry 2."
+        }
       ]
     }
   ]

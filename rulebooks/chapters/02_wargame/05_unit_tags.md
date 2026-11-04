@@ -58,8 +58,9 @@ Faction tags can be targeted directly, for example by **Anti-Death Legions 1**.
 | --- | --- |
 | **Infantry** | Conventional foot troops, including ranged infantry and elite foot formations. |
 | **Cavalry** | Mounted troops and equivalent mobile combat formations. |
-| **Character** | Individual combatants, officers, Player Characters, Wizards, and important specialists. |
+| **Character** | Explicitly designated significant individuals: PCs, named legendary figures, and named legacy Captains. Does **not** automatically apply to generic officers, Wizards, or every Hero. |
 | **Support** | Personnel primarily providing healing, engineering, reconnaissance, or battlefield assistance. |
+| **Creature** | Independent animals and other non-Monster creatures that are not conventional military formations. |
 | **Artillery** | Crewed or stationary weapons designed for long-range fire support. |
 | **Vehicle** | Mobile mechanical or constructed platforms, including wagons and tanks. |
 | **Monster** | Exceptional creatures or similarly powerful living or supernatural battlefield threats. |
@@ -86,6 +87,8 @@ Unit Types may overlap. An individual Artificer might be `Character, Support`; a
 | **Armored** | Units explicitly designated as protected by substantial armor, heavy plating, or equivalent equipment. |
 | **Unarmored** | Units explicitly designated as lacking substantial armor — unarmed, lightly clothed, or relying on natural toughness alone. |
 | **Mechanical** | Units primarily powered or operated through machinery, including certain Vehicles and Artillery. |
+| **Humanoid** | Humanoid physical form. May coexist with Mortal, Undead, Infernal, or other creature types. |
+| **Flying** | Units explicitly able to fly. The tag does not itself provide movement rules. |
 
 Additional Traits—such as **Elemental**, **Plant**, or **Swarm**—may appear when specific rosters or rules require them. An additional Trait has no inherent effect until a rule references it.
 
@@ -126,7 +129,8 @@ Some existing army profiles use additional battlefield labels or army-list class
 | --- | --- |
 | **Core** | A designated Core Unit; counts toward the required number of Core Units in applicable army formats. |
 | **Elite** | A higher-grade Unit or specialist. Elite does not imply Hero. Elite-subtype tags (Elite Infantry, Elite Cavalry, Elite Ranged Infantry) also satisfy Commands requiring an Elite Unit. |
-| **Hero** | A designated Hero, subject to the army's Hero limits where applicable. |
+| **Hero** | A designated Hero, subject to the army's Hero limits where applicable. **Hero does not imply Character.** |
+| **Officer** | A leader entrusted with military command, whether or not they are a Hero or named Character. |
 | **Wizard** | A designated spellcasting Unit eligible for rules specifically referencing Wizards. |
 | **Ranged / Ranged Infantry** | Identifies Units with a specialized ranged role; ordinary possession of a ranged weapon does not automatically change recruitment eligibility. |
 | **Mobile / Infiltrator** | Specialized mobility or infiltration labels used where explicitly assigned. |
@@ -230,13 +234,13 @@ The following illustrate notation and classification, not additional equipment o
 | Unit | Faction | Unit Type(s) | Trait(s) | Role / Roster | Recruitment |
 | --- | --- | --- | --- | --- | --- |
 | Generic Line Infantry in Free Realms | Free Realms | Infantry | Mortal | Core | C |
-| Generic Captain, no Heroic Commission | Free Realms | Character, Infantry | Mortal | Elite | E |
-| Generic Captain with Heroic Commission | Free Realms | Character, Infantry | Mortal | Elite, Hero, Headquarters | E / H |
-| Faction Elite Wizard | Arcane Orders | Character | Mortal | Elite, Wizard | S / E, if explicitly eligible |
+| Generic Captain, no Heroic Commission | Free Realms | Infantry | Mortal, Humanoid | Elite, Officer | E |
+| Generic Captain with Heroic Commission | Free Realms | Infantry | Mortal, Humanoid | Elite, Officer, Hero, Headquarters | E / H |
+| Faction Elite Wizard | Arcane Orders | Infantry, if appropriate | Mortal, Humanoid | Elite, Wizard | S / E, if explicitly eligible |
 | Corpse Horde | Death Legions | Infantry | Undead | Core | C |
 | Arcane Golem | Arcane Orders | Construct | As printed | Large Asset | A |
 | War Wagon | Free Realms | Vehicle | Mechanical, Armored | Large Asset | A |
-| Independent Beast | Unaligned | Monster | Beast | As printed | Scenario-dependent |
+| Independent Beast | Unaligned | Creature or Monster, as printed | Beast | As printed | Scenario-dependent |
 
 A Unit's actual datasheet remains authoritative for its specific tags and eligible Recruitment Slots.
 
@@ -255,3 +259,15 @@ When preparing or revising a datasheet, separately record:
 5. Eligible Recruitment Slot(s), where army construction is used.
 
 Older references that infer **Armored** from Armor Save, treat **Hero** and **Character** as interchangeable, or grant Recruitment Slots automatically from Tags should be updated to this chapter's definitions.
+
+---
+
+## v0.7: Canonical Tags and Explicit Character Status
+
+* A compound role (Elite Infantry, Ranged Infantry, Elite Ranged Infantry, Elite Cavalry, Infiltrating Infantry, Horde Infantry) always **satisfies its constituent terms** for Anti-tag matching. Add the constituent tags to data records; retain old compounds as legacy aliases where needed.
+* **Character is explicit and narrative, not a synonym for Hero.** All PCs are Characters. Named/legendary faction leaders and named legacy Captains are Characters. Ordinary generic Captains and Wizards are not Characters simply for being single Models; generic Captains are Officers. Heroic Commission adds Hero but not Character.
+* **Faction does not imply creature type.** Do not turn a Sacred Orders Unit into Mortal, a Death Legions Unit into Undead, or a Blood Courts Unit into Undead based solely on allegiance. Creature identities are set per datasheet or chosen ancestry/conversion.
+* PCs gain their chosen **ancestry name** and appropriate physical/creature descriptors as separate tags. Human, Dwarf, Elf, Orc, Goblin, Halfling, Gnome, Kobold etc. ordinarily also have Humanoid and Mortal. Tiefling need not be Infernal; Beastfolk need not be Beast. Undead ancestry adds Undead; Spirit ancestry option also adds Spirit. Transformations or equipment explicitly change only the named tags.
+* **Ranged** applies consistently to dedicated ranged-role Units. A secondary ranged weapon grants Ranged only when its upgrade explicitly says so; it does not automatically change recruitment eligibility.
+* Anti-Infantry, Anti-Ranged, Anti-Elite, Anti-Hero and Anti-Officer are tactical matchups. Anti-Mortal, Anti-Undead, Anti-Beast, Anti-Infernal, Anti-Spirit, Anti-Humanoid, Anti-Construct etc. target actual creature or material descriptions. Use **only the highest applicable Anti rank**, regardless of how many tags match. Descriptive ancestry tags do not themselves grant a save or ability.
+* A tag-changing upgrade must state explicitly what is added or removed. Any creature-type conversion that enables a faction passive, summon, or resurrection must have a separately priced or scenario-authorized effect.

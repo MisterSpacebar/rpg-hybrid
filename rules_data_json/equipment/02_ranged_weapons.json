@@ -29,7 +29,7 @@
         { "name": "Heavy Bow", "profile": { "range": "9\"", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] }, "points": 15 }
       ],
       "notes": [
-        "Long Range increases the Longbow's maximum effective distance to 12\", but Attacks beyond 9\" worsen Hit by one step."
+        "Long Range increases the Longbow's maximum effective distance to 12\", but Attacks beyond 9\" roll 1 fewer Attack die (minimum 1)."
       ]
     },
     {

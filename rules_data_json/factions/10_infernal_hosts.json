@@ -4,55 +4,155 @@
     "section": "10. INFERNAL HOSTS"
   },
   "name": "Infernal Hosts",
-  "doctrines": ["Gambit", "Alpha Strike"],
+  "doctrines": [
+    "Gambit",
+    "Alpha Strike"
+  ],
   "worldbuilding": "Demonic legions, corrupted mortal warriors, infernal cults, and summoned horrors. Their armies gain explosive advantages through sacrifice, unstable magic, and aggressive attacks.",
   "factionRule": {
     "name": "Dark Bargain",
     "effect": "Once per activation, a friendly Infernal Unit may suffer 1 Damage to reroll one die, obeying the normal once-per-die reroll limitation."
   },
   "factionCommands": [
-    { "name": "Unbound Power", "timing": "Assault", "cost": "1 CP", "effect": "One Attack gains +2 Attacks. If it Blunders, its Unit suffers 1 Damage." },
-    { "name": "Blood Offering", "timing": "Assault", "cost": "1 CP", "effect": "Damage or remove one friendly basic Model. One nearby friendly Unit gains Accurate 2 on its next Attack." },
-    { "name": "Open the Rift", "timing": "Movement", "cost": "1 CP", "effect": "Deploy one eligible, already paid-for minor Infernal Unit from Reserve according to its summoning restrictions." }
+    {
+      "name": "Unbound Power",
+      "timing": "Assault",
+      "cost": "1 CP",
+      "effect": "One Attack gains +2 Attacks. If it Blunders, its Unit suffers 1 Damage."
+    },
+    {
+      "name": "Blood Offering",
+      "timing": "Assault",
+      "cost": "1 CP",
+      "effect": "Damage or remove one friendly basic Model. One nearby friendly Unit gains Accurate 2 on its next Attack."
+    },
+    {
+      "name": "Open the Rift",
+      "timing": "Movement",
+      "cost": "1 CP",
+      "effect": "Deploy one eligible, already paid-for minor Infernal Unit from Reserve according to its summoning restrictions."
+    },
+    {
+      "name": "Break the Defense",
+      "cost": "1 CP",
+      "timing": "Assault or Combat",
+      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Infantry 4 or Anti-Elite 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+    }
   ],
   "signatureCoreUnits": [
     {
       "name": "Hellguard",
       "points": 185,
       "models": 3,
-      "tags": ["Elite Infantry", "Infernal", "Armored"],
-      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "5+", "evade": "6+", "ward": "6+ (Magic)" },
+      "tags": [
+        "Elite Infantry",
+        "Infernal",
+        "Armored",
+        "Elite",
+        "Infantry"
+      ],
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 4,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": "6+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Infernal Blades", "range": "Engaged", "attacks": 3, "hit": "4+", "damage": 1, "keywords": ["Magic"] }
+        {
+          "name": "Infernal Blades",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "4+",
+          "damage": 1,
+          "keywords": [
+            "Magic"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Grim Resolve", "type": "Passive", "effect": "While this Unit has accumulated Damage, its melee Attacks gain Anti-Mortal 1." }
+        {
+          "name": "Grim Resolve",
+          "type": "Passive",
+          "effect": "While this Unit has accumulated Damage, its melee Attacks gain Anti-Mortal 1."
+        },
+        {
+          "name": "Bloodlit Blades",
+          "type": "Passive",
+          "effect": "While this Unit has accumulated Damage on a surviving Model, its Infernal Blades gain Critical 1 PER SURGE; this is in addition to its existing conditional Anti-Mortal 1."
+        }
       ]
     },
     {
       "name": "Rift Stalkers",
       "points": 175,
       "models": 4,
-      "tags": ["Mobile", "Infiltrators", "Infernal"],
-      "modelProfile": { "move": "5\"", "wounds": 2, "armor": "6+", "evade": "5+", "ward": "6+ (Magic)" },
+      "tags": [
+        "Mobile",
+        "Infiltrators",
+        "Infernal",
+        "Infiltrator"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 2,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": "6+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Warp Claws", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+        {
+          "name": "Warp Claws",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Magic"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Rift Step", "type": "Passive", "effect": "May begin in Reserve and deploy outside Short Range of enemies at the end of a Round." }
+        {
+          "name": "Rift Step",
+          "type": "Passive",
+          "effect": "May begin in Reserve and deploy outside Short Range of enemies at the end of a Round."
+        }
       ]
     },
     {
       "name": "Cultist Horde",
       "points": 100,
       "models": 8,
-      "tags": ["Horde Infantry", "Mortal"],
-      "modelProfile": { "move": "4\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "tags": [
+        "Horde Infantry",
+        "Mortal",
+        "Infantry",
+        "Horde"
+      ],
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Ritual Blades", "range": "Engaged", "attacks": 1, "hit": "6+", "damage": 1, "keywords": [] }
+        {
+          "name": "Ritual Blades",
+          "range": "Engaged",
+          "attacks": 1,
+          "hit": "6+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Expendable", "type": "Passive", "effect": "This Unit may be chosen as the sacrifice for Blood Offering without further restriction; when sacrificed this way, remove only one Model rather than damaging a Model of another Unit." }
+        {
+          "name": "Expendable",
+          "type": "Passive",
+          "effect": "This Unit may be chosen as the sacrifice for Blood Offering without further restriction; when sacrificed this way, remove only one Model rather than damaging a Model of another Unit."
+        }
       ]
     }
   ],
@@ -61,27 +161,85 @@
       "name": "Infernal Champion",
       "role": "Captain",
       "points": 215,
-      "tags": ["Hero", "Infernal", "Armored"],
-      "modelProfile": { "move": "5\"", "wounds": 6, "armor": "3+", "evade": "6+", "ward": "6+ (Magic)" },
+      "tags": [
+        "Hero",
+        "Infernal",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 6,
+        "armor": "3+",
+        "evade": "6+",
+        "ward": "6+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Daemon Blade", "range": "Engaged", "attacks": 4, "hit": "3+", "damage": 2, "keywords": ["Magic", "Anti-Mortal 1"] }
+        {
+          "name": "Daemon Blade",
+          "range": "Engaged",
+          "attacks": 4,
+          "hit": "3+",
+          "damage": 2,
+          "keywords": [
+            "Magic",
+            "Anti-Mortal 1"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Blood Debt", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "If the Champion inflicted at least 2 Damage on enemies during its preceding activation, Heal 1 on one friendly Infernal Unit within Short." }
+        {
+          "name": "Blood Debt",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "If the Champion inflicted at least 2 Damage on enemies during its preceding activation, Heal 1 on one friendly Infernal Unit within Short."
+        }
       ]
     },
     {
       "name": "Riftcaller",
       "role": "Wizard",
       "points": 195,
-      "tags": ["Wizard", "Elite", "Mortal*"],
-      "modelProfile": { "move": "3\"", "wounds": 4, "armor": "6+", "evade": "6+", "ward": "5+ (Magic)" },
+      "tags": [
+        "Wizard",
+        "Elite",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 4,
+        "armor": "6+",
+        "evade": "6+",
+        "ward": "5+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Warp Flame", "range": "10\"", "attacks": 5, "hit": "4+", "damage": 1, "keywords": ["Magic"] },
-        { "name": "Ritual Dagger", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+        {
+          "name": "Warp Flame",
+          "range": "10\"",
+          "attacks": 5,
+          "hit": "4+",
+          "damage": 1,
+          "keywords": [
+            "Magic"
+          ]
+        },
+        {
+          "name": "Ritual Dagger",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Warp Eruption", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "On 3+, inflict Direct Damage 1 on a visible enemy within Medium. On a natural 6, inflict Direct Damage 2 instead." }
+        {
+          "name": "Warp Eruption",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Assault",
+          "effect": "On 3+, inflict Direct Damage 1 on a visible enemy within Medium. On a natural 6, inflict Direct Damage 2 instead."
+        }
       ],
       "upgrades": [
         {
@@ -93,65 +251,201 @@
           "effect": "Instead of making a Spell Attack, place a 25mm token within Medium Range. At the end of the Combat Phase, every Unit with at least half its surviving Models (rounded up) within 1.5\" of the token suffers two automatic Magic Hits at Damage 1 each, total. Resolve Armor then Ward; no Evade. Resolve Saves separately against each Hit. The effect applies to friendly and enemy Units alike. Remove the token after resolving its effect."
         }
       ],
-      "note": "The Riftcaller and Blood Priest could have different Mortal or Infernal traits depending on their finalized lore."
+      "note": "The Riftcaller and Blood Priest could have different Mortal or Infernal traits depending on their finalized lore.",
+      "tagChoiceNotes": [
+        "Default Mortal; alternate creature identity requires an explicitly selected Unit conversion or scenario permission. Faction alone does not assign creature type."
+      ]
     },
     {
       "name": "Blood Priest",
       "role": "Support",
       "points": 165,
-      "tags": ["Support", "Elite", "Mortal*"],
-      "modelProfile": { "move": "3\"", "wounds": 5, "armor": "5+", "evade": "6+", "ward": "6+ (Magic)" },
+      "tags": [
+        "Support",
+        "Elite",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 5,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": "6+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Sacrificial Dagger", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic"] }
+        {
+          "name": "Sacrificial Dagger",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Magic"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Unholy Benediction", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One friendly Infernal Unit within Short gains Ward 6+ against Magic, or improves its existing Magic Ward by one step, until the end of the Round. It suffers 1 Damage at the end of that Round unless it destroyed an enemy Model." }
+        {
+          "name": "Unholy Benediction",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "One friendly Infernal Unit within Short gains Ward 6+ against Magic, or improves its existing Magic Ward by one step, until the end of the Round. It suffers 1 Damage at the end of that Round unless it destroyed an enemy Model."
+        }
       ],
-      "note": "The Riftcaller and Blood Priest could have different Mortal or Infernal traits depending on their finalized lore."
+      "note": "The Riftcaller and Blood Priest could have different Mortal or Infernal traits depending on their finalized lore.",
+      "tagChoiceNotes": [
+        "Default Mortal; alternate creature identity requires an explicitly selected Unit conversion or scenario permission. Faction alone does not assign creature type."
+      ],
+      "optionalUpgrades": [
+        {
+          "name": "Specialized Guidance",
+          "points": 20,
+          "effect": "At list construction choose one existing creature/material Trait tag. Other friendly Units wholly within 3\" gain Anti-[that tag] 2. Highest applicable Anti rank only. This is a passive aura, not a free Command; does not benefit its source."
+        }
+      ]
     }
   ],
   "largeAssets": [
     {
       "name": "Greater Fiend",
       "points": 310,
-      "tags": ["Monster", "Infernal"],
-      "modelProfile": { "move": "6\"", "wounds": 12, "armor": "4+", "evade": "5+", "ward": "5+ (Magic)" },
+      "tags": [
+        "Monster",
+        "Infernal"
+      ],
+      "modelProfile": {
+        "move": "6\"",
+        "wounds": 12,
+        "armor": "4+",
+        "evade": "5+",
+        "ward": "5+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Daemon Weapon", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 2, "keywords": ["Magic", "Anti-Elite 2"] }
+        {
+          "name": "Daemon Weapon",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "4+",
+          "damage": 2,
+          "keywords": [
+            "Magic",
+            "Anti-Elite 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Unstable Power", "type": "Passive", "effect": "Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Melee Attack." }
+        {
+          "name": "Unstable Power",
+          "type": "Passive",
+          "effect": "Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Melee Attack."
+        }
       ]
     },
     {
       "name": "Rift Engine",
       "points": 225,
-      "tags": ["War Machine", "Infernal"],
-      "modelProfile": { "move": "3\"", "wounds": 8, "armor": "5+", "evade": null, "ward": "6+ (Magic)" },
+      "tags": [
+        "War Machine",
+        "Infernal"
+      ],
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 8,
+        "armor": "5+",
+        "evade": null,
+        "ward": "6+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Rift Battery", "range": "10\"", "attacks": 3, "hit": "4+", "damage": 2, "keywords": ["Magic", "Blast 1\"", "Heavy"] },
-        { "name": "Crew", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+        {
+          "name": "Rift Battery",
+          "range": "10\"",
+          "attacks": 3,
+          "hit": "4+",
+          "damage": 2,
+          "keywords": [
+            "Magic",
+            "Blast 1\"",
+            "Heavy"
+          ]
+        },
+        {
+          "name": "Crew",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "6+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Volatile Gate", "type": "Passive", "effect": "On a Blunder, suffer Direct Damage 1." }
+        {
+          "name": "Volatile Gate",
+          "type": "Passive",
+          "effect": "On a Blunder, suffer Direct Damage 1."
+        }
       ]
     }
   ],
   "factionLeader": {
     "name": "Archfiend",
     "points": 520,
-    "tags": [],
-    "modelProfile": { "move": "6\"", "wounds": 13, "armor": "4+", "evade": "4+", "ward": "5+ (Magic Ward +1)" },
+    "tags": [
+      "Hero",
+      "Character",
+      "Monster",
+      "Infernal"
+    ],
+    "modelProfile": {
+      "move": "6\"",
+      "wounds": 13,
+      "armor": "4+",
+      "evade": "4+",
+      "ward": "5+ (Magic Ward +1)"
+    },
     "impact": "+3",
     "attackProfiles": [
-      { "name": "Hellfire", "range": "9\"", "attacks": 5, "hit": "4+", "damage": 1, "keywords": ["Magic", "Blast 1\""] },
-      { "name": "Hellforged Claws", "range": "Engaged", "attacks": 5, "hit": "3+", "damage": 2, "keywords": ["Magic", "Anti-Armored 2"] }
+      {
+        "name": "Hellfire",
+        "range": "9\"",
+        "attacks": 5,
+        "hit": "4+",
+        "damage": 1,
+        "keywords": [
+          "Magic",
+          "Blast 1\""
+        ]
+      },
+      {
+        "name": "Hellforged Claws",
+        "range": "Engaged",
+        "attacks": 5,
+        "hit": "3+",
+        "damage": 2,
+        "keywords": [
+          "Magic",
+          "Anti-Armored 2"
+        ]
+      }
     ],
     "abilities": [
-      { "name": "Ruin Made Flesh", "type": "Passive", "effect": "The Archfiend's Dark Bargain may reroll up to two dice instead of one for the same 1 Damage." },
-      { "name": "Open the Hellgate", "type": "Command", "cost": "2 CP", "timing": "Movement", "frequency": "Once per Battle", "effect": "Deploy up to two eligible, already paid-for minor Infernal Units from Reserve outside Medium Range of enemies, obeying normal summoning restrictions." }
+      {
+        "name": "Ruin Made Flesh",
+        "type": "Passive",
+        "effect": "The Archfiend's Dark Bargain may reroll up to two dice instead of one for the same 1 Damage."
+      },
+      {
+        "name": "Open the Hellgate",
+        "type": "Command",
+        "cost": "2 CP",
+        "timing": "Movement",
+        "frequency": "Once per Battle",
+        "effect": "Deploy up to two eligible, already paid-for minor Infernal Units from Reserve outside Medium Range of enemies, obeying normal summoning restrictions."
+      }
     ],
-    "knownIssues": ["Unlike every other Faction Leader in this file, the Archfiend's entry has no printed Unit-type tags (e.g. 'Hero, Infernal, Armored') in the source — only the profile line. This may simply be a formatting omission (it is clearly intended to be a Hero/Infernal/Monster-scale Unit) rather than a deliberate design choice."]
+    "knownIssues": [
+      "Unlike every other Faction Leader in this file, the Archfiend's entry has no printed Unit-type tags (e.g. 'Hero, Infernal, Armored') in the source — only the profile line. This may simply be a formatting omission (it is clearly intended to be a Hero/Infernal/Monster-scale Unit) rather than a deliberate design choice."
+    ]
   },
   "genericUnitsWorthTaking": "Mortal cultists represented by generic infantry, ranged auxiliaries, conventional cavalry, Medics, and Scouts. Signature troops are expensive and aggressive, while generic followers provide numbers and objectives.",
   "designNotes": [

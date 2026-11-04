@@ -26,9 +26,13 @@ export function flat(v) {
 // Formula Study teaches the five Formulas minus the two known at creation.
 const MAX_RANKS = { 'formula-study': 3 }
 
+// Prerequisites appear as `prerequisite`, `requires` (a name) or `requirements` (a list of names) depending on the file.
+const prerequisitesOf = (t) => [t.prerequisite, t.requires, ...(t.requirements ?? [])].filter(Boolean)
+
 function normalizeTalent(t, category) {
   const ranked = String(t.tier).includes('+')
   const baseTier = parseInt(t.tier, 10)
+  const prerequisites = prerequisitesOf(t)
   return {
     id: t.id,
     name: t.name,
@@ -37,8 +41,9 @@ function normalizeTalent(t, category) {
     ranked,
     maxRank: ranked ? (MAX_RANKS[t.id] ?? 6 - baseTier) : 1,
     type: String(t.type ?? '').replace(/,?\s*Ranked\s*[—–-]?\s*/i, ' ').trim() || null,
-    cost: t.cost ?? null,
-    prerequisite: t.prerequisite ?? null,
+    cost: t.cost ?? (t.cpCost != null ? `${t.cpCost} CP` : null),
+    prerequisites,
+    prerequisite: prerequisites.join(', ') || null,
     effect: flat(t.effect),
     options: t.options?.options ?? null,
   }

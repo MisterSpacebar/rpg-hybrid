@@ -64,7 +64,7 @@
       "name": "Favored Enemy",
       "tier": "2+",
       "type": "Ranked",
-      "effect": "Gain Anti-[TYPE] X, where X equals Rank + 1 (Anti-[TYPE] 2 at Rank I, 3 at Rank II, and so on)."
+      "effect": "When purchasing each Rank, choose one different Faction, Unit Type, Role, or Trait tag. Your Weapon/Spell Attacks gain permanent Anti-[that tag] 3. You may not select the same tag twice through this Talent. Multiple matching tags never stack; use the highest applicable rank."
     },
     {
       "id": "evasive-training",
@@ -101,10 +101,22 @@
       "type": "Ranked — Passive",
       "effect": "Each Rank increases one Characteristic not previously improved by this Talent by 1, to a maximum of 6. Each Characteristic may only be selected once through Exceptional Development. The improved Characteristic also grants:",
       "characteristicBenefits": [
-        { "characteristic": "Body", "benefit": "+1 Wound" },
-        { "characteristic": "Agility", "benefit": "+1\" Move" },
-        { "characteristic": "Mind", "benefit": "Improve Evade by 1 step" },
-        { "characteristic": "Spirit", "benefit": "If the character possesses Warded, improve Ward by 1 step" }
+        {
+          "characteristic": "Body",
+          "benefit": "+1 Wound"
+        },
+        {
+          "characteristic": "Agility",
+          "benefit": "+1\" Move"
+        },
+        {
+          "characteristic": "Mind",
+          "benefit": "Improve Evade by 1 step"
+        },
+        {
+          "characteristic": "Spirit",
+          "benefit": "If the character possesses Warded, improve Ward by 1 step"
+        }
       ]
     },
     {
@@ -142,6 +154,32 @@
       "cost": "1 CP",
       "type": "Reaction",
       "effect": "When making an Attack roll, Save roll, or Skill Check, but before resolving its result, reroll up to three dice. The new results must be kept. A die may only be rerolled once."
+    },
+    {
+      "id": "precision-shooting",
+      "name": "Precision Shooting",
+      "tier": "2",
+      "type": "Passive",
+      "effect": "Choose one ranged Weapon Attack or Spell Attack. It gains Pinpoint (ignores penalty and Direct Damage friendly fire from Blunders when firing into another friendly Unit’s Engagement). Other Blunder effects and Blast still apply."
+    },
+    {
+      "id": "master-hunter",
+      "name": "Master Hunter",
+      "tier": "3",
+      "type": "Passive",
+      "requirements": [
+        "Favored Enemy"
+      ],
+      "effect": "Choose one tag selected through Favored Enemy. Improve its Anti rank from 3 to 4 for your own Weapon/Spell Attacks. This is permanent against that one tag; applicable Anti values do not stack."
+    },
+    {
+      "id": "decisive-strike",
+      "name": "Decisive Strike",
+      "tier": "3",
+      "type": "Command",
+      "cpCost": 1,
+      "timing": "Combat",
+      "effect": "When making a Melee Weapon Attack, increase the Damage of ONE unsaved Hit by 1. Declare and spend CP before resolving the Attack; if no Hit survives saves, the CP is spent without effect. Does not multiply across Hits. Subject to ordinary prepared Command slot and single friendly Command effect limits."
     }
   ]
 }

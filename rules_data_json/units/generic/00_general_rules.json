@@ -29,7 +29,7 @@
     "Each die may be rerolled no more than once.",
     "Critical X: printed/passive sources convert up to X failed Hit dice only on a Surge; a CP-paid Command explicitly granting Critical X bypasses this requirement. Ward applies.",
     "No per-Model multiplication of a keyword's X value occurs by default.",
-    "Long Range X: reduce the combined Attack pool by 2 dice beyond printed normal range (minimum 1), rather than worsening Hit."
+    "Long Range X: reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units beyond printed normal range (minimum 1), rather than worsening Hit."
   ],
   "equipmentAndUpgradeCostRules": [
     "Base Unit costs include their standard equipment.",

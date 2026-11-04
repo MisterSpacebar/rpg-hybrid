@@ -11,13 +11,34 @@
       "name": "Captain",
       "basePoints": 125,
       "baseModels": 1,
-      "tags": ["Infantry", "Elite"],
-      "recruitmentSlots": ["E"],
+      "tags": [
+        "Infantry",
+        "Elite",
+        "Officer"
+      ],
+      "recruitmentSlots": [
+        "E"
+      ],
       "countsAsHero": false,
-      "stats": { "move": "5\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
+      "stats": {
+        "move": "5\"",
+        "wounds": 4,
+        "armor": "5+",
+        "evade": "5+",
+        "ward": null
+      },
       "defaultWeapon": {
         "name": "Officer's Weapon",
-        "profile": { "range": "Engaged", "attacks": 3, "hit": "4+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+        "profile": {
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "4+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        }
       },
       "description": "Captains are experienced combatants and military leaders who provide tactical Commands to nearby troops. The standard Captain is an Elite Unit that occupies an E Recruitment Slot and does not count toward the Hero maximum. A Captain receives two eligible generic Captain Commands without additional cost; the Heroic Commission upgrade below makes it a Hero and lets it occupy an H Recruitment Slot.",
       "meleeWeapons": {
@@ -26,63 +47,259 @@
           {
             "name": "Officer's Weapon",
             "points": 0,
-            "profile": { "range": "Engaged", "attacks": 3, "hit": "4+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+            "profile": {
+              "range": "Engaged",
+              "attacks": 3,
+              "hit": "4+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            }
           },
           {
             "name": "Great Weapon",
             "points": 25,
-            "profile": { "range": "Engaged", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] },
+            "profile": {
+              "range": "Engaged",
+              "attacks": 2,
+              "hit": "4+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Anti-Armored 2"
+              ]
+            },
             "notes": "Fewer but more damaging Attacks, with extra dice against Armored foes."
           },
           {
             "name": "Spear",
             "points": 5,
-            "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "4+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Brace 1"] }
+            "profile": {
+              "range": "Engaged 2\"",
+              "attacks": 3,
+              "hit": "4+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Brace 1"
+              ]
+            }
           },
           {
             "name": "Dual Weapons",
             "points": 35,
-            "profile": { "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }
+            "profile": {
+              "range": "Engaged",
+              "attacks": 5,
+              "hit": "4+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            }
           }
         ]
       },
       "equipmentAndCombatTraining": {
         "note": "A Captain may purchase up to two Combat Training upgrades. Weapon and equipment upgrades do not count toward this limit. A Captain may carry one ranged weapon in addition to their melee weapon.",
         "options": [
-          { "name": "Standard Equipment", "points": 0, "effect": "Retain the Captain's chosen melee weapon and standard defenses." },
-          { "name": "Shield", "points": 15, "effect": "Improve Armor from 5+ to 4+. May be used with Officer's Weapon or Spear." },
-          { "name": "Bow", "points": 10, "profile": { "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "effect": "Adds a ranged weapon." },
-          { "name": "Crossbow", "points": 10, "profile": { "range": "8\"", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy"] } },
-          { "name": "Pistol", "points": 10, "profile": { "range": "6\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm"] } },
-          { "name": "Musket", "points": 25, "profile": { "range": "8\"", "attacks": 3, "hit": "4+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy"] } },
-          { "name": "Defensive", "points": 10, "effect": "Gain Brace 1, reducing incoming Charge Impact by 1.", "countsAsCombatTraining": true },
-          { "name": "Battle-Hardened", "points": 15, "effect": "Gain Tough 1, rerolling up to one natural 1 on Armor Saves.", "countsAsCombatTraining": true },
-          { "name": "Deadly Strikes", "points": 15, "effect": "One melee weapon gains Critical 1, converting up to one failed Hit die into a Critical Hit after rerolls; no Surge is required.", "countsAsCombatTraining": true },
-          { "name": "Monster Hunter", "points": 15, "effect": "One melee weapon gains Anti-Monster 1, increasing its Attacks by 1 against Monsters.", "countsAsCombatTraining": true },
-          { "name": "Master Hunter", "points": 25, "effect": "This unit gains Anti-[Type] 2.", "countsAsCombatTraining": true },
-          { "name": "Survivor", "points": 15, "effect": "Increase Wounds from 4 to 5.", "countsAsCombatTraining": true },
-          { "name": "Weapon Master", "points": 20, "effect": "The chosen weapon gains Accurate 2.", "countsAsCombatTraining": true },
-          { "name": "Mounted", "points": 25, "effect": "Increase Move to M6\", gain +1 Wound and Charge 3. Loses Infantry tag and gains Cavalry.", "countsAsCombatTraining": true },
-          { "name": "Veteran", "points": 50, "effect": "The chosen weapon gains +1 Attack and improves Hit by one step.", "countsAsCombatTraining": true },
-          { "name": "Heroic Commission", "points": 35, "effect": "Gain Hero and H eligibility while retaining Elite; increase Wounds by 1; every weapon the Captain currently carries gains +1 Attack. The Captain now counts toward the three-Hero limit.", "countsAsCombatTraining": true }
+          {
+            "name": "Standard Equipment",
+            "points": 0,
+            "effect": "Retain the Captain's chosen melee weapon and standard defenses."
+          },
+          {
+            "name": "Shield",
+            "points": 15,
+            "effect": "Improve Armor from 5+ to 4+. May be used with Officer's Weapon or Spear."
+          },
+          {
+            "name": "Bow",
+            "points": 10,
+            "profile": {
+              "range": "8\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
+            "effect": "Adds a ranged weapon."
+          },
+          {
+            "name": "Crossbow",
+            "points": 10,
+            "profile": {
+              "range": "8\"",
+              "attacks": 2,
+              "hit": "4+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Heavy"
+              ]
+            }
+          },
+          {
+            "name": "Pistol",
+            "points": 10,
+            "profile": {
+              "range": "6\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm"
+              ]
+            }
+          },
+          {
+            "name": "Musket",
+            "points": 25,
+            "profile": {
+              "range": "8\"",
+              "attacks": 3,
+              "hit": "4+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm",
+                "Heavy"
+              ]
+            }
+          },
+          {
+            "name": "Defensive",
+            "points": 10,
+            "effect": "Gain Brace 1, reducing incoming Charge Impact by 1.",
+            "countsAsCombatTraining": true
+          },
+          {
+            "name": "Battle-Hardened",
+            "points": 15,
+            "effect": "Gain Tough 1, rerolling up to one natural 1 on Armor Saves.",
+            "countsAsCombatTraining": true
+          },
+          {
+            "name": "Deadly Strikes",
+            "points": 15,
+            "effect": "Selected melee weapon gains Critical 1 PER SURGE. It converts up to one failed Hit die per Surge after rerolls, not automatically. CP-granted Critical sources remain distinct.",
+            "countsAsCombatTraining": true
+          },
+          {
+            "name": "Monster Hunter",
+            "points": 15,
+            "effect": "One melee weapon gains Anti-Monster 1, increasing its Attacks by 1 against Monsters.",
+            "countsAsCombatTraining": true
+          },
+          {
+            "name": "Master Hunter",
+            "points": 25,
+            "effect": "This unit gains Anti-[Type] 2.",
+            "countsAsCombatTraining": true
+          },
+          {
+            "name": "Survivor",
+            "points": 15,
+            "effect": "Increase Wounds from 4 to 5.",
+            "countsAsCombatTraining": true
+          },
+          {
+            "name": "Weapon Master",
+            "points": 20,
+            "effect": "The chosen weapon gains Accurate 2.",
+            "countsAsCombatTraining": true
+          },
+          {
+            "name": "Mounted",
+            "points": 25,
+            "effect": "Increase Move to M6\", gain +1 Wound and Charge 3. Loses Infantry tag and gains Cavalry.",
+            "countsAsCombatTraining": true
+          },
+          {
+            "name": "Veteran",
+            "points": 50,
+            "effect": "The chosen weapon gains +1 Attack and improves Hit by one step.",
+            "countsAsCombatTraining": true
+          },
+          {
+            "name": "Heroic Commission",
+            "points": 35,
+            "effect": "Gain Hero and H eligibility while retaining Elite; increase Wounds by 1; every weapon the Captain currently carries gains +1 Attack. The Captain now counts toward the three-Hero limit. This grants Hero, NOT Character. A named legacy Captain may separately gain Character by an explicit conversion.",
+            "countsAsCombatTraining": true
+          }
         ]
       },
       "commands": {
         "note": "Choose two Command Abilities at no additional cost. All listed Command Abilities cost 1 CP. In 2,000-point matched play, expend CP using the selected cards as described in the Matched-Play Command Points and Cards rules; campaign encounters may use abstract CP without any cards.",
         "chooseCount": 2,
         "options": [
-          { "name": "Press the Attack", "timing": "Assault", "cpCost": 1, "effect": "Choose one friendly Unit within Short. Its next melee Attack this Round gains Accurate 1." },
-          { "name": "Hold Formation", "timing": "Reaction", "cpCost": 1, "effect": "When a friendly Unit within Short is successfully Charged, grant it Brace 1 against that Charge. Resolve before Impact." },
-          { "name": "Advance Orders", "timing": "Movement", "cpCost": 1, "effect": "Choose one unengaged friendly Unit within Short. Move it up to 2\". It cannot finish Engaged." },
-          { "name": "Fire Discipline", "timing": "Assault", "cpCost": 1, "effect": "Choose one friendly Unit within Short. Its next ranged Attack this Round gains Accurate 1." }
+          {
+            "name": "Press the Attack",
+            "timing": "Assault or Combat",
+            "cpCost": 1,
+            "effect": "Choose one friendly Unit within Short. Its next Melee Attack this Round gains Critical 1 from this CP-paid Command (one guaranteed conversion without a Surge, limited by failed Hit dice)."
+          },
+          {
+            "name": "Hold Formation",
+            "timing": "Reaction",
+            "cpCost": 1,
+            "effect": "When a friendly Unit within Short is successfully Charged, that Unit gains Brace 2 against that Charge and Tough 1 against the charging Unit until the end of the Round."
+          },
+          {
+            "name": "Advance Orders",
+            "timing": "Movement",
+            "cpCost": 1,
+            "effect": "Choose one unengaged friendly Unit within Short. It may immediately Move up to 3\", ending legally; the Move does not grant another activation or Charge."
+          },
+          {
+            "name": "Fire Discipline",
+            "timing": "Assault",
+            "cpCost": 1,
+            "effect": "Choose one friendly Unit within Short. Its next ranged or Spell Attack this Round gains EITHER Pinpoint and Accurate 1 OR Accurate 2. Pinpoint prevents shooting-into-Engagement Hit penalty and friendly-fire Direct Damage from Blunders."
+          },
+          {
+            "name": "Identify Threat",
+            "timing": "Assault or Combat",
+            "cpCost": 1,
+            "effect": "Choose one visible enemy Unit within Medium and a Creature or material Trait tag it actually possesses (such as Mortal, Undead, Beast, Spirit, Infernal, Construct, Mechanical, or Armored). One friendly Unit within Short gains Anti-[that tag] 3 on its next Attack against that enemy this Round. Applicable Anti ranks never stack; use the highest."
+          }
         ]
       },
       "commandUpgrades": {
         "options": [
-          { "name": "Standard Commands", "points": 0, "effect": "Know two eligible Captain Command Abilities." },
-          { "name": "Additional Command", "points": 20, "effect": "Learn one additional eligible Command Ability. Does not provide additional CP or Doctrine cards." }
+          {
+            "name": "Standard Commands",
+            "points": 0,
+            "effect": "Know two eligible Captain Command Abilities."
+          },
+          {
+            "name": "Additional Command",
+            "points": 20,
+            "effect": "Learn one additional eligible Command Ability. Does not provide additional CP or Doctrine cards."
+          }
         ],
-        "notes": ["Captains may substitute eligible faction-specific Command Abilities for generic ones, subject to the faction's rules."]
+        "notes": [
+          "Captains may substitute eligible faction-specific Command Abilities for generic ones, subject to the faction's rules."
+        ]
       },
       "battlefieldRole": "Competent individual combatant, battlefield leadership, and tactical flexibility.",
       "designNotes": [

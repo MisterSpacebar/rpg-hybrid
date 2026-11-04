@@ -4,56 +4,157 @@
     "section": "12. TITAN CLANS"
   },
   "name": "Titan Clans",
-  "doctrines": ["Heavy Support", "Breakthrough"],
+  "doctrines": [
+    "Heavy Support",
+    "Breakthrough"
+  ],
   "worldbuilding": "Ogre kingdoms, giant tribes, monstrous nomads, and beast clans. Their ordinary warriors are already exceptionally large and powerful, while their armies rely on physical mass and devastating Charges.",
   "factionRule": {
     "name": "Massive Momentum",
-    "effect": "All friendly Units gain Impact 1."
+    "effect": "All friendly Units gain Impact 2 on successful Charges. Impact bonuses from explicitly distinct printed abilities (such as Stampede) add to this faction bonus; duplicate faction-rule applications do not. Charge distance is unchanged."
   },
   "factionCommands": [
-    { "name": "Thunderous Advance", "timing": "Assault", "cost": "1 CP", "effect": "One friendly Unit makes an additional Move before declaring a Charge." },
-    { "name": "Smash Through", "timing": "Assault", "cost": "1 CP", "effect": "One friendly Unit's next Charge Impact this Phase ignores one step of temporary Armor improvement on the target (use its normal printed Armor for this Impact if a bonus improved it). Impact already ignores Evade and Cover." },
-    { "name": "Roar of Dominance", "timing": "Assault", "cost": "1 CP", "effect": "Choose one friendly Monster. Enemies cannot use Reactions against that Monster until the end of the Phase." }
+    {
+      "name": "Thunderous Advance",
+      "timing": "Assault",
+      "cost": "1 CP",
+      "effect": "One friendly Unit makes an additional Move before declaring a Charge."
+    },
+    {
+      "name": "Smash Through",
+      "timing": "Assault",
+      "cost": "1 CP",
+      "effect": "One friendly Unit's next Charge Impact this Phase ignores one step of temporary Armor improvement on the target (use its normal printed Armor for this Impact if a bonus improved it). Impact already ignores Evade and Cover."
+    },
+    {
+      "name": "Roar of Dominance",
+      "timing": "Assault",
+      "cost": "1 CP",
+      "effect": "Choose one friendly Monster. Enemies cannot use Reactions against that Monster until the end of the Phase."
+    },
+    {
+      "name": "Smash the Ranks",
+      "cost": "1 CP",
+      "timing": "Assault or Combat",
+      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Infantry 4 or Anti-Ranged 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+    }
   ],
   "signatureCoreUnits": [
     {
       "name": "Ogre Warriors",
       "points": 225,
       "models": 3,
-      "tags": ["Monster", "Infantry", "Mortal"],
-      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
+      "tags": [
+        "Monster",
+        "Infantry",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 4,
+        "armor": "5+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Heavy Clubs", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 2, "keywords": ["Anti-Armored 2"] }
+        {
+          "name": "Heavy Clubs",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 2,
+          "keywords": [
+            "Anti-Armored 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Massive Charge", "type": "Passive", "effect": "Roll 3d6 for this unit's charges and keep the two highest." }
+        {
+          "name": "Massive Charge",
+          "type": "Passive",
+          "effect": "Roll 3d6 for this unit's charges and keep the two highest."
+        }
       ]
     },
     {
       "name": "Beast Riders",
       "points": 205,
       "models": 2,
-      "tags": ["Monster", "Cavalry", "Mortal"],
-      "modelProfile": { "move": "6\"", "wounds": 5, "armor": "5+", "evade": "5+", "ward": null },
+      "tags": [
+        "Monster",
+        "Cavalry",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "6\"",
+        "wounds": 5,
+        "armor": "5+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Mauling Harness", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 2, "keywords": ["Anti-Infantry 2"] }
+        {
+          "name": "Mauling Harness",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 2,
+          "keywords": [
+            "Anti-Infantry 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Stampede", "type": "Passive", "effect": "Gain Impact +2 on a successful Charge." }
+        {
+          "name": "Stampede",
+          "type": "Passive",
+          "effect": "Gain Impact +2 on a successful Charge."
+        }
       ]
     },
     {
       "name": "Stone Hurlers",
       "points": 220,
       "models": 3,
-      "tags": ["Monster", "Infantry", "Mortal"],
-      "modelProfile": { "move": "4\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
+      "tags": [
+        "Monster",
+        "Infantry",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 4,
+        "armor": "5+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Boulder Toss", "range": "10\"", "attacks": 3, "hit": "5+", "damage": 2, "keywords": ["Heavy"] },
-        { "name": "Heavy Clubs", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "keywords": [] }
+        {
+          "name": "Boulder Toss",
+          "range": "11\"",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 2,
+          "keywords": [
+            "Heavy",
+            "Long Range 3\""
+          ]
+        },
+        {
+          "name": "Heavy Clubs",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 2,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Covering Barrage", "type": "Passive", "effect": "While this Unit remains stationary, friendly Monster Units within Medium gain Accurate 1 on their next Charge-phase Attack." }
+        {
+          "name": "Covering Barrage",
+          "type": "Passive",
+          "effect": "While this Unit remains stationary, friendly Monster Units within Medium gain Accurate 1 on their next Charge-phase Attack."
+        }
       ]
     }
   ],
@@ -62,41 +163,134 @@
       "name": "Tyrant",
       "role": "Captain",
       "points": 275,
-      "tags": ["Infantry", "Hero", "Mortal", "Monster"],
-      "modelProfile": { "move": "5\"", "wounds": 8, "armor": "4+", "evade": "5+", "ward": null },
+      "tags": [
+        "Infantry",
+        "Hero",
+        "Mortal",
+        "Monster",
+        "Officer"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 8,
+        "armor": "4+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Great Weapon", "range": "Engaged", "attacks": 6, "hit": "3+", "damage": 2, "keywords": ["Anti-Elite 2"] }
+        {
+          "name": "Great Weapon",
+          "range": "Engaged",
+          "attacks": 6,
+          "hit": "3+",
+          "damage": 2,
+          "keywords": [
+            "Anti-Elite 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Stampede", "type": "Passive", "effect": "Gain Impact +2 on a successful Charge." },
-        { "name": "Throw Aside", "type": "Command", "cost": "1 CP", "timing": "Reaction", "effect": "After inflicting an unsaved Hit to an engaged unit or after a successful Charge, reposition one enemy basic Model up to 2\" to a legal position, maintaining Unit coherency." }
+        {
+          "name": "Stampede",
+          "type": "Passive",
+          "effect": "Gain Impact +2 on a successful Charge."
+        },
+        {
+          "name": "Throw Aside",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Reaction",
+          "effect": "After inflicting an unsaved Hit to an engaged unit or after a successful Charge, reposition one enemy basic Model up to 2\" to a legal position, maintaining Unit coherency."
+        }
       ]
     },
     {
       "name": "Beast Shaman",
       "role": "Wizard",
       "points": 190,
-      "tags": ["Wizard", "Elite", "Mortal"],
-      "modelProfile": { "move": "4\"", "wounds": 6, "armor": "5+", "evade": "6+", "ward": "6+ (Magic)" },
+      "tags": [
+        "Wizard",
+        "Elite",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 6,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": "6+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Primal Bolt", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
-        { "name": "Staff", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+        {
+          "name": "Primal Bolt",
+          "range": "8\"",
+          "attacks": 5,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Magic"
+          ]
+        },
+        {
+          "name": "Staff",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Earthshatter", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "On 3+, inflict Direct Damage 1 and Slow 1 on one visible enemy within Short." }
+        {
+          "name": "Earthshatter",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Assault",
+          "effect": "On 3+, inflict Direct Damage 1 and Slow 1 on one visible enemy within Short."
+        }
       ]
     },
     {
       "name": "Beastmaster",
       "role": "Support",
       "points": 155,
-      "tags": ["Support", "Elite", "Mortal"],
-      "modelProfile": { "move": "4\"", "wounds": 6, "armor": "5+", "evade": "6+", "ward": null },
+      "tags": [
+        "Support",
+        "Elite",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 6,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Chain Spear", "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+        {
+          "name": "Chain Spear",
+          "range": "Engaged 2\"",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Crack the Whip", "type": "Command", "cost": "1 CP", "timing": "Reaction", "effect": "When a friendly Monster or Beast Unit within Short rolls its Charge Pool, reroll up to two dice, respecting the usual reroll restriction." }
+        {
+          "name": "Crack the Whip",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Reaction",
+          "effect": "When a friendly Monster or Beast Unit within Short rolls its Charge Pool, reroll up to two dice, respecting the usual reroll restriction."
+        }
+      ],
+      "optionalUpgrades": [
+        {
+          "name": "Specialized Guidance",
+          "points": 20,
+          "effect": "At list construction choose one existing creature/material Trait tag. Other friendly Units wholly within 3\" gain Anti-[that tag] 2. Highest applicable Anti rank only. This is a passive aura, not a free Command; does not benefit its source."
+        }
       ]
     }
   ],
@@ -104,42 +298,127 @@
     {
       "name": "Giant",
       "points": 300,
-      "tags": ["Monster", "Beast", "Armored"],
-      "modelProfile": { "move": "5\"", "wounds": 14, "armor": "4+", "evade": "6+", "ward": null },
+      "tags": [
+        "Monster",
+        "Beast",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 14,
+        "armor": "4+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Massive Club", "range": "Engaged 2\"", "attacks": 5, "hit": "4+", "damage": 3, "keywords": ["Anti-Armored 3"] }
+        {
+          "name": "Massive Club",
+          "range": "Engaged 2\"",
+          "attacks": 5,
+          "hit": "4+",
+          "damage": 3,
+          "keywords": [
+            "Anti-Armored 3"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Huge", "type": "Passive", "effect": "Counts as three Units for objective control." }
+        {
+          "name": "Huge",
+          "type": "Passive",
+          "effect": "Counts as three Units for objective control."
+        }
       ]
     },
     {
       "name": "War Mammoth",
       "points": 400,
-      "tags": ["Monster", "Beast", "Armored"],
-      "modelProfile": { "move": "5\"", "wounds": 16, "armor": "3+", "evade": "6+", "ward": null },
+      "tags": [
+        "Monster",
+        "Beast",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 16,
+        "armor": "3+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Howdah Bows", "range": "10\"", "attacks": 7, "hit": "5+", "damage": 1, "keywords": ["Accurate 1"] },
-        { "name": "Crushing Tusks", "range": "Engaged", "attacks": 5, "hit": "3+", "damage": 3, "keywords": [] }
+        {
+          "name": "Howdah Bows",
+          "range": "10\"",
+          "attacks": 7,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Accurate 1"
+          ]
+        },
+        {
+          "name": "Crushing Tusks",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "3+",
+          "damage": 3,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Mobile Fortress", "type": "Passive", "effect": "Friendly units immediately behind the Mammoth benefit from Cover where appropriate." }
+        {
+          "name": "Mobile Fortress",
+          "type": "Passive",
+          "effect": "Friendly units immediately behind the Mammoth benefit from Cover where appropriate."
+        }
       ]
     }
   ],
   "factionLeader": {
     "name": "Overtyrant",
     "points": 540,
-    "tags": ["Infantry", "Hero", "Mortal"],
-    "modelProfile": { "move": "5\"", "wounds": 13, "armor": "3+", "evade": "6+", "ward": null },
+    "tags": [
+      "Infantry",
+      "Hero",
+      "Mortal",
+      "Character",
+      "Officer"
+    ],
+    "modelProfile": {
+      "move": "5\"",
+      "wounds": 13,
+      "armor": "3+",
+      "evade": "6+",
+      "ward": null
+    },
     "attackProfiles": [
-      { "name": "Royal Maul", "range": "Engaged", "attacks": 8, "hit": "3+", "damage": 3, "keywords": [] }
+      {
+        "name": "Royal Maul",
+        "range": "Engaged",
+        "attacks": 8,
+        "hit": "3+",
+        "damage": 3,
+        "keywords": []
+      }
     ],
     "abilities": [
-      { "name": "Supreme Bully", "type": "Passive", "effect": "The Overtyrant's Melee Attacks gain Anti-Monster 2 and Anti-Character 2." },
-      { "name": "The Crushing Tide", "type": "Command", "cost": "2 CP", "timing": "Movement", "frequency": "Once per Battle", "effect": "Up to two friendly Ogre or Monster Units within Medium gain +1 Impact and +1 Damage on their next Melee Attack this Round." }
+      {
+        "name": "Supreme Bully",
+        "type": "Passive",
+        "effect": "The Overtyrant's Melee Attacks gain Anti-Monster 2 and Anti-Character 2."
+      },
+      {
+        "name": "The Crushing Tide",
+        "type": "Command",
+        "cost": "2 CP",
+        "timing": "Movement",
+        "frequency": "Once per Battle",
+        "effect": "Up to two friendly Ogre or Monster Units within Medium gain +1 Impact and +1 Damage on their next Melee Attack this Round."
+      }
     ],
-    "knownIssues": ["No printed Impact value, unusual for a melee-focused faction's Leader (every other Titan Clans signature melee Unit prints an Impact bonus or Massive Charge). Likely a drafting gap rather than intentional, since the Overtyrant otherwise has the faction's heaviest melee kit; not resolved here."]
+    "knownIssues": [
+      "No printed Impact value, unusual for a melee-focused faction's Leader (every other Titan Clans signature melee Unit prints an Impact bonus or Massive Charge). Likely a drafting gap rather than intentional, since the Overtyrant otherwise has the faction's heaviest melee kit; not resolved here."
+    ]
   },
   "genericUnitsWorthTaking": "Cheap auxiliaries, conventional Ranged Infantry, light mobile troops, Scouts, and ordinary Support Units. Ogre Warriors and Beast Riders are devastating but too expensive to efficiently cover every objective.",
   "designNotes": [

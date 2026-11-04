@@ -4,58 +4,172 @@
     "section": "1. FREE REALMS"
   },
   "name": "Free Realms",
-  "doctrines": ["Combined Arms", "Objective Play"],
+  "doctrines": [
+    "Combined Arms",
+    "Objective Play"
+  ],
   "worldbuilding": "A collection of kingdoms, republics, city-states, frontier settlements, guilds, and mercenary companies. Their armies rely on conventional soldiers supported by specialists, adventurers, allied peoples, and practical engineering. The Free Realms emphasize cooperation between different battlefield roles rather than unusually powerful individual troops.",
   "factionRule": {
     "name": "Combined Arms",
-    "effect": "A friendly Unit gains Accurate 1 when attacking an enemy already Engaged by another friendly Unit.",
+    "effect": "Coordinated Arms: When a friendly Unit makes a Melee Attack against an enemy also Engaged by a DIFFERENT friendly Unit, add +1 Attack die to its combined pool. Alternatively, when a friendly Unit makes a ranged Weapon Attack while wholly within 3\" of another friendly Unit, add +1 Attack die to its combined pool; ranged benefit excludes Artillery, Vehicles, War Machines, and Large Assets. Max +1 die from this faction rule per Attack, regardless of supporting Units.",
     "knownIssue": "Shares its name with the generic Doctrine 'Combined Arms' (rulebooks/chapters/02_wargame/03_non_faction_doctrines.md), which has a different, unrelated 5-Command effect table. Likely intentional thematic echo, not a merge."
   },
   "factionCommands": [
-    { "name": "Coordinated Advance", "timing": "Movement", "cost": "1 CP", "effect": "Choose up to two friendly Units within Short. Each may immediately Move up to 2\", ending legally." },
-    { "name": "Covering Fire", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit Disengages, choose a different friendly Unit within Short of it that has not yet used its Assault activation. That Unit immediately makes an eligible ranged Attack against the enemy left behind, consuming its normal Assault activation. This does not grant a second Attack." },
-    { "name": "Secure Ground", "timing": "Movement", "cost": "1 CP", "effect": "One friendly Unit counts as one additional Unit for objective control until the end of the Round." }
+    {
+      "name": "Coordinated Advance",
+      "timing": "Movement",
+      "cost": "1 CP",
+      "effect": "Choose up to two friendly Units within Short. Each may immediately Move up to 2\", ending legally."
+    },
+    {
+      "name": "Covering Fire",
+      "timing": "Reaction",
+      "cost": "1 CP",
+      "effect": "After a friendly Unit Disengages, choose a different friendly Unit within Short of it that has not yet used its Assault activation. That Unit immediately makes an eligible ranged Attack against the enemy left behind, consuming its normal Assault activation. This does not grant a second Attack."
+    },
+    {
+      "name": "Secure Ground",
+      "timing": "Movement",
+      "cost": "1 CP",
+      "effect": "One friendly Unit counts as one additional Unit for objective control until the end of the Round."
+    },
+    {
+      "name": "Coordinated Targeting",
+      "cost": "1 CP",
+      "timing": "Assault or Combat",
+      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Infantry 4 or Anti-Ranged 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+    }
   ],
   "signatureCoreUnits": [
     {
       "name": "Greatweapon Guard",
       "points": 145,
       "models": 5,
-      "tags": ["Infantry", "Mortal", "Armored"],
-      "modelProfile": { "move": "4\"", "wounds": 2, "armor": "4+", "evade": "6+", "ward": null },
+      "tags": [
+        "Infantry",
+        "Mortal",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 2,
+        "armor": "4+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Greatweapons", "range": "Engaged", "attacks": 1, "hit": "4+", "damage": 2, "keywords": ["Anti-Armored 2"] }
+        {
+          "name": "Greatweapons",
+          "range": "Engaged",
+          "attacks": 1,
+          "hit": "4+",
+          "damage": 2,
+          "keywords": [
+            "Anti-Armored 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Disciplined Assault", "type": "Passive", "effect": "When attacking an enemy Engaged by another friendly Unit, this Unit gains Accurate 1." }
+        {
+          "name": "Disciplined Assault",
+          "type": "Passive",
+          "effect": "When attacking an enemy Engaged by another friendly Unit, this Unit gains Accurate 1."
+        }
       ]
     },
     {
       "name": "Outriders",
       "points": 175,
       "models": 4,
-      "tags": ["Infantry", "Mortal", "Armored"],
-      "modelProfile": { "move": "5\"", "wounds": 2, "armor": "5+", "evade": "5+", "ward": null },
+      "tags": [
+        "Infantry",
+        "Mortal",
+        "Armored",
+        "Ranged"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 2,
+        "armor": "5+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Carbine", "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Firearm"] },
-        { "name": "Sabres", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": [] }
+        {
+          "name": "Carbine",
+          "range": "9\"",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Firearm"
+          ]
+        },
+        {
+          "name": "Sabres",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Mobile Fire", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "After resolving a ranged Attack, Move up to 2\", without finishing Engaged." }
+        {
+          "name": "Mobile Fire",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Assault",
+          "effect": "After resolving a ranged Attack, Move up to 2\", without finishing Engaged."
+        }
       ]
     },
     {
       "name": "Vanguard Skirmishers",
       "points": 150,
       "models": 4,
-      "tags": ["Ranged Infantry", "Mortal"],
-      "modelProfile": { "move": "5\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
+      "tags": [
+        "Ranged Infantry",
+        "Mortal",
+        "Infantry",
+        "Ranged"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Repeating Crossbows", "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] },
-        { "name": "Hunting Knife", "range": "Engaged", "attacks": 1, "hit": "6+", "damage": 1, "keywords": [] }
+        {
+          "name": "Repeating Crossbows",
+          "range": "10\"",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Hunting Knife",
+          "range": "Engaged",
+          "attacks": 1,
+          "hit": "6+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Mutual Support", "type": "Passive", "effect": "Gain Accurate 1 while within Short of another friendly Unit." }
+        {
+          "name": "Mutual Support",
+          "type": "Passive",
+          "effect": "Gain Accurate 1 while within Short of another friendly Unit."
+        },
+        {
+          "name": "Safe Crossfire",
+          "type": "Passive",
+          "effect": "This Unit gains Pinpoint on Ranged Attacks targeting an enemy Engaged with another friendly Unit. Other Blunder and Blast effects still apply."
+        }
       ]
     }
   ],
@@ -64,15 +178,53 @@
       "name": "Marshal",
       "role": "Captain",
       "points": 195,
-      "tags": ["Infantry", "Hero", "Mortal", "Armored"],
-      "modelProfile": { "move": "5\"", "wounds": 5, "armor": "4+", "evade": "5+", "ward": null },
+      "tags": [
+        "Infantry",
+        "Hero",
+        "Mortal",
+        "Armored",
+        "Officer"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 5,
+        "armor": "4+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Pistol", "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Firearm"] },
-        { "name": "Officer's Weapon", "range": "Engaged", "attacks": 6, "hit": "4+", "damage": 1, "keywords": [] }
+        {
+          "name": "Pistol",
+          "range": "6\"",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Firearm"
+          ]
+        },
+        {
+          "name": "Officer's Weapon",
+          "range": "Engaged",
+          "attacks": 6,
+          "hit": "4+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Experienced Staff", "type": "Passive", "effect": "Commands issued by the Marshal that normally target friendly Units within Short may instead target them within Medium." },
-        { "name": "Regroup Formation", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Choose one friendly Infantry or Ranged Infantry Unit within Medium. Remove Withdrawn or one temporary Move penalty from it." }
+        {
+          "name": "Experienced Staff",
+          "type": "Passive",
+          "effect": "Commands issued by the Marshal that normally target friendly Units within Short may instead target them within Medium."
+        },
+        {
+          "name": "Regroup Formation",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "Choose one friendly Infantry or Ranged Infantry Unit within Medium. Remove Withdrawn or one temporary Move penalty from it."
+        }
       ],
       "upgrades": [
         {
@@ -89,14 +241,46 @@
       "name": "Battlemage",
       "role": "Wizard",
       "points": 170,
-      "tags": ["Wizard", "Elite", "Mortal"],
-      "modelProfile": { "move": "3\"", "wounds": 4, "armor": "5+", "evade": "6+", "ward": "6+ (Magic)" },
+      "tags": [
+        "Wizard",
+        "Elite",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 4,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": "6+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Arcane Bolt", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
-        { "name": "Staff", "range": "Engaged", "attacks": 1, "hit": "5+", "damage": 1, "keywords": [] }
+        {
+          "name": "Arcane Bolt",
+          "range": "8\"",
+          "attacks": 5,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Magic"
+          ]
+        },
+        {
+          "name": "Staff",
+          "range": "Engaged",
+          "attacks": 1,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Tactical Spell", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "One friendly Unit within Short gains either +2\" Move on its next Move or Accurate 1 on its next Attack this Round." }
+        {
+          "name": "Tactical Spell",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "One friendly Unit within Short gains either +2\" Move on its next Move or Accurate 1 on its next Attack this Round."
+        }
       ],
       "upgrades": [
         {
@@ -113,13 +297,43 @@
       "name": "Engineer-Quartermaster",
       "role": "Support",
       "points": 130,
-      "tags": ["Support", "Elite", "Mortal"],
-      "modelProfile": { "move": "3\"", "wounds": 5, "armor": "5+", "evade": "6+", "ward": null },
+      "tags": [
+        "Support",
+        "Elite",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 5,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Tools", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": [] }
+        {
+          "name": "Tools",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Field Refit", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Choose one friendly Vehicle, Artillery, or Ranged Infantry Unit within Short. Either Heal 2 Damage on an eligible mechanical target, or allow one Heavy ranged Attack to be used after movement during its next Attack, worsening Hit by one step." }
+        {
+          "name": "Field Refit",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "Choose one friendly Vehicle, Artillery, or Ranged Infantry Unit within Short. Either Heal 2 Damage on an eligible mechanical target, or allow one Heavy ranged Attack to be used after movement during its next Attack, worsening Hit by one step."
+        }
+      ],
+      "optionalUpgrades": [
+        {
+          "name": "Specialized Guidance",
+          "points": 20,
+          "effect": "At list construction choose one existing creature/material Trait tag. Other friendly Units wholly within 3\" gain Anti-[that tag] 2. Highest applicable Anti rank only. This is a passive aura, not a free Command; does not benefit its source."
+        }
       ]
     }
   ],
@@ -127,43 +341,146 @@
     {
       "name": "War Wagon",
       "points": 240,
-      "tags": ["Vehicle", "Mechanical", "Armored"],
-      "modelProfile": { "move": "5\"", "wounds": 8, "armor": "4+", "evade": null, "ward": null },
+      "tags": [
+        "Vehicle",
+        "Mechanical",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 8,
+        "armor": "4+",
+        "evade": null,
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Repeater Battery", "range": "10\"", "attacks": 8, "hit": "5+", "damage": 1, "keywords": ["Heavy"] },
-        { "name": "Crew Weapons", "range": "Engaged", "attacks": 5, "hit": "5+", "damage": 1, "keywords": [] }
+        {
+          "name": "Repeater Battery",
+          "range": "10\"",
+          "attacks": 8,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Heavy"
+          ]
+        },
+        {
+          "name": "Crew Weapons",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Mobile Platform", "type": "Passive", "effect": "May use Repeater Battery after moving, but base Hit is 6+." }
+        {
+          "name": "Mobile Platform",
+          "type": "Passive",
+          "effect": "May use Repeater Battery after moving, but base Hit is 6+."
+        }
       ]
     },
     {
       "name": "Grand Cannon",
       "points": 185,
-      "tags": ["Artillery", "Mechanical", "Armored"],
-      "modelProfile": { "move": "2\"", "wounds": 5, "armor": "5+", "evade": null, "ward": null },
+      "tags": [
+        "Artillery",
+        "Mechanical",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "2\"",
+        "wounds": 5,
+        "armor": "5+",
+        "evade": null,
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Grand Cannon", "range": "18\"", "attacks": 2, "hit": "3+", "damage": 3, "keywords": ["Firearm", "Heavy"] },
-        { "name": "Crew Weapons", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+        {
+          "name": "Grand Cannon",
+          "range": "18\"",
+          "attacks": 2,
+          "hit": "3+",
+          "damage": 3,
+          "keywords": [
+            "Firearm",
+            "Heavy"
+          ]
+        },
+        {
+          "name": "Crew Weapons",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "6+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Surveyed Battery", "type": "Passive", "effect": "If stationary during the preceding Round, gain Accurate 2 when firing the Grand Cannon." }
+        {
+          "name": "Surveyed Battery",
+          "type": "Passive",
+          "effect": "If stationary during the preceding Round, gain Accurate 2 when firing the Grand Cannon."
+        }
       ]
     }
   ],
   "factionLeader": {
     "name": "Lord-Commander",
     "points": 390,
-    "tags": ["Infantry", "Hero", "Mortal", "Armored"],
-    "modelProfile": { "move": "6\"", "wounds": 9, "armor": "3+", "evade": "4+", "ward": "6+ (Magic Ward +1)" },
+    "tags": [
+      "Infantry",
+      "Hero",
+      "Mortal",
+      "Armored",
+      "Character",
+      "Officer"
+    ],
+    "modelProfile": {
+      "move": "6\"",
+      "wounds": 9,
+      "armor": "3+",
+      "evade": "4+",
+      "ward": "6+ (Magic Ward +1)"
+    },
     "impact": "+2",
     "attackProfiles": [
-      { "name": "Commander's Pistol", "range": "6\"", "attacks": 5, "hit": "4+", "damage": 1, "keywords": ["Firearm"] },
-      { "name": "Command Blade", "range": "Engaged", "attacks": 6, "hit": "3+", "damage": 2, "keywords": ["Anti-Elite 2"] }
+      {
+        "name": "Commander's Pistol",
+        "range": "6\"",
+        "attacks": 5,
+        "hit": "4+",
+        "damage": 1,
+        "keywords": [
+          "Firearm"
+        ]
+      },
+      {
+        "name": "Command Blade",
+        "range": "Engaged",
+        "attacks": 6,
+        "hit": "3+",
+        "damage": 2,
+        "keywords": [
+          "Anti-Elite 2"
+        ]
+      }
     ],
     "abilities": [
-      { "name": "Veteran Commander", "type": "Passive", "effect": "Friendly generic Infantry and Ranged Infantry Units within Short gain Tough 1 while controlling an objective." },
-      { "name": "Grand Strategy", "type": "Command", "cost": "2 CP", "timing": "Movement", "frequency": "Once per Battle", "effect": "Choose up to three friendly Units within Medium. Each may immediately Move up to 2\", and one may remove Withdrawn." }
+      {
+        "name": "Veteran Commander",
+        "type": "Passive",
+        "effect": "Friendly generic Infantry and Ranged Infantry Units within Short gain Tough 1 while controlling an objective."
+      },
+      {
+        "name": "Grand Strategy",
+        "type": "Command",
+        "cost": "2 CP",
+        "timing": "Movement",
+        "frequency": "Once per Battle",
+        "effect": "Choose up to three friendly Units within Medium. Each may immediately Move up to 2\", and one may remove Withdrawn."
+      }
     ]
   },
   "genericUnitsWorthTaking": "Shield-and-spear Line Infantry, Longbow Infantry, Light Cavalry, Field Medics, and Scouts. The faction's strength is using ordinary troops together.",

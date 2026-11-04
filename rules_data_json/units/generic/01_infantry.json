@@ -11,9 +11,20 @@
       "basePoints": 75,
       "baseModels": 5,
       "maxModels": 10,
-      "tags": ["Infantry", "Unarmored"],
-      "recruitmentSlots": ["C"],
-      "stats": { "move": "4\"", "wounds": 2, "armor": "6+", "evade": "6+", "ward": null },
+      "tags": [
+        "Infantry",
+        "Unarmored"
+      ],
+      "recruitmentSlots": [
+        "C"
+      ],
+      "stats": {
+        "move": "4\"",
+        "wounds": 2,
+        "armor": "6+",
+        "evade": "6+",
+        "ward": null
+      },
       "description": "Regular soldiers, militia, footmen, skeleton warriors, and other conventional infantry. Line Infantry are inexpensive screening and objective-holding troops that may be trained for greater offense, improved defense against Charges, or more reliable Charges of their own. In their base equipment they carry no substantial armor or shield, gaining the Unarmored tag instead; purchasing the Armor upgrade removes Unarmored and grants Armored.",
       "meleeWeaponPackages": {
         "chooseCount": 1,
@@ -22,31 +33,84 @@
           {
             "name": "Hand Weapons",
             "points": 0,
-            "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "profile": {
+              "range": "Engaged",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
             "notes": "Standard sword, axe, or similar weapon."
           },
           {
             "name": "Spears",
             "points": 10,
-            "profile": { "range": "Engaged 2\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Brace 1"] },
+            "profile": {
+              "range": "Engaged 2\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Brace 1"
+              ]
+            },
             "notes": "Defensive reach and resistance to Charge Impact."
           },
           {
             "name": "Polearms",
             "points": 25,
-            "profile": { "range": "Engaged 2\"", "attacks": 1, "hit": "6+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Brace 1", "Anti-Cavalry 2"] },
+            "profile": {
+              "range": "Engaged 2\"",
+              "attacks": 1,
+              "hit": "6+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Brace 1",
+                "Anti-Cavalry 2"
+              ]
+            },
             "notes": "Less reliable and no added Attack volume, but devastating reach weapons against mounted and multi-Wound Charging threats."
           },
           {
             "name": "Heavy Weapons",
             "points": 25,
-            "profile": { "range": "Engaged", "attacks": 1, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] },
+            "profile": {
+              "range": "Engaged",
+              "attacks": 1,
+              "hit": "5+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Heavy",
+                "Anti-Armored 2"
+              ]
+            },
             "notes": "Stronger individual Hits and extra dice against Armored targets; the Heavy restriction balances its circumstantial extra-dice potential on a multi-Model Unit."
           },
           {
             "name": "Dual Weapons",
-            "points": 25,
-            "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "points": 40,
+            "profile": {
+              "range": "Engaged",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
             "notes": "Greater volume of Hits; cannot take Shields."
           }
         ],
@@ -73,13 +137,48 @@
       },
       "formationAndTrainingUpgrades": {
         "options": [
-          { "name": "Standard Formation", "points": 0, "effect": "Five Models with the chosen equipment." },
-          { "name": "Additional Model", "pointsPerModel": 25, "maxModels": 10, "effect": "Add a matching Model, up to 10 Models." },
-          { "name": "Veterans", "points": 75, "effect": "The selected melee weapon gains +1 Attack per Model, and its Hit characteristic improves by one step. Each Model added after Veterans is purchased pays an additional +10 Points Veteran reinforcement surcharge." },
-          { "name": "Weapon Specialization", "points": 25, "effect": "Choose one Faction, Unit Type, or Trait tag. One selected weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once." },
-          { "name": "Charge Drill", "points": 15, "effect": "Gain Charge 1. Adds 1\" to final Charge distance, not to Charge Impact." },
-          { "name": "Shock Training", "points": 25, "effect": "Gain Impact 1 on successful Charges. It increases the Unit's one shared Impact pool, not Impact per Model." },
-          { "name": "Brace Training", "points": 15, "effect": "Gain Brace 1, additive with a spear's Brace 1 or other eligible sources." }
+          {
+            "name": "Standard Formation",
+            "points": 0,
+            "effect": "Five Models with the chosen equipment."
+          },
+          {
+            "name": "Additional Model",
+            "pointsPerModel": 25,
+            "maxModels": 10,
+            "effect": "Add a matching Model, up to 10 Models."
+          },
+          {
+            "name": "Veterans",
+            "points": 75,
+            "effect": "The selected melee weapon gains +1 Attack per Model, and its Hit characteristic improves by one step. Each Model added after Veterans is purchased pays an additional +10 Points Veteran reinforcement surcharge."
+          },
+          {
+            "name": "Weapon Specialization",
+            "points": 25,
+            "effect": "Choose one Faction, Unit Type, or Trait tag. One selected weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once."
+          },
+          {
+            "name": "Charge Drill",
+            "points": 15,
+            "effect": "Gain Charge 1. Adds 1\" to final Charge distance, not to Charge Impact."
+          },
+          {
+            "name": "Shock Training",
+            "points": 25,
+            "effect": "Gain Impact 1 on successful Charges. It increases the Unit's one shared Impact pool, not Impact per Model."
+          },
+          {
+            "name": "Brace Training",
+            "points": 15,
+            "effect": "Gain Brace 1, additive with a spear's Brace 1 or other eligible sources."
+          },
+          {
+            "name": "Deadly Precision",
+            "points": 45,
+            "extraModelSurcharge": 5,
+            "effect": "One selected melee weapon gains Critical 1 per Surge. Extra Models above the starting five cost +5 Points each while equipped with this upgrade. The rank converts a maximum of one failed Hit die per Surge, not automatically."
+          }
         ],
         "restrictions": [
           "A Line Infantry Unit may purchase one of Charge Drill, Shock Training, or Brace Training.",
@@ -100,9 +199,20 @@
       "basePoints": 100,
       "baseModels": 4,
       "maxModels": 9,
-      "tags": ["Infantry", "Ranged Infantry"],
-      "recruitmentSlots": ["R"],
-      "stats": { "move": "3\"", "wounds": 1, "armor": "6+", "evade": "6+", "ward": null },
+      "tags": [
+        "Infantry",
+        "Ranged Infantry"
+      ],
+      "recruitmentSlots": [
+        "R"
+      ],
+      "stats": {
+        "move": "3\"",
+        "wounds": 1,
+        "armor": "6+",
+        "evade": "6+",
+        "ward": null
+      },
       "description": "Ranged Infantry specialize in mobile short-range shooting, massed arrows, prepared crossbow fire, and specialized firearms. Their starting formation is four Models, but can grow to ten at an increasing price.",
       "rangedWeaponPackages": {
         "chooseCount": 1,
@@ -111,50 +221,149 @@
           {
             "name": "Shortbows",
             "points": 0,
-            "profile": { "range": "8\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "profile": {
+              "range": "9\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
             "notes": "Affordable, mobile baseline weapon."
           },
           {
             "name": "Longbows",
-            "points": 25,
-            "profile": { "range": "10\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Long Range 3\""] },
-            "notes": "Mobile volleys with extended reach; beyond 10\" the combined Attack pool loses 2 dice (minimum 1)."
+            "points": 35,
+            "profile": {
+              "range": "12\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Long Range 6\""
+              ]
+            },
+            "notes": "Mobile volleys with extended reach; beyond 10\" the combined Attack pool loses 1 die for single-model Units or 3 dice for multi-model Units (minimum 1)."
           },
           {
             "name": "Crossbows",
             "points": 25,
-            "profile": { "range": "9\"", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] },
+            "profile": {
+              "range": "9\"",
+              "attacks": 1,
+              "hit": "4+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Heavy",
+                "Anti-Armored 2",
+                "Long Range 3\""
+              ]
+            },
             "notes": "Compact, accurate shots that punch through armor plating; stationary firing."
           },
           {
             "name": "Heavy Crossbows",
             "points": 50,
-            "profile": { "range": "11\"", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Elite 2"] },
+            "profile": {
+              "range": "12\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Heavy",
+                "Anti-Elite 2",
+                "Long Range 3\""
+              ]
+            },
             "notes": "Sustained anti-elite fire, at high cost and with Heavy restrictions."
           },
           {
             "name": "Muskets",
             "points": 50,
-            "profile": { "range": "11\"", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Anti-Character 1"] },
+            "profile": {
+              "range": "9\"",
+              "attacks": 1,
+              "hit": "4+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm",
+                "Heavy",
+                "Anti-Character 1",
+                "Long Range 3\""
+              ]
+            },
             "notes": "Accurate, reaction-proof shooting against valuable individual targets."
           },
           {
             "name": "Pistols",
             "points": 25,
-            "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm"] },
+            "profile": {
+              "range": "6\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm"
+              ]
+            },
             "notes": "Mobile close-range shooting with Instant from Firearm."
           },
           {
             "name": "Javelins",
             "points": 10,
-            "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "profile": {
+              "range": "6\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
             "notes": "Thrown volleys; also gain Javelin Melee instead of the default melee weapon.",
-            "alternateMeleeProfile": { "name": "Javelin Melee", "range": "Engaged 2\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+            "alternateMeleeProfile": {
+              "name": "Javelin Melee",
+              "range": "Engaged 2\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            }
           },
           {
             "name": "Slings",
             "points": 10,
-            "profile": { "range": "7\"", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "profile": {
+              "range": "9\"",
+              "attacks": 4,
+              "hit": "6+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
             "notes": "High-volume, low-accuracy short-range attacks."
           }
         ],
@@ -163,24 +372,72 @@
       "meleeWeapon": {
         "name": "Short Blade",
         "points": 0,
-        "profile": { "range": "Engaged", "attacks": 1, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+        "profile": {
+          "range": "Engaged",
+          "attacks": 1,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        },
         "notes": "All Ranged Infantry receive this unless using Javelin Melee."
       },
       "multiProfileNote": "A Unit carrying multiple profiles selects one eligible Attack when it uses an Attack action; it does not combine its ranged and melee profiles.",
       "formationAndShootingUpgrades": {
         "options": [
-          { "name": "Standard Formation", "points": 0, "effect": "Four Models with the selected ranged package." },
-          { "name": "Additional Model", "pointsPerModel": 25, "maxModels": 9, "effect": "Add a matching Model, up to 9 Models." },
-          { "name": "Rangefinder Training", "points": 20, "effect": "Increase the primary ranged weapon's printed normal Range by 2\". It remains at its listed Hit within this improved range; existing Long Range X begins beyond the improved normal Range." },
-          { "name": "Longshot Training", "points": 10, "effect": "Gain Long Range 2\". If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range reduce the combined Attack pool by 2 dice (minimum 1)." },
-          { "name": "Marksman Training", "points": 25, "effect": "The selected ranged weapon gains Accurate 1 for its combined Unit Attack pool." },
-          { "name": "Expert Marksmen", "points": 35, "effect": "The primary ranged weapon gains Pinpoint." },
-          { "name": "Weapon Specialization", "points": 25, "effect": "Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once." },
-          { "name": "Veterans", "points": 75, "effect": "The selected ranged weapon gains +1 Attack per Model and improves Hit by one step." }
+          {
+            "name": "Standard Formation",
+            "points": 0,
+            "effect": "Four Models with the selected ranged package."
+          },
+          {
+            "name": "Additional Model",
+            "pointsPerModel": 25,
+            "maxModels": 9,
+            "effect": "Add a matching Model, up to 9 Models."
+          },
+          {
+            "name": "Rangefinder Training",
+            "points": 20,
+            "effect": "Increase the primary ranged weapon's printed normal Range by 2\". It remains at its listed Hit within this improved range; existing Long Range X begins beyond the improved normal Range."
+          },
+          {
+            "name": "Longshot Training",
+            "points": 10,
+            "effect": "Gain Long Range 2\". If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range reduce the combined Attack pool by 3 dice for multi-model Units (minimum 1)."
+          },
+          {
+            "name": "Marksman Training",
+            "points": 25,
+            "effect": "The selected ranged weapon gains Accurate 1 for its combined Unit Attack pool."
+          },
+          {
+            "name": "Expert Marksmen",
+            "points": 35,
+            "effect": "The primary ranged weapon gains Pinpoint."
+          },
+          {
+            "name": "Weapon Specialization",
+            "points": 25,
+            "effect": "Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once."
+          },
+          {
+            "name": "Veterans",
+            "points": 75,
+            "effect": "The selected ranged weapon gains +1 Attack per Model and improves Hit by one step."
+          },
+          {
+            "name": "Deadly Precision",
+            "points": 40,
+            "extraModelSurcharge": 5,
+            "effect": "One selected ranged weapon gains Critical 1 per Surge; additional Models after the starting four each pay +5 Points for this training. Applies once per combined Attack per Surge, not per Model."
+          }
         ],
         "notes": [
           "Veterans and Weapon Specialization may each be purchased once and apply only to the selected primary ranged weapon.",
-          "Rangefinder and Longshot Training may be combined; they alter different portions of a weapon's range. Rangefinder increases normal Range and does not grant or remove the Long Range Hit penalty; Longshot affects only the additional extended band.",
+          "Rangefinder and Longshot Training may be combined; they alter different portions of a weapon's range. Rangefinder increases normal Range and does not grant or remove the Long Range Attack-pool reduction; Longshot affects only the additional extended band.",
           "These range upgrades apply once to the chosen primary weapon profile, regardless of Models.",
           "Veteran pricing: the upgrade costs 75 Points for any primary weapon, reflecting the strong scaling effect of a flat +1 Attack per Model across a four-to-nine-Model formation. Veteran reinforcements pay +15 Points each because the extra die and improved Hit apply to every added Model."
         ]
@@ -198,13 +455,24 @@
     {
       "id": "elite-infantry",
       "name": "Elite Infantry",
-      "basePoints": 120,
+      "basePoints": 105,
       "baseModels": 3,
       "maxModels": 5,
-      "tags": ["Elite", "Infantry"],
-      "recruitmentSlots": ["E"],
-      "stats": { "move": "4\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
-      "description": "Elite Infantry are durable close-combat specialists with twelve total starting Wounds. Weapon packages emphasize a clear choice between melee volume, reach, defensive Brace, and stronger Hits.",
+      "tags": [
+        "Elite",
+        "Infantry"
+      ],
+      "recruitmentSlots": [
+        "E"
+      ],
+      "stats": {
+        "move": "4\"",
+        "wounds": 3,
+        "armor": "5+",
+        "evade": "5+",
+        "ward": null
+      },
+      "description": "Elite Infantry are durable close-combat specialists with nine total starting Wounds; reinforced bodies can be purchased. Weapon packages emphasize a clear choice between melee volume, reach, defensive Brace, and stronger Hits.",
       "meleeWeaponPackages": {
         "chooseCount": 1,
         "note": "Shields may accompany only Hand Weapons or Spears.",
@@ -212,31 +480,85 @@
           {
             "name": "Hand Weapons",
             "points": 0,
-            "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "profile": {
+              "range": "Engaged",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
             "notes": "Reliable baseline."
           },
           {
             "name": "Spears",
             "points": 10,
-            "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Brace 1"] },
+            "profile": {
+              "range": "Engaged 2\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Brace 1"
+              ]
+            },
             "notes": "Reach and defense."
           },
           {
             "name": "Polearms",
             "points": 25,
-            "profile": { "range": "Engaged 2\"", "attacks": 2, "hit": "6+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Brace 1", "Anti-Cavalry 2"] },
+            "profile": {
+              "range": "Engaged 2\"",
+              "attacks": 2,
+              "hit": "6+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Brace 1",
+                "Anti-Cavalry 2"
+              ]
+            },
             "notes": "Heavy Hits, reach, extra dice against mounted Charges, and Charge protection at reduced accuracy."
           },
           {
             "name": "Dual Weapons",
             "points": 25,
-            "profile": { "range": "Engaged", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] },
+            "profile": {
+              "range": "Engaged",
+              "attacks": 4,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
             "notes": "High-volume specialist melee."
           },
           {
             "name": "Heavy Weapons",
             "points": 25,
-            "profile": { "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] },
+            "profile": {
+              "range": "Engaged",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Anti-Armored 2"
+              ]
+            },
             "notes": "Reliable high-Damage melee Hits with extra dice against Armored targets."
           },
           {
@@ -256,40 +578,128 @@
           {
             "name": "Shortbow",
             "points": 25,
-            "profile": { "range": "8\"", "attacks": 2, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+            "profile": {
+              "range": "9\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
             "notes": "Inexpensive secondary fire."
           },
           {
             "name": "Longbow",
             "points": 50,
-            "profile": { "range": "10\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Long Range 3\""] },
+            "profile": {
+              "range": "12\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Long Range 3\""
+              ]
+            },
             "notes": "Mobile, longer-range fire."
           },
           {
             "name": "Pistols",
             "points": 25,
-            "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm", "Pinpoint"] },
+            "profile": {
+              "range": "6\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm",
+                "Pinpoint"
+              ]
+            },
             "notes": "Short-range ranged utility."
           },
           {
             "name": "Musket",
             "points": 50,
-            "profile": { "range": "11\"", "attacks": 1, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Anti-Elite 2"] },
+            "profile": {
+              "range": "9\"",
+              "attacks": 1,
+              "hit": "4+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm",
+                "Heavy",
+                "Anti-Elite 2",
+                "Long Range 3\""
+              ]
+            },
             "notes": "Stationary anti-elite fire."
           }
         ]
       },
       "formationAndCombatUpgrades": {
         "options": [
-          { "name": "Standard Formation", "points": 0, "effect": "Three Models at W4 each (twelve total Wounds)." },
-          { "name": "Additional Model", "pointsPerModel": 50, "maxModels": 5, "effect": "Add a matching Model, up to 5 Models." },
-          { "name": "Weapon Mastery", "points": 10, "effect": "Selected melee weapon gains Accurate 1 for the Unit's combined melee Attack pool." },
-          { "name": "Armored", "points": 25, "effect": "Improve Armor one step; gain the Armored tag." },
-          { "name": "Quick", "points": 50, "effect": "Increase Move by 2\" and improve Evade one step; gain Mobile." },
-          { "name": "Deadly Precision", "points": 25, "effect": "One selected weapon gains Critical 1 (converts one failed Hit die after rerolls; no Surge required)." },
-          { "name": "Hunters", "points": 25, "effect": "Choose one Faction or Trait tag. This unit gains Anti-[chosen tag] 3." },
-          { "name": "Veterans", "points": 50, "effect": "One selected weapon gains +1 Attack per Model and improves its Hit characteristic one step." },
-          { "name": "Brace Drill", "points": 25, "effect": "Gain Brace 1; adds to other applicable sources and reduces Charge Impact once per receiving Unit." }
+          {
+            "name": "Standard Formation",
+            "points": 0,
+            "effect": "Three Models at W3 each (nine total Wounds)."
+          },
+          {
+            "name": "Reinforced Bodies",
+            "points": 30,
+            "effect": "Each existing and future Model in this Unit gains +1 maximum Wound (W3 to W4). The upgrade covers the starting three Models; pay +10 Points for each additional Model purchased after it."
+          },
+          {
+            "name": "Additional Model",
+            "pointsPerModel": 40,
+            "maxModels": 5,
+            "effect": "Add one matching W3 Model, up to 5 Models. If Reinforced Bodies was purchased, each added Model costs an additional 10 Points and enters at W4."
+          },
+          {
+            "name": "Weapon Mastery",
+            "points": 10,
+            "effect": "Selected melee weapon gains Accurate 1 for the Unit's combined melee Attack pool."
+          },
+          {
+            "name": "Armored",
+            "points": 25,
+            "effect": "Improve Armor one step; gain the Armored tag."
+          },
+          {
+            "name": "Quick",
+            "points": 50,
+            "effect": "Increase Move by 2\" and improve Evade one step; gain Mobile."
+          },
+          {
+            "name": "Deadly Precision",
+            "points": 25,
+            "effect": "One selected Weapon Attack gains Critical 1 PER SURGE: after rerolls, convert up to one failed Hit die for each complete Surge. No Surge means no passive conversions. CP-granted Critical follows the normal exception."
+          },
+          {
+            "name": "Hunters",
+            "points": 25,
+            "effect": "Choose one Faction or Trait tag. This unit gains Anti-[chosen tag] 3."
+          },
+          {
+            "name": "Veterans",
+            "points": 50,
+            "effect": "One selected weapon gains +1 Attack per Model and improves its Hit characteristic one step."
+          },
+          {
+            "name": "Brace Drill",
+            "points": 25,
+            "effect": "Gain Brace 1; adds to other applicable sources and reduces Charge Impact once per receiving Unit."
+          }
         ],
         "restrictions": [
           "A Unit may purchase either Weapon Mastery or Deadly Precision, not both.",

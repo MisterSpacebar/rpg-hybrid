@@ -6,14 +6,36 @@
   "id": "mage",
   "name": "Mage",
   "role": "Offensive magic, arcane utility, battlefield manipulation",
-  "tags": ["Wizard"],
-  "stats": { "move": "3\"", "wounds": 3, "armor": "6+", "evade": "6+", "ward": null },
+  "tags": [
+    "Wizard"
+  ],
+  "stats": {
+    "move": "3\"",
+    "wounds": 3,
+    "armor": "6+",
+    "evade": "6+",
+    "ward": null
+  },
   "baseSpellAttacks": {
-    "note": "All Mages begin knowing both Spell Attacks. These Spell Attacks are included in the Base Character Value and do not occupy prepared Command Ability slots.",
+    "note": "All Mages begin knowing Magic Missile only. Force Bolt is optional, costs 10 Points to learn and never grants another Attack activation. Subclass starting Spell Attacks remain included as printed.",
     "phase": "Assault",
     "spells": [
-      { "name": "Magic Missile", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Pinpoint"] }, "cost": "Included" },
-      { "name": "Force Bolt", "profile": { "range": "8\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Push 1\""] }, "cost": "Included" }
+      {
+        "name": "Magic Missile",
+        "profile": {
+          "range": "6\"",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Magic"
+          ],
+          "keywords": [
+            "Pinpoint"
+          ]
+        },
+        "cost": "Included"
+      }
     ]
   },
   "subclasses": [
@@ -37,16 +59,94 @@
         "phase": "Assault",
         "chooseCount": 1,
         "spells": [
-          { "name": "Fireball", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Fire"], "keywords": ["Blast 1\""] }, "cost": "Included (choose one)" },
-          { "name": "Spark", "profile": { "range": "6\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Magic", "Lightning"], "keywords": ["Surge: Instant"] }, "cost": "Included (choose one)" },
-          { "name": "Ice Shard", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Frost"], "keywords": ["Surge: Slow 2"] }, "cost": "Included (choose one)" }
+          {
+            "name": "Fireball",
+            "profile": {
+              "range": "6\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic",
+                "Fire"
+              ],
+              "keywords": [
+                "Blast 1\""
+              ]
+            },
+            "cost": "Included (choose one)"
+          },
+          {
+            "name": "Spark",
+            "profile": {
+              "range": "6\"",
+              "attacks": 3,
+              "hit": "6+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic",
+                "Lightning"
+              ],
+              "keywords": [
+                "Surge: Instant"
+              ]
+            },
+            "cost": "Included (choose one)"
+          },
+          {
+            "name": "Ice Shard",
+            "profile": {
+              "range": "6\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic",
+                "Frost"
+              ],
+              "keywords": [
+                "Surge: Slow 2"
+              ]
+            },
+            "cost": "Included (choose one)"
+          }
         ]
       },
       "combatPhaseWeapons": {
         "chooseCount": 1,
         "options": [
-          { "name": "Staff", "standard": true, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
-          { "name": "Dagger", "standard": false, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 }
+          {
+            "name": "Staff",
+            "standard": true,
+            "profile": {
+              "range": "Engaged 2\"",
+              "attacks": 3,
+              "hit": "6+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
+            "points": 0
+          },
+          {
+            "name": "Dagger",
+            "standard": false,
+            "profile": {
+              "range": "Engaged",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
+            "points": 0
+          }
         ]
       }
     },
@@ -59,44 +159,133 @@
         "cost": "1 CP",
         "timing": "Movement",
         "effect": [
-          "If you do not currently control a Thrall Unit, create one engaged with this character containing X Models, where X equals your Mind characteristic. A newly raised Thrall Unit cannot activate during the Round in which it was created.",
-          "If you already control a Thrall Unit, you may instead target one summoned Thrall unit you control and add one Model to that Unit, provided it is not Engaged with an enemy. New Models must be placed within 3\" of another Model in the same Unit, following normal placement rules.",
-          "A Necromancer may control only one Thrall Unit through Raise Thrall at a time."
+          "If you do not currently control a Thrall Unit, create one Engaged with this Necromancer containing min(Mind, 6) Models. A newly created Thrall Unit cannot activate during that Round. You control a maximum of one such Unit.",
+          "If you control a surviving Thrall Unit that is not Engaged with an enemy, restore up to TWO defeated Models to it, to a MAXIMUM of SIX Models. This may grow it beyond the original summoned number. Place models legally in Coherency, within 3\" of an existing Thrall Model. A fully destroyed Thrall Unit cannot be reinforced; it can be summoned again on a later eligible use.",
+          "A Necromancer may control only one summoned Thrall Unit from Raise Thrall at a time. All other normal CP, timing, and reinforcement limitations remain in force."
         ]
       },
       "subclassSpellAttacks": {
         "note": "In addition to the Mage's Base Spell Attacks.",
         "phase": "Assault",
         "spells": [
-          { "name": "Life Drain", "profile": { "range": "4\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["On Damage: Heal 1"] }, "cost": "Included" }
+          {
+            "name": "Life Drain",
+            "profile": {
+              "range": "4\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "On Damage: Heal 1"
+              ]
+            },
+            "cost": "Included"
+          }
         ]
       },
       "combatPhaseWeapons": {
         "chooseCount": 1,
         "options": [
-          { "name": "Dagger", "standard": true, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 },
-          { "name": "Staff", "standard": false, "profile": { "range": "Engaged 2\"", "attacks": 3, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }, "points": 0 },
-          { "name": "Shortsword", "standard": false, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 }
+          {
+            "name": "Dagger",
+            "standard": true,
+            "profile": {
+              "range": "Engaged",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
+            "points": 0
+          },
+          {
+            "name": "Staff",
+            "standard": false,
+            "profile": {
+              "range": "Engaged 2\"",
+              "attacks": 3,
+              "hit": "6+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": []
+            },
+            "points": 0
+          },
+          {
+            "name": "Shortsword",
+            "standard": false,
+            "profile": {
+              "range": "Engaged",
+              "attacks": 4,
+              "hit": "6+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
+            "points": 5
+          }
         ]
       },
       "summonedUnit": {
         "name": "Thrall",
-        "stats": { "move": "3\"", "wounds": "1 per Model", "armor": "6+", "evade": "6+", "ward": null },
+        "stats": {
+          "move": "3\"",
+          "wounds": "1 per Model",
+          "armor": "6+",
+          "evade": "6+",
+          "ward": null
+        },
         "combatPhaseAttack": {
           "name": "Claws",
-          "profile": { "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] }
+          "profile": {
+            "range": "Engaged",
+            "attacks": 2,
+            "hit": "6+",
+            "damage": 1,
+            "damageTypes": [
+              "Physical"
+            ],
+            "keywords": []
+          }
         },
         "passive": {
           "name": "Reanimated",
-          "effect": "At the end of the Round, if this Unit still contains at least one Model and lost Models during that Round, roll one D6 for each Model lost. For each natural 6, return one Model to the Unit following normal placement rules. A completely destroyed Thrall Unit cannot benefit from Reanimated."
-        }
+          "effect": "At the end of the Round, if this Unit still contains at least one Model and lost Models during that Round, roll one D6 for each Model lost. For each natural 6, return one Model to the Unit following normal placement rules. A completely destroyed Thrall Unit cannot benefit from Reanimated. A Thrall Unit never exceeds six Models after any restoration."
+        },
+        "maxModels": 6,
+        "derivedStats": {
+          "startingModels": "min(Mind characteristic, 6)",
+          "hit": "Necromancer Mysticism skill threshold +1 (6+ at Mysticism 5+ or 6+; 3+ at Mysticism 2+)",
+          "armor": "Necromancer Medicine skill threshold +2, capped to range 2+...6+",
+          "evade": "Necromancer Stealth skill threshold +3, capped to range 2+...6+",
+          "inheritedAnti": "Inherit EVERY Anti-[tag] possessed by the Necromancer at rank max(0, rank-1). On a target with several matching tags, use only highest rank. Cannot inherit temporary one-Attack Command bonuses unless explicitly granted to Thralls."
+        },
+        "notes": [
+          "Printed 6+ Hit, Armor 6+, Evade 6+ are fallback minima for legacy tools; dynamically derive from Necromancer skills when resolving the Unit. Thralls remain W1, maximum six Models; Reanimated does not exceed six."
+        ]
       }
     },
     {
       "id": "illusionist",
       "name": "Illusionist",
       "description": "Illusionists manipulate perception, disrupt enemy attacks, and protect allies through deception.",
-      "additionalTags": ["Support"],
+      "additionalTags": [
+        "Support"
+      ],
       "signatureAbility": {
         "name": "Phantasm",
         "cost": "1 CP",
@@ -107,12 +296,36 @@
         "note": "In addition to the Mage's Base Spell Attacks.",
         "phase": "Assault",
         "spells": [
-          { "name": "Mind Spike", "profile": { "range": "6\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": ["Surge: Weaken Hit"] }, "cost": "Included" }
+          {
+            "name": "Mind Spike",
+            "profile": {
+              "range": "6\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Surge: Weaken Hit"
+              ]
+            },
+            "cost": "Included"
+          }
         ]
       },
       "combatPhaseOptionalSpell": {
         "name": "Psychic Blade",
-        "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Magic"], "keywords": [] },
+        "profile": {
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Magic"
+          ],
+          "keywords": []
+        },
         "cost": "10 (optional)",
         "note": "Psychic Blade is optional and costs its printed 10 Points; the standard Dagger remains an equipment choice, not an additional free Attack."
       },
@@ -120,10 +333,64 @@
         "label": "Suggested melee weapons",
         "chooseCount": 1,
         "options": [
-          { "name": "Dagger", "standard": true, "profile": { "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 0 },
-          { "name": "Shortsword", "standard": false, "profile": { "range": "Engaged", "attacks": 4, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Accurate 1"] }, "points": 5 }
+          {
+            "name": "Dagger",
+            "standard": true,
+            "profile": {
+              "range": "Engaged",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
+            "points": 0
+          },
+          {
+            "name": "Shortsword",
+            "standard": false,
+            "profile": {
+              "range": "Engaged",
+              "attacks": 4,
+              "hit": "6+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
+            "points": 5
+          }
         ]
       }
     }
-  ]
+  ],
+  "optionalSpellAttacks": {
+    "note": "Optional permanently learned class Spell Attack; subject to normal spell-learning rules.",
+    "spells": [
+      {
+        "name": "Force Bolt",
+        "profile": {
+          "range": "8\"",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Magic"
+          ],
+          "keywords": [
+            "Surge: Push 1\""
+          ]
+        },
+        "points": 10,
+        "cost": "10 Points"
+      }
+    ]
+  }
 }

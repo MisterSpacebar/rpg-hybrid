@@ -34,7 +34,13 @@ function optionsFor(spec, e, view) {
     const taken = new Set(view.formulas)
     return (view.sub.formulas ?? []).filter((f) => !taken.has(f.name) || f.name === e.entry.formula).map((f) => ({ value: f.name, label: f.name }))
   }
-  return spec.options ?? []
+  if (spec.kind === 'favoredTag') {
+    return view.entries.filter((x) => x.def.id === 'favored-enemy' && x.entry.enemy).map((x) => ({ value: x.entry.enemy, label: x.entry.enemy }))
+  }
+  const options = spec.options ?? []
+  if (!spec.unique) return options
+  const used = new Set(same.map((x) => x.entry[spec.key]))
+  return options.filter((o) => !used.has(o.value))
 }
 
 function Choice({ spec, e, view, patch }) {

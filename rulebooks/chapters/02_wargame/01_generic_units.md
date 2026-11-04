@@ -80,7 +80,7 @@ Choose **one** melee weapon package. All listed Attacks are **per Model**.
 | Spears | +10 | Engaged 2" / 2 / 5+ / 1 / Brace 1. Defensive reach and resistance to Charge Impact. |
 | Polearms | +25 | Engaged 2" / 1 / 6+ / 2 / Brace 1 / Anti-Cavalry 2. Less reliable and no added Attack volume, but devastating reach weapons against mounted and multi-Wound Charging threats. |
 | Heavy Weapons | +25 | Engaged / 1 / 5+ / 2 / Heavy / Anti-Armored 2. Stronger individual Hits and extra dice against Armored targets; the Heavy restriction balances its circumstantial extra-dice potential on a multi-Model Unit. |
-| Dual Weapons | +25 | Engaged / 3 / 5+ / 1. Greater volume of Hits; cannot take Shields. |
+| Dual Weapons | +40 | Engaged / 3 / 5+ / 1. Greater volume of Hits; cannot take Shields. |
 
 **Melee Heavy clarification:** Polearms above do **not** possess the **Heavy** keyword despite its weight; Heavy Weapons **do** possess Heavy. Their physical weight is represented by their printed Hit, Damage, Anti-[Type], and costs; normal melee combat after movement remains legal except where Heavy restricts it.
 
@@ -127,7 +127,7 @@ Choose **one** primary ranged weapon package. Attacks are **per Model**; Heavy a
 | Weapon | Points | Profile / Role |
 | --- | ---: | --- |
 | **Shortbows** | **+0** | **8" / 2 / 5+ / 1**. Affordable, mobile baseline weapon. |
-| Longbows | +25 | **10" / 3 / 5+ / 1 / Long Range 3"**. Mobile volleys with extended reach; beyond 10" reduce the combined Attack pool by 2 dice (minimum 1). |
+| Longbows | +25 | **10" / 3 / 5+ / 1 / Long Range 3"**. Mobile volleys with extended reach; beyond 10" reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units (minimum 1). |
 | Crossbows | +25 | **9" / 1 / 4+ / 2 / Heavy / Anti-Armored 2**. Compact, accurate shots that punch through armor plating; stationary firing. |
 | Heavy Crossbows | +50 | **11" / 2 / 5+ / 2 / Heavy / Anti-Elite 2**. Sustained anti-elite fire, at high cost and with Heavy restrictions. |
 | Muskets | +50 | **11" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Character 1**. Accurate, reaction-proof shooting against valuable individual targets. |
@@ -152,13 +152,13 @@ A Unit carrying multiple profiles selects one eligible Attack when it uses an At
 | Standard Formation | +0 | Four Models with the selected ranged package. |
 | Additional Model | **+25 each** | Add a matching Model, up to **9 Models**. |
 | **Rangefinder Training** | **+20** | Increase the primary ranged weapon's **printed normal Range by 2"**. It remains at its listed Hit within this improved range; existing Long Range X begins beyond the improved normal Range. |
-| Longshot Training | +10 | Gain **Long Range 2"**. If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range reduce the combined Attack pool by 2 dice (minimum 1). |
+| Longshot Training | +10 | Gain **Long Range 2"**. If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units (minimum 1). |
 | Marksman Training | +25 | The selected ranged weapon gains **Accurate 1** for its combined Unit Attack pool. |
 | Expert Marksmen | +35 | The primary ranged weapon gains **Pinpoint**. |
 | Weapon Specialization | +25 | Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains **Anti-[chosen tag] 2** against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once. |
 | **Veterans** | **+75** | The selected ranged weapon gains **+1 Attack per Model** and improves Hit by one step. |
 
-Veterans and Weapon Specialization may each be purchased once and apply only to the selected primary ranged weapon. Rangefinder and Longshot Training **may be combined**; they alter different portions of a weapon's range. Rangefinder increases **normal** Range and does not grant or remove the Long Range Hit penalty; Longshot affects only the additional extended band. These range upgrades apply once to the chosen primary weapon profile, regardless of Models.
+Veterans and Weapon Specialization may each be purchased once and apply only to the selected primary ranged weapon. Rangefinder and Longshot Training **may be combined**; they alter different portions of a weapon's range. Rangefinder increases **normal** Range and does not grant or remove the Long Range Attack-pool reduction; Longshot affects only the additional extended band. These range upgrades apply once to the chosen primary weapon profile, regardless of Models.
 
 **Veteran pricing:** The upgrade costs **75 Points for any primary weapon**, reflecting the strong scaling effect of a flat +1 Attack per Model across a four-to-nine-Model formation. Veteran reinforcements pay +15 Points each because the extra die and improved Hit apply to every added Model. Stronger Damage 2 weapons instead pay higher **initial weapon-package prices**, so Veterans do not require a second price table.
 
@@ -168,12 +168,12 @@ Veterans and Weapon Specialization may each be purchased once and apply only to 
 
 ---
 
-## Elite Infantry — 120 Points
+## Elite Infantry — 105 Points
 
 **3 Models · Elite, Infantry · Recruitment E**  
 **M4" / W4 / Arm 5+ / Eva 5+**
 
-Elite Infantry are durable close-combat specialists with twelve total starting Wounds. Weapon packages emphasize a clear choice between melee volume, reach, defensive Brace, and stronger Hits.
+Elite Infantry are durable close-combat specialists with nine total starting Wounds (W3 per Model), with an optional paid upgrade to W4. Weapon packages emphasize a clear choice between melee volume, reach, defensive Brace, and stronger Hits.
 
 ### Melee Weapon Packages
 
@@ -207,12 +207,13 @@ These are **Elite Infantry equipment costs**, not an alternative Ranged Infantry
 
 | Upgrade | Points | Effect |
 | --- | ---: | --- |
-| Standard Formation | +0 | Three Models at W4 each (twelve total Wounds). |
-| Additional Model | **+50 each** | Add a matching Model, up to **5 Models**. |
+| Standard Formation | +0 | Three Models at W3 each (nine total Wounds). |
+| Reinforced Bodies | **+30** | All Models gain +1 maximum Wound (W3 → W4). Additional Models purchased with this upgrade cost +10 each beyond their normal cost. |
+| Additional Model | **+40 each** | Add a matching W3 Model, up to **5 Models**. Add another +10 per Model with Reinforced Bodies. |
 | Weapon Mastery | +10 | Selected melee weapon gains **Accurate 1** for the Unit's combined melee Attack pool. |
 | Armored | +25 | Improve Armor one step; gain the Armored tag. |
 | Quick | +50 | Increase Move by 2" and improve Evade one step; gain Mobile. |
-| Deadly Precision | **+25** | One selected weapon gains **Critical 1** (converts one failed Hit die after rerolls; no Surge required). |
+| Deadly Precision | **+25** | One selected weapon gains **Critical 1 per Surge** (up to one failed die converted for EACH Surge, after rerolls). No Surge means no passive conversion. |
 | Hunters | +25 | Choose one Faction or Trait tag. This unit gains Anti-[chosen tag] 3. |
 | **Veterans** | **+50** | One selected weapon gains **+1 Attack per Model** and improves its Hit characteristic one step. |
 | Brace Drill | +25 | Gain **Brace 1**; adds to other applicable sources and reduces Charge Impact once per receiving Unit. |
@@ -347,16 +348,15 @@ A Captain may carry one ranged weapon in addition to their melee weapon.
 
 ### Generic Captain Commands
 
-Choose **two** Command Abilities at no additional cost.
+Choose **two** Command Abilities at no additional cost. Each Command costs **1 CP**. The Captain begins at 125 Points and may learn another eligible Command for +20 Points. No Attack can benefit from more than one friendly CP-paid Command.
 
-All listed Command Abilities cost 1 CP. In 2,000-point matched play, expend CP using the selected cards as described in the **Matched-Play Command Points and Cards** rules; campaign encounters may use abstract CP without any cards.
-
-| Command Ability  | Timing   | Effect                                                                                                                  |
-| ---------------- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Press the Attack | Assault  | Choose one friendly Unit within Short. Its next melee Attack this Round gains Accurate 1.                               |
-| Hold Formation   | Reaction | When a friendly Unit within Short is successfully Charged, grant it Brace 1 against that Charge. Resolve before Impact. |
-| Advance Orders   | Movement | Choose one unengaged friendly Unit within Short. Move it up to 2". It cannot finish Engaged.                            |
-| Fire Discipline  | Assault  | Choose one friendly Unit within Short. Its next ranged Attack this Round gains Accurate 1.                              |
+| Command | Timing | Effect |
+| --- | --- | --- |
+| **Press the Attack** | Assault or Combat | One friendly Unit within Short gains **Critical 1 (guaranteed)** on its next Melee Attack this Round; CP-granted Critical converts one failed die even without a Surge. |
+| **Hold Formation** | Reaction | When a friendly Unit within Short is Charged, it gains **Brace 2** against the Charge and **Tough 1** against the charging Unit until end of Round. |
+| **Advance Orders** | Movement | One unengaged friendly Unit within Short immediately Moves up to **3"**, ending legally; no extra activation or Charge. |
+| **Fire Discipline** | Assault | One friendly Unit within Short gains **Pinpoint and Accurate 1** on its next Ranged or Spell Attack this Round, or **Accurate 2** instead. |
+| **Identify Threat** | Assault or Combat | Select a visible enemy within Medium and one actual creature/material Trait tag on it; one friendly Unit within Short gains **Anti-[selected tag] 3** against it for its next Attack this Round. |
 
 ### Command Upgrades
 
@@ -526,7 +526,7 @@ Engineer Pistols are an optional *weapon package*, not a Command; shooting them 
 | --- | ---: | --- |
 | Mark Target | +0 | **1 CP — Assault.** Choose one visible enemy within Medium. The next friendly ranged Attack against it this Round gains Accurate 2. |
 | Concealed Position | +10 | **1 CP — Movement.** If this Unit begins beyond Short of enemies, it gains Concealed until it Attacks, becomes Engaged, or the Round ends. |
-| Forward Observer | +15 | Mark Target also causes that ranged Attack to ignore applicable Cover benefits. |
+| Forward Observer | +25 | Mark Target also grants Pinpoint and ignores applicable Cover benefits for the affected ranged Attack. |
 | Pathfinder Training | +15 | Increase Move from 3" to 5". |
 | Scout Bow | +25 | The Unit gains **Scout Bow: 9" / 3 / 5+ / 1** as an alternative Assault Attack. |
 | **Target Analysis** | **+20** | **1 CP — Assault.** Choose one friendly Unit within Medium. Its next Attack this Round gains **Anti-Elite 3 or Anti-Ranged 3** (choose when activating). |
@@ -747,7 +747,7 @@ These profiles are provisional balance targets. The main aim is to retain recogn
 
 - **v4 Damage-output rebalance:** Following playtesting that found units took too long to inflict meaningful damage, most Damage 1 weapon profiles across Generic Units (and PC equipment, see Equipment and Crafting) gained **+1 Attack**. Damage 2+ and other already-high-volume profiles instead kept their listed Attacks and gained a thematic **Anti-[Type] 2** (occasionally 3), so stronger single Hits remain distinct from higher-volume weapons rather than simply becoming strictly better. See each weapon table for its specific Anti-[Type] assignment.
 - **Shortbows:** The standard Ranged Infantry Shortbow is now **8" / 2 / 5+ / 1**. Other weapons purchase greater attack volume, more range, Damage 2, or Firearm traits, usually with a mobility or price trade-off.
-- **Range:** Infantry ranged weapons primarily operate within **6–11" normal Range**, with Longbows extending farther with a 2-die combined Attack pool reduction. **Rangefinder Training adds +2" normal Range**, while Longshot Training uses **Long Range** and its Hit penalty. Artillery remains the main long-range specialist at approximately 15–18".
+- **Range:** Infantry ranged weapons primarily operate within **6–11" normal Range**, with Longbows extending farther at the cost of a combined Attack pool reduction (1 die for single-model Units, 3 dice for multi-model Units). **Rangefinder Training adds +2" normal Range**, while Longshot Training uses **Long Range** and the same pool reduction. Artillery remains the main long-range specialist at approximately 15–18".
 - **Large ranged formations:** Up to **10 Models**, but additional Models cost 25 Points and **Veterans adds +15 more per added Model**. A paid ranged weapon also adds +5 per added Model. W1 defenses, concentrated deployment, and one activation per Unit remain important costs.
 - **Veterans pricing is per-unit, not uniform:** Veterans grants a flat **+1 Attack per Model** plus a Hit improvement, so its value scales directly with a Unit's Model count. Larger formations therefore pay more: **Line Infantry and Ranged Infantry pay +75** (5–10 and 4–9 Models respectively), each with its own printed **per-added-Model Veteran reinforcement surcharge** (+10 for Line Infantry, +15 for Ranged Infantry) reflecting that every additional Model also benefits. Smaller or single-Model formations — **Elite Infantry (3–5 Models), Cavalry (3–5 Models), Captains and Wizards (1 Model)** — pay a flat **+50** with no comparable scaling risk. Generic Supports retain a reduced **+25** combat-training option. Veteran bonuses increase the **selected weapon's** Attacks per Model and improve Hit one step; they do not buff unrelated profiles.
 - **Weapon Specialization (new, +25):** A broadly available upgrade (Line Infantry, Ranged Infantry, Elite Infantry, Cavalry, Captains, Wizards) letting a Unit choose **any one Faction, Unit Type, or Trait tag** and grant one selected weapon **Anti-[chosen tag] 2**. Because Anti-[Type] bonuses apply once to the whole Unit's combined Attack pool rather than per Model (see Unit Tags), this upgrade does not scale with Model count the way Veterans does — it stays a flat, situational bonus regardless of formation size, which is why it is priced as a single flat cost rather than per-unit like Veterans.
@@ -774,3 +774,19 @@ These are **expected raw successful Hits and nominal Damage before enemy Saves**
 | Slings (4 / 6+ / 1) | 2.67 | 2.67 | Yes |
 
 **Playtesting priority:** Compare four-, six-, eight-, and ten-Model Veteran formations, particularly Damage 2 Heavy Crossbows/Muskets, in full 2,000-point armies with eight matched-play CP cards. Test Charges and Cover alongside ranged output, not just stationary gunlines. Also compare generic support Commands against named faction specialists; all Point costs remain subject to adjustment.
+
+---
+
+## v0.7 Generic Unit Balance — Authoritative Playtest Overrides
+
+This section takes precedence over older prices/ranges in the preceding tables where they differ:
+
+* **Line Infantry:** Dual Weapons +40 Points (five Models cost 75+40=115; Veterans are an additional +75). They remain 3 Attacks per Model at Hit 5+, Damage 1, with no innate Critical. Optional Deadly Precision +45 grants Critical 1 per Surge; each additional Model with it incurs a +5 surcharge.
+* **Ranged Infantry:** Optional Deadly Precision +40 grants Critical 1 per Surge on one ranged profile (additional Models with it +5 each). Shortbows 9"; Longbows **12" + Long Range 6"**, weapon cost **+35 Points** (four-model base Longbow Unit: 135 Points); Crossbows 9" + Long Range 3"; Heavy Crossbows 12" + Long Range 3"; Muskets 9" + Long Range 3"; Slings 9". Generic Rangefinder +2" and Longshot Training still apply at their purchased costs. Extended Range penalty is now −3 dice for multi-model Units.
+* **Elite Infantry:** base 105 Points, three W3 Models, Armor 5+, Evade 5+. Reinforced Bodies +30 makes the initial three Models W4; additional W3 Models cost +40 each, plus another +10 each with Reinforced Bodies. Armor +25 and Quick +50 remain independently purchasable and can combine for Armor 4+, Evade 4+. The +25 Deadly Precision upgrade is **Critical 1 per Surge**, not guaranteed Critical.
+* **Elite Infantry secondary ranged equipment:** Shortbow 9"; Longbow 12" / Long Range 3"; Musket 9" / Long Range 3"; other profile characteristics and package prices unchanged.
+* **Cavalry:** Mounted Bows 9", Carbines 9"; optional Deadly Precision +30 (+5 per added Model), Critical 1 per Surge on one selected weapon; otherwise unchanged.
+* **Captain:** 125 Points, two free Commands chosen from the five revised options above. Standard Captains are Officers, not Characters. Heroic Commission adds Hero but does not itself add Character. Deadly Strikes is Critical 1 per Surge.
+* **Generic Wizard:** base stats and damage unchanged. Optional **Precision Casting +20** grants Pinpoint on one chosen Spell Attack; optional **Critical Channeling +20** gives one chosen Spell Attack Critical 1 per Surge.
+* **Scouts/Spotters:** Forward Observer +25 now grants Pinpoint in addition to its existing Cover negation. Engineers, Heralds, Scouts, Alchemists and Clerics may each buy **Tactical Guidance +25**, choosing one creature/material Trait; other friendly Units wholly within 3" gain passive Anti-[that Trait] 2. Existing **Target Analysis** remains +20 and grants Anti 3 for 1 CP. Only the highest matching Anti rank applies.
+* **Core keywords:** Critical 1 is per Surge for passive/printed sources, while Command-granted Critical is guaranteed once; Long Range is −1 die for single-model and −3 for multi-model Units; see Keywords and Combat chapters.

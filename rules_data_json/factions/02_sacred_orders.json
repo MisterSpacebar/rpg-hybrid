@@ -4,7 +4,10 @@
     "section": "2. SACRED ORDERS"
   },
   "name": "Sacred Orders",
-  "doctrines": ["Elite", "Counter Strike"],
+  "doctrines": [
+    "Elite",
+    "Counter Strike"
+  ],
   "worldbuilding": "Military religious orders, fortress-monasteries, holy knights, warrior-priests, and sacred guardians. Their warriors are unusually disciplined, but their armies are smaller and more expensive than conventional forces.",
   "factionRule": {
     "name": "Unyielding",
@@ -12,9 +15,30 @@
     "playtestNote": "Compare restricting this trait to these Units versus allowing all friendly Units."
   },
   "factionCommands": [
-    { "name": "Stand Fast", "timing": "Reaction", "cost": "1 CP", "effect": "Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase." },
-    { "name": "Righteous Retaliation", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round." },
-    { "name": "Heroic Intervention", "timing": "Reaction", "cost": "1 CP", "effect": "When a nearby ally is attacked, one friendly Character may Move up to 3\" toward it." }
+    {
+      "name": "Stand Fast",
+      "timing": "Reaction",
+      "cost": "1 CP",
+      "effect": "Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase."
+    },
+    {
+      "name": "Righteous Retaliation",
+      "timing": "Reaction",
+      "cost": "1 CP",
+      "effect": "After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round."
+    },
+    {
+      "name": "Heroic Intervention",
+      "timing": "Reaction",
+      "cost": "1 CP",
+      "effect": "When a nearby ally is attacked, one friendly Character may Move up to 3\" toward it."
+    },
+    {
+      "name": "Break Their Line",
+      "cost": "1 CP",
+      "timing": "Assault or Combat",
+      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Elite 4 or Anti-Cavalry 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+    }
   ],
   "signatureCoreNote": "Three Core choices are retained as a deliberate elite-army exception.",
   "signatureCoreUnits": [
@@ -22,24 +46,79 @@
       "name": "Temple Guard",
       "points": 200,
       "models": 3,
-      "tags": ["Elite", "Infantry", "Mortal", "Armored"],
-      "modelProfile": { "move": "4\"", "wounds": 3, "armor": "3+", "evade": "5+", "ward": "6+ (Magic)" },
+      "tags": [
+        "Elite",
+        "Infantry",
+        "Mortal",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 3,
+        "armor": "3+",
+        "evade": "5+",
+        "ward": "6+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Blessed Weapons", "range": "Engaged", "attacks": 3, "hit": "4+", "damage": 1, "keywords": ["Magic"] }
+        {
+          "name": "Blessed Weapons",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "4+",
+          "damage": 1,
+          "keywords": [
+            "Magic"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Steadfast", "type": "Passive", "effect": "Gain Tough 1 while holding an objective." }
+        {
+          "name": "Steadfast",
+          "type": "Passive",
+          "effect": "Gain Tough 1 while holding an objective."
+        }
       ]
     },
     {
       "name": "Sanctified Arbalests",
       "points": 190,
       "models": 3,
-      "tags": ["Elite", "Ranged", "Mortal", "Armored"],
-      "modelProfile": { "move": "3\"", "wounds": 2, "armor": "4+", "evade": "6+", "ward": null },
+      "tags": [
+        "Elite",
+        "Ranged",
+        "Mortal",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 2,
+        "armor": "4+",
+        "evade": "6+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Relic Crossbows", "range": "10\"", "attacks": 2, "hit": "5+", "damage": 2, "keywords": ["Heavy", "Anti-Undead 2"] },
-        { "name": "Sword", "range": "Engaged", "attacks": 2, "hit": "5+", "damage": 1, "keywords": ["Accurate 1"] }
+        {
+          "name": "Relic Crossbows",
+          "range": "11\"",
+          "attacks": 2,
+          "hit": "4+",
+          "damage": 2,
+          "keywords": [
+            "Heavy",
+            "Anti-Undead 2",
+            "Long Range 3\""
+          ]
+        },
+        {
+          "name": "Sword",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Accurate 1"
+          ]
+        }
       ],
       "abilities": []
     },
@@ -47,13 +126,36 @@
       "name": "Consecrated Knights",
       "points": 230,
       "models": 3,
-      "tags": ["Cavalry", "Mortal", "Armored"],
-      "modelProfile": { "move": "5\"", "wounds": 3, "armor": "3+", "evade": "5+", "ward": null },
+      "tags": [
+        "Cavalry",
+        "Mortal",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 3,
+        "armor": "3+",
+        "evade": "5+",
+        "ward": null
+      },
       "attackProfiles": [
-        { "name": "Blessed Lances", "range": "Engaged", "attacks": 1, "hit": "4+", "damage": 2, "keywords": ["Anti-Elite 2"] }
+        {
+          "name": "Blessed Lances",
+          "range": "Engaged",
+          "attacks": 1,
+          "hit": "4+",
+          "damage": 2,
+          "keywords": [
+            "Anti-Elite 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "(unnamed)", "type": "Passive", "effect": "After a successful Charge, gain Ward 6+ or improve this unit's ward by 1 until the end of the Round." }
+        {
+          "name": "(unnamed)",
+          "type": "Passive",
+          "effect": "After a successful Charge, gain Ward 6+ or improve this unit's ward by 1 until the end of the Round."
+        }
       ]
     }
   ],
@@ -62,41 +164,141 @@
       "name": "Castellan",
       "role": "Captain",
       "points": 205,
-      "tags": ["Infantry", "Hero", "Mortal", "Armored"],
-      "modelProfile": { "move": "4\"", "wounds": 6, "armor": "3+", "evade": "5+", "ward": "6+" },
+      "tags": [
+        "Infantry",
+        "Hero",
+        "Mortal",
+        "Armored",
+        "Officer"
+      ],
+      "modelProfile": {
+        "move": "4\"",
+        "wounds": 6,
+        "armor": "3+",
+        "evade": "5+",
+        "ward": "6+"
+      },
       "attackProfiles": [
-        { "name": "Castellan's Blade", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 1, "keywords": [] }
+        {
+          "name": "Castellan's Blade",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "4+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Hold the Breach", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Choose one friendly Infantry Unit within Short. Until the end of the Round, enemy abilities cannot force that Unit to Disengage or reposition." }
+        {
+          "name": "Hold the Breach",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "Choose one friendly Infantry Unit within Short. Until the end of the Round, enemy abilities cannot force that Unit to Disengage or reposition."
+        }
       ]
     },
     {
       "name": "War-Priest",
       "role": "Support",
       "points": 230,
-      "tags": ["Infantry", "Support", "Elite", "Mortal", "Armored"],
-      "modelProfile": { "move": "3\"", "wounds": 5, "armor": "4+", "evade": "5+", "ward": "5+ (Magic)" },
+      "tags": [
+        "Infantry",
+        "Support",
+        "Elite",
+        "Mortal",
+        "Armored",
+        "Officer"
+      ],
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 5,
+        "armor": "4+",
+        "evade": "5+",
+        "ward": "5+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Blessed Mace", "range": "Engaged", "attacks": 3, "hit": "5+", "damage": 1, "keywords": ["Magic", "Anti-Undead 2"] }
+        {
+          "name": "Blessed Mace",
+          "range": "Engaged",
+          "attacks": 3,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Magic",
+            "Anti-Undead 2"
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Benediction", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Improve one nearby Unit's applicable Ward by one step until the end of the Phase." },
-        { "name": "Laying Hands", "type": "Command", "cost": "1 CP", "timing": "Movement", "effect": "Target one unit within Short of this unit. Heal 2 that unit." }
+        {
+          "name": "Benediction",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "Improve one nearby Unit's applicable Ward by one step until the end of the Phase."
+        },
+        {
+          "name": "Laying Hands",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "Target one unit within Short of this unit. Heal 2 that unit."
+        }
+      ],
+      "optionalUpgrades": [
+        {
+          "name": "Specialized Guidance",
+          "points": 20,
+          "effect": "At list construction choose one existing creature/material Trait tag. Other friendly Units wholly within 3\" gain Anti-[that tag] 2. Highest applicable Anti rank only. This is a passive aura, not a free Command; does not benefit its source."
+        }
       ]
     },
     {
       "name": "Exorcist",
       "role": "Wizard",
       "points": 175,
-      "tags": ["Wizard", "Elite", "Mortal"],
-      "modelProfile": { "move": "3\"", "wounds": 4, "armor": "5+", "evade": "6+", "ward": "5+ (Magic)" },
+      "tags": [
+        "Wizard",
+        "Elite",
+        "Mortal"
+      ],
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 4,
+        "armor": "5+",
+        "evade": "6+",
+        "ward": "5+ (Magic)"
+      },
       "attackProfiles": [
-        { "name": "Banishing Flame", "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "keywords": ["Magic", "Anti-Undead 2"] },
-        { "name": "Censer", "range": "Engaged", "attacks": 1, "hit": "5+", "damage": 1, "keywords": [] }
+        {
+          "name": "Banishing Flame",
+          "range": "8\"",
+          "attacks": 5,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Magic",
+            "Anti-Undead 2"
+          ]
+        },
+        {
+          "name": "Censer",
+          "range": "Engaged",
+          "attacks": 1,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Sever the Unholy", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Choose one visible enemy within Medium. Until the end of the Phase, it cannot Heal or return defeated Models." }
+        {
+          "name": "Sever the Unholy",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Assault",
+          "effect": "Choose one visible enemy within Medium. Until the end of the Phase, it cannot Heal or return defeated Models."
+        }
       ]
     }
   ],
@@ -104,43 +306,139 @@
     {
       "name": "Sacred Behemoth",
       "points": 315,
-      "tags": ["Monster", "Armored"],
-      "modelProfile": { "move": "5\"", "wounds": 12, "armor": "4+", "evade": "6+", "ward": "6+" },
+      "tags": [
+        "Monster",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "5\"",
+        "wounds": 12,
+        "armor": "4+",
+        "evade": "6+",
+        "ward": "6+"
+      },
       "impact": "+2",
       "attackProfiles": [
-        { "name": "Trample", "range": "Engaged", "attacks": 5, "hit": "3+", "damage": 2, "keywords": [] }
+        {
+          "name": "Trample",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "3+",
+          "damage": 2,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Consecrated Presence", "type": "Passive", "effect": "Friendly Units within Short gain Ward 6+ against Magic Attacks or their Ward is improved by 1 against magic." }
+        {
+          "name": "Consecrated Presence",
+          "type": "Passive",
+          "effect": "Friendly Units within Short gain Ward 6+ against Magic Attacks or their Ward is improved by 1 against magic."
+        }
       ]
     },
     {
       "name": "Reliquary Engine",
       "points": 200,
-      "tags": ["War Machine", "Vehicle", "Mechanical", "Armored"],
-      "modelProfile": { "move": "3\"", "wounds": 7, "armor": "4+", "evade": null, "ward": "6+" },
+      "tags": [
+        "War Machine",
+        "Vehicle",
+        "Mechanical",
+        "Armored"
+      ],
+      "modelProfile": {
+        "move": "3\"",
+        "wounds": 7,
+        "armor": "4+",
+        "evade": null,
+        "ward": "6+"
+      },
       "attackProfiles": [
-        { "name": "Radiant Pulse", "range": "9\"", "attacks": 4, "hit": "5+", "damage": 1, "keywords": ["Magic"] },
-        { "name": "Crew Weapons", "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "keywords": [] }
+        {
+          "name": "Radiant Pulse",
+          "range": "9\"",
+          "attacks": 4,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Magic"
+          ]
+        },
+        {
+          "name": "Crew Weapons",
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "6+",
+          "damage": 1,
+          "keywords": []
+        }
       ],
       "abilities": [
-        { "name": "Processional Ward", "type": "Command", "cost": "1 CP", "timing": "Reaction", "effect": "One friendly Unit within Short may reroll natural 1s on a Ward Save." }
+        {
+          "name": "Processional Ward",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Reaction",
+          "effect": "One friendly Unit within Short may reroll natural 1s on a Ward Save."
+        }
       ]
     }
   ],
   "factionLeader": {
     "name": "Living Saint",
     "points": 480,
-    "tags": ["Hero", "Mortal", "Armored"],
-    "modelProfile": { "move": "6\"", "wounds": 10, "armor": "3+", "evade": "4+", "ward": "5+ (Magic Ward +1)" },
+    "tags": [
+      "Hero",
+      "Mortal",
+      "Armored",
+      "Character"
+    ],
+    "modelProfile": {
+      "move": "6\"",
+      "wounds": 10,
+      "armor": "3+",
+      "evade": "4+",
+      "ward": "5+ (Magic Ward +1)"
+    },
     "impact": "+3",
     "attackProfiles": [
-      { "name": "Radiant Judgment", "range": "9\"", "attacks": 5, "hit": "4+", "damage": 1, "keywords": ["Magic", "Anti-Undead 2"] },
-      { "name": "Sacred Blade", "range": "Engaged", "attacks": 6, "hit": "3+", "damage": 2, "keywords": ["Magic", "Critical 1", "Anti-Infernal 2"] }
+      {
+        "name": "Radiant Judgment",
+        "range": "9\"",
+        "attacks": 5,
+        "hit": "4+",
+        "damage": 1,
+        "keywords": [
+          "Magic",
+          "Anti-Undead 2"
+        ]
+      },
+      {
+        "name": "Sacred Blade",
+        "range": "Engaged",
+        "attacks": 6,
+        "hit": "3+",
+        "damage": 2,
+        "keywords": [
+          "Magic",
+          "Critical 1",
+          "Anti-Infernal 2"
+        ]
+      }
     ],
     "abilities": [
-      { "name": "Inspiring Presence", "type": "Passive", "effect": "Friendly Units within Short cannot be forced to Disengage by enemy abilities." },
-      { "name": "Miracle of Deliverance", "type": "Command", "cost": "2 CP", "timing": "End Step", "frequency": "Once per Battle", "effect": "After objectives are scored, return up to one defeated basic Model to each of up to three surviving, unengaged friendly Units within Medium, up to their starting sizes. Remove one temporary negative condition from each chosen Unit." }
+      {
+        "name": "Inspiring Presence",
+        "type": "Passive",
+        "effect": "Friendly Units within Short cannot be forced to Disengage by enemy abilities."
+      },
+      {
+        "name": "Miracle of Deliverance",
+        "type": "Command",
+        "cost": "2 CP",
+        "timing": "End Step",
+        "frequency": "Once per Battle",
+        "effect": "After objectives are scored, return up to one defeated basic Model to each of up to three surviving, unengaged friendly Units within Medium, up to their starting sizes. Remove one temporary negative condition from each chosen Unit."
+      }
     ]
   },
   "genericUnitsWorthTaking": "Cheap objective-holding Infantry, ordinary Crossbowmen, Field Medics, and generic Heavy Cavalry. The Sacred Orders' specialized troops are powerful but expensive.",

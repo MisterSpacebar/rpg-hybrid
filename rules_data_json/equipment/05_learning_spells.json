@@ -18,9 +18,21 @@
       "Reading or studying the scroll grants the spell permanently when its learning requirements are met. The scroll is normally consumed or otherwise expended during this process. The character does not need to continue carrying the original scroll."
     ],
     "provisionalCosts": [
-      { "category": "Basic Spell", "points": 10, "typicalExamples": "Ordinary single-target attack" },
-      { "category": "Specialized Spell", "points": 20, "typicalExamples": "Attack with control, support, or limited area effects" },
-      { "category": "Powerful Spell", "points": 30, "typicalExamples": "Especially strong, broad, or unusual Attack" }
+      {
+        "category": "Basic Spell",
+        "points": 10,
+        "typicalExamples": "Ordinary single-target attack"
+      },
+      {
+        "category": "Specialized Spell",
+        "points": 20,
+        "typicalExamples": "Attack with control, support, or limited area effects"
+      },
+      {
+        "category": "Powerful Spell",
+        "points": 30,
+        "typicalExamples": "Especially strong, broad, or unusual Attack"
+      }
     ],
     "knownSpellAttackRules": [
       "May be used during their appropriate combat phase.",
@@ -28,6 +40,15 @@
       "May be improved through Prowess or Spell Prowess.",
       "Remain known unless a special rule removes access to them.",
       "Additional Spell Attacks do not grant additional activations."
+    ],
+    "namedOptionalSpells": [
+      {
+        "name": "Force Bolt",
+        "points": 10,
+        "eligibleClass": "Mage",
+        "profile": "8\" / 3 / 5+ / 1 / Magic; Surge: Push 1\"",
+        "notes": "Formerly free; now optional. Subclass spell grants unchanged."
+      }
     ]
   },
   "fullSpellCatalogueSourceRef": "12_spell_catalogue.md"

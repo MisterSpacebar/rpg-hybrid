@@ -86,6 +86,36 @@ export default function CharacterDatasheet({ character, view }) {
           </table>
         )}
 
+        {view.thrall && (
+          <div className="sheet-block">
+            <h4>{view.thrall.name} Unit <span className="muted small">· starts with {view.thrall.startingModels} Models (max {view.thrall.maxModels})</span></h4>
+            <table className="sheet-table">
+              <thead>
+                <tr><th>Move</th><th>Wounds</th><th>Armor</th><th>Evade</th><th>Ward</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{view.thrall.stats.move}</td><td>{view.thrall.stats.wounds} per Model</td>
+                  <td>{view.thrall.stats.armor}</td><td>{view.thrall.stats.evade}</td><td>{view.thrall.stats.ward ?? '—'}</td>
+                </tr>
+              </tbody>
+              <thead>
+                <tr><th>Attack</th><th>Range</th><th>A</th><th>Hit</th><th>Dmg</th><th>Keywords</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="name-melee">{view.thrall.attack.name}</td><td>{view.thrall.attack.range}</td><td>{view.thrall.attack.attacks}</td>
+                  <td>{view.thrall.attack.hit}</td>
+                  <td>{view.thrall.attack.damage} <span className="muted small">{view.thrall.attack.damageTypes.join('/')}</span></td>
+                  <td>{view.thrall.attack.keywords.join(', ')}</td>
+                </tr>
+              </tbody>
+            </table>
+            <p><strong>{view.thrall.passive.name}</strong><br />{view.thrall.passive.effect}</p>
+            <p className="muted small">Armor, Evade and Hit follow the Necromancer's Medicine, Stealth and Mysticism skills.</p>
+          </div>
+        )}
+
         <div className="char-cols">
           <div>
             <div className="sheet-block">

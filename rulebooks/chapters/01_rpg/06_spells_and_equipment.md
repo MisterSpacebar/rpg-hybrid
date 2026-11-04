@@ -9,9 +9,9 @@ Spell Attacks do not occupy the four optional prepared Command slots; learnable 
 | Spell | Range | A | Hit | Dmg | Keywords | Cost |
 | --- | --- | ---: | --- | ---: | --- | --- |
 | Magic Missile | 6" | 3 | 5+ | 1 | Magic, Pinpoint | Included |
-| Force Bolt | 8" | 3 | 5+ | 1 | Magic, Surge: Push 1" | Included |
+| Force Bolt (optional) | 8" | 3 | 5+ | 1 | Magic, Surge: Push 1" | +10 Points |
 
-All Mages know both. **Force Bolt:** on Surge, push the target 1" away from the caster, respecting legal placement.
+All Mages begin with **Magic Missile only**. **Force Bolt** is an optional permanently learned Spell Attack for +10 Points; on Surge, push the target 1" away from the caster, respecting legal placement. Subclass starting spells remain included as printed.
 
 ## Mage: Subclass Spells
 

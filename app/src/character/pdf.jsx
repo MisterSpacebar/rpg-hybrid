@@ -117,6 +117,25 @@ export function CharacterDocument({ character, view }) {
           </View>
         )}
 
+        {view.thrall && (
+          <View wrap={false}>
+            <Text style={st.h}>{s(view.thrall.name.toUpperCase())} UNIT</Text>
+            <Text style={st.muted}>{s(`Starts with ${view.thrall.startingModels} Models (max ${view.thrall.maxModels}). Armor, Evade and Hit follow the Necromancer's Medicine, Stealth and Mysticism skills.`)}</Text>
+            <View style={st.tableRow}>
+              <Text style={st.th}>MOVE {s(view.thrall.stats.move)}   WOUNDS {s(view.thrall.stats.wounds)} per Model   ARMOR {s(view.thrall.stats.armor)}   EVADE {s(view.thrall.stats.evade)}   WARD {s(view.thrall.stats.ward ?? '-')}</Text>
+            </View>
+            <View style={st.tableRow}>
+              <Text style={[{ flex: 1.3 }, st.bold, { color: TONE.melee }]}>{s(view.thrall.attack.name)}</Text>
+              <Text style={cell(50)}>{s(view.thrall.attack.range)}</Text>
+              <Text style={cell(16)}>{s(view.thrall.attack.attacks)}</Text>
+              <Text style={cell(24)}>{s(view.thrall.attack.hit)}</Text>
+              <Text style={cell(24)}>{s(view.thrall.attack.damage)}</Text>
+              <Text style={{ flex: 1.2 }}>{s([...view.thrall.attack.damageTypes, ...view.thrall.attack.keywords].join(', '))}</Text>
+            </View>
+            <Entry title={view.thrall.passive.name} meta="Passive" text={view.thrall.passive.effect} />
+          </View>
+        )}
+
         <View style={st.cols}>
           <View style={[st.col, { marginRight: 14 }]}>
             <Text style={st.h}>TRAITS</Text>
