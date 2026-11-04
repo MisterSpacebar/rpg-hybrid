@@ -12,8 +12,9 @@ test('both builders share selectable Faction, Role and Trait tags', () => {
 })
 
 test('compound roles match all constituent Anti categories, without adding slots', () => {
-  assert.deepEqual(canonicalTags(['Elite Ranged Infantry']), ['Elite Ranged Infantry', 'Elite', 'Ranged', 'Infantry'])
+  assert.deepEqual(canonicalTags(['Elite Ranged Infantry']), ['Elite Ranged Infantry', 'Elite', 'Ranged', 'Infantry', 'Elite Infantry', 'Ranged Infantry'])
   assert.equal(antiBonus(['Anti-Infantry 1', 'Anti-Elite 3'], ['Elite Ranged Infantry']), 3)
+  assert.equal(antiBonus(['Anti-Ranged Infantry 2'], ['Elite Ranged Infantry']), 2)
 })
 
 test('multiple matching Anti tags use highest rank just once', () => {
