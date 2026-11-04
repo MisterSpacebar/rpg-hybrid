@@ -28,6 +28,7 @@ export async function createCampaign(uid, name, format = 'standard') {
     turn: 1,
     xpTotal: 0,
     status: 'active',
+    patronFactionId: null,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   })
@@ -72,7 +73,7 @@ export async function rejectJoin(campaignId, uid) {
 }
 
 export async function updateCampaignProgress(campaign, patch) {
-  const permitted = ['xpTotal', 'act', 'turn', 'status']
+  const permitted = ['xpTotal', 'act', 'turn', 'status', 'patronFactionId']
   const update = Object.fromEntries(Object.entries(patch).filter(([key]) => permitted.includes(key)))
   await updateDoc(campaignRef(campaign.id), { ...update, updatedAt: serverTimestamp() })
 }
@@ -137,7 +138,6 @@ export async function loadEntitlement(id, uid) {
 }
 export async function setEntitlement(id, uid, data) {
   await setDoc(entitlementsRef(id, uid), {
-    patronSlots: (data.patronSlots ?? []).slice(0, 2),
     flexSlots: (data.flexSlots ?? []).slice(0, 2),
     grandThirdCommand: data.grandThirdCommand === true,
   })
