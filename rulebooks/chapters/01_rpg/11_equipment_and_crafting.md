@@ -46,14 +46,14 @@ Equipment uses the standard Keywords described in the Combat Rules.
 | --- | --- |
 | Accurate X | Reroll up to X natural 1s on the Attack's Hit roll |
 | Tough X | Reroll up to X natural 1s on Armor Saves |
-| Critical X | After rerolls, convert up to X failed Hit dice into Critical Hits; no inherent Surge prerequisite |
+| Critical X | After rerolls, convert up to X failed Hit dice **per Surge** into Critical Hits; printed/passive Critical needs a Surge. CP-granted Critical converts X once, even without a Surge. |
 | Anti-[Category] X | Gain +X Attack dice against the indicated category |
 | Heavy | Subject to normal Heavy movement restrictions |
 | Brace X | Reduce incoming Charge Impact Hits by X, minimum 0 |
 | Long Range X | Extend maximum Range by X"; attacking beyond normal Range reduces the combined Attack pool by 1 die (single-model Unit) or 3 dice (multi-model Unit), minimum 1 |
 | Rapid-Fire X | Gain +X Attacks against targets within half the weapon's normal Range |
 | Instant | Cannot be responded to with Command Abilities |
-| Pinpoint | Ignore the Hit penalty for attacking enemies Engaged with another Unit |
+| Pinpoint | Ignore the Hit penalty and engagement-related Direct Damage 2 per Blunder when firing into an enemy Engaged with a different friendly Unit |
 | Magic | The Attack counts as Magic rather than Physical |
 
 For full timing, stacking, and saves use [Keywords](10_keywords.md). A weapon’s keywords normally apply only to its own Attack.
@@ -85,7 +85,7 @@ Simple weapons require little specialized training and are commonly available.
 | Warhammer | Engaged | 2 | 5+ | 2 | Anti-Armored 2 | 15 |
 | Rapier | Engaged | 4 | 5+ | 1 | Critical 1 | 25 |
 
-**Anti-Armored X** checks for the **Armored** Trait tag, not a target's Armor Save characteristic (see Unit Tags). The Rapier's increased cost reflects its unconditional Critical 1, which converts one failed Hit die after rerolls even without a Surge. As always, Critical Hits bypass Armor/Evade but allow Ward.
+**Anti-Armored X** checks for the **Armored** Trait tag, not a target's Armor Save characteristic (see Unit Tags). The Rapier's increased cost reflects its passive Critical 1, which can convert one failed Hit die **per Surge** after rerolls, but not without a Surge. As always, Critical Hits bypass Armor/Evade but allow Ward.
 
 ### Heavy Melee Weapons
 

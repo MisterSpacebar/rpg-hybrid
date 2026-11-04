@@ -151,7 +151,8 @@
           {
             "name": "Veterans",
             "points": 75,
-            "effect": "The selected melee weapon gains +1 Attack per Model, and its Hit characteristic improves by one step. Each Model added after Veterans is purchased pays an additional +10 Points Veteran reinforcement surcharge."
+            "effect": "The selected melee weapon gains +1 Attack per Model, and its Hit characteristic improves by one step. Each Model added after Veterans is purchased pays an additional +10 Points Veteran reinforcement surcharge.",
+            "extraModelSurcharge": 10
           },
           {
             "name": "Weapon Specialization",
@@ -248,7 +249,7 @@
                 "Long Range 6\""
               ]
             },
-            "notes": "Mobile volleys with extended reach; beyond 10\" the combined Attack pool loses 1 die for single-model Units or 3 dice for multi-model Units (minimum 1)."
+            "notes": "Mobile volleys with extended reach; beyond 12\" the combined Attack pool loses 1 die for single-model Units or 3 dice for multi-model Units (minimum 1)."
           },
           {
             "name": "Crossbows",
@@ -426,7 +427,8 @@
           {
             "name": "Veterans",
             "points": 75,
-            "effect": "The selected ranged weapon gains +1 Attack per Model and improves Hit by one step."
+            "effect": "The selected ranged weapon gains +1 Attack per Model and improves Hit by one step.",
+            "extraModelSurcharge": 15
           },
           {
             "name": "Deadly Precision",
@@ -657,7 +659,8 @@
           {
             "name": "Reinforced Bodies",
             "points": 30,
-            "effect": "Each existing and future Model in this Unit gains +1 maximum Wound (W3 to W4). The upgrade covers the starting three Models; pay +10 Points for each additional Model purchased after it."
+            "effect": "Each existing and future Model in this Unit gains +1 maximum Wound (W3 to W4). The upgrade covers the starting three Models; pay +10 Points for each additional Model purchased after it.",
+            "extraModelSurcharge": 10
           },
           {
             "name": "Additional Model",

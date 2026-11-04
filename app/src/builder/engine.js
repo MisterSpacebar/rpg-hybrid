@@ -78,6 +78,9 @@ function describeTagChoice(o, cfg, targets) {
   const tag = o.tagChoice && cfg.tagPicks?.[o.id]?.tag
   if (!tag) return o
   const subject = targets[o.id] || (o.tagChoice.scope === 'unit' ? 'This unit' : 'The selected weapon')
+  if (o.tagChoice.scope === 'aura') {
+    return { ...o, chosenTag: tag, effect: String(o.effect).replace(/Anti-\[(?:selected tag|chosen tag|Type)\]/gi, `Anti-${tag}`) }
+  }
   return { ...o, chosenTag: tag, effect: `${subject} gains Anti-${tag} ${o.tagChoice.rank}.` }
 }
 
@@ -98,7 +101,12 @@ export function resolveUnit(entry, cfg, factionId = null) {
 
   const models = Math.min(Math.max(cfg.models ?? entry.baseModels, entry.baseModels), entry.maxModels)
   const extra = models - entry.baseModels
-  if (extra > 0) total += extra * (perModelCost(entry, selected) + PACKAGE_SURCHARGE * paidPackages)
+  if (extra > 0) {
+    // Training such as Veterans, Deadly Precision, and Reinforced Bodies can add a
+    // surcharge for EVERY additional Model, independently of paid weapon packages.
+    const trainingSurcharge = picked.reduce((n, o) => n + (Number(o.extraModelSurcharge) || 0), 0)
+    total += extra * (perModelCost(entry, selected) + PACKAGE_SURCHARGE * paidPackages + trainingSurcharge)
+  }
 
   const doubled = entry.canDouble && !!cfg.doubled
   if (doubled) total *= 2
@@ -131,6 +139,9 @@ export function resolveUnit(entry, cfg, factionId = null) {
 
   const finalModels = doubled ? models * 2 : models
   const tags = modifyTags(entry.tags.filter((t) => !(isHero && t === 'Elite' && entry.heroOption === 'Master Wizard')), picked)
+  // Hero and Character are distinct. A commissioned Captain or Master Wizard
+  // gains Hero but not Character; named PCs/legendary figures gain Character explicitly.
+  if (isHero && !tags.includes('Hero')) tags.push('Hero')
   const fx = applyFactionEffects(factionId, { source: entry.source, models: finalModels, stats, attacks, tags })
 
   return {

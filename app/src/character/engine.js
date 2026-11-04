@@ -433,6 +433,14 @@ export function derive(char, data) {
     const target = e.first.attack
     if (PROWESS.has(e.def.id)) bump(target, e.entry.mode === 'hit' ? 'hit' : 'attacks')
     else if (e.def.id === 'sharpeye') bump(e.entry.attack, 'accurate')
+    else if (e.def.id === 'precision-shooting') {
+      if (e.entry.attack) (mod(e.entry.attack).keywords ??= []).push('Pinpoint')
+    }
+    else if (e.def.id === 'critical-force' && e.entry.attack) {
+      (mod(e.entry.attack).keywords ??= []).push(
+        has('greater-critical-force') ? 'Critical Force +2 (one surviving Critical Hit)' : 'Critical Force +1 (one surviving Critical Hit)'
+      )
+    }
     else if (e.def.id === 'critical-prowess') bump(target, 'crit')
     else if (e.def.id === 'long-range') bump(target, 'longRange', 3)
     else if (['extended-shot', 'spell-reach', 'sacred-reach'].includes(e.def.id)) bump(target, 'range', 2)
@@ -505,7 +513,9 @@ export function derive(char, data) {
   }
   // The Artificer's Field Formulae ability just says how to pick Formulas, so the sheet lists the Formulas themselves instead.
   if (cls.classAbility && cls.id !== 'artificer') traits.push({ source: `${cls.name} Class Ability`, name: cls.classAbility.name, text: flat(cls.classAbility.effect), timing: [cls.classAbility.cost, cls.classAbility.timing].filter(Boolean).join(' · '), klass: true })
-  const tags = [...new Set([...(cls.tags ?? []), ...(sub.additionalTags ?? []), 'Hero'])]
+  // Character denotes a PC or an explicitly named/legendary figure, not a generic
+  // Hero. Ancestry and creature-type tags are independent of army allegiance.
+  const tags = [...new Set([...(ancestry.tags ?? []), ...(archetype?.tags ?? []), ...(cls.tags ?? []), ...(sub.additionalTags ?? []), 'Character', 'Hero'])]
 
   const commands = []
   const signature = sub.signatureAbility
