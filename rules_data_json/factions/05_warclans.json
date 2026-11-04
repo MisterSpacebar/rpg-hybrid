@@ -312,7 +312,7 @@
           "hit": "4+",
           "damage": 2,
           "keywords": [
-            "Anti-Character 2"
+            "Anti-Unique 2"
           ]
         }
       ],
@@ -386,7 +386,7 @@
       "Hero",
       "Mortal",
       "Armored",
-      "Character",
+      "Unique",
       "Officer"
     ],
     "modelProfile": {
@@ -426,6 +426,6 @@
   },
   "genericUnitsWorthTaking": "Bow Infantry, Light Cavalry, mounted skirmishing configurations, Medics, and cheap spear formations. This army should not need a unique version of every kind of fighter.",
   "designNotes": [
-    "v4.2 balance pass: added Boar Riders as the faction's Extra Core, a Charge-focused Cavalry unit reinforcing the aggression/Charge identity rather than patching a weakness. Choppa Mob's Horde Infantry weapon profile was kept unchanged (Models, not Attacks, is this faction's established horde-buff pattern). Other Damage-1 weapons gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Elite on the Warboss' Boss Choppa, Anti-Character on the War Beast's Tusks and Claws) or an improved Hit (Boulder Thrower 5+ -> 4+)."
+    "v4.2 balance pass: added Boar Riders as the faction's Extra Core, a Charge-focused Cavalry unit reinforcing the aggression/Charge identity rather than patching a weakness. Choppa Mob's Horde Infantry weapon profile was kept unchanged (Models, not Attacks, is this faction's established horde-buff pattern). Other Damage-1 weapons gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Elite on the Warboss' Boss Choppa, Anti-Unique on the War Beast's Tusks and Claws) or an improved Hit (Boulder Thrower 5+ -> 4+)."
   ]
 }
