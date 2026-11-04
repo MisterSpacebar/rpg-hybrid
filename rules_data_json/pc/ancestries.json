@@ -154,7 +154,7 @@
           {
             "id": "vampire",
             "name": "Vampire",
-            "effect": "Once per Round, when you destroy an enemy Unit with an Engagement Attack, Heal 1."
+            "effect": "Once per Round, when you destroy an enemy Unit with an Melee Attack, Heal 1."
           }
         ]
       }

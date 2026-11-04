@@ -1,15 +1,43 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "14. Gambit" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "14. Gambit"
+  },
   "name": "Gambit",
   "foundationRecruitmentSlot": "C",
   "strategy": "Accept dangerous, unreliable outcomes in exchange for powerful attacks, desperate defense, and risky maneuvers.",
   "designNote": "Gambit uses Reckless Rolls, additional dice, and unusually consequential failures.",
   "commands": [
-    { "name": "Double Down", "slot": "C", "timing": "Assault/Combat Reaction", "effect": "When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit normally, to a maximum of the incoming Hits. Excess successful Saves have no effect. These dice cannot be rerolled. Backlash: After resolving the Attack, suffer 1 unpreventable Damage for each natural 1 rolled." },
-    { "name": "Risky Calculations", "slot": "S", "timing": "Assault", "effect": "One friendly Unit gains +2 Attacks on its next ranged or Spell Attack this Phase. Its Hit roll is Reckless. Blunder: The attacking Unit suffers Direct Damage 1." },
-    { "name": "No Quarter", "slot": "E", "timing": "Combat", "effect": "One friendly Unit gains +1 Attack and Critical 2 on its next Engagement Attack this Phase. Its Hit roll is Reckless. Blunder: The Unit cannot use Reactions for the remainder of the Round." },
-    { "name": "Expend the Reserve", "slot": "A", "timing": "Assault/Combat", "effect": "One friendly Unit gains +3 Attacks on its next Attack this Phase. Its Hit roll is Reckless. Blunder: The Unit suffers Direct Damage 2." },
-    { "name": "All or Nothing", "slot": "V", "timing": "Assault", "effect": "Declare a Charge against an eligible enemy at least 6\" away. Gain Charge 1 and Impact +1 for that Charge. If the Charge succeeds, resolve it normally. If it fails, the Unit must move its modified rolled Charge distance toward the target as far as legally possible, stopping without becoming Engaged, and then suffers 1 unpreventable Damage. Normal Charge Blunder effects still apply." }
+    {
+      "name": "Double Down",
+      "slot": "C",
+      "timing": "Assault/Combat Reaction",
+      "effect": "When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit normally, to a maximum of the incoming Hits. Excess successful Saves have no effect. These dice cannot be rerolled. Backlash: After resolving the Attack, suffer 1 unpreventable Damage for each natural 1 rolled."
+    },
+    {
+      "name": "Risky Calculations",
+      "slot": "S",
+      "timing": "Assault",
+      "effect": "One friendly Unit gains +2 Attacks on its next ranged or Spell Attack this Phase. Its Hit roll is Reckless. Blunder: The attacking Unit suffers Direct Damage 1."
+    },
+    {
+      "name": "No Quarter",
+      "slot": "E",
+      "timing": "Combat",
+      "effect": "One friendly Unit gains +1 Attack and Critical 2 on its next Melee Attack this Phase. Its Hit roll is Reckless; CP-granted Critical requires no Surge. Blunder: Become Off-Balance until the beginning of its next Movement activation and cannot use Reaction Commands until then."
+    },
+    {
+      "name": "Expend the Reserve",
+      "slot": "A",
+      "timing": "Assault/Combat",
+      "effect": "One friendly Unit gains +3 Attacks on its next Attack this Phase. Its Hit roll is Reckless. Blunder: The Unit suffers Direct Damage 2."
+    },
+    {
+      "name": "All or Nothing",
+      "slot": "V",
+      "timing": "Assault",
+      "effect": "Declare a Charge against an eligible enemy at least 6\" away. Gain Charge 2 and Impact +2 for that Charge. If the Charge succeeds, resolve it normally. If it fails, the Unit must move its modified rolled Charge distance toward the target as far as legally possible, stopping without becoming Engaged, and then suffers 1 unpreventable Damage. Normal Charge Blunder effects still apply."
+    }
   ],
   "doubleDownClarification": "Double Down does not roll pairs and keep the highest. All additional dice contribute to a single Armor Save pool. For example, if an Attack produces three Hits, the defender rolls six Armor Save dice. Up to three successful Saves cancel the three Hits. Every natural 1 among all six dice causes 1 unpreventable Backlash Damage after the Attack is resolved. Backlash applies to every natural 1, not merely when the roll generates a normal Blunder.",
   "allOrNothingClarification": "The declared target must be an otherwise legal Charge target, within the normal 12\" declaration limit and at least 6\" away. If the Charge fails because of insufficient distance or an illegal path, move along a legal path toward the target as far as the modified Charge distance permits without entering Engagement. If no legal movement is possible, the Unit remains in place and still suffers the failed-Charge Damage. The failed movement does not generate Charge Impact.",

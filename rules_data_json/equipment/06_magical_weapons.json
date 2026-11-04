@@ -62,7 +62,7 @@
           "name": "Perfect Form",
           "cost": "1 CP",
           "timing": "Combat",
-          "effect": "Before making an Engagement Attack with this weapon, gain Accurate 2 for that Attack."
+          "effect": "Before making an Melee Attack with this weapon, gain Accurate 2 for that Attack."
         }
       },
       {

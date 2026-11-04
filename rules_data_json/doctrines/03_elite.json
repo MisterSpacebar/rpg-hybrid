@@ -1,14 +1,42 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "3. Elite" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "3. Elite"
+  },
   "name": "Elite",
   "foundationRecruitmentSlot": "E",
-  "strategy": "Achieve superior performance through disciplined attacks, careful execution, and technical proficiency.",
+  "strategy": "Improve existing Units through Accurate, Critical, Tough, Brace, and suppression of defensive reroll keywords, without broadly increasing Attack dice.",
   "commands": [
-    { "name": "Veteran Spearhead", "slot": "E", "timing": "Combat", "effect": "One friendly Unit gains +1 Attack and Accurate 2 on its next Engagement Attack this Phase." },
-    { "name": "Find the Opening", "slot": "H", "timing": "Assault/Combat", "effect": "Choose one visible enemy Unit. Worsen its Evade by one step against the next friendly Attack targeting it this Phase. If the target has no Evade, that Attack gains Accurate 1 instead." },
-    { "name": "Perfect Technique", "slot": "E", "timing": "Assault/Combat Reaction", "effect": "After one friendly Unit rolls to Hit, reroll up to two failed Hit dice. Dice already rerolled cannot be selected." },
-    { "name": "Combat Training", "slot": "S", "timing": "Movement", "effect": "Choose one friendly Unit. Its next Attack this Round gains Accurate 2 and ignores one step of Hit worsening caused by a temporary condition." },
-    { "name": "Knightly Order", "slot": "V", "timing": "Assault", "effect": "One friendly Unit gains Charge 1 on its next Charge this Phase. If the Charge succeeds, its first Engagement Attack against that enemy this Round gains Accurate 2." }
+    {
+      "name": "Veteran Spearhead",
+      "slot": "E",
+      "timing": "Combat",
+      "effect": "Choose one friendly Elite Unit. Its next Melee Attack this Phase gains Critical 1 without a Surge, as this is a CP-paid Command. Elite Units include Elite, Elite Infantry, Elite Cavalry, and Elite Ranged Infantry tags."
+    },
+    {
+      "name": "Find the Opening",
+      "slot": "H",
+      "timing": "Assault/Combat",
+      "effect": "One friendly Unit gains Accurate 2 on its next Attack this Phase."
+    },
+    {
+      "name": "Perfect Technique",
+      "slot": "E",
+      "timing": "Assault/Combat",
+      "effect": "One friendly Unit gains Accurate 1 on its next Attack this Phase. Against that Attack, reduce the defender's effective Tough X and Cover X by 2 each, minimum zero. Suppressing Cover rerolls does not remove Cover-granted Evade eligibility."
+    },
+    {
+      "name": "Combat Training",
+      "slot": "S",
+      "timing": "Movement",
+      "effect": "One friendly Unit gains Tough 1 and Brace 1 until the end of the Round."
+    },
+    {
+      "name": "Knightly Order",
+      "slot": "V",
+      "timing": "Assault",
+      "effect": "One friendly Unit gains Charge 1 and Impact 1 on its next Charge this Phase."
+    }
   ],
-  "doctrineIdentity": "Reliable, high-quality combat performance. Elite emphasizes making existing Attacks more effective. Alpha Strike produces larger opening attacks, while Counter Strike and Castling provide more dedicated defensive tools."
+  "doctrineIdentity": "Disciplined, keyword-focused precision and defense; unlike Gambit, Elite does not use Reckless for additional Attack volume."
 }

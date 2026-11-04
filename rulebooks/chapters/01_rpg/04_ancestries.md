@@ -91,4 +91,4 @@ Gain Ward 6+ against non-Magic Weapon Attacks.
 
 ### Vampire
 
-Once per Round, when you destroy an enemy Unit with an Engagement Attack, Heal 1.
+Once per Round, when you destroy an enemy Unit with an Melee Attack, Heal 1.

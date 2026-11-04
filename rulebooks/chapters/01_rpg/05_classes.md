@@ -29,7 +29,7 @@ Assault Phase: Ranged Weapon Attacks and ranged Spell Attacks.
 
 Combat Phase: Melee Weapon Attacks and Spell Attacks with an Engaged Range.
 
-Characters may acquire weapons for either phase, regardless of their Subclass’s suggested equipment. A Class without a starting Assault Attack may still participate in that phase through other eligible actions and may acquire ranged weapons later. Charging remains a standard **Assault action** available to eligible Units, using universal 2D6 (plus Charge X) in Structured Combat or success-based Charging in Narrative Combat. A Charge's base Impact equals the highest Charge die, with Impact X adding to it.
+Characters may acquire weapons for either phase, regardless of their Subclass’s suggested equipment. A Class without a starting Assault Attack may still participate in that phase through other eligible actions and may acquire ranged weapons later. Charging remains a standard **Assault action**. Ordinary Units roll 2D6 in Structured Combat. PCs instead roll Body + Athletics (Rogues may use Agility + Athletics), use the two highest dice for distance and the highest for base Impact, and allocate each Athletics Success to +1" distance or +1 Impact. Charge X and printed Impact X still apply. Narrative Combat uses Range Band Charge requirements.
 
 **Example:** A Berserker choosing the standard Longsword pays its listed **10 Equipment Points** and uses **Engaged / A 4 / Hit 5+ / Dmg 1** as printed in the Equipment Catalogue. It does not become A 5 merely because a PC or Warrior equips it. An explicit +1 Attack die from a Talent or Command would increase it to A 5 for the specified Attack.
 

@@ -27,8 +27,9 @@
     "If a bonus says '+1 Attack per Model', add one die for every eligible contributing Model; if it says '+2 Attacks to a Unit's next Attack', add only two dice total.",
     "When different Model groups use different weapons or benefits, resolve separate pools as necessary.",
     "Each die may be rerolled no more than once.",
-    "Critical X: after rerolls, convert up to X failed Hit dice to Critical Hits without requiring a Surge unless a particular source says it does.",
-    "No per-Model multiplication of a keyword's X value occurs by default."
+    "Critical X: printed/passive sources convert up to X failed Hit dice only on a Surge; a CP-paid Command explicitly granting Critical X bypasses this requirement. Ward applies.",
+    "No per-Model multiplication of a keyword's X value occurs by default.",
+    "Long Range X: reduce the combined Attack pool by 2 dice beyond printed normal range (minimum 1), rather than worsening Hit."
   ],
   "equipmentAndUpgradeCostRules": [
     "Base Unit costs include their standard equipment.",
@@ -62,7 +63,8 @@
         "An exhausted card cannot be exhausted again until the next Round, when all cards become ready. Each selected card's printed Command can therefore be used no more than once per Round unless a rule explicitly says otherwise.",
         "A 0 CP ability does not consume or exhaust a card; its own timing and usage restrictions still apply.",
         "Personal phase Commands normally occur only during that Unit's own activation. Faction and Doctrine phase Commands are used while the controlling side has activation priority. Reactions are used at their stated triggers without requiring priority; explicitly timed End Step Commands resolve in the End Step.",
-        "Extra Attacks or activations occur only when the ability explicitly grants them. A Command does not normally replace the Unit's chosen Phase action unless stated otherwise."
+        "Extra Attacks or activations occur only when the ability explicitly grants them. A Command does not normally replace the Unit's chosen Phase action unless stated otherwise.",
+        "Only one friendly Unit/Faction/Doctrine Command per Unit activation, with one eligible opposing Reaction; only one friendly Command effect per Attack, Charge, or Save sequence, even if prepared earlier."
       ]
     },
     "campaignAndRpg": {

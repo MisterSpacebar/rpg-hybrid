@@ -308,7 +308,7 @@ The weapon gains Critical 1. If the weapon already possesses Critical, increase 
 
 ### Perfect Form — 1 CP, Combat
 
-Before making an Engagement Attack with this weapon, gain Accurate 2 for that Attack.
+Before making an Melee Attack with this weapon, gain Accurate 2 for that Attack.
 
 ### Giantslayer — +25 Points
 

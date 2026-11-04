@@ -92,7 +92,7 @@ Use the original ancestry benefits, with these battlefield-duration and targetin
 | **Kobold — Pack Fighter** | Weapon Attacks gain Accurate +1 against an enemy Engaged with another friendly Unit. |
 | **Undead — Deathless** | Retain Deathless, the `Undead` Trait, and the Character's original Skeleton, Zombie, Spirit, or Vampire Archetype. See below. |
 
-**Undead Archetypes:** Skeleton retains Tough 1 against ranged Weapon Attacks. Spirit retains Ward 6+ against non-Magic Weapon Attacks. Vampire retains its once-per-Round Heal 1 on destroying an enemy Unit with an Engagement Attack. Zombie retains its first-defeat **Hard Body + Survival** survival Check, now **once per battle**; on success it remains at **up to 2 Wounds** (no more than its current maximum). This is a deliberately limited version of the original Body-based recovery to prevent a one-Model Hero from receiving a full additional Wound bar.
+**Undead Archetypes:** Skeleton retains Tough 1 against ranged Weapon Attacks. Spirit retains Ward 6+ against non-Magic Weapon Attacks. Vampire retains its once-per-Round Heal 1 on destroying an enemy Unit with an Melee Attack. Zombie retains its first-defeat **Hard Body + Survival** survival Check, now **once per battle**; on success it remains at **up to 2 Wounds** (no more than its current maximum). This is a deliberately limited version of the original Body-based recovery to prevent a one-Model Hero from receiving a full additional Wound bar.
 
 A Beastfolk's chosen Adaptation is not rerolled or exchanged for new options during conversion. An Ancestry does not grant a different Faction tag; the Legacy Captain's current army allegiance determines its Faction.
 

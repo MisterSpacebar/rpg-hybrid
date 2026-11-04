@@ -227,7 +227,7 @@ Once per Round, each friendly **Core or Elite Unit** reduces the first instance 
 ### Faction Commands
 
 - Stand Fast — Reaction 1 CP: Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase.
-- Righteous Retaliation — Reaction 1 CP: After a friendly Unit survives an Engagement Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round.
+- Righteous Retaliation — Reaction 1 CP: After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round.
 - Heroic Intervention — Reaction 1 CP, Reaction: When a nearby ally is attacked, one friendly Character may Move up to 3" toward it.
 
 ### Signature Core Units
@@ -956,7 +956,7 @@ Once per Round, after a friendly Unit defeats an enemy Model in Engagement, Heal
 
 ### Faction Commands
 
-- Blood Frenzy — Combat 1 CP: One friendly Unit gains +1 Attack per Model on its next Engagement Attack this Combat Phase.
+- Blood Frenzy — Combat 1 CP: One friendly Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase.
 - Predatory Speed — Reaction 1 CP: After destroying an enemy Unit, one friendly Unit may Move up to 2".
 - Mesmerize — Reaction 1 CP: One nearby enemy worsens Hit by one step when attacking a chosen friendly Character until the end of the Phase.
 
@@ -980,7 +980,7 @@ Blood Pistol: 6” / 3 / 4+ / 1 / Firearm, Pinpoint
 
 Noble Blade: Engaged / 4 / 4+ / 2 / Anti-Elite 2
 
-Challenge Prey — 1 CP, Assault: Choose one enemy Character within Short. The Vampire Captain's next Engagement Attack against it gains Critical 1.
+Challenge Prey — 1 CP, Assault: Choose one enemy Character within Short. The Vampire Captain's next Melee Attack against it gains Critical 1.
 
 
 
@@ -1118,7 +1118,7 @@ Funeral Bell — 1 CP, Movement: One visible enemy within Medium cannot benefit 
 | Unit                                                    | Profile                                          | Weapons / Special Ability                                                                                                                                                    |
 | ------------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Mourning Engine — 255 pts (Spirit,  Construct, Armored) | M5" / W9 / Arm 5+ / Eva 5+ / Ward 4+ (Physical)  | Soul Wave: 8" / 5 / 5+ / 1 / Magic, Blast 1". Spectral Limbs: Engaged / 4 / 5+ / 1 / Magic. Unbound Spirit: Ignores terrain and Models while moving, finishing legally.      |
-| Grave Leviathan — 325 pts (Monster, Spirit, Undead )    | M6" / W12 / Arm 6+ / Eva 5+ / Ward 4+ (Physical) | Abyssal Grasp: Engaged 2" / 5 / 4+ / 2 / Magic, Anti-Armored 2. Otherworldly Bulk: After successfully Charging, enemies cannot use Reactions against its first Engagement Attack that Round. |
+| Grave Leviathan — 325 pts (Monster, Spirit, Undead )    | M6" / W12 / Arm 6+ / Eva 5+ / Ward 4+ (Physical) | Abyssal Grasp: Engaged 2" / 5 / 4+ / 2 / Magic, Anti-Armored 2. Otherworldly Bulk: After successfully Charging, enemies cannot use Reactions against its first Melee Attack that Round. |
 
 ### Faction Leader — Pale Monarch
 
@@ -1242,7 +1242,7 @@ Unholy Benediction — 1 CP, Movement: One friendly Infernal Unit within Short g
 
 | Unit                                          | Profile                                       | Weapons / Special Ability                                                                                                                                 |
 | --------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Greater Fiend — 310 pts (Monster, Infernal)   | M6" / W12 / Arm 4+ / Eva 5+ / Ward 5+ (Magic) | Daemon Weapon: Engaged / 5 / 4+ / 2 / Magic, Anti-Elite 2. Unstable Power: Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Engagement Attack. |
+| Greater Fiend — 310 pts (Monster, Infernal)   | M6" / W12 / Arm 4+ / Eva 5+ / Ward 5+ (Magic) | Daemon Weapon: Engaged / 5 / 4+ / 2 / Magic, Anti-Elite 2. Unstable Power: Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Melee Attack. |
 | Rift Engine — 225 pts (War Machine, Infernal) | M3" / W8 / Arm 5+ / Eva — / Ward 6+ (Magic)   | Rift Battery: 10" / 3 / 4+ / 2 / Magic, Blast 1", Heavy. Crew: Engaged / 2 / 6+ / 1. Volatile Gate: On a Blunder, suffer Direct Damage 1.                 |
 
 ### Faction Leader — Archfiend
@@ -1495,11 +1495,11 @@ Royal Maul: Engaged / 8 / 3+ / 3
 
 
 
-Supreme Bully — Passive: The Overtyrant's Engagement Attacks gain Anti-Monster 2 and Anti-Character 2.
+Supreme Bully — Passive: The Overtyrant's Melee Attacks gain Anti-Monster 2 and Anti-Character 2.
 
 
 
-The Crushing Tide — Movement 2 CP, Once per Battle: Up to two friendly Ogre or Monster Units within Medium gain +1 Impact and +1 Damage on their next Engagement Attack this Round.
+The Crushing Tide — Movement 2 CP, Once per Battle: Up to two friendly Ogre or Monster Units within Medium gain +1 Impact and +1 Damage on their next Melee Attack this Round.
 
 
 

@@ -125,7 +125,7 @@ Some existing army profiles use additional battlefield labels or army-list class
 | Label | Meaning |
 | --- | --- |
 | **Core** | A designated Core Unit; counts toward the required number of Core Units in applicable army formats. |
-| **Elite** | A higher-grade Unit or specialist. Elite does not imply Hero. |
+| **Elite** | A higher-grade Unit or specialist. Elite does not imply Hero. Elite-subtype tags (Elite Infantry, Elite Cavalry, Elite Ranged Infantry) also satisfy Commands requiring an Elite Unit. |
 | **Hero** | A designated Hero, subject to the army's Hero limits where applicable. |
 | **Wizard** | A designated spellcasting Unit eligible for rules specifically referencing Wizards. |
 | **Ranged / Ranged Infantry** | Identifies Units with a specialized ranged role; ordinary possession of a ranged weapon does not automatically change recruitment eligibility. |

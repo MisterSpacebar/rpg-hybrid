@@ -118,7 +118,7 @@
             "name": "Longbows",
             "points": 25,
             "profile": { "range": "10\"", "attacks": 3, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Long Range 3\""] },
-            "notes": "Mobile volleys with extended reach; beyond 10\" Hit worsens one step."
+            "notes": "Mobile volleys with extended reach; beyond 10\" the combined Attack pool loses 2 dice (minimum 1)."
           },
           {
             "name": "Crossbows",
@@ -172,7 +172,7 @@
           { "name": "Standard Formation", "points": 0, "effect": "Four Models with the selected ranged package." },
           { "name": "Additional Model", "pointsPerModel": 25, "maxModels": 9, "effect": "Add a matching Model, up to 9 Models." },
           { "name": "Rangefinder Training", "points": 20, "effect": "Increase the primary ranged weapon's printed normal Range by 2\". It remains at its listed Hit within this improved range; existing Long Range X begins beyond the improved normal Range." },
-          { "name": "Longshot Training", "points": 10, "effect": "Gain Long Range 2\". If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range worsen Hit by one step." },
+          { "name": "Longshot Training", "points": 10, "effect": "Gain Long Range 2\". If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range reduce the combined Attack pool by 2 dice (minimum 1)." },
           { "name": "Marksman Training", "points": 25, "effect": "The selected ranged weapon gains Accurate 1 for its combined Unit Attack pool." },
           { "name": "Expert Marksmen", "points": 35, "effect": "The primary ranged weapon gains Pinpoint." },
           { "name": "Weapon Specialization", "points": 25, "effect": "Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once." },

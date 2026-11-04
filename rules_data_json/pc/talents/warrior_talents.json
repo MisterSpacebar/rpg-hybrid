@@ -54,7 +54,7 @@
       "tier": 2,
       "cost": "1 CP",
       "type": "Reaction",
-      "effect": "After surviving an Engagement Attack, gain +1 Attack die on your next Engagement Weapon Attack against the attacker. This bonus expires at the end of your next Combat activation."
+      "effect": "After surviving an Melee Attack, gain +1 Attack die on your next Melee Weapon Attack against the attacker. This bonus expires at the end of your next Combat activation."
     },
     {
       "id": "bodyguard",
@@ -78,7 +78,7 @@
       "tier": 2,
       "cost": "1 CP",
       "type": "Combat",
-      "effect": "After your Engagement Weapon Attack deals Damage to an enemy, roll Body + Athletics. If the Check generates at least one success, push the target directly away up to X inches, where X is the highest die rolled. You may follow the target by up to 2\". This is forced movement. The follow-up movement does not count as Disengaging."
+      "effect": "After your Melee Weapon Attack deals Damage to an enemy, roll Body + Athletics. If the Check generates at least one success, push the target directly away up to X inches, where X is the highest die rolled. You may follow the target by up to 2\". This is forced movement. The follow-up movement does not count as Disengaging."
     },
     {
       "id": "breakthrough",
@@ -100,6 +100,13 @@
       "tier": "2+",
       "type": "Passive, Ranked",
       "effect": "Gain Impact X, where X equals the Rank of Mighty Impact. This adds X Hits to the normal highest-die Charge Impact pool following a successful Charge; Armor and Ward apply, but Evade does not."
+    },
+    {
+      "id": "brace-training",
+      "name": "Brace Training",
+      "tier": 2,
+      "type": "Passive",
+      "effect": "When receiving a Charge, gain Brace 1 against that Charge if you did not voluntarily Move during the preceding Movement Phase. Stacks with applicable Brace X."
     },
     {
       "id": "second-wind",

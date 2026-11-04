@@ -176,7 +176,7 @@ Specific missions, Keywords, or Command abilities can modify the arrival locatio
 
 **Alpha Strike — Rapid Mobilization (Rapid Deployment):** Once per battle, in **Round 1**, the player may use the selected Doctrine Command during one of their Movement activation opportunities to deploy **one additional** Reserve Unit wholly within the friendly Deployment Zone. It performs that Unit's normal Movement activation and **may Charge** in the ensuing Assault Phase. This arrival is expressly **outside** the Round 1 reinforcement allowance. It does not grant an extra Movement activation, and all Command costs and card-use requirements still apply.
 
-**Deep Strike:** From **Round 2**, eligible selected Deep Strike Commands may designate a Unit from the same shared Reserve pool for an alternative insertion location. This designation occurs during Movement under the Command's normal timing and priority; the Unit is placed **at the end of Movement** as part of the ordinary alternating Reserve placement procedure. It uses one of the Round's reinforcement allowances, and **at most one Unit per Round** may arrive through Deep Strike deployment Commands. Unless overridden by the Command, a Deep Strike arrival must be wholly more than **9"** from enemy Models, outside the enemy Deployment Zone, legally coherent, and unengaged. The Unit cannot Charge or control/contest objectives during its arrival Round, counts as having Moved for Heavy, and may make eligible non-Heavy ranged or Spell Attacks.
+**Deep Strike:** From **Round 2**, a selected Deep Strike Command may designate a Unit from the shared Reserve pool during a friendly Movement activation. Pay CP and reserve one arrival from the current Round's normal reinforcement allowance at designation; at most one Unit may be designated through Deep Strike per Round. The Unit is **placed during the End Step after Scoring**, not with ordinary end-of-Movement reinforcements. Unless the Command says otherwise, placement must be wholly more than **8"** from enemies, outside the enemy Deployment Zone, legally coherent, and unengaged. The arriving Unit has no activations, attacks, or scoring during its arrival Round; it acts normally from the following Round. Landing Fire and Heavy Descent apply in that following Round.
 
 A Deep Strike Command may expressly vary placement restrictions (for example, **Flanking Insertion** permits edge entry with a more-than-6" enemy exclusion distance). **Heavy Descent** permits eligible Large Assets to arrive through Deep Strike. Normal Reserve deployment of a Large Asset does not require Heavy Descent.
 
@@ -273,6 +273,11 @@ CP pools refresh at the beginning of each Round.
 Unused CP do not carry over.
 
 ### Command timing and priority
+
+**One Command per activation:** The acting side may use at most **one Command** (personal Unit, Faction, or Doctrine) during each Unit's activation, regardless of CP cost. A multi-target Command may affect other Units, but does not authorize another friendly Command during that activation. The opposing side may use **one eligible Reaction Command** against that activation; its trigger and priority rules still apply. Passive effects are not Commands.
+
+**No stacking on one resolution:** An individual Attack, Charge, or Save sequence may benefit from **at most one friendly Command effect**, including effects prepared in earlier Phases. If several friendly prepared effects would apply, choose one; the others do not apply to that sequence. A defending player may use its eligible Reaction against an Attack enhanced by the attacker. Compatible passive abilities, equipment, and Talents still apply.
+
 
 A normal Unit Command with **Movement**, **Assault**, or **Combat** timing may be used only **during that Unit's own activation** in that Phase, when its controlling side has priority and has selected that Unit to activate. The Command may affect another Unit if the ability allows it, but a player cannot activate an unselected ally's personal Command. A Command does not consume the Unit's chosen Phase action unless stated otherwise; its CP cost is paid normally. An eligible Unit may use a Command even if it chooses to forgo its ordinary Phase action.
 
@@ -545,7 +550,7 @@ A Withdrawn Unit cannot Charge. A Unit that arrived from ordinary Reserves or th
 
 ### Universal Charge Roll
 
-An eligible Unit, whether a PC, NPC, or multi-model Unit, rolls **2D6** for a Charge. Determine its available Charge distance as:
+An eligible **non-PC Unit**, including NPCs and multi-model Units, rolls **2D6** for a Charge. Determine its available Charge distance as:
 
 **Charge Distance = total of both D6 results + CHARGE X (if any).**
 
@@ -553,19 +558,27 @@ The declared target must be visible and wholly within the normal **12" declarati
 
 For a multi-model Unit, make **one Charge roll for the Unit**, not a separate roll per Model. Move its Models into legal positions within the rolled allowance while preserving normal Coherency. The Unit's Charge generates **one Impact pool** against the declared target, not Impact per charging Model.
 
+### PC Charge Skill Check and Momentum
+
+A Player Character instead rolls **Body + Athletics**. A Rogue may use **Agility + Athletics** instead. Roll D6 equal to the chosen Characteristic; each die meeting the Athletics rating generates one Success. Use the **two highest dice** for base Charge distance and the **highest die** for base Impact.
+
+Each Athletics Success provides **1 Momentum**. After the roll, before moving, allocate each Momentum to **+1" Charge distance** or **+1 Impact Hit** for this Charge. Charge X applies to distance normally. There is no minimum Success requirement: a Charge succeeds if the final distance legally reaches the target. The normal 12" Charge declaration limit still applies. Unspent Momentum is lost. PC Charge Checks generate Surges and Blunders as ordinary Skill Checks (at most one of each unless a specific rule says otherwise).
+
+**Example:** A Rogue rolls 1, 3, 4, 5 with Agility + Athletics 4+. The two highest dice give 9" base distance, highest die 5 gives base Impact 5, and the two successes provide 2 Momentum. The Rogue may choose +2" distance, +2 Impact, or one of each.
+
 ### Charge Impact
 
-Every successful Charge generates **Impact equal to the highest of the two Charge dice**. A Unit with printed **Impact X** adds X Hits to that base amount; other explicitly applicable bonuses or reductions (including applicable Doctrine bonuses) then apply.
+Every successful Charge generates **Impact equal to its highest Charge die**. A Unit with printed **Impact X** adds X Hits to that base amount; other explicitly applicable bonuses or reductions (including applicable Doctrine bonuses) then apply.
 
-**Final Impact Hits = max(0, highest Charge die + printed Impact X + other Impact bonuses − Brace X).**
+**Final Impact Hits = max(0, highest Charge die + PC Momentum spent on Impact (if any) + printed Impact X + other Impact bonuses − Brace X).**
 
 Impact inflicts that many automatic **Physical Hits at Damage 1** against the target. Resolve **Armor → applicable Ward → Damage**; **Evade is ignored**. Impact is not an Attack roll and does not independently generate a Surge or Blunder. It does not multiply by the number of Models in either Unit.
 
-**Example:** A Warrior rolls 3 and 5, with CHARGE 1 and Impact 2. The Charge can travel 3 + 5 + 1 = **9"**, but may only have been declared against an enemy wholly within 12". It inflicts **7 automatic Hits** on success, reduced by the target's Brace X before Saves.
+**Example:** An ordinary Unit rolls 3 and 5, with CHARGE 1 and Impact 2. The Charge can travel 3 + 5 + 1 = **9"**, but may only have been declared against an enemy wholly within 12". It inflicts **7 automatic Hits** on success, reduced by the target's Brace X before Saves.
 
 ### Charge Surges and Blunders
 
-The two Charge dice are also checked for natural sixes and ones after allowed rerolls. Two sixes generate one Surge; two ones generate one Blunder. Apply only abilities triggered by these results. A successful Charge that Blunders causes **Off-Balance** until the end of the Round (Evade worsens one step). The successful charging Unit may still attack during the Combat Phase if eligible.
+The Charge roll is also checked for natural sixes and ones after allowed rerolls. Two sixes generate a Surge; two ones generate a Blunder. PC Charges follow the ordinary Skill Check limit of one Surge and one Blunder. Apply only abilities triggered by these results. A successful Charge that Blunders causes **Off-Balance** until the end of the Round (Evade worsens one step). The successful charging Unit may still attack during the Combat Phase if eligible.
 
 ## 13. Combat Phase
 
@@ -573,14 +586,14 @@ During Combat, eligible Units alternate activations according to current Phase P
 
 An eligible Unit may:
 
-- Make one Engagement Attack.
+- Make one Melee Attack.
 - Use eligible Combat abilities.
 
 A Unit may omit its Attack and still use a legal Combat ability.
 
-### Engagement Attacks
+### Melee Attacks
 
-Each eligible Model may contribute its Engagement Attack if the target is within that Attack's listed Engagement Range.
+Each eligible Model may contribute its Melee Attack if the target is within that Attack's listed Engagement Range.
 
 A Unit normally attacks one enemy Unit unless a special rule allows otherwise.
 
@@ -588,7 +601,7 @@ Models using the same profile combine their Attack dice.
 
 Different Attack profiles are resolved separately as necessary.
 
-A Unit that Charged during Assault may make an Engagement Attack during Combat if still eligible.
+A Unit that Charged during Assault may make an Melee Attack during Combat if still eligible.
 
 ## 14. Attack Resolution
 
@@ -669,7 +682,7 @@ Evade represents dodging, parrying, repositioning, or otherwise avoiding an Atta
 
 Evade is normally available when:
 
-- The defender is targeted by an Engagement Attack.
+- The defender is targeted by an Melee Attack.
 - The defender is Engaged with its attacker and targeted by an Assault Attack.
 - The defender possesses applicable Cover X against a ranged Attack.
 - Another ability or special rule grants Evade.
@@ -737,7 +750,7 @@ A Save worsened beyond 6+ becomes unavailable.
 | Ranged Attack against Higher Elevation    | Armor → Evade (Cover 1) → Ward |
 | Ranged Attack against Cover and Elevation | Armor → Evade (Cover 2) → Ward |
 | Assault Attack against an Engaged enemy   | Armor → Evade → Ward           |
-| Engagement Attack                         | Armor → Evade → Ward           |
+| Melee Attack                         | Armor → Evade → Ward           |
 | Charge Impact                             | Armor → Ward                   |
 
 Applicable Tough and Cover values modify their respective Save rolls.
@@ -806,12 +819,13 @@ A multi-model Unit counts as one Unit for determining control unless the scenari
 
 After Scoring:
 
-1. Resolve End-of-Round effects.
-2. Remove Withdrawn.
-3. Remove Off-Balance.
-4. Expire other conditions and effects ending this Round.
-5. Advance the Round counter.
-6. Begin the next Priority Step.
+1. Place designated Deep Strike arrivals after Scoring.
+2. Resolve other End-of-Round effects.
+3. Remove Withdrawn.
+4. Remove Off-Balance unless a specific effect has a longer printed duration (such as No Quarter).
+5. Expire other conditions and effects ending this Round.
+6. Advance the Round counter.
+7. Begin the next Priority Step.
 
 Refresh CP and other Round-based resources at the beginning of the new Round.
 
@@ -849,7 +863,7 @@ Applicable sources stack unless specified otherwise. Each die may only be reroll
 
 ### Other Keywords
 
-Other Keywords follow their normal definitions. **Doctrine-granted Impact +X** (such as Alpha Strike’s Shock Assault) adds automatic Charge Impact Hits; it does not add Charge distance or extra Engagement Attack dice.
+Other Keywords follow their normal definitions. **Doctrine-granted Impact +X** (such as Alpha Strike’s Shock Assault) adds automatic Charge Impact Hits; it does not add Charge distance or extra Melee Attack dice.
 
 Where a Keyword conflicts with a general rule, follow the more specific rule.
 

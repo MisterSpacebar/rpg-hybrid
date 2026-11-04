@@ -147,7 +147,7 @@
       }
     ],
     "optionalCompanionCommands": [
-      { "eligibleAnimals": "Dog, Wolf, War Hound", "name": "Harry", "cpCost": "1 CP", "timing": "Combat", "cost": "+10", "effect": "Choose an enemy Engaged with this companion; the next friendly Engagement Attack against it this Round gains Accurate 1" },
+      { "eligibleAnimals": "Dog, Wolf, War Hound", "name": "Harry", "cpCost": "1 CP", "timing": "Combat", "cost": "+10", "effect": "Choose an enemy Engaged with this companion; the next friendly Melee Attack against it this Round gains Accurate 1" },
       { "eligibleAnimals": "Giant Spider", "name": "Entangling Web", "cpCost": "1 CP", "timing": "Assault", "cost": "+10", "effect": "Choose a visible enemy within Short; roll 2D6, and on at least one 4+, apply Slow 2 until its next Movement activation" }
     ],
     "notes": ["These Commands are optional, separately purchased creature-profile improvements, not free Tier 2 benefits. Using a Command does not replace the animal's ordinary Phase action unless its description says otherwise."]

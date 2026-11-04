@@ -121,7 +121,7 @@
       "abilities": [
         { "name": "Flying", "type": "Passive", "effect": "May Move over terrain and Models, finishing legally." },
         { "name": "Impact 1", "type": "Passive", "effect": "Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
-        { "name": "Diving Charge", "type": "Passive", "effect": "Its first Engagement Attack after successfully Charging gains Accurate 1." }
+        { "name": "Diving Charge", "type": "Passive", "effect": "Its first Melee Attack after successfully Charging gains Accurate 1." }
       ],
       "upgrades": [
         { "name": "Standard Griffon", "cost": "+0", "description": "Talons, Beak, Flying, Impact 1, Diving Charge." },

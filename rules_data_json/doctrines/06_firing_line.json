@@ -8,7 +8,7 @@
     { "name": "Marked Fire Lane", "slot": "R", "timing": "Assault", "effect": "One friendly Unit gains Pinpoint and Accurate 2 on its next ranged Attack this Phase." },
     { "name": "Artillery Correction", "slot": "A", "timing": "Assault", "effect": "One friendly Unit making a Heavy ranged Attack gains Accurate 2 and reduces the target's effective Cover X by 1 (minimum 0) against its target." },
     { "name": "Veteran Gunners", "slot": "E", "timing": "Assault", "effect": "One friendly Unit gains +1 Attack and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round." },
-    { "name": "Screening Fire", "slot": "V", "timing": "Assault Reaction", "effect": "When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Engagement Attack during the ensuing Combat Phase." }
+    { "name": "Screening Fire", "slot": "V", "timing": "Assault Reaction", "effect": "When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Melee Attack during the ensuing Combat Phase." }
   ],
   "doctrineIdentity": "Offensive ranged combat. Firing Line is especially effective with conventional archers, gun lines, and artillery but remains usable by any Unit possessing a ranged weapon."
 }

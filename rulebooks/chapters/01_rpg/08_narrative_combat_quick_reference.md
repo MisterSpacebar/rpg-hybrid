@@ -56,7 +56,7 @@ Select **one** ordinary action per eligible Unit: **Assault Move** (one Range Ba
 
 ### Combat
 
-- Engaged Units make one Engagement Attack and may use eligible Combat abilities.
+- Engaged Units make one Melee Attack and may use eligible Combat abilities.
 - Non-Engaged Units may act only if a legal Combat ability or special rule permits it.
 
 ### Terrain and Keywords

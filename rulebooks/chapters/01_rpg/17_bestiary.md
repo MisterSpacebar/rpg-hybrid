@@ -594,7 +594,7 @@ The Ogre is a straightforward Monster emphasizing strong melee Damage rather tha
 
 **Impact 1 — Passive:** Add 1 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace).
 
-**Diving Charge — Passive**: Its first Engagement Attack after successfully Charging gains Accurate 1.
+**Diving Charge — Passive**: Its first Melee Attack after successfully Charging gains Accurate 1.
 
 | Upgrade | Cost | Description |
 | --- | --- | --- |
@@ -811,7 +811,7 @@ Then choose one Alpha trait:
 
 | Alpha Trait | Cost | Description |
 | --- | --- | --- |
-| Pack Leader | +0 | While this Model remains alive, the Unit's Engagement Attacks gain Accurate 1. |
+| Pack Leader | +0 | While this Model remains alive, the Unit's Melee Attacks gain Accurate 1. |
 | Armored Alpha | +0 | The Alpha Model gains Tough 2. |
 | Savage Alpha | +0 | The Alpha Model's primary Engagement weapon gains +1 Attack. |
 | Charging Alpha | +0 | While the Alpha remains alive, the Unit gains Impact 1. If it already has Impact X, increase X by 1 instead. |
@@ -877,7 +877,7 @@ Small companions have no standard combat upgrades. Narrative variations may be g
 
 | Eligible animals | Command | Points | Effect |
 | --- | --- | ---: | --- |
-| Dog, Wolf, War Hound | **Harry — 1 CP, Combat** | +10 | Choose an enemy Engaged with this companion; the next friendly Engagement Attack against it this Round gains Accurate 1 |
+| Dog, Wolf, War Hound | **Harry — 1 CP, Combat** | +10 | Choose an enemy Engaged with this companion; the next friendly Melee Attack against it this Round gains Accurate 1 |
 | Giant Spider | **Entangling Web — 1 CP, Assault** | +10 | Choose a visible enemy within Short; roll 2D6, and on at least one 4+, apply Slow 2 until its next Movement activation |
 
 These Commands are **optional, separately purchased** creature-profile improvements, not free Tier 2 benefits. Using a Command does not replace the animal's ordinary Phase action unless its description says otherwise.

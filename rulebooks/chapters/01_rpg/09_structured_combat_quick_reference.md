@@ -15,7 +15,7 @@
 - Assault: Alternate Unit activations.
 - Combat: Alternate eligible Unit activations.
 - Scoring: Resolve objectives and Victory Points.
-- End Step: Expire effects and advance the Round.
+- End Step: Place designated Deep Strike arrivals after Scoring, then expire effects and advance the Round.
 - Reserve deployment is an end-of-Movement procedure, not a separate combat Phase.
 
 ### Priority
@@ -47,7 +47,7 @@ Each Unit may choose one eligible action:
 - **Order:** Alternate Reserve placements, starting with the side that held Movement First Activation; Assault Priority was already determined.
 - **Arrival limits:** Arriving Units count as having Moved and as having completed their Movement activation. No Movement phase actions, Combat Skill Actions, or Charges that Round; no Heavy unless explicitly waived.
 - **After arrival:** Eligible Assault Move, ranged/Spell Attack, Combat activation, and Reactions remain possible.
-- **Deep Strike:** From Round 2, may designate a Reserve Unit during Movement for legal special insertion at end of Movement; counts toward normal allowance, maximum **one Deep Strike arrival per Round**. Deep Strike arrivals also cannot control or contest objectives until the next Round.
+- **Deep Strike:** From Round 2, designate during Movement, then insert **after Scoring in the End Step**; counts toward the normal arrival allowance, maximum **one insertion per Round**. Normal insertion more than 8" from enemies (flank/beacon more than 6"); act from the following Round.
 - **Alpha Strike — Rapid Deployment:** Once per battle in Round 1, one **additional** Reserve Unit may deploy through a Command during its normal Movement activation opportunity, then Move and Charge normally. This is outside the regular allowance, but does not waive Heavy or grant an extra activation.
 - Units still in Reserve cannot act or control objectives; undeployed Units are not automatically Defeated at battle end.
 
@@ -58,7 +58,7 @@ Each Unit chooses **one** ordinary Assault action: **Assault Move (up to Move)**
 ### Charge
 
 - Declare a legal visible target wholly within 12"; the charging Unit cannot already be Engaged or Withdrawn.
-- **Every Unit:** roll 2D6; Charge Distance = **sum of both dice + CHARGE X** (Move is not added).
+- **Ordinary Units:** roll 2D6, sum both for distance and use the highest for Impact. **PCs:** roll Body + Athletics (Rogues may use Agility + Athletics), use the two highest for distance and highest for Impact, then allocate each Success to +1" distance or +1 Impact. No minimum Success requirement. Charge X still applies; Move is not added.
 - Success: move into Engagement; Impact Hits = **highest of the two dice + printed Impact X + other applicable Impact bonuses − Brace X**, minimum 0.
 - Failure: stay in place; Assault activation ends.
 - Resolve Impact once per charging Unit, not per Model: **Armor → Ward → Damage**, ignoring Evade. Alpha Strike Shock Assault increases Impact Hits, not distance.
@@ -72,7 +72,7 @@ Each Unit chooses **one** ordinary Assault action: **Assault Move (up to Move)**
 
 - Alternate eligible Unit activations.
 - Each eligible Unit may:
-- Make one Engagement Attack.
+- Make one Melee Attack.
 - Use eligible Combat abilities.
 - Units must be Engaged or have a special rule permitting their activation.
 
@@ -109,13 +109,15 @@ For radius-based effects that apply to whole Units, a Unit qualifies when **at l
 - Surge: Two natural 6s.
 - Blunder: Two natural 1s.
 - Each die may only be rerolled once.
+- Printed/passive Critical X requires a Surge; Critical X explicitly granted by a CP-paid Command does not.
+- Long Range X subtracts 2 dice from the combined Attack pool at extended range (minimum 1), without worsening Hit.
 - Multiple Evade permissions do not provide additional Evade rolls.
 
 ### Command Points
 
 - Standard RPG: 2 CP per Player; GM receives **max(2, 2 × PCs − 1) CP**.
 - Refresh every Round. No carryover.
-- Reactions interrupt triggering actions. Instant effects cannot be responded to with another Command Ability.
+- One Command per Unit activation from the acting side (personal, Faction, or Doctrine); one eligible opposing Reaction. An Attack, Charge, or Save sequence may receive at most one friendly Command effect, including earlier prepared effects. Instant cannot be responded to with another Command.
 
 ### Scoring and End Step
 

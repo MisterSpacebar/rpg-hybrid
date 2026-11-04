@@ -222,7 +222,7 @@ Any Class may learn these Talents. The animal uses **its own NPC Unit profile**,
 Gain **one** bonded Small or Standard Animal Companion from the [Bestiary](17_bestiary.md#7-animal-companions), **as printed**, without free Training upgrades. Add that companion's listed Points to the PC's battlefield value. It:
 
 - Activates independently during Movement, Assault, and eligible Combat Phases, following the chosen combat mode's normal Unit order.
-- Makes its own Move, one Assault action, Charge, and Engagement Attack when eligible; it does not attack alongside its owner's activation for free.
+- Makes its own Move, one Assault action, Charge, and Melee Attack when eligible; it does not attack alongside its owner's activation for free.
 - Maintains its own Wounds, Saves, Keywords and equipment/Attack profiles.
 - Remains within Short Range of its owner whenever reasonably possible.
 - Cannot control objectives independently, contribute Command Points, or use Commands that it has not explicitly learned.
@@ -245,7 +245,7 @@ Both companions remain separate friendly Units with **independent activations**,
 | --- | --- |
 | **Hardy** | +1 maximum Wound |
 | **Swift** | +1" Move |
-| **Ferocious** | +1 Attack die on one chosen Engagement Attack profile |
+| **Ferocious** | +1 Attack die on one chosen Melee Attack profile |
 | **Precise** | One chosen Attack profile gains Accurate 1 |
 | **Resilient** | Gain Tough 1 |
 | **Protective** | Gain Cover 1 against eligible ranged Attacks |
@@ -272,6 +272,7 @@ Warrior Talents emphasize durability, direct confrontation, battlefield control,
 | Breakthrough | 2 | Passive |
 | Dig In | 2 | Passive |
 | Mighty Impact — Ranked | 2+ | Passive |
+| Brace Training | 2 | Passive |
 | Second Wind | 3 | Movement |
 | Unyielding | 3 | Reaction |
 | Last Stand | 4 | Reaction |
@@ -319,7 +320,7 @@ Choose one non-Firearm ranged Weapon Attack. Increase its Range by 2" per Rank.
 
 **1 CP — Reaction**
 
-After surviving an Engagement Attack, gain +1 Attack die on your next Engagement Weapon Attack against the attacker. This bonus expires at the end of your next Combat activation.
+After surviving an Melee Attack, gain +1 Attack die on your next Melee Weapon Attack against the attacker. This bonus expires at the end of your next Combat activation.
 
 #### Bodyguard — Tier 2
 
@@ -337,7 +338,7 @@ Choose one enemy Unit within Short Range. Until the end of the Round, that Unit 
 
 **1 CP — Combat**
 
-After your Engagement Weapon Attack deals Damage to an enemy, roll Body + Athletics. If the Check generates at least one success, push the target directly away up to X inches, where X is the highest die rolled. You may follow the target by up to 2". This is forced movement. The follow-up movement does not count as Disengaging.
+After your Melee Weapon Attack deals Damage to an enemy, roll Body + Athletics. If the Check generates at least one success, push the target directly away up to X inches, where X is the highest die rolled. You may follow the target by up to 2". This is forced movement. The follow-up movement does not count as Disengaging.
 
 #### Breakthrough — Tier 2
 
@@ -356,6 +357,12 @@ If you did not Move during the Movement Phase, improve Armor by 1 step against r
 **Passive, Ranked**
 
 Gain **Impact X**, where X equals the Rank of Mighty Impact. This **adds X Hits to the normal highest-die Charge Impact pool** following a successful Charge; Armor and Ward apply, but Evade does not.
+
+#### Brace Training — Tier 2
+
+**Passive**
+
+When you receive a Charge, gain **Brace 1** against that Charge if you did not voluntarily Move during the preceding Movement Phase. This stacks with other applicable Brace X.
 
 #### Second Wind — Tier 3
 
@@ -389,6 +396,7 @@ Rogue Talents emphasize mobility, concealment, accuracy, opportunism, and exploi
 | Tactical Feint | 1 | Assault / Combat |
 | Smoke Bomb | 1 | Movement |
 | Mobile Assault | 2 | Passive |
+| Daring Entry | 2 | Passive |
 | Skirmisher | 2 | Assault |
 | Precise Fire | 2 | Passive |
 | Covering Fire | 2 | Reaction |
@@ -436,6 +444,12 @@ Choose yourself or one friendly Unit within 2". The selected Unit gains Conceale
 
 After making a Weapon Attack, move up to 1". This movement cannot leave Engagement or enter a new Engagement.
 
+#### Daring Entry — Tier 2
+
+**Passive**
+
+After successfully Charging and allocating at least one Charge Momentum to additional distance, gain **Accurate 1** on your first **Melee Weapon Attack** against the charged enemy this Round.
+
 #### Skirmisher — Tier 2
 
 **1 CP — Assault**
@@ -458,13 +472,13 @@ When a friendly Unit within Short Range Disengages, make one eligible ranged Wea
 
 **1 CP — Reaction**
 
-After completely Evading an Engagement Attack, move up to 2". You may leave Engagement without becoming Withdrawn.
+After completely Evading an Melee Attack, move up to 2". You may leave Engagement without becoming Withdrawn.
 
 #### Hamstring — Tier 2
 
 **1 CP — Combat**
 
-After your Engagement Weapon Attack deals Damage, the target suffers Slow 2 until the end of its next Movement activation.
+After your Melee Weapon Attack deals Damage, the target suffers Slow 2 until the end of its next Movement activation.
 
 #### Retaliatory Step — Tier 2
 
@@ -476,7 +490,7 @@ After dealing Damage to an enemy in Engagement, move up to 1". This movement may
 
 **1 CP — Reaction — Once per Round**
 
-When another friendly Unit deals Damage to an enemy you are Engaged with, make one Engagement Weapon Attack against that enemy.
+When another friendly Unit deals Damage to an enemy you are Engaged with, make one Melee Weapon Attack against that enemy.
 
 #### Close-Quarters Shooter — Tier 3
 
@@ -575,7 +589,7 @@ When an enemy within Medium Range activates a non-Instant magical Command Abilit
 
 **1 CP — Reaction**
 
-When targeted by a non-Instant Engagement Attack, immediately perform **Blink 2**. If the entire defending Unit is outside the Attack’s Range after repositioning, the triggering Attack fails. Follow the normal legal-placement, elevation, and Coherency restrictions.
+When targeted by a non-Instant Melee Attack, immediately perform **Blink 2**. If the entire defending Unit is outside the Attack’s Range after repositioning, the triggering Attack fails. Follow the normal legal-placement, elevation, and Coherency restrictions.
 
 #### Teleport — Tier 3
 
@@ -793,7 +807,7 @@ Player Characters use the **complete printed Attack values** in [Equipment](11_e
 Attack rolls may generate one Surge or Blunder **per complete pair** of natural sixes or ones, after permitted rerolls. An ability worded **when the Attack Surges** triggers only once per Attack, whereas an effect explicitly worded **for each Surge** may scale with every Surge. Ordinary Skill Checks and Charges normally generate at most one instance of each.
 
 
-After all rerolls, Critical X converts up to X failed Hit dice into successful Critical Hits without requiring a Surge. If a Talent grants **Critical +X on Surge**, that bonus stacks for the triggering Attack. Ward applies to these Hits; Armor and Evade do not. See [Keywords — Critical X](10_keywords.md#critical-x).
+After all rerolls, printed/passive Critical X converts failed Hit dice into Critical Hits only on Surge; a CP-paid Command explicitly granting Critical X does not require a Surge. If a Talent grants **Critical +X on Surge**, that bonus stacks for the triggering Attack. Ward applies to these Hits; Armor and Evade do not. See [Keywords — Critical X](10_keywords.md#critical-x).
 
 ### Skill-Based Abilities
 

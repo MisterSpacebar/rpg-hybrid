@@ -25,31 +25,29 @@
     },
     "arrivingFromDeepStrikeReserve": {
       "procedure": [
-        "During the Movement Phase, select an eligible Unit still in Reserve and declare an eligible Deep Strike deployment Command. Pay the Command’s CP cost and exhaust its card as normal.",
-        "Count this Unit against the current Round’s normal reinforcement allowance.",
-        "At the end of the Movement Phase, place that Unit at a legal location permitted by the Command, rather than the ordinary deployment zone. If other Reserve Units arrive, place them in the normal alternating placement order.",
-        "The Unit does not receive a Movement activation upon entry."
+        "During a friendly Movement activation in Round 2 or later, spend CP/exhaust the card for one eligible insertion Command and designate one Reserve Unit.",
+        "Consume one slot from the current Round shared reinforcement allowance. Only one Unit may be designated via Deep Strike in a Round.",
+        "Place designated Deep Strike Units after Scoring during the End Step, alternating sides beginning with the first Movement activator.",
+        "The Unit cannot act or score during the Round it arrives, but may act normally from the next Round."
       ],
       "defaultPlacementRequirements": [
-        "Wholly more than 9\" from every enemy Model.",
+        "Wholly more than 8\" from every enemy Model.",
         "Outside the enemy deployment zone.",
         "In legal positions with normal Unit coherency.",
         "Without becoming Engaged."
       ],
-      "note": "Unless a Command says otherwise, the arriving Unit must satisfy the above placement requirements. Deep Strike deployment begins in Round 2."
+      "note": "Deep Strike begins in Round 2 and resolves in the End Step after Scoring; default exclusion more than 8 inches."
     },
     "arrivalRestrictions": {
       "unitArrivingThroughDeepStrike": [
-        "Counts as having voluntarily Moved during that Movement Phase.",
-        "Cannot make additional Moves, Charge, Disengage, or Blink during the Round in which it arrives.",
-        "Cannot control or contest objectives until the following Round.",
-        "May make otherwise eligible ranged or Spell Attacks during the Assault Phase.",
-        "Cannot use a Heavy Attack that requires it not to have Moved, unless an ability explicitly permits otherwise."
+        "Arrives during End Step after Scoring and cannot act, attack, charge, React, or score in its arrival Round.",
+        "Can act normally the following Round; Heavy uses the next Movement Phase as usual.",
+        "Landing Fire and Heavy Descent apply in the following Round only."
       ],
       "additionalRules": [
-        "Only one Unit may arrive through Deep Strike deployment Commands per Round. Other arriving Units may use ordinary Reserve deployment, up to the Round’s total allowance.",
-        "If a legal insertion position is unavailable, the Unit cannot be deployed using that Command; it remains in Reserve.",
-        "A player cannot declare an illegal placement, and no extra deployment allowance is granted."
+        "Only one Unit may arrive through an insertion Command per Round; ordinary Reserves consume any other available arrival slots.",
+        "If no legal placement exists at the End Step, the Unit remains in Reserve; CP/card are not refunded.",
+        "Signal Beacon must be used in a different friendly Movement activation from the insertion Command."
       ]
     }
   },
@@ -58,31 +56,31 @@
       "name": "Forward Insertion",
       "slot": "C",
       "timing": "Movement",
-      "effect": "Designate one eligible Reserve Unit to deploy at the end of this Movement Phase using the normal Deep Strike placement rules. It may be placed anywhere on the battlefield that satisfies those rules. Counts toward the normal reinforcement allowance."
+      "effect": "Designate one eligible Reserve Unit for End Step insertion after scoring using normal Deep Strike restrictions (more than 8 inches from enemies, outside enemy Deployment Zone), counting toward normal reinforcement allowance."
     },
     {
       "name": "Landing Fire",
       "slot": "R",
       "timing": "Assault",
-      "effect": "One friendly Unit that arrived through Deep Strike this Round gains Accurate 2 and Pinpoint on its next ranged Attack this Phase. This Command does not override Heavy restrictions."
+      "effect": "One friendly Unit that arrived through Deep Strike at the end of the previous Round gains Accurate 2 and Pinpoint on its next ranged Attack this Phase. Heavy restrictions apply."
     },
     {
       "name": "Flanking Insertion",
       "slot": "V",
       "timing": "Movement",
-      "effect": "Designate one eligible Reserve Unit to deploy at the end of this Movement Phase wholly within 3\" of any battlefield edge and more than 6\" from every enemy Model. It may enter the enemy deployment zone. All other arrival restrictions apply. Counts toward the normal reinforcement allowance."
+      "effect": "Designate one eligible Reserve Unit for End Step placement within 3 inches of a battlefield edge and more than 6 inches from enemies. May enter the enemy Deployment Zone; other requirements apply."
     },
     {
       "name": "Heavy Descent",
       "slot": "A",
       "timing": "Movement",
-      "effect": "Designate one eligible Reserve Unit, including a Large Asset, to deploy at the end of this Movement Phase using normal Deep Strike placement rules. The Unit gains Tough 2 against the first Attack it suffers before the beginning of its next Movement activation. Counts toward the normal reinforcement allowance."
+      "effect": "Designate one eligible Reserve Unit, including a Large Asset, for End Step placement with normal Deep Strike restrictions (more than 8 inches from enemies). Gain Tough 2 against the first Attack suffered in the following Round, then expire."
     },
     {
       "name": "Signal Beacon",
       "slot": "H",
       "timing": "Movement",
-      "effect": "Choose one friendly Unit already on the battlefield. During this Movement Phase, the next friendly Unit designated to arrive through Deep Strike within Short of that Unit may be placed more than 6\" from enemy Models instead of 9\". All other placement restrictions apply."
+      "effect": "Choose one friendly Unit already on the battlefield. A separately designated Deep Strike Unit placed wholly within Short of the beacon during this Round's End Step may use more-than-6-inch enemy exclusion instead of 8 inches. Use its insertion Command during a different friendly Movement activation."
     }
   ],
   "commandClarifications": [
@@ -92,7 +90,7 @@
     },
     {
       "command": "Landing Fire",
-      "clarification": "Improves a recently inserted Unit’s ranged attack. Any eligible Unit with a ranged weapon may benefit, not only Ranged Infantry."
+      "clarification": "Usable in the following Round, not the insertion Round, and does not waive Heavy."
     },
     {
       "command": "Flanking Insertion",
@@ -100,14 +98,14 @@
     },
     {
       "command": "Heavy Descent",
-      "clarification": "Is the usual Deep Strike method for Large Assets. Its Tough bonus is temporary and does not override Heavy weapon restrictions."
+      "clarification": "Allows Large Asset insertion. Temporary Tough 2 protects against the first Attack of the following Round."
     },
     {
       "command": "Signal Beacon",
-      "clarification": "Must be used during the Movement Phase before declaring the insertion it modifies. The designated insertion still requires a separate Deep Strike deployment Command and still consumes one of that Round’s reinforcement allowances. Signal Beacon does not insert an additional Unit by itself."
+      "clarification": "Use in a different earlier Movement activation from the insertion Command; benefit lasts through End Step. Does not create another arrival."
     }
   ],
-  "doctrineIdentity": "Deep Strike rewards flexible reserve arrival, battlefield penetration, and unexpected angles of attack. Unlike Alpha Strike, it does not accelerate the overall reinforcement schedule; its advantage is positional, and it can use that advantage repeatedly from Round 2 onward while sufficient Reserve Units and Commands remain.",
+  "doctrineIdentity": "Delayed End Step insertion, giving up immediate shooting and scoring for superior next-Round positioning.",
   "distinctionFromOtherDoctrines": [
     {
       "doctrine": "Mobility",

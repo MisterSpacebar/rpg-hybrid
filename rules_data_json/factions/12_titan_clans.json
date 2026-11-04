@@ -136,8 +136,8 @@
       { "name": "Royal Maul", "range": "Engaged", "attacks": 8, "hit": "3+", "damage": 3, "keywords": [] }
     ],
     "abilities": [
-      { "name": "Supreme Bully", "type": "Passive", "effect": "The Overtyrant's Engagement Attacks gain Anti-Monster 2 and Anti-Character 2." },
-      { "name": "The Crushing Tide", "type": "Command", "cost": "2 CP", "timing": "Movement", "frequency": "Once per Battle", "effect": "Up to two friendly Ogre or Monster Units within Medium gain +1 Impact and +1 Damage on their next Engagement Attack this Round." }
+      { "name": "Supreme Bully", "type": "Passive", "effect": "The Overtyrant's Melee Attacks gain Anti-Monster 2 and Anti-Character 2." },
+      { "name": "The Crushing Tide", "type": "Command", "cost": "2 CP", "timing": "Movement", "frequency": "Once per Battle", "effect": "Up to two friendly Ogre or Monster Units within Medium gain +1 Impact and +1 Damage on their next Melee Attack this Round." }
     ],
     "knownIssues": ["No printed Impact value, unusual for a melee-focused faction's Leader (every other Titan Clans signature melee Unit prints an Impact bonus or Massive Charge). Likely a drafting gap rather than intentional, since the Overtyrant otherwise has the faction's heaviest melee kit; not resolved here."]
   },

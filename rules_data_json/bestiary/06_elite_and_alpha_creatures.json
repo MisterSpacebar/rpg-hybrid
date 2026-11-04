@@ -14,7 +14,7 @@
       "Then choose one Alpha trait."
     ],
     "alphaTraits": [
-      { "name": "Pack Leader", "cost": "+0", "description": "While this Model remains alive, the Unit's Engagement Attacks gain Accurate 1." },
+      { "name": "Pack Leader", "cost": "+0", "description": "While this Model remains alive, the Unit's Melee Attacks gain Accurate 1." },
       { "name": "Armored Alpha", "cost": "+0", "description": "The Alpha Model gains Tough 2." },
       { "name": "Savage Alpha", "cost": "+0", "description": "The Alpha Model's primary Engagement weapon gains +1 Attack." },
       { "name": "Charging Alpha", "cost": "+0", "description": "While the Alpha remains alive, the Unit gains Impact 1. If it already has Impact X, increase X by 1 instead." },

@@ -13,7 +13,7 @@
   },
   "factionCommands": [
     { "name": "Stand Fast", "timing": "Reaction", "cost": "1 CP", "effect": "Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase." },
-    { "name": "Righteous Retaliation", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit survives an Engagement Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round." },
+    { "name": "Righteous Retaliation", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round." },
     { "name": "Heroic Intervention", "timing": "Reaction", "cost": "1 CP", "effect": "When a nearby ally is attacked, one friendly Character may Move up to 3\" toward it." }
   ],
   "signatureCoreNote": "Three Core choices are retained as a deliberate elite-army exception.",

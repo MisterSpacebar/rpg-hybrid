@@ -120,7 +120,7 @@
         { "name": "Daemon Weapon", "range": "Engaged", "attacks": 5, "hit": "4+", "damage": 2, "keywords": ["Magic", "Anti-Elite 2"] }
       ],
       "abilities": [
-        { "name": "Unstable Power", "type": "Passive", "effect": "Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Engagement Attack." }
+        { "name": "Unstable Power", "type": "Passive", "effect": "Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Melee Attack." }
       ]
     },
     {

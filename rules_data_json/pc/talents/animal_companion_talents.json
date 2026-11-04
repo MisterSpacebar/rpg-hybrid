@@ -13,7 +13,7 @@
       "effect": [
         "Gain one bonded Small or Standard Animal Companion from the Bestiary (17_bestiary.md#7-animal-companions), as printed, without free Training upgrades. Add that companion's listed Points to the PC's battlefield value. It:",
         "Activates independently during Movement, Assault, and eligible Combat Phases, following the chosen combat mode's normal Unit order.",
-        "Makes its own Move, one Assault action, Charge, and Engagement Attack when eligible; it does not attack alongside its owner's activation for free.",
+        "Makes its own Move, one Assault action, Charge, and Melee Attack when eligible; it does not attack alongside its owner's activation for free.",
         "Maintains its own Wounds, Saves, Keywords and equipment/Attack profiles.",
         "Remains within Short Range of its owner whenever reasonably possible.",
         "Cannot control objectives independently, contribute Command Points, or use Commands that it has not explicitly learned.",
@@ -45,7 +45,7 @@
       "companionTraining": [
         { "name": "Hardy", "effect": "+1 maximum Wound" },
         { "name": "Swift", "effect": "+1\" Move" },
-        { "name": "Ferocious", "effect": "+1 Attack die on one chosen Engagement Attack profile" },
+        { "name": "Ferocious", "effect": "+1 Attack die on one chosen Melee Attack profile" },
         { "name": "Precise", "effect": "One chosen Attack profile gains Accurate 1" },
         { "name": "Resilient", "effect": "Gain Tough 1" },
         { "name": "Protective", "effect": "Gain Cover 1 against eligible ranged Attacks" }

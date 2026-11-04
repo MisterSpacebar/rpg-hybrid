@@ -20,13 +20,13 @@ When rolling Evade Saves, reroll up to X natural 1s. Cover and elevation can gra
 
 ## Critical X
 
-After any Hit-die rerolls (including Accurate) and after identifying Surges, **convert up to X failed Hit dice into successful Critical Hits**. Converted dice are treated as meeting the Attack's Hit target; their original faces do not change, and converting a die does not generate a new Surge or Blunder.
+After Hit-die rerolls (including Accurate), convert up to X failed Hit dice into successful Critical Hits **only when the Attack generates a Surge**, unless Critical X was explicitly granted by a CP-paid Command. Printed weapon Keywords, passive Unit abilities, passive Talents, and other passive sources of Critical X require a Surge; a Command explicitly granting Critical X as part of its CP-paid effect does not. Spending CP on an unrelated Command does not bypass a passive Critical source's Surge requirement.
 
-**Critical X does not require a Surge** unless its source explicitly says *on Surge*. Critical Hits **ignore Armor and Evade**, but applicable **Ward** Saves still apply. Critical Hits retain the Attack's normal Damage and type. Different sources of Critical add together, including bonuses granted on a Surge. The maximum number converted is the number of eligible failed dice in that Attack pool.
+Critical Hits ignore Armor and Evade, but applicable Ward Saves still apply. They retain the Attack's normal Damage and damage type. Converted dice do not change face values or generate new Surges or Blunders. All eligible Critical ranks add together when a Surge occurs; without a Surge, only ranks explicitly granted by CP-paid Commands can convert failed dice. A source worded **on Surge** normally triggers once per Attack unless stated otherwise.
 
-**Example — Accurate then Critical:** With a 4+ Hit target, an Attack rolls `1, 2, 3, 4, 5, 6` and has Accurate 1, Critical 2. The 1 is rerolled into a 3, leaving failures `2, 3, 3`. Critical 2 converts two of those three failures into Critical Hits. The result is three normal Hits, two Critical Hits, and one remaining failure.
+**Example — passive Critical:** An Attack with printed Critical 2 rolls 2, 3, 4, 5 against Hit 4+. Without a Surge, the failed dice remain failures. If the pool contains two natural sixes, up to two remaining failures may instead be converted to Critical Hits.
 
-**Example — Surge bonus:** A pool `2, 2, 3, 3, 6, 6` against 4+ generates a Surge. With inherent Critical 2 and Rank II of Critical Prowess granting **Critical +2 on Surge**, all four failures convert to Critical Hits, alongside the two ordinary Hits.
+**Example — CP-granted Critical:** A 1 CP Command grants Critical 1. After rerolls, one failed Hit die converts to a Critical Hit, even without a Surge. Printed Critical 1 on the same weapon contributes another conversion only if the Attack also Surges.
 
 ## Blast X
 
@@ -62,7 +62,7 @@ A Firearm Attack automatically gains Instant. It remains Physical unless another
 
 ## Long Range X
 
-Extend printed maximum Range by X inches. When attacking beyond the printed Range, worsen Hit by one step.
+Extend the weapon's printed maximum Range by X inches. An Attack made **beyond the printed normal Range but within extended Range** rolls **2 fewer Attack dice from its combined Unit Attack pool**, minimum 1 die. Apply this reduction once per Attack, not once per Model, after other applicable Attack-dice modifiers. Long Range does not worsen Hit and does not change the normal Range used by Rapid-Fire.
 
 ## Rapid-Fire X
 

@@ -85,7 +85,7 @@
       "tier": 2,
       "cost": "1 CP",
       "type": "Reaction",
-      "effect": "When targeted by a non-Instant Engagement Attack, immediately perform Blink 2. If the entire defending Unit is outside the Attack's Range after repositioning, the triggering Attack fails. Follow the normal legal-placement, elevation, and Coherency restrictions."
+      "effect": "When targeted by a non-Instant Melee Attack, immediately perform Blink 2. If the entire defending Unit is outside the Attack's Range after repositioning, the triggering Attack fails. Follow the normal legal-placement, elevation, and Coherency restrictions."
     },
     {
       "id": "teleport",

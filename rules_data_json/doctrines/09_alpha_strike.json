@@ -35,7 +35,7 @@
       "name": "Ferocious Opening",
       "slot": "C",
       "timing": "Combat",
-      "effect": "Choose one friendly Unit making an Engagement Attack. The attacker selects up to X successful Armor or Evade Save dice made against that Attack; the defender must reroll those dice, and the new results stand. X is determined by the current Round. Ward Saves are unaffected. Dice already rerolled cannot be selected."
+      "effect": "Choose one friendly Unit making a Melee Attack this Phase. Gain Critical 2 in Round 1, Critical 1 in Rounds 2–3, or Accurate 1 in Rounds 4–5. CP-granted Critical requires no Surge and does not modify Charge Impact."
     }
   ],
   "doctrineIdentity": "Alpha Strike rewards seizing the initiative early in the battle. Its Round 1 offense is strongest, its benefits fall progressively through Round 3, and it retains smaller offensive benefits in Rounds 4–5. Rapid Mobilization offers a once-per-battle way to add one mobile reinforcement during the first Round without changing ordinary Reserves for the rest of the army. It differs from Firing Line through its decreasing ranged bonuses, from Breakthrough through its immediate offensive emphasis rather than sustained Charge reliability, and from Deep Strike because it adds a single early reinforcement instead of placing Units in unexpected locations.",
@@ -45,37 +45,37 @@
       {
         "round": 1,
         "firstStrikeOrdersAccurate": 3,
-        "openingVolleyBonusAttacks": 4,
-        "shockAssaultImpactBonus": 4,
-        "ferociousOpeningSuccessfulSaveRerolls": 3
+        "openingVolleyBonusAttacks": 3,
+        "shockAssaultImpactBonus": 3,
+        "ferociousOpeningBonus": "Critical 2"
       },
       {
         "round": 2,
         "firstStrikeOrdersAccurate": 2,
-        "openingVolleyBonusAttacks": 3,
-        "shockAssaultImpactBonus": 3,
-        "ferociousOpeningSuccessfulSaveRerolls": 2
+        "openingVolleyBonusAttacks": 2,
+        "shockAssaultImpactBonus": 2,
+        "ferociousOpeningBonus": "Critical 1"
       },
       {
         "round": 3,
         "firstStrikeOrdersAccurate": 1,
         "openingVolleyBonusAttacks": 2,
-        "shockAssaultImpactBonus": 2,
-        "ferociousOpeningSuccessfulSaveRerolls": 1
+        "shockAssaultImpactBonus": 1,
+        "ferociousOpeningBonus": "Critical 1"
       },
       {
         "round": 4,
         "firstStrikeOrdersAccurate": 1,
         "openingVolleyBonusAttacks": 1,
         "shockAssaultImpactBonus": 1,
-        "ferociousOpeningSuccessfulSaveRerolls": 1
+        "ferociousOpeningBonus": "Accurate 1"
       },
       {
         "round": 5,
         "firstStrikeOrdersAccurate": 1,
         "openingVolleyBonusAttacks": 1,
         "shockAssaultImpactBonus": 1,
-        "ferociousOpeningSuccessfulSaveRerolls": 1
+        "ferociousOpeningBonus": "Accurate 1"
       }
     ]
   },
@@ -103,11 +103,11 @@
     },
     {
       "command": "Shock Assault",
-      "clarification": "Modifies only the Charge Impact of one declared Charge. It does not increase the Charge distance or the Unit’s later Engagement Attack dice."
+      "clarification": "Modifies only the Charge Impact of one declared Charge. It does not increase the Charge distance or the Unit’s later Melee Attack dice."
     },
     {
       "command": "Ferocious Opening",
-      "clarification": "Applies to Armor or Evade Saves as appropriate. It cannot force Ward rerolls or reroll a die a second time."
+      "clarification": "CP-powered Critical on one Melee Attack in Rounds 1–3; Accurate 1 in Rounds 4–5. Never affects Charge Impact."
     },
     {
       "command": "All offensive Commands",

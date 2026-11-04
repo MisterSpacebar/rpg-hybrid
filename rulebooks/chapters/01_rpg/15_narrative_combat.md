@@ -345,9 +345,9 @@ Narrative Charges use **number of successes**, rather than computing a distance 
 | **Medium → Engaged** | At least **2 Successes**, and only if the fiction, movement, or a special mobility effect permits a Charge across that separation |
 | **Long → Engaged** | Not normally possible in one Charge; requires a specific exceptional ability or scenario rule |
 
-A Character rolls **Body + Athletics** normally. An ordinary NPC Unit without full Characteristics rolls **2D6**, with **4+ per die** counting as a Success. The GM may apply contextual modifiers or an explicit special rule. **CHARGE X** increases a Unit's effective reach in the fiction and can justify a longer permitted Charge, but **does not automatically grant Successes**; a specific ability may say otherwise.
+A Character rolls **Body + Athletics** normally; a Rogue may instead roll **Agility + Athletics**. An ordinary NPC Unit without full Characteristics rolls **2D6**, with **4+ per die** counting as a Success. The GM may apply contextual modifiers or an explicit special rule. **CHARGE X** increases a Unit's effective reach in the fiction and can justify a longer permitted Charge, but **does not automatically grant Successes**; a specific ability may say otherwise.
 
-If the required Successes are generated and the path is plausible, the Unit enters Engagement. Otherwise, it remains in place and its Assault activation ends.
+If the required Successes are generated and the path is plausible, the Unit enters Engagement. Otherwise, it remains in place and its Assault activation ends. A PC may spend each Success above the Range Band requirement to add +1 Impact on a successful Charge. The Structured Combat option to spend Momentum for +1" Charge distance applies only to measured-inch combat.
 
 ### Charge Impact and Special Results
 
@@ -359,7 +359,7 @@ The Charge may generate one Surge from at least two natural sixes, or one Blunde
 
 During Combat, each eligible Unit may:
 
-- Make one Engagement Attack.
+- Make one Melee Attack.
 - Use eligible Combat abilities.
 
 A Unit is eligible if it:
@@ -368,7 +368,7 @@ A Unit is eligible if it:
 - Possesses a Combat ability it may legally activate.
 - Is made eligible by another rule.
 
-An Engagement Attack requires the target to be within the chosen Attack profile's Engagement Range.
+An Melee Attack requires the target to be within the chosen Attack profile's Engagement Range.
 
 A Unit normally attacks one enemy Unit during its Combat activation unless a special rule permits otherwise.
 
@@ -409,7 +409,7 @@ Tough does not change Armor or grant additional Save dice.
 
 ### Evade
 
-Evade is normally available against Engagement Attacks and ranged or Spell Attacks made by an enemy Engaged with the defender.
+Evade is normally available against Melee Attacks and ranged or Spell Attacks made by an enemy Engaged with the defender.
 
 Cover X also permits Evade against eligible ranged Attacks.
 
@@ -447,7 +447,7 @@ Ward Saves do not stack.
 | Ranged Attack against Cover               | Armor → Evade (Cover 1) → Ward |
 | Ranged Attack against Higher Elevation    | Armor → Evade (Cover 1) → Ward |
 | Ranged Attack against Cover and Elevation | Armor → Evade (Cover 2) → Ward |
-| Engagement Attack                         | Armor → Evade → Ward           |
+| Melee Attack                         | Armor → Evade → Ward           |
 | Charge Impact                             | Armor → Ward                   |
 
 Other applicable Keywords modify their respective Saves.

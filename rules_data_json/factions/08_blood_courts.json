@@ -11,7 +11,7 @@
     "effect": "Once per Round, after a friendly Unit defeats an enemy Model in Engagement, Heal 1 Damage from that Unit."
   },
   "factionCommands": [
-    { "name": "Blood Frenzy", "timing": "Combat", "cost": "1 CP", "effect": "One friendly Unit gains +1 Attack per Model on its next Engagement Attack this Combat Phase." },
+    { "name": "Blood Frenzy", "timing": "Combat", "cost": "1 CP", "effect": "One friendly Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase." },
     { "name": "Predatory Speed", "timing": "Reaction", "cost": "1 CP", "effect": "After destroying an enemy Unit, one friendly Unit may Move up to 2\"." },
     { "name": "Mesmerize", "timing": "Reaction", "cost": "1 CP", "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Character until the end of the Phase." }
   ],
@@ -69,7 +69,7 @@
         { "name": "Noble Blade", "range": "Engaged", "attacks": 4, "hit": "4+", "damage": 2, "keywords": ["Anti-Elite 2"] }
       ],
       "abilities": [
-        { "name": "Challenge Prey", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Choose one enemy Character within Short. The Vampire Captain's next Engagement Attack against it gains Critical 1." }
+        { "name": "Challenge Prey", "type": "Command", "cost": "1 CP", "timing": "Assault", "effect": "Choose one enemy Character within Short. The Vampire Captain's next Melee Attack against it gains Critical 1." }
       ]
     },
     {

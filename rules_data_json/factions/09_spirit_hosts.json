@@ -123,7 +123,7 @@
         { "name": "Abyssal Grasp", "range": "Engaged 2\"", "attacks": 5, "hit": "4+", "damage": 2, "keywords": ["Magic", "Anti-Armored 2"] }
       ],
       "abilities": [
-        { "name": "Otherworldly Bulk", "type": "Passive", "effect": "After successfully Charging, enemies cannot use Reactions against its first Engagement Attack that Round." }
+        { "name": "Otherworldly Bulk", "type": "Passive", "effect": "After successfully Charging, enemies cannot use Reactions against its first Melee Attack that Round." }
       ]
     }
   ],

@@ -1,6 +1,6 @@
 # NON-FACTION DOCTRINES
 
-## Consolidated Rules — Playtest Draft v6
+## Consolidated Rules — Playtest Draft v6.1
 
 ### General Rules
 
@@ -13,6 +13,9 @@ Each Doctrine grants one Foundation Recruitment Slot and provides five Command o
 A Doctrine Command may affect any eligible Unit unless its effect specifies otherwise. Recruitment Slots determine army composition; they do not restrict who may benefit from a Command.
 
 ### Command Usage
+
+**One Command per activation:** The acting side may use at most one personal Unit, Faction, or Doctrine Command during each Unit activation; the opposing side may use one eligible Reaction. Each Attack, Charge, or Save sequence benefits from at most one friendly Command effect, including one prepared during an earlier Phase. Passives remain compatible.
+
 
 - Each Command costs 1 CP and one Doctrine-card exhaustion, unless otherwise stated.
 - Commands are activated during the specified Movement, Assault, or Combat Phase.
@@ -41,7 +44,7 @@ Accurate X: Reroll up to X natural 1s during a Hit roll.
 
 Tough X: Reroll up to X natural 1s during an Armor Save roll.
 
-Brace X: A Unit receiving a Charge gains X additional Attack dice on its next eligible Engagement Attack against the charging Unit, as defined in the core combat rules.
+Brace X: Reduce the incoming Charge Impact pool by X automatic Hits, minimum zero. Brace does not provide retaliatory Attack dice.
 
 Hit Cancellation: When an ability discards a successful non-6 Hit die, resolve it after Hit rerolls but before saves. Natural 6s, automatic Hits, and Charge Impact cannot be discarded this way.
 
@@ -140,25 +143,19 @@ Objective Play does not need to be particularly effective at destroying enemies,
 
 Foundation Recruitment Slot: E
 
-Strategy: Achieve superior performance through disciplined attacks, careful execution, and technical proficiency.
+Strategy: Improve existing Units through Accurate, Critical, Tough, Brace, and suppression of defensive keyword rerolls rather than broadly increasing Attack dice or changing core characteristics.
 
-| Command           | Slot | Timing                  | Effect                                                                                                                                                                                  |
-| ----------------- | ---- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Veteran Spearhead | E    | Combat                  | One friendly Unit gains +1 Attack and Accurate 2 on its next Engagement Attack this Phase.                                                                                              |
-| Find the Opening  | H    | Assault/Combat          | Choose one visible enemy Unit. Worsen its Evade by one step against the next friendly Attack targeting it this Phase. If the target has no Evade, that Attack gains Accurate 1 instead. |
-| Perfect Technique | E    | Assault/Combat Reaction | After one friendly Unit rolls to Hit, reroll up to two failed Hit dice. Dice already rerolled cannot be selected.                                                                       |
-| Combat Training   | S    | Movement                | Choose one friendly Unit. Its next Attack this Round gains Accurate 2 and ignores one step of Hit worsening caused by a temporary condition.                                            |
-| Knightly Order    | V    | Assault                 | One friendly Unit gains Charge 1 on its next Charge this Phase. If the Charge succeeds, its first Engagement Attack against that enemy this Round gains Accurate 2.                     |
+For **Veteran Spearhead**, an Elite Unit includes the exact **Elite** tag or an Elite subtype such as **Elite Infantry**, **Elite Cavalry**, or **Elite Ranged Infantry**.
 
-Doctrine Identity: Reliable, high-quality combat performance.
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Veteran Spearhead | E | Combat | Choose one friendly Elite Unit. Its next **Melee Attack** this Phase gains **Critical 1**, without a Surge because this is a CP Command. |
+| Find the Opening | H | Assault/Combat | One friendly Unit gains **Accurate 2** on its next Attack this Phase. |
+| Perfect Technique | E | Assault/Combat | One friendly Unit gains **Accurate 1** on its next Attack this Phase. Reduce the defender's effective **Tough X and Cover X by 2 each**, minimum zero, against that Attack. Suppressing Cover rerolls does not remove Evade eligibility granted by Cover. |
+| Combat Training | S | Movement | One friendly Unit gains **Tough 1 and Brace 1** until the end of the Round. |
+| Knightly Order | V | Assault | One friendly Unit gains **Charge 1 and Impact 1** on its next Charge this Phase. |
 
-Elite emphasizes making existing Attacks more effective. Alpha Strike offers stronger but declining early-Round offense, while Counter Strike and Castling provide more dedicated defensive tools.
-
-
-
----
-
-
+Doctrine Identity: Keyword-focused precision and defense. Gambit trades reliability for explosive offense; Castling defends prepared positions; Counter Strike retaliates.
 
 # 4. Counter Strike
 
@@ -168,8 +165,8 @@ Strategy: Respond to enemy aggression through timely defense and retaliation.
 
 | Command              | Slot | Timing                  | Effect                                                                                                                                                                              |
 | -------------------- | ---- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Measured Retaliation | E    | Combat Reaction         | After a friendly Unit survives an enemy Engagement Attack, its next Engagement Attack against that attacker gains +2 Attacks. The benefit expires after its next Combat activation. |
-| Parry and Return     | C    | Combat Reaction         | One friendly Unit gains Tough 2 against an incoming Engagement Attack. If it suffers no unsaved Damage, its next Engagement Attack against that attacker gains Accurate 1.          |
+| Measured Retaliation | E    | Combat Reaction         | After a friendly Unit survives an enemy Melee Attack, its next Melee Attack against that attacker gains +2 Attacks. The benefit expires after its next Combat activation. |
+| Parry and Return     | C    | Combat Reaction         | One friendly Unit gains Tough 2 against an incoming Melee Attack. If it suffers no unsaved Damage, its next Melee Attack against that attacker gains Accurate 1.          |
 | Countermand          | H    | Assault/Combat Reaction | When an enemy attacks a friendly Unit within Short of friendly Headquarters, discard one successful non-6 Hit die from that Attack after Hit rerolls and before saves.              |
 | Return Volley        | R    | Assault Reaction        | After a friendly Unit survives a ranged Attack, its next ranged Attack against the attacker gains Accurate 2 and Pinpoint. The effect expires after its next Assault activation.    |
 | Emergency Screen     | A    | Assault/Combat Reaction | When a friendly Unit within 2" of a different friendly Unit is attacked, reduce the incoming Attack by one Attack die, minimum one, before rolling to Hit.                          |
@@ -193,7 +190,7 @@ Strategy: Establish defensive formations, prepared firing positions, and mutuall
 | Command               | Slot | Timing           | Effect                                                                                                                                                                                                                |
 | --------------------- | ---- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Hold Formation        | H    | Combat           | Choose one friendly Unit that has not voluntarily Moved, Disengaged, Charged, or Blinked this Round. It gains Tough 2 until the end of the Combat Phase.                                                              |
-| Layered Defense       | C    | Assault Reaction | When a friendly Unit that did not voluntarily Move or Disengage during the preceding Movement Phase receives a Charge, it gains Brace 2 against the charging Unit for its next eligible Engagement Attack this Round. |
+| Layered Defense       | C    | Assault Reaction | When a friendly Unit that did not voluntarily Move or Disengage during the preceding Movement Phase receives a Charge, it gains Brace 2 against the charging Unit for its next eligible Melee Attack this Round. |
 | Fortified Emplacement | A    | Assault Reaction | When a friendly Unit that has not voluntarily Moved or Blinked this Round is attacked at range, it gains Tough 3 against that Attack.                                                                                 |
 | Prepared Firing Lanes | R    | Assault          | One friendly Unit that has not voluntarily Moved, Disengaged, or Blinked this Round gains Accurate 2 and +1 Attack on its next ranged Attack against an enemy that Moved this Round.                                  |
 | Maintain Positions    | S    | Movement         | Choose one friendly Unit. Remove Withdrawn, Slow, or one temporary Hit penalty from it. If it has not voluntarily Moved or Blinked this Round, it also gains Brace 1 against the next Charge it receives this Round.  |
@@ -220,7 +217,7 @@ Strategy: Maintain ranged superiority through coordinated shooting, accuracy, an
 | Marked Fire Lane     | R    | Assault          | One friendly Unit gains Pinpoint and Accurate 2 on its next ranged Attack this Phase.                                                                                              |
 | Artillery Correction | A    | Assault          | One friendly Unit making a Heavy ranged Attack gains Accurate 2 and ignores Cover against its target.                                                           |
 | Veteran Gunners      | E    | Assault          | One friendly Unit gains +1 Attack and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round.            |
-| Screening Fire       | V    | Assault Reaction | When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Engagement Attack during the ensuing Combat Phase. |
+| Screening Fire       | V    | Assault Reaction | When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Melee Attack during the ensuing Combat Phase. |
 
 Doctrine Identity: Offensive ranged combat.
 
@@ -292,11 +289,11 @@ Unless noted otherwise, the following Alpha Strike bonuses depend on the current
 
 | Round | First Strike Orders | Opening Volley | Shock Assault | Ferocious Opening |
 | --- | --- | --- | --- | --- |
-| 1 | Accurate 3 | +4 Attacks | Impact +4 | Reroll up to 3 successful saves |
-| 2 | Accurate 2 | +3 Attacks | Impact +3 | Reroll up to 2 successful saves |
-| 3 | Accurate 1 | +2 Attacks | Impact +2 | Reroll up to 1 successful save |
-| 4 | Accurate 1 | +1 Attack | Impact +1 | Reroll up to 1 successful save |
-| 5 | Accurate 1 | +1 Attack | Impact +1 | Reroll up to 1 successful save |
+| 1 | Accurate 3 | +3 Attacks | Impact +3 | Critical 2 |
+| 2 | Accurate 2 | +2 Attacks | Impact +2 | Critical 1 |
+| 3 | Accurate 1 | +2 Attacks | Impact +1 | Critical 1 |
+| 4 | Accurate 1 | +1 Attack | Impact +1 | Accurate 1 |
+| 5 | Accurate 1 | +1 Attack | Impact +1 | Accurate 1 |
 
 ### Alpha Strike Commands
 
@@ -306,7 +303,7 @@ Unless noted otherwise, the following Alpha Strike bonuses depend on the current
 | Opening Volley | R | Assault | One friendly Unit gains +X Attacks on its next ranged Attack this Phase, where X is determined by the current Round. |
 | Shock Assault | E | Assault | When one friendly Unit declares a Charge, increase its Charge Impact by X for that Charge, where X is determined by the current Round. This does not increase its Charge distance. |
 | Rapid Mobilization | A | Movement / Assault / Combat | Choose either **Rapid Deployment** (Movement, once per battle, Round 1 only) or **Standard Orders** (Assault/Combat). See below. |
-| Ferocious Opening | C | Combat | Choose one friendly Unit making an Engagement Attack. The attacker selects up to X successful Armor or Evade Save dice made against that Attack; the defender must reroll those dice, and the new results stand. X is determined by the current Round. Ward Saves are unaffected. Dice already rerolled cannot be selected. |
+| Ferocious Opening | C | Combat | Choose one friendly Unit making a **Melee Attack** this Phase. It gains **Critical 2** in Round 1, **Critical 1** in Rounds 2–3, or **Accurate 1** in Rounds 4–5. CP-granted Critical does not require a Surge. |
 
 ### Rapid Mobilization — Two Modes
 
@@ -320,8 +317,8 @@ Both modes use the normal Command CP and card-exhaustion cost. Each use resolves
 
 - **First Strike Orders** provides reliable Hits, but only while the recipient is within Short of a friendly Headquarters when the Command is used. Its bonus can apply to an otherwise eligible Attack later in the same Round.
 - **Opening Volley** adds Attack dice to a single ranged Attack by the Unit, not to every Model.
-- **Shock Assault** modifies only the Charge Impact of one declared Charge. It does not increase the Charge's distance or the Unit's later Engagement Attack dice.
-- **Ferocious Opening** applies to Armor or Evade Saves, as appropriate for the attack being resolved. It cannot force Ward rerolls or reroll a die a second time.
+- **Shock Assault** modifies only the Charge Impact of one declared Charge. It does not increase the Charge's distance or the Unit's later Melee Attack dice.
+- **Ferocious Opening** applies to one Melee Attack, not Charge Impact. Its Critical bypasses Armor and Evade, but not Ward.
 - None of the four offensive Commands requires that the Unit or its target be attacked for the first time. Only the Round-dependent bonuses decline.
 
 ### Doctrine Identity
@@ -347,8 +344,8 @@ A formation containing four or more surviving Models qualifies for the standard 
 | Command           | Slot | Timing                  | Effect                                                                                                                                                                                                              |
 | ----------------- | ---- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Endless Ranks     | C    | Movement                | One friendly Unit with at least four surviving Models counts as one additional Unit for objective control until the end of the Round.                                                                               |
-| Massed Volley     | R    | Assault                 | One friendly Unit with at least four surviving Models gains +2 Attacks on its next ranged Attack this Phase. If another friendly Unit with at least four surviving Models is within Short, gain +3 Attacks instead. |
-| Mob Tactics       | E    | Combat                  | One friendly Unit gains +2 Attacks on its next Engagement Attack against an enemy also Engaged by a different friendly Unit with at least four surviving Models.                                                    |
+| Massed Volley     | R    | Assault                 | One friendly Unit with at least four surviving Models gains +2 Attacks on its next ranged Attack this Phase. If another friendly Unit with at least four surviving Models is within Short, also gain **Accurate 1** on that Attack. |
+| Mob Tactics       | E    | Combat                  | One friendly Unit gains +2 Attacks on its next Melee Attack against an enemy also Engaged by a different friendly Unit with at least four surviving Models.                                                    |
 | Pack Coordination | S    | Assault/Combat Reaction | When a friendly Unit within Short of another friendly Unit with at least four surviving Models is attacked, it gains Tough 2 against that Attack.                                                                   |
 | Encirclement      | V    | Combat                  | One friendly Unit attacking an enemy also Engaged by a different friendly Unit with at least four surviving Models causes that enemy to worsen Evade by one step against the Attack.                                |
 
@@ -373,10 +370,10 @@ Grinding combines the former Grinding and Recursion doctrines. Its commands may 
 | Command             | Slot | Timing         | Effect                                                                                                                                                                                                                    |
 | ------------------- | ---- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Unbroken Line       | C    | Reaction       | When a friendly Unit that has already suffered an Attack this Phase is attacked again, it gains Tough 2 against the incoming Attack.                                                                                      |
-| Wear Them Down      | H    | Combat         | Choose one enemy Engaged with a friendly Unit that was already attacked by a different friendly Unit this Round. Reduce its next Engagement Attack by one Attack die, minimum one, before the end of its next activation. |
+| Wear Them Down      | H    | Combat         | Choose one enemy Engaged with a friendly Unit that was already attacked by a different friendly Unit this Round. Reduce its next Melee Attack by one Attack die, minimum one, before the end of its next activation. |
 | Reform and Recover  | S    | Movement       | Choose one friendly Unit. Either Heal 2 accumulated Damage from it, or remove Withdrawn and one temporary Hit, Move, or Evade penalty from it. Defeated Models are not restored.                                          |
 | Attrition Engine    | A    | Assault/Combat | One friendly Unit gains Accurate 2 on its next Attack against an enemy that has already suffered unsaved Damage from a different friendly Unit this Round.                                                                |
-| Relentless Veterans | E    | Combat         | One friendly Unit gains Accurate 2 and Critical 1 on its next Engagement Attack against an enemy it attacked during an earlier Round.                                                                                     |
+| Relentless Veterans | E    | Combat         | One friendly Unit gains Accurate 2 and Critical 1 on its next Melee Attack against an enemy it attacked during an earlier Round.                                                                                     |
 
 ### Doctrine Identity
 
@@ -411,88 +408,35 @@ Grinding does not restore defeated Models or Units. Those effects remain availab
 
 Foundation Recruitment Slot: S
 
-Strategy: Deploy reserve formations into unexpected battlefield positions, launch flanking attacks, and establish forward landing zones.
+Strategy: Deploy reserve formations in unexpected positions at the end of the Round, trading immediate action and scoring for position during the following Round.
 
-Deep Strike changes **where** ordinary reinforcements may arrive. It does not create an additional Reserve pool or raise the universal reinforcement allowance.
+## Shared Reserve Pool and End Step Insertion
 
-## Deep Strike Deployment
+Deep Strike draws from the same Reserve pool and Round-based reinforcement allowance as ordinary Reserves. From **Round 2**, declare at most **one** Deep Strike insertion Command during a friendly Movement activation, pay CP/exhaust its card, and designate an eligible Unit still in Reserve. It consumes one arrival from this Round's allowance and is **not placed during ordinary end-of-Movement reinforcement**.
 
-### Shared Reserve Pool
+During the **End Step after Scoring**, before expiring other End-of-Round effects, alternate placing designated Deep Strike Units beginning with the side that held First Activation in Movement. Placement must be legally coherent, unengaged, and satisfy the selected Command's restrictions. If a legal position is unavailable, the Unit remains in Reserve, but CP/card cost is not refunded. A designated Unit cannot act or score in its arrival Round, which is already ending; it acts normally from the following Round. Large Assets require Heavy Descent or an explicit exception.
 
-All Units designated as Reserve under the universal Staggered Deployment rules form one Reserve pool. An army with Deep Strike does not designate a second or separate Deep Strike Reserve. Any eligible Unit in that pool may enter normally or through an appropriate Deep Strike Command.
-
-Deep Strike insertion begins in **Round 2**. The number of Units deployed from Reserve in a Round, including Deep Strike arrivals, cannot exceed that Round's normal reinforcement allowance unless a rule expressly says otherwise.
-
-Large Assets can arrive as ordinary Reserves. They may arrive **using Deep Strike deployment** only through Heavy Descent or an ability expressly permitting them to do so.
-
-### Arriving Through a Deep Strike Command
-
-1. During the Movement Phase, select an eligible Unit still in Reserve and declare an eligible Deep Strike deployment Command. Pay the Command's CP cost and exhaust its card as normal.
-2. Count this Unit against the current Round's normal reinforcement allowance.
-3. At the end of the Movement Phase, place that Unit at a legal location permitted by the Command, rather than the ordinary deployment zone. If other Reserve Units arrive, place them in the normal alternating placement order.
-4. The Unit does not receive a Movement activation upon entry.
-
-Unless the Command says otherwise, the arriving Unit must be placed:
-
-- Wholly more than 9" from every enemy Model.
-- Outside the enemy deployment zone.
-- In legal positions with normal Unit coherency.
-- Without becoming Engaged.
-
-### Arrival Restrictions
-
-A Unit arriving through Deep Strike:
-
-- Counts as having voluntarily Moved during that Movement Phase.
-- Cannot make additional Moves, Charge, Disengage, or Blink during the Round in which it arrives.
-- Cannot control or contest objectives until the following Round.
-- May make otherwise eligible ranged or Spell Attacks during the Assault Phase.
-- Cannot use a Heavy Attack that requires it not to have Moved, unless an ability explicitly permits otherwise.
-
-**Only one Unit may arrive through Deep Strike deployment Commands per Round.** Other arriving Units may use ordinary Reserve deployment, up to the Round's total allowance.
-
-If a legal insertion position is unavailable, the Unit cannot be deployed using that Command; it remains in Reserve. A player cannot declare an illegal placement, and no extra deployment allowance is granted.
-
----
+Normal insertion requires a position **wholly more than 8" from every enemy Model** and outside the enemy Deployment Zone. Flanking Insertion allows a board-edge entry inside the enemy Deployment Zone but requires more than 6" from enemies. At most one Unit may use Deep Strike insertion per Round; ordinary Reserves use any other available reinforcement slots.
 
 ## Deep Strike Commands
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| Forward Insertion | C | Movement | Designate one eligible Reserve Unit to deploy at the end of this Movement Phase using the normal Deep Strike placement rules. It may be placed anywhere on the battlefield that satisfies those rules. Counts toward the normal reinforcement allowance. |
-| Landing Fire | R | Assault | One friendly Unit that arrived through Deep Strike this Round gains Accurate 2 and Pinpoint on its next ranged Attack this Phase. This Command does not override Heavy restrictions. |
-| Flanking Insertion | V | Movement | Designate one eligible Reserve Unit to deploy at the end of this Movement Phase wholly within 3" of any battlefield edge and more than 6" from every enemy Model. It may enter the enemy deployment zone. All other arrival restrictions apply. Counts toward the normal reinforcement allowance. |
-| Heavy Descent | A | Movement | Designate one eligible Reserve Unit, including a Large Asset, to deploy at the end of this Movement Phase using normal Deep Strike placement rules. The Unit gains Tough 2 against the first Attack it suffers before the beginning of its next Movement activation. Counts toward the normal reinforcement allowance. |
-| Signal Beacon | H | Movement | Choose one friendly Unit already on the battlefield. During this Movement Phase, the next friendly Unit designated to arrive through Deep Strike within Short of that Unit may be placed more than 6" from enemy Models instead of 9". All other placement restrictions apply. |
+| Forward Insertion | C | Movement | Designate one eligible Reserve Unit for End Step insertion using normal Deep Strike restrictions and the normal shared reinforcement allowance. |
+| Landing Fire | R | Assault | One friendly Unit that arrived through Deep Strike **at the end of the previous Round** gains **Accurate 2 and Pinpoint** on its next ranged Attack this Phase. Does not waive Heavy. |
+| Flanking Insertion | V | Movement | Designate one eligible Reserve Unit for End Step insertion wholly within 3" of a battlefield edge and more than 6" from enemy Models. It may enter the enemy Deployment Zone. |
+| Heavy Descent | A | Movement | Designate one eligible Reserve Unit, including a Large Asset, for End Step insertion under normal Deep Strike restrictions. It gains **Tough 2 against the first Attack it suffers during the following Round**, then expires. |
+| Signal Beacon | H | Movement | Choose one friendly Unit already on the battlefield. Until this Round's insertion step, a separately designated Deep Strike Unit placed wholly within Short of that beacon may use a **more-than-6"** enemy exclusion distance instead of 8". The insertion Command must be used in a **different friendly Movement activation** under the one-Command limit. |
 
-### Command Clarifications
+## Command Clarifications
 
-**Forward Insertion:** Provides basic forward deployment, allowing a Unit to bypass the distance and terrain between the player's deployment zone and a legal insertion point.
+- The insertion Commands each cost CP/card use and share the normal reinforcement allowance. They create no extra Reserve pool or immediate Attack.
+- **Landing Fire** improves ranged attacks in the Round after insertion. Heavy still applies normally.
+- **Heavy Descent** allows Large Asset insertion. Its Tough 2 expires after the first following-Round Attack or at the end of that Round.
+- **Signal Beacon** persists through the End Step but cannot insert a Unit itself. It requires a separate Command during another friendly Movement activation.
+- The designated Unit stays off the battlefield, providing no auras, targets, or other effects until placement.
 
-**Landing Fire:** Improves a recently inserted Unit's ranged attack. Any eligible Unit with a ranged weapon may benefit, not only Ranged Infantry.
-
-**Flanking Insertion:** Provides alternate access to battlefield edges, including enemy deployment territory, subject to its more-than-6" exclusion distance.
-
-**Heavy Descent:** Is the usual Deep Strike method for Large Assets. Its Tough bonus is temporary and does not override Heavy weapon restrictions.
-
-**Signal Beacon:** Must be used during the Movement Phase before declaring the insertion it modifies. The designated insertion still requires a separate Deep Strike deployment Command and still consumes one of that Round's reinforcement allowances. Signal Beacon does not insert an additional Unit by itself.
-
-### Doctrine Identity
-
-Deep Strike rewards flexible reserve arrival, battlefield penetration, and unexpected angles of attack. Unlike Alpha Strike, it does not accelerate the overall reinforcement schedule; its advantage is positional, and it can use that advantage repeatedly from Round 2 onward while sufficient Reserve Units and Commands remain.
-
-### Distinction from Other Doctrines
-
-- Mobility: Improves the movement of Units already on the battlefield.
-- Slingshot: Uses friendly Units to create additional movement opportunities.
-- Alpha Strike: Maximizes early-Round offense and can bring in one extra Round 1 reinforcement.
-- Deep Strike: Changes where purchased Reserve Units enter the battle, within the normal arrival allowance.
-
-
-
----
-
-
+Doctrine Identity: Delayed, tactical forward insertion. Unlike ordinary Reserves and Alpha Strike's early reinforcement, Deep Strike trades immediate action for better next-Round positioning.
 
 # 13. Slingshot
 
@@ -503,7 +447,7 @@ Strategy: Use one formation to create movement or attack opportunities for anoth
 | Command             | Slot | Timing           | Effect                                                                                                                                                                                    |
 | ------------------- | ---- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Anchor and Launch   | C    | Movement         | Choose one friendly Unit that has not voluntarily Moved or Blinked this Round. A different unengaged friendly Unit within 2" may immediately Move up to 3", ending legally and unengaged. |
-| Exploit the Opening | E    | Combat           | If a different friendly Unit inflicted unsaved Damage on the target this Round, one friendly Unit gains Critical 1 on its next Engagement Attack against that target this Round.          |
+| Exploit the Opening | E    | Combat           | If a different friendly Unit inflicted unsaved Damage on the target this Round, one friendly Unit gains Critical 1 on its next Melee Attack against that target this Round.          |
 | Create the Gap      | R    | Assault Reaction | After a friendly Unit inflicts unsaved Damage with a ranged Attack, a different unengaged friendly Unit within Short of the enemy may immediately Move up to 2", ending unengaged.        |
 | Launch Platform     | A    | Movement         | One unengaged friendly Unit within 2" of a friendly Asset immediately resolves Blink 2.                                                                                                   |
 | Relay Maneuver      | S    | Movement         | Choose one friendly Unit. A different unengaged friendly Unit within Short of it immediately resolves Blink 3.                                                                            |
@@ -530,9 +474,9 @@ Gambit uses Reckless Rolls, additional dice, and unusually consequential failure
 | ------------------ | ---- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Double Down        | C    | Assault/Combat Reaction | When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit normally, to a maximum of the incoming Hits. Excess successful Saves have no effect. These dice cannot be rerolled. Backlash: After resolving the Attack, suffer 1 unpreventable Damage for each natural 1 rolled.                             |
 | Risky Calculations | S    | Assault                 | One friendly Unit gains +2 Attacks on its next ranged or Spell Attack this Phase. Its Hit roll is Reckless. Blunder: The attacking Unit suffers Direct Damage 1.                                                                                                                                                                                                                                |
-| No Quarter         | E    | Combat                  | One friendly Unit gains +1 Attack and Critical 2 on its next Engagement Attack this Phase. Its Hit roll is Reckless. Blunder: The Unit cannot use Reactions for the remainder of the Round.                                                                                                                                                                                                     |
+| No Quarter         | E    | Combat                  | One friendly Unit gains +1 Attack and Critical 2 on its next **Melee Attack** this Phase. Its Hit roll is Reckless; the CP-granted Critical does not require a Surge. Blunder: This Unit becomes Off-Balance until the beginning of its next Movement activation and cannot use Reaction Commands until then.                                                                                                                                                                                                     |
 | Expend the Reserve | A    | Assault/Combat          | One friendly Unit gains +3 Attacks on its next Attack this Phase. Its Hit roll is Reckless. Blunder: The Unit suffers Direct Damage 2.                                                                                                                                                                                                                                                          |
-| All or Nothing     | V    | Assault                 | Declare a Charge against an eligible enemy at least 6" away. Gain Charge 1 and Impact +1 for that Charge. If the Charge succeeds, resolve it normally. If it fails, the Unit must move its modified rolled Charge distance toward the target as far as legally possible, stopping without becoming Engaged, and then suffers 1 unpreventable Damage. Normal Charge Blunder effects still apply. |
+| All or Nothing     | V    | Assault                 | Declare a Charge against an eligible enemy at least 6" away. Gain Charge 2 and Impact +2 for that Charge. If the Charge succeeds, resolve it normally. If it fails, the Unit must move its modified rolled Charge distance toward the target as far as legally possible, stopping without becoming Engaged, and then suffers 1 unpreventable Damage. Normal Charge Blunder effects still apply. |
 
 ### Double Down Clarification
 
@@ -570,7 +514,7 @@ Strategy: Coordinate powerful battlefield assets, artillery, heavy attacks, and 
 | ---------------- | ---- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Armored Advance  | C    | Movement | One friendly Unit gains +2" Move during its next normal Move this Round and Tough 1 against its next ranged Attack this Round.                                                        |
 | Fire Control     | H    | Assault  | Choose one visible enemy Unit. The next Attack made against it by each of up to two different friendly Units this Phase gains Accurate 1.                                             |
-| Battering Attack | A    | Combat   | One friendly Unit gains +1 Attack, Anti-Armored 1, and Anti-Monster 1 on its next Engagement Attack this Phase. Anti bonuses only apply against their respective target categories.   |
+| Battering Attack | A    | Combat   | One friendly Unit gains +1 Attack, Anti-Armored 1, and Anti-Monster 1 on its next Melee Attack this Phase. Anti bonuses only apply against their respective target categories.   |
 | Shock Support    | V    | Assault  | One friendly Unit gains Charge 1 on its next Charge this Phase. If it begins that Charge within Short of a friendly Large Asset, it gains Charge 2 instead.                           |
 | Spotter's Call   | S    | Assault  | One friendly Unit gains Accurate 2 and ignores Cover on its next ranged Attack this Phase. If the attacker is Artillery or a Large Asset, it also gains +1 Attack. |
 
@@ -592,7 +536,7 @@ Strategy: Reach resistant positions, overcome defenders, and maintain pressure a
 
 | Command            | Slot | Timing          | Effect                                                                                                                                                                                                                      |
 | ------------------ | ---- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Breach Guard       | E    | Combat          | One friendly Unit that successfully Charged this Round gains Accurate 2 on its next Engagement Attack against an Armored target. If the target had Brace during that Charge, also gain +1 Attack.                           |
+| Breach Guard       | E    | Combat          | One friendly Unit that successfully Charged this Round gains Accurate 2 on its next Melee Attack against an Armored target. If the target had Brace during that Charge, also gain +1 Attack.                           |
 | Momentum Drive     | V    | Assault         | One friendly Unit gains Charge 2 when declaring its next Charge this Phase. Charge Impact is unchanged.                                                                                                                     |
 | Siege Breaker      | A    | Assault/Combat  | One friendly Unit gains Anti-[Target Type] 1 on its next Attack against an Armored Unit, Monster, Vehicle, War Machine, or Fortification this Phase. Against a Structure or Fortification, the Attack also gains +1 Damage. |
 | Press the Breach   | C    | Combat          | After a friendly Unit inflicts unsaved Damage in Engagement, the target loses one bonus Unit of objective-control counting until the end of the Round, to a minimum of its normal count.                                    |
@@ -651,15 +595,28 @@ Staggered Deployment — Reinforcement Pacing: Monitor whether ordinary Reserves
 
 Alpha Strike — Round 1 Command Stacking: Test combinations of Opening Volley's +4 Attacks, Shock Assault's Impact +4, and Rapid Mobilization's extra mobile Unit. These Command effects target different aspects of offense but can produce concentrated opening pressure.
 
-Alpha Strike — Ferocious Opening: Forcing three successful Armor or Evade saves to be rerolled can be severe against well-armored Units, particularly when other rerolls have already been used. Confirm that one-die-one-reroll and Ward exceptions are applied consistently.
+Alpha Strike — Ferocious Opening: Round 1 Critical 2 bypasses Armor and Evade without requiring a Surge and can be severe against well-armored Units. Confirm that the Round 1 → Rounds 2–3 → Rounds 4–5 decline (Critical 2 → Critical 1 → Accurate 1) is meaningful without being overwhelming.
 
 Deep Strike — Reinforcement Competition: Confirm that forward insertion is worth selecting despite consuming the same reinforcement allowance as ordinary arrival, and that Deep Strike + Signal Beacon is not too difficult to screen on smaller maps.
+
+### Revision v6.1 — Key Changes
+
+- **Command limits:** one Command (personal Unit, Faction, or Doctrine) per friendly Unit activation, with one eligible opposing Reaction; an Attack, Charge, or Save sequence benefits from at most one friendly Command effect, including effects prepared in an earlier Phase.
+- **Critical X:** printed and passive sources now require a Surge; Critical explicitly granted by a CP-paid Command does not.
+- **Long Range X:** beyond normal Range the combined Attack pool loses 2 dice (minimum 1) instead of worsening Hit.
+- **Elite:** replaced the five Commands with revisions emphasizing Critical, Accurate, Tough, Brace and defensive keyword manipulation; Veteran Spearhead applies to Elite and Elite-subtype Units.
+- **Alpha Strike:** revised Opening Volley and Shock Assault; Ferocious Opening is again a Round-based keyword grant (Critical 2 in Round 1, Critical 1 in Rounds 2–3, Accurate 1 in Rounds 4–5) on one Melee Attack, replacing the v6 reroll effect.
+- **Horde:** Massed Volley grants +2 Attacks and Accurate 1 in formation instead of +3 Attacks.
+- **Gambit:** Expend the Reserve keeps +3 Attacks and its risk; No Quarter's Blunder downside is stronger; All or Nothing grants Charge 2 and Impact +2.
+- **Deep Strike:** designation occurs during Movement and placement during the End Step after Scoring, with an 8-inch default enemy exclusion; Landing Fire and Heavy Descent apply in the following Round.
+- **PC Charges:** Player Characters use a Body + Athletics Skill Check (Rogues may use Agility + Athletics); Athletics Successes become +1 inch Charge distance or +1 Impact. Added Tier 2 talents Brace Training (Warrior) and Daring Entry (Rogue).
+- **Terminology:** Attack names now consistently use Melee Attack / Ranged Attack wording (formerly "Engagement" Attack); corrected the stale Brace description in the Doctrine introduction.
 
 ### Revision v6 — Key Changes
 
 - Added universal Staggered Deployment: half the army's Units (rounded up) begin in Reserve; each Round allows up to that Round number of arrivals, beginning in Round 1.
 - Reworked Alpha Strike to use declining Round-based bonuses without first-attack restrictions. Opening Barrage was replaced by Rapid Mobilization, which combines a once-per-battle extra Round 1 deployment with a reusable +1 Attack mode.
-- Updated Shock Assault to grant Charge Impact rather than Engagement Attack dice; updated Ferocious Opening to force rerolls of successful Armor or Evade saves rather than granting Accurate and Critical.
+- Updated Shock Assault to grant Charge Impact rather than Melee Attack dice; updated Ferocious Opening to force rerolls of successful Armor or Evade saves rather than granting Accurate and Critical.
 - Updated Deep Strike to draw from the shared mandatory Reserve pool and count its insertions toward the normal reinforcement allowance; the once-per-Round Deep Strike insertion limit remains.
 - Updated three obsolete references to Cover granting Tough, and corrected the Doctrine Summary to list Deep Strike instead of the retired Recursion doctrine.
 

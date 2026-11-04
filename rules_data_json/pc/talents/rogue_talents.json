@@ -51,6 +51,13 @@
       "effect": "After making a Weapon Attack, move up to 1\". This movement cannot leave Engagement or enter a new Engagement."
     },
     {
+      "id": "daring-entry",
+      "name": "Daring Entry",
+      "tier": 2,
+      "type": "Passive",
+      "effect": "After successfully Charging and allocating at least one Momentum to additional distance, gain Accurate 1 on the first Melee Weapon Attack against the charged target that Round."
+    },
+    {
       "id": "skirmisher",
       "name": "Skirmisher",
       "tier": 2,
@@ -79,7 +86,7 @@
       "tier": 2,
       "cost": "1 CP",
       "type": "Reaction",
-      "effect": "After completely Evading an Engagement Attack, move up to 2\". You may leave Engagement without becoming Withdrawn."
+      "effect": "After completely Evading an Melee Attack, move up to 2\". You may leave Engagement without becoming Withdrawn."
     },
     {
       "id": "hamstring",
@@ -87,7 +94,7 @@
       "tier": 2,
       "cost": "1 CP",
       "type": "Combat",
-      "effect": "After your Engagement Weapon Attack deals Damage, the target suffers Slow 2 until the end of its next Movement activation."
+      "effect": "After your Melee Weapon Attack deals Damage, the target suffers Slow 2 until the end of its next Movement activation."
     },
     {
       "id": "retaliatory-step",
@@ -102,7 +109,7 @@
       "tier": 3,
       "cost": "1 CP",
       "type": "Reaction — Once per Round",
-      "effect": "When another friendly Unit deals Damage to an enemy you are Engaged with, make one Engagement Weapon Attack against that enemy."
+      "effect": "When another friendly Unit deals Damage to an enemy you are Engaged with, make one Melee Weapon Attack against that enemy."
     },
     {
       "id": "close-quarters-shooter",

@@ -19,7 +19,7 @@
       "factionRule": { "name": "Unyielding", "effect": "Once per Round, each friendly Core or Elite Unit reduces the first instance of Damage it suffers by 1, minimum 0. This applies after Saves and cannot reduce a Critical Injury." },
       "factionCommands": [
         { "name": "Stand Fast", "timing": "Reaction", "cost": "1 CP", "effect": "Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase." },
-        { "name": "Righteous Retaliation", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit survives an Engagement Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round." },
+        { "name": "Righteous Retaliation", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round." },
         { "name": "Heroic Intervention", "timing": "Reaction", "cost": "1 CP", "effect": "When a nearby ally is attacked, one friendly Character may Move up to 3\" toward it." }
       ]
     },
@@ -72,7 +72,7 @@
       "faction": "Blood Courts",
       "factionRule": { "name": "Feast on the Fallen", "effect": "Once per Round, after a friendly Unit defeats an enemy Model in Engagement, Heal 1 Damage from that Unit." },
       "factionCommands": [
-        { "name": "Blood Frenzy", "timing": "Combat", "cost": "1 CP", "effect": "One friendly Unit gains +1 Attack per Model on its next Engagement Attack this Combat Phase." },
+        { "name": "Blood Frenzy", "timing": "Combat", "cost": "1 CP", "effect": "One friendly Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase." },
         { "name": "Predatory Speed", "timing": "Reaction", "cost": "1 CP", "effect": "After destroying an enemy Unit, one friendly Unit may Move up to 2\"." },
         { "name": "Mesmerize", "timing": "Reaction", "cost": "1 CP", "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Character until the end of the Phase." }
       ]
