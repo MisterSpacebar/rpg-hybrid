@@ -7,7 +7,7 @@ import { TIERS, TIER_COST } from '../character/talents.js'
 const toggle = (list, value, max) =>
   list.includes(value) ? list.filter((v) => v !== value) : max === 1 ? [value] : list.length >= max ? list : [...list, value]
 
-function Identity({ data, character, view, update }) {
+function Identity({ data, character, view, update, campaignMode = false }) {
   const { ancestry, cls, sub } = view
   return (
     <section className="panel span-all">
@@ -87,7 +87,7 @@ function Identity({ data, character, view, update }) {
       <p className="muted small">{cls.role}. {sub.description}</p>
       {(cls.id === 'artificer' || sub.subclassSpellAttacks || sub.combatPhaseOptionalSpell || cls.baseSpellAttacks) && (
         <p className="small">
-          {cls.id === 'artificer' ? 'Formulas' : 'Spells'} are managed on <a href="#/character/gear/spells">Gear → {cls.id === 'artificer' ? 'Formulas' : 'Spells'}</a>.
+          {cls.id === 'artificer' ? 'Formulas' : 'Spells'} are managed on {campaignMode ? 'the campaign Starting Magic tab' : <a href="#/character/gear/spells">Gear → {cls.id === 'artificer' ? 'Formulas' : 'Spells'}</a>}.
         </p>
       )}
       </div>
@@ -187,11 +187,11 @@ function Skills({ character, view, update }) {
     </section>
   )
 }
-function Attacks({ view }) {
+function Attacks({ view, campaignMode = false }) {
   return (
     <section className="panel">
       <h2>Attacks</h2>
-      {!view.attacks.length && <p className="muted small">No equipped weapons or known spells. Add weapons on the <a href="#/character/gear">Gear</a> tab.</p>}
+      {!view.attacks.length && <p className="muted small">No equipped weapons or known spells. {campaignMode ? "Choose them in the campaign Equipment or Starting Magic tab." : <>Add weapons on the <a href="#/character/gear">Gear</a> tab.</>}</p>}
       <ul className="attack-lines">
         {view.attacks.map((a) => (
           <li key={a.name}>
@@ -268,11 +268,11 @@ function TalentSummary({ view }) {
   )
 }
 
-function GearSummary({ view }) {
+function GearSummary({ view, campaignMode = false }) {
   const equipped = view.gear.filter((g) => g.equipped)
   return (
     <section className="panel">
-      <h2>Equipment <span className="muted">({view.points.gear} pts)</span> <a className="small" href="#/character/gear">Edit on Gear tab</a></h2>
+      <h2>Equipment <span className="muted">({view.points.gear} pts)</span> {campaignMode ? <span className="muted small">Edit on the campaign Equipment tab</span> : <a className="small" href="#/character/gear">Edit on Gear tab</a>}</h2>
       {!view.gear.length && <p className="muted small">Nothing equipped yet.</p>}
       <ul className="plain-list">
         {equipped.map((g) => (
@@ -320,14 +320,14 @@ function AdventuringGear({ character, update }) {
     </section>
   )
 }
-export default function CharacterStats({ data, character, view, update }) {
+export default function CharacterStats({ data, character, view, update, campaignMode = false }) {
   return (
     <div className="panel-grid">
-      <Identity data={data} character={character} view={view} update={update} />
+      <Identity data={data} character={character} view={view} update={update} campaignMode={campaignMode} />
       <Stats character={character} view={view} update={update} />
       <Skills character={character} view={view} update={update} />
-      <Attacks view={view} />
-      <GearSummary view={view} />
+      <Attacks view={view} campaignMode={campaignMode} />
+      <GearSummary view={view} campaignMode={campaignMode} />
       <Abilities view={view} update={update} />
       <TalentSummary view={view} />
       <AdventuringGear character={character} update={update} />

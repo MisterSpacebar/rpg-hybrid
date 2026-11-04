@@ -42,6 +42,87 @@ service cloud.firestore {
       }
     }
 
+
+    // Campaigns are shared with accepted members. Only the GM changes progression or membership.
+    match /campaigns/{campaignId} {
+      function member() {
+        return signedIn() && request.auth.uid in resource.data.memberUids;
+      }
+      function gm() {
+        return signedIn() && request.auth.uid == resource.data.gmUid;
+      }
+      function memberOfCampaign() {
+        return signedIn()
+          && request.auth.uid in get(/databases/$(database)/documents/campaigns/$(campaignId)).data.memberUids;
+      }
+      function gmOfCampaign() {
+        return signedIn()
+          && request.auth.uid == get(/databases/$(database)/documents/campaigns/$(campaignId)).data.gmUid;
+      }
+      allow get, list: if member();
+      allow create: if signedIn()
+        && request.resource.data.gmUid == request.auth.uid
+        && request.resource.data.memberUids == [request.auth.uid]
+        && request.resource.data.xpTotal == 0
+        && request.resource.data.act == 1
+        && request.resource.data.turn == 1
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 80
+        && request.resource.data.format in ['local', 'standard', 'long', 'grand'];
+      allow update: if gm()
+        && request.resource.data.gmUid == resource.data.gmUid
+        && request.resource.data.memberUids is list
+        && request.resource.data.gmUid in request.resource.data.memberUids
+        && request.resource.data.xpTotal is int
+        && request.resource.data.xpTotal >= resource.data.xpTotal
+        && request.resource.data.xpTotal <= 250
+        && request.resource.data.act is int && request.resource.data.act >= 1 && request.resource.data.act <= 4
+        && request.resource.data.turn is int && request.resource.data.turn >= 1
+        && request.resource.data.format == resource.data.format;
+      allow delete: if false;
+
+      match /joinRequests/{uid} {
+        allow create: if isOwner(uid)
+          && request.resource.data.uid == uid
+          && request.resource.data.displayName is string
+          && request.resource.data.displayName.size() <= 40;
+        allow get: if isOwner(uid) || gmOfCampaign();
+        allow list: if gmOfCampaign();
+        allow delete: if gmOfCampaign();
+        allow update: if false;
+      }
+
+      match /heroes/{uid} {
+        allow get, list: if memberOfCampaign();
+        allow create: if isOwner(uid) && memberOfCampaign()
+          && request.resource.data.ownerUid == uid
+          && request.resource.data.sheet is map
+          && request.resource.data.sheet.talents is map
+          && request.resource.data.sheet.gear is list
+          && request.resource.data.sheet.gear.size() <= 60
+          && request.resource.data.sheet.xpEarned == null;
+        allow update: if isOwner(uid) && memberOfCampaign()
+          && request.resource.data.ownerUid == resource.data.ownerUid
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['sheet', 'updatedAt'])
+          && request.resource.data.sheet is map
+          && request.resource.data.sheet.talents is map
+          && request.resource.data.sheet.gear is list
+          && request.resource.data.sheet.gear.size() <= 60
+          && request.resource.data.sheet.xpEarned == null;
+        allow delete: if false;
+      }
+
+      // GM-approved snapshots cannot be edited by PCs.
+      match /approvedHeroes/{uid} {
+        allow get, list: if memberOfCampaign();
+        allow create, update: if gmOfCampaign()
+          && request.resource.data.ownerUid == uid
+          && request.resource.data.sheet is map;
+        allow delete: if false;
+      }
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

@@ -384,3 +384,17 @@ select.needs-choice { border-color: #e5645b !important; }
 .ancestry-traits { margin-top: 10px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; background: #181b21; }
 .ancestry-traits { margin-bottom: 12px; }
 .phase-ability { background: #2b3550; color: #9db7f5; }
+
+
+/* Campaign workspace: reuse the existing builder's panels and typography. */
+.campaign-page { max-width: 1320px; }
+.campaign-page h1 { margin: 8px 0 12px; }
+.campaign-heading, .campaign-character-actions { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.campaign-form { display:flex; flex-direction:column; align-items:flex-start; gap:14px; }
+.campaign-form .field { width:100%; max-width:420px; }
+.campaign-form input, .campaign-form select { width:100%; }
+.campaign-page .subtabs button { border-radius:0; border:0; border-bottom:2px solid transparent; background:transparent; padding:10px 14px; color:var(--muted); cursor:pointer; }
+.campaign-page .subtabs button.active { border-bottom-color:var(--accent); color:var(--text); }
+.campaign-page .picker li { display:flex; justify-content:space-between; gap:12px; align-items:center; }
+.campaign-page .checks { margin:4px 0; }
+@media (max-width:680px) { .campaign-heading, .campaign-character-actions { align-items:flex-start; } }
