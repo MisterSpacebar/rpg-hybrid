@@ -148,7 +148,7 @@
     },
     {
       "id": "unique-units",
-      "rule": "Named Faction Leaders and explicitly Unique Units may be purchased only once; ordinary Units may be repeated."
+      "rule": "A Unit with the Unique tag may be purchased only once per named profile in an army. Named Faction Leaders are Unique; ordinary Units may be repeated."
     },
     {
       "id": "points-cap",

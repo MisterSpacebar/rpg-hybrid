@@ -89,6 +89,7 @@ export default function CharacterDatasheet({ character, view }) {
         {view.thrall && (
           <div className="sheet-block">
             <h4>{view.thrall.name} Unit <span className="muted small">· starts with {view.thrall.startingModels} Models (max {view.thrall.maxModels})</span></h4>
+            <p className="muted small">Tags: {view.thrall.tags.join(', ')}</p>
             <table className="sheet-table">
               <thead>
                 <tr><th>Move</th><th>Wounds</th><th>Armor</th><th>Evade</th><th>Ward</th></tr>

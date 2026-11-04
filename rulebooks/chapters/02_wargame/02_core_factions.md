@@ -655,7 +655,7 @@ Rallying Roar — 1 CP, Movement: Remove Withdrawn from a nearby friendly Unit a
 
 | Unit                                  | Profile                     | Weapons / Special Ability                                                                                                                  |
 | ------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| War Beast — 260 pts (Monster, Beast)  | M6" / W10 / Arm 4+ / Eva 6+ | Tusks and Claws: Engaged / 5 / 4+ / 2 / Anti-Character 2. Unstoppable Charge: Gain +4 Impact when Charging.                                                   |
+| War Beast — 260 pts (Monster, Beast)  | M6" / W10 / Arm 4+ / Eva 6+ | Tusks and Claws: Engaged / 5 / 4+ / 2 / Anti-Unique 2. Unstoppable Charge: Gain +4 Impact when Charging.                                                   |
 | Looted Catapult — 155 pts (Artillery) | M2" / W5 / Arm 5+ / Eva —   | Boulder Thrower: 15" / 2 / 4+ / 2 / Heavy, Blast 1". Crew: Engaged / 2 / 6+ / 1. <br>Unstable Frame: On a Blunder, suffer Direct Damage 1. |
 
 Warclans — Looted Catapult
@@ -1012,7 +1012,7 @@ Call Retainers — 1 CP, Movement: Add one matching basic Model to a surviving, 
 
 | Unit                              | Profile                                       | Weapons / Special Ability                                                                                                                                                                                       |
 | --------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Winged Horror — 290 pts (Monster) | M8" / W10 / Arm 4+ / Eva 5+ / Ward 6+ (Magic) | Fangs and Talons: Engaged / 5 / 4+ / 2 / Anti-Character 2. Predatory Dive: When Charging from an elevated position, gain +1 Impact and Accurate 1 on its next Attack.                                                              |
+| Winged Horror — 290 pts (Monster) | M8" / W10 / Arm 4+ / Eva 5+ / Ward 6+ (Magic) | Fangs and Talons: Engaged / 5 / 4+ / 2 / Anti-Unique 2. Predatory Dive: When Charging from an elevated position, gain +1 Impact and Accurate 1 on its next Attack.                                                              |
 | Black Coach — 260 pts (Vehicle)   | M7" / W9 / Arm 4+ / Eva 5+ / Ward 6+ (Magic)  | Soul Lanterns: 8" / 4 / 5+ / 1 / Magic. Scythes: Engaged / 4 / 5+ / 2 / Anti-Infantry 2. Soul Furnace: Once per Round, when a friendly Unit within Short destroys an enemy Unit, the Coach may Move 2" without finishing Engaged. |
 
 ### Faction Leader — Crimson Regent
@@ -1130,7 +1130,7 @@ M6" / W6 / Arm 6+ / Eva 3+ / Ward 4+ (Physical Ward +2)
 
 Lament of the Dead: 8” / 9 / 4+ / 1 / Magic / Accurate 1
 
-Crown of Sorrows: Engaged / 5 / 3+ / 2 / Magic, Anti-Character 2
+Crown of Sorrows: Engaged / 5 / 3+ / 2 / Magic, Anti-Unique 2
 
 
 
@@ -1495,7 +1495,7 @@ Royal Maul: Engaged / 8 / 3+ / 3
 
 
 
-Supreme Bully — Passive: The Overtyrant's Melee Attacks gain Anti-Monster 2 and Anti-Character 2.
+Supreme Bully — Passive: The Overtyrant's Melee Attacks gain Anti-Monster 2 and Anti-Unique 2.
 
 
 

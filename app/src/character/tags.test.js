@@ -6,7 +6,7 @@ import { resolveUnit } from '../builder/engine.js'
 import { modifyTags } from '../builder/modifiers.js'
 
 test('both builders share selectable Faction, Role and Trait tags', () => {
-  for (const tag of ['Death Legions', 'Officer', 'Ranged', 'Flying', 'Unarmored', 'Character']) {
+  for (const tag of ['Death Legions', 'Officer', 'Ranged', 'Flying', 'Unarmored', 'Unique', 'Summoned']) {
     assert.ok(ANTI_TAGS.includes(tag), tag)
   }
 })
@@ -35,7 +35,7 @@ test('faction allegiance does not imply a creature type', () => {
   assert.ok(!tags.includes('Undead'))
 })
 
-test('a generic Captain is an Officer, not automatically Character', () => {
+test('a generic Captain is an Officer, not automatically Unique', () => {
   const entry = {
     source: 'generic', name: 'Captain', basePoints: 125, baseModels: 1, maxModels: 1,
     modelOptions: [], tags: ['Infantry', 'Elite', 'Officer'], slots: ['E'],
@@ -45,7 +45,7 @@ test('a generic Captain is an Officer, not automatically Character', () => {
   const unit = resolveUnit(entry, { uid: 'captain', models: 1, picks: {} }, 'free-realms')
   assert.ok(unit.tags.includes('Free Realms'))
   assert.ok(unit.tags.includes('Officer'))
-  assert.ok(!unit.tags.includes('Character'))
+  assert.ok(!unit.tags.includes('Unique'))
 })
 
 test('explicit Armored upgrade removes Unarmored', () => {

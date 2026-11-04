@@ -402,7 +402,7 @@
       "Hero",
       "Spirit",
       "Undead",
-      "Character",
+      "Unique",
       "Officer"
     ],
     "modelProfile": {
@@ -432,7 +432,7 @@
         "damage": 2,
         "keywords": [
           "Magic",
-          "Anti-Character 2"
+          "Anti-Unique 2"
         ]
       }
     ],
@@ -457,6 +457,6 @@
   },
   "genericUnitsWorthTaking": "Spirit-themed generic Line Infantry, ranged spectral archers, Scouts, and conventional Support Units. Haunters serve as dedicated combat infiltrators, while generic Scouts remain a less expensive way to obtain target designation.",
   "designNotes": [
-    "v4.2 balance pass: added Keening Archers as the faction's Extra Core, a ranged Spirit unit reinforcing the incorporeal/magic identity rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on the Grave Leviathan's Abyssal Grasp, Anti-Character on the Pale Monarch's Crown of Sorrows)."
+    "v4.2 balance pass: added Keening Archers as the faction's Extra Core, a ranged Spirit unit reinforcing the incorporeal/magic identity rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on the Grave Leviathan's Abyssal Grasp, Anti-Unique on the Pale Monarch's Crown of Sorrows)."
   ]
 }

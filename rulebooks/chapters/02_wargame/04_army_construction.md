@@ -495,7 +495,7 @@ A Unit possessing multiple weapon profiles does not automatically attack with al
 
 Ordinary Units may be purchased multiple times when enough Points and compatible Recruitment Slots are available.
 
-Named Faction Leaders and explicitly Unique Units are limited to one copy each.
+A Unit with the **Unique** tag is limited to one copy of its named profile per army. Named Faction Leaders have Unique. This restriction is independent of the Hero limit and recruitment slot.
 
 Specific Faction or scenario rules may impose additional restrictions.
 

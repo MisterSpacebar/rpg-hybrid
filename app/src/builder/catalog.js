@@ -279,7 +279,8 @@ function factionEntries(f, coreReference) {
     tags: u.tags ?? [], stats: u.modelProfile ?? null, impact: u.impact ?? null,
     attacks: u.attackProfiles ?? [], abilities: u.abilities ?? [], description: u.note ?? null,
     groups: upgradeGroup(u), heroOption: null,
-    isCore: false, isHero: false, isLargeAsset: false, isLeader: false, unique: false, canDouble: false,
+    isCore: false, isHero: false, isLargeAsset: false, isLeader: false,
+    unique: u.tags?.includes('Unique') ?? false, canDouble: false,
     ...extra,
   })
   const out = []

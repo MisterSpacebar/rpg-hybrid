@@ -1,4 +1,4 @@
-import { canonicalTags } from '../tags.js'
+import { canonicalTags, normalizeTag } from '../tags.js'
 export { ANTI_TAGS } from '../tags.js'
 
 // Applies purchased upgrades to a unit's printed stats, attacks, and tags.
@@ -155,8 +155,9 @@ export function applyTagChoices(attacks, options, choices = {}) {
   const applied = {}
   for (const o of options) {
     if (!o.tagChoice) continue
-    const { tag, weapon } = choices?.[o.id] ?? {}
-    if (!tag) continue
+    const { tag: selectedTag, weapon } = choices?.[o.id] ?? {}
+    if (!selectedTag) continue
+    const tag = normalizeTag(selectedTag)
     if (o.tagChoice.scope === 'aura') {
       applied[o.id] = null
       continue

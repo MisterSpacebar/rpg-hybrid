@@ -322,7 +322,7 @@
           "hit": "4+",
           "damage": 2,
           "keywords": [
-            "Anti-Character 2"
+            "Anti-Unique 2"
           ]
         }
       ],
@@ -385,7 +385,7 @@
       "Hero",
       "Undead",
       "Armored",
-      "Character",
+      "Unique",
       "Officer"
     ],
     "modelProfile": {
@@ -427,6 +427,6 @@
   },
   "genericUnitsWorthTaking": "Cheap mortal infantry, archers, Medics, Scouts, and Light Cavalry. The expensive Blood Knights cannot efficiently cover all of an army's mobile or objective-control needs.",
   "designNotes": [
-    "v4.2 balance pass: added Night Stalkers as the faction's Extra Core, a mobile lifesteal-skirmisher Infiltrating unit reinforcing the aggressive/predatory identity rather than patching a weakness. Thralls' weapon profile was kept unchanged (Models, not Attacks, is this faction's established horde-buff pattern). Other Damage-1 weapons gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Infantry on Blood Lances and the Black Coach's Scythes, Anti-Elite on the Vampire Captain's Noble Blade, Anti-Character on the Winged Horror's Fangs and Talons, Anti-Monster on the Crimson Regent's Blood Sovereign's Blade)."
+    "v4.2 balance pass: added Night Stalkers as the faction's Extra Core, a mobile lifesteal-skirmisher Infiltrating unit reinforcing the aggressive/predatory identity rather than patching a weakness. Thralls' weapon profile was kept unchanged (Models, not Attacks, is this faction's established horde-buff pattern). Other Damage-1 weapons gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Infantry on Blood Lances and the Black Coach's Scythes, Anti-Elite on the Vampire Captain's Noble Blade, Anti-Unique on the Winged Horror's Fangs and Talons, Anti-Monster on the Crimson Regent's Blood Sovereign's Blade)."
   ]
 }

@@ -1,5 +1,5 @@
 import { applyFactionEffects } from './factionEffects.js'
-import { canonicalTags } from '../tags.js'
+import { canonicalTags, normalizeTag } from '../tags.js'
 import { applyTagChoices, attackPhase, modifyAttacks, modifyStats, modifyTags } from './modifiers.js'
 
 export const SLOT_ORDER = ['H', 'C', 'E', 'R', 'V', 'S', 'A']
@@ -76,7 +76,7 @@ function perModelCost(entry, selected) {
 
 // Once a tag is chosen, the option's text names it ('Longsword gains Anti-Undead 3') instead of the Anti-[Type] placeholder.
 function describeTagChoice(o, cfg, targets) {
-  const tag = o.tagChoice && cfg.tagPicks?.[o.id]?.tag
+  const tag = o.tagChoice && normalizeTag(cfg.tagPicks?.[o.id]?.tag)
   if (!tag) return o
   const subject = targets[o.id] || (o.tagChoice.scope === 'unit' ? 'This unit' : 'The selected weapon')
   if (o.tagChoice.scope === 'aura') {
@@ -140,9 +140,10 @@ export function resolveUnit(entry, cfg, factionId = null) {
 
   const finalModels = doubled ? models * 2 : models
   const tags = modifyTags(entry.tags.filter((t) => !(isHero && t === 'Elite' && entry.heroOption === 'Master Wizard')), picked)
-  // Hero and Character are distinct. A commissioned Captain or Master Wizard
-  // gains Hero but not Character; named PCs/legendary figures gain Character explicitly.
+  // Hero and Unique are distinct. Commissioned generic Captains and Master Wizards
+  // gain Hero but not Unique; PCs and named/legendary figures gain Unique explicitly.
   if (isHero && !tags.includes('Hero')) tags.push('Hero')
+  if (entry.unique && !tags.includes('Unique')) tags.push('Unique')
   // Roster classifications are explicit and independent of the chosen recruitment slot.
   if (entry.isCore && !tags.includes('Core')) tags.push('Core')
   if (entry.isLargeAsset && !tags.includes('Large Asset')) tags.push('Large Asset')
@@ -264,6 +265,13 @@ export function buildArmyView(army, catalog) {
   check('core', `At least ${limits.minCoreUnits} Core Units`, core >= limits.minCoreUnits, `${core}`)
   check('heroes', `At most ${limits.maxHeroes} Heroes`, heroes <= limits.maxHeroes, `${heroes}`)
   check('leaders', `At most ${limits.maxNamedFactionLeaders} named Faction Leader`, leaders <= limits.maxNamedFactionLeaders, `${leaders}`)
+  const uniqueCounts = new Map()
+  for (const unit of units.filter((u) => u.tags.includes('Unique'))) {
+    const key = unit.entry.key ?? unit.name
+    uniqueCounts.set(key, (uniqueCounts.get(key) ?? 0) + 1)
+  }
+  const repeatedUnique = [...uniqueCounts].filter(([, n]) => n > 1).map(([key]) => key)
+  check('unique', 'Unique Units may be purchased once per profile', repeatedUnique.length === 0, repeatedUnique.length ? repeatedUnique.join(', ') : 'OK')
   check('large-assets', `At most ${largeAssetMax} Large Assets`, largeAssets <= largeAssetMax, `${largeAssets}`)
   if (units.some((u) => u.entry.groups.some((g) => g.options.some((o) => o.tagChoice)))) {
     const untagged = units.filter((u) => u.missingTags.length)

@@ -1,6 +1,8 @@
 import { flat } from './data.js'
 import { SLOT_LIMITS, combineMods } from './magic.js'
-import { canonicalTags } from '../tags.js'
+import { canonicalTags, normalizeTag } from '../tags.js'
+import { buildThrall } from './summons.js'
+export { buildThrall } from './summons.js'
 import { choiceSpecs, emptyTalents, normalizeTalents, rankInfo, talentPool, TIERS, xpSpent } from './talents.js'
 
 export const CHARACTERISTICS = ['body', 'agility', 'mind', 'spirit']
@@ -55,29 +57,6 @@ export const emptyCharacter = () => ({
 })
 
 export const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1)
-
-// A summoned Thrall unit takes its Hit, Armor and Evade from the summoner's skill thresholds (clamped to 2+ ... 6+),
-// and inherits each of the summoner's Anti-[tag] ranks at one rank lower.
-const clampThreshold = (n) => Math.min(6, Math.max(2, n))
-export function buildThrall(unit, characteristics, skills, traits, attacks) {
-  const ranks = {}
-  const note = (text) => {
-    const m = /^Anti-(.+?)\s+(\d+)/.exec(text)
-    if (m) ranks[m[1]] = Math.max(ranks[m[1]] ?? 0, Number(m[2]))
-  }
-  traits.forEach((t) => note(t.name))
-  attacks.forEach((a) => (a.keywords ?? []).forEach(note))
-  const anti = Object.entries(ranks).map(([tag, r]) => `Anti-${tag} ${r - 1}`).filter((a) => !a.endsWith(' 0'))
-  const claws = unit.combatPhaseAttack
-  return {
-    name: unit.name,
-    startingModels: Math.min(characteristics.mind, unit.maxModels ?? 6),
-    maxModels: unit.maxModels ?? 6,
-    stats: { ...unit.stats, wounds: 1, armor: `${clampThreshold(skills.medicine + 2)}+`, evade: `${clampThreshold(skills.stealth + 3)}+` },
-    attack: { ...claws.profile, name: claws.name, hit: `${clampThreshold(skills.mysticism + 1)}+`, keywords: [...(claws.profile.keywords ?? []), ...anti] },
-    passive: unit.passive,
-  }
-}
 
 const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V']
 export const talentTitle = (e) => `${e.def.name}${e.def.ranked ? ` ${ROMAN[e.rank]}` : ''}`
@@ -173,6 +152,19 @@ export function normalizeCharacter(raw, data) {
   if (char.humanBoost && !CHARACTERISTICS.includes(char.humanBoost)) char.humanBoost = null
   if (!Array.isArray(char.miscGear)) char.miscGear = []
   char.talents = normalizeTalents(char.talents, talentPool(data, cls.id))
+  // Migrate saved Anti-Character choices without discarding talent ranks.
+  for (const tier of Object.keys(char.talents)) {
+    char.talents[tier] = char.talents[tier].map((entry) => ({
+      ...entry,
+      ...(entry.enemy ? { enemy: normalizeTag(entry.enemy) } : {}),
+      ...(entry.tag ? { tag: normalizeTag(entry.tag) } : {}),
+    }))
+  }
+  char.gear = (char.gear ?? []).map((item) => ({
+    ...item,
+    ...(item.choice === 'Character' ? { choice: 'Unique' } : {}),
+    ...(item.enchants ? { enchants: item.enchants.map((e) => e.choice === 'Character' ? { ...e, choice: 'Unique' } : e) } : {}),
+  }))
   return char
 }
 
@@ -371,7 +363,7 @@ export function derive(char, data) {
   const itemTraits = []
   const itemNeeds = []
   const applyMagic = (g, entry, picked, label, extra = {}) => {
-    const f = entry.fx(picked.choice)
+    const f = entry.fx(entry.choice === 'category' ? normalizeTag(picked.choice) : picked.choice)
     fx.move += f.move ?? 0
     fx.wounds += f.wounds ?? 0
     fx.evadeSteps += f.evadeSteps ?? 0
@@ -507,21 +499,22 @@ export function derive(char, data) {
   for (const n of adaptations) traits.push({ source: 'Adaptation', name: n, text: ancestry.adaptations.options.find((o) => o.name === n).effect, ancestry: true })
   if (archetype) traits.push({ source: 'Undead Archetype', name: archetype.name, text: archetype.effect, ancestry: true })
   // Each Favored Enemy rank names a different tag at Anti 3; Master Hunter raises one of those tags to Anti 4.
-  const huntedTag = entries.find((e) => e.def.id === 'master-hunter')?.entry.tag
+  const huntedTag = normalizeTag(entries.find((e) => e.def.id === 'master-hunter')?.entry.tag)
   for (const { entry } of entries.filter((e) => e.def.id === 'favored-enemy')) {
     if (!entry.enemy) continue
-    const x = entry.enemy === huntedTag ? 4 : 3
+    const enemy = normalizeTag(entry.enemy)
+    const x = enemy === huntedTag ? 4 : 3
     traits.push({
-      source: entry.enemy === huntedTag ? 'Favored Enemy · Master Hunter' : 'Favored Enemy',
-      name: `Anti-${entry.enemy} ${x}`,
-      text: `Gain ${x} additional Attack dice against Units with the ${entry.enemy} tag. This does not raise Damage.`,
+      source: enemy === huntedTag ? 'Favored Enemy · Master Hunter' : 'Favored Enemy',
+      name: `Anti-${enemy} ${x}`,
+      text: `Gain ${x} additional Attack dice against Units with the ${enemy} tag. This does not raise Damage.`,
     })
   }
   // The Artificer's Field Formulae ability just says how to pick Formulas, so the sheet lists the Formulas themselves instead.
   if (cls.classAbility && cls.id !== 'artificer') traits.push({ source: `${cls.name} Class Ability`, name: cls.classAbility.name, text: flat(cls.classAbility.effect), timing: [cls.classAbility.cost, cls.classAbility.timing].filter(Boolean).join(' · '), klass: true })
-  // Character denotes a PC or an explicitly named/legendary figure, not a generic
+  // Unique denotes a PC or an explicitly named/legendary figure, not a generic
   // Hero. Ancestry and creature-type tags are independent of army allegiance.
-  const tags = canonicalTags([...(ancestry.tags ?? []), ...(archetype?.tags ?? []), ...(cls.tags ?? []), ...(sub.additionalTags ?? []), 'Character', 'Hero'])
+  const tags = canonicalTags([...(ancestry.tags ?? []), ...(archetype?.tags ?? []), ...(cls.tags ?? []), ...(sub.additionalTags ?? []), 'Unique', 'Hero'])
 
   const commands = []
   const signature = sub.signatureAbility
@@ -621,7 +614,7 @@ export function derive(char, data) {
   const toughTotal = fx.defenses.filter((d) => /^Tough \d+$/.test(d)).reduce((sum, d) => sum + num(d), 0)
   const defenses = [...(toughTotal ? [`Tough ${toughTotal}`] : []), ...new Set(fx.defenses.filter((d) => !/^Tough \d+$/.test(d)))]
 
-  const thrall = sub.summonedUnit ? buildThrall(sub.summonedUnit, characteristics, skills, traits, attacks) : null
+  const thrall = sub.summonedUnit ? buildThrall(sub.summonedUnit, characteristics, skills, traits, attacks, char.factionId ?? null) : null
 
   return {
     ancestry, cls, sub, size, sizeChoice, tags, adaptations, archetype,
