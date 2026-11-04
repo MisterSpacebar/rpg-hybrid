@@ -148,7 +148,7 @@ For standard 2,000-point matched play, the principal distinctions are:
 - **C** can recruit Generic Line Infantry or a designated faction Core Unit, even if that faction Core Unit is ranged, elite, cavalry, or monstrous.
 - **R** can recruit Generic Ranged Infantry or eligible faction ranged formations.
 - **S** can recruit Generic non-Elite Supports or faction Wizards and Supports, including faction specialists with Elite.
-- **E** can recruit Generic Elite Infantry, Generic Elite Wizards, the Generic Captain (a non-Hero **Elite Character**), and eligible faction Elite Units. A Generic Elite Wizard uses E rather than S.
+- **E** can recruit Generic Elite Infantry, Generic Elite Wizards, the Generic Captain (a non-Hero **Elite Officer**), and eligible faction Elite Units. A Generic Elite Wizard uses E rather than S.
 - **H** may recruit the Generic Captain only once it has the Heroic Commission upgrade, which makes it a **Hero** and adds H eligibility while it keeps Elite.
 - **V** recruits eligible Cavalry, mobile, and infiltrating formations; **A** recruits eligible Artillery and Assets as defined by their profiles.
 
