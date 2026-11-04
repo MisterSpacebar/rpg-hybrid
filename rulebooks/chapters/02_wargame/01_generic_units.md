@@ -130,7 +130,7 @@ Choose **one** primary ranged weapon package. Attacks are **per Model**; Heavy a
 | Longbows | +35 | **12" / 3 / 5+ / 1 / Long Range 6"**. Mobile volleys with extended reach; beyond 12" reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units (minimum 1). |
 | Crossbows | +25 | **9" / 1 / 4+ / 2 / Heavy / Anti-Armored 2**. Compact, accurate shots that punch through armor plating; stationary firing. |
 | Heavy Crossbows | +50 | **11" / 2 / 5+ / 2 / Heavy / Anti-Elite 2**. Sustained anti-elite fire, at high cost and with Heavy restrictions. |
-| Muskets | +50 | **11" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Character 1**. Accurate, reaction-proof shooting against valuable individual targets. |
+| Muskets | +50 | **11" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Unique 1**. Accurate, reaction-proof shooting against valuable individual targets. |
 | Pistols | +25 | **6" / 3 / 5+ / 1 / Firearm**. Mobile close-range shooting with Instant from Firearm. |
 | Javelins | +10 | **6" / 3 / 5+ / 1**. Thrown volleys; also gain **Javelin Melee: Engaged 2" / 2 / 5+ / 1** instead of the default melee weapon. |
 | Slings | +10 | **7" / 4 / 6+ / 1**. High-volume, low-accuracy short-range attacks. |
@@ -768,7 +768,7 @@ These are **expected raw successful Hits and nominal Damage before enemy Saves**
 | Longbows (3 / 5+ / 1) | 4.00 | 4.00 | Yes |
 | Crossbows (1 / 4+ / 2, Anti-Armored 2) | 2.00 | 4.00 | No (Heavy) |
 | Heavy Crossbows (2 / 5+ / 2, Anti-Elite 2) | 2.67 | 5.33 | No (Heavy) |
-| Muskets (1 / 4+ / 2, Anti-Character 2) | 2.00 | 4.00 | No (Heavy) |
+| Muskets (1 / 4+ / 2, Anti-Unique 2) | 2.00 | 4.00 | No (Heavy) |
 | Pistols (3 / 5+ / 1) | 4.00 | 4.00 | Yes |
 | Javelins (3 / 5+ / 1) | 4.00 | 4.00 | Yes |
 | Slings (4 / 6+ / 1) | 2.67 | 2.67 | Yes |
