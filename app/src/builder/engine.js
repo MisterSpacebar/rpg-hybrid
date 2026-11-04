@@ -1,5 +1,5 @@
 import { applyFactionEffects } from './factionEffects.js'
-import { canonicalTags } from '../tags.js'
+import { canonicalTags, normalizeTag } from '../tags.js'
 import { applyTagChoices, attackPhase, modifyAttacks, modifyStats, modifyTags } from './modifiers.js'
 
 export const SLOT_ORDER = ['H', 'C', 'E', 'R', 'V', 'S', 'A']
@@ -76,7 +76,7 @@ function perModelCost(entry, selected) {
 
 // Once a tag is chosen, the option's text names it ('Longsword gains Anti-Undead 3') instead of the Anti-[Type] placeholder.
 function describeTagChoice(o, cfg, targets) {
-  const tag = o.tagChoice && cfg.tagPicks?.[o.id]?.tag
+  const tag = o.tagChoice && normalizeTag(cfg.tagPicks?.[o.id]?.tag)
   if (!tag) return o
   const subject = targets[o.id] || (o.tagChoice.scope === 'unit' ? 'This unit' : 'The selected weapon')
   if (o.tagChoice.scope === 'aura') {
