@@ -31,7 +31,7 @@ export function campaignSlots(campaign, entitlement = {}, detachment = {}, catal
     // Campaign Patron entitlements use the normal foundation slots of the sponsoring faction.
     const sponsor = catalog.factions.find((f) => f.id === campaign.patronFactionId)
     for (const s of (sponsor?.foundationSlots ?? [])) {
-      if (!FIELD_SLOTS.includes(s)) continue
+      if (!SLOT_ORDER.includes(s)) continue
       slots[s] += 1
       sources.push({ slot: s, source: 'Faction foundation (Patron)' })
     }
