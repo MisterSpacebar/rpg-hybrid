@@ -152,6 +152,19 @@ export function normalizeCharacter(raw, data) {
   if (char.humanBoost && !CHARACTERISTICS.includes(char.humanBoost)) char.humanBoost = null
   if (!Array.isArray(char.miscGear)) char.miscGear = []
   char.talents = normalizeTalents(char.talents, talentPool(data, cls.id))
+  // Migrate saved Anti-Character choices without discarding talent ranks.
+  for (const tier of Object.keys(char.talents)) {
+    char.talents[tier] = char.talents[tier].map((entry) => ({
+      ...entry,
+      ...(entry.enemy ? { enemy: normalizeTag(entry.enemy) } : {}),
+      ...(entry.tag ? { tag: normalizeTag(entry.tag) } : {}),
+    }))
+  }
+  char.gear = (char.gear ?? []).map((item) => ({
+    ...item,
+    ...(item.choice === 'Character' ? { choice: 'Unique' } : {}),
+    ...(item.enchants ? { enchants: item.enchants.map((e) => e.choice === 'Character' ? { ...e, choice: 'Unique' } : e) } : {}),
+  }))
   return char
 }
 
@@ -350,7 +363,7 @@ export function derive(char, data) {
   const itemTraits = []
   const itemNeeds = []
   const applyMagic = (g, entry, picked, label, extra = {}) => {
-    const f = entry.fx(picked.choice)
+    const f = entry.fx(entry.choice === 'category' ? normalizeTag(picked.choice) : picked.choice)
     fx.move += f.move ?? 0
     fx.wounds += f.wounds ?? 0
     fx.evadeSteps += f.evadeSteps ?? 0
