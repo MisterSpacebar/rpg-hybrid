@@ -215,7 +215,13 @@ export const watchMyCampaigns = (uid, cb, onError) => onSnapshot(
 
 const docs = (snap) => snap.docs.map((d) => ({ id: d.id, ...d.data() }))
 const owned = (snap) => snap.docs.map((d) => ({ ownerUid: d.id, ...d.data() }))
-export const watchCampaign = (id, cb, onError) => onSnapshot(campaignRef(id), (s) => cb(s.exists() ? { id: s.id, ...s.data() } : null), onError)
+export const watchCampaign = (id, cb, onError) => onSnapshot(
+  campaignRef(id), { includeMetadataChanges: true },
+  (snapshot) => cb(snapshot.exists() ? { id: snapshot.id, ...snapshot.data() } : null, {
+    fromCache: snapshot.metadata.fromCache,
+    hasPendingWrites: snapshot.metadata.hasPendingWrites,
+  }), onError,
+)
 export const watchHeroes = (id, cb, onError) => onSnapshot(heroesRef(id), (s) => cb(docs(s)), onError)
 export const watchInventory = (id, cb, onError) => onSnapshot(inventoryRef(id), (s) => cb(docs(s)), onError)
 export const watchDetachments = (id, cb, onError) => onSnapshot(collection(db, 'campaigns', id, 'detachments'), (s) => cb(owned(s)), onError)
