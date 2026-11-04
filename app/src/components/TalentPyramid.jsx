@@ -5,30 +5,30 @@ import {
 } from '../character/talents.js'
 
 const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V']
-const PROWESS = ['combat-prowess', 'martial-prowess', 'spell-prowess']
-const titleOf = (e) => `${e.def.name}${e.def.ranked ? ` ${ROMAN[e.rank]}` : ''}`
+const PROWESS = new Set(['combat-prowess', 'martial-prowess', 'spell-prowess'])
+const titleOf = (e) => (e.def.ranked ? `${e.def.name} ${ROMAN[e.rank]}` : e.def.name)
 
 // Choices that reference other entries (different attack per rank, different Characteristic, ...) must hide options already used.
 function optionsFor(spec, e, view) {
   const same = view.entries.filter((x) => x.def.id === e.def.id && x.entry !== e.entry)
   if (spec.kind === 'skill') {
-    const used = same.filter((x) => x.rank < e.rank).map((x) => x.entry.skill)
+    const used = new Set(same.filter((x) => x.rank < e.rank).map((x) => x.entry.skill))
     // Skills already at 2+ (ignoring this entry's own pick) cannot be improved further.
     const room = (s) => 6 - (view.skillSteps[s] - (e.entry.skill === s ? 1 : 0)) > 2
-    return SKILLS.filter((s) => !used.includes(s) && room(s)).map((s) => ({ value: s, label: `${cap(s)} (${view.skills[s]}+)` }))
+    return SKILLS.filter((s) => !used.has(s) && room(s)).map((s) => ({ value: s, label: `${cap(s)} (${view.skills[s]}+)` }))
   }
   if (spec.kind === 'attack') {
     const taken = new Set()
     if (spec.unique) same.forEach((x) => taken.add(x.entry[spec.key]))
-    if (PROWESS.includes(e.def.id)) {
-      view.entries.filter((x) => PROWESS.includes(x.def.id) && x.def.id !== e.def.id).forEach((x) => taken.add(x.first.attack))
+    if (PROWESS.has(e.def.id)) {
+      view.entries.filter((x) => PROWESS.has(x.def.id) && x.def.id !== e.def.id).forEach((x) => taken.add(x.first.attack))
     }
     const names = [...new Set(view.attackOptions.filter((a) => attackMatches(a, spec.filter)).map((a) => a.name))]
     return names.filter((n) => !taken.has(n)).map((n) => ({ value: n, label: n }))
   }
   if (spec.kind === 'characteristic') {
-    const used = same.map((x) => x.entry.characteristic)
-    return CHARACTERISTICS.filter((c) => !used.includes(c) && view.characteristics[c] < 6).map((c) => ({ value: c, label: `${cap(c)} (${view.characteristics[c]})` }))
+    const used = new Set(same.map((x) => x.entry.characteristic))
+    return CHARACTERISTICS.filter((c) => !used.has(c) && view.characteristics[c] < 6).map((c) => ({ value: c, label: `${cap(c)} (${view.characteristics[c]})` }))
   }
   if (spec.kind === 'formula') {
     const taken = new Set(view.formulas)
