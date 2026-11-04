@@ -1,4 +1,5 @@
 import { applyFactionEffects } from './factionEffects.js'
+import { canonicalTags } from '../tags.js'
 import { applyTagChoices, attackPhase, modifyAttacks, modifyStats, modifyTags } from './modifiers.js'
 
 export const SLOT_ORDER = ['H', 'C', 'E', 'R', 'V', 'S', 'A']
@@ -142,7 +143,7 @@ export function resolveUnit(entry, cfg, factionId = null) {
   // Hero and Character are distinct. A commissioned Captain or Master Wizard
   // gains Hero but not Character; named PCs/legendary figures gain Character explicitly.
   if (isHero && !tags.includes('Hero')) tags.push('Hero')
-  const fx = applyFactionEffects(factionId, { source: entry.source, models: finalModels, stats, attacks, tags })
+  const fx = applyFactionEffects(factionId, { source: entry.source, models: finalModels, stats, attacks, tags: canonicalTags(tags, factionId ?? entry.factionId) })
 
   return {
     uid: cfg.uid,
@@ -162,7 +163,7 @@ export function resolveUnit(entry, cfg, factionId = null) {
     factionChanged: fx.factionChanged,
     factionRule: fx.factionRule,
     impact: entry.impact ?? null,
-    tags: fx.tags,
+    tags: canonicalTags(fx.tags),
     attacks: fx.attacks,
     abilities: entry.abilities,
     picks: selected
