@@ -79,7 +79,8 @@ service cloud.firestore {
         && request.resource.data.xpTotal <= 250
         && request.resource.data.act is int && request.resource.data.act >= 1 && request.resource.data.act <= 4
         && request.resource.data.turn is int && request.resource.data.turn >= 1
-        && request.resource.data.format == resource.data.format;
+        && request.resource.data.format == resource.data.format
+        && (request.resource.data.patronFactionId == null || request.resource.data.patronFactionId is string);
       allow delete: if false;
 
       match /joinRequests/{uid} {
@@ -110,6 +111,45 @@ service cloud.firestore {
           && request.resource.data.sheet.gear is list
           && request.resource.data.sheet.gear.size() <= 60
           && request.resource.data.sheet.xpEarned == null;
+        allow delete: if false;
+      }
+
+      // The company owns permanent inventory; players only select items when deploying.
+      match /inventory/{itemId} {
+        allow get, list: if memberOfCampaign();
+        allow create, update: if gmOfCampaign()
+          && request.resource.data.kind in ['unit', 'equipment']
+          && (request.resource.data.kind == 'unit'
+            ? request.resource.data.config is map
+            : request.resource.data.item is map);
+        allow delete: if gmOfCampaign();
+      }
+
+      // Slot entitlements are GM-controlled, and Doctrine choices belong to each PC.
+      match /entitlements/{uid} {
+        allow get, list: if memberOfCampaign();
+        allow create, update: if gmOfCampaign()
+          && request.resource.data.flexSlots is list
+          && request.resource.data.flexSlots.size() <= 2
+          && request.resource.data.grandThirdCommand is bool;
+        allow delete: if false;
+      }
+      match /detachments/{uid} {
+        allow get, list: if memberOfCampaign();
+        allow create: if isOwner(uid) && memberOfCampaign()
+          && request.resource.data.ownerUid == uid
+          && request.resource.data.commands is list
+          && request.resource.data.commands.size() <= 3
+          && request.resource.data.selections is list
+          && request.resource.data.selections.size() <= 12;
+        allow update: if isOwner(uid) && memberOfCampaign()
+          && request.resource.data.ownerUid == uid
+          && resource.data.ownerUid == uid
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['doctrineId', 'commands', 'selections', 'updatedAt'])
+          && request.resource.data.commands is list
+          && request.resource.data.commands.size() <= 3
+          && request.resource.data.selections is list
+          && request.resource.data.selections.size() <= 12;
         allow delete: if false;
       }
 

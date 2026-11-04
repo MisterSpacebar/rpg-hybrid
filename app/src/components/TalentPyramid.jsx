@@ -104,7 +104,7 @@ function SlotDetail({ e, view, update, onRemove }) {
   )
 }
 
-function Picker({ tier, view, character, update, onDone }) {
+function Picker({ tier, view, character, update, onDone, xpBudget = null }) {
   const [q, setQ] = useState('')
   const ref = useRef(null)
   useEffect(() => {
@@ -114,6 +114,7 @@ function Picker({ tier, view, character, update, onDone }) {
   const general = list.filter((t) => t.category !== view.cls.name)
   const classTalents = list.filter((t) => t.category === view.cls.name)
   const add = (def) => {
+    if (xpBudget != null && view.points.spent + TIER_COST[tier] > xpBudget) return
     update((c) => ({ talents: { ...c.talents, [tier]: [...c.talents[tier], { id: def.id }] } }))
     onDone(character.talents[tier].length)
   }
@@ -126,7 +127,7 @@ function Picker({ tier, view, character, update, onDone }) {
         </span>
         <div className="small">{t.effect}</div>
       </div>
-      <button className="primary" onClick={() => add(t)}>Take</button>
+      <button className="primary" disabled={xpBudget != null && view.points.spent + TIER_COST[tier] > xpBudget} onClick={() => add(t)}>{xpBudget != null && view.points.spent + TIER_COST[tier] > xpBudget ? "Not enough XP" : "Take"}</button>
     </li>
   )
   return (
@@ -155,7 +156,7 @@ function Picker({ tier, view, character, update, onDone }) {
   )
 }
 
-export default function TalentPyramid({ character, view, update }) {
+export default function TalentPyramid({ character, view, update, xpBudget = null }) {
   const [selected, setSelected] = useState(null)
   const { talents } = character
   const total = allEntries(talents).length
@@ -175,7 +176,7 @@ export default function TalentPyramid({ character, view, update }) {
     <div className="talent-wrap">
     <div className="talent-layout">
       <section className="panel talent-main">
-        <h2>Talent Pyramid <span className="muted">({total} / 20 · {view.points.spent} / 250 XP)</span></h2>
+        <h2>Talent Pyramid <span className="muted">({total} / 20 · {view.points.spent} / {xpBudget ?? 250} XP)</span></h2>
         <p className="muted small">
           Each tier holds 6 / 5 / 4 / 3 / 2 talents. To own <em>k</em> talents in a tier you need <em>k</em> + 1 in the tier below.
           Ranked talents take a slot at each successive tier. Changes appear on the Stats and Sheet tabs immediately.
@@ -204,7 +205,7 @@ export default function TalentPyramid({ character, view, update }) {
                         </button>
                       )
                     }
-                    if (i === talents[tier].length && state.open) {
+                    if (i === talents[tier].length && state.open && (xpBudget == null || view.points.spent + TIER_COST[tier] <= xpBudget)) {
                       return (
                         <button key={i} className={`talent-slot add ${selected?.tier === tier && selected.index == null ? 'active' : ''}`} onClick={() => setSelected({ tier, index: null })}>
                           + Add talent
@@ -234,7 +235,7 @@ export default function TalentPyramid({ character, view, update }) {
       </div>
     </div>
     {selected && selected.index == null && (
-      <Picker tier={selected.tier} view={view} character={character} update={update} onDone={(index) => setSelected({ tier: selected.tier, index })} />
+      <Picker tier={selected.tier} view={view} character={character} update={update} xpBudget={xpBudget} onDone={(index) => setSelected({ tier: selected.tier, index })} />
     )}
     </div>
   )

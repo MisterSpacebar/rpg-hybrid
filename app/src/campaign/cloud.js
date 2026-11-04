@@ -28,6 +28,7 @@ export async function createCampaign(uid, name, format = 'standard') {
     turn: 1,
     xpTotal: 0,
     status: 'active',
+    patronFactionId: null,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   })
@@ -72,7 +73,7 @@ export async function rejectJoin(campaignId, uid) {
 }
 
 export async function updateCampaignProgress(campaign, patch) {
-  const permitted = ['xpTotal', 'act', 'turn', 'status']
+  const permitted = ['xpTotal', 'act', 'turn', 'status', 'patronFactionId']
   const update = Object.fromEntries(Object.entries(patch).filter(([key]) => permitted.includes(key)))
   await updateDoc(campaignRef(campaign.id), { ...update, updatedAt: serverTimestamp() })
 }
@@ -90,6 +91,11 @@ export async function saveHeroDraft(id, uid, sheet) {
   }, { merge: true })
 }
 
+export async function listApprovedHeroes(id) {
+  const snap = await getDocs(collection(db, 'campaigns', id, 'approvedHeroes'))
+  return snap.docs.map((d) => ({ ownerUid: d.id, ...d.data() }))
+}
+
 export async function loadApprovedHero(id, uid) {
   const snap = await getDoc(approvedRef(id, uid))
   return snap.exists() ? snap.data() : null
@@ -99,5 +105,58 @@ export async function approveHero(id, uid, sheet) {
   await setDoc(approvedRef(id, uid), {
     ownerUid: uid, sheet: JSON.parse(JSON.stringify(sheet)),
     approvedAt: serverTimestamp(),
+  })
+}
+
+const inventoryRef = (id) => collection(db, 'campaigns', id, 'inventory')
+const detachmentRef = (id, uid) => doc(db, 'campaigns', id, 'detachments', uid)
+const entitlementsRef = (id, uid) => doc(db, 'campaigns', id, 'entitlements', uid)
+
+export async function listInventory(id) {
+  const snap = await getDocs(inventoryRef(id))
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }))
+}
+
+// Only the GM can grant items or recruit permanent formations.
+// Point values must be calculated from the catalogue, never trusted from saved data.
+export async function grantEquipment(id, kind, name, ownerUid = null) {
+  if (!['melee', 'ranged', 'armor', 'shield', 'focus', 'artifact', 'relic'].includes(kind)) throw new Error('Invalid equipment category')
+  const ref = await addDoc(inventoryRef(id), {
+    kind: 'equipment', item: { kind, name }, ownerUid: ownerUid || null,
+    createdAt: serverTimestamp(),
+  })
+  return ref.id
+}
+export async function grantFormation(id, config, factionId = null) {
+  const ref = await addDoc(inventoryRef(id), {
+    kind: 'unit', config: JSON.parse(JSON.stringify(config)), factionId,
+    createdAt: serverTimestamp(),
+  })
+  return ref.id
+}
+export async function removeInventoryItem(id, itemId) {
+  await deleteDoc(doc(inventoryRef(id), itemId))
+}
+export async function loadEntitlement(id, uid) {
+  const snap = await getDoc(entitlementsRef(id, uid))
+  return snap.exists() ? snap.data() : { patronSlots: [], flexSlots: [], grandThirdCommand: false }
+}
+export async function setEntitlement(id, uid, data) {
+  await setDoc(entitlementsRef(id, uid), {
+    flexSlots: (data.flexSlots ?? []).slice(0, 2),
+    grandThirdCommand: data.grandThirdCommand === true,
+  })
+}
+export async function listDetachments(id) {
+  const snap = await getDocs(collection(db, 'campaigns', id, 'detachments'))
+  return snap.docs.map((d) => ({ ownerUid: d.id, ...d.data() }))
+}
+export async function saveDetachment(id, uid, data) {
+  await setDoc(detachmentRef(id, uid), {
+    ownerUid: uid,
+    doctrineId: data.doctrineId ?? null,
+    commands: data.commands ?? [],
+    selections: data.selections ?? [],
+    updatedAt: serverTimestamp(),
   })
 }

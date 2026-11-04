@@ -7,7 +7,7 @@ import { TIERS, TIER_COST } from '../character/talents.js'
 const toggle = (list, value, max) =>
   list.includes(value) ? list.filter((v) => v !== value) : max === 1 ? [value] : list.length >= max ? list : [...list, value]
 
-function Identity({ data, character, view, update, campaignMode = false }) {
+function Identity({ data, character, view, update, campaignMode = false, lockedIdentity = false }) {
   const { ancestry, cls, sub } = view
   return (
     <section className="panel span-all">
@@ -18,14 +18,14 @@ function Identity({ data, character, view, update, campaignMode = false }) {
       <div className="form-grid">
         <label className="field">
           Ancestry
-          <select value={ancestry.id} onChange={(e) => update({ ancestry: e.target.value, adaptations: [], archetype: null, humanBoost: null })}>
+          <select value={ancestry.id} disabled={lockedIdentity} onChange={(e) => update({ ancestry: e.target.value, adaptations: [], archetype: null, humanBoost: null })}>
             {data.ancestries.map((a) => <option key={a.id} value={a.id}>{a.name}</option>)}
           </select>
         </label>
         {view.sizeChoice && (
           <label className="field">
             Size ({ancestry.size})
-            <select value={character.size} onChange={(e) => update({ size: e.target.value })}>
+            <select value={character.size} disabled={lockedIdentity} onChange={(e) => update({ size: e.target.value })}>
               <option value="S">Small</option>
               <option value="M">Medium</option>
               <option value="L">Large</option>
@@ -35,7 +35,7 @@ function Identity({ data, character, view, update, campaignMode = false }) {
         {ancestry.archetypes && (
           <label className="field">
             Undead Archetype
-            <select value={character.archetype ?? ''} onChange={(e) => update({ archetype: e.target.value || null })}>
+            <select value={character.archetype ?? ''} disabled={lockedIdentity} onChange={(e) => update({ archetype: e.target.value || null })}>
               <option value="">Choose…</option>
               {ancestry.archetypes.options.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}
             </select>
@@ -50,7 +50,7 @@ function Identity({ data, character, view, update, campaignMode = false }) {
               const on = character.adaptations.includes(o.name)
               return (
                 <label key={o.name} className="choice" title={o.effect}>
-                  <input type="checkbox" checked={on} disabled={!on && ancestry.adaptations.chooseCount > 1 && character.adaptations.length >= ancestry.adaptations.chooseCount}
+                  <input type="checkbox" checked={on} disabled={lockedIdentity || (!on && ancestry.adaptations.chooseCount > 1 && character.adaptations.length >= ancestry.adaptations.chooseCount)}
                     onChange={() => update({ adaptations: toggle(character.adaptations, o.name, ancestry.adaptations.chooseCount) })} />
                   {o.name}
                 </label>
@@ -73,13 +73,13 @@ function Identity({ data, character, view, update, campaignMode = false }) {
       <div className="form-grid">
         <label className="field">
           Class
-          <select value={cls.id} onChange={(e) => update({ classId: e.target.value, subclassId: data.classes.find((c) => c.id === e.target.value).subclasses[0].id })}>
+          <select value={cls.id} disabled={lockedIdentity} onChange={(e) => update({ classId: e.target.value, subclassId: data.classes.find((c) => c.id === e.target.value).subclasses[0].id })}>
             {data.classes.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
           </select>
         </label>
         <label className="field">
           Subclass
-          <select value={sub.id} onChange={(e) => update({ subclassId: e.target.value })}>
+          <select value={sub.id} disabled={lockedIdentity} onChange={(e) => update({ subclassId: e.target.value })}>
             {cls.subclasses.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
           </select>
         </label>
@@ -100,7 +100,7 @@ function Identity({ data, character, view, update, campaignMode = false }) {
   )
 }
 
-function Stats({ character, view, update }) {
+function Stats({ character, view, update, lockedCreation = false }) {
   return (
     <section className="panel">
       <h2>Combat Profile &amp; Characteristics</h2>
@@ -108,7 +108,7 @@ function Stats({ character, view, update }) {
       {view.ancestry.id === 'human' && (
         <label className={`field adaptable ${character.humanBoost ? '' : 'needs'}`}>
           Adaptable (Human): raise one Characteristic from 3 to 4
-          <select value={character.humanBoost ?? ''} onChange={(e) => update({ humanBoost: e.target.value || null })} className={character.humanBoost ? '' : 'needs-choice'}>
+          <select value={character.humanBoost ?? ''} disabled={lockedCreation} onChange={(e) => update({ humanBoost: e.target.value || null })} className={character.humanBoost ? '' : 'needs-choice'}>
             <option value="">Choose a Characteristic…</option>
             {CHARACTERISTICS.map((c) => <option key={c} value={c}>{cap(c)}</option>)}
           </select>
@@ -138,7 +138,7 @@ function Stats({ character, view, update }) {
   )
 }
 
-function Skills({ character, view, update }) {
+function Skills({ character, view, update, lockedCreation = false }) {
   // A skill holds at most one creation pick, so ticking one box replaces the other.
   const setPick = (skill, kind, on) => {
     const picks = { ...character.skillPicks }
@@ -171,12 +171,12 @@ function Skills({ character, view, update }) {
                 <td className={view.skills[s] < view.skillsAtCreation[s] ? 'ok' : ''}><strong>{view.skills[s]}+</strong></td>
                 <td>
                   {isClass && (
-                    <input type="checkbox" checked={pick === 'class'} disabled={classFull && pick !== 'class'}
+                    <input type="checkbox" checked={pick === 'class'} disabled={lockedCreation || (classFull && pick !== 'class')}
                       onChange={(e) => setPick(s, 'class', e.target.checked)} aria-label={`${cap(s)} Class Skill`} />
                   )}
                 </td>
                 <td>
-                  <input type="checkbox" checked={pick === 'extra'} disabled={extraFull && pick !== 'extra'}
+                  <input type="checkbox" checked={pick === 'extra'} disabled={lockedCreation || (extraFull && pick !== 'extra')}
                     onChange={(e) => setPick(s, 'extra', e.target.checked)} aria-label={`${cap(s)} Background Skill`} />
                 </td>
               </tr>
@@ -320,17 +320,17 @@ function AdventuringGear({ character, update }) {
     </section>
   )
 }
-export default function CharacterStats({ data, character, view, update, campaignMode = false }) {
+export default function CharacterStats({ data, character, view, update, campaignMode = false, lockedIdentity = false }) {
   return (
     <div className="panel-grid">
-      <Identity data={data} character={character} view={view} update={update} campaignMode={campaignMode} />
-      <Stats character={character} view={view} update={update} />
-      <Skills character={character} view={view} update={update} />
+      <Identity data={data} character={character} view={view} update={update} campaignMode={campaignMode} lockedIdentity={lockedIdentity} />
+      <Stats character={character} view={view} update={update} lockedCreation={lockedIdentity} />
+      <Skills character={character} view={view} update={update} lockedCreation={lockedIdentity} />
       <Attacks view={view} campaignMode={campaignMode} />
       <GearSummary view={view} campaignMode={campaignMode} />
       <Abilities view={view} update={update} />
       <TalentSummary view={view} />
-      <AdventuringGear character={character} update={update} />
+      {!campaignMode && <AdventuringGear character={character} update={update} />}
       <section className="panel">
         <h2>Notes</h2>
         <textarea className="note" rows={5} value={character.notes} onChange={(e) => update({ notes: e.target.value })} placeholder="Campaign notes, bonds, goals…" />

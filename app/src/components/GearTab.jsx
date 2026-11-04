@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import CampaignEquipment from '../campaign/CampaignEquipment.jsx'
 import { formatProfile } from '../builder/format.js'
 import { newGearItem } from '../character/engine.js'
 import EnchantmentsTab from './EnchantmentsTab.jsx'
@@ -152,7 +153,8 @@ function Equipment({ data, character, view, update }) {
 }
 
 // Gear has Equipment, Magic Items and Enchantments pages for everyone, plus Spells (Mage, Priest) or Formulas (Artificer).
-export default function GearTab({ hash, data, character, view, update }) {
+export default function GearTab({ hash, data, character, view, update, campaignPolicy = null }) {
+  if (campaignPolicy) return <CampaignEquipment data={data} character={character} view={view} update={update} {...campaignPolicy} />
   const magic = view.cls.id === 'artificer' ? 'Formulas' : data.spells[view.cls.id] ? 'Spells' : null
   const pages = [
     { id: 'equipment', label: 'Equipment', href: '#/character/gear' },
