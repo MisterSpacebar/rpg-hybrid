@@ -1,3 +1,6 @@
+import { canonicalTags } from '../tags.js'
+export { ANTI_TAGS } from '../tags.js'
+
 // Applies purchased upgrades to a unit's printed stats, attacks, and tags.
 // Upgrades are described in prose in the rules data, so each rule below matches a known phrasing.
 
@@ -117,17 +120,16 @@ export function modifyTags(tags, options) {
     if ((m = t.match(/Loses (\w+) tag and gains (\w+)/i))) out = [...out.filter((x) => x !== m[1]), m[2]]
     if ((m = t.match(/\blose(?:s)? (\w+)(?: tag)?\b/i))) out = out.filter((x) => x !== m[1])
   }
-  return out
+  // Armored and Unarmored are mutually exclusive even when an upgrade omits
+  // the explicit phrase 'lose Unarmored'.
+  if (out.includes('Armored')) out = out.filter((tag) => tag !== 'Unarmored')
+  return canonicalTags(out)
 }
 
 // ---------- chosen Anti-[Type] (Hunters, Master Hunter, Weapon Specialization) ----------
 
 // Battlefield tags and creature types an Anti-[Type] upgrade can name (Keywords: Creature Types and Battlefield Tags).
-export const ANTI_TAGS = [
-  'Armored', 'Artillery', 'Beast', 'Cavalry', 'Character', 'Construct', 'Demon', 'Elemental', 'Elite', 'Fey', 'Giant', 'Hero',
-  'Humanoid', 'Infantry', 'Infernal', 'Mechanical', 'Mobile', 'Monster', 'Mortal', 'Ooze', 'Plant', 'Spirit', 'Support',
-  'Swarm', 'Undead', 'Vehicle', 'Wizard',
-]
+
 
 // An upgrade whose text says "Anti-[chosen tag] N" or "Anti-[Type] N" lets the player pick the tag.
 // "This unit gains ..." applies to every weapon; otherwise it applies to one selected weapon.

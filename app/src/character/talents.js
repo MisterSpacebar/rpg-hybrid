@@ -1,3 +1,5 @@
+import { ANTI_TAGS } from '../tags.js'
+
 // The 6/5/4/3/2 talent trapezoid (rulebook: Experience and Advancement, section 2).
 export const TIERS = [1, 2, 3, 4, 5]
 export const TIER_CAP = { 1: 6, 2: 5, 3: 4, 4: 3, 5: 2 }
@@ -69,7 +71,7 @@ export function normalizeTalents(talents, pool) {
 // ---------- choices a talent needs ----------
 
 // Battlefield tags and creature types an Anti-[Type] ability can name (Keywords: Creature Types and Battlefield Tags).
-export const ENEMY_TAGS = ['Armored', 'Artillery', 'Beast', 'Cavalry', 'Character', 'Construct', 'Creature', 'Elite', 'Elemental', 'Fey', 'Flying', 'Hero', 'Humanoid', 'Infantry', 'Infernal', 'Mechanical', 'Mobile', 'Monster', 'Mortal', 'Officer', 'Ooze', 'Plant', 'Ranged', 'Spirit', 'Support', 'Swarm', 'Undead', 'Unarmored', 'Vehicle', 'Wizard']
+export const ENEMY_TAGS = ANTI_TAGS
 
 const SKILL = { key: 'skill', kind: 'skill', label: 'Skill to improve' }
 const MODE = {
