@@ -431,3 +431,12 @@ select.needs-choice { border-color: #e5645b !important; }
 
 .campaign-page .panel-grid { align-items: stretch; }
 .campaign-page .panel-grid > .panel { height: auto; }
+
+/* Campaign PC Army: independent sub-tabs for deployment, owned roster and Doctrine. */
+.campaign-page .army-subtabs { margin-bottom: 0; }
+.army-roster-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 12px; }
+.army-roster-entry { min-width: 0; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; background: var(--panel); }
+.army-roster-entry summary { cursor: pointer; }
+.army-roster-entry summary .unit-chips { margin-top: 8px; }
+.army-roster-entry > div { margin-top: 10px; }
+.army-roster-entry .plain-list { padding-left: 18px; }
