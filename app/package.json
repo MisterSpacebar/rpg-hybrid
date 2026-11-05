@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test src/builder/modifiers.test.js src/character/tags.test.js src/character/profileValidation.test.js src/campaign/equipment.test.js src/campaign/limits.test.js src/campaign/sync.test.js src/campaign/economy.test.js"
+    "test": "node --test src/builder/modifiers.test.js src/character/tags.test.js src/character/profileValidation.test.js src/campaign/equipment.test.js src/campaign/limits.test.js src/campaign/sync.test.js src/campaign/economy.test.js src/campaign/market.test.js"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.9.0",
