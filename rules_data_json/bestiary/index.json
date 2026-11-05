@@ -1,16 +1,56 @@
 {
   "description": "Manifest for Bestiary data: NPC Unit profiles (Common NPCs, Common Creatures, Unusual Creatures, Large Monsters), the generic Monster upgrade reference, Elite/Alpha creature rules, and Animal Companions.",
   "files": [
-    { "id": "general-bestiary-rules", "file": "00_general_bestiary_rules.json", "description": "General Bestiary Rules, Tags, Shared Special Effects, Multiple Attack Profiles, and the per-section file manifest." },
-    { "id": "common-npcs", "file": "01_common_npcs.json", "description": "9 profiles: Civilians, Thugs, Bandits, Cultists, Acolytes, Veteran Guard, Assassin, Hedge Mage, Ogre Mercenary." },
-    { "id": "common-creatures", "file": "02_common_creatures.json", "description": "14 profiles: wilderness predators, swarms, and packs (Giant Rats through Hunting Raptors)." },
-    { "id": "unusual-creatures", "file": "03_unusual_creatures.json", "description": "10 profiles: deceptive, mutated, and supernatural creatures (Mimic through Gargoyles)." },
-    { "id": "large-monsters", "file": "04_large_monsters.json", "description": "14 profiles: boss-tier Monsters (Ogre through Abyssal Kraken), including the degrading Hydra and multi-model Abyssal Kraken." },
-    { "id": "common-monster-upgrades", "file": "05_common_monster_upgrades.json", "description": "Reference-price upgrade table for GM-designed Monster variants." },
-    { "id": "elite-and-alpha-creatures", "file": "06_elite_and_alpha_creatures.json", "description": "The Alpha package for upgrading one Model in an eligible multi-model Beast Unit." },
-    { "id": "animal-companions", "file": "07_animal_companions.json", "description": "15 profiles across Small/Standard/Large Companions, plus Companion Upgrades and Mount Restrictions." },
-    { "id": "encounter-and-army-integration", "file": "08_encounter_and_army_integration.json", "description": "Profile counts and integration notes." },
-    { "id": "balance-priorities", "file": "09_balance_priorities.json", "description": "Provisional testing priorities for Bestiary Point costs." }
+    {
+      "id": "general-bestiary-rules",
+      "file": "00_general_bestiary_rules.json",
+      "description": "General Bestiary Rules, Tags, Shared Special Effects, Multiple Attack Profiles, and the per-section file manifest."
+    },
+    {
+      "id": "common-npcs",
+      "file": "01_common_npcs.json",
+      "description": "9 profiles: Civilians, Thugs, Bandits, Cultists, Acolytes, Veteran Guard, Assassin, Hedge Mage, Ogre Mercenary."
+    },
+    {
+      "id": "common-creatures",
+      "file": "02_common_creatures.json",
+      "description": "14 profiles: wilderness predators, swarms, and packs (Giant Rats through Hunting Raptors)."
+    },
+    {
+      "id": "unusual-creatures",
+      "file": "03_unusual_creatures.json",
+      "description": "10 profiles: deceptive, mutated, and supernatural creatures (Mimic through Gargoyles)."
+    },
+    {
+      "id": "large-monsters",
+      "file": "04_large_monsters.json",
+      "description": "17 boss and large-monster profiles, including the strengthened Young Dragon and Kraken, the Adult Dragon, Sea Serpent, and Elder Treant."
+    },
+    {
+      "id": "common-monster-upgrades",
+      "file": "05_common_monster_upgrades.json",
+      "description": "Reference-price upgrade table for GM-designed Monster variants."
+    },
+    {
+      "id": "elite-and-alpha-creatures",
+      "file": "06_elite_and_alpha_creatures.json",
+      "description": "The Alpha package for upgrading one Model in an eligible multi-model Beast Unit."
+    },
+    {
+      "id": "animal-companions",
+      "file": "07_animal_companions.json",
+      "description": "15 profiles across Small/Standard/Large Companions, plus Companion Upgrades and Mount Restrictions."
+    },
+    {
+      "id": "encounter-and-army-integration",
+      "file": "08_encounter_and_army_integration.json",
+      "description": "Profile counts and integration notes."
+    },
+    {
+      "id": "balance-priorities",
+      "file": "09_balance_priorities.json",
+      "description": "Provisional testing priorities for Bestiary Point costs."
+    }
   ],
   "sourceFiles": [
     "rulebooks/chapters/01_rpg/17_bestiary.md"
