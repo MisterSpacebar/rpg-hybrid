@@ -333,7 +333,7 @@ service cloud.firestore {
             && request.resource.data.enchants ==
               resource.data.get('enchants', []) + [{
                 'key': offerForPurchase(request.resource.data.lastEnhancementId).enchantKey
-              }])
+              }]
             && purchased(request.resource.data.lastEnhancementId).createdAt == request.time
             && purchased(request.resource.data.lastEnhancementId).ownerUid == request.auth.uid
             && purchased(request.resource.data.lastEnhancementId).targetItemId == itemId
