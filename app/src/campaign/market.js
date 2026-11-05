@@ -30,8 +30,8 @@ export function craftRoll(dice, threshold, difficulty) {
     throw new Error('Invalid crafting dice or Skill threshold')
   }
   const successes = dice.filter((die) => die >= threshold).length
-  const surges = Math.floor(dice.filter((die) => die === 6).length / 2)
-  const blunders = Math.floor(dice.filter((die) => die === 1).length / 2)
+  const surges = dice.filter((die) => die === 6).length >= 2 ? 1 : 0
+  const blunders = dice.filter((die) => die === 1).length >= 2 ? 1 : 0
   return { dice, successes, surges, blunders, difficulty, ...resolveCraft({ difficulty, successes, surges, blunders }) }
 }
 
