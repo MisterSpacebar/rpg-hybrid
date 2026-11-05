@@ -88,7 +88,7 @@
     },
     {
       "name": "Manticore",
-      "tags": ["Monster", "Elite", "Beast"],
+      "tags": ["Monster","Elite","Beast","Flying"],
       "points": 220,
       "models": 1,
       "modelProfile": { "move": "7\"", "wounds": 9, "armor": "5+", "evade": "5+", "ward": null },
@@ -110,7 +110,7 @@
     },
     {
       "name": "Griffon",
-      "tags": ["Monster", "Elite", "Beast"],
+      "tags": ["Monster","Elite","Beast","Flying"],
       "points": 235,
       "models": 1,
       "modelProfile": { "move": "8\"", "wounds": 9, "armor": "5+", "evade": "5+", "ward": null },
@@ -132,7 +132,7 @@
     },
     {
       "name": "Wyvern",
-      "tags": ["Monster", "Elite", "Beast"],
+      "tags": ["Monster","Elite","Beast","Flying"],
       "points": 295,
       "models": 1,
       "modelProfile": { "move": "8\"", "wounds": 11, "armor": "4+", "evade": "5+", "ward": null },
@@ -154,7 +154,7 @@
     },
     {
       "name": "Young Dragon",
-      "tags": ["Monster", "Elite", "Beast"],
+      "tags": ["Monster","Elite","Beast","Flying"],
       "points": 395,
       "models": 1,
       "modelProfile": { "move": "8\"", "wounds": 12, "armor": "4+", "evade": "5+", "ward": "6+ Magic" },
@@ -212,7 +212,7 @@
     },
     {
       "name": "Chimera",
-      "tags": ["Monster", "Elite", "Beast"],
+      "tags": ["Monster","Elite","Beast","Flying"],
       "points": 330,
       "models": 1,
       "modelProfile": { "move": "7\"", "wounds": 11, "armor": "4+", "evade": "5+", "ward": null },
@@ -235,7 +235,7 @@
     },
     {
       "name": "Roc",
-      "tags": ["Monster", "Elite", "Beast"],
+      "tags": ["Monster","Elite","Beast","Flying"],
       "points": 315,
       "models": 1,
       "modelProfile": { "move": "9\"", "wounds": 11, "armor": "5+", "evade": "4+", "ward": null },
@@ -314,10 +314,10 @@
       "name": "Abyssal Kraken",
       "tags": ["Monster", "Elite", "Beast"],
       "points": 460,
-      "models": "4-model Unit",
+      "models": 4,
       "modelProfile": {
         "body": { "move": "5\"", "wounds": 10, "armor": "4+", "evade": "5+", "ward": "6+ Magic" },
-        "tentacles": { "count": 3, "move": "5\"", "wounds": "2 each", "armor": "4+", "evade": "5+", "ward": "6+ Magic", "note": "Same Saves as the Body." }
+        "tentacles": { "count": 3, "move": "5\"", "wounds": 2, "armor": "4+", "evade": "5+", "ward": "6+ Magic", "note": "Same Saves as the Body." }
       },
       "attackProfiles": [
         { "name": "Abyssal Jet", "model": "Body", "range": "10\"", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] },
