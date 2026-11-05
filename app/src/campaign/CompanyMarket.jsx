@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import Toast from './Toast.jsx'
 import { loadCatalog } from '../builder/catalog.js'
 import { loadCharacterData } from '../character/data.js'
 import { derive, normalizeCharacter } from '../character/engine.js'
@@ -105,7 +106,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
         (!o.factionId || o.factionId === campaign.patronFactionId))))
 
   return <div className="panel-grid contents">
-    {message && <p role="status" className="span-all">{message}</p>}
+    <Toast message={message} kind={/purchased|recorded|published|enabled|disabled|updated/i.test(message) ? 'ok' : 'bad'} />
 
     {!isGm && <div className="offer-row span-all">
       {[

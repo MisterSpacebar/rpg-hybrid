@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import Toast from './Toast.jsx'
 import { loadCatalog } from '../builder/catalog.js'
 import { newUnitConfig, resolveUnit, SLOT_ORDER } from '../builder/engine.js'
 import { detachmentView, deploymentCap, allowedDoctrineCommands, FIELD_SLOTS } from './limits.js'
@@ -9,6 +10,22 @@ import { acceptSnapshot, discardDraft, editDraft } from './sync.js'
 
 const empty = { doctrineId: null, commands: [], selections: [] }
 const labelSlot = (s) => ({ C: 'Core', E: 'Elite', R: 'Ranged', V: 'Mobile', S: 'Support', A: 'Asset', H: 'Headquarters' }[s] || s)
+// Slot names and keyword tags overlap (e.g. Core, Ranged); show each label once.
+const unitLabels = (unit) => {
+  const slots = unit.eligibleSlots.map(labelSlot)
+  const seen = new Set(slots.map((s) => s.toLowerCase()))
+  return { slotIds: unit.eligibleSlots, tags: unit.tags.filter((t) => !seen.has(t.toLowerCase()) && seen.add(t.toLowerCase())) }
+}
+function Chips({ unit, active, onPick, locked = {} }) {
+  const { slotIds, tags } = unitLabels(unit)
+  return <div className="unit-chips">
+    {slotIds.map((id) => onPick && slotIds.length > 1
+      ? <button type="button" key={id} className={`tag pick slot-${id} ${active === id ? 'active' : ''}`} aria-pressed={active === id}
+        disabled={locked[id] && active !== id} title={locked[id] ? `${labelSlot(id)} (no slot)` : `Fill a ${labelSlot(id)} slot`} onClick={() => onPick(id)}>{labelSlot(id)}</button>
+      : <span key={id} className={`tag slot-chip slot-${id} ${active === id ? 'active' : ''}`}>{labelSlot(id)}</span>)}
+    {tags.map((t) => <span className="tag muted" key={t}>{t}</span>)}
+  </div>
+}
 
 export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHeroes, inventory, detachments }) {
   const [catalog, setCatalog] = useState(null)
@@ -96,7 +113,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         Formations are Company property; each PC drafts a temporary detachment from the shared pool, and a formation can't be deployed by two PCs at once.
         Foundation slots belong to every PC, while each PC chooses their own Doctrine.
       </p>
-      {message && <p className={message.startsWith('Saved') ? 'ok' : 'bad'} role="status">{message}</p>}
+      <Toast message={message} kind={message.startsWith('Saved') ? 'ok' : 'bad'} />
     </section>
     {!isGm && <div className="army-draft span-all"><div className="col-stack">
     <section className="panel">
@@ -130,11 +147,11 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
           </div>
         })}
       </div>
-      <ul className="saved-list">{result.units.filter((u) => !u.missing).map((u) => <li key={u.poolId}>
-        <span><strong>{u.name}</strong> · {u.points} points</span>
-        <div className="saved-actions"><select aria-label={`Recruitment slot for ${u.name}`} value={u.slot} onChange={(e) => setDraft((d) => ({ ...d, selections: d.selections.map((s) => s.id === u.poolId ? { ...s, slot: e.target.value } : s) }))}>
-          {u.eligibleSlots.map((s) => <option key={s} value={s}>{s}{result.slots.unitSlots[s] === 0 ? ' (locked)' : ''}</option>)}
-        </select><button onClick={() => remove(u.poolId)}>Remove</button></div>
+      <ul className="saved-list panel-scroll">{result.units.filter((u) => !u.missing).map((u) => <li key={u.poolId}>
+        <div><strong>{u.name}</strong> <span className="muted small">{u.points} pts · {u.models} Models</span>
+          <Chips unit={u} active={u.slot} locked={Object.fromEntries(u.eligibleSlots.map((s) => [s, result.slots.unitSlots[s] === 0]))}
+            onPick={(s) => setDraft((d) => ({ ...d, selections: d.selections.map((x) => x.id === u.poolId ? { ...x, slot: s } : x) }))} /></div>
+        <div className="saved-actions"><button onClick={() => remove(u.poolId)}>Remove</button></div>
       </li>)}</ul>
       {result.errors.length > 0 && <ul className="checks">{result.errors.map((e, i) => <li className="bad" key={i}>{e}</li>)}</ul>}
       <button className="primary" disabled={saving || !result.legal || draftState?.conflict} onClick={() => perform(() => saveDetachment(campaign.id, user.uid, draft))}>Save legal detachment</button>
@@ -193,7 +210,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
             return <li key={item.id}>
               <div>
                 <strong>{unit.name}</strong> <span className="muted small">{unit.points} pts · {unit.models} Models{taken ? ' · Selected by another PC' : ''}</span>
-                <div className="small">{unit.eligibleSlots.map((s) => <span className="tag" key={s}>{labelSlot(s)}</span>)}{unit.tags.map((t) => <span className="tag muted" key={t}>{t}</span>)}</div>
+                <Chips unit={unit} />
               </div>
               <div className="saved-actions">{chosen ? <span className="ok">Selected</span> : <button disabled={taken || !slots.length} onClick={() => add(item.id, slots[0])}>{taken ? 'In use' : slots.length ? 'Deploy' : 'No slot'}</button>}</div>
             </li>
@@ -217,7 +234,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       })}>Grant to Company roster</button>
       <p className="muted small">Act II provides two free standard-size Patron formations to the entire Company; assign them manually from an eligible source. Subsequent grants should reflect paid recruitment or campaign rewards.</p>
       <h3>Owned formations</h3>
-      <ul className="saved-list">{inventory.filter((i) => i.kind === 'unit').map((i) => <li key={i.id}><span>{catalog.unitsByKey[i.config?.key]?.name ?? i.config.key}</span><button className="danger" disabled={saving || detachments.some((d) => d.selections?.some((s) => s.id === i.id))} onClick={() => perform(() => removeInventoryItem(campaign.id, i.id))}>Remove</button></li>)}</ul>
+      <ul className="saved-list panel-scroll">{inventory.filter((i) => i.kind === 'unit').map((i) => <li key={i.id}><span>{catalog.unitsByKey[i.config?.key]?.name ?? i.config.key}</span><button className="danger" disabled={saving || detachments.some((d) => d.selections?.some((s) => s.id === i.id))} onClick={() => perform(() => removeInventoryItem(campaign.id, i.id))}>Remove</button></li>)}</ul>
     </section>}
     {isGm && <section className="panel">
       <h2>GM — Equipment awards</h2>
@@ -232,7 +249,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         const [kind, name] = selectedGear.split(':')
         return grantEquipment(campaign.id, kind, name)
       })}>Grant to Company inventory</button>
-      <ul className="saved-list">{inventory.filter((i) => i.kind === 'equipment').map((i) => <li key={i.id}>
+      <ul className="saved-list panel-scroll">{inventory.filter((i) => i.kind === 'equipment').map((i) => <li key={i.id}>
         <span>{i.item?.name} <span className="muted small">({i.item?.kind})</span></span>
         <button disabled={saving || heroes.some((h) => h.sheet?.gear?.some((g) => g.inventoryId === i.id))} className="danger" onClick={() => perform(() => removeInventoryItem(campaign.id, i.id))}>Remove</button>
       </li>)}</ul>

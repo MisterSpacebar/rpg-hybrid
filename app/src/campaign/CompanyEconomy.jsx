@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import CompanyMarket from './CompanyMarket.jsx'
+import Toast from './Toast.jsx'
 import { loadCatalog } from '../builder/catalog.js'
 import { newUnitConfig, resolveUnit } from '../builder/engine.js'
 import { loadCharacterData } from '../character/data.js'
@@ -93,7 +94,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes, detachmen
   if (!data || !catalog) return <section className="panel"><h2>Company economy</h2><p>{message || 'Loading equipment and formation catalogs…'}</p></section>
   return <div className="panel-grid">
     <div className="contents"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} /></div>
-    {message && <p role="status" className={'span-all ' + (/submitted|recorded|approved|rejected/i.test(message) ? 'ok' : 'bad')}>{message}</p>}
+    <Toast message={message} kind={/submitted|recorded|approved|rejected|purchased|published|enabled|disabled/i.test(message) ? 'ok' : 'bad'} />
 
     {!isGm && <section className="panel">
       <h2>Ask for a special acquisition</h2>
@@ -169,7 +170,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes, detachmen
     <section className="panel span-2">
       <h2>{isGm ? 'GM — Special acquisition requests' : 'My special requests'} ({isGm ? pending.length : requests.filter((r) => r.ownerUid === user.uid && r.status === 'pending').length} pending)</h2>
       {!(isGm ? pending : requests.filter((r) => r.ownerUid === user.uid)).length && <p className="muted">No proposals yet.</p>}
-      <div className="campaign-request-list">
+      <div className="campaign-request-list panel-scroll tall">
         {(isGm ? pending : requests.filter((r) => r.ownerUid === user.uid)).map((request) => {
           const unit = estimate(request)
           const defaultCost = request.kind === 'recruit' && unit && Number.isFinite(unit.points)
@@ -239,7 +240,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes, detachmen
     <section className="panel">
       <h2>Recent treasury transactions</h2>
       {!ledger.length && <p className="muted small">No Gold transactions recorded yet.</p>}
-      <ul className="saved-list">{ledger.slice(0, 30).map((entry) => <li key={entry.id}>
+      <ul className="saved-list panel-scroll">{ledger.slice(0, 30).map((entry) => <li key={entry.id}>
         <div><strong>{entry.delta > 0 ? '+' : ''}{entry.delta} Gold</strong><div className="muted small">{entry.reason} · {dateOf(entry.createdAt)}</div></div>
         <span className="muted small">{entry.balanceAfter} left</span>
       </li>)}</ul>
@@ -247,7 +248,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes, detachmen
     {isGm && <section className="panel">
       <h2>Previously resolved requests</h2>
       {!resolved.length && <p className="muted">No resolved requests.</p>}
-      <ul className="saved-list">{resolved.slice(0, 20).map((r) => <li key={r.id}>
+      <ul className="saved-list panel-scroll">{resolved.slice(0, 20).map((r) => <li key={r.id}>
         <span>{requestLabel(r)} <span className="muted small">· {nameOf(heroes, r.ownerUid)} · {r.status}</span></span>
         <span className="muted small">{r.paid ?? 0} Gold</span>
       </li>)}</ul>

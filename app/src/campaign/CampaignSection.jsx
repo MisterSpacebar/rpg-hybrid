@@ -8,6 +8,7 @@ import TalentPyramid from '../components/TalentPyramid.jsx'
 import GearTab from '../components/GearTab.jsx'
 import CampaignArmy from './CampaignArmy.jsx'
 import CompanyEconomy from './CompanyEconomy.jsx'
+import Toast from './Toast.jsx'
 import { SignInButton } from '../components/UserMenu.jsx'
 import {
   approveHero, approveJoin, createCampaign, FORMATS, rejectJoin, requestToJoin,
@@ -49,7 +50,7 @@ export default function CampaignSection({ hash }) {
     finally { clearTimeout(timer); setBusy(false) }
   }
 
-  if (loading) return <div className="builder-wrap"><p className="muted">Loading…</p></div>
+  if (loading) return <div className="builder-wrap"><p className="muted">Loadingâ€¦</p></div>
   if (!user) return <div className="builder-wrap"><section className="panel narrow"><h2>Campaigns</h2><p>Sign in to create or join a campaign.</p><SignInButton /></section></div>
   if (id) return <Workspace key={id} id={id} user={user} />
 
@@ -86,7 +87,7 @@ export default function CampaignSection({ hash }) {
     </div>
     <section className="panel"><h2>My campaigns</h2>
       {!campaigns.length && <p className="muted">No campaigns yet.</p>}
-      <ul className="saved-list">{campaigns.map((c) => <li key={c.id}><div><strong>{c.name}</strong><div className="muted small">{c.format} · Act {c.act} · {c.gmUid === user.uid ? 'GM' : 'PC'}</div></div><a className="button primary" href={`#/campaign/${c.id}`}>Open</a></li>)}</ul>
+      <ul className="saved-list">{campaigns.map((c) => <li key={c.id}><div><strong>{c.name}</strong><div className="muted small">{c.format} Â· Act {c.act} Â· {c.gmUid === user.uid ? 'GM' : 'PC'}</div></div><a className="button primary" href={`#/campaign/${c.id}`}>Open</a></li>)}</ul>
     </section>
   </div>
 }
@@ -176,29 +177,29 @@ function Workspace({ id, user }) {
     finally { setWorking(false) }
   }
   if (!campaign || !data || !sheet || !progressDraft) return <div className="builder-wrap">
-    <p role="status">{error || (campaignReady && !campaign ? 'Campaign no longer exists or you no longer have access.' : 'Loading live campaign data…')}</p>
+    <p role="status">{error || (campaignReady && !campaign ? 'Campaign no longer exists or you no longer have access.' : 'Loading live campaign dataâ€¦')}</p>
     <a href="#/campaign">Back to campaigns</a>
   </div>
 
   return <div className="builder-wrap campaign-page">
     <p className="small"><a href="#/campaign">Campaigns</a> / {campaign.name}</p>
-    <div className="campaign-heading"><div><h1>{campaign.name}</h1><p className="muted">{isGm ? 'Game Master' : 'Player'} · {campaign.format} · Act {campaign.act}: {actName[campaign.act - 1]} · Turn {Math.min(campaign.turn, actMax)}/{actMax}{campaign.status === 'completed' ? ' · Completed' : ''}</p></div>
+    <div className="campaign-heading"><div><h1>{campaign.name}</h1><p className="muted">{isGm ? 'Game Master' : 'Player'} Â· {campaign.format} Â· Act {campaign.act}: {actName[campaign.act - 1]} Â· Turn {Math.min(campaign.turn, actMax)}/{actMax}{campaign.status === 'completed' ? ' Â· Completed' : ''}</p></div>
       <span className="gold-chip" title="Shared Company treasury"><strong>{campaign.goldBalance ?? 0}</strong> Gold</span>
       {isGm && <button onClick={() => copyId(id)}>Copy invite ID</button>}
     </div>
-    {error && <p className="bad" role="alert">{error}</p>}
+    <Toast message={error} kind="bad" />
     {connection.fromCache && <p className="bad small" role="status">Showing locally cached campaign data. Updates from other players may be delayed until Firestore reconnects.</p>}
-    {!connection.fromCache && connection.hasPendingWrites && <p className="muted small" role="status">Synchronizing campaign changes…</p>}
+    {!connection.fromCache && connection.hasPendingWrites && <p className="muted small" role="status">Synchronizing campaign changesâ€¦</p>}
     <nav className="subtabs">
       {['overview', ...(!isGm ? ['character'] : []), 'company', 'army', ...(isGm ? ['gm'] : [])].map((t) => <button key={t} className={tab === t ? 'active' : ''} onClick={() => setTab(t)}>{t === 'gm' ? 'GM Controls' : t === 'character' ? 'My Character' : t === 'army' ? (isGm ? 'Company Arsenal' : 'My Army') : t === 'company' ? 'Company & Projects' : 'Overview'}</button>)}
     </nav>
     {tab === 'overview' && <div className="panel-grid">
       <section className="panel"><h2>Campaign progress</h2><p>Shared earned XP: <strong>{campaign.xpTotal}</strong></p><p>Active players: {campaign.memberUids.length - 1}</p><p className="muted small">Each completed turn grants 5 XP; additional exploration, Act and pivotal objective awards follow the campaign rules.</p></section>
-      <section className="panel"><h2>Party roster</h2><ul className="plain-list">{heroes.map((h) => <li key={h.id}><strong>{h.sheet.name}</strong> · {h.sheet.classId} <span className="muted small">({h.id === user.uid ? 'You' : h.id.slice(0, 7)})</span></li>)}</ul>{!heroes.length && <p className="muted">Players can create their campaign characters in My Character.</p>}</section>
-      <section className="panel"><h2>Company resources</h2><p>{inventory.filter((x) => x.kind === 'unit').length} owned formations · {inventory.filter((x) => x.kind === 'equipment').length} equipment items</p><p className="muted small"><strong>{campaign.goldBalance ?? 0} Company Gold</strong> · Gold purchases, crafting proposals and recruitment are managed under Company & Projects. Political Stakes and the strategic map remain future milestones.</p></section>
+      <section className="panel"><h2>Party roster</h2><ul className="plain-list">{heroes.map((h) => <li key={h.id}><strong>{h.sheet.name}</strong> Â· {h.sheet.classId} <span className="muted small">({h.id === user.uid ? 'You' : h.id.slice(0, 7)})</span></li>)}</ul>{!heroes.length && <p className="muted">Players can create their campaign characters in My Character.</p>}</section>
+      <section className="panel"><h2>Company resources</h2><p>{inventory.filter((x) => x.kind === 'unit').length} owned formations Â· {inventory.filter((x) => x.kind === 'equipment').length} equipment items</p><p className="muted small"><strong>{campaign.goldBalance ?? 0} Company Gold</strong> Â· Gold purchases, crafting proposals and recruitment are managed under Company & Projects. Political Stakes and the strategic map remain future milestones.</p></section>
     </div>}
     {tab === 'character' && <div>
-      <div className="panel campaign-character-actions"><div><h2>{sheet.name}</h2><div className="muted small">{view.points.total} points · {view.points.spent}/{campaign.xpTotal} XP spent · {campaign.xpTotal - view.points.spent} XP unspent</div><p className="small">{myHero ? 'Saved campaign draft' : 'New campaign character'} · {approved ? 'An approved snapshot exists' : 'Not yet approved by GM'}</p></div>
+      <div className="panel campaign-character-actions"><div><h2>{sheet.name}</h2><div className="muted small">{view.points.total} points Â· {view.points.spent}/{campaign.xpTotal} XP spent Â· {campaign.xpTotal - view.points.spent} XP unspent</div><p className="small">{myHero ? 'Saved campaign draft' : 'New campaign character'} Â· {approved ? 'An approved snapshot exists' : 'Not yet approved by GM'}</p></div>
         <div className="saved-actions"><button className="primary" disabled={working || !isValid || sheetDraft?.conflict} onClick={() => run(() => saveHeroDraft(id, user.uid, sheet))}>Save draft</button>
           {myHero && <button className="danger" disabled={working} onClick={() => {
             if (!window.confirm('Delete your campaign character draft and release your reserved formations? A GM-approved snapshot stays until the GM revokes it. This cannot be undone.')) return
@@ -222,21 +223,21 @@ function Workspace({ id, user }) {
         {progressDraft?.conflict && <div role="status" className="bad small">Campaign settings changed elsewhere while you were editing. Your inputs were preserved. <button onClick={() => setProgressDraft(discardDraft)}>Load current settings</button></div>}
         <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); run(() => updateCampaignProgress(campaign, { bonusXp: progress.bonusXp, patronFactionId: progress.patronFactionId })) }}>
           <label className="field">Bonus XP (exploration Sites and Pivotal Objectives, 5 each)<input type="number" min={0} step={5} value={progress.bonusXp} onChange={(e) => updateProgress({ bonusXp: Number(e.target.value) })} /></label>
-          <label className="field">Company sponsoring faction (Act II onward)<select value={progress.patronFactionId} onChange={(e) => updateProgress({ patronFactionId: e.target.value })}><option value="">Select when Company is founded…</option>{['free-realms','sacred-orders','iron-holds','wild-courts','warclans','underclans','death-legions','blood-courts','spirit-hosts','infernal-hosts','arcane-orders','titan-clans'].map((id) => <option key={id} value={id}>{id.replace(/-/g, ' ')}</option>)}</select></label>
+          <label className="field">Company sponsoring faction (Act II onward)<select value={progress.patronFactionId} onChange={(e) => updateProgress({ patronFactionId: e.target.value })}><option value="">Select when Company is foundedâ€¦</option>{['free-realms','sacred-orders','iron-holds','wild-courts','warclans','underclans','death-legions','blood-courts','spirit-hosts','infernal-hosts','arcane-orders','titan-clans'].map((id) => <option key={id} value={id}>{id.replace(/-/g, ' ')}</option>)}</select></label>
           <button className="primary" disabled={working || progressDraft?.conflict || (campaign.act >= 2 && !progress.patronFactionId)}>Save progress</button>
         </form>
       </section>
       <section className="panel"><h2>Join requests</h2>{!requests.length && <p className="muted">No pending requests.</p>}
-        <ul className="saved-list">{requests.map((r) => <li key={r.id}><strong>{r.displayName}</strong><div className="saved-actions"><button className="primary" disabled={working} onClick={() => run(() => approveJoin(campaign, r.uid))}>Accept</button><button disabled={working} onClick={() => run(() => rejectJoin(id, r.uid))}>Reject</button></div></li>)}</ul>
+        <ul className="saved-list panel-scroll">{requests.map((r) => <li key={r.id}><strong>{r.displayName}</strong><div className="saved-actions"><button className="primary" disabled={working} onClick={() => run(() => approveJoin(campaign, r.uid))}>Accept</button><button disabled={working} onClick={() => run(() => rejectJoin(id, r.uid))}>Reject</button></div></li>)}</ul>
       </section>
-      <section className="panel span-2"><h2>Character reviews</h2><p className="muted small">Approve a saved snapshot for deployment; further player edits do not change the approved sheet.</p><ul className="saved-list">{heroes.map((h) => {
+      <section className="panel span-2"><h2>Character reviews</h2><p className="muted small">Approve a saved snapshot for deployment; further player edits do not change the approved sheet.</p><ul className="saved-list panel-scroll tall">{heroes.map((h) => {
         const v = derive(normalizeCharacter({ ...h.sheet, xpEarned: campaign.xpTotal }, data), data)
         const issues = validateCampaignSheet({ ...h.sheet, ownerUid: h.ownerUid }, data, campaign.xpTotal, inventory, heroes.filter((other) => other.ownerUid !== h.ownerUid), approvedHeroes.find((a) => a.ownerUid === h.ownerUid))
         const eligible = v.checks.every((c) => c.ok) && !issues.length && v.points.spent <= campaign.xpTotal
-        return <li key={h.id}><div><strong>{h.sheet.name}</strong><div className="muted small">{v.points.total} pts · {v.points.spent}/{campaign.xpTotal} XP spent · {eligible ? 'Valid' : 'Needs corrections'}</div></div>        <button className="primary" disabled={working || !eligible} onClick={() => run(() => approveHero(id, h.ownerUid, h.sheet))}>Approve snapshot</button>{approvedHeroes.some((a) => a.ownerUid === h.ownerUid) && <button disabled={working} onClick={() => window.confirm('Revoke this approved snapshot? The player will be unable to deploy this Hero until re-approved.') && run(() => revokeApproval(id, h.ownerUid))}>Revoke approval</button>}</li>
+        return <li key={h.id}><div><strong>{h.sheet.name}</strong><div className="muted small">{v.points.total} pts Â· {v.points.spent}/{campaign.xpTotal} XP spent Â· {eligible ? 'Valid' : 'Needs corrections'}</div></div>        <button className="primary" disabled={working || !eligible} onClick={() => run(() => approveHero(id, h.ownerUid, h.sheet))}>Approve snapshot</button>{approvedHeroes.some((a) => a.ownerUid === h.ownerUid) && <button disabled={working} onClick={() => window.confirm('Revoke this approved snapshot? The player will be unable to deploy this Hero until re-approved.') && run(() => revokeApproval(id, h.ownerUid))}>Revoke approval</button>}</li>
       })}</ul></section>
               <section className="panel"><h2>Players</h2><p className="muted small">Removing a player deletes their character, approval, detachment and slot entitlements, and releases any formations or equipment they reserved.</p>
-                <ul className="saved-list">{campaign.memberUids.filter((uid) => uid !== campaign.gmUid).map((uid) => <li key={uid}>
+                <ul className="saved-list panel-scroll">{campaign.memberUids.filter((uid) => uid !== campaign.gmUid).map((uid) => <li key={uid}>
                   <span>{heroes.find((h) => h.ownerUid === uid)?.sheet?.name ?? 'No character yet'} <span className="muted small">({uid.slice(0, 7)})</span></span>
                   <button className="danger" disabled={working} onClick={() => window.confirm('Remove this player and their character from the campaign?') && run(() => removePlayer(campaign, uid))}>Remove player</button>
                 </li>)}</ul>
@@ -268,7 +269,7 @@ function CharacterEditor({ data, sheet, view, update, inventory, approved, other
     {page === 'magic' && <section className="panel">
       <h2>Starting magic and formulas</h2>
       <p className="muted small">Only the included starting choices are available. Additional spells, magical equipment, and permanent crafting must be acquired during the campaign.</p>
-      {view.sub.subclassSpellAttacks?.chooseCount && <div><h3>Subclass Spell Attack — choose one</h3>
+      {view.sub.subclassSpellAttacks?.chooseCount && <div><h3>Subclass Spell Attack â€” choose one</h3>
         {view.sub.subclassSpellAttacks.spells.map((spell) => <label className="choice" key={spell.name}><input type="radio" name="campaign-starting-spell" checked={sheet.subclassSpell === spell.name} onChange={() => update({ subclassSpell: spell.name })} />{spell.name}</label>)}
       </div>}
       {view.cls.id === 'artificer' && <div><h3>Choose two starting formulas</h3>
@@ -276,7 +277,7 @@ function CharacterEditor({ data, sheet, view, update, inventory, approved, other
           formulas: char.formulas.includes(formula.name) ? char.formulas.filter((f) => f !== formula.name) : [...char.formulas, formula.name],
           fieldSpecialty: char.fieldSpecialty === formula.name ? null : char.fieldSpecialty,
         }))} />{formula.name}</label>)}
-        <label className="field">Field Specialty<select value={sheet.fieldSpecialty ?? ''} onChange={(e) => update({ fieldSpecialty: e.target.value || null })}><option value="">Choose…</option>{sheet.formulas.map((name) => <option key={name} value={name}>{name}</option>)}</select></label>
+        <label className="field">Field Specialty<select value={sheet.fieldSpecialty ?? ''} onChange={(e) => update({ fieldSpecialty: e.target.value || null })}><option value="">Chooseâ€¦</option>{sheet.formulas.map((name) => <option key={name} value={name}>{name}</option>)}</select></label>
       </div>}
       {!view.sub.subclassSpellAttacks?.chooseCount && view.cls.id !== 'artificer' && <p>Any included base Spell Attacks are automatically available to this character.</p>}
     </section>}
