@@ -115,9 +115,12 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       offer.kind === 'enchant' ? selectedTargets[offer.id] : null)
     return result
   }
+  const claimedByOthers = new Set(heroes.filter((h) => h.ownerUid !== user.uid)
+    .flatMap((h) => (h.sheet?.gear ?? []).map((g) => g.inventoryId).filter(Boolean)))
   const compatibleTargets = (offer) => inventory.filter((entry) => entry.kind === 'equipment'
     && entry.item?.kind === offer.targetKind
     && (!entry.ownerUid || entry.ownerUid === user.uid)
+    && !claimedByOthers.has(entry.id)
     && !(entry.enchants ?? []).some((e) => e.key === offer.enchantKey)
     && (entry.enchants ?? []).length < 3)
 
