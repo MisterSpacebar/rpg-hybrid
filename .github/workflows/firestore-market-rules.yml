@@ -25,7 +25,7 @@ jobs:
           node-version: '20'
           cache: npm
           cache-dependency-path: app/package-lock.json
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '21'
@@ -33,7 +33,7 @@ jobs:
         working-directory: app
         run: |
           npm ci
-          npm install --no-save @firebase/rules-unit-testing
+          npm install --no-save --legacy-peer-deps @firebase/rules-unit-testing
           npm install --global firebase-tools
       - name: Check market transactions against actual Firestore rules
         working-directory: app
