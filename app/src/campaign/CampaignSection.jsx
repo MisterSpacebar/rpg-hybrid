@@ -32,6 +32,8 @@ export default function CampaignSection({ hash }) {
   const [invite, setInvite] = useState('')
   const [notice, setNotice] = useState('')
   const [busy, setBusy] = useState(false)
+  const [mode, setMode] = useState('create')
+  const [filter, setFilter] = useState('all')
   const id = hash.match(/^#\/campaign\/([^/]+)/)?.[1]
 
   useEffect(() => {
@@ -54,44 +56,85 @@ export default function CampaignSection({ hash }) {
   if (!user) return <div className="builder-wrap"><section className="panel narrow"><h2>Campaigns</h2><p>Sign in to create or join a campaign.</p><SignInButton /></section></div>
   if (id) return <Workspace key={id} id={id} user={user} />
 
+  const mine = campaigns.filter((c) => c.gmUid === user.uid).length
+  const shown = campaigns.filter((c) => filter === 'all' || (filter === 'gm') === (c.gmUid === user.uid))
+    .sort((a, b) => (a.status === 'completed') - (b.status === 'completed') || (a.gmUid === user.uid ? 0 : 1) - (b.gmUid === user.uid ? 0 : 1) || a.name.localeCompare(b.name))
+  const noticeKind = /^(Join request|Campaign ID copied)/.test(notice) ? 'ok' : 'bad'
+
   return <div className="builder-wrap campaign-page">
     <h1>Campaigns</h1>
-    {notice && <p className="bad" role="alert">{notice}</p>}
-    <div className="panel-grid">
-      <section className="panel">
-        <h2>Create campaign</h2>
-        <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); submit(async () => {
-          const created = await createCampaign(user.uid, name, format)
-          window.location.hash = `#/campaign/${created}`
-        }) }}>
-          <label className="field">Campaign name<input required maxLength={80} value={name} onChange={(e) => setName(e.target.value)} /></label>
-          <label className="field">Campaign length
-            <select value={format} onChange={(e) => setFormat(e.target.value)}>
-              {Object.keys(FORMATS).map((f) => <option key={f} value={f}>{f[0].toUpperCase() + f.slice(1)} ({FORMATS[f].reduce((a,b) => a+b,0)} turns)</option>)}
-            </select>
-          </label>
-          <button className="primary" disabled={busy || !name.trim()}>Create</button>
-        </form>
+    <Toast message={notice} kind={noticeKind} />
+    <div className="campaigns-home">
+      <section className="panel campaigns-main">
+        <div className="campaigns-head">
+          <h2>My campaigns <span className="muted small">{campaigns.length}</span></h2>
+          {campaigns.length > 0 && <div className="seg" role="group" aria-label="Filter campaigns">
+            {[['all', `All (${campaigns.length})`], ['gm', `GM (${mine})`], ['pc', `Player (${campaigns.length - mine})`]].map(([key, label]) =>
+              <button type="button" key={key} className={filter === key ? 'active' : ''} aria-pressed={filter === key} onClick={() => setFilter(key)}>{label}</button>)}
+          </div>}
+        </div>
+        {!campaigns.length && <p className="muted">No campaigns yet. Create one, or ask your GM for a campaign ID to request access.</p>}
+        {campaigns.length > 0 && !shown.length && <p className="muted">No campaigns match this filter.</p>}
+        <div className="campaign-cards">
+          {shown.map((c) => {
+            const gm = c.gmUid === user.uid
+            const acts = FORMATS[c.format] ?? []
+            const total = acts.reduce((a, b) => a + b, 0)
+            const done = c.status === 'completed' ? total : acts.slice(0, c.act - 1).reduce((a, b) => a + b, 0) + Math.max(0, Math.min(c.turn, acts[c.act - 1] ?? 0) - 1)
+            return <article key={c.id} className={`campaign-card ${gm ? 'gm' : 'pc'}`}>
+              <div className="campaign-card-head">
+                <strong>{c.name}</strong>
+                <span className={`tag role-tag ${gm ? 'gm' : 'pc'}`}>{gm ? 'GM' : 'Player'}</span>
+              </div>
+              <div className="muted small">{c.format[0].toUpperCase() + c.format.slice(1)} · {c.status === 'completed' ? 'Completed' : `Act ${c.act}: ${actName[c.act - 1]}`}</div>
+              <div className="campaign-progress" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={done} aria-label="Campaign progress"><span style={{ width: `${total ? (done / total) * 100 : 0}%` }} /></div>
+              <div className="muted small campaign-stats">
+                <span>Turn {Math.min(c.turn, acts[c.act - 1] ?? c.turn)}/{acts[c.act - 1] ?? '?'}</span>
+                <span>{Math.max(0, (c.memberUids?.length ?? 1) - 1)} {(c.memberUids?.length ?? 1) === 2 ? 'player' : 'players'}</span>
+                <span>{c.xpTotal ?? 0} XP</span>
+              </div>
+              <div className="campaign-card-actions">
+                <a className="button primary" href={`#/campaign/${c.id}`}>Open</a>
+                {gm && <button type="button" title="Copy the ID players use to request access" onClick={() => { copyId(c.id); setNotice('Campaign ID copied') }}>Copy ID</button>}
+              </div>
+            </article>
+          })}
+        </div>
       </section>
-      <section className="panel">
-        <h2>Request to join</h2>
-        <p className="muted small">Ask your GM for their campaign ID. They must approve your request before you can view it.</p>
-        <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); submit(async () => {
-          await requestToJoin(invite.trim(), user.uid, profile?.displayName)
-          setNotice('Join request submitted. Your GM can now approve it.')
-        }) }}>
-          <label className="field">Campaign ID<input required value={invite} onChange={(e) => setInvite(e.target.value)} /></label>
-          <button disabled={busy || !invite.trim()}>Request access</button>
-        </form>
+      <section className="panel campaigns-side">
+        <nav className="subtabs nested" aria-label="Start or join a campaign">
+          {[['create', 'Create campaign'], ['join', 'Join campaign']].map(([key, label]) =>
+            <button type="button" key={key} className={mode === key ? 'active' : ''} aria-current={mode === key ? 'page' : undefined} onClick={() => setMode(key)}>{label}</button>)}
+        </nav>
+        {mode === 'create' ? <>
+          <p className="muted small">You become the Game Master. Share the campaign ID with your players so they can request access.</p>
+          <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); submit(async () => {
+            const created = await createCampaign(user.uid, name, format)
+            window.location.hash = `#/campaign/${created}`
+          }) }}>
+            <label className="field">Campaign name<input required maxLength={80} value={name} onChange={(e) => setName(e.target.value)} /></label>
+            <label className="field">Campaign length
+              <select value={format} onChange={(e) => setFormat(e.target.value)}>
+                {Object.keys(FORMATS).map((f) => <option key={f} value={f}>{f[0].toUpperCase() + f.slice(1)} ({FORMATS[f].reduce((a, b) => a + b, 0)} turns)</option>)}
+              </select>
+            </label>
+            <button className="primary" disabled={busy || !name.trim()}>Create</button>
+          </form>
+        </> : <>
+          <p className="muted small">Ask your GM for their campaign ID. They must approve your request before you can view it.</p>
+          <form className="campaign-form" onSubmit={(e) => { e.preventDefault(); submit(async () => {
+            await requestToJoin(invite.trim(), user.uid, profile?.displayName)
+            setInvite('')
+            setNotice('Join request submitted. Your GM can now approve it.')
+          }) }}>
+            <label className="field">Campaign ID<input required value={invite} onChange={(e) => setInvite(e.target.value)} /></label>
+            <button className="primary" disabled={busy || !invite.trim()}>Request access</button>
+          </form>
+        </>}
       </section>
     </div>
-    <section className="panel"><h2>My campaigns</h2>
-      {!campaigns.length && <p className="muted">No campaigns yet.</p>}
-      <ul className="saved-list">{campaigns.map((c) => <li key={c.id}><div><strong>{c.name}</strong><div className="muted small">{c.format} · Act {c.act} · {c.gmUid === user.uid ? 'GM' : 'PC'}</div></div><a className="button primary" href={`#/campaign/${c.id}`}>Open</a></li>)}</ul>
-    </section>
   </div>
 }
-
 function Workspace({ id, user }) {
   const [campaign, setCampaign] = useState(null)
   const [campaignReady, setCampaignReady] = useState(false)

@@ -450,6 +450,29 @@ select.needs-choice { border-color: #e5645b !important; }
 .campaign-page .subtabs { max-width: none; margin-inline: 0; }
 .campaign-heading, .campaign-character-actions { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
 .campaign-form { display:flex; flex-direction:column; align-items:flex-start; gap:14px; }
+.campaigns-home { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: 16px; align-items: start; }
+.campaigns-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.campaigns-head h2 { margin: 0; }
+.campaigns-head h2 .small { font-weight: 400; margin-left: 4px; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.campaign-page .seg button { border: 0; border-radius: 0; background: transparent; color: var(--muted); padding: 4px 12px; font-size: 0.85rem; cursor: pointer; }
+.campaign-page .seg button + button { border-left: 1px solid var(--border); }
+.campaign-page .seg button.active { background: #262a32; color: var(--text); }
+.campaign-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.campaign-card { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border: 1px solid var(--border); border-left: 4px solid var(--border); border-radius: 8px; background: #181b21; min-width: 0; }
+.campaign-card.gm { border-left-color: var(--accent); }
+.campaign-card.pc { border-left-color: #5b8def; }
+.campaign-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.campaign-card-head strong { overflow-wrap: anywhere; }
+.tag.role-tag { margin: 0; flex: none; }
+.tag.role-tag.gm { color: var(--accent); border-color: var(--accent); }
+.tag.role-tag.pc { color: #8fb0f5; border-color: #5b8def; }
+.campaign-progress { height: 6px; border-radius: 3px; background: #262a32; overflow: hidden; margin-top: 2px; }
+.campaign-progress span { display: block; height: 100%; background: var(--accent); }
+.campaign-stats { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.campaign-card-actions { display: flex; gap: 8px; margin-top: auto; padding-top: 6px; }
+.campaigns-side .subtabs { margin-bottom: 10px; }
+@media (max-width: 900px) { .campaigns-home { grid-template-columns: 1fr; } }
 .campaign-form .field { width:100%; max-width:420px; }
 .campaign-form input, .campaign-form select { width:100%; }
 .campaign-page .subtabs button { border-radius:0; border:0; border-bottom:2px solid transparent; background:transparent; padding:10px 14px; color:var(--muted); cursor:pointer; }
