@@ -13,7 +13,7 @@
     "units": [
       {
         "name": "Rat / Ferret",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 5,
         "models": 1,
         "modelProfile": { "move": "5\"", "wounds": 1, "armor": "6+", "evade": "4+", "ward": null },
@@ -24,7 +24,7 @@
       },
       {
         "name": "Cat",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 5,
         "models": 1,
         "modelProfile": { "move": "6\"", "wounds": 1, "armor": "6+", "evade": "4+", "ward": null },
@@ -35,7 +35,7 @@
       },
       {
         "name": "Raven",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast","Flying"],
         "points": 10,
         "models": 1,
         "modelProfile": { "move": "7\"", "wounds": 1, "armor": "6+", "evade": "4+", "ward": null },
@@ -46,7 +46,7 @@
       },
       {
         "name": "Hawk / Owl",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast","Flying"],
         "points": 10,
         "models": 1,
         "modelProfile": { "move": "8\"", "wounds": 1, "armor": "6+", "evade": "4+", "ward": null },
@@ -57,7 +57,7 @@
       },
       {
         "name": "Snake",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 10,
         "models": 1,
         "modelProfile": { "move": "4\"", "wounds": 1, "armor": "6+", "evade": "5+", "ward": null },
@@ -81,7 +81,7 @@
     "units": [
       {
         "name": "Dog",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 15,
         "models": 1,
         "modelProfile": { "move": "6\"", "wounds": 2, "armor": "6+", "evade": "5+", "ward": null },
@@ -92,7 +92,7 @@
       },
       {
         "name": "War Hound",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 30,
         "models": 1,
         "modelProfile": { "move": "6\"", "wounds": 3, "armor": "5+", "evade": "5+", "ward": null },
@@ -103,7 +103,7 @@
       },
       {
         "name": "Wolf",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 20,
         "models": 1,
         "modelProfile": { "move": "6\"", "wounds": 2, "armor": "6+", "evade": "5+", "ward": null },
@@ -114,7 +114,7 @@
       },
       {
         "name": "Boar",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 30,
         "models": 1,
         "modelProfile": { "move": "5\"", "wounds": 3, "armor": "5+", "evade": "6+", "ward": null },
@@ -125,7 +125,7 @@
       },
       {
         "name": "Giant Lizard",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 30,
         "models": 1,
         "modelProfile": { "move": "5\"", "wounds": 3, "armor": "5+", "evade": "6+", "ward": null },
@@ -136,7 +136,7 @@
       },
       {
         "name": "Giant Spider",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 35,
         "models": 1,
         "modelProfile": { "move": "5\"", "wounds": 3, "armor": "6+", "evade": "5+", "ward": null },
@@ -156,7 +156,7 @@
     "units": [
       {
         "name": "Dire Hound",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 45,
         "models": 1,
         "modelProfile": { "move": "7\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
@@ -167,7 +167,7 @@
       },
       {
         "name": "Bear Companion",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 55,
         "models": 1,
         "modelProfile": { "move": "5\"", "wounds": 5, "armor": "5+", "evade": "6+", "ward": null },
@@ -179,7 +179,7 @@
       },
       {
         "name": "Riding Horse",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 35,
         "models": 1,
         "modelProfile": { "move": "8\"", "wounds": 3, "armor": "6+", "evade": "5+", "ward": null },
@@ -190,7 +190,7 @@
       },
       {
         "name": "Warhorse",
-        "tags": ["Companion"],
+        "tags": ["Companion","Creature","Beast"],
         "points": 55,
         "models": 1,
         "modelProfile": { "move": "7\"", "wounds": 4, "armor": "5+", "evade": "5+", "ward": null },
