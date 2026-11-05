@@ -1,5 +1,5 @@
 import { SLOT_ORDER } from '../builder/engine.js'
-import { abilityMeta, formatProfile, optionBrief } from '../builder/format.js'
+import { abilityMeta, formatProfile, optionBrief, splitOptions } from '../builder/format.js'
 import PdfButton from './PdfButton.jsx'
 import { StatStrip } from './StatStrip.jsx'
 
@@ -61,17 +61,21 @@ function Sheet({ u, rule }) {
         </div>
       )}
 
-      {u.picks.some((p) => p.options.some((o) => o.points > 0 || o.stats || !o.profile)) && (
-        <div className="sheet-block">
-          <h4>Options</h4>
-          {u.picks.flatMap((p) => p.options.map((o) => ({ ...o, group: p.group }))).map((o, i) => (
-            <p key={i}>
-              <strong>{o.name}</strong> <span className="muted small">{o.group}{o.points ? ` · +${o.points}` : ''}</span>
-              <br />{o.effect ?? optionBrief(o)}
-            </p>
-          ))}
-        </div>
-      )}
+      {(() => {
+        const { detailed, applied } = splitOptions(u)
+        return (detailed.length > 0 || applied.length > 0) && (
+          <div className="sheet-block">
+            {detailed.length > 0 && <h4>Options</h4>}
+            {detailed.map((o, i) => (
+              <p key={i}>
+                <strong>{o.name}</strong> <span className="muted small">{o.group}{o.points ? ` · +${o.points}` : ''}</span>
+                <br />{o.effect ?? optionBrief(o)}
+              </p>
+            ))}
+            {applied.length > 0 && <p className="muted small">Upgrades applied above: {applied.join(', ')}.</p>}
+          </div>
+        )
+      })()}
 
       {u.note && <p className="muted small">Note: {u.note}</p>}
 

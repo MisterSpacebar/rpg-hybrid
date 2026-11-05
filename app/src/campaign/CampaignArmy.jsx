@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import Toast from './Toast.jsx'
 import { loadCatalog } from '../builder/catalog.js'
 import { newUnitConfig, resolveUnit, SLOT_ORDER } from '../builder/engine.js'
-import { formatProfile, formatStats } from '../builder/format.js'
+import { formatProfile, formatStats, optionBrief, splitOptions } from '../builder/format.js'
 import { detachmentView, deploymentCap, allowedDoctrineCommands, FIELD_SLOTS } from './limits.js'
 import { grantEquipment, grantFormation, removeInventoryItem, saveDetachment, setEntitlement, watchEntitlements } from './cloud.js'
 import { loadCharacterData } from '../character/data.js'
@@ -240,25 +240,22 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
           const entry = catalog.unitsByKey[item.config?.key]
           if (!entry) return <div className="army-roster-entry bad" key={item.id}>Unknown formation: {item.config?.key || 'missing profile'}</div>
           const unit = resolveUnit(entry, item.config, item.factionId)
-          return <details key={item.id} className="army-roster-entry">
-            <summary>
+          const { detailed, applied } = splitOptions(unit)
+          const status = selectedIds.has(item.id) ? 'In your detachment' : takenElsewhere.has(item.id) ? 'Deployed by another PC' : 'Available'
+          return <article key={item.id} className="army-roster-entry">
+            <div className="roster-head">
               <strong>{unit.name}</strong>
-              <span className="muted small"> · {unit.points} pts · {unit.models} Models · {selectedIds.has(item.id) ? 'In your detachment' : takenElsewhere.has(item.id) ? 'Deployed by another PC' : 'Available'}</span>
-              <Chips unit={unit} />
-            </summary>
-            <p className="muted small">{formatStats(unit.stats)}</p>
-            {!!unit.attacks.length && <div>
-              <strong>Attacks</strong>
-              <ul className="plain-list">{unit.attacks.map((attack, i) => <li key={i} className="small">{attack.name}: {formatProfile(attack)}</li>)}</ul>
-            </div>}
-            {!!unit.picks.length && <div>
-              <strong>Selected options</strong>
-              <ul className="plain-list">{unit.picks.map((group, i) => <li key={i} className="small">
-                {group.group}: {group.options.map((option) => option.name).join(', ')}
-              </li>)}</ul>
-            </div>}
+              <span className="roster-pts">{unit.points} pts</span>
+            </div>
+            <div className="muted small">{unit.models} Models · <span className={status === 'Available' ? 'ok' : ''}>{status}</span></div>
+            <Chips unit={unit} />
+            <p className="muted small roster-stats">{formatStats(unit.stats)}</p>
+            {!!unit.attacks.length && <ul className="plain-list roster-list">{unit.attacks.map((attack, i) => <li key={i} className="small"><strong>{attack.name}</strong> {formatProfile(attack)}</li>)}</ul>}
+            {!!unit.abilities.length && <ul className="plain-list roster-list">{unit.abilities.map((a, i) => <li key={i} className="small"><strong>{a.name}</strong> — {a.effect}</li>)}</ul>}
+            {!!detailed.length && <ul className="plain-list roster-list">{detailed.map((o, i) => <li key={i} className="small"><strong>{o.name}</strong> — {o.effect ?? optionBrief(o)}</li>)}</ul>}
+            {!!applied.length && <p className="muted small">Upgrades: {applied.join(', ')}</p>}
             {!!unit.missingTags.length && <p className="bad small">Unresolved Anti-type choices: {unit.missingTags.join(', ')}</p>}
-          </details>
+          </article>
         })}
       </div>
       {!inventory.some((item) => item.kind === 'unit') && <p className="muted">No formations have been acquired yet. Purchase them in Company &amp; Projects after your Patron unlocks recruitment.</p>}

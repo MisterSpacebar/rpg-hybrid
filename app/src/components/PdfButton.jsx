@@ -12,7 +12,8 @@ export default function PdfButton({ view }) {
       setState('idle')
     } catch (err) {
       console.error(err)
-      setState('error')
+      // A chunk that fails to load means this tab runs an older build than the one now hosted.
+      setState(/dynamically imported module|Importing a module script failed|Loading chunk/i.test(String(err?.message ?? err)) ? 'stale' : 'error')
     }
   }
 
@@ -28,6 +29,7 @@ export default function PdfButton({ view }) {
       <button className="primary" disabled={state === 'working'} onClick={download}>
         {state === 'working' ? 'Building PDF…' : 'Download PDF'}
       </button>
+      {state === 'stale' && <span className="bad small">The site was updated since this page loaded. <button onClick={() => window.location.reload()}>Reload</button> and try again.</span>}
       {state === 'error' && <span className="bad small">Could not build the PDF (see console).</span>}
     </div>
   )

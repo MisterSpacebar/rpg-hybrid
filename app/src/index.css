@@ -436,7 +436,9 @@ select.needs-choice { border-color: #e5645b !important; }
 .campaign-page .army-subtabs { margin-bottom: 0; }
 .army-roster-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 12px; }
 .army-roster-entry { min-width: 0; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; background: var(--panel); }
-.army-roster-entry summary { cursor: pointer; }
-.army-roster-entry summary .unit-chips { margin-top: 8px; }
-.army-roster-entry > div { margin-top: 10px; }
-.army-roster-entry .plain-list { padding-left: 18px; }
+.army-roster-entry .roster-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.army-roster-entry .roster-pts { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+.army-roster-entry .unit-chips { margin-top: 6px; }
+.army-roster-entry .roster-stats { margin: 6px 0 0; }
+.army-roster-entry .roster-list { margin: 6px 0 0; padding-left: 16px; }
+.army-roster-entry p.small { margin: 6px 0 0; }

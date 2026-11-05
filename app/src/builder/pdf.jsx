@@ -1,6 +1,6 @@
 import { Document, Page, Text, View, StyleSheet, pdf } from '@react-pdf/renderer'
 import { SLOT_ORDER } from './engine.js'
-import { collectCommandCards, formatWard } from './format.js'
+import { collectCommandCards, formatWard, splitOptions } from './format.js'
 
 const SLOT_NAMES = { H: 'Headquarters', C: 'Core', E: 'Elite', R: 'Ranged', V: 'Vanguard', S: 'Specialist', A: 'Asset' }
 
@@ -128,14 +128,10 @@ function Attacks({ attacks }) {
     </View>
   )
 }
-// Free default weapons already appear in the attack table, so only list options that add something.
-const notable = (o) => o.points > 0 || o.stats || (!o.profile && !/^no /i.test(o.name))
-
 const SLOT_COLORS = { H: '#d4a34a', C: '#5b8def', E: '#a56cf0', R: '#4fb477', V: '#e8894a', S: '#3fb8b0', A: '#d9605a' }
 
 function Datasheet({ u, rule, compact }) {
-  const shown = u.picks
-    .flatMap((p) => p.options.filter(notable).map((o) => ({ ...o, group: p.group })))
+  const { detailed: shown, applied } = splitOptions(u)
   const color = SLOT_COLORS[u.slot] ?? accent
   const keywords = [...u.tags, ...(u.isCore && !u.tags.includes('Core') ? ['Core'] : [])].join(' | ')
   return (
@@ -172,6 +168,7 @@ function Datasheet({ u, rule, compact }) {
               {o.effect ? s(`: ${o.effect}`) : ''}
             </Text>
           ))}
+          {applied.length > 0 && <Text style={[st.muted, { marginTop: 2 }]}>{s(`Upgrades applied above: ${applied.join(', ')}.`)}</Text>}
           {u.note ? <Text style={[st.muted, { marginTop: 3 }]}>{s(`Note: ${u.note}`)}</Text> : null}
         </View>
       </View>

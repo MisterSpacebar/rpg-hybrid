@@ -126,6 +126,19 @@ export function modifyTags(tags, options) {
   return canonicalTags(out)
 }
 
+// True when an upgrade's whole effect is already shown in the stat line, attack table or tags
+// (probed against the same rules that modify them), so a datasheet need not repeat its text.
+const PROBE_STATS = { move: '4"', wounds: 2, armor: '6+', evade: '6+', ward: '5+' }
+const PROBE_ATTACK = { name: 'Probe', range: '12"', attacks: 1, hit: '4+', keywords: [], origin: 'entry' }
+export function appliedToProfile(o) {
+  if (!passive(o)) return false
+  if (o.tagChoice || o.stats) return true
+  if (modifyStats(PROBE_STATS, [o]).changed.length) return true
+  if (modifyAttacks([PROBE_ATTACK], [o]).some((a) => a.modified)) return true
+  const tags = ['Infantry', 'Unarmored']
+  return modifyTags(tags, [o]).join() !== canonicalTags(tags).join()
+}
+
 // ---------- chosen Anti-[Type] (Hunters, Master Hunter, Weapon Specialization) ----------
 
 // Battlefield tags and creature types an Anti-[Type] upgrade can name (Keywords: Creature Types and Battlefield Tags).

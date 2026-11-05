@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { modifyStats, modifyTags, modifyAttacks, tagChoiceOf, applyTagChoices } from './modifiers.js'
+import { modifyStats, modifyTags, modifyAttacks, tagChoiceOf, applyTagChoices, appliedToProfile } from './modifiers.js'
 import { resolveUnit } from './engine.js'
 
 const bodies = 'Each existing and future Model in this Unit gains +1 maximum Wound (W3 to W4).'
@@ -66,4 +66,12 @@ test('Reinforced models pay the extra Wound-training surcharge', () => {
   const u = resolveUnit(entry, { uid: 'test', models: 5, picks: { formationAndCombatUpgrades: ['reinforce:0'] } })
   assert.equal(u.points, 235)
   assert.equal(u.stats.wounds, 4)
+})
+
+test('appliedToProfile hides stat/attack/tag upgrades but keeps ability text', () => {
+  assert.equal(appliedToProfile(upgraded('Reinforced Bodies', bodies)), true)
+  assert.equal(appliedToProfile(upgraded('Armor', "Improve the Unit's Armor one step. Gain the Armored tag; lose Unarmored.")), true)
+  assert.equal(appliedToProfile(upgraded('Expert Marksmen', 'The primary ranged weapon gains Pinpoint.')), true)
+  assert.equal(appliedToProfile(upgraded('Rally Cry', 'Once per Round, one Unit within 6" may re-roll a failed Morale check.')), false)
+  assert.equal(appliedToProfile({ name: 'Rally Cry', effect: 'x', cpCost: 1 }), false)
 })

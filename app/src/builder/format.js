@@ -1,3 +1,5 @@
+import { appliedToProfile } from './modifiers.js'
+
 const dash = (v) => (v == null || v === '' ? '–' : String(v))
 
 // Ward is printed in several ways ("6+ (Magic)", "6+ Magic", "5+ (Physical)", "4+ (Physical Ward +2)"). Show it split by
@@ -56,6 +58,21 @@ export function optionBrief(o) {
 
 export function abilityMeta(a) {
   return [a.type, a.cost ?? a.cpCost, a.timing, a.frequency].filter(Boolean).join(' · ')
+}
+
+// Splits a unit's chosen options for compact display: `applied` names are already reflected in the stat line, attack table or
+// tags (so only the name is listed); `detailed` options carry rules text that appears nowhere else.
+export function splitOptions(u) {
+  const detailed = []
+  const applied = []
+  for (const p of u.picks) {
+    for (const o of p.options) {
+      if (/^no /i.test(o.name)) continue
+      if (o.profile || o.arcaneBolt) { if (o.points > 0) applied.push(o.name) } else if (appliedToProfile(o)) applied.push(o.name)
+      else detailed.push({ ...o, group: p.group })
+    }
+  }
+  return { detailed, applied }
 }
 
 export const statDash = dash
