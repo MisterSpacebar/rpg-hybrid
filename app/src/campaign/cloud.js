@@ -4,6 +4,8 @@ import {
 } from 'firebase/firestore'
 import { db } from '../firebase.js'
 import { FORMATS, baseXp, bonusXp } from './limits.js'
+import { loadCatalog } from '../builder/catalog.js'
+import { seedStandardRecruitmentOffers } from './marketCloud.js'
 
 const root = collection(db, 'campaigns')
 const campaignRef = (id) => doc(db, 'campaigns', id)
@@ -82,6 +84,12 @@ export async function updateCampaignProgress(campaign, patch) {
     patronFactionId: next.patronFactionId || null, bonusXp: bonus, xpTotal: Math.min(xpTotal, 250),
   }
   await updateDoc(campaignRef(campaign.id), { ...update, updatedAt: serverTimestamp() })
+  // Automatically establish ordinary recruitment rights when a Patron is
+  // selected. No per-unit GM publication or PC approval is required.
+  if (update.act >= 2 && update.patronFactionId) {
+    const catalog = await loadCatalog()
+    await seedStandardRecruitmentOffers(campaign.id, campaign.gmUid, { ...campaign, ...update }, catalog)
+  }
 }
 
 export async function listCampaignHeroes(id) {

@@ -4,17 +4,20 @@ import { loadCharacterData } from '../character/data.js'
 import { derive, normalizeCharacter } from '../character/engine.js'
 import { newUnitConfig, resolveUnit } from '../builder/engine.js'
 import { equipmentCatalog } from './economy.js'
+import { eligibleStandardOffer, standardRecruitmentProfiles } from './recruitmentAccess.js'
+import { watchEntitlements } from './cloud.js'
 import { craftRoll, priceForFormation } from './market.js'
 import {
-  publishMarketOffer, purchaseOffer, setMarketOfferEnabled,
+  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers,
   watchMarketOffers, watchMarketPurchases,
 } from './marketCloud.js'
 
 // Firestore validates the market's price and assets atomically; this UI handles
 // only the player experience and choosing a GM-published offer.
-export default function CompanyMarket({ campaign, user, isGm, heroes }) {
+export default function CompanyMarket({ campaign, user, isGm, heroes, detachments = [] }) {
   const [offers, setOffers] = useState([])
   const [purchases, setPurchases] = useState([])
+  const [entitlements, setEntitlements] = useState({})
   const [catalog, setCatalog] = useState(null)
   const [characterData, setCharacterData] = useState(null)
   const [form, setForm] = useState({ kind: 'equipment', item: '', unit: '', price: '', difficulty: 2, check: 'Mind + Craft' })
@@ -30,9 +33,16 @@ export default function CompanyMarket({ campaign, user, isGm, heroes }) {
     const fail = (e) => setMessage(e.message)
     const a = watchMarketOffers(campaign.id, setOffers, fail)
     const b = watchMarketPurchases(campaign.id, setPurchases, fail)
-    return () => { a(); b() }
+    const c = watchEntitlements(campaign.id, setEntitlements, fail)
+    return () => { a(); b(); c() }
   }, [campaign.id])
+  useEffect(() => {
+    if (!isGm || !catalog || campaign.act < 2 || !campaign.patronFactionId) return
+    seedStandardRecruitmentOffers(campaign.id, user.uid, campaign, catalog)
+      .catch((error) => setMessage(`Could not unlock standard recruitment: ${error.message}`))
+  }, [isGm, catalog, campaign.id, campaign.act, campaign.patronFactionId, user.uid])
   const gear = useMemo(() => characterData ? equipmentCatalog(characterData) : [], [characterData])
+  const recruitAccess = useMemo(() => standardRecruitmentProfiles(catalog, campaign, entitlements, detachments), [catalog, campaign, entitlements, detachments])
   const patron = catalog?.factions.find((f) => f.id === campaign.patronFactionId)
   const units = campaign.act < 2 || !patron ? [] : [...catalog.generic, ...patron.units]
   const selectedUnit = units.find((e) => e.key === form.unit)
@@ -93,15 +103,18 @@ export default function CompanyMarket({ campaign, user, isGm, heroes }) {
     <section className="panel">
       <h2>Company Marketplace</h2>
       <p><strong>{campaign.goldBalance ?? 0} Gold</strong> in the shared treasury</p>
-      <p className="muted small">Ordinary purchases are immediate: no individual GM approval. The GM publishes available prices once. Every purchase charges Company Gold and updates inventory in the same transaction.</p>
+      <p className="muted small">Ordinary purchases are immediate: no individual GM approval. Patron signature Core and eligible generic troops unlock from the Company progression; other special profiles require a recruitment right. Every purchase charges Company Gold and updates inventory in the same transaction.</p>
       {message && <p role="status">{message}</p>}
     </section>
 
     {!isGm && <section className="panel span-2">
       <h2>Available equipment, crafting, and formations</h2>
-      {!offers.some((o) => o.enabled) && <p className="muted">The GM has not published any market offers yet.</p>}
-      <ul className="saved-list">{offers.filter((o) => o.enabled && (o.kind !== 'unit' ||
-        (campaign.act >= 2 && !!campaign.patronFactionId && (!o.factionId || o.factionId === campaign.patronFactionId)))).map((offer) =>
+      <p className="muted small">Patron Core profiles: {recruitAccess.factionCore.length} · Generic profiles permitted by party slots: {recruitAccess.generic.length}. Two free starting formations are Company grants, not free Marketplace purchases.</p>
+      {!offers.some((o) => o.enabled) && <p className="muted">No offers have been initialized. The GM can open this page once after assigning the Patron; standard offers are published automatically.</p>}
+      <ul className="saved-list">{offers.filter((o) => o.enabled && (o.standardAccess
+        ? eligibleStandardOffer(o, catalog, campaign, entitlements, detachments)
+        : o.kind !== 'unit' || (campaign.act >= 2 && !!campaign.patronFactionId &&
+            (!o.factionId || o.factionId === campaign.patronFactionId)))).map((offer) =>
         <li key={offer.id}>
           <div><strong>{offer.label}</strong><div className="muted small">{offer.kind === 'craft'
             ? `Crafting · ${offer.check} · Difficulty ${offer.difficulty}`
@@ -117,7 +130,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes }) {
 
     {isGm && <section className="panel">
       <h2>Publish regular market offers</h2>
-      <p className="muted small">Publishing an item establishes an ongoing price and availability; players can purchase it without further approval.</p>
+      <p className="muted small">Signature Core and generic profiles unlock automatically from the Company's Patron and recruitment slots. Publish only special arrangements or priced equipment and crafting recipes; players purchase these without further approval.</p>
       <div className="campaign-form">
         <label className="field">Type<select value={form.kind} onChange={(e) => setForm({ ...form, kind: e.target.value, item: '', unit: '', price: '' })}>
           <option value="equipment">Equipment purchase</option>

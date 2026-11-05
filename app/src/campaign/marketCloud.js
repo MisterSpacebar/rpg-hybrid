@@ -3,6 +3,8 @@ import {
 } from 'firebase/firestore'
 import { db } from '../firebase.js'
 import { craftRoll, eligibleOffer, priceForFormation, publishableOffer } from './market.js'
+import { newUnitConfig, resolveUnit } from '../builder/engine.js'
+import { patronCoreProfiles, standardOfferId } from './recruitmentAccess.js'
 
 const company = (id) => doc(db, 'campaigns', id)
 const offers = (id) => collection(db, 'campaigns', id, 'marketOffers')
@@ -107,4 +109,40 @@ export async function purchaseOffer(id, uid, offerId, craft = null) {
       })
     }
   })
+}
+
+// A one-time entitlement unlock makes standard recruitment available without
+// the GM publishing each profile. Seed every generic template up front so
+// newly acquired personal Doctrine/Flex slots work without another GM action.
+// The UI filters generic profiles by the current Company's usable slot union.
+export async function seedStandardRecruitmentOffers(id, uid, campaign, catalog) {
+  if (!catalog || campaign.act < 2 || !campaign.patronFactionId) return 0
+  const faction = catalog.factions.find((f) => f.id === campaign.patronFactionId)
+  if (!faction) throw new Error('Unknown Company Patron faction')
+  const options = [...patronCoreProfiles(catalog, campaign), ...catalog.generic]
+  const prepared = options.flatMap((entry) => {
+    const config = newUnitConfig(entry, entry.slots[0])
+    const factionId = entry.source === 'faction' ? faction.id : null
+    const resolved = resolveUnit(entry, config, factionId)
+    if (resolved.pointsVary || (resolved.missingTags ?? []).length ||
+        !Number.isInteger(resolved.points) || resolved.points < 1) return []
+    return [{ entry, config, points: resolved.points, factionId }]
+  })
+  const missing = await Promise.all(prepared.map(async (item) => {
+    const ref = doc(offers(id), standardOfferId(item.entry.key))
+    const old = await getDoc(ref)
+    return old.exists() ? null : { ref, item }
+  }))
+  // Do not overwrite existing offers: a GM may intentionally disable them.
+  // Existing campaigns can run this idempotently whenever GM opens Company.
+  for (const offer of missing.filter(Boolean)) {
+    const { item, ref } = offer
+    await setDoc(ref, {
+      kind: 'unit', label: item.entry.name, price: priceForFormation(item.points),
+      enabled: true, config: item.config, points: item.points,
+      factionId: item.factionId, standardAccess: true,
+      createdBy: uid, createdAt: serverTimestamp(),
+    })
+  }
+  return missing.filter(Boolean).length
 }
