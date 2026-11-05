@@ -161,7 +161,14 @@ service cloud.firestore {
         allow get, list: if memberOfCampaign();
         allow create: if gmOfCampaign()
           && request.resource.data.createdBy == request.auth.uid
-          && request.resource.data.kind in ['equipment', 'unit', 'craft']
+          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant']
+          && (request.resource.data.kind != 'enchant' || (
+            request.resource.data.enchantKey is string
+            && request.resource.data.targetKind in ['melee', 'ranged', 'armor', 'shield']
+            && request.resource.data.difficulty is int
+            && request.resource.data.difficulty >= 2
+            && request.resource.data.difficulty <= 5
+          ))
           && request.resource.data.enabled == true
           && request.resource.data.createdAt == request.time
           && request.resource.data.price is int
@@ -171,7 +178,7 @@ service cloud.firestore {
           && request.resource.data.label.size() > 0
           && (request.resource.data.kind == 'unit'
             ? request.resource.data.config is map
-            : request.resource.data.item is map);
+            : request.resource.data.kind == 'enchant' || request.resource.data.item is map);
         allow update: if gmOfCampaign()
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['enabled'])
           && request.resource.data.enabled is bool;
@@ -183,7 +190,7 @@ service cloud.firestore {
         allow create: if memberOfCampaign()
           && request.auth.uid != get(/databases/$(database)/documents/campaigns/$(campaignId)).data.gmUid
           && request.resource.data.ownerUid == request.auth.uid
-          && request.resource.data.kind in ['equipment', 'unit', 'craft']
+          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant']
           && request.resource.data.price is int
           && request.resource.data.price > 0
           && request.resource.data.status == 'completed'
@@ -191,9 +198,16 @@ service cloud.firestore {
           && request.resource.data.balanceAfter is int
           && request.resource.data.balanceAfter >= 0
           && request.resource.data.keys().hasOnly([
-            'offerId','ownerUid','kind','price','balanceAfter','status','createdAt','crafting'
+            'offerId','ownerUid','kind','price','balanceAfter','status','createdAt','crafting','targetItemId'
           ])
-          && (request.resource.data.kind != 'craft' || (
+          && (request.resource.data.kind != 'enchant' || (
+            request.resource.data.targetItemId is string
+            && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.kind == 'equipment'
+            && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.item.kind == offered(request.resource.data.offerId).targetKind
+            && (!request.resource.data.crafting.success ||
+              getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.lastEnhancementId == purchaseId)
+          ))
+          && (!(request.resource.data.kind in ['craft', 'enchant']) || (
             request.resource.data.crafting is map
             && request.resource.data.crafting.difficulty == offered(request.resource.data.offerId).difficulty
             && request.resource.data.crafting.successes is int
@@ -201,15 +215,15 @@ service cloud.firestore {
             && request.resource.data.crafting.successes <= 6
             && request.resource.data.crafting.surges is int
             && request.resource.data.crafting.surges >= 0
-            && request.resource.data.crafting.surges <= 3
+            && request.resource.data.crafting.surges <= 1
             && request.resource.data.crafting.blunders is int
             && request.resource.data.crafting.blunders >= 0
-            && request.resource.data.crafting.blunders <= 3
+            && request.resource.data.crafting.blunders <= 1
             && request.resource.data.crafting.success ==
               (request.resource.data.crafting.successes >= offered(request.resource.data.offerId).difficulty)
             && request.resource.data.crafting.qualities ==
               (request.resource.data.crafting.success
-                ? request.resource.data.crafting.successes - offered(request.resource.data.offerId).difficulty + request.resource.data.crafting.surges
+                ? request.resource.data.crafting.successes - offered(request.resource.data.offerId).difficulty
                 : 0)
             && request.resource.data.crafting.flaws ==
               (request.resource.data.crafting.success ? request.resource.data.crafting.blunders : 0)
@@ -302,11 +316,31 @@ service cloud.firestore {
                     && request.resource.data.crafting == purchased(itemId).crafting)))
             )
           );
-        allow update: if gmOfCampaign()
+        allow update: if (gmOfCampaign()
           && request.resource.data.kind in ['unit', 'equipment']
           && (request.resource.data.kind == 'unit'
             ? request.resource.data.config is map
-            : request.resource.data.item is map);
+            : request.resource.data.item is map))
+          || (
+            memberOfCampaign()
+            && resource.data.kind == 'equipment'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              'enchants', 'lastEnhancementId', 'updatedAt'
+            ])
+            && request.resource.data.updatedAt == request.time
+            && request.resource.data.enchants is list
+            && request.resource.data.enchants.size() <= 3
+            && request.resource.data.enchants ==
+              resource.data.get('enchants', []) + [{
+                'key': offerForPurchase(request.resource.data.lastEnhancementId).enchantKey
+              }])
+            && purchased(request.resource.data.lastEnhancementId).createdAt == request.time
+            && purchased(request.resource.data.lastEnhancementId).ownerUid == request.auth.uid
+            && purchased(request.resource.data.lastEnhancementId).targetItemId == itemId
+            && purchased(request.resource.data.lastEnhancementId).kind == 'enchant'
+            && purchased(request.resource.data.lastEnhancementId).crafting.success == true
+            && offerForPurchase(request.resource.data.lastEnhancementId).targetKind == resource.data.item.kind
+          );
         allow delete: if gmOfCampaign();
       }
 
