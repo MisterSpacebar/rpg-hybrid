@@ -71,7 +71,44 @@ service cloud.firestore {
         && request.resource.data.name.size() > 0
         && request.resource.data.name.size() <= 80
         && request.resource.data.format in ['local', 'standard', 'long', 'grand'];
-      allow update: if gm()
+      function purchased(id) {
+        return getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(id)).data;
+      }
+      function offered(id) {
+        return get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(id)).data;
+      }
+      function offerForPurchase(id) {
+        let purchase = purchased(id);
+        return offered(purchase.offerId);
+      }
+      function validMemberPurchase() {
+        let pId = request.resource.data.get('lastPurchaseId', '');
+        let offerId = request.resource.data.get('lastPurchaseOfferId', '');
+        let p = purchased(pId);
+        let o = offered(offerId);
+        let l = getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/goldLedger/$(pId)).data;
+        return member()
+          && request.auth.uid != resource.data.gmUid
+          && pId is string && pId.size() > 0
+          && offerId is string && offerId.size() > 0
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'goldBalance', 'lastPurchaseId', 'lastPurchaseOfferId', 'lastPurchaseUid', 'updatedAt'
+          ])
+          && request.resource.data.lastPurchaseUid == request.auth.uid
+          && p.ownerUid == request.auth.uid
+          && p.createdAt == request.time
+          && l.createdAt == request.time
+          && request.resource.data.updatedAt == request.time
+          && p.offerId == offerId
+          && p.price == o.price
+          && o.enabled == true
+          && p.balanceAfter == request.resource.data.goldBalance
+          && resource.data.get('goldBalance', 0) >= p.price
+          && request.resource.data.goldBalance == resource.data.get('goldBalance', 0) - p.price
+          && l.purchaseId == pId && l.actorUid == request.auth.uid
+          && l.delta == -p.price && l.balanceAfter == p.balanceAfter;
+      }
+      allow update: if (gm()
         && request.resource.data.gmUid == resource.data.gmUid
         && request.resource.data.memberUids is list
         && request.resource.data.gmUid in request.resource.data.memberUids
@@ -83,7 +120,8 @@ service cloud.firestore {
         && request.resource.data.act is int && request.resource.data.act >= 1 && request.resource.data.act <= 4
         && request.resource.data.turn is int && request.resource.data.turn >= 1
         && request.resource.data.format == resource.data.format
-        && (request.resource.data.patronFactionId == null || request.resource.data.patronFactionId is string);
+        && (request.resource.data.patronFactionId == null || request.resource.data.patronFactionId is string))
+        || validMemberPurchase();
       allow delete: if gm();
 
       match /joinRequests/{uid} {
@@ -117,6 +155,76 @@ service cloud.firestore {
         allow delete: if (isOwner(uid) && memberOfCampaign()) || gmOfCampaign();
       }
 
+      // The GM controls what is in the open market and its published price.
+      // PCs can buy enabled, prepriced offers without requesting per-purchase approval.
+      match /marketOffers/{offerId} {
+        allow get, list: if memberOfCampaign();
+        allow create: if gmOfCampaign()
+          && request.resource.data.createdBy == request.auth.uid
+          && request.resource.data.kind in ['equipment', 'unit', 'craft']
+          && request.resource.data.enabled == true
+          && request.resource.data.createdAt == request.time
+          && request.resource.data.price is int
+          && request.resource.data.price >= 1
+          && request.resource.data.price <= 1000
+          && request.resource.data.label is string
+          && request.resource.data.label.size() > 0
+          && (request.resource.data.kind == 'unit'
+            ? request.resource.data.config is map
+            : request.resource.data.item is map);
+        allow update: if gmOfCampaign()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['enabled'])
+          && request.resource.data.enabled is bool;
+        allow delete: if gmOfCampaign();
+      }
+
+      match /marketPurchases/{purchaseId} {
+        allow get, list: if memberOfCampaign();
+        allow create: if memberOfCampaign()
+          && request.auth.uid != get(/databases/$(database)/documents/campaigns/$(campaignId)).data.gmUid
+          && request.resource.data.ownerUid == request.auth.uid
+          && request.resource.data.kind in ['equipment', 'unit', 'craft']
+          && request.resource.data.price is int
+          && request.resource.data.price > 0
+          && request.resource.data.status == 'completed'
+          && request.resource.data.createdAt == request.time
+          && request.resource.data.balanceAfter is int
+          && request.resource.data.balanceAfter >= 0
+          && request.resource.data.keys().hasOnly([
+            'offerId','ownerUid','kind','price','balanceAfter','status','createdAt','crafting'
+          ])
+          && (request.resource.data.kind != 'craft' || (
+            request.resource.data.crafting is map
+            && request.resource.data.crafting.difficulty == offered(request.resource.data.offerId).difficulty
+            && request.resource.data.crafting.successes is int
+            && request.resource.data.crafting.successes >= 0
+            && request.resource.data.crafting.successes <= 6
+            && request.resource.data.crafting.surges is int
+            && request.resource.data.crafting.surges >= 0
+            && request.resource.data.crafting.surges <= 3
+            && request.resource.data.crafting.blunders is int
+            && request.resource.data.crafting.blunders >= 0
+            && request.resource.data.crafting.blunders <= 3
+            && request.resource.data.crafting.success ==
+              (request.resource.data.crafting.successes >= offered(request.resource.data.offerId).difficulty)
+            && request.resource.data.crafting.qualities ==
+              (request.resource.data.crafting.success
+                ? request.resource.data.crafting.successes - offered(request.resource.data.offerId).difficulty + request.resource.data.crafting.surges
+                : 0)
+            && request.resource.data.crafting.flaws ==
+              (request.resource.data.crafting.success ? request.resource.data.crafting.blunders : 0)
+          ))
+          && request.resource.data.offerId is string
+          && get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(request.resource.data.offerId)).data.enabled == true
+          && get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(request.resource.data.offerId)).data.kind == request.resource.data.kind
+          && get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(request.resource.data.offerId)).data.price == request.resource.data.price
+          && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)).data.lastPurchaseId == purchaseId
+          && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)).data.lastPurchaseOfferId == request.resource.data.offerId
+          && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)).data.lastPurchaseUid == request.auth.uid
+          && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)).data.goldBalance == request.resource.data.balanceAfter;
+        allow update, delete: if false;
+      }
+
       // Player requests never grant items or spend Company Gold directly.
       match /acquisitionRequests/{requestId} {
         allow get, list: if memberOfCampaign();
@@ -143,11 +251,19 @@ service cloud.firestore {
       // are written by the GM, never by a PC.
       match /goldLedger/{entryId} {
         allow get, list: if memberOfCampaign();
-        allow create: if gmOfCampaign()
+        allow create: if (gmOfCampaign() || (
+          memberOfCampaign()
+          && request.resource.data.kind == 'market'
+          && request.resource.data.purchaseId == entryId
+          && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(entryId)).data.ownerUid == request.auth.uid
+          && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(entryId)).data.price == -request.resource.data.delta
+          && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(entryId)).data.balanceAfter == request.resource.data.balanceAfter
+          ))
           && request.resource.data.delta is int
           && request.resource.data.balanceAfter is int
           && request.resource.data.balanceAfter >= 0
           && request.resource.data.actorUid == request.auth.uid
+          && request.resource.data.createdAt == request.time
           && request.resource.data.reason is string;
         allow update, delete: if false;
       }
@@ -155,7 +271,38 @@ service cloud.firestore {
       // The company owns permanent inventory; players only select items when deploying.
       match /inventory/{itemId} {
         allow get, list: if memberOfCampaign();
-        allow create, update: if gmOfCampaign()
+        allow create: if (gmOfCampaign()
+          && request.resource.data.kind in ['unit', 'equipment']
+          && (request.resource.data.kind == 'unit'
+            ? request.resource.data.config is map
+            : request.resource.data.item is map))
+          || (
+            memberOfCampaign()
+            && request.resource.data.purchaseId == itemId
+            && purchased(itemId).ownerUid == request.auth.uid
+            && purchased(itemId).status == 'completed'
+            && request.resource.data.createdAt == request.time
+            && (
+              (request.resource.data.kind == 'unit'
+                && purchased(itemId).kind == 'unit'
+                && request.resource.data.keys().hasOnly([
+                  'kind','config','factionId','purchaseId','createdAt'
+                ])
+                && request.resource.data.config == offerForPurchase(itemId).config
+                && request.resource.data.factionId == offerForPurchase(itemId).get('factionId', null))
+              || (request.resource.data.kind == 'equipment'
+                && purchased(itemId).kind in ['equipment', 'craft']
+                && request.resource.data.keys().hasOnly([
+                  'kind','item','ownerUid','purchaseId','createdAt','crafting'
+                ])
+                && request.resource.data.ownerUid == null
+                && request.resource.data.item == offerForPurchase(itemId).item
+                && (purchased(itemId).kind != 'craft'
+                  || (purchased(itemId).crafting.success == true
+                    && request.resource.data.crafting == purchased(itemId).crafting)))
+            )
+          );
+        allow update: if gmOfCampaign()
           && request.resource.data.kind in ['unit', 'equipment']
           && (request.resource.data.kind == 'unit'
             ? request.resource.data.config is map

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import CompanyMarket from './CompanyMarket.jsx'
 import { loadCatalog } from '../builder/catalog.js'
 import { newUnitConfig, resolveUnit } from '../builder/engine.js'
 import { loadCharacterData } from '../character/data.js'
@@ -91,6 +92,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
 
   if (!data || !catalog) return <section className="panel"><h2>Company economy</h2><p>{message || 'Loading equipment and formation catalogs…'}</p></section>
   return <div className="panel-grid">
+    <div className="span-all"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} /></div>
     <section className="panel span-all">
       <h2>Company Treasury</h2>
       <p><strong>{campaign.goldBalance ?? 0} Gold</strong> available · Shared by the whole Company</p>
@@ -99,8 +101,8 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
     </section>
 
     {!isGm && <section className="panel">
-      <h2>Propose an acquisition</h2>
-      <p className="muted small">The GM checks opportunity, access, materials and Gold before approving. A proposal does not spend Gold or create inventory.</p>
+      <h2>Ask for a special acquisition</h2>
+      <p className="muted small">Routine purchases and eligible crafts happen instantly in the Company Marketplace above. Use this form only for a rare item, exception, custom project or agreement requiring GM discretion.</p>
       <div className="campaign-form">
         <label className="field">Project
           <select value={form.kind} onChange={(e) => setForm({ ...DEFAULT, kind: e.target.value })}>
@@ -148,7 +150,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
 
     {isGm && <section className="panel">
       <h2>GM — Treasury adjustment</h2>
-      <p className="muted small">Record Commerce income, Province dividends, mission rewards or justified manual spending. Every change is logged.</p>
+      <p className="muted small">Record Commerce income, Province dividends, mission rewards or justified manual spending. Every change is logged. Player Marketplace purchases do not need GM approval.</p>
       <div className="campaign-form">
         <label className="field">Gold change (+ income, − expense)
           <input type="number" step={1} value={ledgerForm.amount} onChange={(e) => setLedgerForm({ ...ledgerForm, amount: e.target.value })} />
@@ -170,7 +172,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
     </section>}
 
     <section className="panel span-all">
-      <h2>{isGm ? 'GM — Pending acquisition requests' : 'My acquisition requests'} ({isGm ? pending.length : requests.filter((r) => r.ownerUid === user.uid && r.status === 'pending').length} pending)</h2>
+      <h2>{isGm ? 'GM — Special acquisition requests' : 'My special requests'} ({isGm ? pending.length : requests.filter((r) => r.ownerUid === user.uid && r.status === 'pending').length} pending)</h2>
       {!(isGm ? pending : requests.filter((r) => r.ownerUid === user.uid)).length && <p className="muted">No proposals yet.</p>}
       <div className="campaign-request-list">
         {(isGm ? pending : requests.filter((r) => r.ownerUid === user.uid)).map((request) => {
