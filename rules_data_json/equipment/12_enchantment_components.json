@@ -3,33 +3,257 @@
     "file": "rulebooks/chapters/01_rpg/11_equipment_and_crafting.md",
     "section": "ENCHANTMENT COMPONENTS"
   },
-  "description": "Rather than requiring every magical item to have its own unique rules, ordinary equipment may receive additional Enchantments. Enchantments increase the equipment's battlefield value by their listed Points. A normal item may receive multiple compatible Enchantments, provided the equipment and enchantments are narratively appropriate. An individual Enchantment cannot normally be applied more than once to the same item.",
+  "description": "Permanent enchantments are improvements to an existing owned item. Successful checks apply the declared compatible ordinary enchantment; excess successes may add or rank up qualities and a successful Skill-Check Surge unlocks one exceptional quality. Points always add to the base equipped item and do not cost XP. Craftsmanship and enchanting share ranked caps, without duplicating the same named improvement.",
   "minorEnchantments": {
-    "description": "Minor Enchantments generally provide modest improvements or a narrow specialization.",
+    "description": "Existing minor components retain their printed costs. Ranked improvements, cover availability, and the new Skill-Check resolution are specified under rankedPermanentEnhancements; the campaign builder must implement and validate them before self-service item modification is enabled.",
     "enchantments": [
-      { "name": "Accurate 1", "addedPoints": 10 },
-      { "name": "Tough 1", "addedPoints": 15 },
-      { "name": "+1\" Attack Range", "addedPoints": 5 },
-      { "name": "+1\" Move while equipped", "addedPoints": 10 },
-      { "name": "Anti-[Category] 1", "addedPoints": 10 },
-      { "name": "Magic Attack keyword", "addedPoints": 10 }
+      {
+        "name": "Accurate 1",
+        "addedPoints": 10
+      },
+      {
+        "name": "Tough 1",
+        "addedPoints": 15
+      },
+      {
+        "name": "+1\" Attack Range",
+        "addedPoints": 5
+      },
+      {
+        "name": "+1\" Move while equipped",
+        "addedPoints": 10
+      },
+      {
+        "name": "Anti-[Category] 1",
+        "addedPoints": 10
+      },
+      {
+        "name": "Magic Attack keyword",
+        "addedPoints": 10
+      }
     ]
   },
   "majorEnchantments": {
     "enchantments": [
-      { "name": "Critical 1", "addedPoints": 30 },
-      { "name": "Ward 6+ against one type", "addedPoints": 20 },
-      { "name": "+1 Maximum Wound", "addedPoints": 15 },
-      { "name": "+1 Attack die on one profile", "addedPoints": 15 },
-      { "name": "Improve Hit by 1 step", "addedPoints": 20 },
-      { "name": "+1 Damage on one profile", "addedPoints": 30 },
-      { "name": "Improve Armor by 1 step", "addedPoints": 20 },
-      { "name": "Conditional Direct Damage 1", "addedPoints": 25 },
-      { "name": "Minor Item Command", "addedPoints": "15–25" }
+      {
+        "name": "Critical 1",
+        "addedPoints": 30
+      },
+      {
+        "name": "Ward 6+ against one type",
+        "addedPoints": 20
+      },
+      {
+        "name": "+1 Maximum Wound",
+        "addedPoints": 15
+      },
+      {
+        "name": "+1 Attack die on one profile",
+        "addedPoints": 15
+      },
+      {
+        "name": "Improve Hit by 1 step",
+        "addedPoints": 20
+      },
+      {
+        "name": "+1 Damage on one profile",
+        "addedPoints": 30
+      },
+      {
+        "name": "Improve Armor by 1 step",
+        "addedPoints": 20
+      },
+      {
+        "name": "Conditional Direct Damage 1",
+        "addedPoints": 25
+      },
+      {
+        "name": "Minor Item Command",
+        "addedPoints": "15–25"
+      }
     ],
-    "notes": ["The GM may adjust the Points of unusual Enchantments based on their scope and interaction with other properties. Items still follow normal characteristic limits."]
+    "notes": [
+      "Printed costs and Command compatibility remain authoritative. Surge-only Critical, Damage and other exceptional properties use the shared project rules; see rankedPermanentEnhancements. Unusual unique/enhancement recipes can require narrative prerequisites. Do not expose unsupported entries in the character builder before implementing their effects."
+    ]
   },
-  "knownIssues": [
-    "The source Markdown's 'Minor Enchantments' and 'Major Enchantments' tables had lost their pipe-table formatting and rendered as a single run-on line of text. This was corrected directly in the Markdown as part of this conversion pass (restored as proper tables); no values were changed, only formatting."
-  ]
+  "rankedPermanentEnhancements": {
+    "status": "Rules defined; not yet implemented in campaign equipment editor or Character engine. Catalog components above remain backward-compatible.",
+    "ordinary": [
+      {
+        "name": "Balanced",
+        "effect": "Accurate +1 on an eligible weapon Attack",
+        "excessSuccessesPerRank": 1,
+        "addedPointsPerRank": 10,
+        "maxRank": 3,
+        "equipmentKinds": [
+          "melee",
+          "ranged"
+        ]
+      },
+      {
+        "name": "Specialized",
+        "effect": "Anti-[chosen canonical Tag] +1 on a weapon Attack",
+        "excessSuccessesPerRank": 1,
+        "addedPointsPerRank": 10,
+        "maxRank": 3,
+        "equipmentKinds": [
+          "melee",
+          "ranged"
+        ]
+      },
+      {
+        "name": "Extended",
+        "effect": "+1 inch printed Range",
+        "excessSuccessesPerRank": 1,
+        "addedPointsPerRank": 5,
+        "maxRank": 3,
+        "equipmentKinds": [
+          "ranged",
+          "eligible reach melee"
+        ]
+      },
+      {
+        "name": "Reinforced",
+        "effect": "Tough +1 on Armor Saves",
+        "excessSuccessesPerRank": 1,
+        "addedPointsPerRank": 15,
+        "maxRank": 2,
+        "equipmentKinds": [
+          "armor",
+          "suitable shield"
+        ]
+      },
+      {
+        "name": "Sheltering",
+        "effect": "Cover +1 against eligible ranged Attacks; permits normal Evade Saves",
+        "excessSuccessesPerRank": 1,
+        "addedPointsPerRank": 15,
+        "maxRank": 2,
+        "equipmentKinds": [
+          "light armor",
+          "medium armor",
+          "specifically eligible protective armor"
+        ]
+      },
+      {
+        "name": "Swift",
+        "effect": "+1 inch Move while equipped",
+        "excessSuccessesPerRank": 1,
+        "addedPointsPerRank": 10,
+        "maxRank": 2,
+        "equipmentKinds": [
+          "suitable wearable equipment"
+        ]
+      },
+      {
+        "name": "Deadly",
+        "effect": "+1 Attack die on one profile",
+        "excessSuccessesPerRank": 1,
+        "addedPointsPerRank": 15,
+        "maxRank": 2,
+        "equipmentKinds": [
+          "melee",
+          "ranged"
+        ]
+      },
+      {
+        "name": "Precise",
+        "effect": "Improve Hit by one step",
+        "excessSuccessesPerRank": 2,
+        "addedPointsPerRank": 20,
+        "maxRank": 1,
+        "equipmentKinds": [
+          "melee",
+          "ranged"
+        ]
+      },
+      {
+        "name": "Protective",
+        "effect": "Improve Armor by one step",
+        "excessSuccessesPerRank": 2,
+        "addedPointsPerRank": 20,
+        "maxRank": 1,
+        "equipmentKinds": [
+          "armor",
+          "appropriate protective equipment"
+        ]
+      }
+    ],
+    "exceptional": [
+      {
+        "name": "Exceptional Edge",
+        "trigger": "One successful Skill-Check Surge",
+        "effect": "Printed/passive Critical X per COMBAT Surge; not automatic",
+        "initialRank": 1,
+        "initialAddedPoints": 30,
+        "additionalRanks": [
+          {
+            "rank": 2,
+            "excessSuccesses": 1,
+            "additionalPoints": 15,
+            "totalPoints": 45
+          }
+        ],
+        "ordinaryMaxRank": 2,
+        "exceptionalMaxRank": 3,
+        "equipmentKinds": [
+          "melee",
+          "ranged"
+        ]
+      },
+      {
+        "name": "Destructive",
+        "trigger": "One successful Skill-Check Surge",
+        "effect": "+1 Damage to one weapon Attack",
+        "requiredExcessSuccesses": 2,
+        "addedPoints": 30,
+        "maxRank": 1,
+        "equipmentKinds": [
+          "melee",
+          "ranged"
+        ]
+      },
+      {
+        "name": "Warded",
+        "trigger": "One successful Skill-Check Surge",
+        "effect": "Ward 6+ against one specified damage type",
+        "requiredExcessSuccesses": 1,
+        "addedPoints": 20,
+        "maxRank": 1,
+        "requiresMysticism": true,
+        "equipmentKinds": [
+          "armor",
+          "shield",
+          "appropriate protective equipment"
+        ]
+      },
+      {
+        "name": "Arcane Backlash",
+        "trigger": "One successful Skill-Check Surge",
+        "effect": "Conditional Direct Damage 1 using a specifically printed trigger",
+        "requiredExcessSuccesses": 2,
+        "addedPoints": 25,
+        "maxRank": 1,
+        "requiresMysticism": true,
+        "requiresPrintedRecipe": true,
+        "equipmentKinds": [
+          "melee",
+          "ranged"
+        ]
+      }
+    ],
+    "limits": {
+      "distinctNamedQualitiesOrdinaryItem": 3,
+      "exceptionalNamedQualitiesOrdinaryItem": 1,
+      "oneExceptionalQualityPerSuccessfulProject": true,
+      "noDoubleSpendingExcessSuccesses": true,
+      "sameNamedCraftedAndEnchantedQualitySharesRankCap": true,
+      "normalCriticalMaxRank": 2,
+      "exceptionalCriticalMaxRank": 3,
+      "heavyArmorShelteringRequiresExplicitException": true,
+      "coverSourcesStackUnderNormalCombatRules": true,
+      "noDoubleRerolls": true
+    },
+    "pointsRule": "Base Equipment Points + all permanent Quality/Enchantment Points. Defects do not discount paid Points."
+  }
 }
