@@ -330,10 +330,14 @@ service cloud.firestore {
             && request.resource.data.updatedAt == request.time
             && request.resource.data.enchants is list
             && request.resource.data.enchants.size() <= 3
-            && request.resource.data.enchants ==
-              resource.data.get('enchants', []) + [{
-                'key': offerForPurchase(request.resource.data.lastEnhancementId).enchantKey
-              }]
+            && request.resource.data.enchants.size() == resource.data.get('enchants', []).size() + 1
+            && request.resource.data.enchants[request.resource.data.enchants.size() - 1] ==
+              { 'key': offerForPurchase(request.resource.data.lastEnhancementId).enchantKey }
+            && (resource.data.get('enchants', []).size() < 1 ||
+              request.resource.data.enchants[0] == resource.data.enchants[0])
+            && (resource.data.get('enchants', []).size() < 2 ||
+              request.resource.data.enchants[1] == resource.data.enchants[1])
+            && !({ 'key': offerForPurchase(request.resource.data.lastEnhancementId).enchantKey } in resource.data.get('enchants', []))
             && purchased(request.resource.data.lastEnhancementId).createdAt == request.time
             && purchased(request.resource.data.lastEnhancementId).ownerUid == request.auth.uid
             && purchased(request.resource.data.lastEnhancementId).targetItemId == itemId
