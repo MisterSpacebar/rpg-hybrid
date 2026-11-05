@@ -76,7 +76,7 @@ export const ENEMY_TAGS = ANTI_TAGS
 const SKILL = { key: 'skill', kind: 'skill', label: 'Skill to improve' }
 const MODE = {
   key: 'mode',
-  kind: 'select',
+  kind: 'radio',
   label: 'This rank improves',
   options: [{ value: 'attacks', label: '+1 Attack die' }, { value: 'hit', label: 'Hit by 1 step' }],
   default: 'attacks',

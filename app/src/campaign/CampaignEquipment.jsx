@@ -29,7 +29,7 @@ export default function CampaignEquipment({ data, character, view, update, inven
     return data.magic.byKey.get(`${item.kind}:${item.name}`)?.points ?? 0
   }
   return <div className="panel-grid">
-    <section className="panel span-all">
+    <section className="panel span-2">
       <h2>Carried and equipped gear <span className="muted">({view.points.gear} pts equipped)</span></h2>
       <p className="muted small">Campaign equipment is restricted to starting choices or actual Company inventory. Equipped items count towards your Hero's battlefield Points; Company inventory cannot be created from this screen.</p>
       <ul className="saved-list">{character.gear.map((g) => <li key={g.uid}>

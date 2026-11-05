@@ -168,7 +168,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       })}</ul>
       {canRecruit && !inventory.some((i) => i.kind === 'unit') && <p className="muted">No formations have been recruited into the Company pool.</p>}
     </section>}
-    {isGm && <section className="panel span-all">
+    {isGm && <section className="panel">
       <h2>GM — Manage Company formations</h2>
       <p className="muted small">These are free administrative/Patron/reward grants with no Gold charge. Use Company & Projects for paid recruitment proposals; GM approval there deducts Gold and adds the formation automatically.</p>
       {!canRecruit && <p className="bad" role="status">{campaign.act < 2 ? 'Formations can be granted once the campaign reaches Act II (complete every Turn of Act I in GM Controls).' : 'Choose a sponsoring faction in GM Controls → Progression before granting formations.'}</p>}
@@ -186,7 +186,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       <h3>Owned formations</h3>
       <ul className="saved-list">{inventory.filter((i) => i.kind === 'unit').map((i) => <li key={i.id}><span>{catalog.unitsByKey[i.config?.key]?.name ?? i.config.key}</span><button className="danger" disabled={saving || detachments.some((d) => d.selections?.some((s) => s.id === i.id))} onClick={() => perform(() => removeInventoryItem(campaign.id, i.id))}>Remove</button></li>)}</ul>
     </section>}
-    {isGm && <section className="panel span-all">
+    {isGm && <section className="panel">
       <h2>GM — Equipment awards</h2>
       <p className="muted small">Granted equipment enters a finite shared pool. A PC may equip it in their character builder, but it cannot be selected by two PCs at once.</p>
       <label className="field">Grant equipment
@@ -204,7 +204,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         <button disabled={saving || heroes.some((h) => h.sheet?.gear?.some((g) => g.inventoryId === i.id))} className="danger" onClick={() => perform(() => removeInventoryItem(campaign.id, i.id))}>Remove</button>
       </li>)}</ul>
     </section>}
-    {isGm && <section className="panel span-all">
+    {isGm && <section className="panel">
       <h2>GM — Personal detachment upgrades</h2>
       <p className="muted small">Each PC inherits the sponsoring faction's two ordinary foundation slots. Paid Flex slots should be acquired through Company & Projects for 2 Gold each; controls below are GM overrides for corrections or narrative awards. Grand's third Doctrine Command requires its separate unlock.</p>
       {campaign.memberUids.filter((uid) => uid !== campaign.gmUid).map((uid) => {

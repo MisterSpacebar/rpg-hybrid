@@ -228,20 +228,20 @@ function Workspace({ id, user }) {
       <section className="panel"><h2>Join requests</h2>{!requests.length && <p className="muted">No pending requests.</p>}
         <ul className="saved-list">{requests.map((r) => <li key={r.id}><strong>{r.displayName}</strong><div className="saved-actions"><button className="primary" disabled={working} onClick={() => run(() => approveJoin(campaign, r.uid))}>Accept</button><button disabled={working} onClick={() => run(() => rejectJoin(id, r.uid))}>Reject</button></div></li>)}</ul>
       </section>
-      <section className="panel span-all"><h2>Character reviews</h2><p className="muted small">Approve a saved snapshot for deployment; further player edits do not change the approved sheet.</p><ul className="saved-list">{heroes.map((h) => {
+      <section className="panel span-2"><h2>Character reviews</h2><p className="muted small">Approve a saved snapshot for deployment; further player edits do not change the approved sheet.</p><ul className="saved-list">{heroes.map((h) => {
         const v = derive(normalizeCharacter({ ...h.sheet, xpEarned: campaign.xpTotal }, data), data)
         const issues = validateCampaignSheet({ ...h.sheet, ownerUid: h.ownerUid }, data, campaign.xpTotal, inventory, heroes.filter((other) => other.ownerUid !== h.ownerUid), approvedHeroes.find((a) => a.ownerUid === h.ownerUid))
         const eligible = v.checks.every((c) => c.ok) && !issues.length && v.points.spent <= campaign.xpTotal
         return <li key={h.id}><div><strong>{h.sheet.name}</strong><div className="muted small">{v.points.total} pts · {v.points.spent}/{campaign.xpTotal} XP spent · {eligible ? 'Valid' : 'Needs corrections'}</div></div>        <button className="primary" disabled={working || !eligible} onClick={() => run(() => approveHero(id, h.ownerUid, h.sheet))}>Approve snapshot</button>{approvedHeroes.some((a) => a.ownerUid === h.ownerUid) && <button disabled={working} onClick={() => window.confirm('Revoke this approved snapshot? The player will be unable to deploy this Hero until re-approved.') && run(() => revokeApproval(id, h.ownerUid))}>Revoke approval</button>}</li>
       })}</ul></section>
-              <section className="panel span-all"><h2>Players</h2><p className="muted small">Removing a player deletes their character, approval, detachment and slot entitlements, and releases any formations or equipment they reserved.</p>
+              <section className="panel"><h2>Players</h2><p className="muted small">Removing a player deletes their character, approval, detachment and slot entitlements, and releases any formations or equipment they reserved.</p>
                 <ul className="saved-list">{campaign.memberUids.filter((uid) => uid !== campaign.gmUid).map((uid) => <li key={uid}>
                   <span>{heroes.find((h) => h.ownerUid === uid)?.sheet?.name ?? 'No character yet'} <span className="muted small">({uid.slice(0, 7)})</span></span>
                   <button className="danger" disabled={working} onClick={() => window.confirm('Remove this player and their character from the campaign?') && run(() => removePlayer(campaign, uid))}>Remove player</button>
                 </li>)}</ul>
                 {campaign.memberUids.length <= 1 && <p className="muted">No players have joined.</p>}
               </section>
-              <section className="panel span-all"><h2>Danger zone</h2>
+              <section className="panel"><h2>Danger zone</h2>
                 <button className="danger" disabled={working} onClick={() => {
                   if (window.prompt(`Type the campaign name to permanently delete "${campaign.name}" and everything in it.`) !== campaign.name) return
                   run(async () => { await deleteCampaign(id); window.location.hash = '#/campaign' })

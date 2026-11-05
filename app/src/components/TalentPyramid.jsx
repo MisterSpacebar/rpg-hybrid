@@ -56,6 +56,21 @@ function Choice({ spec, e, view, patch }) {
       </label>
     )
   }
+  if (spec.kind === 'radio') {
+    const name = `${spec.key}-${e.tier}-${e.index}`
+    return (
+      <div className="field">
+        {spec.label}
+        <div className="radio-pair">
+          {spec.options.map((o) => (
+            <label className="choice" key={o.value}>
+              <input type="radio" name={name} checked={value === o.value} onChange={() => patch({ [spec.key]: o.value })} />{o.label}
+            </label>
+          ))}
+        </div>
+      </div>
+    )
+  }
   const options = [...optionsFor(spec, e, view)]
   // Keep a value saved before this was a drop-down (or no longer offered) visible instead of silently blanking it.
   if (spec.kind === 'select' && value && !options.some((o) => o.value === value)) options.push({ value, label: value })

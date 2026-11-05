@@ -92,8 +92,8 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
 
   if (!data || !catalog) return <section className="panel"><h2>Company economy</h2><p>{message || 'Loading equipment and formation catalogs…'}</p></section>
   return <div className="panel-grid">
-    <div className="span-all"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} /></div>
-    <section className="panel span-all">
+    <div className="contents"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} /></div>
+    <section className="panel">
       <h2>Company Treasury</h2>
       <p><strong>{campaign.goldBalance ?? 0} Gold</strong> available · Shared by the whole Company</p>
       <p className="muted small">Gold buys recruitment, equipment and projects. Battlefield Points remain a separate value. Only GM-approved transactions affect the treasury.</p>
@@ -171,7 +171,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
       </div>
     </section>}
 
-    <section className="panel span-all">
+    <section className="panel span-2">
       <h2>{isGm ? 'GM — Special acquisition requests' : 'My special requests'} ({isGm ? pending.length : requests.filter((r) => r.ownerUid === user.uid && r.status === 'pending').length} pending)</h2>
       {!(isGm ? pending : requests.filter((r) => r.ownerUid === user.uid)).length && <p className="muted">No proposals yet.</p>}
       <div className="campaign-request-list">

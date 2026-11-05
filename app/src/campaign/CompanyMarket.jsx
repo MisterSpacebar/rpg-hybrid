@@ -89,15 +89,15 @@ export default function CompanyMarket({ campaign, user, isGm, heroes }) {
     return result
   }
 
-  return <div className="panel-grid">
-    <section className="panel span-all">
+  return <div className="panel-grid contents">
+    <section className="panel">
       <h2>Company Marketplace</h2>
       <p><strong>{campaign.goldBalance ?? 0} Gold</strong> in the shared treasury</p>
       <p className="muted small">Ordinary purchases are immediate: no individual GM approval. The GM publishes available prices once. Every purchase charges Company Gold and updates inventory in the same transaction.</p>
       {message && <p role="status">{message}</p>}
     </section>
 
-    {!isGm && <section className="panel span-all">
+    {!isGm && <section className="panel span-2">
       <h2>Available equipment, crafting, and formations</h2>
       {!offers.some((o) => o.enabled) && <p className="muted">The GM has not published any market offers yet.</p>}
       <ul className="saved-list">{offers.filter((o) => o.enabled && (o.kind !== 'unit' ||
@@ -152,7 +152,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes }) {
           o.enabled ? 'Offer disabled' : 'Offer enabled')}>{o.enabled ? 'Disable' : 'Enable'}</button>
       </li>)}</ul>
     </section>}
-    <section className="panel span-all">
+    <section className="panel">
       <h2>Recent self-service purchases</h2>
       {!purchases.length && <p className="muted">No self-service purchases recorded.</p>}
       <ul className="saved-list">{purchases.slice(-20).reverse().map((p) => <li key={p.id}>
