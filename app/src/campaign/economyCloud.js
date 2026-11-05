@@ -95,6 +95,9 @@ export async function resolveAcquisition(id, requestId, gmUid, approval) {
     if (!companySnap.exists() || companySnap.data().gmUid !== gmUid) throw new Error('GM permission required')
     if (!reqSnap.exists() || reqSnap.data().status !== 'pending') throw new Error('Request already resolved')
     const request = reqSnap.data()
+    if (!(companySnap.data().memberUids ?? []).includes(request.ownerUid)) {
+      throw new Error('The requesting player is no longer in this campaign')
+    }
     const balance = companySnap.data().goldBalance ?? 0
     if (!affordable(balance, paid)) throw new Error('Insufficient Company Gold')
     if (request.kind === 'recruit') {
@@ -105,6 +108,7 @@ export async function resolveAcquisition(id, requestId, gmUid, approval) {
         throw new Error('Recruitment cost must match the resolved formation Points')
     }
     if (request.kind === 'flex') {
+      if (companySnap.data().act < 2) throw new Error('Flex slot projects are locked until Act II')
       if (cost !== goldForFlex()) throw new Error('Flex slot costs 2 Gold')
       if (!FLEX_SLOTS.includes(request.slot)) throw new Error('Invalid Flex slot')
     }
