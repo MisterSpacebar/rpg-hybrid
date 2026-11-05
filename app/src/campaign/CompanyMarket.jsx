@@ -57,7 +57,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   const resolved = selectedUnit && defaultUnit ? resolveUnit(selectedUnit, defaultUnit, selectedUnit.source === 'faction' ? patron.id : null) : null
   const selected = gear.find((g) => `${g.kind}:${g.name}` === form.item)
   const enchantRecipes = characterData?.magic.enchantGroups.flatMap((group) => group.entries
-    .filter((entry) => entry.allowed?.length && !entry.choice && !entry.custom && entry.group !== 'weapon' && entry.group !== 'armor' && entry.group !== 'shield')
+    .filter((entry) => entry.allowed?.length && !entry.choice && !entry.custom && entry.group === 'minor')
     .map((entry) => ({ key: entry.key, name: entry.name, allowed: entry.allowed, points: entry.points }))) ?? []
   const selectedEnchant = enchantRecipes.find((entry) => entry.key === form.enchantKey)
   const pc = heroes.find((h) => h.ownerUid === user.uid)?.sheet
@@ -136,7 +136,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       {[
         ['equipment', 'Equipment', 'Bought instantly with Company Gold; added to the Company inventory.'],
         ['craft', 'Crafting', 'Quest/reward recipes are published once; ordinary projects do not require per-attempt GM approval. Advanced crafted Qualities and flaws await the full profile editor.'],
-        ['enchant', 'Enchanting', 'Apply an unlocked enchantment to a real Company item. Successful checks update its effects and equipped Points; enhanced ranks and Blunder deterioration need a later integration.'],
+        ['enchant', 'Enchanting', 'Apply an unlocked Minor Enchantment to actual Company equipment. A successful Mysticism check updates its effects and Points; exceptional Surge Qualities, ranks and Blunder deterioration await the dedicated modifier editor.'],
         ['unit', 'Formations', `Patron Core profiles: ${recruitAccess.factionCore.length} · Generic profiles permitted by party slots: ${recruitAccess.generic.length}. Two free starting formations are Company grants, not Marketplace purchases.`],
       ].map(([kind, title, note]) => {
         const list = visibleOffers.filter((o) => o.kind === kind)
