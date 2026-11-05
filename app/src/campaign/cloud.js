@@ -24,6 +24,7 @@ export async function createCampaign(uid, name, format = 'standard') {
     turn: 1,
     xpTotal: 0,
     bonusXp: 0,
+    goldBalance: 0,
     status: 'active',
     patronFactionId: null,
     createdAt: serverTimestamp(),

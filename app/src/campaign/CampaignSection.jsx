@@ -7,6 +7,7 @@ import CharacterDatasheet from '../components/CharacterDatasheet.jsx'
 import TalentPyramid from '../components/TalentPyramid.jsx'
 import GearTab from '../components/GearTab.jsx'
 import CampaignArmy from './CampaignArmy.jsx'
+import CompanyEconomy from './CompanyEconomy.jsx'
 import { SignInButton } from '../components/UserMenu.jsx'
 import {
   approveHero, approveJoin, createCampaign, FORMATS, rejectJoin, requestToJoin,
@@ -188,12 +189,12 @@ function Workspace({ id, user }) {
     {connection.fromCache && <p className="bad small" role="status">Showing locally cached campaign data. Updates from other players may be delayed until Firestore reconnects.</p>}
     {!connection.fromCache && connection.hasPendingWrites && <p className="muted small" role="status">Synchronizing campaign changes…</p>}
     <nav className="subtabs">
-      {['overview', ...(!isGm ? ['character'] : []), 'army', ...(isGm ? ['gm'] : [])].map((t) => <button key={t} className={tab === t ? 'active' : ''} onClick={() => setTab(t)}>{t === 'gm' ? 'GM Controls' : t === 'character' ? 'My Character' : t === 'army' ? (isGm ? 'Company Arsenal' : 'My Army') : 'Overview'}</button>)}
+      {['overview', ...(!isGm ? ['character'] : []), 'company', 'army', ...(isGm ? ['gm'] : [])].map((t) => <button key={t} className={tab === t ? 'active' : ''} onClick={() => setTab(t)}>{t === 'gm' ? 'GM Controls' : t === 'character' ? 'My Character' : t === 'army' ? (isGm ? 'Company Arsenal' : 'My Army') : t === 'company' ? 'Company & Projects' : 'Overview'}</button>)}
     </nav>
     {tab === 'overview' && <div className="panel-grid">
       <section className="panel"><h2>Campaign progress</h2><p>Shared earned XP: <strong>{campaign.xpTotal}</strong></p><p>Active players: {campaign.memberUids.length - 1}</p><p className="muted small">Each completed turn grants 5 XP; additional exploration, Act and pivotal objective awards follow the campaign rules.</p></section>
       <section className="panel"><h2>Party roster</h2><ul className="plain-list">{heroes.map((h) => <li key={h.id}><strong>{h.sheet.name}</strong> · {h.sheet.classId} <span className="muted small">({h.id === user.uid ? 'You' : h.id.slice(0, 7)})</span></li>)}</ul>{!heroes.length && <p className="muted">Players can create their campaign characters in My Character.</p>}</section>
-      <section className="panel"><h2>Company resources</h2><p>{inventory.filter((x) => x.kind === 'unit').length} owned formations · {inventory.filter((x) => x.kind === 'equipment').length} equipment items</p><p className="muted small">Gold, crafting, campaign rewards, political Stakes, and the strategic map are planned for later milestones.</p></section>
+      <section className="panel"><h2>Company resources</h2><p>{inventory.filter((x) => x.kind === 'unit').length} owned formations · {inventory.filter((x) => x.kind === 'equipment').length} equipment items</p><p className="muted small"><strong>{campaign.goldBalance ?? 0} Company Gold</strong> · Gold purchases, crafting proposals and recruitment are managed under Company & Projects. Political Stakes and the strategic map remain future milestones.</p></section>
     </div>}
     {tab === 'character' && <div>
       <div className="panel campaign-character-actions"><div><h2>{sheet.name}</h2><div className="muted small">{view.points.total} points · {view.points.spent}/{campaign.xpTotal} XP spent · {campaign.xpTotal - view.points.spent} XP unspent</div><p className="small">{myHero ? 'Saved campaign draft' : 'New campaign character'} · {approved ? 'An approved snapshot exists' : 'Not yet approved by GM'}</p></div>
@@ -209,6 +210,7 @@ function Workspace({ id, user }) {
       <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
       {approved && <section className="panel"><h2>Last GM-approved character</h2><CharacterDatasheet character={approved.sheet} view={derive(normalizeCharacter(approved.sheet, data), data)} /></section>}
     </div>}
+    {tab === 'company' && <CompanyEconomy campaign={campaign} user={user} isGm={isGm} heroes={heroes} />}
     {tab === 'army' && <CampaignArmy campaign={campaign} user={user} isGm={isGm} heroes={heroes} inventory={inventory} detachments={detachments} approvedHeroes={approvedHeroes} />}
     {tab === 'gm' && isGm && <div className="panel-grid">
       <section className="panel"><h2>Progression</h2><p className="muted small">XP follows the campaign position: 5 XP per completed Turn and 5 XP on beginning Acts II, III and IV. Add exploration and Pivotal Objective XP below. Progress only moves forward.</p>

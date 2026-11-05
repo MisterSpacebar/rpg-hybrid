@@ -64,6 +64,7 @@ service cloud.firestore {
         && request.resource.data.gmUid == request.auth.uid
         && request.resource.data.memberUids == [request.auth.uid]
         && request.resource.data.xpTotal == 0
+        && request.resource.data.goldBalance == 0
         && request.resource.data.act == 1
         && request.resource.data.turn == 1
         && request.resource.data.name is string
@@ -77,6 +78,8 @@ service cloud.firestore {
         && request.resource.data.xpTotal is int
         && request.resource.data.xpTotal >= resource.data.xpTotal
         && request.resource.data.xpTotal <= 250
+        && request.resource.data.get('goldBalance', 0) is int
+        && request.resource.data.get('goldBalance', 0) >= 0
         && request.resource.data.act is int && request.resource.data.act >= 1 && request.resource.data.act <= 4
         && request.resource.data.turn is int && request.resource.data.turn >= 1
         && request.resource.data.format == resource.data.format
@@ -112,6 +115,41 @@ service cloud.firestore {
           && request.resource.data.sheet.gear.size() <= 60
           && request.resource.data.sheet.xpEarned == null;
         allow delete: if (isOwner(uid) && memberOfCampaign()) || gmOfCampaign();
+      }
+
+      // Player requests never grant items or spend Company Gold directly.
+      match /acquisitionRequests/{requestId} {
+        allow get, list: if memberOfCampaign();
+        allow create: if memberOfCampaign()
+          && request.auth.uid != get(/databases/$(database)/documents/campaigns/$(campaignId)).data.gmUid
+          && request.resource.data.ownerUid == request.auth.uid
+          && request.resource.data.kind in ['equipment', 'craft', 'recruit', 'flex']
+          && request.resource.data.status == 'pending'
+          && request.resource.data.note is string
+          && request.resource.data.note.size() <= 500
+          && request.resource.data.keys().hasOnly([
+            'kind', 'ownerUid', 'status', 'note', 'createdAt',
+            'item', 'check', 'materials', 'config', 'factionId', 'slot'
+          ]);
+        allow update: if gmOfCampaign()
+          && resource.data.status == 'pending'
+          && request.resource.data.status in ['approved', 'rejected']
+          && request.resource.data.ownerUid == resource.data.ownerUid
+          && request.resource.data.kind == resource.data.kind;
+        allow delete: if gmOfCampaign();
+      }
+
+      // Immutable audit trail: treasury movements and approved purchases
+      // are written by the GM, never by a PC.
+      match /goldLedger/{entryId} {
+        allow get, list: if memberOfCampaign();
+        allow create: if gmOfCampaign()
+          && request.resource.data.delta is int
+          && request.resource.data.balanceAfter is int
+          && request.resource.data.balanceAfter >= 0
+          && request.resource.data.actorUid == request.auth.uid
+          && request.resource.data.reason is string;
+        allow update, delete: if false;
       }
 
       // The company owns permanent inventory; players only select items when deploying.
