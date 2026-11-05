@@ -23,7 +23,7 @@
     "battlefieldTags": {
       "description": "Battlefield tags describe battlefield role and roster permissions.",
       "examples": ["Infantry", "Cavalry", "Mobile", "Elite", "Support", "Wizard", "Monster", "Hero"],
-      "notes": ["Some Units qualify for several tags.", "Armored-tag assignment remains provisional pending generic/faction roster integration; save value alone does not settle the tag."]
+      "notes": ["Some Units qualify for several tags.", "Armored and Unarmored are explicit Traits only. An Armor Save, natural hide, or a creature's appearance does not grant either tag by inference."]
     },
     "creatureTypes": {
       "description": "Creature types identify targets for traits and Anti-[Type].",

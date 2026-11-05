@@ -63,10 +63,11 @@
       "tags": [
         "Horde",
         "Beast",
-        "Creature"
+        "Creature",
+        "Swarm"
       ],
       "points": 40,
-      "models": "1 Swarm",
+      "models": 1,
       "modelProfile": {
         "move": "4\"",
         "wounds": 4,
@@ -101,7 +102,7 @@
         {
           "name": "Ordinary Swarm",
           "cost": "+0",
-          "description": "W4 with four Gnawing Swarm Attacks."
+          "description": "W4 with five Gnawing Swarm Attacks."
         },
         {
           "name": "Larger Swarm",
@@ -172,7 +173,8 @@
       "name": "Giant Bats",
       "tags": [
         "Beast",
-        "Creature"
+        "Creature",
+        "Flying"
       ],
       "points": 65,
       "models": 3,
