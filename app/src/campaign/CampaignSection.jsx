@@ -208,7 +208,17 @@ function Workspace({ id, user }) {
     const change = typeof patch === 'function' ? patch(current) : patch
     return normalizeCharacter({ ...current, ...change, ownerUid: user.uid }, data)
   }))
-  const view = useMemo(() => sheet && data ? derive(sheet, data) : null, [sheet, data])
+  // Company inventory is authoritative for permanent enchantments. Do not let
+  // a saved PC draft mint or replace paid item effects.
+  const view = useMemo(() => {
+    if (!sheet || !data) return null
+    const owned = new Map(inventory.filter((x) => x.kind === 'equipment').map((x) => [x.id, x]))
+    return derive({ ...sheet, gear: sheet.gear.map((g) => {
+      const item = g.inventoryId ? owned.get(g.inventoryId) : null
+      return item && item.item?.kind === g.kind && item.item?.name === g.name
+        ? { ...g, enchants: item.enchants ?? [] } : g
+    }) }, data)
+  }, [sheet, data, inventory])
   const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(
     sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved,
   ) : [], [sheet, data, campaign, inventory, heroes, approved, user.uid])
