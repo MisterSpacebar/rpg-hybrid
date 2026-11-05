@@ -64,7 +64,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   const pcView = pc && characterData ? derive(normalizeCharacter(pc, characterData), characterData) : null
   const run = async (fn, success) => {
     setBusy(true); setMessage('')
-    try { await fn(); setMessage(success) } catch (e) { setMessage(e.message || 'Action failed') }
+    try { const value = await fn(); setMessage(typeof success === 'function' ? success(value) : success) } catch (e) { setMessage(e.message || 'Action failed') }
     finally { setBusy(false) }
   }
   const publish = async () => {
@@ -143,7 +143,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
           {!list.length && <p className="muted">{offers.some((o) => o.enabled) ? 'Nothing available yet.' : 'No offers have been initialized. The GM can open this page once after assigning the Patron; standard offers are published automatically.'}</p>}
           <ul className="saved-list panel-scroll">{list.map((offer) =>
             <li key={offer.id}>
-              <div><strong>{offer.label}</strong><div className="muted small">{offer.kind === 'craft'
+              <div><strong>{offer.label}</strong><div className="muted small">{['craft', 'enchant'].includes(offer.kind)
                 ? `${offer.check} · Difficulty ${offer.difficulty}`
                 : offer.kind === 'unit' ? `${offer.points} Points` : 'Equipment'}
                 {' · '}{offer.price} Gold</div></div>
@@ -156,9 +156,8 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
               </label>}
               <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < offer.price ||
                 (['craft', 'enchant'].includes(offer.kind) && !pcView) ||
-                (offer.kind === 'enchant' && !compatibleTargets(offer).some((item) => item.id === selectedTargets[offer.id]))} onClick={() => run(async () => {
-                  await buy(offer)
-                }, offer.kind === 'craft' ? 'Crafting roll recorded; Company inventory updated' : offer.kind === 'enchant' ? 'Enchantment attempt recorded. Successes update the owned item.' : 'Purchased. Inventory updated.')}>{offer.kind === 'craft' ? 'Craft' : offer.kind === 'enchant' ? 'Enchant' : 'Buy'}</button>
+                (offer.kind === 'enchant' && !compatibleTargets(offer).some((item) => item.id === selectedTargets[offer.id]))} onClick={() => run(() => buy(offer), (roll) => !roll ? 'Purchased. Company inventory updated.' :
+                  `${roll.dice.join(', ')} · ${roll.successes} successes, ${roll.surges} Surge, ${roll.blunders} Blunder. ${roll.successes >= offer.difficulty ? 'Project succeeded; inventory updated.' : 'Project failed; materials Gold spent.'} Bonus Qualities and Blunder deterioration await the profile editor.`)}>{offer.kind === 'craft' ? 'Craft' : offer.kind === 'enchant' ? 'Enchant' : 'Buy'}</button>
             </li>)}</ul>
         </section>
       })}
