@@ -71,11 +71,21 @@ service cloud.firestore {
         && request.resource.data.name.size() > 0
         && request.resource.data.name.size() <= 80
         && request.resource.data.format in ['local', 'standard', 'long', 'grand'];
+      function purchased(id) {
+        return getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(id)).data;
+      }
+      function offered(id) {
+        return get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(id)).data;
+      }
+      function offerForPurchase(id) {
+        let purchase = purchased(id);
+        return offered(purchase.offerId);
+      }
       function validMemberPurchase() {
         let pId = request.resource.data.get('lastPurchaseId', '');
         let offerId = request.resource.data.get('lastPurchaseOfferId', '');
-        let p = getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(pId)).data;
-        let o = get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(offerId)).data;
+        let p = purchased(pId);
+        let o = offered(offerId);
         let l = getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/goldLedger/$(pId)).data;
         return member()
           && request.auth.uid != resource.data.gmUid
@@ -237,16 +247,27 @@ service cloud.firestore {
           || (
             memberOfCampaign()
             && request.resource.data.purchaseId == itemId
-            && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(itemId)).data.ownerUid == request.auth.uid
-            && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(itemId)).data.kind in ['unit', 'equipment', 'craft']
-            && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(itemId)).data.status == 'completed'
+            && purchased(itemId).ownerUid == request.auth.uid
+            && purchased(itemId).status == 'completed'
+            && request.resource.data.createdAt == request.time
             && (
               (request.resource.data.kind == 'unit'
-                && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(itemId)).data.kind == 'unit'
-                && request.resource.data.config == get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(itemId)).data.offerId)).data.config)
+                && purchased(itemId).kind == 'unit'
+                && request.resource.data.keys().hasOnly([
+                  'kind','config','factionId','purchaseId','createdAt'
+                ])
+                && request.resource.data.config == offerForPurchase(itemId).config
+                && request.resource.data.factionId == offerForPurchase(itemId).get('factionId', null))
               || (request.resource.data.kind == 'equipment'
-                && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(itemId)).data.kind in ['equipment', 'craft']
-                && request.resource.data.item == get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/marketPurchases/$(itemId)).data.offerId)).data.item)
+                && purchased(itemId).kind in ['equipment', 'craft']
+                && request.resource.data.keys().hasOnly([
+                  'kind','item','ownerUid','purchaseId','createdAt','crafting'
+                ])
+                && request.resource.data.ownerUid == null
+                && request.resource.data.item == offerForPurchase(itemId).item
+                && (purchased(itemId).kind != 'craft'
+                  || (purchased(itemId).crafting.success == true
+                    && request.resource.data.crafting == purchased(itemId).crafting)))
             )
           );
         allow update: if gmOfCampaign()
