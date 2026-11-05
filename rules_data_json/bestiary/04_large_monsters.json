@@ -155,28 +155,29 @@
     {
       "name": "Young Dragon",
       "tags": ["Monster","Elite","Beast","Flying"],
-      "points": 395,
+      "points": 445,
       "models": 1,
-      "modelProfile": { "move": "8\"", "wounds": 12, "armor": "4+", "evade": "5+", "ward": "6+ Magic" },
+      "modelProfile": { "move": "8\"", "wounds": 14, "armor": "4+", "evade": "5+", "ward": "6+ Magic" },
       "attackProfiles": [
-        { "name": "Claws", "range": "Engaged", "attacks": 6, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] },
-        { "name": "Bite", "range": "Engaged", "attacks": 3, "hit": "4+", "damage": 3, "damageTypes": ["Physical"], "keywords": ["Anti-Elite 2"] }
+        { "name": "Claws", "range": "Engaged", "attacks": 7, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] },
+        { "name": "Bite", "range": "Engaged", "attacks": 4, "hit": "4+", "damage": 3, "damageTypes": ["Physical"], "keywords": ["Anti-Elite 2"] }
       ],
       "abilities": [
         { "name": "Flying", "type": "Passive", "effect": "May Move over terrain and Models, finishing legally." },
         { "name": "Impact 3", "type": "Passive", "effect": "Add 3 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace)." },
-        { "name": "Draconic Breath", "type": "Passive", "effect": "Choose one Breath Weapon at creation. It may be used once per Round as the Dragon's normal Attack, rather than as an additional Attack." }
+        { "name": "Wing Buffet", "type": "Command", "cost": "1 CP", "timing": "Reaction — Once per Round", "effect": "When an enemy successfully Charges this Dragon, reduce the incoming Charge Impact pool by 2 Hits (minimum zero), after the target\u0027s Brace X. Does not cancel Engagement or the Charge." },
+        { "name": "Draconic Breath", "type": "Passive", "effect": "Choose one Breath Weapon at creation. It may be used once per Round as the Dragon's normal Attack, rather than as an additional Attack; normal Assault and Combat activations remain separate." }
       ],
       "breathWeaponOptions": [
-        { "name": "Fire Breath", "cost": "+0", "profile": { "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Fire"], "keywords": ["Blast 1\""] }, "effect": "Generates one automatic secondary Hit against other Units within 1\" of the target when the primary Attack scores a Hit." },
-        { "name": "Frost Breath", "cost": "+0", "profile": { "range": "8\"", "attacks": 5, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Frost"], "keywords": [] }, "effect": "When the Attack generates a Surge, its target suffers Slow 2." },
-        { "name": "Lightning Breath", "cost": "+0", "profile": { "range": "10\"", "attacks": 3, "hit": "4+", "damage": 2, "damageTypes": ["Magic", "Lightning"], "keywords": ["Instant", "Anti-Armored 2"] }, "effect": "Cannot normally be responded to with Reactions." }
+        { "name": "Fire Breath", "cost": "+0", "profile": { "range": "8\"", "attacks": 6, "hit": "5+", "damage": 2, "damageTypes": ["Magic", "Fire"], "keywords": ["Blast 1\""] }, "effect": "Generates one automatic secondary Hit against other Units within 1\" of the target when the primary Attack scores a Hit." },
+        { "name": "Frost Breath", "cost": "+0", "profile": { "range": "8\"", "attacks": 6, "hit": "5+", "damage": 1, "damageTypes": ["Magic", "Frost"], "keywords": [] }, "effect": "When the Attack generates a Surge, its target suffers Slow 2." },
+        { "name": "Lightning Breath", "cost": "+0", "profile": { "range": "10\"", "attacks": 4, "hit": "4+", "damage": 2, "damageTypes": ["Magic", "Lightning"], "keywords": ["Instant", "Anti-Armored 2"] }, "effect": "Cannot normally be responded to with Reactions." }
       ],
       "upgrades": [
-        { "name": "Standard Young Dragon", "cost": "+0", "description": "W12, Flying, Impact 3, one Breath Weapon." },
+        { "name": "Standard Young Dragon", "cost": "+0", "description": "W14, Flying, Impact 3, Wing Buffet, one Breath Weapon." },
         { "name": "Ancient Scales", "cost": "+25", "description": "Improve Armor to 3+." },
         { "name": "Greater Wings", "cost": "+20", "description": "Increase Move to M9\"." },
-        { "name": "Greater Dragon", "cost": "+50", "description": "Increase Wounds to W15 and Impact to 4." }
+        { "name": "Greater Dragon", "cost": "+50", "description": "Increase Wounds to W17 and Impact to 4." }
       ]
     },
     {
@@ -311,34 +312,356 @@
       }
     },
     {
-      "name": "Abyssal Kraken",
-      "tags": ["Monster", "Elite", "Beast"],
-      "points": 460,
-      "models": 4,
+      "name": "Elder Treant",
+      "tags": [
+        "Monster",
+        "Elite",
+        "Plant"
+      ],
+      "points": 475,
+      "models": 1,
       "modelProfile": {
-        "body": { "move": "5\"", "wounds": 10, "armor": "4+", "evade": "5+", "ward": "6+ Magic" },
-        "tentacles": { "count": 3, "move": "5\"", "wounds": 2, "armor": "4+", "evade": "5+", "ward": "6+ Magic", "note": "Same Saves as the Body." }
+        "move": "3\"",
+        "wounds": 16,
+        "armor": "3+",
+        "evade": "6+",
+        "ward": "6+ Magic"
       },
       "attackProfiles": [
-        { "name": "Abyssal Jet", "model": "Body", "range": "10\"", "attacks": 4, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] },
-        { "name": "Titanic Tentacles", "model": "each Tentacle", "range": "Engaged 3\"", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+        {
+          "name": "Ancient Branches",
+          "range": "Engaged 2\"",
+          "attacks": 7,
+          "hit": "4+",
+          "damage": 2,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Anti-Infantry 2"
+          ]
+        },
+        {
+          "name": "Thornstorm",
+          "range": "8\"",
+          "attacks": 5,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical",
+            "Nature"
+          ],
+          "keywords": [
+            "Blast 1\""
+          ]
+        }
       ],
       "abilities": [
-        { "name": "Four-Model Unit — Special Coherency", "type": "Passive", "effect": "The Kraken consists of one Body Model (W10) and three Tentacle Models (W2 each). All share the printed Armor, Evade and Ward. A Tentacle may be positioned and move independently within 6\" (Short Range) of the Body, instead of the usual 3\" Coherency rule. Every Model remains part of one Unit: it receives one Movement, one Assault and one eligible Combat activation, not one activation per Model." },
-        { "name": "Many Tentacles", "type": "Passive", "effect": "Each surviving Tentacle contributes its own Engaged 3\" / A2 / Hit 4+ / Dmg 2 / Anti-Armored 2 attack, targeting enemies it can reach. Separate target pools if Tentacles attack different eligible Units. The Body uses Abyssal Jet (10\" / A4 / 5+ / 2 / Anti-Infantry 2), as its eligible ranged Assault profile." },
+        {
+          "name": "Impact 1",
+          "type": "Passive",
+          "effect": "Add 1 Hit to the normal highest-die Charge Impact."
+        },
+        {
+          "name": "Rooted Renewal",
+          "type": "Passive",
+          "effect": "At the start of each Round, Heal 1 unless this Treant suffered unsaved Fire Damage since its previous activation."
+        },
+        {
+          "name": "Entangling Roots",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement — Once per Round",
+          "effect": "Place a 3\" radius root marker touching the Treant. Until the end of the next Round, that area counts as Difficult Terrain for enemy Units; remove the previous marker when placing a new one. This does not prevent legal movement."
+        },
+        {
+          "name": "Flammable Bark",
+          "type": "Passive",
+          "effect": "Unsaved Fire Damage suppresses Rooted Renewal as stated; Fire does not otherwise ignore saves or deal bonus damage."
+        }
+      ],
+      "upgrades": [
+        {
+          "name": "Hardened Heartwood",
+          "addedPoints": 30,
+          "effect": "Gain Tough 1."
+        },
+        {
+          "name": "Ancient Roots",
+          "addedPoints": 25,
+          "effect": "Increase Root marker radius to 4\"."
+        },
+        {
+          "name": "Overgrown",
+          "addedPoints": 30,
+          "effect": "Increase Wounds to W19."
+        }
+      ]
+    },
+    {
+      "name": "Sea Serpent",
+      "tags": [
+        "Monster",
+        "Elite",
+        "Beast"
+      ],
+      "points": 530,
+      "models": 1,
+      "modelProfile": {
+        "move": "8\" in water, 3\" on land",
+        "wounds": 17,
+        "armor": "4+",
+        "evade": "5+",
+        "ward": "6+ Magic"
+      },
+      "attackProfiles": [
+        {
+          "name": "Devouring Bite",
+          "range": "Engaged 2\"",
+          "attacks": 7,
+          "hit": "4+",
+          "damage": 2,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Anti-Infantry 2"
+          ]
+        },
+        {
+          "name": "Tidal Surge",
+          "range": "10\"",
+          "attacks": 5,
+          "hit": "5+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Blast 1\""
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Aquatic Predator",
+          "type": "Passive",
+          "effect": "Move 8\" in water, M3\" on land; ignore ordinary swimming penalties."
+        },
+        {
+          "name": "Impact 2",
+          "type": "Passive",
+          "effect": "Add 2 Hits to the normal highest-die Charge Impact."
+        },
+        {
+          "name": "Undertow",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Assault — Once per Round",
+          "effect": "Choose one visible enemy Unit within 8\" while the Serpent is in water. If that Unit has at least one Model in water, reposition one Model from that Unit up to 2\" toward the Serpent; it must finish legally and maintain Coherency. A Unique Model may prevent this by spending 1 CP as a Reaction. Does not cause Damage or Engagement."
+        },
+        {
+          "name": "Coiling Strike",
+          "type": "Passive",
+          "effect": "When Devouring Bite causes unsaved Damage to a Unit in water, that Unit suffers Slow 1 until after its next Movement activation."
+        }
+      ],
+      "upgrades": [
+        {
+          "name": "Armored Fins",
+          "addedPoints": 25,
+          "effect": "Improve Armor to 3+."
+        },
+        {
+          "name": "Titanic Serpent",
+          "addedPoints": 40,
+          "effect": "Increase Wounds to W21."
+        },
+        {
+          "name": "Crushing Bite",
+          "addedPoints": 35,
+          "effect": "Devouring Bite gains Accurate 1."
+        }
+      ]
+    },
+    {
+      "name": "Adult Dragon",
+      "tags": [
+        "Monster",
+        "Elite",
+        "Beast",
+        "Flying"
+      ],
+      "points": 675,
+      "models": 1,
+      "modelProfile": {
+        "move": "9\"",
+        "wounds": 20,
+        "armor": "3+",
+        "evade": "5+",
+        "ward": "5+ Magic"
+      },
+      "attackProfiles": [
+        {
+          "name": "Ancient Claws",
+          "range": "Engaged",
+          "attacks": 9,
+          "hit": "4+",
+          "damage": 2,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Anti-Armored 2"
+          ]
+        },
+        {
+          "name": "Fanged Maw",
+          "range": "Engaged",
+          "attacks": 5,
+          "hit": "4+",
+          "damage": 3,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": [
+            "Anti-Elite 2"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Flying",
+          "type": "Passive",
+          "effect": "May Move over terrain and Models, finishing legally."
+        },
+        {
+          "name": "Impact 4",
+          "type": "Passive",
+          "effect": "Add 4 automatic Hits to the normal highest-die Charge Impact."
+        },
+        {
+          "name": "Adult Draconic Breath",
+          "type": "Passive",
+          "effect": "Choose one Breath Weapon at creation. During the Dragon's Assault activation it may use that profile as its normal ranged Attack; it does not receive a bonus activation or an additional free Attack."
+        },
+        {
+          "name": "Ancient Assault",
+          "type": "Passive",
+          "effect": "During its Combat activation, this Dragon may divide its Ancient Claws Attack dice between up to two eligible enemy Units in Engagement. Allocate dice before rolling, and resolve each pool independently. This does not grant an extra activation or additional Attack dice."
+        },
+        {
+          "name": "Wing Buffet",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Reaction — Once per Round",
+          "effect": "When an enemy successfully Charges this Dragon, reduce the incoming Charge Impact pool by 3 Hits (minimum zero), after Brace X. Engagement remains successful."
+        }
+      ],
+      "breathWeaponOptions": [
+        {
+          "name": "Inferno Breath",
+          "cost": "+0",
+          "profile": {
+            "range": "12\"",
+            "attacks": 8,
+            "hit": "4+",
+            "damage": 2,
+            "damageTypes": [
+              "Magic",
+              "Fire"
+            ],
+            "keywords": [
+              "Blast 2\""
+            ]
+          },
+          "effect": "Secondary Blast Hits are Damage 1 and are resolved once per qualifying Unit, not once per Model."
+        },
+        {
+          "name": "Winter Breath",
+          "cost": "+0",
+          "profile": {
+            "range": "12\"",
+            "attacks": 8,
+            "hit": "4+",
+            "damage": 1,
+            "damageTypes": [
+              "Magic",
+              "Frost"
+            ],
+            "keywords": [
+              "Blast 1\""
+            ]
+          },
+          "effect": "On a Surge, the primary target suffers Slow 2 until after its next Movement activation."
+        },
+        {
+          "name": "Thunder Breath",
+          "cost": "+0",
+          "profile": {
+            "range": "12\"",
+            "attacks": 6,
+            "hit": "4+",
+            "damage": 2,
+            "damageTypes": [
+              "Magic",
+              "Lightning"
+            ],
+            "keywords": [
+              "Instant",
+              "Anti-Armored 2"
+            ]
+          },
+          "effect": "Instant prevents ordinary non-Instant reactions."
+        }
+      ],
+      "upgrades": [
+        {
+          "name": "Ancient Scales",
+          "addedPoints": 35,
+          "effect": "Gain Tough 1."
+        },
+        {
+          "name": "Elder Wings",
+          "addedPoints": 25,
+          "effect": "Increase Move to M10\"."
+        },
+        {
+          "name": "Ancient Dragon",
+          "addedPoints": 100,
+          "effect": "Increase Wounds to W25 and Impact to 5. Points 775 before any other upgrades."
+        }
+      ]
+    },
+    {
+      "name": "Abyssal Kraken",
+      "tags": ["Monster", "Elite", "Beast"],
+      "points": 700,
+      "models": 4,
+      "modelProfile": {
+        "body": { "move": "5\"", "wounds": 15, "armor": "4+", "evade": "5+", "ward": "6+ Magic" },
+        "tentacles": { "count": 3, "move": "5\"", "wounds": 3, "armor": "4+", "evade": "5+", "ward": "6+ Magic", "note": "Same Saves as the Body." }
+      },
+      "attackProfiles": [
+        { "name": "Abyssal Jet", "model": "Body", "range": "12\"", "attacks": 6, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Infantry 2"] },
+        { "name": "Titanic Tentacles", "model": "each Tentacle", "range": "Engaged 3\"", "attacks": 3, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Anti-Armored 2"] }
+      ],
+      "abilities": [
+        { "name": "Four-Model Unit — Special Coherency", "type": "Passive", "effect": "The Kraken consists of one Body Model (W15) and three Tentacle Models (W3 each). All share the printed Armor, Evade and Ward. A Tentacle may be positioned and move independently within 6\" (Short Range) of the Body, instead of the usual 3\" Coherency rule. Every Model remains part of one Unit: it receives one Movement, one Assault and one eligible Combat activation, not one activation per Model." },
+        { "name": "Many Tentacles", "type": "Passive", "effect": "Each surviving Tentacle contributes its own Engaged 3\" / A3 / Hit 4+ / Dmg 2 / Anti-Armored 2 attack, targeting enemies it can reach. Separate target pools if Tentacles attack different eligible Units. The Body uses Abyssal Jet (12\" / A6 / 4+ / 2 / Anti-Infantry 2), as its eligible ranged Assault profile." },
         { "name": "Damage allocation — Exception", "type": "Passive", "effect": "Attacks that can reach only a Tentacle allocate Hits and Damage among the eligible Tentacles, not to the distant Body. Attacks targeting the Body allocate to the Body." },
         { "name": "Aquatic", "type": "Passive", "effect": "Ignore swimming penalties; on land, the Unit's Move is M2\"." },
         { "name": "Grasping Limbs", "type": "Passive", "effect": "After a Tentacle Attack inflicts unsaved Damage, its target suffers Slow 1." },
         { "name": "Ink Cloud", "type": "Command", "cost": "1 CP", "timing": "Reaction", "effect": "When targeted by a non-Instant ranged Attack while in water, become Concealed until the end of the Phase; use normal Reaction timing." },
-        { "name": "Grasping Tentacles", "type": "Command", "cost": "1 CP", "timing": "Combat — Once per Round", "effect": "After one of this Unit's Tentacle Attacks deals Damage, reposition one non-Hero target Model up to 2\" within legal placement. The target Unit must still maintain Coherency. This is forced movement and does not grant an extra Attack." }
+        { "name": "Grasping Tentacles", "type": "Command", "cost": "1 CP", "timing": "Combat — Once per Round", "effect": "After one of this Unit's Tentacle Attacks deals Damage, reposition one target Model up to 2\" within legal placement. The target Unit must still maintain Coherency. A Unique target may prevent this repositioning by spending 1 CP as a Reaction. This is forced movement and does not grant an extra Attack." }
       ],
       "upgrades": [
-        { "name": "Elder Kraken", "addedPoints": 50, "effect": "Increase Body Wounds to 14 (total Unit Wounds 20)" },
+        { "name": "Elder Kraken", "addedPoints": 50, "effect": "Increase Body Wounds to 19 (total Unit Wounds 28)" },
         { "name": "Crushing Tentacles", "addedPoints": 35, "effect": "Titanic Tentacles gain Accurate 1" },
         { "name": "Armored Hide", "addedPoints": 25, "effect": "Improve shared Armor to 3+" },
         { "name": "Abyssal Horror", "addedPoints": 30, "effect": "Abyssal Jet gains Blast 1\"" }
       ],
-      "notes": ["The Kraken has no printed Impact bonus; like any ordinary eligible Unit it still generates the normal highest-die Impact on a successful Charge. Tentacles do not each generate separate Impact pools."]
+      "notes": ["The base Kraken has 24 total Wounds (15 Body + three W3 Tentacles) and uses a single Unit activation in each eligible phase. The Kraken has no printed Impact bonus; like any ordinary eligible Unit it still generates the normal highest-die Impact on a successful Charge. Tentacles do not each generate separate Impact pools."]
     }
   ],
   "knownIssues": [
