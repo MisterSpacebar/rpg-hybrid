@@ -33,7 +33,7 @@ async function setup() {
   })
 }
 
-async function spend({ id, offer, price, balance, kind, item, crafting, includeItem = true }) {
+async function spend({ id, offer, price, balance, kind, item, config, factionId = null, crafting, includeItem = true }) {
   const campaign = doc(pc, campaignPath)
   const listing = doc(pc, cid(`marketOffers/${offer}`))
   const receipt = doc(pc, cid(`marketPurchases/${id}`))
@@ -60,7 +60,10 @@ async function spend({ id, offer, price, balance, kind, item, crafting, includeI
       createdAt: serverTimestamp(),
     })
     if (includeItem) {
-      tx.set(inventory, {
+      tx.set(inventory, kind === 'unit' ? {
+        kind: 'unit', config, factionId, purchaseId: id,
+        createdAt: serverTimestamp(),
+      } : {
         kind: 'equipment', item, ownerUid: null, purchaseId: id,
         createdAt: serverTimestamp(),
         ...(crafting ? { crafting } : {}),
@@ -108,7 +111,19 @@ try {
     kind: 'craft', item: { kind: 'melee', name: 'Longsword' },
     crafting: { ...crafted, difficulty: 1, qualities: 2 },
   }))
-  console.log('PASS Firestore market: legitimate purchases, exact pricing, atomic inventory, replay protection and crafted outcome')
+  const patronConfig = { key: 'faction:warclans:core-1', slot: 'C', models: 8, doubled: false, picks: {} }
+  await assertSucceeds(setDoc(doc(admin, cid('marketOffers/patron-core')), {
+    enabled: true, kind: 'unit', label: 'Patron Core', price: 3,
+    points: 75, createdBy: 'gm-1', standardAccess: true,
+    config: patronConfig, factionId: 'warclans', createdAt: serverTimestamp(),
+  }))
+  await assertSucceeds(spend({
+    id: 'patron-1', offer: 'patron-core', price: 3, kind: 'unit',
+    config: patronConfig, factionId: 'warclans',
+  }))
+  assert.equal((await getDoc(doc(pc, campaignPath))).data().goldBalance, 2)
+  assert.equal((await getDoc(doc(pc, cid('inventory/patron-1')))).data().kind, 'unit')
+  console.log('PASS Firestore market: ordinary purchases, auto-published Patron Core recruitment, exact pricing, atomic inventory and replay protection')
 } finally {
   await env.cleanup()
 }
