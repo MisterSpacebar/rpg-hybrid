@@ -22,6 +22,10 @@ export default function CampaignEquipment({ data, character, view, update, inven
   const has = (item, inventoryId) => character.gear.some((g) => inventoryId
     ? g.inventoryId === inventoryId : !g.inventoryId && g.kind === item.kind && g.name === item.name)
   const points = (item) => {
+    // Equipped item Points are derived from Company inventory enchantments,
+    // not editable copies in the PC draft.
+    const carried = item.uid ? view.gear.find((g) => g.uid === item.uid) : null
+    if (carried?.def) return carried.def.points + (carried.enchantList ?? []).reduce((total, e) => total + e.points, 0)
     if (item.points != null) return item.points
     if (item.kind === 'shield') return data.shield.points
     if (item.kind === 'armor') return data.armor.find((a) => a.name === item.name)?.points ?? 0
@@ -33,7 +37,7 @@ export default function CampaignEquipment({ data, character, view, update, inven
       <h2>Carried and equipped gear <span className="muted">({view.points.gear} pts equipped)</span></h2>
       <p className="muted small">Campaign equipment is restricted to starting choices or actual Company inventory. Equipped items count towards your Hero's battlefield Points; Company inventory cannot be created from this screen.</p>
       <ul className="saved-list panel-scroll">{character.gear.map((g) => <li key={g.uid}>
-        <div><strong>{g.name}</strong><div className="muted small">{g.kind} · {g.inventoryId ? 'Company item' : 'Starting item'} · {points(g)} pts</div></div>
+        <div><strong>{g.name}</strong><div className="muted small">{g.kind} · {g.inventoryId ? 'Company item' : 'Starting item'} · {points(g)} pts{view.gear.find((x) => x.uid === g.uid)?.enchantList?.length ? ` · ${view.gear.find((x) => x.uid === g.uid).enchantList.map((e) => e.entry.name).join(', ')}` : ''}</div></div>
         <div className="saved-actions"><label className="choice"><input type="checkbox" checked={g.equipped !== false} onChange={() => toggle(g)} /> Equipped</label><button onClick={() => release(g)}>Return / Remove</button></div>
       </li>)}</ul>
     </section>
