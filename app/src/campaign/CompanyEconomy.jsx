@@ -17,7 +17,7 @@ const dateOf = (stamp) => stamp?.toDate?.().toLocaleString() ?? ''
 const DEFAULT = { kind: 'equipment', equipment: '', formation: '', slot: 'C', check: 'Mind + Craft', materials: '', note: '' }
 const validInt = (n) => Number.isInteger(Number(n)) && Number(n) >= 0
 
-export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
+export default function CompanyEconomy({ campaign, user, isGm, heroes, detachments }) {
   const [requests, setRequests] = useState([])
   const [ledger, setLedger] = useState([])
   const [data, setData] = useState(null)
@@ -92,7 +92,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
 
   if (!data || !catalog) return <section className="panel"><h2>Company economy</h2><p>{message || 'Loading equipment and formation catalogs…'}</p></section>
   return <div className="panel-grid">
-    <div className="contents"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} /></div>
+    <div className="contents"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} /></div>
     <section className="panel">
       <h2>Company Treasury</h2>
       <p><strong>{campaign.goldBalance ?? 0} Gold</strong> available · Shared by the whole Company</p>
