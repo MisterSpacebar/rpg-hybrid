@@ -99,6 +99,35 @@ details.section > :not(summary) { margin-left: 16px; margin-right: 16px; }
 .army-draft .panel-scroll { max-height: max(240px, calc(100vh - 460px)); }
 .unit-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
 @media (max-width: 900px) { .army-draft { grid-template-columns: 1fr; } }
+.slot-sources { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; align-items: stretch; }
+.source-card { border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px 10px; background: #181b21; min-width: 0; }
+.source-card.kind-hero { border-top: 3px solid #d4a34a; }
+.source-card.kind-patron { border-top: 3px solid #5b8def; }
+.source-card.kind-doctrine { border-top: 3px solid #a56cf0; }
+.source-card.kind-flex { border-top: 3px solid #4fb477; }
+.source-card.kind-over { border-top: 3px solid #e5645b; }
+.source-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.source-card p { margin: 0; max-width: 220px; }
+.source-cells { display: flex; flex-wrap: wrap; gap: 6px; }
+.slot-cell { width: 88px; min-height: 68px; border: 1.5px dashed color-mix(in srgb, var(--slot) 45%, transparent); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3px 2px; text-align: center; gap: 1px; opacity: 0.6; transition: all 0.15s; }
+.slot-cell .rack-unit { font-size: 0.66rem; }
+.slot-cell .cell-source { font-size: 0.56rem; line-height: 1.1; color: var(--muted); max-height: 2.2em; overflow: hidden; }
+.slot-cell.lit { opacity: 1; border-style: solid; border-color: var(--slot); background: color-mix(in srgb, var(--slot) 22%, #14161a); }
+.slot-cell.lit:not([style]) { cursor: pointer; }
+.slot-cell.lit:not([style]):hover { border-color: #e5645b; }
+.slot-cell.lit:not([style]):hover .rack-unit { text-decoration: line-through; }
+.slot-cell.over { border-color: #e5645b; box-shadow: 0 0 8px rgba(229, 100, 91, 0.6); }
+.doctrine-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.pick-card { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border: 1px solid var(--border); border-left: 4px solid var(--slot, var(--accent)); border-radius: 6px; background: #181b21; cursor: pointer; }
+.pick-card > input { margin-top: 4px; flex: none; accent-color: var(--slot, var(--accent)); }
+.pick-card > div { min-width: 0; flex: 1; }
+.pick-card p { margin: 4px 0 0; }
+.pick-card:hover:not(.locked) { border-color: var(--slot, var(--accent)); }
+.pick-card.on { background: color-mix(in srgb, var(--slot) 16%, #14161a); border-color: var(--slot); }
+.pick-card.locked { opacity: 0.5; cursor: not-allowed; }
+.pick-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.pick-head .tag.slot-chip { margin: 0; color: var(--slot); border-color: color-mix(in srgb, var(--slot) 55%, transparent); white-space: nowrap; }
+.doctrine-page .panel > h2 .small { font-weight: 400; margin-left: 6px; }
 .gold-chip { margin-left: auto; padding: 6px 14px; border: 1px solid var(--gold, #d4a548); border-radius: 999px; color: var(--gold, #d4a548); background: #1b1d22; white-space: nowrap; }
 .gold-chip strong { font-size: 1.15rem; }
 .toast { position: fixed; right: 20px; bottom: 20px; z-index: 50; max-width: min(420px, calc(100vw - 40px)); padding: 10px 14px; border-radius: 8px; background: #1b1d22; border: 1px solid var(--border); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5); cursor: pointer; }
@@ -438,6 +467,18 @@ select.needs-choice { border-color: #e5645b !important; }
 .army-roster-entry { min-width: 0; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; background: var(--panel); }
 .army-roster-entry .roster-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .army-roster-entry .roster-pts { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+.roster-count { color: var(--accent); }
+.holder-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.tag.holder { margin: 0; color: var(--muted); }
+.tag.holder.mine { color: var(--accent); border-color: var(--accent); }
+.deploy-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 12px; margin-bottom: 14px; }
+.deploy-card { border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; background: #181b21; min-width: 0; }
+.deploy-card.mine { border-color: var(--accent); }
+.deploy-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.deploy-card .plain-list { margin: 6px 0 0; }
+.deploy-card .plain-list li { padding: 1px 0; }
+.deploy-card .tag.slot-chip { color: var(--slot); border-color: color-mix(in srgb, var(--slot) 55%, transparent); }
+.deploy-card p { margin: 6px 0 0; }
 .army-roster-entry .unit-chips { margin-top: 6px; }
 .army-roster-entry .roster-stats { margin: 6px 0 0; }
 .army-roster-entry .roster-list { margin: 6px 0 0; padding-left: 16px; }

@@ -191,7 +191,7 @@ function Workspace({ id, user }) {
     {connection.fromCache && <p className="bad small" role="status">Showing locally cached campaign data. Updates from other players may be delayed until Firestore reconnects.</p>}
     {!connection.fromCache && connection.hasPendingWrites && <p className="muted small" role="status">Synchronizing campaign changes…</p>}
     <nav className="subtabs">
-      {['overview', ...(!isGm ? ['character'] : []), 'company', 'army', ...(isGm ? ['gm'] : [])].map((t) => <button key={t} className={tab === t ? 'active' : ''} onClick={() => setTab(t)}>{t === 'gm' ? 'GM Controls' : t === 'character' ? 'My Character' : t === 'army' ? (isGm ? 'Company Arsenal' : 'My Army') : t === 'company' ? 'Company & Projects' : 'Overview'}</button>)}
+      {['overview', ...(!isGm ? ['character'] : []), 'company', 'army', ...(isGm ? ['gm'] : [])].map((t) => <button key={t} className={tab === t ? 'active' : ''} onClick={() => setTab(t)}>{t === 'gm' ? 'GM Controls' : t === 'character' ? 'My Character' : t === 'army' ? (isGm ? 'Company Arsenal' : 'Deployment') : t === 'company' ? 'Company & Projects' : 'Overview'}</button>)}
     </nav>
     {tab === 'overview' && <div className="panel-grid">
       <section className="panel"><h2>Campaign progress</h2><p>Shared earned XP: <strong>{campaign.xpTotal}</strong></p><p>Active players: {campaign.memberUids.length - 1}</p><p className="muted small">Each completed turn grants 5 XP; additional exploration, Act and pivotal objective awards follow the campaign rules.</p></section>

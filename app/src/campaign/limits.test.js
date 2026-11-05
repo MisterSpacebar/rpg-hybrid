@@ -63,6 +63,13 @@ test('Each PC Doctrine grants its own foundation and selected commands only when
   assert.equal(allowedDoctrineCommands(campaign(4, 'grand'), {}), 2)
 })
 
+test('Every slot records the kind of source it came from', () => {
+  const det = { doctrineId: 'combined-arms', commands: ['Screen and Advance'] }
+  const kinds = campaignSlots(campaign(3), { flexSlots: ['C'] }, det, catalog).sources.map((s) => s.kind)
+  assert.equal(kinds[0], 'hero')
+  assert.ok(kinds.includes('patron') && kinds.includes('doctrine') && kinds.includes('command') && kinds.at(-1) === 'flex')
+})
+
 test('Flex slots cannot replace Hero slot, and point cap includes approved Hero', () => {
   const state = detachmentView(campaign(2), { flexSlots: ['C', 'H'] }, { doctrineId: null, commands: [], selections: [] }, [], catalog, 251)
   assert.equal(state.slots.unitSlots.C, 1)

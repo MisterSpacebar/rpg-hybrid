@@ -60,7 +60,7 @@ export function allowedDoctrineCommands(campaign, entitlement = {}) {
 
 export function campaignSlots(campaign, entitlement = {}, detachment = {}, catalog) {
   const slots = Object.fromEntries(SLOT_ORDER.map((slot) => [slot, 0]))
-  const sources = [{ slot: 'H', source: 'Personal PC Hero (reserved)' }]
+  const sources = [{ slot: 'H', source: 'Personal PC Hero (reserved)', kind: 'hero' }]
   slots.H = 1
   if (campaign.act >= 2) {
     // Campaign Patron entitlements use the normal foundation slots of the sponsoring faction.
@@ -68,26 +68,26 @@ export function campaignSlots(campaign, entitlement = {}, detachment = {}, catal
     for (const s of (sponsor?.foundationSlots ?? [])) {
       if (!SLOT_ORDER.includes(s)) continue
       slots[s] += 1
-      sources.push({ slot: s, source: 'Faction foundation (Patron)' })
+      sources.push({ slot: s, source: 'Faction foundation (Patron)', kind: 'patron' })
     }
   }
   const doctrine = campaign.act >= 3
     ? catalog.doctrines.find((d) => d.id === detachment.doctrineId) : null
   if (doctrine) {
     slots[doctrine.foundationSlot]++
-    sources.push({ slot: doctrine.foundationSlot, source: doctrine.name + ' foundation' })
+    sources.push({ slot: doctrine.foundationSlot, source: doctrine.name + ' foundation', kind: 'doctrine' })
     const max = allowedDoctrineCommands(campaign, entitlement)
     for (const name of (detachment.commands ?? []).slice(0, max)) {
       const command = doctrine.commands.find((c) => c.name === name)
       if (!command) continue
       slots[command.slot]++
-      sources.push({ slot: command.slot, source: name })
+      sources.push({ slot: command.slot, source: name, kind: 'command' })
     }
   }
   for (const slot of (entitlement.flexSlots ?? []).slice(0, 2)) {
     if (!FIELD_SLOTS.includes(slot)) continue
     slots[slot]++
-    sources.push({ slot, source: 'Purchased Flex' })
+    sources.push({ slot, source: 'Purchased Flex', kind: 'flex' })
   }
   // The first H slot is occupied by the PC Hero, never by a formation.
   const unitSlots = { ...slots, H: slots.H - 1 }

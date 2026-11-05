@@ -8,6 +8,7 @@ import { grantEquipment, grantFormation, removeInventoryItem, saveDetachment, se
 import { loadCharacterData } from '../character/data.js'
 import { derive, normalizeCharacter } from '../character/engine.js'
 import { acceptSnapshot, discardDraft, editDraft } from './sync.js'
+import { groupRoster, holdersOf } from './roster.js'
 
 const empty = { doctrineId: null, commands: [], selections: [] }
 const labelSlot = (s) => ({ C: 'Core', E: 'Elite', R: 'Ranged', V: 'Mobile', S: 'Support', A: 'Asset', H: 'Headquarters' }[s] || s)
@@ -28,6 +29,30 @@ function Chips({ unit, active, onPick, locked = {} }) {
   </div>
 }
 
+// Groups the budget's slots by where they came from and seats each drafted unit in the first open slot of its type.
+function buildSlotGroups(result, campaign, sponsor) {
+  const queues = Object.fromEntries(SLOT_ORDER.map((s) => [s, result.units.filter((u) => !u.missing && u.slot === s)]))
+  const titles = { hero: 'Hero', patron: `Patron · ${sponsor?.name ?? 'Sponsor'}`, doctrine: `Doctrine · ${result.slots.doctrine?.name}`, flex: 'Purchased Flex' }
+  const groups = new Map()
+  const cellsFor = (kind) => {
+    if (!groups.has(kind)) groups.set(kind, { key: kind, kind, title: titles[kind], cells: [] })
+    return groups.get(kind).cells
+  }
+  const [heroSource, ...rest] = result.slots.sources
+  cellsFor('hero').push({ slot: heroSource.slot, caption: 'Reserved', hero: true })
+  for (const s of rest) {
+    const kind = s.kind === 'command' ? 'doctrine' : s.kind
+    const caption = s.kind === 'command' ? s.source : s.kind === 'flex' ? 'Flex' : 'Foundation'
+    cellsFor(kind).push({ slot: s.slot, caption, unit: queues[s.slot].shift() })
+  }
+  if (campaign.act >= 3 && !result.slots.doctrine) {
+    groups.set('doctrine', { key: 'doctrine', kind: 'doctrine', title: 'Doctrine', cells: [], note: 'Choose a Personal Doctrine to unlock its foundation and Command slots.' })
+  }
+  const list = ['hero', 'patron', 'doctrine', 'flex'].filter((k) => groups.has(k)).map((k) => groups.get(k))
+  const over = SLOT_ORDER.flatMap((s) => queues[s].map((unit) => ({ slot: s, caption: 'No slot', unit, over: true })))
+  if (over.length) list.push({ key: 'over', kind: 'over', title: 'Over the limit', cells: over })
+  return list
+}
 export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHeroes, inventory, detachments }) {
   const [catalog, setCatalog] = useState(null)
   const [charData, setCharData] = useState(null)
@@ -105,6 +130,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
   const remove = (id) => setDraft((d) => ({ ...d, selections: d.selections.filter((s) => s.id !== id) }))
   const selectedIds = new Set(draft?.selections.map((s) => s.id) ?? [])
   const takenElsewhere = new Set(other.flatMap((d) => (d.selections ?? []).map((s) => s.id)))
+  const slotGroups = result ? buildSlotGroups(result, campaign, sponsor) : []
   const activeArmyPage = armyPage === 'doctrine' && campaign.act < 3 || armyPage === 'roster' && campaign.act < 2 ? 'detachment' : armyPage
   if (!catalog || !charData || !draft || !result) return <section className="panel"><p>Loading campaign army catalogue…</p>{message && <p className="bad">{message}</p>}</section>
 
@@ -116,6 +142,28 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         Formations are Company property; each PC drafts a temporary detachment from the shared pool, and a formation can't be deployed by two PCs at once.
         Foundation slots belong to every PC, while each PC chooses their own Doctrine.
       </p>
+      {!isGm && <>
+        <h3>Recruitment slots</h3>
+        <div className="slot-count muted small">{result.units.filter((u) => !u.missing).length} of {result.slots.total - 1} Recruitment Slots used (plus Hero) · click a filled slot to free it</div>
+        <div className="slot-sources">
+          {slotGroups.map((group) => <div key={group.key} className={`source-card kind-${group.kind}`}>
+            <div className="source-title">{group.title}</div>
+            {group.note ? <p className="muted small">{group.note}</p> : <div className="source-cells">
+              {group.cells.map((cell, i) => {
+                const unit = cell.unit
+                return <div key={i} className={`slot-cell slot-${cell.slot} ${unit || cell.hero ? 'lit' : ''} ${cell.over ? 'over' : ''}`}
+                  style={unit ? undefined : { cursor: 'default' }}
+                  title={cell.hero ? `Your Hero (reserved)${hero ? ` · ${hero.points.total} pts` : ''}` : unit ? `Click to remove ${unit.name}` : `${labelSlot(cell.slot)} slot from ${cell.caption}`}
+                  onClick={unit ? () => remove(unit.poolId) : undefined}>
+                  <span className="rack-letter">{cell.slot}</span>
+                  <span className="rack-unit">{cell.hero ? (approved?.sheet?.name || 'Hero') : unit ? unit.name : 'Open'}</span>
+                  <span className="cell-source">{cell.hero ? (hero ? `${hero.points.total} pts` : 'No approved Hero') : cell.caption}</span>
+                </div>
+              })}
+            </div>}
+          </div>)}
+        </div>
+      </>}
       <Toast message={message} kind={message.startsWith('Saved') ? 'ok' : 'bad'} />
     </section>
     {!isGm && <nav className="subtabs nested army-subtabs span-all" aria-label="PC Army sections">
@@ -134,32 +182,6 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       {draftState?.conflict && <div className="bad small" role="status">Your detachment was changed elsewhere. Your unsaved selections are preserved. <button onClick={() => setDraftState(discardDraft)}>Load saved detachment</button></div>}
       {draftState?.dirty && !draftState?.conflict && <p className="muted small">Unsaved detachment changes</p>}
       <p className="muted small">{result.total} / {result.cap ?? 'Hero only'} points, including {hero?.points.total ?? '?'} Hero points</p>
-      <h3>Recruitment slots</h3>
-      <div className="slot-count muted small">{result.units.filter((u) => !u.missing).length} of {result.slots.total - 1} Recruitment Slots used (plus Hero)</div>
-      <div className="rack">
-        {SLOT_ORDER.map((slot) => {
-          const units = result.units.filter((u) => !u.missing && u.slot === slot)
-          const sources = result.slots.sources.filter((s) => s.slot === slot)
-          const heroBox = slot === 'H' ? 1 : 0
-          const available = result.slots.unitSlots[slot]
-          const count = Math.max(available, units.length) + heroBox
-          if (!count) return null
-          return <div key={slot} className="rack-group">
-            {Array.from({ length: count }, (_, i) => {
-              if (heroBox && i === 0) return <div key="hero" className="rack-box slot-H lit" style={{ cursor: 'default' }} title="Your Hero (reserved)">
-                <span className="rack-letter">H</span><span className="rack-unit">{approved?.sheet?.name || 'Hero'}</span>
-              </div>
-              const unit = units[i - heroBox]
-              const over = i - heroBox >= available
-              return <div key={i} className={`rack-box slot-${slot} ${unit ? 'lit' : ''} ${over ? 'over' : ''}`}
-                title={unit ? `Click to remove ${unit.name}` : over ? `${slot}: no slot available` : `${slot} from ${sources[i]?.source}`}
-                onClick={unit ? () => remove(unit.poolId) : undefined}>
-                <span className="rack-letter">{slot}</span><span className="rack-unit">{unit ? unit.name : ''}</span>
-              </div>
-            })}
-          </div>
-        })}
-      </div>
       <ul className="saved-list panel-scroll">{result.units.filter((u) => !u.missing).map((u) => <li key={u.poolId}>
         <div><strong>{u.name}</strong> <span className="muted small">{u.points} pts · {u.models} Models</span>
           <Chips unit={u} active={u.slot} locked={Object.fromEntries(u.eligibleSlots.map((s) => [s, result.slots.unitSlots[s] === 0]))}
@@ -214,52 +236,110 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         </>
       })()}
     </section></div>}
-    {!isGm && activeArmyPage === 'doctrine' && campaign.act >= 3 && <section className="panel span-all">
-      <h2>Personal Doctrine</h2>
-      <label className="field">Doctrine
-        <select value={draft.doctrineId ?? ''} onChange={(e) => setDraft({ ...draft, doctrineId: e.target.value || null, commands: [] })}>
-          <option value="">Choose Doctrine…</option>
-          {catalog.doctrines.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
-        </select>
-      </label>
-      {result.slots.doctrine && <>
-        <h3>Commands ({draft.commands.length}/{allowedDoctrineCommands(campaign, entitlements[user.uid])})</h3>
-        <div className="pool-list">{result.slots.doctrine.commands.map((command) => <label key={command.name} className="choice">
-          <input type="checkbox" checked={draft.commands.includes(command.name)}
-            disabled={!draft.commands.includes(command.name) && draft.commands.length >= allowedDoctrineCommands(campaign, entitlements[user.uid])}
-            onChange={() => setDraft((d) => ({ ...d, commands: d.commands.includes(command.name) ? d.commands.filter((s) => s !== command.name) : [...d.commands, command.name] }))} />
-          <strong>{command.name}</strong> · {command.slot}
-        </label>)}</div>
-      </>}
-    </section>}
-    {!isGm && activeArmyPage === 'roster' && campaign.act >= 2 && <section className="panel span-all">
-      <h2>Company Roster</h2>
-      <p className="muted small">Inspect the Company’s owned formations, selected upgrades and combat profiles. Recruiting is handled in Company &amp; Projects. Each formation is shared, but can be deployed by only one PC at a time.</p>
-      <div className="army-roster-cards">
-        {inventory.filter((item) => item.kind === 'unit').map((item) => {
-          const entry = catalog.unitsByKey[item.config?.key]
-          if (!entry) return <div className="army-roster-entry bad" key={item.id}>Unknown formation: {item.config?.key || 'missing profile'}</div>
-          const unit = resolveUnit(entry, item.config, item.factionId)
-          const { detailed, applied } = splitOptions(unit)
-          const status = selectedIds.has(item.id) ? 'In your detachment' : takenElsewhere.has(item.id) ? 'Deployed by another PC' : 'Available'
-          return <article key={item.id} className="army-roster-entry">
-            <div className="roster-head">
-              <strong>{unit.name}</strong>
-              <span className="roster-pts">{unit.points} pts</span>
+    {!isGm && activeArmyPage === 'doctrine' && campaign.act >= 3 && (() => {
+      const maxCommands = allowedDoctrineCommands(campaign, entitlements[user.uid])
+      const chosenDoctrine = result.slots.doctrine
+      const toggle = (name) => setDraft((d) => ({ ...d, commands: d.commands.includes(name) ? d.commands.filter((s) => s !== name) : [...d.commands, name] }))
+      return <div className="army-draft doctrine-page span-all">
+        <section className="panel">
+          <h2>Choose your Doctrine</h2>
+          <p className="muted small">Your Doctrine is personal. It adds a foundation slot, and its Commands add more slots to your detachment. Changing it clears your chosen Commands.</p>
+          <div className="doctrine-list panel-scroll" role="radiogroup" aria-label="Doctrine">
+            {catalog.doctrines.map((d) => {
+              const on = draft.doctrineId === d.id
+              return <label key={d.id} className={`pick-card slot-${d.foundationSlot} ${on ? 'on' : ''}`}>
+                <input type="radio" name="doctrine" checked={on} onChange={() => setDraft({ ...draft, doctrineId: d.id, commands: [] })} />
+                <div>
+                  <div className="pick-head"><strong>{d.name}</strong><span className={`tag slot-chip slot-${d.foundationSlot}`} title="Foundation slot">{labelSlot(d.foundationSlot)} foundation</span></div>
+                  {d.strategy && <p className="muted small">{d.strategy}</p>}
+                </div>
+              </label>
+            })}
+          </div>
+          {draft.doctrineId && <button type="button" onClick={() => setDraft({ ...draft, doctrineId: null, commands: [] })}>Clear Doctrine</button>}
+        </section>
+        <section className="panel">
+          <h2>Commands <span className="muted small">{draft.commands.length} / {maxCommands} chosen</span></h2>
+          {!chosenDoctrine ? <p className="muted">Choose a Doctrine to see its Commands.</p> : <>
+            <p className="muted small">Each Command you take adds a recruitment slot of the type shown.</p>
+            <div className="doctrine-list panel-scroll">
+              {chosenDoctrine.commands.map((command) => {
+                const on = draft.commands.includes(command.name)
+                const locked = !on && draft.commands.length >= maxCommands
+                return <label key={command.name} className={`pick-card slot-${command.slot} ${on ? 'on' : ''} ${locked ? 'locked' : ''}`}>
+                  <input type="checkbox" checked={on} disabled={locked} onChange={() => toggle(command.name)} />
+                  <div>
+                    <div className="pick-head"><strong>{command.name}</strong><span className={`tag slot-chip slot-${command.slot}`} title="Slot gained">+{labelSlot(command.slot)} slot</span></div>
+                    {command.timing && <div className="muted small">{command.timing}</div>}
+                    {command.effect && <p className="small">{command.effect}</p>}
+                  </div>
+                </label>
+              })}
             </div>
-            <div className="muted small">{unit.models} Models · <span className={status === 'Available' ? 'ok' : ''}>{status}</span></div>
-            <Chips unit={unit} />
-            <p className="muted small roster-stats">{formatStats(unit.stats)}</p>
-            {!!unit.attacks.length && <ul className="plain-list roster-list">{unit.attacks.map((attack, i) => <li key={i} className="small"><strong>{attack.name}</strong> {formatProfile(attack)}</li>)}</ul>}
-            {!!unit.abilities.length && <ul className="plain-list roster-list">{unit.abilities.map((a, i) => <li key={i} className="small"><strong>{a.name}</strong> — {a.effect}</li>)}</ul>}
-            {!!detailed.length && <ul className="plain-list roster-list">{detailed.map((o, i) => <li key={i} className="small"><strong>{o.name}</strong> — {o.effect ?? optionBrief(o)}</li>)}</ul>}
-            {!!applied.length && <p className="muted small">Upgrades: {applied.join(', ')}</p>}
-            {!!unit.missingTags.length && <p className="bad small">Unresolved Anti-type choices: {unit.missingTags.join(', ')}</p>}
-          </article>
-        })}
+          </>}
+          {draftState?.dirty && !draftState?.conflict && <p className="muted small">Unsaved changes</p>}
+          {draftState?.conflict && <p className="bad small">Someone else changed this detachment; review the Detachment tab before saving.</p>}
+          <button className="primary" disabled={saving || !result.legal || draftState?.conflict} onClick={() => perform(() => saveDetachment(campaign.id, user.uid, draft))}>Save legal detachment</button>
+          {!result.legal && <p className="muted small">Can't save yet: {result.errors[0]}</p>}
+        </section>
       </div>
-      {!inventory.some((item) => item.kind === 'unit') && <p className="muted">No formations have been acquired yet. Purchase them in Company &amp; Projects after your Patron unlocks recruitment.</p>}
-    </section>}
+    })()}
+    {!isGm && activeArmyPage === 'roster' && campaign.act >= 2 && (() => {
+      const holders = holdersOf(detachments, user.uid, draft.selections)
+      const nameOf = (uid) => uid === user.uid ? 'You' : heroes.find((h) => h.ownerUid === uid)?.sheet?.name ?? uid.slice(0, 7)
+      const items = inventory.filter((item) => item.kind === 'unit')
+      const byId = new Map(items.map((item) => [item.id, item]))
+      const unitOf = (item) => { const entry = catalog.unitsByKey[item.config?.key]; return entry ? resolveUnit(entry, item.config, item.factionId) : null }
+      const players = (campaign.memberUids ?? []).filter((uid) => uid !== campaign.gmUid)
+      const deployed = players.map((uid) => {
+        const units = [...holders].filter(([, h]) => h.uid === uid).map(([id, h]) => ({ item: byId.get(id), slot: h.slot })).filter((x) => x.item)
+          .map((x) => ({ ...x, unit: unitOf(x.item) })).filter((x) => x.unit)
+        return { uid, units, points: units.reduce((sum, x) => sum + (x.unit.points ?? 0), 0) }
+      })
+      return <section className="panel span-all">
+        <h2>Company Roster</h2>
+        <p className="muted small">Inspect the Company’s owned formations, selected upgrades and combat profiles. Recruiting is handled in Company &amp; Projects. Each formation is shared, but can be deployed by only one PC at a time. Identical formations are grouped.</p>
+        <h3>Who has what</h3>
+        <div className="deploy-row">
+          {deployed.map(({ uid, units, points }) => <div key={uid} className={`deploy-card ${uid === user.uid ? 'mine' : ''}`}>
+            <div className="deploy-head"><strong>{nameOf(uid)}</strong><span className="muted small">{units.length} {units.length === 1 ? 'formation' : 'formations'} · {points} pts</span></div>
+            {units.length ? <ul className="plain-list">{units.map(({ item, unit, slot }) => <li key={item.id} className="small">
+              <span className={`tag slot-chip slot-${slot}`}>{labelSlot(slot)}</span> {unit.name}
+            </li>)}</ul> : <p className="muted small">Nothing drafted</p>}
+            {uid === user.uid && draftState?.dirty && <p className="muted small">Includes unsaved changes</p>}
+          </div>)}
+        </div>
+        <h3>Owned formations</h3>
+        <div className="army-roster-cards">
+          {groupRoster(items).map(({ signature, items: copies }) => {
+            const unit = unitOf(copies[0])
+            if (!unit) return <div className="army-roster-entry bad" key={signature}>Unknown formation: {copies[0].config?.key || 'missing profile'}</div>
+            const { detailed, applied } = splitOptions(unit)
+            const taken = copies.filter((c) => holders.has(c.id))
+            const free = copies.length - taken.length
+            return <article key={signature} className="army-roster-entry">
+              <div className="roster-head">
+                <strong>{unit.name}{copies.length > 1 && <span className="roster-count"> ×{copies.length}</span>}</strong>
+                <span className="roster-pts">{unit.points} pts{copies.length > 1 ? ' each' : ''}</span>
+              </div>
+              <div className="muted small">{unit.models} Models · <span className={free ? 'ok' : ''}>{copies.length > 1 ? `${free} of ${copies.length} available` : free ? 'Available' : 'Deployed'}</span></div>
+              {!!taken.length && <div className="holder-row">{taken.map((c) => {
+                const h = holders.get(c.id)
+                return <span key={c.id} className={`tag holder ${h.uid === user.uid ? 'mine' : ''}`}>{nameOf(h.uid)} · {labelSlot(h.slot)}</span>
+              })}</div>}
+              <Chips unit={unit} />
+              <p className="muted small roster-stats">{formatStats(unit.stats)}</p>
+              {!!unit.attacks.length && <ul className="plain-list roster-list">{unit.attacks.map((attack, i) => <li key={i} className="small"><strong>{attack.name}</strong> {formatProfile(attack)}</li>)}</ul>}
+              {!!unit.abilities.length && <ul className="plain-list roster-list">{unit.abilities.map((a, i) => <li key={i} className="small"><strong>{a.name}</strong> — {a.effect}</li>)}</ul>}
+              {!!detailed.length && <ul className="plain-list roster-list">{detailed.map((o, i) => <li key={i} className="small"><strong>{o.name}</strong> — {o.effect ?? optionBrief(o)}</li>)}</ul>}
+              {!!applied.length && <p className="muted small">Upgrades: {applied.join(', ')}</p>}
+              {!!unit.missingTags.length && <p className="bad small">Unresolved Anti-type choices: {unit.missingTags.join(', ')}</p>}
+            </article>
+          })}
+        </div>
+        {!items.length && <p className="muted">No formations have been acquired yet. Purchase them in Company &amp; Projects after your Patron unlocks recruitment.</p>}
+      </section>
+    })()}
     {isGm && <section className="panel">
       <h2>GM — Manage Company formations</h2>
       <p className="muted small">These are free administrative/Patron/reward grants with no Gold charge. Use Company & Projects for paid recruitment proposals; GM approval there deducts Gold and adds the formation automatically.</p>
