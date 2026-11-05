@@ -18,7 +18,6 @@ export default function CompanyMarket({ campaign, user, isGm, heroes }) {
   const [catalog, setCatalog] = useState(null)
   const [characterData, setCharacterData] = useState(null)
   const [form, setForm] = useState({ kind: 'equipment', item: '', unit: '', price: '', difficulty: 2, check: 'Mind + Craft' })
-  const [craftChar, setCraftChar] = useState('mind')
   const [message, setMessage] = useState('')
   const [busy, setBusy] = useState(false)
   useEffect(() => {
@@ -110,9 +109,8 @@ export default function CompanyMarket({ campaign, user, isGm, heroes }) {
             {' · '}{offer.price} Gold</div></div>
           <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < offer.price ||
             (offer.kind === 'craft' && !pcView)} onClick={() => run(async () => {
-              const roll = await buy(offer)
-              setMessage(roll ? `Crafted with dice ${roll.dice.join(', ')}; outcome recorded in Company history` : 'Purchased. Inventory updated.')
-            }, 'Purchased. Inventory updated.')}> {offer.kind === 'craft' ? 'Craft' : 'Buy'}</button>
+              await buy(offer)
+            }, offer.kind === 'craft' ? 'Crafting roll recorded; Company inventory updated' : 'Purchased. Inventory updated.')}> {offer.kind === 'craft' ? 'Craft' : 'Buy'}</button>
         </li>)}</ul>
       <p className="muted small">Crafting checks are client-generated and recorded. Crafted Qualities and Flaws do not yet modify equipment profiles. Recruit and Develop opportunity limits remain GM-administered until Company Orders are automated.</p>
     </section>}
@@ -121,7 +119,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes }) {
       <h2>Publish regular market offers</h2>
       <p className="muted small">Publishing an item establishes an ongoing price and availability; players can purchase it without further approval.</p>
       <div className="campaign-form">
-        <label className="field">Type<select value={form.kind} onChange={(e) => setForm({ ...f, kind: e.target.value, item: '', unit: '', price: '' })}>
+        <label className="field">Type<select value={form.kind} onChange={(e) => setForm({ ...form, kind: e.target.value, item: '', unit: '', price: '' })}>
           <option value="equipment">Equipment purchase</option>
           <option value="craft">Crafting project</option>
           <option value="unit">Formation recruitment</option>
