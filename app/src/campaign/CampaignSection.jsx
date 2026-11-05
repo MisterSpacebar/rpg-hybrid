@@ -209,7 +209,7 @@ function Workspace({ id, user }) {
       <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
       {approved && <section className="panel"><h2>Last GM-approved character</h2><CharacterDatasheet character={approved.sheet} view={derive(normalizeCharacter(approved.sheet, data), data)} /></section>}
     </div>}
-    {tab === 'army' && <CampaignArmy campaign={campaign} user={user} isGm={isGm} heroes={heroes} inventory={inventory} detachments={detachments} approvedHeroes={approvedHeroes} onRefresh={refresh} />}
+    {tab === 'army' && <CampaignArmy campaign={campaign} user={user} isGm={isGm} heroes={heroes} inventory={inventory} detachments={detachments} approvedHeroes={approvedHeroes} />}
     {tab === 'gm' && isGm && <div className="panel-grid">
       <section className="panel"><h2>Progression</h2><p className="muted small">XP follows the campaign position: 5 XP per completed Turn and 5 XP on beginning Acts II, III and IV. Add exploration and Pivotal Objective XP below. Progress only moves forward.</p>
         <p>Earned XP: <strong>{campaign.xpTotal}</strong> <span className="muted small">({baseXp(campaign.format, campaign.act, campaign.turn)} from progression + {bonusXp(campaign)} bonus)</span></p>
