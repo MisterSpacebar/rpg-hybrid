@@ -183,6 +183,7 @@ function Workspace({ id, user }) {
   return <div className="builder-wrap campaign-page">
     <p className="small"><a href="#/campaign">Campaigns</a> / {campaign.name}</p>
     <div className="campaign-heading"><div><h1>{campaign.name}</h1><p className="muted">{isGm ? 'Game Master' : 'Player'} · {campaign.format} · Act {campaign.act}: {actName[campaign.act - 1]} · Turn {Math.min(campaign.turn, actMax)}/{actMax}{campaign.status === 'completed' ? ' · Completed' : ''}</p></div>
+      <span className="gold-chip" title="Shared Company treasury"><strong>{campaign.goldBalance ?? 0}</strong> Gold</span>
       {isGm && <button onClick={() => copyId(id)}>Copy invite ID</button>}
     </div>
     {error && <p className="bad" role="alert">{error}</p>}

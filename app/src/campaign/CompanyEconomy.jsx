@@ -93,16 +93,11 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes, detachmen
   if (!data || !catalog) return <section className="panel"><h2>Company economy</h2><p>{message || 'Loading equipment and formation catalogs…'}</p></section>
   return <div className="panel-grid">
     <div className="contents"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} /></div>
-    <section className="panel">
-      <h2>Company Treasury</h2>
-      <p><strong>{campaign.goldBalance ?? 0} Gold</strong> available · Shared by the whole Company</p>
-      <p className="muted small">Gold buys recruitment, equipment and projects. Battlefield Points remain a separate value. Only GM-approved transactions affect the treasury.</p>
-      {message && <p role="status" className={/submitted|recorded|approved|rejected/i.test(message) ? 'ok' : 'bad'}>{message}</p>}
-    </section>
+    {message && <p role="status" className={'span-all ' + (/submitted|recorded|approved|rejected/i.test(message) ? 'ok' : 'bad')}>{message}</p>}
 
     {!isGm && <section className="panel">
       <h2>Ask for a special acquisition</h2>
-      <p className="muted small">Routine purchases and eligible crafts happen instantly in the Company Marketplace above. Use this form only for a rare item, exception, custom project or agreement requiring GM discretion.</p>
+      <p className="muted small">Routine purchases and eligible crafts happen instantly in the Equipment, Crafting and Formations lists. Use this form only for a rare item, exception, custom project or agreement requiring GM discretion.</p>
       <div className="campaign-form">
         <label className="field">Project
           <select value={form.kind} onChange={(e) => setForm({ ...DEFAULT, kind: e.target.value })}>

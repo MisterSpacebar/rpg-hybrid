@@ -99,34 +99,39 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     return result
   }
 
-  return <div className="panel-grid contents">
-    <section className="panel">
-      <h2>Company Marketplace</h2>
-      <p><strong>{campaign.goldBalance ?? 0} Gold</strong> in the shared treasury</p>
-      <p className="muted small">Ordinary purchases are immediate: no individual GM approval. Patron signature Core and eligible generic troops unlock from the Company progression; other special profiles require a recruitment right. Every purchase charges Company Gold and updates inventory in the same transaction.</p>
-      {message && <p role="status">{message}</p>}
-    </section>
+  const visibleOffers = offers.filter((o) => o.enabled && (o.standardAccess
+    ? eligibleStandardOffer(o, catalog, campaign, entitlements, detachments)
+    : o.kind !== 'unit' || (campaign.act >= 2 && !!campaign.patronFactionId &&
+        (!o.factionId || o.factionId === campaign.patronFactionId))))
 
-    {!isGm && <section className="panel span-2">
-      <h2>Available equipment, crafting, and formations</h2>
-      <p className="muted small">Patron Core profiles: {recruitAccess.factionCore.length} · Generic profiles permitted by party slots: {recruitAccess.generic.length}. Two free starting formations are Company grants, not free Marketplace purchases.</p>
-      {!offers.some((o) => o.enabled) && <p className="muted">No offers have been initialized. The GM can open this page once after assigning the Patron; standard offers are published automatically.</p>}
-      <ul className="saved-list">{offers.filter((o) => o.enabled && (o.standardAccess
-        ? eligibleStandardOffer(o, catalog, campaign, entitlements, detachments)
-        : o.kind !== 'unit' || (campaign.act >= 2 && !!campaign.patronFactionId &&
-            (!o.factionId || o.factionId === campaign.patronFactionId)))).map((offer) =>
-        <li key={offer.id}>
-          <div><strong>{offer.label}</strong><div className="muted small">{offer.kind === 'craft'
-            ? `Crafting · ${offer.check} · Difficulty ${offer.difficulty}`
-            : offer.kind === 'unit' ? `Recruitment · ${offer.points} Points` : 'Equipment'}
-            {' · '}{offer.price} Gold</div></div>
-          <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < offer.price ||
-            (offer.kind === 'craft' && !pcView)} onClick={() => run(async () => {
-              await buy(offer)
-            }, offer.kind === 'craft' ? 'Crafting roll recorded; Company inventory updated' : 'Purchased. Inventory updated.')}> {offer.kind === 'craft' ? 'Craft' : 'Buy'}</button>
-        </li>)}</ul>
-      <p className="muted small">Crafting checks are client-generated and recorded. Crafted Qualities and Flaws do not yet modify equipment profiles. Recruit and Develop opportunity limits remain GM-administered until Company Orders are automated.</p>
-    </section>}
+  return <div className="panel-grid contents">
+    {message && <p role="status" className="span-all">{message}</p>}
+
+    {!isGm && <div className="offer-row span-all">
+      {[
+        ['equipment', 'Equipment', 'Bought instantly with Company Gold; added to the Company inventory.'],
+        ['craft', 'Crafting', 'Crafting checks are client-generated and recorded. Crafted Qualities and Flaws do not yet modify equipment profiles.'],
+        ['unit', 'Formations', `Patron Core profiles: ${recruitAccess.factionCore.length} · Generic profiles permitted by party slots: ${recruitAccess.generic.length}. Two free starting formations are Company grants, not Marketplace purchases.`],
+      ].map(([kind, title, note]) => {
+        const list = visibleOffers.filter((o) => o.kind === kind)
+        return <section className="panel" key={kind}>
+          <h2>{title}</h2>
+          <p className="muted small">{note}</p>
+          {!list.length && <p className="muted">{offers.some((o) => o.enabled) ? 'Nothing available yet.' : 'No offers have been initialized. The GM can open this page once after assigning the Patron; standard offers are published automatically.'}</p>}
+          <ul className="saved-list panel-scroll">{list.map((offer) =>
+            <li key={offer.id}>
+              <div><strong>{offer.label}</strong><div className="muted small">{offer.kind === 'craft'
+                ? `${offer.check} · Difficulty ${offer.difficulty}`
+                : offer.kind === 'unit' ? `${offer.points} Points` : 'Equipment'}
+                {' · '}{offer.price} Gold</div></div>
+              <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < offer.price ||
+                (offer.kind === 'craft' && !pcView)} onClick={() => run(async () => {
+                  await buy(offer)
+                }, offer.kind === 'craft' ? 'Crafting roll recorded; Company inventory updated' : 'Purchased. Inventory updated.')}>{offer.kind === 'craft' ? 'Craft' : 'Buy'}</button>
+            </li>)}</ul>
+        </section>
+      })}
+    </div>}
 
     {isGm && <section className="panel">
       <h2>Publish regular market offers</h2>
@@ -159,7 +164,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     </section>}
     {isGm && <section className="panel">
       <h2>Published offers</h2>
-      <ul className="saved-list">{offers.map((o) => <li key={o.id}>
+      <ul className="saved-list panel-scroll">{offers.map((o) => <li key={o.id}>
         <div><strong>{o.label}</strong><div className="muted small">{o.kind} · {o.price} Gold · {o.enabled ? 'Available' : 'Disabled'}</div></div>
         <button disabled={busy} onClick={() => run(() => setMarketOfferEnabled(campaign.id, o.id, !o.enabled),
           o.enabled ? 'Offer disabled' : 'Offer enabled')}>{o.enabled ? 'Disable' : 'Enable'}</button>
@@ -168,7 +173,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     <section className="panel">
       <h2>Recent self-service purchases</h2>
       {!purchases.length && <p className="muted">No self-service purchases recorded.</p>}
-      <ul className="saved-list">{purchases.slice(-20).reverse().map((p) => <li key={p.id}>
+      <ul className="saved-list panel-scroll">{purchases.slice(-20).reverse().map((p) => <li key={p.id}>
         <div><strong>{offers.find((o) => o.id === p.offerId)?.label ?? p.kind}</strong><div className="muted small">{heroes.find((h) => h.ownerUid === p.ownerUid)?.sheet?.name ?? p.ownerUid.slice(0, 8)} · {p.price} Gold</div></div>
         {p.crafting && <span className="muted small">{p.crafting.success ? 'Craft succeeded' : 'Craft failed'} · {p.crafting.qualities} Qualities</span>}
       </li>)}</ul>

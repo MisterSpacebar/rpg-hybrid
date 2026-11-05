@@ -91,34 +91,19 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
   return <div className="panel-grid">
     <section className="panel span-all">
       <h2>Company military pool</h2>
-      <p className="muted small">
-        All formations are Company property. Each player builds a temporary detachment from the same owned pool;
-        a formation cannot be deployed by two PCs simultaneously. Faction foundation slots belong to every PC,
-        while each PC chooses their own Doctrine. Purchasing a formation does not automatically grant another slot.
-      </p>
       <p><strong>{inventory.filter((i) => i.kind === 'unit').length}</strong> owned formations · <strong>{campaign.act >= 2 ? sponsor?.name ?? 'Sponsor not chosen' : 'Company not founded'}</strong> · {deploymentCap(campaign) ?? 'Hero only'} deployment points per PC</p>
+      <p className="muted small">
+        Formations are Company property; each PC drafts a temporary detachment from the shared pool, and a formation can't be deployed by two PCs at once.
+        Foundation slots belong to every PC, while each PC chooses their own Doctrine.
+      </p>
       {message && <p className={message.startsWith('Saved') ? 'ok' : 'bad'} role="status">{message}</p>}
     </section>
-    {!isGm && <section className="panel">
+    {!isGm && <div className="army-draft span-all"><div className="col-stack">
+    <section className="panel">
       <h2>My Detachment</h2>
       {draftState?.conflict && <div className="bad small" role="status">Your detachment was changed elsewhere. Your unsaved selections are preserved. <button onClick={() => setDraftState(discardDraft)}>Load saved detachment</button></div>}
       {draftState?.dirty && !draftState?.conflict && <p className="muted small">Unsaved detachment changes</p>}
       <p className="muted small">{result.total} / {result.cap ?? 'Hero only'} points, including {hero?.points.total ?? '?'} Hero points</p>
-      {campaign.act >= 3 && <label className="field">Personal Doctrine
-        <select value={draft.doctrineId ?? ''} onChange={(e) => setDraft({ ...draft, doctrineId: e.target.value || null, commands: [] })}>
-          <option value="">Choose Doctrine…</option>
-          {catalog.doctrines.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
-        </select>
-      </label>}
-      {campaign.act >= 3 && result.slots.doctrine && <section>
-        <h3>Personal Doctrine Commands ({draft.commands.length}/{allowedDoctrineCommands(campaign, entitlements[user.uid])})</h3>
-        {result.slots.doctrine.commands.map((command) => <label key={command.name} className="choice">
-          <input type="checkbox" checked={draft.commands.includes(command.name)}
-            disabled={!draft.commands.includes(command.name) && draft.commands.length >= allowedDoctrineCommands(campaign, entitlements[user.uid])}
-            onChange={() => setDraft((d) => ({ ...d, commands: d.commands.includes(command.name) ? d.commands.filter((s) => s !== command.name) : [...d.commands, command.name] }))} />
-          <strong>{command.name}</strong> · {command.slot}
-        </label>)}
-      </section>}
       <h3>Recruitment slots</h3>
       <div className="slot-count muted small">{result.units.filter((u) => !u.missing).length} of {result.slots.total - 1} Recruitment Slots used (plus Hero)</div>
       <div className="rack">
@@ -153,8 +138,27 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       </li>)}</ul>
       {result.errors.length > 0 && <ul className="checks">{result.errors.map((e, i) => <li className="bad" key={i}>{e}</li>)}</ul>}
       <button className="primary" disabled={saving || !result.legal || draftState?.conflict} onClick={() => perform(() => saveDetachment(campaign.id, user.uid, draft))}>Save legal detachment</button>
+    </section>
+    {campaign.act >= 3 && <section className="panel">
+      <h2>Personal Doctrine</h2>
+      <label className="field">Doctrine
+        <select value={draft.doctrineId ?? ''} onChange={(e) => setDraft({ ...draft, doctrineId: e.target.value || null, commands: [] })}>
+          <option value="">Choose Doctrine…</option>
+          {catalog.doctrines.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
+        </select>
+      </label>
+      {result.slots.doctrine && <>
+        <h3>Commands ({draft.commands.length}/{allowedDoctrineCommands(campaign, entitlements[user.uid])})</h3>
+        <div className="pool-list">{result.slots.doctrine.commands.map((command) => <label key={command.name} className="choice">
+          <input type="checkbox" checked={draft.commands.includes(command.name)}
+            disabled={!draft.commands.includes(command.name) && draft.commands.length >= allowedDoctrineCommands(campaign, entitlements[user.uid])}
+            onChange={() => setDraft((d) => ({ ...d, commands: d.commands.includes(command.name) ? d.commands.filter((s) => s !== command.name) : [...d.commands, command.name] }))} />
+          <strong>{command.name}</strong> · {command.slot}
+        </label>)}</div>
+      </>}
     </section>}
-    {!isGm && <section className="panel">
+    </div>
+    <section className="panel pool-panel">
       <h2>Select owned formations</h2>
       {campaign.act === 1 && <p className="muted">Act I uses your Hero. Military deployments begin in Act II.</p>}
       {campaign.act >= 2 && !sponsor && <p className="muted">The GM must select a sponsoring faction before military deployment.</p>}
@@ -196,7 +200,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
           })}</ul>
         </>
       })()}
-    </section>}
+    </section></div>}
     {isGm && <section className="panel">
       <h2>GM — Manage Company formations</h2>
       <p className="muted small">These are free administrative/Patron/reward grants with no Gold charge. Use Company & Projects for paid recruitment proposals; GM approval there deducts Gold and adds the formation automatically.</p>
