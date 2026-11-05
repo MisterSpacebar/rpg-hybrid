@@ -9,13 +9,13 @@ import { eligibleStandardOffer, standardRecruitmentProfiles } from './recruitmen
 import { watchEntitlements } from './cloud.js'
 import { craftRoll, priceForFormation } from './market.js'
 import {
-  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers,
+  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers,
   watchMarketOffers, watchMarketPurchases,
 } from './marketCloud.js'
 
 // Firestore validates the market's price and assets atomically; this UI handles
 // only the player experience and choosing a GM-published offer.
-export default function CompanyMarket({ campaign, user, isGm, heroes, detachments = [] }) {
+export default function CompanyMarket({ campaign, user, isGm, heroes, detachments = [], inventory = [] }) {
   const [offers, setOffers] = useState([])
   const [purchases, setPurchases] = useState([])
   const [entitlements, setEntitlements] = useState({})
@@ -23,6 +23,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   const [characterData, setCharacterData] = useState(null)
   const [form, setForm] = useState({ kind: 'equipment', item: '', unit: '', price: '', difficulty: 2, check: 'Mind + Craft' })
   const [message, setMessage] = useState('')
+  const [selectedTargets, setSelectedTargets] = useState({})
   const [busy, setBusy] = useState(false)
   useEffect(() => {
     let active = true
@@ -38,6 +39,11 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     return () => { a(); b(); c() }
   }, [campaign.id])
   useEffect(() => {
+    if (!isGm || !characterData) return
+    seedDefaultEquipmentOffers(campaign.id, user.uid, characterData)
+      .catch((error) => setMessage(`Could not populate the equipment shop: ${error.message}`))
+  }, [isGm, characterData, campaign.id, user.uid])
+  useEffect(() => {
     if (!isGm || !catalog || campaign.act < 2 || !campaign.patronFactionId) return
     seedStandardRecruitmentOffers(campaign.id, user.uid, campaign, catalog)
       .catch((error) => setMessage(`Could not unlock standard recruitment: ${error.message}`))
@@ -50,6 +56,10 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   const defaultUnit = selectedUnit && catalog ? newUnitConfig(selectedUnit, selectedUnit.slots[0]) : null
   const resolved = selectedUnit && defaultUnit ? resolveUnit(selectedUnit, defaultUnit, selectedUnit.source === 'faction' ? patron.id : null) : null
   const selected = gear.find((g) => `${g.kind}:${g.name}` === form.item)
+  const enchantRecipes = characterData?.magic.enchantGroups.flatMap((group) => group.entries
+    .filter((entry) => entry.allowed?.length && !entry.choice && !entry.custom && entry.group !== 'weapon' && entry.group !== 'armor' && entry.group !== 'shield')
+    .map((entry) => ({ key: entry.key, name: entry.name, allowed: entry.allowed, points: entry.points }))) ?? []
+  const selectedEnchant = enchantRecipes.find((entry) => entry.key === form.enchantKey)
   const pc = heroes.find((h) => h.ownerUid === user.uid)?.sheet
   const pcView = pc && characterData ? derive(normalizeCharacter(pc, characterData), characterData) : null
   const run = async (fn, success) => {
@@ -60,7 +70,12 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   const publish = async () => {
     let offer
     const price = form.kind === 'unit' && resolved ? priceForFormation(resolved.points) : Number(form.price)
-    if (form.kind === 'unit') {
+    if (form.kind === 'enchant') {
+      if (!selectedEnchant) throw new Error('Choose an enchantment')
+      if (!['melee', 'ranged', 'armor', 'shield'].includes(form.targetKind) || !selectedEnchant.allowed.includes(form.targetKind)) throw new Error('Choose compatible equipment')
+      offer = { kind: 'enchant', label: selectedEnchant.name, price, enchantKey: selectedEnchant.key,
+        targetKind: form.targetKind, difficulty: Number(form.difficulty), check: form.check }
+    } else if (form.kind === 'unit') {
       if (!resolved || resolved.pointsVary || (resolved.missingTags ?? []).length) throw new Error('Select a fully resolved formation')
       offer = { kind: 'unit', label: resolved.name, price, config: defaultUnit,
         points: resolved.points, factionId: selectedUnit.source === 'faction' ? patron.id : null }
@@ -78,7 +93,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   }
   const buy = async (offer) => {
     let result = null
-    if (offer.kind === 'craft') {
+    if (['craft', 'enchant'].includes(offer.kind)) {
       if (!pcView) throw new Error('Save a campaign character before crafting')
       const [char, skill] = offer.check.toLowerCase().split(' + ')
       const pool = pcView.characteristics[char]
@@ -96,9 +111,15 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       const roll = craftRoll(dice, threshold, offer.difficulty)
       result = { dice, threshold, successes: roll.successes, surges: roll.surges, blunders: roll.blunders }
     }
-    await purchaseOffer(campaign.id, user.uid, offer.id, result)
+    await purchaseOffer(campaign.id, user.uid, offer.id, result,
+      offer.kind === 'enchant' ? selectedTargets[offer.id] : null)
     return result
   }
+  const compatibleTargets = (offer) => inventory.filter((entry) => entry.kind === 'equipment'
+    && entry.item?.kind === offer.targetKind
+    && (!entry.ownerUid || entry.ownerUid === user.uid)
+    && !(entry.enchants ?? []).some((e) => e.key === offer.enchantKey)
+    && (entry.enchants ?? []).length < 3)
 
   const visibleOffers = offers.filter((o) => o.enabled && (o.standardAccess
     ? eligibleStandardOffer(o, catalog, campaign, entitlements, detachments)
@@ -111,7 +132,8 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     {!isGm && <div className="offer-row span-all">
       {[
         ['equipment', 'Equipment', 'Bought instantly with Company Gold; added to the Company inventory.'],
-        ['craft', 'Crafting', 'Crafting checks are client-generated and recorded. Crafted Qualities and Flaws do not yet modify equipment profiles.'],
+        ['craft', 'Crafting', 'Quest/reward recipes are published once; ordinary projects do not require per-attempt GM approval. Advanced crafted Qualities and flaws await the full profile editor.'],
+        ['enchant', 'Enchanting', 'Apply an unlocked enchantment to a real Company item. Successful checks update its effects and equipped Points; enhanced ranks and Blunder deterioration need a later integration.'],
         ['unit', 'Formations', `Patron Core profiles: ${recruitAccess.factionCore.length} · Generic profiles permitted by party slots: ${recruitAccess.generic.length}. Two free starting formations are Company grants, not Marketplace purchases.`],
       ].map(([kind, title, note]) => {
         const list = visibleOffers.filter((o) => o.kind === kind)
@@ -125,10 +147,18 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
                 ? `${offer.check} · Difficulty ${offer.difficulty}`
                 : offer.kind === 'unit' ? `${offer.points} Points` : 'Equipment'}
                 {' · '}{offer.price} Gold</div></div>
+              {offer.kind === 'enchant' && <label className="field">Item
+                <select value={selectedTargets[offer.id] ?? ''} onChange={(event) =>
+                  setSelectedTargets((prev) => ({ ...prev, [offer.id]: event.target.value }))}>
+                  <option value="">Choose owned item…</option>
+                  {compatibleTargets(offer).map((item) => <option key={item.id} value={item.id}>{item.item.name} · {(item.enchants ?? []).length} enchantments</option>)}
+                </select>
+              </label>}
               <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < offer.price ||
-                (offer.kind === 'craft' && !pcView)} onClick={() => run(async () => {
+                (['craft', 'enchant'].includes(offer.kind) && !pcView) ||
+                (offer.kind === 'enchant' && !compatibleTargets(offer).some((item) => item.id === selectedTargets[offer.id]))} onClick={() => run(async () => {
                   await buy(offer)
-                }, offer.kind === 'craft' ? 'Crafting roll recorded; Company inventory updated' : 'Purchased. Inventory updated.')}>{offer.kind === 'craft' ? 'Craft' : 'Buy'}</button>
+                }, offer.kind === 'craft' ? 'Crafting roll recorded; Company inventory updated' : offer.kind === 'enchant' ? 'Enchantment attempt recorded. Successes update the owned item.' : 'Purchased. Inventory updated.')}>{offer.kind === 'craft' ? 'Craft' : offer.kind === 'enchant' ? 'Enchant' : 'Buy'}</button>
             </li>)}</ul>
         </section>
       })}
@@ -136,14 +166,23 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
 
     {isGm && <section className="panel">
       <h2>Publish regular market offers</h2>
-      <p className="muted small">Signature Core and generic profiles unlock automatically from the Company's Patron and recruitment slots. Publish only special arrangements or priced equipment and crafting recipes; players purchase these without further approval.</p>
+      <p className="muted small">Ordinary equipment is automatically stocked. Publish quest-unlocked crafting and enchantment recipes once, or make special arrangements; PCs then use them without another GM approval.</p>
       <div className="campaign-form">
-        <label className="field">Type<select value={form.kind} onChange={(e) => setForm({ ...form, kind: e.target.value, item: '', unit: '', price: '' })}>
+        <label className="field">Type<select value={form.kind} onChange={(e) => setForm({ ...form, kind: e.target.value, item: '', unit: '', price: '', enchantKey: '', targetKind: '', check: e.target.value === 'enchant' ? 'Mind + Mysticism' : 'Mind + Craft' })}>
           <option value="equipment">Equipment purchase</option>
           <option value="craft">Crafting project</option>
+          <option value="enchant">Enchantment recipe</option>
           <option value="unit">Formation recruitment</option>
         </select></label>
-        {form.kind === 'unit' ? <label className="field">Formation<select value={form.unit} onChange={(e) => setForm({ ...form, unit: e.target.value })}>
+        {form.kind === 'enchant' ? <><label className="field">Enchantment
+          <select value={form.enchantKey ?? ''} onChange={(e) => setForm({ ...form, enchantKey: e.target.value, targetKind: '' })}>
+            <option value="">Choose a component…</option>
+            {enchantRecipes.map((e) => <option key={e.key} value={e.key}>{e.name} (+{e.points} battlefield pts)</option>)}
+          </select></label>
+          <label className="field">Equipment type<select value={form.targetKind ?? ''} onChange={(e) => setForm({ ...form, targetKind: e.target.value })}>
+            <option value="">Choose…</option>
+            {(selectedEnchant?.allowed ?? []).map((kind) => <option key={kind} value={kind}>{kind}</option>)}
+          </select></label></> : form.kind === 'unit' ? <label className="field">Formation<select value={form.unit} onChange={(e) => setForm({ ...form, unit: e.target.value })}>
           <option value="">Choose a formation…</option>
           {units.map((u) => <option key={u.key} value={u.key}>{u.name}</option>)}
         </select></label> : <label className="field">Equipment<select value={form.item} onChange={(e) => setForm({ ...form, item: e.target.value })}>
@@ -152,15 +191,15 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
         </select></label>}
         {form.kind === 'unit' ? <p className="muted small">Default formation · {resolved?.points ?? '—'} Points · {resolved && !resolved.pointsVary ? priceForFormation(resolved.points) : '—'} Gold</p>
         : <label className="field">Published Gold price<input type="number" min={1} max={1000} step={1} value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} /></label>}
-        {form.kind === 'craft' && <>
+        {['craft', 'enchant'].includes(form.kind) && <>
           <label className="field">Difficulty<select value={form.difficulty} onChange={(e) => setForm({ ...form, difficulty: Number(e.target.value) })}>
             {[1,2,3,4,5].map((n) => <option key={n} value={n}>{n} successes</option>)}
           </select></label>
           <label className="field">Crafting approach<select value={form.check} onChange={(e) => setForm({ ...form, check: e.target.value })}>
-            {['Body + Craft','Agility + Craft','Mind + Craft','Mind + Mysticism','Spirit + Mysticism'].map((x) => <option key={x} value={x}>{x}</option>)}
+            {(form.kind === 'enchant' ? ['Mind + Mysticism','Spirit + Mysticism'] : ['Body + Craft','Agility + Craft','Mind + Craft','Mind + Mysticism','Spirit + Mysticism']).map((x) => <option key={x} value={x}>{x}</option>)}
           </select></label>
         </>}
-        <button className="primary" disabled={busy || !(form.kind === 'unit' ? resolved && !resolved.pointsVary && !(resolved.missingTags ?? []).length : selected && Number.isInteger(Number(form.price)) && Number(form.price) >= 1)} onClick={() => run(publish, 'Offer published')}>Publish offer</button>
+        <button className="primary" disabled={busy || !(form.kind === 'unit' ? resolved && !resolved.pointsVary && !(resolved.missingTags ?? []).length : (form.kind === 'enchant' ? selectedEnchant && selectedEnchant.allowed.includes(form.targetKind) : selected) && Number.isInteger(Number(form.price)) && Number(form.price) >= 1)} onClick={() => run(publish, 'Offer published')}>Publish offer</button>
       </div>
     </section>}
     {isGm && <section className="panel">
@@ -176,7 +215,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       {!purchases.length && <p className="muted">No self-service purchases recorded.</p>}
       <ul className="saved-list panel-scroll">{purchases.slice(-20).reverse().map((p) => <li key={p.id}>
         <div><strong>{offers.find((o) => o.id === p.offerId)?.label ?? p.kind}</strong><div className="muted small">{heroes.find((h) => h.ownerUid === p.ownerUid)?.sheet?.name ?? p.ownerUid.slice(0, 8)} · {p.price} Gold</div></div>
-        {p.crafting && <span className="muted small">{p.crafting.success ? 'Craft succeeded' : 'Craft failed'} · {p.crafting.qualities} Qualities</span>}
+        {p.crafting && <span className="muted small">{p.crafting.success ? 'Succeeded' : 'Failed'} · {p.crafting.qualities} ordinary excess successes · {p.crafting.surges ? 'Surge' : 'No Surge'} · {p.crafting.blunders ? 'Blunder' : 'No Blunder'}</span>}
       </li>)}</ul>
     </section>
   </div>
