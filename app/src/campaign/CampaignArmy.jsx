@@ -170,7 +170,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
     </section>}
     {isGm && <section className="panel span-all">
       <h2>GM — Manage Company formations</h2>
-      <p className="muted small">Only the GM can register acquired units. Use a recruitment, Patron grant, mission reward, or approved agreement before adding them. Gold expenditure and recruiting eligibility are not yet automatically enforced.</p>
+      <p className="muted small">These are free administrative/Patron/reward grants with no Gold charge. Use Company & Projects for paid recruitment proposals; GM approval there deducts Gold and adds the formation automatically.</p>
       {!canRecruit && <p className="bad" role="status">{campaign.act < 2 ? 'Formations can be granted once the campaign reaches Act II (complete every Turn of Act I in GM Controls).' : 'Choose a sponsoring faction in GM Controls → Progression before granting formations.'}</p>}
       <label className="field">Grant formation
         <select value={selectedKey} onChange={(e) => setSelectedKey(e.target.value)}>
@@ -206,7 +206,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
     </section>}
     {isGm && <section className="panel span-all">
       <h2>GM — Personal detachment upgrades</h2>
-      <p className="muted small">Each player inherits the same two foundation slots from the sponsoring faction. Flex slots are purchased individually through Develop (2 Gold each, maximum two). Grand's third Doctrine Command requires a separate unlock.</p>
+      <p className="muted small">Each PC inherits the sponsoring faction's two ordinary foundation slots. Paid Flex slots should be acquired through Company & Projects for 2 Gold each; controls below are GM overrides for corrections or narrative awards. Grand's third Doctrine Command requires its separate unlock.</p>
       {campaign.memberUids.filter((uid) => uid !== campaign.gmUid).map((uid) => {
         const current = entitlementDrafts[uid] ?? acceptSnapshot(null, { flexSlots: [], grandThirdCommand: false })
         const entitlement = current.value
