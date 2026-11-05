@@ -19,6 +19,9 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
   const [selectedKey, setSelectedKey] = useState('')
   const [selectedGear, setSelectedGear] = useState('')
   const [message, setMessage] = useState('')
+  const [poolQuery, setPoolQuery] = useState('')
+  const [poolSlot, setPoolSlot] = useState('')
+  const [poolAvailableOnly, setPoolAvailableOnly] = useState(false)
   const [saving, setSaving] = useState(false)
   const my = detachments.find((d) => d.ownerUid === user.uid) ?? empty
   const mySaved = { doctrineId: my.doctrineId ?? null, commands: my.commands ?? [], selections: my.selections ?? [] }
@@ -155,18 +158,44 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       <h2>Select owned formations</h2>
       {campaign.act === 1 && <p className="muted">Act I uses your Hero. Military deployments begin in Act II.</p>}
       {campaign.act >= 2 && !sponsor && <p className="muted">The GM must select a sponsoring faction before military deployment.</p>}
-      <ul className="saved-list">{canRecruit && inventory.filter((i) => i.kind === 'unit').map((item) => {
-        const entry = catalog.unitsByKey[item.config?.key]
-        if (!entry) return <li key={item.id}>Unsupported formation ({item.config?.key})</li>
-        const unit = resolveUnit(entry, item.config, item.factionId)
-        const chosen = selectedIds.has(item.id)
-        const taken = takenElsewhere.has(item.id)
-        const slots = unit.eligibleSlots.filter((slot) => result.used[slot] < result.slots.unitSlots[slot])
-        return <li key={item.id}><div><strong>{unit.name}</strong><div className="muted small">{unit.points} pts · {unit.models} Models {taken ? '· Selected by another PC' : ''}</div></div>
-          <div className="saved-actions">{chosen ? <span className="ok">Selected</span> : <button disabled={taken || !slots.length} onClick={() => add(item.id, slots[0])}>{taken ? 'In use' : slots.length ? 'Deploy' : 'No slot'}</button>}</div>
-        </li>
-      })}</ul>
-      {canRecruit && !inventory.some((i) => i.kind === 'unit') && <p className="muted">No formations have been recruited into the Company pool.</p>}
+      {canRecruit && (() => {
+        const rows = inventory.filter((i) => i.kind === 'unit').map((item) => {
+          const entry = catalog.unitsByKey[item.config?.key]
+          if (!entry) return { item, unit: null }
+          const unit = resolveUnit(entry, item.config, item.factionId)
+          const taken = takenElsewhere.has(item.id)
+          const slots = unit.eligibleSlots.filter((slot) => result.used[slot] < result.slots.unitSlots[slot])
+          return { item, unit, taken, slots, chosen: selectedIds.has(item.id) }
+        })
+        if (!rows.length) return <p className="muted">No formations have been recruited into the Company pool.</p>
+        const q = poolQuery.trim().toLowerCase()
+        const slotKinds = [...new Set(rows.flatMap((r) => r.unit?.eligibleSlots ?? []))]
+        const shown = rows.filter((r) => !r.unit
+          || ((!q || r.unit.name.toLowerCase().includes(q) || r.unit.tags.some((t) => t.toLowerCase().includes(q)))
+            && (!poolSlot || r.unit.eligibleSlots.includes(poolSlot))
+            && (!poolAvailableOnly || r.chosen || (!r.taken && r.slots.length))))
+        return <>
+          <div className="pool-filters">
+            <input type="search" placeholder="Search name or tag…" aria-label="Search owned formations" value={poolQuery} onChange={(e) => setPoolQuery(e.target.value)} />
+            <select aria-label="Filter by slot" value={poolSlot} onChange={(e) => setPoolSlot(e.target.value)}>
+              <option value="">All slots</option>
+              {slotKinds.map((s) => <option key={s} value={s}>{labelSlot(s)}</option>)}
+            </select>
+            <label className="choice"><input type="checkbox" checked={poolAvailableOnly} onChange={(e) => setPoolAvailableOnly(e.target.checked)} />Available only</label>
+          </div>
+          <p className="muted small">{shown.length} of {rows.length} formations</p>
+          <ul className="saved-list pool-list">{shown.map(({ item, unit, taken, slots, chosen }) => {
+            if (!unit) return <li key={item.id}>Unsupported formation ({item.config?.key})</li>
+            return <li key={item.id}>
+              <div>
+                <strong>{unit.name}</strong> <span className="muted small">{unit.points} pts · {unit.models} Models{taken ? ' · Selected by another PC' : ''}</span>
+                <div className="small">{unit.eligibleSlots.map((s) => <span className="tag" key={s}>{labelSlot(s)}</span>)}{unit.tags.map((t) => <span className="tag muted" key={t}>{t}</span>)}</div>
+              </div>
+              <div className="saved-actions">{chosen ? <span className="ok">Selected</span> : <button disabled={taken || !slots.length} onClick={() => add(item.id, slots[0])}>{taken ? 'In use' : slots.length ? 'Deploy' : 'No slot'}</button>}</div>
+            </li>
+          })}</ul>
+        </>
+      })()}
     </section>}
     {isGm && <section className="panel">
       <h2>GM — Manage Company formations</h2>
