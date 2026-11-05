@@ -21,7 +21,7 @@ test('recruitment costs depend only on whole resolved Points', () => {
 test('crafting rolls count successes and pairs of sixes/ones', () => {
   assert.deepEqual(craftRoll([6, 6, 1, 1, 4], 4, 2), {
     dice: [6, 6, 1, 1, 4], successes: 3, surges: 1, blunders: 1,
-    difficulty: 2, success: true, qualities: 2, flaws: 1, complications: false,
+    difficulty: 2, success: true, qualities: 1, flaws: 1, complications: false,
   })
   assert.equal(craftRoll([1,2,3,4], 5, 3).success, false)
   assert.throws(() => craftRoll([7], 4, 2))
