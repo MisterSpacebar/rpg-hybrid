@@ -96,6 +96,9 @@ service cloud.firestore {
           ])
           && request.resource.data.lastPurchaseUid == request.auth.uid
           && p.ownerUid == request.auth.uid
+          && p.createdAt == request.time
+          && l.createdAt == request.time
+          && request.resource.data.updatedAt == request.time
           && p.offerId == offerId
           && p.price == o.price
           && o.enabled == true
@@ -160,6 +163,7 @@ service cloud.firestore {
           && request.resource.data.createdBy == request.auth.uid
           && request.resource.data.kind in ['equipment', 'unit', 'craft']
           && request.resource.data.enabled == true
+          && request.resource.data.createdAt == request.time
           && request.resource.data.price is int
           && request.resource.data.price >= 1
           && request.resource.data.price <= 1000
@@ -183,6 +187,33 @@ service cloud.firestore {
           && request.resource.data.price is int
           && request.resource.data.price > 0
           && request.resource.data.status == 'completed'
+          && request.resource.data.createdAt == request.time
+          && request.resource.data.balanceAfter is int
+          && request.resource.data.balanceAfter >= 0
+          && request.resource.data.keys().hasOnly([
+            'offerId','ownerUid','kind','price','balanceAfter','status','createdAt','crafting'
+          ])
+          && (request.resource.data.kind != 'craft' || (
+            request.resource.data.crafting is map
+            && request.resource.data.crafting.difficulty == offered(request.resource.data.offerId).difficulty
+            && request.resource.data.crafting.successes is int
+            && request.resource.data.crafting.successes >= 0
+            && request.resource.data.crafting.successes <= 6
+            && request.resource.data.crafting.surges is int
+            && request.resource.data.crafting.surges >= 0
+            && request.resource.data.crafting.surges <= 3
+            && request.resource.data.crafting.blunders is int
+            && request.resource.data.crafting.blunders >= 0
+            && request.resource.data.crafting.blunders <= 3
+            && request.resource.data.crafting.success ==
+              (request.resource.data.crafting.successes >= offered(request.resource.data.offerId).difficulty)
+            && request.resource.data.crafting.qualities ==
+              (request.resource.data.crafting.success
+                ? request.resource.data.crafting.successes - offered(request.resource.data.offerId).difficulty + request.resource.data.crafting.surges
+                : 0)
+            && request.resource.data.crafting.flaws ==
+              (request.resource.data.crafting.success ? request.resource.data.crafting.blunders : 0)
+          ))
           && request.resource.data.offerId is string
           && get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(request.resource.data.offerId)).data.enabled == true
           && get(/databases/$(database)/documents/campaigns/$(campaignId)/marketOffers/$(request.resource.data.offerId)).data.kind == request.resource.data.kind
@@ -232,6 +263,7 @@ service cloud.firestore {
           && request.resource.data.balanceAfter is int
           && request.resource.data.balanceAfter >= 0
           && request.resource.data.actorUid == request.auth.uid
+          && request.resource.data.createdAt == request.time
           && request.resource.data.reason is string;
         allow update, delete: if false;
       }
