@@ -324,6 +324,7 @@ service cloud.firestore {
           || (
             memberOfCampaign()
             && resource.data.kind == 'equipment'
+            && (resource.data.get('ownerUid', null) == null || resource.data.ownerUid == request.auth.uid)
             && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
               'enchants', 'lastEnhancementId', 'updatedAt'
             ])
