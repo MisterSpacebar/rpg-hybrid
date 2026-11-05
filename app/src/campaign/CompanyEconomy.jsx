@@ -4,7 +4,7 @@ import { newUnitConfig, resolveUnit } from '../builder/engine.js'
 import { loadCharacterData } from '../character/data.js'
 import {
   CRAFT_CHECKS, DIFFICULTIES, FLEX_SLOTS, INCOME_SOURCES,
-  equipmentCatalog, goldForRecruitment, resolveCraft,
+  equipmentCatalog, goldForRecruitment, resolveCraft, validEquipment,
 } from './economy.js'
 import {
   awardGold, rejectAcquisition, resolveAcquisition, submitAcquisition,
@@ -189,7 +189,8 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
           let craftResult
           try { craftResult = resolveCraft(craft) } catch { craftResult = null }
           const canApprove = validInt(cost) && validInt(discount) && Number(discount) <= Number(cost)
-            && (request.kind !== 'recruit' || (unit && !unit.pointsVary && !unit.missingTags && Number(cost) === defaultCost))
+            && (!['equipment', 'craft'].includes(request.kind) || validEquipment(data, request.item))
+            && (request.kind !== 'recruit' || (unit && !unit.pointsVary && !(unit.missingTags ?? []).length && Number(cost) === defaultCost))
             && (request.kind !== 'flex' || Number(cost) === 2)
             && (request.kind !== 'craft' || !!craftResult)
           return <div className="panel" key={request.id}>
