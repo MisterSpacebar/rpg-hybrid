@@ -214,7 +214,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
                   </select>
                 </label>
                 {['successes', 'surges', 'blunders'].map((key) => <label className="field" key={key}>{key[0].toUpperCase() + key.slice(1)}
-                  <input type="number" min={0} max={key === 'successes' ? 6 : 3} step={1} value={craft[key]} onChange={(e) => editDecision(request.id, { [key]: Number(e.target.value) })} />
+                  <input type="number" min={0} max={key === 'successes' ? 6 : 3} step={1} placeholder={key === 'successes' ? 'Enter rolled successes' : ''} value={key === 'successes' ? (decision.successes ?? '') : craft[key]} onChange={(e) => editDecision(request.id, { [key]: e.target.value === '' ? undefined : Number(e.target.value) })} />
                 </label>)}
                 {decision.successes !== undefined && craftResult && <p className="muted small">{craftResult.success ? 'Craft succeeded' : 'Craft failed'} · {craftResult.qualities} Quality points · {craftResult.flaws} Flaws</p>}
               </>}
