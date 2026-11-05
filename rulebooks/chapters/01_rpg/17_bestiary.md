@@ -511,13 +511,16 @@ Boss encounters and potential Large Assets. All are single-model Units **except 
 | **Manticore** (*Monster, Elite, Beast, Flying*) | 220 / 1 | M7" / W9 / Arm 5+ / Eva 5+ | Claws: Engaged / 4 / 5+ / 2 / Anti-Infantry 2; Tail Spikes: 8" / 5 / 5+ / 1 |
 | **Griffon** (*Monster, Elite, Beast, Flying*) | 235 / 1 | M8" / W9 / Arm 5+ / Eva 5+ | Talons: Engaged / 6 / 5+ / 1 / Critical 1; Beak: Engaged / 2 / 5+ / 2 / Anti-Cavalry 2 |
 | **Wyvern** (*Monster, Elite, Beast, Flying*) | 295 / 1 | M8" / W11 / Arm 4+ / Eva 5+ | Bite: Engaged / 6 / 5+ / 2 / Anti-Infantry 2; Venomous Tail: Engaged / 4 / 5+ / 2 / Anti-Armored 2 |
-| **Young Dragon** (*Monster, Elite, Beast, Flying*) | 395 / 1 | M8" / W12 / Arm 4+ / Eva 5+ / Ward 6+ Magic | Claws: Engaged / 6 / 4+ / 2 / Anti-Armored 2; Bite: Engaged / 3 / 4+ / 3 / Anti-Elite 2; One Breath Weapon |
+| **Young Dragon** (*Monster, Elite, Beast, Flying*) | 445 / 1 | M8" / W14 / Arm 4+ / Eva 5+ / Ward 6+ Magic | Claws: Engaged / 7 / 4+ / 2 / Anti-Armored 2; Bite: Engaged / 4 / 4+ / 3 / Anti-Elite 2; One Breath Weapon |
 | **Hydra** (*Monster, Elite, Beast*) | 365 / 1 | M4" / W15 / Arm 5+ / Eva 6+ / Ward — | Many-Headed Bites: Engaged 2" / 2 per functional head (max 10 at W15) / 5+ / 2 / Anti-Infantry 2 |
 | **Chimera** (*Monster, Elite, Beast, Flying*) | 330 / 1 | M7" / W11 / Arm 4+ / Eva 5+ | Claws and Fangs: Engaged / 5 / 4+ / 2 / Anti-Mobile 2; Fire Maw: 8" / 5 / 5+ / 1 / Magic, Blast 1" |
 | **Roc** (*Monster, Elite, Beast, Flying*) | 315 / 1 | M9" / W11 / Arm 5+ / Eva 4+ | Great Talons: Engaged / 6 / 5+ / 2 / Anti-Cavalry 2 |
 | **Stone Giant** (*Monster, Elite, Giant, Armored*) | 285 / 1 | M4" / W12 / Arm 3+ / Eva 6+ | Stone Fists: Engaged / 4 / 4+ / 2 / Anti-Armored 2; Hurled Boulder: 10" / 2 / 4+ / 2 / Anti-Infantry 2 |
 | **Cave Wurm** (*Monster, Elite, Beast*) | 360 / 1 | M4" / W13 / Arm 4+ / Eva 6+ | Devouring Maw: Engaged / 6 / 4+ / 2 / Anti-Armored 2 |
-| **Abyssal Kraken** (*Monster, Elite, Beast · **4-model Unit***) | 460 / 4 | **Body:** M5" / W10 / Arm 4+ / Eva 5+ / Ward 6+ Magic; **3 Tentacles:** M5" / W2 each / same Saves | **Body:** Abyssal Jet 10" / 4 / 5+ / 2 / Anti-Infantry 2; **each Tentacle:** Titanic Tentacles Engaged 3" / 2 / 4+ / 2 / Anti-Armored 2 |
+| **Elder Treant** (*Monster, Elite, Plant*) | 475 / 1 | M3" / W16 / Arm 3+ / Eva 6+ / Ward 6+ Magic | Ancient Branches: Engaged 2" / 7 / 4+ / 2 / Anti-Infantry 2; Thornstorm: 8" / 5 / 5+ / 1 / Nature, Blast 1" |
+| **Sea Serpent** (*Monster, Elite, Beast*) | 530 / 1 | M8" in water, M3" on land / W17 / Arm 4+ / Eva 5+ / Ward 6+ Magic | Devouring Bite: Engaged 2" / 7 / 4+ / 2 / Anti-Infantry 2; Tidal Surge: 10" / 5 / 5+ / 1 / Blast 1" |
+| **Adult Dragon** (*Monster, Elite, Beast, Flying*) | 675 / 1 | M9" / W20 / Arm 3+ / Eva 5+ / Ward 5+ Magic | Ancient Claws: Engaged / 9 / 4+ / 2 / Anti-Armored 2; Fanged Maw: Engaged / 5 / 4+ / 3 / Anti-Elite 2; One Breath Weapon |
+| **Abyssal Kraken** (*Monster, Elite, Beast · **4-model Unit***) | 700 / 4 | **Body:** M5" / W15 / Arm 4+ / Eva 5+ / Ward 6+ Magic; **3 Tentacles:** M5" / W3 each / same Saves | **Body:** Abyssal Jet 12" / 6 / 4+ / 2 / Anti-Infantry 2; **each Tentacle:** Titanic Tentacles Engaged 3" / 3 / 4+ / 2 / Anti-Armored 2 |
 
 ### 4.2 Abilities and Upgrades
 
@@ -624,24 +627,26 @@ The Ogre is a straightforward Monster emphasizing strong melee Damage rather tha
 
 **Impact 3 — Passive:** Add 3 automatic Physical Hit(s) to the normal highest-die Charge Impact (before Brace).
 
-**Draconic Breath — Passive**: Choose one Breath Weapon at creation. It may be used once per Round as the Dragon's normal Attack, rather than as an additional Attack.
+**Wing Buffet — 1 CP, Reaction, once per Round.** When an enemy successfully Charges the Dragon, reduce the incoming Charge Impact pool by 2 Hits (minimum zero), after Brace X. The Charge still succeeds.
+
+**Draconic Breath — Passive**: Choose one Breath Weapon at creation. It may be used once per Round during its normal ranged Assault activation, not as an additional Attack.
 
 Breath Weapon Options
 
 | Breath | Cost | Profile and Effect |
 | --- | --- | --- |
-| Fire Breath | +0 | 8" / 5 / 5+ / 1 / Magic, Fire, Blast 1". Generates one automatic secondary Hit against other Units within 1" of the target when the primary Attack scores a Hit. |
-| Frost Breath | +0 | 8" / 5 / 5+ / 1 / Magic, Frost. When the Attack generates a Surge, its target suffers Slow 2. |
-| Lightning Breath | +0 | 10" / 3 / 4+ / 2 / Magic, Lightning, Instant, Anti-Armored 2. Cannot normally be responded to with Reactions. |
+| Fire Breath | +0 | 8" / 6 / 5+ / 2 / Magic, Fire, Blast 1". Generates one automatic secondary Hit against other Units within 1" of the target when the primary Attack scores a Hit. |
+| Frost Breath | +0 | 8" / 6 / 5+ / 1 / Magic, Frost. When the Attack generates a Surge, its target suffers Slow 2. |
+| Lightning Breath | +0 | 10" / 4 / 4+ / 2 / Magic, Lightning, Instant, Anti-Armored 2. Cannot normally be responded to with Reactions. |
 
 Dragon Upgrades
 
 | Upgrade | Cost | Description |
 | --- | --- | --- |
-| Standard Young Dragon | +0 | W12, Flying, Impact 3, one Breath Weapon. |
+| Standard Young Dragon | +0 | W14, Flying, Impact 3, Wing Buffet, one Breath Weapon. |
 | Ancient Scales | +25 | Improve Armor to 3+. |
 | Greater Wings | +20 | Increase Move to M9". |
-| Greater Dragon | +50 | Increase Wounds to W15 and Impact to 4. |
+| Greater Dragon | +50 | Increase Wounds to W17 and Impact to 4. |
 
 #### Hydra
 
@@ -739,11 +744,67 @@ Subterranean Ambush — Once per Battle: During its Movement activation, move up
 
 Elder Wurm — **425 Points**: M4" / W17 / Arm 4+ / Eva 6+. Devouring Maw: Engaged / 6 / 4+ / 2 / Anti-Armored 2. Impact 4, Burrower, Subterranean Ambush, Tremorsense.
 
+#### Elder Treant — 475 Points
+
+**Impact 1 — Passive.** Add 1 Hit to the highest-die Charge Impact.
+
+**Rooted Renewal — Passive.** At the start of each Round, Heal 1 unless the Treant has suffered unsaved Fire Damage since its previous activation.
+
+**Entangling Roots — 1 CP, Movement, once per Round.** Place a 3" radius marker touching the Treant. It counts as Difficult Terrain for enemy Units until the end of the next Round; replacing the marker removes the old one. Legal movement remains possible.
+
+**Flammable Bark — Passive.** Fire suppresses Rooted Renewal; it grants no automatic bonus Damage or save bypass.
+
+| Upgrade | Added Points | Effect |
+| --- | ---: | --- |
+| Hardened Heartwood | +30 | Gain Tough 1 |
+| Ancient Roots | +25 | Entangling Roots marker radius 4" |
+| Overgrown | +30 | Maximum Wounds 19 |
+
+#### Sea Serpent — 530 Points
+
+**Aquatic Predator — Passive.** M8" in water, M3" on land. Ignore normal swimming penalties.
+
+**Impact 2 — Passive.** Add 2 Hits to the highest-die Charge Impact.
+
+**Undertow — 1 CP, Assault, once per Round.** While the Serpent is in water, choose a visible enemy Unit within 8" that has a Model in water. Reposition one of that Unit's Models up to 2" toward the Serpent, maintaining legal placement and Coherency. A Unique Model may prevent this using a 1 CP Reaction. The effect does not cause Engagement or Damage.
+
+**Coiling Strike — Passive.** If Devouring Bite inflicts unsaved Damage on a Unit in water, the target suffers Slow 1 until after its next Movement activation.
+
+| Upgrade | Added Points | Effect |
+| --- | ---: | --- |
+| Armored Fins | +25 | Armor improves to 3+ |
+| Titanic Serpent | +40 | Maximum Wounds 21 |
+| Crushing Bite | +35 | Devouring Bite gains Accurate 1 |
+
+#### Adult Dragon — 675 Points
+
+**Flying — Passive.** May Move over terrain and Models, finishing legally.
+
+**Impact 4 — Passive.** Add 4 Hits to the highest-die Charge Impact.
+
+**Adult Draconic Breath — Passive.** Choose one Breath Weapon at creation; use it as the normal ranged Attack in the Dragon's Assault activation, not as a bonus Attack.
+
+| Breath | Cost | Profile and Effect |
+| --- | --- | --- |
+| Inferno Breath | +0 | 12" / 8 / 4+ / 2 / Magic, Fire, Blast 2". Secondary Blast Hits are Damage 1, once per qualifying Unit |
+| Winter Breath | +0 | 12" / 8 / 4+ / 1 / Magic, Frost, Blast 1". On a Surge the primary target suffers Slow 2 until after its next Movement activation |
+| Thunder Breath | +0 | 12" / 6 / 4+ / 2 / Magic, Lightning, Instant, Anti-Armored 2 |
+
+**Ancient Assault — Passive.** During its Combat activation, the Dragon may divide the Ancient Claws dice between up to two enemy Units in Engagement, declaring allocations before rolling. Each pool is rolled and resolved independently. No new Attack dice or activations are generated.
+
+**Wing Buffet — 1 CP, Reaction, once per Round.** When Charged, reduce the incoming Impact pool by 3 Hits after Brace X, minimum zero. Engagement still occurs.
+
+| Upgrade | Added Points | Effect |
+| --- | ---: | --- |
+| Ancient Scales | +35 | Gain Tough 1 |
+| Elder Wings | +25 | Increase Move to M10" |
+| Ancient Dragon | +100 | Maximum Wounds 25, Impact 5 (775 Points before other upgrades) |
+
 #### Abyssal Kraken
 
-**Four-Model Unit — Special Coherency.** The Kraken consists of one **Body Model (W10)** and three **Tentacle Models (W2 each)**. All share the printed Armor, Evade and Ward. A Tentacle may be positioned and move independently within **6" (Short Range)** of the Body, instead of the usual 3" Coherency rule. Every Model remains part of **one Unit**: it receives one Movement, one Assault and one eligible Combat activation, not one activation per Model.
+**Four-Model Unit — Special Coherency.** The Kraken consists of one **Body Model (W15)** and three **Tentacle Models (W3 each)**. All share the printed Armor, Evade and Ward. A Tentacle may be positioned and move independently within **6" (Short Range)** of the Body, instead of the usual 3" Coherency rule. Every Model remains part of **one Unit**: it receives one Movement, one Assault and one eligible Combat activation, not one activation per Model.
 
-**Many Tentacles — Passive.** Each surviving Tentacle contributes its own **Engaged 3" / A2 / Hit 4+ / Dmg 2 / Anti-Armored 2** attack, targeting enemies it can reach. Separate target pools if Tentacles attack different eligible Units. The Body uses **Abyssal Jet** (10" / A4 / 5+ / 2 / Anti-Infantry 2), as its eligible ranged Assault profile.
+**Many Tentacles — Passive.** Each surviving Tentacle contributes its own **Engaged 3" / A3 / Hit 4+ / Dmg 2 / Anti-Armored 2** attack, targeting enemies it can reach. Separate target pools if Tentacles attack different eligible Units. The Body uses **Abyssal Jet** (12" / A6 / 4+ / 2 / Anti-Infantry 2), as its eligible ranged Assault profile.
 
 **Damage allocation — Exception.** Attacks that can reach only a Tentacle allocate Hits and Damage among the eligible Tentacles, not to the distant Body. Attacks targeting the Body allocate to the Body. Destroyed Tentacles are removed and cease contributing Attacks. If the Body is Defeated, remove the entire Kraken Unit. Ordinary area effects use the usual half-of-current-Models threshold: with all four Models present, **two** must lie in the radius.
 
@@ -753,11 +814,11 @@ Elder Wurm — **425 Points**: M4" / W17 / Arm 4+ / Eva 6+. Devouring Maw: Engag
 
 **Ink Cloud — 1 CP, Reaction.** When targeted by a non-Instant ranged Attack while in water, become Concealed until the end of the Phase; use normal Reaction timing.
 
-**Grasping Tentacles — 1 CP, Combat — Once per Round.** After one of this Unit's Tentacle Attacks deals Damage, reposition one non-Hero target Model up to 2" within legal placement. The target Unit must still maintain Coherency. This is forced movement and does not grant an extra Attack.
+**Grasping Tentacles — 1 CP, Combat — Once per Round.** After one of this Unit's Tentacle Attacks deals Damage, reposition one target Model up to 2" within legal placement. A Unique target may prevent the repositioning by spending 1 CP as a Reaction. The target Unit must maintain Coherency; no extra Attack or activation is gained.
 
 | Upgrade | Added Points | Effect |
 | --- | ---: | --- |
-| **Elder Kraken** | +50 | Increase Body Wounds to 14 (total Unit Wounds 20) |
+| **Elder Kraken** | +50 | Increase Body Wounds to 19 (total Unit Wounds 28) |
 | **Crushing Tentacles** | +35 | Titanic Tentacles gain Accurate 1 |
 | **Armored Hide** | +25 | Improve shared Armor to 3+ |
 | **Abyssal Horror** | +30 | Abyssal Jet gains Blast 1" |
@@ -925,10 +986,10 @@ Dismounting, targeting mounts, and mount defeat use the campaign's normal mounte
 
 Bestiary Points approximate Structured Combat cost and are useful as a baseline for Narrative encounters. Creature type does not automatically grant faction allegiance; the army's list-building and scenario rules establish when creatures may join a faction.
 
-- **Common NPCs:** 9 profiles. **Common Creatures:** 14. **Unusual Creatures:** 10. **Large Monsters:** 14. **Animal Companions:** 15.
+- **Common NPCs:** 9 profiles. **Common Creatures:** 14. **Unusual Creatures:** 10. **Large Monsters:** 17. **Animal Companions:** 15.
 - Companion Point Values contribute separately to their bonded PC's battlefield value, including both animals when the Tier 4 Talent grants a second one.
-- The large-monster increases in v5 are provisional: **Wyvern 295 (Bite A6), Roc 315 (Talons A6), Chimera 330 (Claws and Fangs A5), Cave Wurm 360 (Maw A6), Young Dragon 395 (Claws A6)**.
-- **Hydra 365** gains W15 and up to A10 while fully healthy but degrades with Damage. **Kraken 460** is a four-Model Unit (Body W10 + three Tentacles W2).
+- The large-monster increases in v5 are provisional: **Wyvern 295 (Bite A6), Roc 315 (Talons A6), Chimera 330 (Claws and Fangs A5), Cave Wurm 360 (Maw A6), Young Dragon 445 (Claws A7)**.
+- **Hydra 365** gains W15 and up to A10 while fully healthy but degrades with Damage. **Kraken 700** is a four-Model centerpiece Unit (Body W15 + three Tentacles W3).
 - Fire-sensitive Regeneration stops only after unsaved **Fire** Damage. Fire, Frost, Lightning, Radiant, Nature remain secondary Attack descriptors, not new saves.
 
 ## 9. Balance Priorities
@@ -945,3 +1006,7 @@ Small independent animal Units formerly listed solely with the **Beast** trait g
 ## Canonical Bestiary Profile Corrections
 
 This standards-alignment pass does not change creature Points, Attacks, or abilities. It fixes contradictory profile text (Rat Swarm's five Attacks and the Kraken's four Models), adds explicit **Flying** tags where flight is already printed, and assigns **Creature, Beast** to the companion animals (plus Flying for birds). **Companion** remains their roster designation; the extra tags do not award recruitment slots or new abilities. All such tags are targetable by applicable Anti-[Type] effects.
+
+## Provisional Party-Boss Benchmark (3–4 PCs)
+
+Ordinary creatures retain their listed Points. Greater Monsters near 250–400 Points can serve as substantial secondary threats; bosses at 400–550 Points are intended to threaten several PCs, and 550–750+ Point centerpieces should sustain a multi-Round encounter against a developed party when the terrain and mission support their abilities. **Points are not a direct substitute for encounter action economy:** independent PC activations, healing, command availability, companion units, focused ranged attacks and objectives substantially change difficulty. In matched battles these are ordinary Point-priced assets; in narrative encounters the GM should compare the entire side rather than monster Points alone. The expanded Dragon, Kraken, Treant and Sea Serpent profiles are provisional and require targeted playtests. Bosses do not gain extra full activations unless a specific rule says so.
