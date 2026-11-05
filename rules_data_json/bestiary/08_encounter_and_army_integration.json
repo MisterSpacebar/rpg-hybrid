@@ -5,17 +5,33 @@
   },
   "description": "Bestiary Points approximate Structured Combat cost and are useful as a baseline for Narrative encounters. Creature type does not automatically grant faction allegiance; the army's list-building and scenario rules establish when creatures may join a faction.",
   "profileCounts": [
-    { "section": "Common NPCs", "count": 9 },
-    { "section": "Common Creatures", "count": 14 },
-    { "section": "Unusual Creatures", "count": 10 },
-    { "section": "Large Monsters", "count": 14 },
-    { "section": "Animal Companions", "count": 15 }
+    {
+      "section": "Common NPCs",
+      "count": 9
+    },
+    {
+      "section": "Common Creatures",
+      "count": 14
+    },
+    {
+      "section": "Unusual Creatures",
+      "count": 10
+    },
+    {
+      "section": "Large Monsters",
+      "count": 17
+    },
+    {
+      "section": "Animal Companions",
+      "count": 15
+    }
   ],
   "notes": [
     "Companion Point Values contribute separately to their bonded PC's battlefield value, including both animals when the Tier 4 Talent grants a second one.",
-    "The large-monster increases in v5 are provisional: Wyvern 295 (Bite A6), Roc 315 (Talons A6), Chimera 330 (Claws and Fangs A5), Cave Wurm 360 (Maw A6), Young Dragon 395 (Claws A6).",
-    "Hydra 365 gains W15 and up to A10 while fully healthy but degrades with Damage. Kraken 460 is a four-Model Unit (Body W10 + three Tentacles W2).",
-    "Fire-sensitive Regeneration stops only after unsaved Fire Damage. Fire, Frost, Lightning, Radiant, Nature remain secondary Attack descriptors, not new saves."
+    "The large-monster increases in v5 are provisional: Wyvern 295 (Bite A6), Roc 315 (Talons A6), Chimera 330 (Claws and Fangs A5), Cave Wurm 360 (Maw A6), Young Dragon 445 (Claws A7).",
+    "Hydra 365 gains W15 and up to A10 while fully healthy but degrades with Damage. Kraken 700 is a four-Model Unit (Body W15 + three Tentacles W3).",
+    "Fire-sensitive Regeneration stops only after unsaved Fire Damage. Fire, Frost, Lightning, Radiant, Nature remain secondary Attack descriptors, not new saves.",
+    "New playtest-tier bosses: Elder Treant 475, Sea Serpent 530, Adult Dragon 675. All creature Points are provisional and must be tested against 3–4 PC parties, accounting for activation economy."
   ],
-  "crossCheck": "The profile counts (9/14/10/14/15) were verified against the actual number of unit entries transcribed in 01_common_npcs.json (9), 02_common_creatures.json (14), 03_unusual_creatures.json (10), 04_large_monsters.json (14, excluding the Elder Wurm preconfigured variant which is a variant of Cave Wurm rather than a separate profile), and 07_animal_companions.json (5 Small + 6 Standard + 4 Large = 15) — all consistent, no drift."
+  "crossCheck": "Profile counts 9/14/10/17/15 are drawn from structured JSON, including 17 large monster entries and excluding the Elder Wurm configured variant, which is an upgrade of Cave Wurm."
 }
