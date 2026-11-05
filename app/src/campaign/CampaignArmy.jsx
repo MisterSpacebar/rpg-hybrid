@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import Toast from './Toast.jsx'
 import { loadCatalog } from '../builder/catalog.js'
 import { newUnitConfig, resolveUnit, SLOT_ORDER } from '../builder/engine.js'
+import { formatProfile, formatStats } from '../builder/format.js'
 import { detachmentView, deploymentCap, allowedDoctrineCommands, FIELD_SLOTS } from './limits.js'
 import { grantEquipment, grantFormation, removeInventoryItem, saveDetachment, setEntitlement, watchEntitlements } from './cloud.js'
 import { loadCharacterData } from '../character/data.js'
@@ -36,6 +37,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
   const [selectedKey, setSelectedKey] = useState('')
   const [selectedGear, setSelectedGear] = useState('')
   const [message, setMessage] = useState('')
+  const [armyPage, setArmyPage] = useState('detachment')
   const [poolQuery, setPoolQuery] = useState('')
   const [poolSlot, setPoolSlot] = useState('')
   const [poolAvailableOnly, setPoolAvailableOnly] = useState(false)
@@ -103,6 +105,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
   const remove = (id) => setDraft((d) => ({ ...d, selections: d.selections.filter((s) => s.id !== id) }))
   const selectedIds = new Set(draft?.selections.map((s) => s.id) ?? [])
   const takenElsewhere = new Set(other.flatMap((d) => (d.selections ?? []).map((s) => s.id)))
+  const activeArmyPage = armyPage === 'doctrine' && campaign.act < 3 || armyPage === 'roster' && campaign.act < 2 ? 'detachment' : armyPage
   if (!catalog || !charData || !draft || !result) return <section className="panel"><p>Loading campaign army catalogue…</p>{message && <p className="bad">{message}</p>}</section>
 
   return <div className="panel-grid">
@@ -115,7 +118,17 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       </p>
       <Toast message={message} kind={message.startsWith('Saved') ? 'ok' : 'bad'} />
     </section>
-    {!isGm && <div className="army-draft span-all"><div className="col-stack">
+    {!isGm && <nav className="subtabs nested army-subtabs span-all" aria-label="PC Army sections">
+      {[
+        { id: 'detachment', label: 'Detachment' },
+        ...(campaign.act >= 2 ? [{ id: 'roster', label: 'Company Roster' }] : []),
+        ...(campaign.act >= 3 ? [{ id: 'doctrine', label: 'Personal Doctrine' }] : []),
+      ].map(({ id, label }) =>
+        <button type="button" key={id} className={activeArmyPage === id ? 'active' : ''}
+          aria-current={activeArmyPage === id ? 'page' : undefined}
+          onClick={() => setArmyPage(id)}>{label}</button>)}
+    </nav>}
+    {!isGm && activeArmyPage === 'detachment' && <div className="army-draft span-all"><div className="col-stack">
     <section className="panel">
       <h2>My Detachment</h2>
       {draftState?.conflict && <div className="bad small" role="status">Your detachment was changed elsewhere. Your unsaved selections are preserved. <button onClick={() => setDraftState(discardDraft)}>Load saved detachment</button></div>}
@@ -156,24 +169,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
       {result.errors.length > 0 && <ul className="checks">{result.errors.map((e, i) => <li className="bad" key={i}>{e}</li>)}</ul>}
       <button className="primary" disabled={saving || !result.legal || draftState?.conflict} onClick={() => perform(() => saveDetachment(campaign.id, user.uid, draft))}>Save legal detachment</button>
     </section>
-    {campaign.act >= 3 && <section className="panel">
-      <h2>Personal Doctrine</h2>
-      <label className="field">Doctrine
-        <select value={draft.doctrineId ?? ''} onChange={(e) => setDraft({ ...draft, doctrineId: e.target.value || null, commands: [] })}>
-          <option value="">Choose Doctrine…</option>
-          {catalog.doctrines.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
-        </select>
-      </label>
-      {result.slots.doctrine && <>
-        <h3>Commands ({draft.commands.length}/{allowedDoctrineCommands(campaign, entitlements[user.uid])})</h3>
-        <div className="pool-list">{result.slots.doctrine.commands.map((command) => <label key={command.name} className="choice">
-          <input type="checkbox" checked={draft.commands.includes(command.name)}
-            disabled={!draft.commands.includes(command.name) && draft.commands.length >= allowedDoctrineCommands(campaign, entitlements[user.uid])}
-            onChange={() => setDraft((d) => ({ ...d, commands: d.commands.includes(command.name) ? d.commands.filter((s) => s !== command.name) : [...d.commands, command.name] }))} />
-          <strong>{command.name}</strong> · {command.slot}
-        </label>)}</div>
-      </>}
-    </section>}
+
     </div>
     <section className="panel pool-panel">
       <h2>Select owned formations</h2>
@@ -218,6 +214,55 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
         </>
       })()}
     </section></div>}
+    {!isGm && activeArmyPage === 'doctrine' && campaign.act >= 3 && <section className="panel span-all">
+      <h2>Personal Doctrine</h2>
+      <label className="field">Doctrine
+        <select value={draft.doctrineId ?? ''} onChange={(e) => setDraft({ ...draft, doctrineId: e.target.value || null, commands: [] })}>
+          <option value="">Choose Doctrine…</option>
+          {catalog.doctrines.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
+        </select>
+      </label>
+      {result.slots.doctrine && <>
+        <h3>Commands ({draft.commands.length}/{allowedDoctrineCommands(campaign, entitlements[user.uid])})</h3>
+        <div className="pool-list">{result.slots.doctrine.commands.map((command) => <label key={command.name} className="choice">
+          <input type="checkbox" checked={draft.commands.includes(command.name)}
+            disabled={!draft.commands.includes(command.name) && draft.commands.length >= allowedDoctrineCommands(campaign, entitlements[user.uid])}
+            onChange={() => setDraft((d) => ({ ...d, commands: d.commands.includes(command.name) ? d.commands.filter((s) => s !== command.name) : [...d.commands, command.name] }))} />
+          <strong>{command.name}</strong> · {command.slot}
+        </label>)}</div>
+      </>}
+    </section>}
+    {!isGm && activeArmyPage === 'roster' && campaign.act >= 2 && <section className="panel span-all">
+      <h2>Company Roster</h2>
+      <p className="muted small">Inspect the Company’s owned formations, selected upgrades and combat profiles. Recruiting is handled in Company &amp; Projects. Each formation is shared, but can be deployed by only one PC at a time.</p>
+      <div className="army-roster-cards">
+        {inventory.filter((item) => item.kind === 'unit').map((item) => {
+          const entry = catalog.unitsByKey[item.config?.key]
+          if (!entry) return <div className="army-roster-entry bad" key={item.id}>Unknown formation: {item.config?.key || 'missing profile'}</div>
+          const unit = resolveUnit(entry, item.config, item.factionId)
+          return <details key={item.id} className="army-roster-entry">
+            <summary>
+              <strong>{unit.name}</strong>
+              <span className="muted small"> · {unit.points} pts · {unit.models} Models · {selectedIds.has(item.id) ? 'In your detachment' : takenElsewhere.has(item.id) ? 'Deployed by another PC' : 'Available'}</span>
+              <Chips unit={unit} />
+            </summary>
+            <p className="muted small">{formatStats(unit.stats)}</p>
+            {!!unit.attacks.length && <div>
+              <strong>Attacks</strong>
+              <ul className="plain-list">{unit.attacks.map((attack, i) => <li key={i} className="small">{attack.name}: {formatProfile(attack)}</li>)}</ul>
+            </div>}
+            {!!unit.picks.length && <div>
+              <strong>Selected options</strong>
+              <ul className="plain-list">{unit.picks.map((group, i) => <li key={i} className="small">
+                {group.group}: {group.options.map((option) => option.name).join(', ')}
+              </li>)}</ul>
+            </div>}
+            {!!unit.missingTags.length && <p className="bad small">Unresolved Anti-type choices: {unit.missingTags.join(', ')}</p>}
+          </details>
+        })}
+      </div>
+      {!inventory.some((item) => item.kind === 'unit') && <p className="muted">No formations have been acquired yet. Purchase them in Company &amp; Projects after your Patron unlocks recruitment.</p>}
+    </section>}
     {isGm && <section className="panel">
       <h2>GM — Manage Company formations</h2>
       <p className="muted small">These are free administrative/Patron/reward grants with no Gold charge. Use Company & Projects for paid recruitment proposals; GM approval there deducts Gold and adds the formation automatically.</p>
