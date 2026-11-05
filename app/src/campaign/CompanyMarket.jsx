@@ -44,7 +44,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   const gear = useMemo(() => characterData ? equipmentCatalog(characterData) : [], [characterData])
   const recruitAccess = useMemo(() => standardRecruitmentProfiles(catalog, campaign, entitlements, detachments), [catalog, campaign, entitlements, detachments])
   const patron = catalog?.factions.find((f) => f.id === campaign.patronFactionId)
-  const units = recruitAccess.all
+  const units = campaign.act < 2 || !patron ? [] : [...catalog.generic, ...patron.units]
   const selectedUnit = units.find((e) => e.key === form.unit)
   const defaultUnit = selectedUnit && catalog ? newUnitConfig(selectedUnit, selectedUnit.slots[0]) : null
   const resolved = selectedUnit && defaultUnit ? resolveUnit(selectedUnit, defaultUnit, selectedUnit.source === 'faction' ? patron.id : null) : null
