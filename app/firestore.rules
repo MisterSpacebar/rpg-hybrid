@@ -164,6 +164,7 @@ service cloud.firestore {
           && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant']
           && (request.resource.data.kind != 'enchant' || (
             request.resource.data.enchantKey is string
+            && request.resource.data.enchantKey.matches('^minor:.*')
             && request.resource.data.targetKind in ['melee', 'ranged', 'armor', 'shield']
             && request.resource.data.difficulty is int
             && request.resource.data.difficulty >= 2
@@ -202,6 +203,7 @@ service cloud.firestore {
           ])
           && (request.resource.data.kind != 'enchant' || (
             request.resource.data.targetItemId is string
+            && offered(request.resource.data.offerId).enchantKey.matches('^minor:.*')
             && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.kind == 'equipment'
             && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.item.kind == offered(request.resource.data.offerId).targetKind
             && (!request.resource.data.crafting.success ||
