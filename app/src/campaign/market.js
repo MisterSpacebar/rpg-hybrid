@@ -12,7 +12,7 @@ export const publishableOffer = (offer) => {
     throw new Error('A formation offer requires a resolved profile and its Points')
   }
   if (['equipment', 'craft'].includes(offer.kind) && (!offer.item?.kind || !offer.item.name)) throw new Error('Choose the equipment profile')
-  if (offer.kind === 'enchant' && (!offer.enchantKey || !['melee', 'ranged', 'armor', 'shield'].includes(offer.targetKind))) throw new Error('Select a compatible enchantment recipe')
+  if (offer.kind === 'enchant' && (!offer.enchantKey?.startsWith('minor:') || !['melee', 'ranged', 'armor', 'shield'].includes(offer.targetKind))) throw new Error('Select a compatible enchantment recipe')
   if (['craft', 'enchant'].includes(offer.kind) && (!Number.isInteger(offer.difficulty) || offer.difficulty < 1 || offer.difficulty > 5)) {
     throw new Error('Choose a crafting Difficulty from 1–5')
   }
