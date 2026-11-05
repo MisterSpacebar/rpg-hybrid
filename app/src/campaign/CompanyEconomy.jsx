@@ -178,7 +178,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
           const defaultCost = request.kind === 'recruit' && unit && Number.isFinite(unit.points)
             ? goldForRecruitment(unit.points) : request.kind === 'flex' ? 2 : 0
           const decision = decisions[request.id] ?? {}
-          const cost = decision.cost ?? String(defaultCost)
+          const cost = decision.cost ?? (['recruit', 'flex'].includes(request.kind) ? String(defaultCost) : '')
           const discount = decision.discount ?? '0'
           const craft = {
             difficulty: Number(decision.difficulty ?? 2),
@@ -188,11 +188,11 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
           }
           let craftResult
           try { craftResult = resolveCraft(craft) } catch { craftResult = null }
-          const canApprove = validInt(cost) && validInt(discount) && Number(discount) <= Number(cost)
+          const canApprove = cost !== '' && validInt(cost) && validInt(discount) && Number(discount) <= Number(cost)
             && (!['equipment', 'craft'].includes(request.kind) || validEquipment(data, request.item))
             && (request.kind !== 'recruit' || (unit && !unit.pointsVary && !(unit.missingTags ?? []).length && Number(cost) === defaultCost))
             && (request.kind !== 'flex' || Number(cost) === 2)
-            && (request.kind !== 'craft' || !!craftResult)
+            && (request.kind !== 'craft' || (decision.successes !== undefined && !!craftResult))
           return <div className="panel" key={request.id}>
             <h3>{requestLabel(request)} <span className="muted small">({request.kind})</span></h3>
             <p className="muted small">Requested by {nameOf(heroes, request.ownerUid)} · {dateOf(request.createdAt)} · {request.status}</p>
@@ -201,7 +201,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
             {unit && <p className="muted small">Resolved formation: {unit.points} Points · {goldForRecruitment(unit.points)} Gold base cost</p>}
             {isGm && <div className="campaign-form">
               <label className="field">Base Gold cost
-                <input type="number" min={0} max={1000} step={1} value={cost} disabled={request.kind === 'recruit' || request.kind === 'flex'} onChange={(e) => editDecision(request.id, { cost: e.target.value })} />
+                <input type="number" min={0} max={1000} step={1} placeholder="Set price (0 for a free award)" value={cost} disabled={request.kind === 'recruit' || request.kind === 'flex'} onChange={(e) => editDecision(request.id, { cost: e.target.value })} />
               </label>
               <label className="field">Gold discount
                 <input type="number" min={0} max={1000} step={1} value={discount} onChange={(e) => editDecision(request.id, { discount: e.target.value })} />
@@ -216,7 +216,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes }) {
                 {['successes', 'surges', 'blunders'].map((key) => <label className="field" key={key}>{key[0].toUpperCase() + key.slice(1)}
                   <input type="number" min={0} max={key === 'successes' ? 6 : 3} step={1} value={craft[key]} onChange={(e) => editDecision(request.id, { [key]: Number(e.target.value) })} />
                 </label>)}
-                {craftResult && <p className="muted small">{craftResult.success ? 'Craft succeeded' : 'Craft failed'} · {craftResult.qualities} Quality points · {craftResult.flaws} Flaws</p>}
+                {decision.successes !== undefined && craftResult && <p className="muted small">{craftResult.success ? 'Craft succeeded' : 'Craft failed'} · {craftResult.qualities} Quality points · {craftResult.flaws} Flaws</p>}
               </>}
               <label className="field">Resolution notes
                 <textarea rows={2} maxLength={500} value={decision.note ?? ''} onChange={(e) => editDecision(request.id, { note: e.target.value })} />
