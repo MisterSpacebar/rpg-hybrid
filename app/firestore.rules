@@ -78,8 +78,8 @@ service cloud.firestore {
         && request.resource.data.xpTotal is int
         && request.resource.data.xpTotal >= resource.data.xpTotal
         && request.resource.data.xpTotal <= 250
-        && request.resource.data.goldBalance is int
-        && request.resource.data.goldBalance >= 0
+        && request.resource.data.get('goldBalance', 0) is int
+        && request.resource.data.get('goldBalance', 0) >= 0
         && request.resource.data.act is int && request.resource.data.act >= 1 && request.resource.data.act <= 4
         && request.resource.data.turn is int && request.resource.data.turn >= 1
         && request.resource.data.format == resource.data.format
