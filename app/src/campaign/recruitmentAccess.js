@@ -34,3 +34,9 @@ export function standardRecruitmentProfiles(catalog, campaign, entitlements = {}
 // Auto-published offers remain server-validated by the existing Firestore
 // market rules. This is a deterministic catalog identity, not a free unit grant.
 export const standardOfferId = (key) => 'patron-' + key.replace(/[^a-z0-9-]/gi, '_')
+
+export function eligibleStandardOffer(offer, catalog, campaign, entitlements, detachments) {
+  if (!offer?.standardAccess) return false
+  const access = standardRecruitmentProfiles(catalog, campaign, entitlements, detachments)
+  return access.all.some((unit) => unit.key === offer.config?.key)
+}
