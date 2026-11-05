@@ -5,6 +5,7 @@
   },
   "description": "The bestiary's Point costs are provisional.",
   "testingPriorities": [
+    "Solo bosses versus representative parties of three or four PCs: focus fire, encounter duration, and independent PC activation economy.",
     "Universal highest-die Charge Impact (particularly when combined with printed Impact 2–4).",
     "Multiple Surges on combined Attack pools.",
     "Creatures with unconditional Critical.",
@@ -12,6 +13,7 @@
     "Kraken's distributed Models.",
     "Extra action economy from bonded companions.",
     "A bird's Cover reduction before pricing it as a universal support feature.",
-    "Monster movement/control Commands — especially Stagger — need scenario-level testing against both solo PCs and larger parties."
+    "Monster movement/control Commands — especially Stagger — need scenario-level testing against both solo PCs and larger parties.",
+    "Compare Young Dragon 445 with a similarly valued PC; Adult Dragon 675, Kraken 700, Elder Treant 475, and Sea Serpent 530 against two, three, and four PCs at different equipment/XP budgets."
   ]
 }
