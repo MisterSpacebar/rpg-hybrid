@@ -548,36 +548,44 @@ Choose up to three friendly Units within Short Range. Heal 1 Wound to each selec
 
 ## ENCHANTMENT COMPONENTS
 
-Rather than requiring every magical item to have its own unique rules, ordinary equipment may receive additional Enchantments. Enchantments increase the equipment's battlefield value by their listed Points. A normal item may receive multiple compatible Enchantments, provided the equipment and enchantments are narratively appropriate. An individual Enchantment cannot normally be applied more than once to the same item.
+Crafting and enchanting use the **same permanent-improvement rules** below: ordinary success completes the declared project, excess successes purchase and increase ordinary Qualities, and a Skill-Check Surge unlocks **one exceptional Quality** whose rank can also be improved using excess successes. A crafting Surge does not add a free, generic Quality point. Equipment always pays the printed battlefield Points of every improvement, regardless of how easily it was created; the Points do not cost XP.
 
-### Minor Enchantments
+An enchantment is a lasting improvement to **one actual item**, not a free alteration to the wielder's class or characteristic. It uses an appropriate **Mind + Mysticism** or **Spirit + Mysticism** check, magical materials, and a project Difficulty (normally **2–5**; especially powerful or unusual effects may require a special recipe). Ordinary work uses Craft instead. A completed ordinary enchantment may be applied to a compatible existing item even without a Surge; the listed exceptional properties require one.
 
-| Enchantment | Added Points |
-| --- | ---: |
-| Accurate 1 | 10 |
-| Tough 1 | 15 |
-| +1" Attack Range | 5 |
-| +1" Move while equipped | 10 |
-| Anti-[Category] 1 | 10 |
-| Magic Attack keyword | 10 |
+### Ordinary Enchantment Components
 
-Minor Enchantments generally provide modest improvements or a narrow specialization.
+Each compatible component uses the same **rank**, **excess-success cost** and **added Points per rank** as its named Crafting Quality. The first declared ordinary enchantment is applied on a successful enchanting check as the project's base result; its first rank does not consume excess successes, but **does** add its Points. Further ranks and secondary ordinary components spend excess successes. This rule does not grant additional free projects.
 
-### Major Enchantments
+| Component | Effect / Rank | Added Points per Rank | Eligibility |
+| --- | --- | ---: | --- |
+| Accurate | Accurate +1 on one weapon Attack | +10 | Weapons |
+| Tough | Tough +1 on Armor Saves | +15 | Armor or suitable shield |
+| Extended | +1" printed Range | +5 | Eligible ranged/reach weapon |
+| Swift | +1" Move while equipped | +10 | Compatible wearable equipment |
+| Specialized | Anti-[chosen Tag] +1 | +10 | Weapons; Tag chosen at creation |
+| Sheltering | Cover +1 against eligible ranged Attacks | +15 | Suitable protective armor; see below |
+| Magic Attack | Add the Magic Attack type | +10 (one-time) | Weapons, magical materials required |
 
-| Enchantment | Added Points |
-| --- | ---: |
-| Critical 1 | 30 |
-| Ward 6+ against one type | 20 |
-| +1 Maximum Wound | 15 |
-| +1 Attack die on one profile | 15 |
-| Improve Hit by 1 step | 20 |
-| +1 Damage on one profile | 30 |
-| Improve Armor by 1 step | 20 |
-| Conditional Direct Damage 1 | 25 |
-| Minor Item Command | 15–25 |
+The same named effect from craftsmanship and enchantment on **one item** is a single ranked Quality: add its ranks, enforce its normal cap, and pay each rank's Points once. The **Anti-[Type]** rule still uses the highest applicable Anti rank against a target; a character does not gain duplicate Anti dice merely by possessing two sources.
 
-The GM may adjust the Points of unusual Enchantments based on their scope and interaction with other properties. Items still follow normal characteristic limits.
+**Sheltering (Cover X):** Light Armor, Medium Armor, and specially designed evasive or concealed protective equipment can take this Quality. Heavy Armor does not qualify by default; a named exceptional profile may say otherwise. Cover 1 makes the wearer's normal Evade available against eligible ranged Attacks even without terrain Cover; Cover X also permits rerolls of up to X natural 1s on eligible Evade Saves. Item Cover stacks with ordinary physical Cover and favorable elevation under the standard rules; a die is never rerolled more than once. **Cover does not improve Armor, grant extra Evade against Charge Impact, or protect against effects that disallow Evade.** Sheltering normally caps at Cover 2 from this item.
+
+### Exceptional (Surge-Unlocked) Enchantments
+
+These improvements can be selected **only when the crafting or enchanting check generates a Surge and succeeds**. One successful Skill Check unlocks **at most one** exceptional named Quality, regardless of excess successes. Its first rank does not consume an excess success; increasing its rank consumes the listed excess-success budget and adds its normal Points. The item must still meet compatibility, materials, rank and enhancement limits.
+
+| Exceptional Quality | Surge grants | Further improvement | Total added Points |
+| --- | --- | --- | --- |
+| Exceptional Edge | Critical +1 on this weapon's Attacks | +1 Critical for 1 excess success | Critical 1: +30; Critical 2: +45 |
+| Destructive | +1 Damage on one weapon Attack | Requires 2 excess successes for this effect | +30 |
+| Warded | Ward 6+ against one specified damage type | Requires 1 excess success and magical work | +20 |
+| Arcane Backlash | Conditional Direct Damage 1 with a specifically printed trigger | Requires 2 excess successes and a permitted recipe | +25 |
+
+**Exceptional Edge:** Critical +1 adds **Critical 1** to the weapon's printed/passive Keywords; it is **not an automatic Critical Hit on every Attack**. After rerolls, that weapon converts up to one failed Hit die **for each combat Surge**, exactly as in [Critical X](10_keywords.md#critical-x). Critical 2 converts up to two per combat Surge, limited by failed Hit dice. An ordinary item caps at Critical 2; **Critical 3 requires an expressly exceptional item or relic** and a separate balance allowance. The single Skill-Check Surge unlocks the Quality; the later Attack's Surges determine whether its effect triggers.
+
+**Compatibility:** A Major printed enchantment, relic effect, or Item Command that has its own full entry retains its printed Points, limitations and trigger. Do not substitute the generic Arcane Backlash or Warded rows for an undefined or stronger custom ability. Exceptional qualities are available to mundane masterwork crafting only if the effect is physically credible (e.g., Critical edge); supernatural effects such as Wards and Direct Damage require magical materials, Mysticism and an enchanting project.
+
+**Project limits:** Ordinary items normally have up to **three distinct named permanent Qualities** across their craftsmanship and enchantments, **at most one** of which is Surge-exclusive. Ranking an existing named Quality uses no additional distinct-Quality slot. A finished project cannot be rerolled for better results for free: another attempt is a separate project requiring its normal materials, available campaign opportunity and Difficulty. Named magical equipment and relics may specify different limits. Existing printed item properties do not grant duplicate paid effects and are not counted twice.
 
 ### Command-Imprinted Equipment
 
@@ -597,138 +605,108 @@ When using Quick Step while wearing these Boots, increase its movement by 1". Th
 
 ## CRAFTING
 
-Crafting allows characters to create, repair, and improve equipment using materials, tools, training, and appropriate facilities. Crafting uses the normal Characteristic + Skill rules. A character does not require a separate crafting progression system. A skilled character with improved Craft or Mysticism naturally becomes more capable of producing exceptional equipment.
+Crafting allows characters to create, repair and improve equipment using materials, tools and appropriate facilities. Crafting uses a **Characteristic + Skill** pool and an explicit project Difficulty. The same result structure governs permanent enchanting; magical projects use Mysticism and an existing item instead of forging a new mundane one.
 
-### Crafting a New Item
+### Choosing a Project
 
-To craft an item:
+Before rolling, choose (1) the base item or **existing Company-owned item**, (2) an eligible crafting or enchanting approach, (3) the normal project Difficulty, (4) required materials and recipe, and (5) any ordinary enchantment to be applied as the base result. A PC can perform an ordinary legal project without GM approval once its campaign rights, costs, and resources permit it. Relics and unique materials still require their specific narrative prerequisites.
 
-- Choose the equipment being created.
-- Obtain appropriate materials, tools, and any necessary recipe.
-- Determine the item's Crafting Difficulty.
-- Roll the appropriate Characteristic + Skill.
-- Compare the number of successes to the item's Difficulty.
-- Resolve any excess successes, Surges, and Blunders.
-
-### Crafting Difficulty
-
-Unlike Skill-scaled Commands, crafting is a task with an explicit Difficulty representing the complexity of the work.
-
-| Difficulty | Successes Required | Typical Equipment |
-| --- | --- | --- |
-| Simple | 1 | Clubs, simple tools, ordinary supplies |
+| Difficulty | Successes required | Typical project |
+| --- | ---: | --- |
+| Simple | 1 | Clubs, ordinary tools and supplies |
 | Standard | 2 | Martial weapons, bows, shields, Light Armor |
-| Complex | 3 | Heavy weapons, firearms, mechanical equipment, Medium Armor |
-| Advanced | 4 | Heavy Armor, intricate machinery, minor magical equipment |
-| Exceptional | 5 | Major magical equipment, advanced constructs, exceptional enchantments |
+| Complex | 3 | Heavy weapons, firearms, fine mechanisms, Medium Armor |
+| Advanced | 4 | Heavy Armor, intricate devices, most Minor magical equipment |
+| Exceptional | 5 | Major magical equipment, advanced constructs, unusual enchantments |
 
-Relics generally require unique materials, specialized knowledge, and significant narrative effort rather than being available through ordinary crafting alone. The GM may adjust Difficulty to reflect unusual designs or circumstances.
+Ordinary enchanting is normally Difficulty 2–5, depending on the base effect, materials and complexity. The GM sets exceptional/unique project prerequisites, **not** approval of every normal attempt.
 
-### Crafting Checks
+### Crafting and Enchantment Checks
 
-The default Skill is Craft, paired with whichever Characteristic best represents the work being performed.
-
-| Approach | Suggested Check |
+| Work | Suggested Characteristic + Skill |
 | --- | --- |
 | Forging and metalworking | Body + Craft |
 | Fine mechanisms and delicate work | Agility + Craft |
-| Engineering, design, and assembly | Mind + Craft |
-| Magical enchantment | Mind + Mysticism |
-| Sacred or spiritual enchantment | Spirit + Mysticism |
+| Engineering, design and assembly | Mind + Craft |
+| Arcane enchanting | Mind + Mysticism |
+| Sacred or spiritual enchanting | Spirit + Mysticism |
 
-The GM chooses the most appropriate pairing. A character must have access to reasonable tools and materials for the proposed item.
+Roll D6 equal to the Characteristic; count dice meeting the Skill threshold as successes. A project succeeds when successes equal or exceed Difficulty. A non-combat Skill Check generates **at most one Surge** from two or more natural sixes and **at most one Blunder** from two or more natural ones; both may occur on the same roll. Neither is guaranteed by a successful check.
 
-### Crafting Success
+### Resolving Success and Excess Successes
 
-If the Check generates successes equal to or greater than the Difficulty, the item is completed. It receives its normal equipment profile and battlefield Point value. For every success beyond the required Difficulty, gain one Crafting Quality. For example: A character attempts to craft a Longsword, Difficulty 2. They roll four successes. The Longsword is completed with two Crafting Qualities available.
+A successful **new-item craft** produces the base equipment with its ordinary profile and Points. A successful **enchanting project** applies the predeclared eligible *ordinary enchantment* to the owned item, at its printed Points. Neither result requires excess successes.
 
-### Crafting Surge
+`Excess successes = max(0, total successes − Difficulty)`. Spend them on compatible ordinary Qualities or on ranks/requirements of one Surge-exclusive Quality; **the same excess success cannot be spent twice**. A named Quality can be selected only once per item but can be ranked up to its cap. Every rank adds its listed battlefield Points, including ranks purchased with an enchanting project's excess successes.
 
-If the Crafting Check generates a Surge, gain one additional Crafting Quality on a successful craft. This is in addition to any Qualities earned through excess successes. A Surge on an unsuccessful craft may instead preserve valuable materials, reveal a better technique, or provide another reasonable narrative benefit.
+### Ordinary Crafting Qualities
 
-### Crafting Blunder
+| Named Quality | Improvement per rank | Excess successes per rank | Added Points per rank | Ordinary cap |
+| --- | --- | ---: | ---: | ---: |
+| Balanced | Accurate +1 on one Attack | 1 | +10 | 3 |
+| Specialized | Anti-[chosen Tag] +1 on one Attack | 1 | +10 | 3 |
+| Extended | +1" printed Range | 1 | +5 | 3 |
+| Reinforced | Tough +1 on Armor Saves | 1 | +15 | 2 |
+| Sheltering | Cover +1 against eligible ranged Attacks | 1 | +15 | 2 |
+| Swift | +1" Move while equipped | 1 | +10 | 2 |
+| Deadly | +1 Attack die on one Attack | 1 | +15 | 2 |
+| Precise | Improve Hit by one step | 2 | +20 | 1 |
+| Protective | Improve Armor by one step | 2 | +20 | 1 |
 
-A Crafting Blunder creates a complication. A successful craft may still Blunder. If the item is completed despite the Blunder, it gains one Flaw. If the craft fails and Blunders, the GM may instead introduce wasted materials, damaged tools, additional work, or another appropriate setback. A Check may generate both a Surge and a Blunder. Resolve both independently.
+Sheltering applies only to compatible protective armor, as specified under Enchantment Components; it grants the usual Evade eligibility against ranged attacks, not a bonus Armor Save. Improvements cannot exceed normal limits (Hit and Armor no better than 2+, and normal item-specific caps). **Anti-[chosen Tag]** must name a canonical tag when gained. Destructive (+1 Damage) and Exceptional Edge (Critical +1) are **Surge-exclusive** and follow the rules in the Enchantment Components table, rather than the ordinary list.
 
-## CRAFTING QUALITIES
+### Crafting and Enchantment Surge
 
-Crafting Qualities represent superior workmanship. They may improve an item's performance, durability, handling, or other appropriate characteristics. Unspent Qualities may instead represent exceptional appearance, craftsmanship, or narrative value.
+On a **successful** check that generates a Surge, choose at most one compatible **exceptional Quality**. Its first rank is unlocked by the Surge; where an exceptional Quality has an additional requirement (such as two excess successes for +1 Damage), meet that requirement with the same check's unspent excess successes. You may also spend excess successes to **rank up the Surge Quality** (for example, Critical 1 → Critical 2 using one excess success) or purchase other ordinary improvements, subject to the shared item caps.
 
-### Common Qualities
+A crafting Surge is **not** simply one extra Quality-budget point. On a failed check, a Surge may preserve materials or yield useful knowledge, but does not produce the item, enchantment or permanent enhancement.
 
-| Quality | Qualities Required | Added Points |
+### Blunders: Random Stat Deterioration
+
+Each crafting or enchanting Skill-Check Blunder causes **one deterioration**. After resolving successful improvements, list the equipment's **eligible and currently reducible** statistics from the table below, excluding irrelevant fields and any statistic already at its floor. Select uniformly at random among the eligible **statistic fields** (not weighted by current rank), then weaken the selected stat by one step. A crafted item may succeed and still Blunder; a failed enchantment Blunder may weaken an existing item even though no enchantment was applied.
+
+| Item statistic | Deterioration | Floor |
 | --- | --- | --- |
-| Balanced — Accurate 1 | 1 | 10 |
-| Extended — +1" Range | 1 | 5 |
-| Specialized — Anti-[Category] 1 | 1 | 10 |
-| Reinforced — Tough 1 on Armor | 1 | 15 |
-| Swift — +1" Move while equipped | 1 | 10 |
-| Deadly — +1 Attack die | 2 | 15 |
-| Precise — Improve Hit by 1 step | 2 | 20 |
-| Destructive — +1 Damage | 2 | 30 |
-| Protective — Improve Armor by 1 step | 2 | 20 |
+| Weapon Attacks | −1 die | A1 |
+| Weapon Hit | Worsen one step | 6+ |
+| Damaging weapon Damage | −1 Damage | D1 |
+| Ranged weapon Range | −1" | 1" |
+| Extended Engaged reach | Reduce extended reach by 1" | Engaged (ordinary) |
+| Armor Save granted by item | Worsen one step | 6+ |
+| Evade improvement granted by item | Reduce the bonus by one step | No item bonus |
+| Item-granted Move/Wound bonuses | Reduce the bonus by 1 | +0 |
+| Ranked Accurate, Tough, Cover, Anti, Critical, etc. | Reduce the item's rank by 1 | X0; inactive |
+| Item-granted Ward | Worsen one step | 6+, then inactive on a later Blunder |
 
-A Quality may only be applied to compatible equipment. For example: Balanced and Deadly apply to Weapon Attacks. Reinforced applies to Armor. Protective applies to Armor or appropriate protective equipment. Extended applies to ranged or extended-reach weapons. Swift applies to equipment suitable for improving movement. A named Quality may normally be applied only once per item. Crafting Qualities providing magical effects require appropriate supernatural materials and magical craftsmanship.
+A normal Engaged weapon has no numerical Range to reduce. Damage 1 cannot become Damage 0 through a Blunder. Deterioration **never lowers a PC's own Characteristics, base class values, or base Wounds**. If no statistic can legally deteriorate, mark the item **Damaged**; it cannot receive a further permanent improvement until repaired. Existing gear is not destroyed.
 
-Magical Enchantments remain subject to their normal crafting requirements.
+For a **failed new-item craft**, no usable item exists to deteriorate: a Blunder instead wastes materials or damages tools as specified by the project. Failed enchanting and failed improvement checks **on existing items** can deteriorate that item. Blunder consequences are independent of Surge rewards, including a roll containing both. All such defects are repairable.
 
-### Qualities and Equipment Points
+Deteriorated equipment keeps its **printed and purchased battlefield Points** until repaired; a Blunder is not a way to obtain discounted equipment or alter deployment costs. Track the underlying improvements and temporary effective penalties separately so repair restores the paid profile.
 
-The Points value of crafted equipment is: Base Equipment Points + Added Quality Points + Enchantment Points Crafting does not make improved equipment free for battlefield balance purposes. A masterwork weapon may cost little XP to create, but its superior effectiveness still contributes to its owner's final battlefield value.
+### Repairing Equipment
 
-## CRAFTING FLAWS
+Repairing a damaged item normally requires appropriate tools and materials and a Craft Check (or Mysticism for a specifically magical defect), usually at the original project's Difficulty. On success, restore **one** deteriorated stat step or clear **Damaged**; choose which if several defects exist. Repair does not award a Quality, enchantment or additional Points. An unsuccessful repair Blunder may deteriorate another eligible stat of the **existing item**, but cannot lower it beyond the stated floors.
 
-Blunders may introduce defects or unexpected properties. The GM selects a Flaw appropriate to the item and the circumstances of its creation.
+### Worked Crafting Example: Longsword
 
-| Flaw | Effect |
-| --- | --- |
-| Unwieldy | Worsen the item's Hit by 1 step |
-| Cumbersome | Reduce Move by 1" while equipped |
-| Fragile | When an Attack using this item Blunders, the item becomes unusable until repaired |
-| Unreliable | When an Attack using this item Blunders, the wielder becomes Off-Balance |
-| Noisy | Using the item immediately ends the wielder's Concealed condition |
-| Unstable | When the item's magical effect Blunders, its wielder suffers 1 Damage |
-| Imperfect | One selected Crafting Quality remains inactive until the item is repaired |
+A Longsword costs **10 Points** and has **Engaged / A4 / Hit 5+ / D1**. A Warrior with **Body 5, Craft 4+** attempts a Standard craft (Difficulty 2) and rolls **1, 4, 5, 6, 6**: four successes, **two excess successes**, one Surge and **no Blunder**.
 
-Flaws should be selected based on the item's nature. For example, Cumbersome may be appropriate for poorly fitted armor, while Unreliable may suit a badly constructed firearm. A Blunder does not automatically negate an otherwise successful craft. Flaws generally do not reduce battlefield Points until they are deliberately incorporated into a separately balanced item profile.
+The Warrior selects **Exceptional Edge (Critical 1)** from the Surge (adds **30 Points**) and spends one excess success to **rank it to Critical 2** (adds **15 more Points**). The second excess success purchases **Balanced 1 (Accurate 1)** (adds **10 Points**). Result:
 
-## REPAIRING EQUIPMENT
+| Item | Range | Attacks | Hit | Damage | Keywords | Total Points |
+| --- | --- | ---: | --- | ---: | --- | ---: |
+| Exceptional Longsword | Engaged | 4 | 5+ | 1 | Accurate 1, Critical 2 | **65** |
 
-Repairing an item normally requires appropriate tools, materials, and a Craft Check. The Difficulty is normally the same as crafting the original item. On success, remove one applicable Flaw or restore the item to normal use. Excess successes may reduce the time or materials required, or provide an appropriate narrative benefit. Repairs do not automatically grant new Crafting Qualities. A character may attempt to improve an existing item as a separate crafting project, using an appropriate Difficulty determined by the proposed improvement.
+Points: **Longsword 10 + Critical 1 30 + Critical rank 2 15 + Accurate 1 10 = 65**. Critical 2 converts up to two failed Hit dice **per Surge generated by the weapon's future Attack rolls**; it is not guaranteed without an Attack Surge. Instead, the Warrior could spend both excess successes on ordinary qualities and still take the unranked Critical 1 unlocked by the crafting Surge.
 
-## CRAFTING EXAMPLE
-
-A skilled Warrior wants to forge an exceptional Longsword. The Longsword normally costs 10 Points and has: Engaged / 4 / 5+ / 1 The GM assigns Difficulty 2. The Warrior has: Body 5 Craft 4+ The Warrior rolls five dice: 1, 4, 5, 6, 6 Four successes are generated, and the Check also Surges.
-
-The result is:
-
-- Two successes satisfy the Difficulty.
-- Two excess successes grant two Qualities.
-- The Surge grants one additional Quality.
-- No Blunder occurs.
-
-The Longsword receives three Crafting Qualities. The player chooses: Deadly — 2 Qualities +1 Attack die. Balanced — 1 Quality Accurate 1. The completed weapon becomes: Masterwork Longsword
-
-| Range | A | Hit | Dmg | Keywords |
-| --- | --- | --- | --- | --- |
-| Engaged | 5 | 5+ | 1 | Accurate 1 |
-
-Its battlefield value is:
-
-| Component | Points |
-| --- | --- |
-| Longsword | 10 |
-| Deadly | +15 |
-| Balanced | +10 |
-| Total | 35 |
-
-A PC wielding this Masterwork Longsword rolls **5 Attack dice**, exactly as shown in its final profile, before any additional modifiers granted by Talents, Commands, or other applicable effects. This exceptional weapon is stronger than a mundane Longsword, and its Point value reflects the added Crafting Qualities.
+A later Blunder choosing Hit would reduce this Longsword's Hit from **5+ to 6+ until repaired** without reducing its 65-Point cost.
 
 ## EQUIPMENT RULES SUMMARY
 
 Equipment adds Points, not XP. **Printed Weapon profiles are complete PC Attack profiles.** Melee Attacks use the Combat Phase; ranged Attacks use the Assault Phase. Only equipped weapons and relevant equipment contribute their equipment Points. Starting spells are included in Base Character Value except when expressly optional with a separate cost. Additional learned spells have assigned Points values. Magical equipment may provide passive benefits or Item Commands. Item Commands do not occupy prepared Command slots.
 
-Enchantments and Crafting Qualities add their listed Points. Crafting Difficulty determines whether an item is successfully produced. Excess crafting successes and Surges grant Qualities. Blunders may introduce Flaws. Repairs remove defects; equipment improvements are separate projects.
+Enchantments and Crafting Qualities add their listed Points. Meeting Difficulty completes the base project; excess successes improve or rank Qualities; a Skill-Check Surge unlocks one exceptional Quality and can have its rank increased by excess successes; a Blunder randomly deteriorates one eligible item stat subject to its floor. Repairs remove deterioration. Owned-item improvement and enchanting require separate projects and never produce duplicate free items.
 
 
 ## Combat Timing and Elemental Equipment
