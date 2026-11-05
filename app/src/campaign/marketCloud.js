@@ -5,6 +5,7 @@ import { db } from '../firebase.js'
 import { craftRoll, eligibleOffer, priceForFormation, publishableOffer } from './market.js'
 import { newUnitConfig, resolveUnit } from '../builder/engine.js'
 import { patronCoreProfiles, standardOfferId } from './recruitmentAccess.js'
+import { standardOffers } from './defaultShop.js'
 
 const company = (id) => doc(db, 'campaigns', id)
 const offers = (id) => collection(db, 'campaigns', id, 'marketOffers')
@@ -145,4 +146,23 @@ export async function seedStandardRecruitmentOffers(id, uid, campaign, catalog) 
     })
   }
   return missing.filter(Boolean).length
+}
+
+// Stable, pre-priced everyday gear. The GM does not approve individual sales.
+// Auto-seeding is idempotent; existing offers are never overwritten, so a GM
+// can intentionally disable a standard item for a particular campaign.
+export async function seedDefaultEquipmentOffers(id, uid, data) {
+  const choices = standardOffers(data)
+  let created = 0
+  for (const choice of choices) {
+    const ref = doc(offers(id), choice.offerId)
+    if ((await getDoc(ref)).exists()) continue
+    await setDoc(ref, {
+      kind: 'equipment', label: choice.label, item: choice.item, price: choice.price,
+      enabled: true, standardEquipment: true, createdBy: uid,
+      createdAt: serverTimestamp(),
+    })
+    created++
+  }
+  return created
 }
