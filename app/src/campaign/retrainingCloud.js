@@ -3,6 +3,7 @@ import {
 } from 'firebase/firestore'
 import { db } from '../firebase.js'
 import { developOrderId, RETRAINING_GOLD, checkRetraining, replacedTalents } from './retraining.js'
+import { derive } from '../character/engine.js'
 import { committedTalentIssues } from './talentCommitment.js'
 
 const campaignRef = (id) => doc(db, 'campaigns', id)
@@ -43,7 +44,7 @@ export async function submitRetraining(id, uid, data, tier, index, newTalent) {
     }
     if (!heroSnap.exists()) throw new Error('Save your Character before Retraining')
     const sheet = heroSnap.data().sheet
-    const legal = checkRetraining(sheet, data, tier, index, newTalent)
+    const legal = checkRetraining(sheet, data, tier, index, newTalent, (candidate) => derive(candidate, data))
     if (!legal.ok) throw new Error(legal.error)
     const ref = requestRef(id, retrainingRequestId(uid, order))
     const old = await tx.get(ref)
@@ -77,7 +78,7 @@ export async function resolveRetraining(id, requestId, gmUid, data, approve) {
         campaign.retrainOrderUsed === req.orderId) throw new Error('This Develop Order is no longer available')
     if ((campaign.goldBalance ?? 0) < RETRAINING_GOLD) throw new Error('The Company treasury needs 2 Gold')
     const sheet = heroSnap.data().sheet
-    const result = checkRetraining(sheet, data, req.tier, req.index, req.newTalent)
+    const result = checkRetraining(sheet, data, req.tier, req.index, req.newTalent, (candidate) => derive(candidate, data))
     if (!result.ok) throw new Error(result.error)
     const gold = campaign.goldBalance - RETRAINING_GOLD
     tx.update(company, {
