@@ -41,7 +41,7 @@ export default function RetrainingPanel({ campaign, user, isGm, heroes, data }) 
     [mySheet, data, tier, index])
   const selected = options.find((t) => t.id === replacementId)
   const newTalent = selected ? { id: selected.id, ...choices } : null
-  const review = mySheet && newTalent ? checkRetraining(mySheet, data, tier, index, newTalent) : null
+  const review = mySheet && newTalent ? checkRetraining(mySheet, data, tier, index, newTalent, (candidate) => derive(candidate, data)) : null
   const view = useMemo(() => mySheet ? derive(mySheet, data) : null, [mySheet, data])
   const current = mySheet && entries[index]
   const ownRequests = requests.filter((r) => r.ownerUid === user.uid)
