@@ -18,6 +18,7 @@ import {
   deleteMyHero, revokeApproval, removeInventoryItem, removePlayer, deleteCampaign,
 } from './cloud.js'
 import { LOCKED_CHOICES, validateCampaignSheet } from './equipment.js'
+import { developOrderId } from './retraining.js'
 import { advanceTurn, baseXp, bonusXp } from './limits.js'
 import { acceptSnapshot, discardDraft, editDraft } from './sync.js'
 
@@ -151,6 +152,7 @@ function Workspace({ id, user }) {
   const [tab, setTab] = useState('overview')
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
+  const [retrainTarget, setRetrainTarget] = useState(null)
   const [working, setWorking] = useState(false)
   const [sheetDraft, setSheetDraft] = useState(null)
   const [progressDraft, setProgressDraft] = useState(null)
@@ -241,6 +243,11 @@ function Workspace({ id, user }) {
     try { await fn() } catch (e) { setError(errorMessage(e)) }
     finally { setWorking(false) }
   }
+  const retrainOrder = campaign ? developOrderId(campaign) : ''
+  const retrainStatus = !campaign ? '' : campaign.retrainOrderUsed === retrainOrder ? 'Retraining already used this Turn'
+    : campaign.activeDevelopOrder === retrainOrder && campaign.status !== 'completed' ? 'Develop is open this Turn'
+      : 'Waiting for the GM to play Develop'
+  const requestRetraining = (tier, index) => { setRetrainTarget({ tier, index, at: Date.now() }); setTab('company') }
   if (!campaign || !data || !sheet || !progressDraft) return <div className="builder-wrap">
     <p role="status">{error || (campaignReady && !campaign ? 'Campaign no longer exists or you no longer have access.' : 'Loading live campaign data…')}</p>
     <a href="#/campaign">Back to campaigns</a>
@@ -265,7 +272,12 @@ function Workspace({ id, user }) {
       <section className="panel"><h2>Company resources</h2><p>{inventory.filter((x) => x.kind === 'unit').length} owned formations · {inventory.filter((x) => x.kind === 'equipment').length} equipment items</p><p className="muted small"><strong>{campaign.goldBalance ?? 0} Company Gold</strong> · Gold purchases, crafting proposals and recruitment are managed under Company & Projects. Political Stakes and the strategic map remain future milestones.</p></section>
     </div>}
     {tab === 'character' && <div>
-      <div className="panel campaign-character-actions save-bar"><div><h2>{sheet.name}</h2><div className="muted small">{view.points.total} points · {view.points.spent}/{campaign.xpTotal} XP spent · {campaign.xpTotal - view.points.spent} XP unspent</div><p className="small">{myHero ? 'Saved campaign draft' : 'New campaign character'} · {approved ? 'An approved snapshot exists' : 'Not yet approved by GM'}</p></div>
+      <div className="save-bar">
+        <div className="save-id"><strong>{sheet.name}</strong>
+          <span className="tag" title="Character points value">{view.points.total} pts</span>
+          <span className="tag" title={`${campaign.xpTotal - view.points.spent} XP unspent`}>{view.points.spent}/{campaign.xpTotal} XP</span>
+          <span className={`tag ${approved ? 'tag-ok' : ''}`} title={approved ? 'A GM-approved snapshot exists' : 'Not yet approved by GM'}>{approved ? 'Approved' : 'Not approved'}</span>
+        </div>
         <div className="save-status small">
           {sheetDraft?.conflict ? <span className="bad">Saved elsewhere. Load the saved character to resolve.</span>
             : !isValid ? <span className="bad" title="See 'Before saving' below">Can't save: {blockers[0]}{blockers.length > 1 ? ` (+${blockers.length - 1} more)` : ''}</span>
@@ -273,21 +285,22 @@ function Workspace({ id, user }) {
             : <span className="ok">{myHero ? '✓ All changes saved' : 'Nothing to save yet'}</span>}
         </div>
         <div className="saved-actions">
-          {sheetDraft?.dirty && <button disabled={working} onClick={() => setSheetDraft(discardDraft)}>Discard changes</button>}
+          {sheetDraft?.dirty && <button disabled={working} onClick={() => setSheetDraft(discardDraft)}>Discard</button>}
           <button className="primary" disabled={working || !isValid || sheetDraft?.conflict} onClick={() => run(async () => { await saveHeroDraft(id, user.uid, sheet); setNotice('Character saved') })}>Save draft</button>
-          {myHero && <button className="danger" disabled={working || allEntries(myHero.sheet?.talents ?? {}).length > 0}
-            title={allEntries(myHero.sheet?.talents ?? {}).length > 0 ? 'Ask the GM to retire a character with committed Talents' : undefined}
-            onClick={() => {
-            if (!window.confirm('Delete your campaign character draft and release your reserved formations? A GM-approved snapshot stays until the GM revokes it. This cannot be undone.')) return
-            run(() => deleteMyHero(id, user.uid))
-          }}>Delete character</button>}</div>
+        </div>
       </div>
       {sheetDraft?.conflict && <section className="panel"><h3>Updated from another session</h3><p className="bad small">A newer character sheet was saved elsewhere. Your local edits were preserved; load the saved sheet to resolve the conflict.</p><button onClick={() => setSheetDraft(discardDraft)}>Load saved character</button></section>}
-      {!isValid && <section className="panel"><h3>Before saving</h3><ul className="checks">{blockers.map((m, i) => <li key={i} className="bad">{m}</li>)}</ul></section>}
-      <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} committedTalents={myHero?.sheet?.talents} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
+      {!isValid && <details className="panel before-saving"><summary className="bad">Before saving · {blockers.length} issue{blockers.length === 1 ? '' : 's'}</summary><ul className="checks">{blockers.map((m, i) => <li key={i} className="bad">{m}</li>)}</ul></details>}
+      <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} committedTalents={myHero?.sheet?.talents} retrain={{ status: retrainStatus, onRequest: requestRetraining }} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
       {approved && <section className="panel"><h2>Last GM-approved character</h2><CharacterDatasheet character={approved.sheet} view={derive(normalizeCharacter(approved.sheet, data), data)} /></section>}
+      {myHero && <p className="character-footer small"><span className="muted">{allEntries(myHero.sheet?.talents ?? {}).length > 0 ? 'Characters with committed Talents can only be retired by the GM.' : 'Deleting your character releases its reserved formations.'}</span>{' '}
+        <button className="danger" disabled={working || allEntries(myHero.sheet?.talents ?? {}).length > 0}
+          onClick={() => {
+            if (!window.confirm('Delete your campaign character draft and release your reserved formations? A GM-approved snapshot stays until the GM revokes it. This cannot be undone.')) return
+            run(() => deleteMyHero(id, user.uid))
+          }}>Delete character</button></p>}
     </div>}
-    {tab === 'company' && <CompanyEconomy campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} inventory={inventory} />}
+    {tab === 'company' && <CompanyEconomy campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} inventory={inventory} retrainTarget={retrainTarget} />}
     {tab === 'army' && <CampaignArmy campaign={campaign} user={user} isGm={isGm} heroes={heroes} inventory={inventory} detachments={detachments} approvedHeroes={approvedHeroes} />}
     {tab === 'gm' && isGm && <div className="panel-grid">
       <section className="panel"><h2>Progression</h2><p className="muted small">XP follows the campaign position: 5 XP per completed Turn and 5 XP on beginning Acts II, III and IV. Add exploration and Pivotal Objective XP below. Progress only moves forward.</p>
@@ -338,7 +351,7 @@ function Workspace({ id, user }) {
   </div>
 }
 
-function CharacterEditor({ data, sheet, view, update, committedTalents, inventory, approved, otherHeroes, ownerUid, xpBudget }) {
+function CharacterEditor({ data, sheet, view, update, committedTalents, retrain, inventory, approved, otherHeroes, ownerUid, xpBudget }) {
   const [page, setPage] = useState('stats')
   return <>
     <nav className="subtabs nested">{['stats','talents','equipment','magic','sheet'].map((t) => <button key={t} className={page===t?'active':''} onClick={() => setPage(t)}>{t[0].toUpperCase()+t.slice(1)}</button>)}</nav>
@@ -348,7 +361,7 @@ function CharacterEditor({ data, sheet, view, update, committedTalents, inventor
         update({ ...prospective, gear: [], spells: [], otherPoints: 0 })
       } else update(patch)
     }} />}
-    {page === 'talents' && <TalentPyramid data={data} character={sheet} view={view} update={update} xpBudget={xpBudget} committedTalents={committedTalents} />}
+    {page === 'talents' && <TalentPyramid data={data} character={sheet} view={view} update={update} xpBudget={xpBudget} committedTalents={committedTalents} retrain={retrain} />}
     {page === 'equipment' && <GearTab data={data} character={sheet} view={view} update={update}
       hash="#/character/gear" campaignPolicy={{ inventory, approved, otherHeroes, ownerUid }} />}
     {page === 'magic' && <section className="panel">

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { derive, attackMatches, CHARACTERISTICS, SKILLS } from '../character/engine.js'
 import { choiceSpecs, TIERS } from '../character/talents.js'
 import { checkRetraining, developOrderId, retrainingChoices, RETRAINING_GOLD } from './retraining.js'
@@ -22,14 +22,21 @@ function choiceOptions(spec, view) {
   return ALLOWED[spec.kind]?.(spec) ?? spec.options ?? []
 }
 
-export default function RetrainingPanel({ campaign, user, isGm, heroes, data }) {
+export default function RetrainingPanel({ campaign, user, isGm, heroes, data, target = null }) {
   const [requests, setRequests] = useState([])
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState('')
-  const [tier, setTier] = useState(1)
-  const [index, setIndex] = useState(0)
+  const [tier, setTier] = useState(target?.tier ?? 1)
+  const [index, setIndex] = useState(target?.index ?? 0)
   const [replacementId, setReplacementId] = useState('')
   const [choices, setChoices] = useState({})
+  const panelRef = useRef(null)
+  // Arriving from a committed Talent preselects it and brings the form into view.
+  useEffect(() => {
+    if (!target) return
+    setTier(target.tier); setIndex(target.index); setReplacementId(''); setChoices({})
+    panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [target])
   const mySheet = heroes.find((h) => h.ownerUid === user.uid)?.sheet
   const currentOrder = developOrderId(campaign)
   const open = campaign.activeDevelopOrder === currentOrder && campaign.status !== 'completed'
@@ -52,7 +59,7 @@ export default function RetrainingPanel({ campaign, user, isGm, heroes, data }) 
     catch (error) { setMessage(error.message ?? 'Retraining failed') }
     finally { setBusy(false) }
   }
-  return <section className="panel span-2">
+  return <section className={`panel span-2${target ? ' retrain-target' : ''}`} ref={panelRef}>
     <h2>Talent Retraining · Develop</h2>
     <p className="muted small">A Develop Order permits one Talent replacement for the entire Company, for {RETRAINING_GOLD} Gold. The replacement must stay in the same Tier and keep the pyramid legal. It becomes effective after the current Turn and needs a new GM character approval for deployment.</p>
     <p className="small">Current Turn: Act {campaign.act}, Turn {campaign.turn} · {open ? used ? 'Retraining already used' : 'Develop available' : 'Develop not declared'}</p>

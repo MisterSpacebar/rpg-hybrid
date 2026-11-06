@@ -480,8 +480,18 @@ select.needs-choice { border-color: #e5645b !important; }
 .campaign-page .picker li { display:flex; justify-content:space-between; gap:12px; align-items:center; }
 .campaign-page .checks { margin:4px 0; }
 @media (max-width:680px) { .campaign-heading, .campaign-character-actions { align-items:flex-start; } }
-.save-bar { position: sticky; top: 0; z-index: 20; background: var(--panel); box-shadow: 0 4px 14px rgba(0,0,0,.35); }
-.save-bar .save-status { flex: 1 1 220px; }
+.save-bar { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; padding: 6px 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,.35); }
+.save-bar .save-id { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.save-bar .save-id strong { margin-right: 6px; }
+.save-bar .save-id .tag { margin: 0; line-height: 1.5; }
+.save-bar .save-status { flex: 1 1 200px; min-width: 0; }
+.save-bar button { padding-block: 4px; }
+.tag.tag-ok { color: #4caf7a; border-color: #4caf7a; }
+.before-saving summary { cursor: pointer; }
+.before-saving ul { margin: 8px 0 0; }
+.retrain-cta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.retrain-target { outline: 1px solid var(--accent); }
+.character-footer { margin: 16px 0 0; text-align: right; }
 
 .campaign-page .panel-grid { align-items: stretch; }
 .campaign-page .panel-grid > .panel { height: auto; }

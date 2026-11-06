@@ -19,7 +19,7 @@ const dateOf = (stamp) => stamp?.toDate?.().toLocaleString() ?? ''
 const DEFAULT = { kind: 'equipment', equipment: '', formation: '', slot: 'C', check: 'Mind + Craft', materials: '', note: '' }
 const validInt = (n) => Number.isInteger(Number(n)) && Number(n) >= 0
 
-export default function CompanyEconomy({ campaign, user, isGm, heroes, detachments, inventory = [] }) {
+export default function CompanyEconomy({ campaign, user, isGm, heroes, detachments, inventory = [], retrainTarget = null }) {
   const [requests, setRequests] = useState([])
   const [ledger, setLedger] = useState([])
   const [data, setData] = useState(null)
@@ -95,7 +95,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes, detachmen
   if (!data || !catalog) return <section className="panel"><h2>Company economy</h2><p>{message || 'Loading equipment and formation catalogs…'}</p></section>
   return <div className="panel-grid">
     <div className="contents"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} inventory={inventory} /></div>
-    <RetrainingPanel campaign={campaign} user={user} isGm={isGm} heroes={heroes} data={data} />
+    <RetrainingPanel campaign={campaign} user={user} isGm={isGm} heroes={heroes} data={data} target={retrainTarget} />
     <Toast message={message} kind={/submitted|recorded|approved|rejected|purchased|published|enabled|disabled/i.test(message) ? 'ok' : 'bad'} />
 
     {!isGm && <details className="panel">

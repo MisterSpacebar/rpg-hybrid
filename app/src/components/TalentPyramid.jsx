@@ -89,7 +89,7 @@ function Choice({ spec, e, view, patch, locked = false }) {
   )
 }
 
-function SlotDetail({ e, view, update, onRemove, locked = false }) {
+function SlotDetail({ e, view, update, onRemove, locked = false, retrain = null }) {
   const patch = (changes) =>
     update((c) => {
       // Sticky choices live on the Rank I entry; later ranks read them from there.
@@ -111,7 +111,9 @@ function SlotDetail({ e, view, update, onRemove, locked = false }) {
           <h2>{titleOf(e)} <span className="muted small">Tier {e.tier} · {TIER_COST[e.tier]} XP</span><span className={`tag kind-tag kind-${talentKind(e.def)}`}>{TALENT_KINDS.find((k) => k.id === talentKind(e.def)).label}</span></h2>
           <div className="muted small">{[e.def.category, e.def.type, e.def.cost].filter(Boolean).join(' · ')}</div>
         </div>
-        {locked ? <span className="muted small" title="Use the future Retrain option to change a committed talent">Committed · Retraining required</span> : <button className="danger" onClick={() => onRemove(e)}>Remove</button>}
+        {locked ? (retrain
+          ? <div className="retrain-cta"><span className="muted small">Committed · {retrain.status}</span> <button onClick={() => retrain.onRequest(e.tier, e.index)} title="Opens Company & Projects with this Talent selected">Request retraining</button></div>
+          : <span className="muted small">Committed · Retraining required</span>) : <button className="danger" onClick={() => onRemove(e)}>Remove</button>}
       </div>
       <p>{e.text}</p>
       {e.def.prerequisite && <p className="muted small">Requires {e.def.prerequisite}.</p>}
@@ -172,7 +174,7 @@ function Picker({ tier, view, character, update, onDone, xpBudget = null }) {
   )
 }
 
-export default function TalentPyramid({ character, view, update, xpBudget = null, committedTalents = null }) {
+export default function TalentPyramid({ character, view, update, xpBudget = null, committedTalents = null, retrain = null }) {
   const [selected, setSelected] = useState(null)
   const { talents } = character
   const total = allEntries(talents).length
@@ -181,7 +183,7 @@ export default function TalentPyramid({ character, view, update, xpBudget = null
     const without = { ...talents, [e.tier]: talents[e.tier].filter((_, i) => i !== e.index) }
     const next = normalizeTalents(without, view.pool)
     if (committedTalentIssues(next, committedTalents).length) {
-      window.alert('Removing this talent would change already-committed talents. Use Retraining when that Company Order becomes available.')
+      window.alert(`Removing this talent would change already-committed talents. ${retrain ? 'Select it and use Request retraining.' : 'Retraining is required.'}`)
       return
     }
     const dropped = total - 1 - allEntries(next).length
@@ -199,7 +201,7 @@ export default function TalentPyramid({ character, view, update, xpBudget = null
         <h2>Talent Pyramid <span className="muted">({total} / 20 · {view.points.spent} / {xpBudget ?? 250} XP)</span></h2>
         <p className="muted small">
           Each tier holds 6 / 5 / 4 / 3 / 2 talents. To own <em>k</em> talents in a tier you need <em>k</em> + 1 in the tier below.
-          Ranked talents take a slot at each successive tier. Changes appear on the Stats and Sheet tabs immediately. {committedTalents && 'Saved talents and their choices are permanent until Retraining is unlocked; new talents can still be purchased with earned XP.'}
+          Ranked talents take a slot at each successive tier. Changes appear on the Stats and Sheet tabs immediately. {committedTalents && 'Saved talents and their choices are permanent; change one with Talent Retraining (Company & Projects). New talents can still be purchased with earned XP.'}
         </p>
         <div className="talent-legend small">{TALENT_KINDS.map((k) => <span key={k.id} className={`tag kind-tag kind-${k.id}`}>{k.label}</span>)}</div>
         <div className="pyramid">
@@ -251,7 +253,7 @@ export default function TalentPyramid({ character, view, update, xpBudget = null
           </p>
         </section>
       )}
-      {selectedEntry && <SlotDetail key={`${selectedEntry.tier}-${selectedEntry.index}-${selectedEntry.def.id}`} e={selectedEntry} view={view} update={update} onRemove={remove} locked={isCommittedTalent(committedTalents, selectedEntry.tier, selectedEntry.index)} />}
+      {selectedEntry && <SlotDetail key={`${selectedEntry.tier}-${selectedEntry.index}-${selectedEntry.def.id}`} e={selectedEntry} view={view} update={update} onRemove={remove} locked={isCommittedTalent(committedTalents, selectedEntry.tier, selectedEntry.index)} retrain={retrain} />}
       </div>
     </div>
     {selected && selected.index == null && (
