@@ -49,7 +49,7 @@ export async function submitRetraining(id, uid, data, tier, index, newTalent) {
     const old = await tx.get(ref)
     if (old.exists()) throw new Error('You already submitted a Retraining request this Develop Order')
     tx.set(ref, {
-      ownerUid: uid, orderId: order, status: 'requested', tier, index,
+      ownerUid: uid, orderId: order, act: campaign.act, turn: campaign.turn, status: 'requested', tier, index,
       newTalent, createdAt: serverTimestamp(),
     })
   })
