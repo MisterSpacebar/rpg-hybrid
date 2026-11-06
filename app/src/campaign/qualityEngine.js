@@ -33,7 +33,6 @@ const keywordRank = (profile, word) => {
   return Number(m?.match(/\d+/)?.[0] ?? 0)
 }
 const empty = () => ({})
-const copy = (x) => JSON.parse(JSON.stringify(x))
 
 export function itemDefinition(item, data) {
   if (!item || !data) return null
@@ -64,7 +63,7 @@ export function itemWorkState(item, data) {
   }
   const events = (item.workshopEvents ?? []).slice(0, MAX_WORK_EVENTS)
   for (const event of events) {
-    if (event.kind === 'repair' && event.repair) {
+    if (event.repair) {
       if (event.repair === 'damaged') damaged = false
       else defects[event.repair] = Math.max(0, (defects[event.repair] ?? 0) - 1)
     }
@@ -99,7 +98,6 @@ export function validateQualityPlan(item, data, roll, plan = [], opts = {}) {
   if (!state || !Array.isArray(plan) || plan.length > 3) throw new Error('Invalid equipment Quality selection')
   if (!roll?.success && plan.length) throw new Error('Failed projects cannot improve equipment')
   const ranks = { ...state.ranks }, names = new Set(Object.keys(ranks).filter((k) => ranks[k] > 0))
-  const existingExceptional = new Set([...names].filter((k) => QUALITY_RULES[k]?.exceptional))
   const seen = new Set()
   let spend = 0, exceptionalNew = 0, addedPoints = 0
   for (const p of plan) {
@@ -115,6 +113,7 @@ export function validateQualityPlan(item, data, roll, plan = [], opts = {}) {
     const prior = ranks[p.id] ?? 0
     if (prior + p.ranks > q.max) throw new Error(q.name + ' exceeds its normal rank cap')
     if (q.exceptional && !prior) {
+      if (q.magical && opts.magical !== true) throw new Error(q.name + ' requires Mysticism and magical materials')
       exceptionalNew++
       if (!roll?.surges) throw new Error(q.name + ' must be unlocked by a Skill Check Surge')
       spend += q.id === 'exceptionalEdge' ? p.ranks - 1 : p.ranks * q.cost
@@ -130,7 +129,7 @@ export function validateQualityPlan(item, data, roll, plan = [], opts = {}) {
   }
   if (names.size > 3) throw new Error('Ordinary equipment supports at most three distinct Qualities')
   if (spend > (roll?.qualities ?? 0)) throw new Error('Insufficient excess successes for selected ranks')
-  if (state.damaged) throw new Error('Damaged equipment must be repaired before improvement')
+  if (state.damaged && plan.length) throw new Error('Damaged equipment must be repaired before improvement')
   if ((state.events?.length ?? 0) >= MAX_WORK_EVENTS) throw new Error('Item work history is full')
   return { spent: spend, remaining: (roll?.qualities ?? 0) - spend, addedPoints, ranks, names: [...names] }
 }
