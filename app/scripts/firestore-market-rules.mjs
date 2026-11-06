@@ -267,6 +267,67 @@ try {
     (await getDoc(doc(pc, cid('inventory/starter-player-1-starter-a1')))).data().enchants,
     [{ key: 'minor:Accurate 1' }],
   )
+  // A declared Develop Order permits one paid Retraining. A PC may propose
+  // an exact one-slot replacement but cannot modify committed Talents directly.
+  const retrainOrder = 'act-2-turn-1'
+  const retrainId = 'retrain-player-1-' + retrainOrder
+  const retrain = doc(pc, cid('retrainingRequests/' + retrainId))
+  await assertSucceeds(updateDoc(doc(admin, campaignPath), {
+    activeDevelopOrder: retrainOrder, goldBalance: 5, updatedAt: serverTimestamp(),
+  }))
+  await assertSucceeds(setDoc(retrain, {
+    ownerUid: 'player-1', orderId: retrainOrder, act: 2, turn: 1,
+    status: 'requested', tier: 1, index: 0,
+    newTalent: { id: 'toughened', skill: 'craft' },
+    createdAt: serverTimestamp(),
+  }))
+  await assertFails(setDoc(doc(pc, cid('retrainingRequests/forged-free-retrain')), {
+    ownerUid: 'player-1', orderId: retrainOrder, act: 2, turn: 1,
+    status: 'approved', tier: 1, index: 0,
+    newTalent: { id: 'toughened' }, createdAt: serverTimestamp(),
+  }))
+  await assertSucceeds(runTransaction(admin, async (tx) => {
+    const camp = doc(admin, campaignPath)
+    const hero = doc(admin, cid('heroes/player-1'))
+    const req = doc(admin, cid('retrainingRequests/' + retrainId))
+    const [c, h] = await Promise.all([tx.get(camp), tx.get(hero)])
+    const prior = h.data().sheet.talents
+    const proposal = { ...prior, '1': [{ id: 'toughened', skill: 'craft' }, prior['1'][1]] }
+    tx.update(camp, {
+      goldBalance: c.data().goldBalance - 2, retrainOrderUsed: retrainOrder,
+      updatedAt: serverTimestamp(),
+    })
+    tx.set(doc(admin, cid('goldLedger/' + retrainId)), {
+      delta: -2, balanceAfter: c.data().goldBalance - 2,
+      actorUid: 'gm-1', reason: 'Develop Talent Retraining',
+      kind: 'retraining', retrainingId: retrainId, createdAt: serverTimestamp(),
+    })
+    tx.update(req, {
+      status: 'approved', resolvedBy: 'gm-1', resolvedAt: serverTimestamp(),
+      proposedTalents: proposal, originalTalents: prior, paid: 2,
+    })
+  }))
+  assert.equal((await getDoc(doc(admin, campaignPath))).data().goldBalance, 3)
+  const attemptedApply = async () => runTransaction(admin, async (tx) => {
+    const hero = doc(admin, cid('heroes/player-1'))
+    const req = doc(admin, cid('retrainingRequests/' + retrainId))
+    const [h, q] = await Promise.all([tx.get(hero), tx.get(req)])
+    tx.update(hero, { sheet: { ...h.data().sheet, talents: q.data().proposedTalents },
+      lastRetrainingId: retrainId, updatedAt: serverTimestamp() })
+    tx.update(req, { status: 'applied', appliedAt: serverTimestamp() })
+  })
+  await assertFails(attemptedApply())
+  await assertSucceeds(updateDoc(doc(admin, campaignPath), {
+    turn: 2, xpTotal: 30, updatedAt: serverTimestamp(),
+  }))
+  await assertSucceeds(attemptedApply())
+  assert.equal((await getDoc(heroRef)).data().sheet.talents['1'][0].id, 'toughened')
+  assert.equal((await getDoc(retrain)).data().status, 'applied')
+  await assertFails(updateDoc(heroRef, {
+    sheet: { ...initialSheet, talents: initialSheet.talents },
+    updatedAt: serverTimestamp(),
+  }))
+  console.log('PASS Firestore: Develop Retraining costs 2 Gold, cannot be forged, and only applies after Turn advancement')
   console.log('PASS Firestore market: self-service ordinary shop, default Minor recipes, approved starter registration and paid enchantment')
 } finally {
   await env.cleanup()
