@@ -10,7 +10,7 @@ import { watchEntitlements } from './cloud.js'
 import { craftRoll, priceForFormation } from './market.js'
 import {
   publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers, seedDefaultEnchantOffers,
-  watchMarketOffers, watchMarketPurchases,
+  watchMarketOffers, watchMarketPurchases, registerStartingGear, starterRecordId,
 } from './marketCloud.js'
 
 // Firestore validates the market's price and assets atomically; this UI handles
@@ -126,14 +126,29 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     && !(entry.enchants ?? []).some((e) => e.key === offer.enchantKey)
     && (entry.enchants ?? []).length < 3)
 
+  const unregisteredStartingGear = (pc?.gear ?? []).filter((g) =>
+    !g.inventoryId && ['melee','ranged','armor','shield'].includes(g.kind) &&
+    !inventory.some((item) => item.id === starterRecordId(user.uid, g.uid)))
+
   const visibleOffers = offers.filter((o) => o.enabled && (o.standardAccess
     ? eligibleStandardOffer(o, catalog, campaign, entitlements, detachments)
     : o.kind !== 'unit' || (campaign.act >= 2 && !!campaign.patronFactionId &&
         (!o.factionId || o.factionId === campaign.patronFactionId))))
 
   return <div className="panel-grid contents">
-    <Toast message={message} kind={/purchased|recorded|published|enabled|disabled|updated/i.test(message) ? 'ok' : 'bad'} />
+    <Toast message={message} kind={/purchased|recorded|published|enabled|disabled|updated|eligible for enchanting/i.test(message) ? 'ok' : 'bad'} />
+    {!isGm && (campaign.goldBalance ?? 0) < 1 && <p className="bad small span-all" role="status">The Company treasury has no Gold. Purchases and enchantment attempts require a Gold award from the GM or campaign income; ordinary items do not need separate purchase approval.</p>}
 
+    {!isGm && unregisteredStartingGear.length > 0 && <section className="panel span-all">
+      <h2>Enchant existing starting equipment</h2>
+      <p className="muted small">Your free starting equipment can be registered once as an enchantment target. This does not buy or duplicate the item. The character's original starting gear remains equipped or carried. The GM must have approved the starting gear before it can be registered.</p>
+      <div className="saved-actions">
+        {unregisteredStartingGear.map((g) => <button key={g.uid} disabled={busy}
+          onClick={() => run(() => registerStartingGear(campaign.id, user.uid, g), `${g.name} is now eligible for enchanting`)}>
+          Register {g.name}
+        </button>)}
+      </div>
+    </section>}
     {!isGm && <div className="offer-row span-all">
       {[
         ['equipment', 'Equipment', 'Bought instantly with Company Gold; added to the Company inventory.'],
