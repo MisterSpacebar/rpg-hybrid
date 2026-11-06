@@ -1,5 +1,4 @@
 import { blockedReason, normalizeTalents, talentPool, TIERS } from '../character/talents.js'
-import { derive } from '../character/engine.js'
 
 export const RETRAINING_GOLD = 2
 export const developOrderId = ({ act, turn }) => `act-${act}-turn-${turn}`
@@ -19,7 +18,7 @@ export function replacedTalents(talents, tier, index, replacement) {
   return { ...talents, [tier]: talents[tier].map((e, i) => i === index ? replacement : e) }
 }
 
-export function checkRetraining(sheet, data, tier, index, replacement) {
+export function checkRetraining(sheet, data, tier, index, replacement, deriveCandidate = null) {
   if (!retrainingChoices(sheet, data, tier, index).some((x) => x.id === replacement?.id)) {
     return { ok: false, error: 'Choose a different legal Talent in the same Tier' }
   }
@@ -31,8 +30,8 @@ export function checkRetraining(sheet, data, tier, index, replacement) {
     return { ok: false, error: 'Replacement breaks a ranked prerequisite or Talent Pyramid structure' }
   }
   const candidate = { ...sheet, talents }
-  const view = derive(candidate, data)
-  const invalid = view.checks.filter((c) => !c.ok)
+  const view = deriveCandidate?.(candidate) ?? null
+  const invalid = (view?.checks ?? []).filter((c) => !c.ok)
   if (invalid.length) return { ok: false, error: invalid.map((c) => `${c.label}: ${c.detail}`).join('; '), candidate, view }
   return { ok: true, candidate, view, error: '' }
 }
