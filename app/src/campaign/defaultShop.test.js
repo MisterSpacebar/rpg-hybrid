@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { STANDARD_EQUIPMENT, standardOffers, standardItemKey, standardOfferId } from './defaultShop.js'
 import { craftRoll } from './market.js'
+import { STANDARD_ENCHANTMENTS, standardEnchantOffers } from './defaultEnchantShop.js'
 
 test('default shop prices are explicit and identities stable', () => {
   assert(STANDARD_EQUIPMENT.length >= 8 && STANDARD_EQUIPMENT.length <= 20)
@@ -30,4 +31,20 @@ test('crafting Skill Checks cap Surges and Blunders at one and never award Surge
   assert.equal(r.blunders, 1)
   assert.equal(r.qualities, 2)
   assert.equal(r.flaws, 1)
+})
+
+test('routine Minor Enchantments are restricted to compatible known catalog entries', () => {
+  const data = {
+    magic: { enchantGroups: [{ entries: [
+      { group: 'minor', key: 'minor:Accurate 1', name: 'Accurate 1', allowed: ['melee', 'ranged'] },
+      { group: 'minor', key: 'minor:Tough 1', name: 'Tough 1', allowed: ['armor', 'shield'] },
+      { group: 'major', key: 'major:Critical 1', name: 'Critical 1', allowed: ['melee'] },
+    ] }] },
+  }
+  const options = standardEnchantOffers(data)
+  assert.equal(options.length, 4)
+  assert(options.every((o) => o.kind === 'enchant' && o.standardEnchant))
+  assert(options.every((o) => o.enchantKey.startsWith('minor:')))
+  assert(options.every((o) => o.difficulty === 2 && o.price === 2))
+  assert(STANDARD_ENCHANTMENTS.every((o) => o.id && o.enchantKey && o.targetKind))
 })
