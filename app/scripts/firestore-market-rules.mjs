@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import { initializeTestEnvironment, assertFails, assertSucceeds } from '@firebase/rules-unit-testing'
-import { doc, getDoc, runTransaction, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
+import { doc, deleteDoc, getDoc, runTransaction, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 
 const env = await initializeTestEnvironment({
   projectId: 'demo-rpg-market',
@@ -106,6 +106,7 @@ try {
     } },
     updatedAt: serverTimestamp(),
   }))
+  await assertFails(deleteDoc(heroRef))
   // Standard shop initialization is self-service and price-locked.
   await assertSucceeds(setDoc(doc(pc, cid('marketOffers/standard-basic-dagger')), {
     kind: 'equipment', label: 'Dagger', price: 1, enabled: true,
