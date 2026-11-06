@@ -181,6 +181,8 @@ Ordinary Talent effects are included in the XP-spent valuation and are not added
 
 Campaign XP is awarded per completed Turn and through additional specified sources (Section 4.3). Spending XP does not require a Develop Order. A PC must finalize Talent spending and equipment before recording the Hero's Points for a battle; unspent XP remains on the Character Sheet and is not separately valued. This section follows the RPG Experience and Advancement rules.
 
+**Committed Talents.** Once a PC's campaign Character Sheet is saved with a valid Talent purchase and its choices, that Talent, rank, target and associated Skill selections are committed. New Talents can be purchased with subsequently earned XP, but previously committed entries cannot be removed or exchanged by ordinary sheet editing. Changes require the **Talent Retraining** Minor Project described under Develop (Section 8.4): 2 Gold, one Talent replaced with another legal Talent of the same Tier, maximum one Retraining project per Develop Order; no XP refund, and changes take effect after the current Turn. The GM may separately oversee retiring a Character and introducing a replacement under Section 4.9. This does not lock the standalone character-building tool or unfinished draft choices.
+
 ## 4.3 Campaign Experience
 
 PCs receive XP from the following defined sources.
