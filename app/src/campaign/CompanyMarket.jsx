@@ -172,7 +172,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       (entry.enchants ?? []).length < 3))
     && (offer.kind !== 'repair' || repairOptions({ ...entry.item,
       enchants:entry.enchants ?? [], workshopEvents:entry.workshopEvents ?? [] }, characterData).length > 0)
-    && (entry.workshopEvents ?? []).length < 20)
+    && (entry.workshopEvents ?? []).length < 8)
 
   const unregisteredStartingGear = (pc?.gear ?? []).filter((g) =>
     !g.inventoryId && ['melee','ranged','armor','shield'].includes(g.kind) &&
