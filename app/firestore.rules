@@ -353,7 +353,28 @@ service cloud.firestore {
       // The company owns permanent inventory; players only select items when deploying.
       match /inventory/{itemId} {
         allow get, list: if memberOfCampaign();
-        allow create: if (gmOfCampaign()
+        allow create: if (
+          memberOfCampaign()
+          && request.resource.data.kind == 'equipment'
+          && request.resource.data.starterOwnerUid == request.auth.uid
+          && request.resource.data.ownerUid == request.auth.uid
+          && request.resource.data.starterOriginal is map
+          && request.resource.data.starterGearUid == request.resource.data.starterOriginal.uid
+          && itemId == 'starter-' + request.auth.uid + '-' + request.resource.data.starterGearUid
+          && request.resource.data.starterOriginal.inventoryId == null
+          && request.resource.data.starterOriginal in get(
+            /databases/$(database)/documents/campaigns/$(campaignId)/approvedHeroes/$(request.auth.uid)
+          ).data.sheet.gear
+          && request.resource.data.item == {
+            'kind': request.resource.data.starterOriginal.kind,
+            'name': request.resource.data.starterOriginal.name
+          }
+          && request.resource.data.keys().hasOnly([
+            'kind','item','ownerUid','starterOwnerUid',
+            'starterGearUid','starterOriginal','createdAt'
+          ])
+          && request.resource.data.createdAt == request.time
+        ) || (gmOfCampaign()
           && request.resource.data.kind in ['unit', 'equipment']
           && (request.resource.data.kind == 'unit'
             ? request.resource.data.config is map
