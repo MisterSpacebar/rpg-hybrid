@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { committedTalentIssues, isCommittedTalent } from '../campaign/talentCommitment.js'
 import { CHARACTERISTICS, SKILLS, TALENT_KINDS, attackMatches, cap, talentKind } from '../character/engine.js'
 import {
   TIERS, TIER_CAP, TIER_COST, allEntries, availableTalents, choiceSpecs, choiceValue, normalizeTalents, slotState,
@@ -43,7 +44,7 @@ function optionsFor(spec, e, view) {
   return options.filter((o) => !used.has(o.value))
 }
 
-function Choice({ spec, e, view, patch }) {
+function Choice({ spec, e, view, patch, locked = false }) {
   const value = choiceValue(spec, e.entry, e.first)
   if (spec.sticky && e.rank > 1) {
     return <div className="small"><span className="muted">{spec.label}:</span> {value || '—'} <span className="muted">(set at Rank I)</span></div>
@@ -52,7 +53,7 @@ function Choice({ spec, e, view, patch }) {
     return (
       <label className="field">
         {spec.label}
-        <input value={value} maxLength={120} onChange={(ev) => patch({ [spec.key]: ev.target.value })} />
+        <input value={value} disabled={locked} maxLength={120} onChange={(ev) => patch({ [spec.key]: ev.target.value })} />
       </label>
     )
   }
@@ -64,7 +65,7 @@ function Choice({ spec, e, view, patch }) {
         <div className="radio-pair">
           {spec.options.map((o) => (
             <label className="choice" key={o.value}>
-              <input type="radio" name={name} checked={value === o.value} onChange={() => patch({ [spec.key]: o.value })} />{o.label}
+              <input type="radio" name={name} checked={value === o.value} disabled={locked} onChange={() => patch({ [spec.key]: o.value })} />{o.label}
             </label>
           ))}
         </div>
@@ -78,7 +79,7 @@ function Choice({ spec, e, view, patch }) {
   return (
     <label className="field">
       {spec.label}
-      <select value={value} onChange={(ev) => patch({ [spec.key]: ev.target.value })} className={!value ? 'needs-choice' : ''}>
+      <select value={value} disabled={locked} onChange={(ev) => patch({ [spec.key]: ev.target.value })} className={!value ? 'needs-choice' : ''}>
         {!spec.default && <option value="">Choose…</option>}
         {options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
       </select>
@@ -88,7 +89,7 @@ function Choice({ spec, e, view, patch }) {
   )
 }
 
-function SlotDetail({ e, view, update, onRemove }) {
+function SlotDetail({ e, view, update, onRemove, locked = false }) {
   const patch = (changes) =>
     update((c) => {
       // Sticky choices live on the Rank I entry; later ranks read them from there.
@@ -110,11 +111,11 @@ function SlotDetail({ e, view, update, onRemove }) {
           <h2>{titleOf(e)} <span className="muted small">Tier {e.tier} · {TIER_COST[e.tier]} XP</span><span className={`tag kind-tag kind-${talentKind(e.def)}`}>{TALENT_KINDS.find((k) => k.id === talentKind(e.def)).label}</span></h2>
           <div className="muted small">{[e.def.category, e.def.type, e.def.cost].filter(Boolean).join(' · ')}</div>
         </div>
-        <button className="danger" onClick={() => onRemove(e)}>Remove</button>
+        {locked ? <span className="muted small" title="Use the future Retrain option to change a committed talent">Committed · Retraining required</span> : <button className="danger" onClick={() => onRemove(e)}>Remove</button>}
       </div>
       <p>{e.text}</p>
       {e.def.prerequisite && <p className="muted small">Requires {e.def.prerequisite}.</p>}
-      {choiceSpecs(e.def).map((spec) => <Choice key={spec.key} spec={spec} e={e} view={view} patch={patch} />)}
+      {choiceSpecs(e.def).map((spec) => <Choice key={spec.key} spec={spec} e={e} view={view} patch={patch} locked={locked} />)}
     </section>
   )
 }
@@ -171,7 +172,7 @@ function Picker({ tier, view, character, update, onDone, xpBudget = null }) {
   )
 }
 
-export default function TalentPyramid({ character, view, update, xpBudget = null }) {
+export default function TalentPyramid({ character, view, update, xpBudget = null, committedTalents = null }) {
   const [selected, setSelected] = useState(null)
   const { talents } = character
   const total = allEntries(talents).length
@@ -179,6 +180,10 @@ export default function TalentPyramid({ character, view, update, xpBudget = null
   const remove = (e) => {
     const without = { ...talents, [e.tier]: talents[e.tier].filter((_, i) => i !== e.index) }
     const next = normalizeTalents(without, view.pool)
+    if (committedTalentIssues(next, committedTalents).length) {
+      window.alert('Removing this talent would change already-committed talents. Use Retraining when that Company Order becomes available.')
+      return
+    }
     const dropped = total - 1 - allEntries(next).length
     if (dropped > 0 && !window.confirm(`Removing ${titleOf(e)} also removes ${dropped} dependent talent${dropped > 1 ? 's' : ''}. Continue?`)) return
     update({ talents: next })
@@ -194,7 +199,7 @@ export default function TalentPyramid({ character, view, update, xpBudget = null
         <h2>Talent Pyramid <span className="muted">({total} / 20 · {view.points.spent} / {xpBudget ?? 250} XP)</span></h2>
         <p className="muted small">
           Each tier holds 6 / 5 / 4 / 3 / 2 talents. To own <em>k</em> talents in a tier you need <em>k</em> + 1 in the tier below.
-          Ranked talents take a slot at each successive tier. Changes appear on the Stats and Sheet tabs immediately.
+          Ranked talents take a slot at each successive tier. Changes appear on the Stats and Sheet tabs immediately. {committedTalents && 'Saved talents and their choices are permanent until Retraining is unlocked; new talents can still be purchased with earned XP.'}
         </p>
         <div className="talent-legend small">{TALENT_KINDS.map((k) => <span key={k.id} className={`tag kind-tag kind-${k.id}`}>{k.label}</span>)}</div>
         <div className="pyramid">
@@ -246,7 +251,7 @@ export default function TalentPyramid({ character, view, update, xpBudget = null
           </p>
         </section>
       )}
-      {selectedEntry && <SlotDetail key={`${selectedEntry.tier}-${selectedEntry.index}-${selectedEntry.def.id}`} e={selectedEntry} view={view} update={update} onRemove={remove} />}
+      {selectedEntry && <SlotDetail key={`${selectedEntry.tier}-${selectedEntry.index}-${selectedEntry.def.id}`} e={selectedEntry} view={view} update={update} onRemove={remove} locked={isCommittedTalent(committedTalents, selectedEntry.tier, selectedEntry.index)} />}
       </div>
     </div>
     {selected && selected.index == null && (

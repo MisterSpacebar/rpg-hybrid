@@ -1,3 +1,4 @@
+import { committedTalentIssues } from './talentCommitment.js'
 // Campaign creation is deliberately narrower than the unrestricted standalone builder.
 // Acquisition/crafting will add approved equipment to campaign inventory in a later milestone.
 export function startingWeaponNames(cls, sub) {
@@ -55,7 +56,7 @@ const canonicalChoice = (value) => {
 }
 export const sameChoice = (a, b) => JSON.stringify(canonicalChoice(a)) === JSON.stringify(canonicalChoice(b))
 
-export function validateCampaignSheet(char, data, earnedXp, inventory = [], otherHeroes = [], approved = null) {
+export function validateCampaignSheet(char, data, earnedXp, inventory = [], otherHeroes = [], approved = null, savedTalents = null) {
   const cls = data.classes.find((c) => c.id === char.classId)
   const sub = cls?.subclasses.find((s) => s.id === char.subclassId)
   if (!cls || !sub || !Array.isArray(char.gear)) return ['Invalid class, subclass or equipment']
@@ -70,7 +71,7 @@ export function validateCampaignSheet(char, data, earnedXp, inventory = [], othe
   }
   const known = new Map(inventory.filter((i) => i.kind === 'equipment').map((i) => [i.id, i]))
   const claimed = new Set(otherHeroes.flatMap((h) => (h.sheet?.gear ?? []).map((g) => g.inventoryId).filter(Boolean)))
-  const errors = []
+  const errors = committedTalentIssues(char.talents, savedTalents)
   const equipped = { melee: 0, ranged: 0, armor: 0, shield: 0 }
   const claimedHere = []
   for (const item of char.gear) {
