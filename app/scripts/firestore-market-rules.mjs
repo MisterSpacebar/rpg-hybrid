@@ -202,7 +202,39 @@ try {
   assert.equal((await getDoc(doc(pc, campaignPath))).data().goldBalance, 1)
   assert.deepEqual((await getDoc(doc(pc, cid('inventory/purchase-1')))).data().enchants, [{ key: 'minor:Accurate 1' }])
   await assertFails(updateDoc(doc(pc, cid('inventory/purchase-1')), { enchants: [] }))
-  console.log('PASS Firestore market: ordinary purchases, patron recruitment and paid owned-item enchanting; arbitrary asset modifications denied')
+  // The original free starter has an enhancement anchor, not a duplicate
+  // equipment pool item. Players can still pay to enchant that exact item.
+  await assertSucceeds(runTransaction(pc, async (tx) => {
+    const camp = doc(pc, campaignPath)
+    const starter = doc(pc, cid('inventory/starter-player-1-starter-a1'))
+    const [c, item] = await Promise.all([tx.get(camp), tx.get(starter)])
+    tx.update(camp, {
+      goldBalance: c.data().goldBalance - 1, lastPurchaseId: 'enchant-starter-1',
+      lastPurchaseOfferId: 'sharpen-recipe', lastPurchaseUid: 'player-1',
+      updatedAt: serverTimestamp(),
+    })
+    tx.set(doc(pc, cid('marketPurchases/enchant-starter-1')), {
+      offerId: 'sharpen-recipe', ownerUid: 'player-1', kind: 'enchant',
+      price: 1, balanceAfter: c.data().goldBalance - 1,
+      status: 'completed', targetItemId: starter.id,
+      crafting: crafted, createdAt: serverTimestamp(),
+    })
+    tx.set(doc(pc, cid('goldLedger/enchant-starter-1')), {
+      actorUid: 'player-1', delta: -1, balanceAfter: c.data().goldBalance - 1,
+      reason: 'Starting Dagger enchant', kind: 'market',
+      purchaseId: 'enchant-starter-1', createdAt: serverTimestamp(),
+    })
+    tx.update(starter, {
+      enchants: [...(item.data().enchants ?? []), { key: 'minor:Accurate 1' }],
+      lastEnhancementId: 'enchant-starter-1', updatedAt: serverTimestamp(),
+    })
+  }))
+  assert.equal((await getDoc(doc(pc, campaignPath))).data().goldBalance, 0)
+  assert.deepEqual(
+    (await getDoc(doc(pc, cid('inventory/starter-player-1-starter-a1')))).data().enchants,
+    [{ key: 'minor:Accurate 1' }],
+  )
+  console.log('PASS Firestore market: self-service ordinary shop, default Minor recipes, approved starter registration and paid enchantment')
 } finally {
   await env.cleanup()
 }
