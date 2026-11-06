@@ -135,6 +135,30 @@ service cloud.firestore {
         allow update: if false;
       }
 
+      // A saved Talent entry is committed at its tier/index, including its
+      // specialization choices. New XP may append further entries, but PCs
+      // cannot remove/reorder/replace saved entries without an explicit future
+      // Retrain transaction. Applied to every PC draft update, not just UI.
+      function savedTalentPrefix(before, after) {
+        return before is list && after is list
+          && after.size() >= before.size()
+          && (before.size() < 1 || after[0] == before[0])
+          && (before.size() < 2 || after[1] == before[1])
+          && (before.size() < 3 || after[2] == before[2])
+          && (before.size() < 4 || after[3] == before[3])
+          && (before.size() < 5 || after[4] == before[4])
+          && (before.size() < 6 || after[5] == before[5]);
+      }
+      function keepsSavedTalents() {
+        let prior = resource.data.sheet.talents;
+        let next = request.resource.data.sheet.talents;
+        return savedTalentPrefix(prior['1'], next['1'])
+          && savedTalentPrefix(prior['2'], next['2'])
+          && savedTalentPrefix(prior['3'], next['3'])
+          && savedTalentPrefix(prior['4'], next['4'])
+          && savedTalentPrefix(prior['5'], next['5']);
+      }
+
       match /heroes/{uid} {
         allow get, list: if memberOfCampaign();
         allow create: if isOwner(uid) && memberOfCampaign()
@@ -151,7 +175,8 @@ service cloud.firestore {
           && request.resource.data.sheet.talents is map
           && request.resource.data.sheet.gear is list
           && request.resource.data.sheet.gear.size() <= 60
-          && request.resource.data.sheet.xpEarned == null;
+          && request.resource.data.sheet.xpEarned == null
+          && keepsSavedTalents();
         allow delete: if (isOwner(uid) && memberOfCampaign()) || gmOfCampaign();
       }
 
