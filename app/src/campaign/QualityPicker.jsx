@@ -43,7 +43,7 @@ export default function QualityPicker({ item, data, roll, plan, setPlan, kind, r
             <option value="">Choose…</option><option value="physical">Physical</option><option value="magic">Magic</option>
           </select> : <select value={row.choice ?? ''} onChange={(e)=>change(index,{choice:e.target.value})}>
             <option value="">Choose target Tag…</option>{ANTI_TAGS.map((tag)=><option key={tag} value={tag}>{tag}</option>)}
-          </select>}}
+          </select>}
         </label>}
         <button onClick={()=>setPlan((list)=>list.filter((_,i)=>i!==index))}>Remove</button>
       </div>
