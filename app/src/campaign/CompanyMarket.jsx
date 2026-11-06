@@ -200,8 +200,10 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     {!isGm && <div className="offer-row span-all">
       {[
         ['equipment', 'Equipment', 'Bought instantly with Company Gold; added to the Company inventory.'],
-        ['craft', 'Crafting', 'Quest/reward recipes are published once; ordinary projects do not require per-attempt GM approval. Advanced crafted Qualities and flaws await the full profile editor.'],
-        ['enchant', 'Enchanting', 'Apply an unlocked Minor Enchantment to actual Company equipment. A successful Mysticism check updates its effects and Points; exceptional Surge Qualities, ranks and Blunder deterioration await the dedicated modifier editor.'],
+        ['craft', 'Crafting', 'Quest/reward recipes create equipment. Excess successes buy ranked Qualities and Surges unlock exceptional properties.'],
+        ['enchant', 'Enchanting', 'Apply an unlocked Minor Enchantment, plus ranked enhancements from excess successes. Blunders damage existing equipment.'],
+        ['improve', 'Improvements', 'Improve existing equipment with Craft checks, including Surge-unlocked exceptional properties.'],
+        ['repair', 'Repairs', 'Restore one deteriorated item statistic with an appropriate Craft check.'],
         ['unit', 'Formations', `Patron Core profiles: ${recruitAccess.factionCore.length} · Generic profiles permitted by party slots: ${recruitAccess.generic.length}. Two free starting formations are Company grants, not Marketplace purchases.`],
       ].map(([kind, title, note]) => {
         const list = visibleOffers.filter((o) => o.kind === kind)
@@ -211,26 +213,42 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
           {!list.length && <p className="muted">{offers.some((o) => o.enabled) ? 'Nothing available yet.' : 'No offers have been initialized. Standard options are loading; they should appear automatically without GM approval.'}</p>}
           <ul className="saved-list panel-scroll">{list.map((offer) =>
             <li key={offer.id}>
-              <div><strong>{offer.label}</strong><div className="muted small">{['craft', 'enchant'].includes(offer.kind)
+              <div><strong>{offer.label}</strong><div className="muted small">{['craft', 'enchant', 'improve', 'repair'].includes(offer.kind)
                 ? `${offer.check} · Difficulty ${offer.difficulty}`
                 : offer.kind === 'unit' ? `${offer.points} Points` : 'Equipment'}
                 {' · '}{offer.price} Gold</div></div>
-              {offer.kind === 'enchant' && <label className="field">Item
+              {['enchant','improve','repair'].includes(offer.kind) && <label className="field">Item
                 <select value={selectedTargets[offer.id] ?? ''} onChange={(event) =>
                   setSelectedTargets((prev) => ({ ...prev, [offer.id]: event.target.value }))}>
                   <option value="">Choose owned item…</option>
                   {compatibleTargets(offer).map((item) => <option key={item.id} value={item.id}>{item.item.name} · {(item.enchants ?? []).length} enchantments</option>)}
                 </select>
               </label>}
-              <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < offer.price ||
-                (['craft', 'enchant'].includes(offer.kind) && !pcView) ||
-                (offer.kind === 'enchant' && !compatibleTargets(offer).some((item) => item.id === selectedTargets[offer.id]))} onClick={() => run(() => buy(offer), (roll) => !roll ? 'Purchased. Company inventory updated.' :
-                  `${roll.dice.join(', ')} · ${roll.successes} successes, ${roll.surges} Surge, ${roll.blunders} Blunder. ${roll.successes >= offer.difficulty ? 'Project succeeded; inventory updated.' : 'Project failed; materials Gold spent.'} Bonus Qualities and Blunder deterioration await the profile editor.`)}>{offer.kind === 'craft' ? 'Craft' : offer.kind === 'enchant' ? 'Enchant' : 'Buy'}</button>
+              <button className="primary" disabled={busy || !!pending || (campaign.goldBalance ?? 0) < offer.price ||
+                (['craft','enchant','improve','repair'].includes(offer.kind) && !pcView) ||
+                (['enchant','improve','repair'].includes(offer.kind) && !compatibleTargets(offer).some((item) => item.id === selectedTargets[offer.id]))}
+                onClick={() => run(() => buy(offer), (roll) => roll ? 'Check rolled. Allocate results and confirm payment below.' : 'Purchased. Company inventory updated.')}>
+                {['craft','enchant','improve','repair'].includes(offer.kind) ? 'Roll check' : 'Buy'}</button>
             </li>)}</ul>
         </section>
       })}
     </div>}
 
+    {!isGm && pending && <section className="panel span-2">
+      <h2>Resolve {pending.offer.label}</h2>
+      <p className="small">Dice: <strong>{pending.roll.dice.join(', ')}</strong> · {pending.roll.successes} successes against Difficulty {pending.offer.difficulty} · {pending.roll.qualities} excess · {pending.roll.surges ? 'Surge' : 'No Surge'} · {pending.roll.blunders ? 'Blunder' : 'No Blunder'}.</p>
+      <p className="muted small">The roll is held locally until confirmation; Gold is deducted once. Client-side dice are not tamper-proof.</p>
+      <QualityPicker item={workItem(pending)} data={characterData} roll={pending.roll}
+        plan={qualityPlan} setPlan={setQualityPlan}
+        kind={pending.offer.kind} repair={repairField} setRepair={setRepairField} />
+      <div className="saved-actions">
+        <button disabled={busy} onClick={() => setPending(null)}>Cancel check</button>
+        <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < pending.offer.price}
+          onClick={() => run(submitWork, 'Project recorded. Equipment profiles and Points updated.')}>
+          Confirm result · Pay {pending.offer.price} Gold
+        </button>
+      </div>
+    </section>}
     {isGm && <section className="panel">
       <h2>Publish regular market offers</h2>
       <p className="muted small">Ordinary equipment and Minor Enchantments are automatically stocked. Publish quest-unlocked crafting and special enchantment recipes once, or make special arrangements; PCs then use them without another GM approval.</p>
