@@ -117,7 +117,7 @@ export function validateQualityPlan(item, data, roll, plan = [], opts = {}) {
       if (q.magical && opts.magical !== true) throw new Error(q.name + ' requires Mysticism and magical materials')
       exceptionalNew++
       if (!roll?.surges) throw new Error(q.name + ' must be unlocked by a Skill Check Surge')
-      spend += q.id === 'exceptionalEdge' ? p.ranks - 1 : p.ranks * q.cost
+      spend += p.id === 'exceptionalEdge' ? p.ranks - 1 : p.ranks * q.cost
     } else {
       spend += p.ranks * q.cost
     }
