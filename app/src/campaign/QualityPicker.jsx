@@ -1,6 +1,7 @@
 import { QUALITY_RULES, availableQualities, repairOptions, validateQualityPlan } from './qualityEngine.js'
+import { ANTI_TAGS } from '../tags.js'
 
-export default function QualityPicker({ item, data, roll, plan, setPlan, kind, repair, setRepair }) {
+export default function QualityPicker({ item, data, roll, plan, setPlan, kind, repair, setRepair, magical = false }) {
   if (!item || !data || !roll) return null
   if (kind === 'repair') {
     const options = repairOptions(item, data)
@@ -18,7 +19,7 @@ export default function QualityPicker({ item, data, roll, plan, setPlan, kind, r
   const options = availableQualities(item, data)
   let calculated, error = ''
   try {
-    calculated = validateQualityPlan(item, data, roll, plan, { magical: kind === 'enchant' })
+    calculated = validateQualityPlan(item, data, roll, plan, { magical })
   } catch (e) { error = e.message }
   const change = (index, patch) => setPlan((list) => list.map((x,i) => i === index ? { ...x,...patch } : x))
   return <div className="panel">
@@ -40,7 +41,9 @@ export default function QualityPicker({ item, data, roll, plan, setPlan, kind, r
         {q.choice && <label className="field">{q.choice === 'tag' ? 'Target Tag' : 'Ward type'}
           {q.choice === 'ward' ? <select value={row.choice ?? ''} onChange={(e) => change(index,{choice:e.target.value})}>
             <option value="">Choose…</option><option value="physical">Physical</option><option value="magic">Magic</option>
-          </select> : <input value={row.choice ?? ''} maxLength={36} placeholder="Canonical tag, e.g. Monster" onChange={(e)=>change(index,{choice:e.target.value})}/>}
+          </select> : <select value={row.choice ?? ''} onChange={(e)=>change(index,{choice:e.target.value})}>
+            <option value="">Choose target Tag…</option>{ANTI_TAGS.map((tag)=><option key={tag} value={tag}>{tag}</option>)}
+          </select>}}
         </label>}
         <button onClick={()=>setPlan((list)=>list.filter((_,i)=>i!==index))}>Remove</button>
       </div>
