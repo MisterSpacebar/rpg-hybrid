@@ -157,9 +157,75 @@ service cloud.firestore {
 
       // The GM controls what is in the open market and its published price.
       // PCs can buy enabled, prepriced offers without requesting per-purchase approval.
+      // Standard offers are a fixed whitelist. Any campaign member may
+      // initialize them, including PCs in existing campaigns. Nobody can alter
+      // their price/profile or create arbitrary cheap equipment this way.
+      function validStandardEquipment(offerId) {
+        let defaults = {
+          'standard-basic-dagger': ['melee', 'Dagger', 1],
+          'standard-basic-shortsword': ['melee', 'Shortsword', 1],
+          'standard-basic-longsword': ['melee', 'Longsword', 1],
+          'standard-basic-warhammer': ['melee', 'Warhammer', 2],
+          'standard-basic-shortbow': ['ranged', 'Shortbow', 1],
+          'standard-basic-longbow': ['ranged', 'Longbow', 2],
+          'standard-basic-musket': ['ranged', 'Musket', 3],
+          'standard-basic-light-armor': ['armor', 'Light Armor', 1],
+          'standard-basic-medium-armor': ['armor', 'Medium Armor', 2],
+          'standard-basic-heavy-armor': ['armor', 'Heavy Armor', 3],
+          'standard-basic-shield': ['shield', 'Shield', 1]
+        };
+        let value = defaults.get(offerId, []);
+        return value.size() == 3
+          && request.resource.data.keys().hasOnly([
+            'kind', 'label', 'item', 'price', 'enabled',
+            'standardEquipment', 'createdBy', 'createdAt'
+          ])
+          && request.resource.data.kind == 'equipment'
+          && request.resource.data.label == value[1]
+          && request.resource.data.item == { 'kind': value[0], 'name': value[1] }
+          && request.resource.data.price == value[2]
+          && request.resource.data.enabled == true
+          && request.resource.data.standardEquipment == true;
+      }
+
+      function validStandardEnchant(offerId) {
+        let defaults = {
+          'standard-enchant-accurate-melee': ['minor:Accurate 1', 'melee', 2],
+          'standard-enchant-accurate-ranged': ['minor:Accurate 1', 'ranged', 2],
+          'standard-enchant-tough-armor': ['minor:Tough 1', 'armor', 2],
+          'standard-enchant-tough-shield': ['minor:Tough 1', 'shield', 2],
+          'standard-enchant-range-ranged': ['minor:+1" Attack Range', 'ranged', 1],
+          'standard-enchant-move-melee': ['minor:+1" Move while equipped', 'melee', 2],
+          'standard-enchant-move-ranged': ['minor:+1" Move while equipped', 'ranged', 2],
+          'standard-enchant-move-armor': ['minor:+1" Move while equipped', 'armor', 2],
+          'standard-enchant-move-shield': ['minor:+1" Move while equipped', 'shield', 2],
+          'standard-enchant-magic-melee': ['minor:Magic Attack keyword', 'melee', 2],
+          'standard-enchant-magic-ranged': ['minor:Magic Attack keyword', 'ranged', 2]
+        };
+        let value = defaults.get(offerId, []);
+        return value.size() == 3
+          && request.resource.data.keys().hasOnly([
+            'kind', 'label', 'price', 'enabled', 'enchantKey',
+            'targetKind', 'difficulty', 'check', 'standardEnchant',
+            'createdBy', 'createdAt'
+          ])
+          && request.resource.data.kind == 'enchant'
+          && request.resource.data.label == value[0].split(':')[1]
+          && request.resource.data.enchantKey == value[0]
+          && request.resource.data.targetKind == value[1]
+          && request.resource.data.price == value[2]
+          && request.resource.data.difficulty == 2
+          && request.resource.data.check == 'Mind + Mysticism'
+          && request.resource.data.enabled == true
+          && request.resource.data.standardEnchant == true;
+      }
+
       match /marketOffers/{offerId} {
         allow get, list: if memberOfCampaign();
-        allow create: if gmOfCampaign()
+        allow create: if (gmOfCampaign() || (
+          memberOfCampaign()
+          && (validStandardEquipment(offerId) || validStandardEnchant(offerId))
+        ))
           && request.resource.data.createdBy == request.auth.uid
           && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant']
           && (request.resource.data.kind != 'enchant' || (
