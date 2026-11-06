@@ -104,9 +104,11 @@ export async function listCampaignHeroes(id) {
 export async function saveHeroDraft(id, uid, sheet) {
   // Each user owns one hero draft for the campaign; replacing a retired hero can be added later.
   const data = JSON.parse(JSON.stringify({ ...sheet, cloudId: null, xpEarned: null }))
+  // Replace, don't merge: a deep merge would keep removed talents/picks in the
+  // saved sheet so the draft would never match it and stay "unsaved".
   await setDoc(doc(heroesRef(id), uid), {
     ownerUid: uid, sheet: data, updatedAt: serverTimestamp(),
-  }, { merge: true })
+  })
 }
 
 export async function listApprovedHeroes(id) {

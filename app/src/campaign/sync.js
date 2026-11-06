@@ -1,7 +1,16 @@
 // Pure reconciliation for editable Firestore snapshots.
 // A live snapshot is authoritative when there are no local edits. If there are
 // local edits, preserve them and explicitly report a remote revision conflict.
-const signature = (value) => JSON.stringify(value)
+// Firestore returns map keys in sorted order, so a saved sheet must compare
+// equal to the local draft regardless of key insertion order.
+const canonical = (value) => {
+  if (Array.isArray(value)) return value.map(canonical)
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.keys(value).sort().map((k) => [k, canonical(value[k])]))
+  }
+  return value
+}
+const signature = (value) => JSON.stringify(canonical(value))
 
 export function acceptSnapshot(current, incoming) {
   const remoteSignature = signature(incoming)

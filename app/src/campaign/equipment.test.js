@@ -41,6 +41,14 @@ test('valid starting gear passes, unrestricted and duplicated gear is rejected',
   assert(errors.some((e) => e.includes('not an available starting item')))
 })
 
+test('approved starting choices are compared by content, not key order or empty values', () => {
+  const approved = { sheet: { ...sheet(), skillPicks: { stealth: 'class', arcana: 'extra' }, adaptations: [] } }
+  const same = { ...sheet(), skillPicks: { arcana: 'extra', stealth: 'class' } }
+  assert.deepEqual(validateCampaignSheet(same, data, 0, [], [], approved), [])
+  const changed = { ...sheet(), skillPicks: { arcana: 'extra' } }
+  assert(validateCampaignSheet(changed, data, 0, [], [], approved)[0].includes('skillPicks'))
+})
+
 test('campaign setup does not accept custom points or self-reported earned XP', () => {
   assert(validateCampaignSheet({ ...sheet(), otherPoints: 100, xpEarned: 50 }, data, 0).length >= 2)
 })

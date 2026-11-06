@@ -42,6 +42,19 @@ export function campaignGearOptions(char, data, inventory = [], approved = null,
   return { starting, acquired }
 }
 
+export const LOCKED_CHOICES = ['ancestry', 'classId', 'subclassId', 'size', 'humanBoost', 'adaptations', 'archetype', 'skillPicks', 'subclassSpell', 'formulas']
+
+// Firestore returns map keys sorted and may drop empty values, so compare by content only.
+const canonicalChoice = (value) => {
+  if (Array.isArray(value)) return value.length ? value.map(canonicalChoice) : null
+  if (value && typeof value === 'object') {
+    const keys = Object.keys(value).sort()
+    return keys.length ? Object.fromEntries(keys.map((k) => [k, canonicalChoice(value[k])])) : null
+  }
+  return value ?? null
+}
+export const sameChoice = (a, b) => JSON.stringify(canonicalChoice(a)) === JSON.stringify(canonicalChoice(b))
+
 export function validateCampaignSheet(char, data, earnedXp, inventory = [], otherHeroes = [], approved = null) {
   const cls = data.classes.find((c) => c.id === char.classId)
   const sub = cls?.subclasses.find((s) => s.id === char.subclassId)
@@ -49,8 +62,8 @@ export function validateCampaignSheet(char, data, earnedXp, inventory = [], othe
   const allowed = startingWeaponNames(cls, sub)
   const original = approved?.sheet?.gear
   if (approved?.sheet) {
-    for (const key of ['ancestry', 'classId', 'subclassId', 'size', 'humanBoost', 'adaptations', 'archetype', 'skillPicks', 'subclassSpell', 'formulas']) {
-      if (JSON.stringify(char[key] ?? null) !== JSON.stringify(approved.sheet[key] ?? null)) {
+    for (const key of LOCKED_CHOICES) {
+      if (!sameChoice(char[key], approved.sheet[key])) {
         return [`Starting character choice ${key} is locked after GM approval`]
       }
     }

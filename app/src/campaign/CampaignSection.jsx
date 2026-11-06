@@ -16,7 +16,7 @@ import {
   watchCampaign, watchHeroes, watchInventory, watchDetachments, watchApprovedHeroes, watchJoinRequests,
   deleteMyHero, revokeApproval, removePlayer, deleteCampaign,
 } from './cloud.js'
-import { validateCampaignSheet } from './equipment.js'
+import { LOCKED_CHOICES, validateCampaignSheet } from './equipment.js'
 import { advanceTurn, baseXp, bonusXp } from './limits.js'
 import { acceptSnapshot, discardDraft, editDraft } from './sync.js'
 
@@ -149,6 +149,7 @@ function Workspace({ id, user }) {
   const [data, setData] = useState(null)
   const [tab, setTab] = useState('overview')
   const [error, setError] = useState('')
+  const [notice, setNotice] = useState('')
   const [working, setWorking] = useState(false)
   const [sheetDraft, setSheetDraft] = useState(null)
   const [progressDraft, setProgressDraft] = useState(null)
@@ -195,9 +196,14 @@ function Workspace({ id, user }) {
   useEffect(() => {
     if (!data || !heroesReady) return
     const saved = heroes.find((h) => h.ownerUid === user.uid)?.sheet ?? emptyCharacter()
-    const normalized = normalizeCharacter({ ...saved, ownerUid: user.uid }, data)
+    // After GM approval the starting choices are fixed, so the draft always
+    // carries the approved values and can never drift into a locked state.
+    const locked = approved?.sheet
+      ? Object.fromEntries(LOCKED_CHOICES.filter((k) => approved.sheet[k] !== undefined).map((k) => [k, approved.sheet[k]]))
+      : {}
+    const normalized = normalizeCharacter({ ...saved, ...locked, ownerUid: user.uid }, data)
     setSheetDraft((prev) => acceptSnapshot(prev, normalized))
-  }, [heroes, heroesReady, data, user.uid])
+  }, [heroes, heroesReady, data, user.uid, approved])
 
   const actMax = campaign ? FORMATS[campaign.format]?.[campaign.act - 1] ?? 0 : 0
   const myHero = heroes.find((h) => h.ownerUid === user.uid)
@@ -224,6 +230,11 @@ function Workspace({ id, user }) {
   ) : [], [sheet, data, campaign, inventory, heroes, approved, user.uid])
   const isValid = !!(view && view.checks.every((c) => c.ok) &&
     !creationErrors.length && view.points.spent <= (campaign?.xpTotal ?? 0))
+  const blockers = view ? [
+    ...creationErrors,
+    ...view.checks.filter((c) => !c.ok).map((c) => c.label + ': ' + c.detail),
+    ...(view.points.spent > (campaign?.xpTotal ?? 0) ? ['Talent XP exceeds campaign earned XP'] : []),
+  ] : []
   const run = async (fn) => {
     setWorking(true); setError('')
     try { await fn() } catch (e) { setError(errorMessage(e)) }
@@ -241,6 +252,7 @@ function Workspace({ id, user }) {
       {isGm && <button onClick={() => copyId(id)}>Copy invite ID</button>}
     </div>
     <Toast message={error} kind="bad" />
+    <Toast message={notice} />
     {connection.fromCache && <p className="bad small" role="status">Showing locally cached campaign data. Updates from other players may be delayed until Firestore reconnects.</p>}
     {!connection.fromCache && connection.hasPendingWrites && <p className="muted small" role="status">Synchronizing campaign changes…</p>}
     <nav className="subtabs">
@@ -252,16 +264,23 @@ function Workspace({ id, user }) {
       <section className="panel"><h2>Company resources</h2><p>{inventory.filter((x) => x.kind === 'unit').length} owned formations · {inventory.filter((x) => x.kind === 'equipment').length} equipment items</p><p className="muted small"><strong>{campaign.goldBalance ?? 0} Company Gold</strong> · Gold purchases, crafting proposals and recruitment are managed under Company & Projects. Political Stakes and the strategic map remain future milestones.</p></section>
     </div>}
     {tab === 'character' && <div>
-      <div className="panel campaign-character-actions"><div><h2>{sheet.name}</h2><div className="muted small">{view.points.total} points · {view.points.spent}/{campaign.xpTotal} XP spent · {campaign.xpTotal - view.points.spent} XP unspent</div><p className="small">{myHero ? 'Saved campaign draft' : 'New campaign character'} · {approved ? 'An approved snapshot exists' : 'Not yet approved by GM'}</p></div>
-        <div className="saved-actions"><button className="primary" disabled={working || !isValid || sheetDraft?.conflict} onClick={() => run(() => saveHeroDraft(id, user.uid, sheet))}>Save draft</button>
+      <div className="panel campaign-character-actions save-bar"><div><h2>{sheet.name}</h2><div className="muted small">{view.points.total} points · {view.points.spent}/{campaign.xpTotal} XP spent · {campaign.xpTotal - view.points.spent} XP unspent</div><p className="small">{myHero ? 'Saved campaign draft' : 'New campaign character'} · {approved ? 'An approved snapshot exists' : 'Not yet approved by GM'}</p></div>
+        <div className="save-status small">
+          {sheetDraft?.conflict ? <span className="bad">Saved elsewhere. Load the saved character to resolve.</span>
+            : !isValid ? <span className="bad" title="See 'Before saving' below">Can't save: {blockers[0]}{blockers.length > 1 ? ` (+${blockers.length - 1} more)` : ''}</span>
+            : sheetDraft?.dirty ? <span className="muted">Unsaved character changes</span>
+            : <span className="ok">{myHero ? '✓ All changes saved' : 'Nothing to save yet'}</span>}
+        </div>
+        <div className="saved-actions">
+          {sheetDraft?.dirty && <button disabled={working} onClick={() => setSheetDraft(discardDraft)}>Discard changes</button>}
+          <button className="primary" disabled={working || !isValid || sheetDraft?.conflict} onClick={() => run(async () => { await saveHeroDraft(id, user.uid, sheet); setNotice('Character saved') })}>Save draft</button>
           {myHero && <button className="danger" disabled={working} onClick={() => {
             if (!window.confirm('Delete your campaign character draft and release your reserved formations? A GM-approved snapshot stays until the GM revokes it. This cannot be undone.')) return
             run(() => deleteMyHero(id, user.uid))
           }}>Delete character</button>}</div>
       </div>
       {sheetDraft?.conflict && <section className="panel"><h3>Updated from another session</h3><p className="bad small">A newer character sheet was saved elsewhere. Your local edits were preserved; load the saved sheet to resolve the conflict.</p><button onClick={() => setSheetDraft(discardDraft)}>Load saved character</button></section>}
-      {sheetDraft?.dirty && !sheetDraft?.conflict && <p className="muted small">Unsaved character changes</p>}
-      {!isValid && <section className="panel"><h3>Before saving</h3><ul className="checks">{[...creationErrors, ...(view.checks.filter((c) => !c.ok).map((c) => c.label + ': ' + c.detail)), ...(view.points.spent > campaign.xpTotal ? ['Talent XP exceeds campaign earned XP'] : [])].map((m, i) => <li key={i} className="bad">{m}</li>)}</ul></section>}
+      {!isValid && <section className="panel"><h3>Before saving</h3><ul className="checks">{blockers.map((m, i) => <li key={i} className="bad">{m}</li>)}</ul></section>}
       <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
       {approved && <section className="panel"><h2>Last GM-approved character</h2><CharacterDatasheet character={approved.sheet} view={derive(normalizeCharacter(approved.sheet, data), data)} /></section>}
     </div>}

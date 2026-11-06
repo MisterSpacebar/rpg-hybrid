@@ -48,6 +48,15 @@ test('local changes reverted to saved values are no longer dirty', () => {
   assert.equal(reversed.conflict, false)
 })
 
+test('a saved edit is acknowledged even when Firestore returns keys in a different order', () => {
+  const initial = acceptSnapshot(null, { name: 'Ada', talents: { b: 1, a: 2 } })
+  const changed = editDraft(initial, (v) => ({ ...v, talents: { b: 1, a: 2, c: 3 } }))
+  assert.equal(changed.dirty, true)
+  const acknowledged = acceptSnapshot(changed, { talents: { a: 2, b: 1, c: 3 }, name: 'Ada' })
+  assert.equal(acknowledged.dirty, false)
+  assert.equal(acknowledged.conflict, false)
+})
+
 test('deleting a saved record resets a clean draft to the empty default', () => {
   const initial = acceptSnapshot(null, sheet('Ada'))
   const newBlank = acceptSnapshot(initial, sheet('New Character'))

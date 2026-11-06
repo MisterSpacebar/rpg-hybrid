@@ -480,6 +480,8 @@ select.needs-choice { border-color: #e5645b !important; }
 .campaign-page .picker li { display:flex; justify-content:space-between; gap:12px; align-items:center; }
 .campaign-page .checks { margin:4px 0; }
 @media (max-width:680px) { .campaign-heading, .campaign-character-actions { align-items:flex-start; } }
+.save-bar { position: sticky; top: 0; z-index: 20; background: var(--panel); box-shadow: 0 4px 14px rgba(0,0,0,.35); }
+.save-bar .save-status { flex: 1 1 220px; }
 
 .campaign-page .panel-grid { align-items: stretch; }
 .campaign-page .panel-grid > .panel { height: auto; }
