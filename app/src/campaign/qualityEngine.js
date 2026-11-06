@@ -1,7 +1,7 @@
 // Canonical permanent equipment improvements shared by crafting, enchanting,
 // repair, the Company inventory, and the Character sheet. Only purchased item
 // records carry these events; a PC draft is never authoritative.
-export const MAX_WORK_EVENTS = 20
+export const MAX_WORK_EVENTS = 8
 export const QUALITY_RULES = Object.freeze({
   balanced: { name: 'Balanced', keyword: 'Accurate', allowed: ['melee','ranged'], max: 3, cost: 1, points: 10 },
   specialized: { name: 'Specialized', keyword: 'Anti', allowed: ['melee','ranged'], max: 3, cost: 1, points: 10, choice: 'tag' },
