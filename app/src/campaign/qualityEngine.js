@@ -152,14 +152,18 @@ export function eligibleDeteriorations(item, data, plan = []) {
   if (item.kind === 'armor' && baseNum(def.armor) - (ranks.protective ?? 0) + (defects.armor ?? 0) < 6) keys.push('armor')
   if (item.kind === 'shield' && (defects.armor ?? 0) < 1) keys.push('armor')
   if ((ranks.swift ?? 0) > (defects.swift ?? 0) + (defects.move ?? 0)) keys.push('move')
-  for (const id of Object.keys(QUALITY_RULES)) if ((ranks[id] ?? 0) > (defects[id] ?? 0)) keys.push(id)
+  // Named reroll/keyword fields are independent; numeric bonuses already appear
+  // as Attacks, Hit, Damage, Range, Armor or Move above and must not be weighted twice.
+  for (const id of ['balanced','specialized','reinforced','sheltering','exceptionalEdge','warded'])
+    if ((ranks[id] ?? 0) > (defects[id] ?? 0)) keys.push(id)
   // Intrinsic printed reroll keywords can be weakened as well.
   if (keywordRank(profile,'Accurate') > (defects.accurate ?? 0)) keys.push('accurate')
   if (!keys.length) keys.push('damaged')
   return keys
 }
-export function randomDeterioration(item, data, plan = [], rand = Math.random) {
-  const options = eligibleDeteriorations(item, data, plan)
+export function randomDeterioration(item, data, plan = [], rand = Math.random, repair = null) {
+  const afterRepair = repair ? { ...item, workshopEvents: [ ...(item.workshopEvents ?? []), { kind:'repair', repair } ] } : item
+  const options = eligibleDeteriorations(afterRepair, data, plan)
   return options[Math.min(options.length - 1, Math.floor(rand() * options.length))]
 }
 export function repairOptions(item, data) {
