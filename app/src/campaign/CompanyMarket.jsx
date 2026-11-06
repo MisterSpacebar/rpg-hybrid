@@ -153,7 +153,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     })
     const flaw = pending.roll.blunders && (pending.offer.kind !== 'craft' || pending.roll.success)
       ? randomDeterioration(item, characterData, pending.roll.success ? qualityPlan : [],
-        () => pending.flawSeed) : null
+        () => pending.flawSeed, repair) : null
     const rolled = pending.roll
     await purchaseOffer(campaign.id, user.uid, pending.offer.id,
       { dice: rolled.dice, threshold: pending.threshold, successes: rolled.successes,
