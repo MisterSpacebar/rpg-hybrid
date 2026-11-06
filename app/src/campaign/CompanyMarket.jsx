@@ -8,8 +8,10 @@ import { equipmentCatalog } from './economy.js'
 import { eligibleStandardOffer, standardRecruitmentProfiles } from './recruitmentAccess.js'
 import { watchEntitlements } from './cloud.js'
 import { craftRoll, priceForFormation } from './market.js'
+import QualityPicker from './QualityPicker.jsx'
+import { repairOptions, randomDeterioration, validateQualityPlan } from './qualityEngine.js'
 import {
-  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers, seedDefaultEnchantOffers,
+  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers, seedDefaultEnchantOffers, seedStandardWorkshopOffers,
   watchMarketOffers, watchMarketPurchases, registerStartingGear, starterRecordId,
 } from './marketCloud.js'
 
@@ -24,6 +26,9 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   const [form, setForm] = useState({ kind: 'equipment', item: '', unit: '', price: '', difficulty: 2, check: 'Mind + Craft' })
   const [message, setMessage] = useState('')
   const [selectedTargets, setSelectedTargets] = useState({})
+  const [pending, setPending] = useState(null)
+  const [qualityPlan, setQualityPlan] = useState([])
+  const [repairField, setRepairField] = useState('')
   const [busy, setBusy] = useState(false)
   useEffect(() => {
     let active = true
@@ -43,6 +48,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     Promise.all([
       seedDefaultEquipmentOffers(campaign.id, user.uid, characterData),
       seedDefaultEnchantOffers(campaign.id, user.uid, characterData),
+      seedStandardWorkshopOffers(campaign.id, user.uid),
     ]).catch((error) => setMessage(`Could not initialize standard equipment or enchantments: ${error.message}`))
   }, [characterData, campaign.id, user.uid])
   useEffect(() => {
@@ -95,7 +101,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   }
   const buy = async (offer) => {
     let result = null
-    if (['craft', 'enchant'].includes(offer.kind)) {
+    if (['craft', 'enchant', 'improve', 'repair'].includes(offer.kind)) {
       if (!pcView) throw new Error('Save a campaign character before crafting')
       const [char, skill] = offer.check.toLowerCase().split(' + ')
       const pool = pcView.characteristics[char]
@@ -113,9 +119,48 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       const roll = craftRoll(dice, threshold, offer.difficulty)
       result = { dice, threshold, successes: roll.successes, surges: roll.surges, blunders: roll.blunders }
     }
-    await purchaseOffer(campaign.id, user.uid, offer.id, result,
-      offer.kind === 'enchant' ? selectedTargets[offer.id] : null)
-    return result
+    if (result) {
+      const entropy = new Uint32Array(1)
+      crypto.getRandomValues(entropy)
+      setPending({ offer, roll: craftRoll(result.dice, result.threshold, offer.difficulty),
+        threshold: result.threshold, targetId: selectedTargets[offer.id] ?? null,
+        flawSeed: entropy[0] / 4294967296 })
+      setQualityPlan([])
+      setRepairField('')
+      return result
+    }
+    await purchaseOffer(campaign.id, user.uid, offer.id)
+    return null
+  }
+  const workItem = (p) => {
+    if (!p) return null
+    if (p.offer.kind === 'craft') return { ...p.offer.item, enchants: [], workshopEvents: [] }
+    const owned = inventory.find((i) => i.id === p.targetId)
+    if (!owned?.item) return null
+    return { ...owned.item,
+      enchants: [...(owned.enchants ?? []), ...(p.offer.kind === 'enchant' && p.roll.success ? [{key:p.offer.enchantKey}] : [])],
+      workshopEvents: owned.workshopEvents ?? [] }
+  }
+  const submitWork = async () => {
+    if (!pending || !characterData) throw new Error('No pending project')
+    const item = workItem(pending)
+    if (!item) throw new Error('The equipment is no longer available')
+    const repair = pending.offer.kind === 'repair' && pending.roll.success ? repairField : null
+    if (pending.offer.kind === 'repair' && pending.roll.success &&
+        !repairOptions(item, characterData).includes(repair)) throw new Error('Select a valid defect to repair')
+    if (pending.offer.kind !== 'repair') validateQualityPlan(item, characterData, pending.roll, qualityPlan, {
+      magical: pending.offer.check?.includes('Mysticism'),
+    })
+    const flaw = pending.roll.blunders && (pending.offer.kind !== 'craft' || pending.roll.success)
+      ? randomDeterioration(item, characterData, pending.roll.success ? qualityPlan : [],
+        () => pending.flawSeed) : null
+    const rolled = pending.roll
+    await purchaseOffer(campaign.id, user.uid, pending.offer.id,
+      { dice: rolled.dice, threshold: pending.threshold, successes: rolled.successes,
+        surges: rolled.surges, blunders: rolled.blunders },
+      pending.targetId, { plan: pending.offer.kind === 'repair' ? [] : qualityPlan,
+        repair, flaw }, characterData)
+    setPending(null); setQualityPlan([]); setRepairField('')
   }
   const claimedByOthers = new Set(heroes.filter((h) => h.ownerUid !== user.uid)
     .flatMap((h) => (h.sheet?.gear ?? []).map((g) => g.inventoryId).filter(Boolean)))
@@ -123,8 +168,11 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     && entry.item?.kind === offer.targetKind
     && (!entry.ownerUid || entry.ownerUid === user.uid)
     && !claimedByOthers.has(entry.id)
-    && !(entry.enchants ?? []).some((e) => e.key === offer.enchantKey)
-    && (entry.enchants ?? []).length < 3)
+    && (offer.kind !== 'enchant' || (!(entry.enchants ?? []).some((e) => e.key === offer.enchantKey) &&
+      (entry.enchants ?? []).length < 3))
+    && (offer.kind !== 'repair' || repairOptions({ ...entry.item,
+      enchants:entry.enchants ?? [], workshopEvents:entry.workshopEvents ?? [] }, characterData).length > 0)
+    && (entry.workshopEvents ?? []).length < 20)
 
   const unregisteredStartingGear = (pc?.gear ?? []).filter((g) =>
     !g.inventoryId && ['melee','ranged','armor','shield'].includes(g.kind) &&
