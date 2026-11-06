@@ -226,7 +226,7 @@ function Workspace({ id, user }) {
     }) }, data)
   }, [sheet, data, inventory, user.uid])
   const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(
-    sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved,
+    sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved, myHero?.sheet?.talents,
   ) : [], [sheet, data, campaign, inventory, heroes, approved, user.uid])
   const isValid = !!(view && view.checks.every((c) => c.ok) &&
     !creationErrors.length && view.points.spent <= (campaign?.xpTotal ?? 0))
@@ -281,7 +281,7 @@ function Workspace({ id, user }) {
       </div>
       {sheetDraft?.conflict && <section className="panel"><h3>Updated from another session</h3><p className="bad small">A newer character sheet was saved elsewhere. Your local edits were preserved; load the saved sheet to resolve the conflict.</p><button onClick={() => setSheetDraft(discardDraft)}>Load saved character</button></section>}
       {!isValid && <section className="panel"><h3>Before saving</h3><ul className="checks">{blockers.map((m, i) => <li key={i} className="bad">{m}</li>)}</ul></section>}
-      <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
+      <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} committedTalents={myHero?.sheet?.talents} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
       {approved && <section className="panel"><h2>Last GM-approved character</h2><CharacterDatasheet character={approved.sheet} view={derive(normalizeCharacter(approved.sheet, data), data)} /></section>}
     </div>}
     {tab === 'company' && <CompanyEconomy campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} inventory={inventory} />}
@@ -304,7 +304,7 @@ function Workspace({ id, user }) {
       </section>
       <section className="panel span-2"><h2>Character reviews</h2><p className="muted small">Approve a saved snapshot for deployment; further player edits do not change the approved sheet.</p><ul className="saved-list panel-scroll tall">{heroes.map((h) => {
         const v = derive(normalizeCharacter({ ...h.sheet, xpEarned: campaign.xpTotal }, data), data)
-        const issues = validateCampaignSheet({ ...h.sheet, ownerUid: h.ownerUid }, data, campaign.xpTotal, inventory, heroes.filter((other) => other.ownerUid !== h.ownerUid), approvedHeroes.find((a) => a.ownerUid === h.ownerUid))
+        const issues = validateCampaignSheet({ ...h.sheet, ownerUid: h.ownerUid }, data, campaign.xpTotal, inventory, heroes.filter((other) => other.ownerUid !== h.ownerUid), approvedHeroes.find((a) => a.ownerUid === h.ownerUid), h.sheet.talents)
         const eligible = v.checks.every((c) => c.ok) && !issues.length && v.points.spent <= campaign.xpTotal
         return <li key={h.id}><div><strong>{h.sheet.name}</strong><div className="muted small">{v.points.total} pts · {v.points.spent}/{campaign.xpTotal} XP spent · {eligible ? 'Valid' : 'Needs corrections'}</div></div>        <button className="primary" disabled={working || !eligible} onClick={() => run(() => approveHero(id, h.ownerUid, h.sheet))}>Approve snapshot</button>{approvedHeroes.some((a) => a.ownerUid === h.ownerUid) && <button disabled={working} onClick={() => window.confirm('Revoke this approved snapshot? The player will be unable to deploy this Hero until re-approved.') && run(() => revokeApproval(id, h.ownerUid))}>Revoke approval</button>}</li>
       })}</ul></section>
@@ -325,7 +325,7 @@ function Workspace({ id, user }) {
   </div>
 }
 
-function CharacterEditor({ data, sheet, view, update, inventory, approved, otherHeroes, ownerUid, xpBudget }) {
+function CharacterEditor({ data, sheet, view, update, committedTalents, inventory, approved, otherHeroes, ownerUid, xpBudget }) {
   const [page, setPage] = useState('stats')
   return <>
     <nav className="subtabs nested">{['stats','talents','equipment','magic','sheet'].map((t) => <button key={t} className={page===t?'active':''} onClick={() => setPage(t)}>{t[0].toUpperCase()+t.slice(1)}</button>)}</nav>
@@ -335,7 +335,7 @@ function CharacterEditor({ data, sheet, view, update, inventory, approved, other
         update({ ...prospective, gear: [], spells: [], otherPoints: 0 })
       } else update(patch)
     }} />}
-    {page === 'talents' && <TalentPyramid data={data} character={sheet} view={view} update={update} xpBudget={xpBudget} />}
+    {page === 'talents' && <TalentPyramid data={data} character={sheet} view={view} update={update} xpBudget={xpBudget} committedTalents={committedTalents} />}
     {page === 'equipment' && <GearTab data={data} character={sheet} view={view} update={update}
       hash="#/character/gear" campaignPolicy={{ inventory, approved, otherHeroes, ownerUid }} />}
     {page === 'magic' && <section className="panel">
