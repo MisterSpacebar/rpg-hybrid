@@ -74,6 +74,38 @@ async function spend({ id, offer, price, balance, kind, item, config, factionId 
 
 try {
   await setup()
+  // Saving a valid talent choice commits it, but earning XP may append ranks.
+  const emptyPyramid = { '1': [], '2': [], '3': [], '4': [], '5': [] }
+  const heroRef = doc(pc, cid('heroes/player-1'))
+  const initialSheet = {
+    talents: { ...emptyPyramid, '1': [{ id: 'combat-prowess', attack: 'Longsword', skill: 'craft', mode: 'attacks' }] },
+    gear: [], xpEarned: null, name: 'Talent test',
+  }
+  await assertSucceeds(setDoc(heroRef, {
+    ownerUid: 'player-1', sheet: initialSheet, updatedAt: serverTimestamp(),
+  }))
+  await assertFails(updateDoc(heroRef, {
+    sheet: { ...initialSheet, talents: { ...initialSheet.talents, '1': [] } },
+    updatedAt: serverTimestamp(),
+  }))
+  await assertFails(updateDoc(heroRef, {
+    sheet: { ...initialSheet, talents: { ...initialSheet.talents,
+      '1': [{ id: 'combat-prowess', attack: 'Dagger', skill: 'craft', mode: 'attacks' }],
+    } },
+    updatedAt: serverTimestamp(),
+  }))
+  await assertSucceeds(updateDoc(heroRef, {
+    sheet: { ...initialSheet, talents: { ...initialSheet.talents,
+      '1': [initialSheet.talents['1'][0], { id: 'mobility-training', skill: 'athletics' }],
+    } },
+    updatedAt: serverTimestamp(),
+  }))
+  await assertFails(updateDoc(heroRef, {
+    sheet: { ...initialSheet, talents: { ...initialSheet.talents,
+      '1': [{ id: 'mobility-training', skill: 'athletics' }, initialSheet.talents['1'][0]],
+    } },
+    updatedAt: serverTimestamp(),
+  }))
   // Standard shop initialization is self-service and price-locked.
   await assertSucceeds(setDoc(doc(pc, cid('marketOffers/standard-basic-dagger')), {
     kind: 'equipment', label: 'Dagger', price: 1, enabled: true,
