@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import CompanyMarket from './CompanyMarket.jsx'
+import RetrainingPanel from './RetrainingPanel.jsx'
 import Toast from './Toast.jsx'
 import { loadCatalog } from '../builder/catalog.js'
 import { newUnitConfig, resolveUnit } from '../builder/engine.js'
@@ -94,6 +95,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes, detachmen
   if (!data || !catalog) return <section className="panel"><h2>Company economy</h2><p>{message || 'Loading equipment and formation catalogs…'}</p></section>
   return <div className="panel-grid">
     <div className="contents"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} inventory={inventory} /></div>
+    <RetrainingPanel campaign={campaign} user={user} isGm={isGm} heroes={heroes} data={data} />
     <Toast message={message} kind={/submitted|recorded|approved|rejected|purchased|published|enabled|disabled/i.test(message) ? 'ok' : 'bad'} />
 
     {!isGm && <details className="panel">
