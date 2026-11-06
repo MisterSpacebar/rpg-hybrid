@@ -190,27 +190,27 @@ service cloud.firestore {
 
       function validStandardEnchant(offerId) {
         let defaults = {
-          'standard-enchant-accurate-melee': ['minor:Accurate 1', 'melee', 2],
-          'standard-enchant-accurate-ranged': ['minor:Accurate 1', 'ranged', 2],
-          'standard-enchant-tough-armor': ['minor:Tough 1', 'armor', 2],
-          'standard-enchant-tough-shield': ['minor:Tough 1', 'shield', 2],
-          'standard-enchant-range-ranged': ['minor:+1" Attack Range', 'ranged', 1],
-          'standard-enchant-move-melee': ['minor:+1" Move while equipped', 'melee', 2],
-          'standard-enchant-move-ranged': ['minor:+1" Move while equipped', 'ranged', 2],
-          'standard-enchant-move-armor': ['minor:+1" Move while equipped', 'armor', 2],
-          'standard-enchant-move-shield': ['minor:+1" Move while equipped', 'shield', 2],
-          'standard-enchant-magic-melee': ['minor:Magic Attack keyword', 'melee', 2],
-          'standard-enchant-magic-ranged': ['minor:Magic Attack keyword', 'ranged', 2]
+          'standard-enchant-accurate-melee': ['minor:Accurate 1', 'melee', 2, 'Accurate 1'],
+          'standard-enchant-accurate-ranged': ['minor:Accurate 1', 'ranged', 2, 'Accurate 1'],
+          'standard-enchant-tough-armor': ['minor:Tough 1', 'armor', 2, 'Tough 1'],
+          'standard-enchant-tough-shield': ['minor:Tough 1', 'shield', 2, 'Tough 1'],
+          'standard-enchant-range-ranged': ['minor:+1" Attack Range', 'ranged', 1, '+1" Attack Range'],
+          'standard-enchant-move-melee': ['minor:+1" Move while equipped', 'melee', 2, '+1" Move while equipped'],
+          'standard-enchant-move-ranged': ['minor:+1" Move while equipped', 'ranged', 2, '+1" Move while equipped'],
+          'standard-enchant-move-armor': ['minor:+1" Move while equipped', 'armor', 2, '+1" Move while equipped'],
+          'standard-enchant-move-shield': ['minor:+1" Move while equipped', 'shield', 2, '+1" Move while equipped'],
+          'standard-enchant-magic-melee': ['minor:Magic Attack keyword', 'melee', 2, 'Magic Attack keyword'],
+          'standard-enchant-magic-ranged': ['minor:Magic Attack keyword', 'ranged', 2, 'Magic Attack keyword']
         };
         let value = defaults.get(offerId, []);
-        return value.size() == 3
+        return value.size() == 4
           && request.resource.data.keys().hasOnly([
             'kind', 'label', 'price', 'enabled', 'enchantKey',
             'targetKind', 'difficulty', 'check', 'standardEnchant',
             'createdBy', 'createdAt'
           ])
           && request.resource.data.kind == 'enchant'
-          && request.resource.data.label == value[0].split(':')[1]
+          && request.resource.data.label == value[3]
           && request.resource.data.enchantKey == value[0]
           && request.resource.data.targetKind == value[1]
           && request.resource.data.price == value[2]
