@@ -240,7 +240,8 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       <p className="muted small">The roll is held locally until confirmation; Gold is deducted once. Client-side dice are not tamper-proof.</p>
       <QualityPicker item={workItem(pending)} data={characterData} roll={pending.roll}
         plan={qualityPlan} setPlan={setQualityPlan}
-        kind={pending.offer.kind} repair={repairField} setRepair={setRepairField} />
+        kind={pending.offer.kind} repair={repairField} setRepair={setRepairField}
+        magical={pending.offer.check?.includes('Mysticism')} />
       <div className="saved-actions">
         <button disabled={busy} onClick={() => setPending(null)}>Cancel check</button>
         <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < pending.offer.price}
