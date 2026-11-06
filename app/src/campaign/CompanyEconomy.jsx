@@ -18,7 +18,7 @@ const dateOf = (stamp) => stamp?.toDate?.().toLocaleString() ?? ''
 const DEFAULT = { kind: 'equipment', equipment: '', formation: '', slot: 'C', check: 'Mind + Craft', materials: '', note: '' }
 const validInt = (n) => Number.isInteger(Number(n)) && Number(n) >= 0
 
-export default function CompanyEconomy({ campaign, user, isGm, heroes, detachments }) {
+export default function CompanyEconomy({ campaign, user, isGm, heroes, detachments, inventory = [] }) {
   const [requests, setRequests] = useState([])
   const [ledger, setLedger] = useState([])
   const [data, setData] = useState(null)
@@ -93,11 +93,11 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes, detachmen
 
   if (!data || !catalog) return <section className="panel"><h2>Company economy</h2><p>{message || 'Loading equipment and formation catalogs…'}</p></section>
   return <div className="panel-grid">
-    <div className="contents"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} /></div>
+    <div className="contents"><CompanyMarket campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} inventory={inventory} /></div>
     <Toast message={message} kind={/submitted|recorded|approved|rejected|purchased|published|enabled|disabled/i.test(message) ? 'ok' : 'bad'} />
 
-    {!isGm && <section className="panel">
-      <h2>Ask for a special acquisition</h2>
+    {!isGm && <details className="panel">
+      <summary><strong>Special acquisition requests</strong> <span className="muted small">· Rare items, overrides and other GM exceptions</span></summary>
       <p className="muted small">Routine purchases and eligible crafts happen instantly in the Equipment, Crafting and Formations lists. Use this form only for a rare item, exception, custom project or agreement requiring GM discretion.</p>
       <div className="campaign-form">
         <label className="field">Project
@@ -142,7 +142,7 @@ export default function CompanyEconomy({ campaign, user, isGm, heroes, detachmen
         </label>
         <button className="primary" disabled={busy || (['equipment', 'craft'].includes(form.kind) && !form.equipment) || (form.kind === 'recruit' && !form.formation)} onClick={submit}>Submit to GM</button>
       </div>
-    </section>}
+    </details>}
 
     {isGm && <section className="panel">
       <h2>GM — Treasury adjustment</h2>

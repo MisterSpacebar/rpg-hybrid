@@ -3,7 +3,7 @@ import { resolveCraft } from './economy.js'
 // A published Company offer is an ongoing permission to acquire an item or
 // recruit a standard formation. It does not require a per-purchase GM decision.
 // Gold cost is GM-set for equipment/materials and rules-derived for formations.
-export const MARKET_KINDS = ['equipment', 'unit', 'craft']
+export const MARKET_KINDS = ['equipment', 'unit', 'craft', 'enchant']
 
 export const publishableOffer = (offer) => {
   if (!MARKET_KINDS.includes(offer?.kind)) throw new Error('Invalid offer type')
@@ -11,8 +11,9 @@ export const publishableOffer = (offer) => {
   if (offer.kind === 'unit' && (!offer.config?.key || !Number.isInteger(offer.points) || offer.points < 1)) {
     throw new Error('A formation offer requires a resolved profile and its Points')
   }
-  if (offer.kind !== 'unit' && (!offer.item?.kind || !offer.item.name)) throw new Error('Choose the equipment profile')
-  if (offer.kind === 'craft' && (!Number.isInteger(offer.difficulty) || offer.difficulty < 1 || offer.difficulty > 5)) {
+  if (['equipment', 'craft'].includes(offer.kind) && (!offer.item?.kind || !offer.item.name)) throw new Error('Choose the equipment profile')
+  if (offer.kind === 'enchant' && (!offer.enchantKey?.startsWith('minor:') || !['melee', 'ranged', 'armor', 'shield'].includes(offer.targetKind))) throw new Error('Select a compatible enchantment recipe')
+  if (['craft', 'enchant'].includes(offer.kind) && (!Number.isInteger(offer.difficulty) || offer.difficulty < 1 || offer.difficulty > 5)) {
     throw new Error('Choose a crafting Difficulty from 1–5')
   }
   return true
@@ -30,8 +31,8 @@ export function craftRoll(dice, threshold, difficulty) {
     throw new Error('Invalid crafting dice or Skill threshold')
   }
   const successes = dice.filter((die) => die >= threshold).length
-  const surges = Math.floor(dice.filter((die) => die === 6).length / 2)
-  const blunders = Math.floor(dice.filter((die) => die === 1).length / 2)
+  const surges = dice.filter((die) => die === 6).length >= 2 ? 1 : 0
+  const blunders = dice.filter((die) => die === 1).length >= 2 ? 1 : 0
   return { dice, successes, surges, blunders, difficulty, ...resolveCraft({ difficulty, successes, surges, blunders }) }
 }
 

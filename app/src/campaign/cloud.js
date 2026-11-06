@@ -5,7 +5,8 @@ import {
 import { db } from '../firebase.js'
 import { FORMATS, baseXp, bonusXp } from './limits.js'
 import { loadCatalog } from '../builder/catalog.js'
-import { seedStandardRecruitmentOffers } from './marketCloud.js'
+import { seedStandardRecruitmentOffers, seedDefaultEquipmentOffers } from './marketCloud.js'
+import { loadCharacterData } from '../character/data.js'
 
 const root = collection(db, 'campaigns')
 const campaignRef = (id) => doc(db, 'campaigns', id)
@@ -32,6 +33,9 @@ export async function createCampaign(uid, name, format = 'standard') {
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   })
+  // Populate the standing shop at campaign creation; PCs can buy these items
+  // directly without a per-purchase GM approval.
+  await seedDefaultEquipmentOffers(ref.id, uid, await loadCharacterData())
   return ref.id
 }
 

@@ -25,13 +25,13 @@ export function affordable(balance, expense) {
 
 export function resolveCraft({ difficulty, successes, surges, blunders }) {
   if (![difficulty, successes, surges, blunders].every(Number.isInteger) || difficulty < 1 || difficulty > 5
-    || successes < 0 || successes > 6 || surges < 0 || surges > 3 || blunders < 0 || blunders > 3) {
+    || successes < 0 || successes > 6 || surges < 0 || surges > 1 || blunders < 0 || blunders > 1) {
     throw new Error('Crafting results require legal difficulty and nonnegative counts')
   }
   const success = successes >= difficulty
   return {
     success,
-    qualities: success ? successes - difficulty + surges : 0,
+    qualities: success ? successes - difficulty : 0,
     flaws: success ? blunders : 0,
     complications: !success && blunders > 0,
   }

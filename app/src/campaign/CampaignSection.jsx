@@ -208,7 +208,17 @@ function Workspace({ id, user }) {
     const change = typeof patch === 'function' ? patch(current) : patch
     return normalizeCharacter({ ...current, ...change, ownerUid: user.uid }, data)
   }))
-  const view = useMemo(() => sheet && data ? derive(sheet, data) : null, [sheet, data])
+  // Company inventory is authoritative for permanent enchantments. Do not let
+  // a saved PC draft mint or replace paid item effects.
+  const view = useMemo(() => {
+    if (!sheet || !data) return null
+    const owned = new Map(inventory.filter((x) => x.kind === 'equipment').map((x) => [x.id, x]))
+    return derive({ ...sheet, gear: sheet.gear.map((g) => {
+      const item = g.inventoryId ? owned.get(g.inventoryId) : null
+      return item && item.item?.kind === g.kind && item.item?.name === g.name
+        ? { ...g, enchants: item.enchants ?? [] } : g
+    }) }, data)
+  }, [sheet, data, inventory])
   const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(
     sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved,
   ) : [], [sheet, data, campaign, inventory, heroes, approved, user.uid])
@@ -255,7 +265,7 @@ function Workspace({ id, user }) {
       <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
       {approved && <section className="panel"><h2>Last GM-approved character</h2><CharacterDatasheet character={approved.sheet} view={derive(normalizeCharacter(approved.sheet, data), data)} /></section>}
     </div>}
-    {tab === 'company' && <CompanyEconomy campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} />}
+    {tab === 'company' && <CompanyEconomy campaign={campaign} user={user} isGm={isGm} heroes={heroes} detachments={detachments} inventory={inventory} />}
     {tab === 'army' && <CampaignArmy campaign={campaign} user={user} isGm={isGm} heroes={heroes} inventory={inventory} detachments={detachments} approvedHeroes={approvedHeroes} />}
     {tab === 'gm' && isGm && <div className="panel-grid">
       <section className="panel"><h2>Progression</h2><p className="muted small">XP follows the campaign position: 5 XP per completed Turn and 5 XP on beginning Acts II, III and IV. Add exploration and Pivotal Objective XP below. Progress only moves forward.</p>

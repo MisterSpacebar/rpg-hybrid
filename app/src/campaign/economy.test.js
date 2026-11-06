@@ -22,9 +22,9 @@ test('Company treasury does not permit overspending or fractional Gold', () => {
   assert(!affordable(6, 2.5))
 })
 
-test('successful craft derives quality points from excess successes and surges', () => {
+test('successful craft derives ordinary quality budget from excess successes alone', () => {
   assert.deepEqual(resolveCraft({ difficulty: 2, successes: 4, surges: 1, blunders: 1 }), {
-    success: true, qualities: 3, flaws: 1, complications: false,
+    success: true, qualities: 2, flaws: 1, complications: false,
   })
   assert.deepEqual(resolveCraft({ difficulty: 4, successes: 3, surges: 1, blunders: 1 }), {
     success: false, qualities: 0, flaws: 0, complications: true,

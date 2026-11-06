@@ -99,7 +99,7 @@ try {
   const crafted = {
     dice: [6, 6, 3, 2], threshold: 4, difficulty: 2,
     successes: 2, surges: 1, blunders: 0,
-    success: true, qualities: 1, flaws: 0, complications: false,
+    success: true, qualities: 0, flaws: 0, complications: false,
   }
   await assertSucceeds(spend({
     id: 'craft-1', offer: 'craft-weapon', price: 3,
@@ -109,7 +109,7 @@ try {
   await assertFails(spend({
     id: 'craft-cheat', offer: 'craft-weapon', price: 3,
     kind: 'craft', item: { kind: 'melee', name: 'Longsword' },
-    crafting: { ...crafted, difficulty: 1, qualities: 2 },
+    crafting: { ...crafted, difficulty: 1, qualities: 1 },
   }))
   const patronConfig = { key: 'faction:warclans:core-1', slot: 'C', models: 8, doubled: false, picks: {} }
   await assertSucceeds(setDoc(doc(admin, cid('marketOffers/patron-core')), {
@@ -123,7 +123,46 @@ try {
   }))
   assert.equal((await getDoc(doc(pc, campaignPath))).data().goldBalance, 2)
   assert.equal((await getDoc(doc(pc, cid('inventory/patron-1')))).data().kind, 'unit')
-  console.log('PASS Firestore market: ordinary purchases, auto-published Patron Core recruitment, exact pricing, atomic inventory and replay protection')
+  // A published enchantment recipe can be applied to the *existing* Company
+  // item only alongside a real paid purchase/ledger entry.
+  await assertSucceeds(setDoc(doc(admin, cid('marketOffers/sharpen-recipe')), {
+    enabled: true, kind: 'enchant', label: 'Accurate 1', price: 1,
+    createdBy: 'gm-1', createdAt: serverTimestamp(),
+    difficulty: 2, check: 'Mind + Mysticism',
+    targetKind: 'melee', enchantKey: 'minor:Accurate 1',
+  }))
+  await assertFails(updateDoc(doc(pc, cid('inventory/purchase-1')), {
+    enchants: [{ key: 'minor:Accurate 1' }],
+  }))
+  await assertSucceeds(runTransaction(pc, async (tx) => {
+    const camp = doc(pc, campaignPath)
+    const owned = doc(pc, cid('inventory/purchase-1'))
+    const [c, item] = await Promise.all([tx.get(camp), tx.get(owned)])
+    const result = { ...crafted, qualities: 0 }
+    tx.update(camp, {
+      goldBalance: c.data().goldBalance - 1, lastPurchaseId: 'enchant-1',
+      lastPurchaseOfferId: 'sharpen-recipe', lastPurchaseUid: 'player-1',
+      updatedAt: serverTimestamp(),
+    })
+    tx.set(doc(pc, cid('marketPurchases/enchant-1')), {
+      offerId: 'sharpen-recipe', ownerUid: 'player-1', kind: 'enchant',
+      price: 1, balanceAfter: c.data().goldBalance - 1, status: 'completed',
+      targetItemId: 'purchase-1', crafting: result, createdAt: serverTimestamp(),
+    })
+    tx.set(doc(pc, cid('goldLedger/enchant-1')), {
+      actorUid: 'player-1', delta: -1, balanceAfter: c.data().goldBalance - 1,
+      reason: 'Enchantment', kind: 'market', purchaseId: 'enchant-1',
+      createdAt: serverTimestamp(),
+    })
+    tx.update(owned, {
+      enchants: [...(item.data().enchants ?? []), { key: 'minor:Accurate 1' }],
+      lastEnhancementId: 'enchant-1', updatedAt: serverTimestamp(),
+    })
+  }))
+  assert.equal((await getDoc(doc(pc, campaignPath))).data().goldBalance, 1)
+  assert.deepEqual((await getDoc(doc(pc, cid('inventory/purchase-1')))).data().enchants, [{ key: 'minor:Accurate 1' }])
+  await assertFails(updateDoc(doc(pc, cid('inventory/purchase-1')), { enchants: [] }))
+  console.log('PASS Firestore market: ordinary purchases, patron recruitment and paid owned-item enchanting; arbitrary asset modifications denied')
 } finally {
   await env.cleanup()
 }

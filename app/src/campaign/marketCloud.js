@@ -5,6 +5,7 @@ import { db } from '../firebase.js'
 import { craftRoll, eligibleOffer, priceForFormation, publishableOffer } from './market.js'
 import { newUnitConfig, resolveUnit } from '../builder/engine.js'
 import { patronCoreProfiles, standardOfferId } from './recruitmentAccess.js'
+import { standardOffers } from './defaultShop.js'
 
 const company = (id) => doc(db, 'campaigns', id)
 const offers = (id) => collection(db, 'campaigns', id, 'marketOffers')
@@ -30,8 +31,9 @@ export async function publishMarketOffer(id, uid, input) {
     ...(input.item ? { item: input.item } : {}),
     ...(input.config ? { config: input.config, points: input.points,
       factionId: input.factionId ?? null } : {}),
-    ...(input.kind === 'craft' ? { difficulty: input.difficulty,
+    ...(['craft', 'enchant'].includes(input.kind) ? { difficulty: input.difficulty,
       check: input.check, materials: input.materials ?? '' } : {}),
+    ...(input.kind === 'enchant' ? { enchantKey: input.enchantKey, targetKind: input.targetKind } : {}),
     createdBy: uid,
     createdAt: serverTimestamp(),
   }
@@ -47,15 +49,18 @@ export async function setMarketOfferEnabled(id, offerId, enabled) {
   await updateDoc(ref, { enabled })
 }
 
-export async function purchaseOffer(id, uid, offerId, craft = null) {
+export async function purchaseOffer(id, uid, offerId, craft = null, targetItemId = null) {
   const offerRef = doc(offers(id), offerId)
   const companyRef = company(id)
   const purchaseRef = doc(purchases(id))
   const assetRef = doc(owned(id), purchaseRef.id)
   const ledgerRef = doc(ledger(id), purchaseRef.id)
+  const targetRef = targetItemId ? doc(owned(id), targetItemId) : null
 
   await runTransaction(db, async (tx) => {
-    const [campSnap, offerSnap] = await Promise.all([tx.get(companyRef), tx.get(offerRef)])
+    const [campSnap, offerSnap, targetSnap] = await Promise.all([
+      tx.get(companyRef), tx.get(offerRef), targetRef ? tx.get(targetRef) : Promise.resolve(null),
+    ])
     if (!campSnap.exists() || !campSnap.data().memberUids.includes(uid)) throw new Error('You are not a campaign member')
     if (!offerSnap.exists()) throw new Error('This listing is no longer available')
     const campaign = campSnap.data()
@@ -68,7 +73,14 @@ export async function purchaseOffer(id, uid, offerId, craft = null) {
       throw new Error('The formation is not priced according to the current rules')
     }
     let crafting = null
-    if (offer.kind === 'craft') {
+    if (offer.kind === 'enchant') {
+      if (!targetSnap?.exists() || targetSnap.data().kind !== 'equipment' || targetSnap.data().item?.kind !== offer.targetKind) throw new Error('Choose compatible Company equipment')
+      if (!targetItemId || !offer.enchantKey) throw new Error('Missing item or enchantment')
+      if ((targetSnap.data().enchants ?? []).some((e) => e.key === offer.enchantKey)) throw new Error('Already enchanted with this effect')
+      if ((targetSnap.data().enchants ?? []).length >= 3) throw new Error('Item has reached its normal enchantment capacity')
+      if (targetSnap.data().ownerUid && targetSnap.data().ownerUid !== uid) throw new Error('Item is reserved for another PC')
+    }
+    if (['craft', 'enchant'].includes(offer.kind)) {
       if (!craft || !Array.isArray(craft.dice) || !Number.isInteger(craft.threshold)) {
         throw new Error('Roll your crafting dice before buying')
       }
@@ -92,12 +104,20 @@ export async function purchaseOffer(id, uid, offerId, craft = null) {
       offerId, ownerUid: uid, kind: offer.kind, price: offer.price,
       balanceAfter: balance, status: 'completed', createdAt: serverTimestamp(),
       ...(crafting ? { crafting } : {}),
+      ...(offer.kind === 'enchant' ? { targetItemId } : {}),
     })
     tx.set(ledgerRef, {
       actorUid: uid, delta: -offer.price, balanceAfter: balance,
       reason: `Market: ${offer.label}`, kind: 'market', purchaseId: purchaseRef.id,
       createdAt: serverTimestamp(),
     })
+    if (offer.kind === 'enchant' && crafting?.success) {
+      tx.update(targetRef, {
+        enchants: [...(targetSnap.data().enchants ?? []), { key: offer.enchantKey }],
+        lastEnhancementId: purchaseRef.id,
+        updatedAt: serverTimestamp(),
+      })
+    }
     if (offer.kind === 'unit' || offer.kind === 'equipment' ||
       (offer.kind === 'craft' && crafting?.success)) {
       tx.set(assetRef, {
@@ -145,4 +165,23 @@ export async function seedStandardRecruitmentOffers(id, uid, campaign, catalog) 
     })
   }
   return missing.filter(Boolean).length
+}
+
+// Stable, pre-priced everyday gear. The GM does not approve individual sales.
+// Auto-seeding is idempotent; existing offers are never overwritten, so a GM
+// can intentionally disable a standard item for a particular campaign.
+export async function seedDefaultEquipmentOffers(id, uid, data) {
+  const choices = standardOffers(data)
+  let created = 0
+  for (const choice of choices) {
+    const ref = doc(offers(id), choice.offerId)
+    if ((await getDoc(ref)).exists()) continue
+    await setDoc(ref, {
+      kind: 'equipment', label: choice.label, item: choice.item, price: choice.price,
+      enabled: true, standardEquipment: true, createdBy: uid,
+      createdAt: serverTimestamp(),
+    })
+    created++
+  }
+  return created
 }
