@@ -2,6 +2,7 @@ import { flat } from './data.js'
 import { SLOT_LIMITS, combineMods } from './magic.js'
 import { canonicalTags, normalizeTag } from '../tags.js'
 import { buildThrall } from './summons.js'
+import { workEffects } from '../campaign/qualityEngine.js'
 export { buildThrall } from './summons.js'
 import { choiceSpecs, emptyTalents, normalizeTalents, rankInfo, talentPool, TIERS, xpSpent } from './talents.js'
 
@@ -214,14 +215,15 @@ export const attackMatches = matchesFilter
 
 function finishAttack(a, m = {}) {
   const out = { ...a, keywords: [...a.keywords] }
-  out.attacks = a.attacks + (m.attacks ?? 0)
-  out.hit = Math.max(2, a.hit - (m.hit ?? 0))
-  out.damage = a.damage + (m.damage ?? 0)
-  if (m.range && /\d+/.test(a.range)) out.range = a.range.replace(/\d+/, (n) => String(Number(n) + m.range))
+  out.attacks = Math.max(1, a.attacks + (m.attacks ?? 0))
+  out.hit = Math.min(6, Math.max(2, a.hit - (m.hit ?? 0)))
+  out.damage = Math.max(1, a.damage + (m.damage ?? 0))
+  if (m.range && /\d+/.test(a.range)) out.range = a.range.replace(/\d+/, (n) => String(Math.max(1, Number(n) + m.range)))
   if (m.accurate) {
     const i = out.keywords.findIndex((k) => /^Accurate\s+\d+/i.test(k))
-    if (i >= 0) out.keywords[i] = `Accurate ${num(out.keywords[i]) + m.accurate}`
-    else out.keywords.push(`Accurate ${m.accurate}`)
+    const n = Math.max(0, (i >= 0 ? num(out.keywords[i]) : 0) + m.accurate)
+    if (i >= 0) out.keywords.splice(i, 1)
+    if (n) out.keywords.push(`Accurate ${n}`)
   }
   if (m.crit) out.keywords.push(`Surge: Critical +${m.crit}`)
   if (m.longRange) out.keywords.push(`Long Range +${m.longRange}"`)
@@ -340,6 +342,7 @@ export function derive(char, data) {
   // Enchantments count only while their item is equipped; unknown, disallowed or repeated ones are ignored.
   for (const g of gear) {
     const seen = new Set()
+    g.workshop = workEffects(g, data)
     g.enchantList = (g.enchants ?? []).flatMap((e) => {
       const entry = data.magic.byKey.get(e.key)
       if (!entry || !entry.allowed?.includes(g.kind) || seen.has(e.key)) return []
@@ -353,7 +356,7 @@ export function derive(char, data) {
   const armorItem = equipped.find((g) => g.kind === 'armor')
   const shieldItem = equipped.find((g) => g.kind === 'shield')
   const basePoints = (g) => (g.kind === 'custom' ? Number(g.points) || 0 : g.def.points)
-  const gearPoints = equipped.reduce((sum, g) => sum + basePoints(g) + g.enchantList.reduce((s, e) => s + e.points, 0), 0)
+  const gearPoints = equipped.reduce((sum, g) => sum + basePoints(g) + (g.workshop?.points ?? 0) + g.enchantList.reduce((s, e) => s + e.points, 0), 0)
 
   // Everything equipped magic contributes, gathered once and applied to the stats, attacks and Commands below.
   const fx = { move: 0, wounds: 0, evadeSteps: 0, armorSteps: 0, wards: [], wardImprove: [], defenses: [] }
@@ -387,6 +390,17 @@ export function derive(char, data) {
     if (g.kind === 'custom') continue
     if (['focus', 'artifact', 'relic'].includes(g.kind)) applyMagic(g, g.def, g, g.def.source ?? 'Magic item')
     for (const e of g.enchantList) applyMagic(g, e.entry, e, null)
+    if (g.workshop) {
+      fx.move += g.workshop.move
+      fx.armorSteps += g.workshop.armor
+      fx.wards.push(...g.workshop.wards)
+      fx.defenses.push(...g.workshop.defenses)
+      if (g.workshop.damaged) itemTraits.push({
+        source: 'Workshop', name: 'Damaged', text: 'This item requires repair before further permanent improvement.',
+      })
+      if (g.kind === 'melee' || g.kind === 'ranged')
+        gearMods[g.uid] = combineMods(gearMods[g.uid], g.workshop.mod)
+    }
   }
 
   const candidates = []
@@ -464,7 +478,7 @@ export function derive(char, data) {
   let armor = num(printed.armor)
   if (armorItem) armor = Math.min(armor, num(armorItem.def.armor))
   if (shieldItem) armor = Math.max(2, armor - 1)
-  armor = Math.max(2, armor - fx.armorSteps)
+  armor = Math.min(6, Math.max(2, armor - fx.armorSteps))
   move += fx.move
   wounds += fx.wounds
   evade = Math.max(2, evade - fx.evadeSteps)
