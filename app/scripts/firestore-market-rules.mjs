@@ -74,6 +74,46 @@ async function spend({ id, offer, price, balance, kind, item, config, factionId 
 
 try {
   await setup()
+  // Standard shop initialization is self-service and price-locked.
+  await assertSucceeds(setDoc(doc(pc, cid('marketOffers/standard-basic-dagger')), {
+    kind: 'equipment', label: 'Dagger', price: 1, enabled: true,
+    item: { kind: 'melee', name: 'Dagger' }, standardEquipment: true,
+    createdBy: 'player-1', createdAt: serverTimestamp(),
+  }))
+  await assertFails(setDoc(doc(pc, cid('marketOffers/standard-basic-musket')), {
+    kind: 'equipment', label: 'Musket', price: 1, enabled: true,
+    item: { kind: 'ranged', name: 'Musket' }, standardEquipment: true,
+    createdBy: 'player-1', createdAt: serverTimestamp(),
+  }))
+  await assertSucceeds(setDoc(doc(pc, cid('marketOffers/standard-enchant-accurate-melee')), {
+    kind: 'enchant', label: 'Accurate 1', price: 2, enabled: true,
+    enchantKey: 'minor:Accurate 1', targetKind: 'melee',
+    difficulty: 2, check: 'Mind + Mysticism', standardEnchant: true,
+    createdBy: 'player-1', createdAt: serverTimestamp(),
+  }))
+  await assertFails(setDoc(doc(pc, cid('marketOffers/standard-enchant-cheap-fake')), {
+    kind: 'enchant', label: 'Critical 3', price: 1, enabled: true,
+    enchantKey: 'major:Critical 3', targetKind: 'melee',
+    difficulty: 2, check: 'Mind + Mysticism', standardEnchant: true,
+    createdBy: 'player-1', createdAt: serverTimestamp(),
+  }))
+  const originalStarter = { uid: 'starter-a1', kind: 'melee', name: 'Dagger', equipped: true }
+  await assertSucceeds(setDoc(doc(admin, cid('approvedHeroes/player-1')), {
+    ownerUid: 'player-1', sheet: { gear: [originalStarter] },
+  }))
+  await assertSucceeds(setDoc(doc(pc, cid('inventory/starter-player-1-starter-a1')), {
+    kind: 'equipment', item: { kind: 'melee', name: 'Dagger' },
+    ownerUid: 'player-1', starterOwnerUid: 'player-1',
+    starterGearUid: 'starter-a1', starterOriginal: originalStarter,
+    createdAt: serverTimestamp(),
+  }))
+  await assertFails(setDoc(doc(pc, cid('inventory/starter-player-1-starter-fake')), {
+    kind: 'equipment', item: { kind: 'melee', name: 'Dagger' },
+    ownerUid: 'player-1', starterOwnerUid: 'player-1',
+    starterGearUid: 'starter-fake',
+    starterOriginal: { ...originalStarter, uid: 'starter-fake' },
+    createdAt: serverTimestamp(),
+  }))
   await assertFails(updateDoc(doc(pc, campaignPath), { goldBalance: 100 }))
   await assertFails(setDoc(doc(pc, cid('inventory/unearned')), {
     kind: 'equipment', item: { kind: 'melee', name: 'Dagger' },
