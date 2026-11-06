@@ -327,6 +327,55 @@ try {
     sheet: { ...initialSheet, talents: initialSheet.talents },
     updatedAt: serverTimestamp(),
   }))
+  // Fixed workshop offers are price-locked, and a successful Quality
+  // increment must be atomically tied to a paid purchase receipt.
+  const improveOffer = 'standard-workshop-improve-melee'
+  await assertSucceeds(setDoc(doc(pc, cid('marketOffers/' + improveOffer)), {
+    kind:'improve', label:'Improve melee', price:2, enabled:true,
+    targetKind:'melee', difficulty:2, check:'Agility + Craft',
+    standardWorkshop:true, createdBy:'player-1', createdAt:serverTimestamp(),
+  }))
+  await assertFails(setDoc(doc(pc, cid('marketOffers/standard-workshop-repair-melee')), {
+    kind:'repair', label:'Repair melee', price:0, enabled:true,
+    targetKind:'melee', difficulty:2, check:'Body + Craft',
+    standardWorkshop:true, createdBy:'player-1', createdAt:serverTimestamp(),
+  }))
+  await assertSucceeds(updateDoc(doc(admin, campaignPath), {
+    goldBalance:5, updatedAt:serverTimestamp(),
+  }))
+  const workPurchaseId = 'quality-1'
+  const workshop = { kind:'improve', plan:[{id:'balanced',ranks:1}],
+    repair:null, flaw:null, purchaseId:workPurchaseId }
+  const workRoll = {
+    dice:[4,5,6],threshold:4,difficulty:2,successes:3,
+    surges:0,blunders:0,success:true,qualities:1,flaws:0,complications:false,
+  }
+  await assertSucceeds(runTransaction(pc, async (tx) => {
+    const c=doc(pc,campaignPath), owned=doc(pc,cid('inventory/purchase-1'))
+    const [campaign,item]=await Promise.all([tx.get(c),tx.get(owned)])
+    const next=campaign.data().goldBalance-2
+    tx.update(c, { goldBalance:next,lastPurchaseId:workPurchaseId,
+      lastPurchaseOfferId:improveOffer,lastPurchaseUid:'player-1',
+      updatedAt:serverTimestamp() })
+    tx.set(doc(pc,cid('marketPurchases/'+workPurchaseId)), {
+      offerId:improveOffer,ownerUid:'player-1',kind:'improve',price:2,
+      balanceAfter:next,status:'completed',createdAt:serverTimestamp(),
+      crafting:workRoll,targetItemId:'purchase-1',workshop,
+    })
+    tx.set(doc(pc,cid('goldLedger/'+workPurchaseId)), {
+      actorUid:'player-1',delta:-2,balanceAfter:next,reason:'Market: Improve melee',
+      kind:'market',purchaseId:workPurchaseId,createdAt:serverTimestamp(),
+    })
+    tx.update(owned, {workshopEvents:[...(item.data().workshopEvents??[]),workshop],
+      lastWorkshopId:workPurchaseId,updatedAt:serverTimestamp()})
+  }))
+  assert.equal((await getDoc(doc(pc,campaignPath))).data().goldBalance,3)
+  assert.deepEqual((await getDoc(doc(pc,cid('inventory/purchase-1')))).data().workshopEvents,[workshop])
+  await assertFails(updateDoc(doc(pc,cid('inventory/purchase-1')), {
+    workshopEvents:[{...workshop,plan:[{id:'balanced',ranks:3}]}],
+    updatedAt:serverTimestamp(),
+  }))
+  console.log('PASS Firestore workshop: fixed pricing, paid ranked Quality, immutable history, unauthorized edits rejected')
   console.log('PASS Firestore: Develop Retraining costs 2 Gold, cannot be forged, and only applies after Turn advancement')
   console.log('PASS Firestore market: self-service ordinary shop, default Minor recipes, approved starter registration and paid enchantment')
 } finally {

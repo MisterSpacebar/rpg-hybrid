@@ -277,14 +277,90 @@ service cloud.firestore {
           && request.resource.data.standardEnchant == true;
       }
 
+      function validStandardWorkshop(offerId) {
+        let prices = {
+          'standard-workshop-improve-melee': ['improve','melee',2,'Agility + Craft','Improve melee'],
+          'standard-workshop-improve-ranged': ['improve','ranged',2,'Agility + Craft','Improve ranged'],
+          'standard-workshop-improve-armor': ['improve','armor',2,'Body + Craft','Improve armor'],
+          'standard-workshop-improve-shield': ['improve','shield',2,'Body + Craft','Improve shield'],
+          'standard-workshop-repair-melee': ['repair','melee',1,'Body + Craft','Repair melee'],
+          'standard-workshop-repair-ranged': ['repair','ranged',1,'Body + Craft','Repair ranged'],
+          'standard-workshop-repair-armor': ['repair','armor',1,'Body + Craft','Repair armor'],
+          'standard-workshop-repair-shield': ['repair','shield',1,'Body + Craft','Repair shield']
+        };
+        let value = prices.get(offerId, []);
+        return value.size() == 5
+          && request.resource.data.keys().hasOnly([
+            'kind','label','price','enabled','targetKind','difficulty','check',
+            'standardWorkshop','createdBy','createdAt'
+          ])
+          && request.resource.data.kind == value[0]
+          && request.resource.data.targetKind == value[1]
+          && request.resource.data.price == value[2]
+          && request.resource.data.check == value[3]
+          && request.resource.data.label == value[4]
+          && request.resource.data.difficulty == 2
+          && request.resource.data.enabled == true
+          && request.resource.data.standardWorkshop == true;
+      }
+      function validWorkRow(row) {
+        return row is map && row.keys().hasOnly(['id','ranks','choice'])
+          && row.id in [
+            'balanced','specialized','extended','reinforced','sheltering','swift',
+            'deadly','precise','protective','exceptionalEdge','destructive','warded'
+          ]
+          && row.ranks is int && row.ranks >= 1 && row.ranks <= 3
+          && (row.get('choice','') is string)
+          && row.get('choice','').size() <= 40
+          && (row.id != 'warded' || row.get('choice','') in ['physical','magic'])
+          && (row.id != 'specialized' || row.get('choice','').size() > 0);
+      }
+      function workRowCost(row, surge) {
+        return row.id in ['precise','protective','destructive'] ? 2 * row.ranks :
+          row.id == 'exceptionalEdge' && surge == 1 ? row.ranks - 1 : row.ranks;
+      }
+      function validWorkshopReceipt(purchase, purchaseId) {
+        let work = purchase.workshop;
+        let plan = work.plan;
+        let roll = purchase.crafting;
+        let spent = (plan.size() > 0 ? workRowCost(plan[0],roll.surges) : 0)
+          + (plan.size() > 1 ? workRowCost(plan[1],roll.surges) : 0)
+          + (plan.size() > 2 ? workRowCost(plan[2],roll.surges) : 0);
+        return work is map
+          && work.keys().hasOnly(['kind','plan','repair','flaw','purchaseId'])
+          && work.kind == purchase.kind
+          && work.purchaseId == purchaseId
+          && work.plan is list && work.plan.size() <= 3
+          && (plan.size() < 1 || validWorkRow(plan[0]))
+          && (plan.size() < 2 || validWorkRow(plan[1]))
+          && (plan.size() < 3 || validWorkRow(plan[2]))
+          && (plan.size() < 2 || plan[0].id != plan[1].id)
+          && (plan.size() < 3 || (plan[0].id != plan[2].id && plan[1].id != plan[2].id))
+          && spent <= roll.qualities
+          && (!roll.success || work.get('repair',null) == null ||
+            (purchase.kind == 'repair' && work.repair is string))
+          && (roll.success || (plan.size() == 0 && work.get('repair',null) == null))
+          && (purchase.kind != 'repair' || plan.size() == 0)
+          && (purchase.kind == 'repair' || work.get('repair',null) == null)
+          && (work.get('flaw',null) == null || work.flaw in [
+            'attacks','hit','damage','range','armor','move','accurate','damaged',
+            'balanced','specialized','extended','reinforced','sheltering','swift',
+            'deadly','precise','protective','exceptionalEdge','destructive','warded'
+          ])
+          && (roll.blunders == 0 || (purchase.kind == 'craft' && !roll.success)
+            || work.get('flaw',null) is string)
+          && (roll.blunders > 0 || work.get('flaw',null) == null)
+          && (purchase.kind != 'repair' || !roll.success || work.get('repair',null) is string);
+      }
+
       match /marketOffers/{offerId} {
         allow get, list: if memberOfCampaign();
         allow create: if (gmOfCampaign() || (
           memberOfCampaign()
-          && (validStandardEquipment(offerId) || validStandardEnchant(offerId))
+          && (validStandardEquipment(offerId) || validStandardEnchant(offerId) || validStandardWorkshop(offerId))
         ))
           && request.resource.data.createdBy == request.auth.uid
-          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant']
+          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant', 'improve', 'repair']
           && (request.resource.data.kind != 'enchant' || (
             request.resource.data.enchantKey is string
             && request.resource.data.enchantKey.matches('^minor:.*')
@@ -302,7 +378,7 @@ service cloud.firestore {
           && request.resource.data.label.size() > 0
           && (request.resource.data.kind == 'unit'
             ? request.resource.data.config is map
-            : request.resource.data.kind == 'enchant' || request.resource.data.item is map);
+            : request.resource.data.kind in ['enchant','improve','repair'] || request.resource.data.item is map);
         allow update: if gmOfCampaign()
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['enabled'])
           && request.resource.data.enabled is bool;
@@ -314,7 +390,7 @@ service cloud.firestore {
         allow create: if memberOfCampaign()
           && request.auth.uid != get(/databases/$(database)/documents/campaigns/$(campaignId)).data.gmUid
           && request.resource.data.ownerUid == request.auth.uid
-          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant']
+          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant', 'improve', 'repair']
           && request.resource.data.price is int
           && request.resource.data.price > 0
           && request.resource.data.status == 'completed'
@@ -322,17 +398,26 @@ service cloud.firestore {
           && request.resource.data.balanceAfter is int
           && request.resource.data.balanceAfter >= 0
           && request.resource.data.keys().hasOnly([
-            'offerId','ownerUid','kind','price','balanceAfter','status','createdAt','crafting','targetItemId'
+            'offerId','ownerUid','kind','price','balanceAfter','status','createdAt','crafting','targetItemId','workshop'
           ])
           && (request.resource.data.kind != 'enchant' || (
             request.resource.data.targetItemId is string
             && offered(request.resource.data.offerId).enchantKey.matches('^minor:.*')
             && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.kind == 'equipment'
             && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.item.kind == offered(request.resource.data.offerId).targetKind
-            && (!request.resource.data.crafting.success ||
+            && (request.resource.data.get('workshop',null) != null ||
+              !request.resource.data.crafting.success ||
               getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.lastEnhancementId == purchaseId)
           ))
-          && (!(request.resource.data.kind in ['craft', 'enchant']) || (
+          && (request.resource.data.kind in ['improve','repair'] ? (
+            request.resource.data.targetItemId is string
+            && request.resource.data.workshop is map
+            && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.kind == 'equipment'
+            && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.item.kind == offered(request.resource.data.offerId).targetKind
+          ) : true)
+          && (request.resource.data.get('workshop',null) == null ||
+            validWorkshopReceipt(request.resource.data,purchaseId))
+          && (!(request.resource.data.kind in ['craft', 'enchant','improve','repair']) || (
             request.resource.data.crafting is map
             && request.resource.data.crafting.difficulty == offered(request.resource.data.offerId).difficulty
             && request.resource.data.crafting.successes is int
@@ -453,6 +538,50 @@ service cloud.firestore {
         allow update, delete: if false;
       }
 
+      function validWorkshopAppend(itemId) {
+        let receiptId = request.resource.data.get('lastWorkshopId','');
+        let purchase = purchased(receiptId);
+        let before = resource.data.get('workshopEvents',[]);
+        let after = request.resource.data.get('workshopEvents',[]);
+        let oldEnchants = resource.data.get('enchants',[]);
+        let nextEnchants = request.resource.data.get('enchants',[]);
+        return memberOfCampaign()
+          && resource.data.kind == 'equipment'
+          && (resource.data.get('ownerUid',null) == null ||
+            resource.data.ownerUid == request.auth.uid)
+          && receiptId is string && receiptId.size() > 0
+          && purchase.kind in ['enchant','improve','repair']
+          && purchase.targetItemId == itemId
+          && purchase.ownerUid == request.auth.uid
+          && purchase.createdAt == request.time
+          && request.resource.data.updatedAt == request.time
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'workshopEvents','lastWorkshopId','updatedAt','enchants','lastEnhancementId'
+          ])
+          && after is list && after.size() == before.size() + 1
+          && after.size() <= 8
+          && (before.size() < 1 || after[0] == before[0])
+          && (before.size() < 2 || after[1] == before[1])
+          && (before.size() < 3 || after[2] == before[2])
+          && (before.size() < 4 || after[3] == before[3])
+          && (before.size() < 5 || after[4] == before[4])
+          && (before.size() < 6 || after[5] == before[5])
+          && (before.size() < 7 || after[6] == before[6])
+          && after[after.size()-1] == purchase.workshop
+          && (purchase.kind == 'enchant' && purchase.crafting.success ?
+            (nextEnchants is list
+              && nextEnchants.size() == oldEnchants.size() + 1
+              && nextEnchants.size() <= 3
+              && (oldEnchants.size() < 1 || nextEnchants[0] == oldEnchants[0])
+              && (oldEnchants.size() < 2 || nextEnchants[1] == oldEnchants[1])
+              && nextEnchants[nextEnchants.size()-1] ==
+                { 'key': offered(purchase.offerId).enchantKey }
+              && request.resource.data.lastEnhancementId == receiptId)
+            : (nextEnchants == oldEnchants
+              && request.resource.data.get('lastEnhancementId',null) ==
+                 resource.data.get('lastEnhancementId',null)));
+      }
+
       // The company owns permanent inventory; players only select items when deploying.
       match /inventory/{itemId} {
         allow get, list: if memberOfCampaign();
@@ -499,13 +628,16 @@ service cloud.firestore {
               || (request.resource.data.kind == 'equipment'
                 && purchased(itemId).kind in ['equipment', 'craft']
                 && request.resource.data.keys().hasOnly([
-                  'kind','item','ownerUid','purchaseId','createdAt','crafting'
+                  'kind','item','ownerUid','purchaseId','createdAt','crafting','workshopEvents','lastWorkshopId'
                 ])
                 && request.resource.data.ownerUid == null
                 && request.resource.data.item == offerForPurchase(itemId).item
                 && (purchased(itemId).kind != 'craft'
                   || (purchased(itemId).crafting.success == true
-                    && request.resource.data.crafting == purchased(itemId).crafting)))
+                    && request.resource.data.crafting == purchased(itemId).crafting))
+                && (purchased(itemId).get('workshop',null) == null ||
+                  (request.resource.data.get('workshopEvents',[]) == [purchased(itemId).workshop]
+                    && request.resource.data.lastWorkshopId == itemId)))
             )
           );
         allow update: if (gmOfCampaign()
@@ -537,7 +669,7 @@ service cloud.firestore {
             && purchased(request.resource.data.lastEnhancementId).kind == 'enchant'
             && purchased(request.resource.data.lastEnhancementId).crafting.success == true
             && offerForPurchase(request.resource.data.lastEnhancementId).targetKind == resource.data.item.kind
-          );
+          ) || validWorkshopAppend(itemId);
         allow delete: if gmOfCampaign();
       }
 

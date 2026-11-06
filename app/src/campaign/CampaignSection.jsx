@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useAuth } from '../auth/AuthContext.jsx'
 import { loadCharacterData } from '../character/data.js'
+import { withOwnedEquipment } from './ownedEquipment.js'
 import { derive, emptyCharacter, normalizeCharacter } from '../character/engine.js'
 import CharacterStats from '../components/CharacterStats.jsx'
 import CharacterDatasheet from '../components/CharacterDatasheet.jsx'
@@ -219,15 +220,9 @@ function Workspace({ id, user }) {
   }))
   // Company inventory is authoritative for permanent enchantments. Do not let
   // a saved PC draft mint or replace paid item effects.
-  const view = useMemo(() => {
-    if (!sheet || !data) return null
-    const owned = new Map(inventory.filter((x) => x.kind === 'equipment').map((x) => [x.id, x]))
-    return derive({ ...sheet, gear: sheet.gear.map((g) => {
-      const item = owned.get(g.inventoryId || `starter-${user.uid}-${g.uid}`)
-      return item && item.item?.kind === g.kind && item.item?.name === g.name
-        ? { ...g, enchants: item.enchants ?? [] } : g
-    }) }, data)
-  }, [sheet, data, inventory, user.uid])
+  const view = useMemo(() => sheet && data
+    ? derive(withOwnedEquipment(sheet, inventory, user.uid), data)
+    : null, [sheet, data, inventory, user.uid])
   const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(
     sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved, myHero?.sheet?.talents,
   ) : [], [sheet, data, campaign, inventory, heroes, approved, user.uid])
@@ -292,7 +287,7 @@ function Workspace({ id, user }) {
       {sheetDraft?.conflict && <section className="panel"><h3>Updated from another session</h3><p className="bad small">A newer character sheet was saved elsewhere. Your local edits were preserved; load the saved sheet to resolve the conflict.</p><button onClick={() => setSheetDraft(discardDraft)}>Load saved character</button></section>}
       {!isValid && <details className="panel before-saving"><summary className="bad">Before saving · {blockers.length} issue{blockers.length === 1 ? '' : 's'}</summary><ul className="checks">{blockers.map((m, i) => <li key={i} className="bad">{m}</li>)}</ul></details>}
       <CharacterEditor data={data} sheet={sheet} view={view} update={myUpdate} committedTalents={myHero?.sheet?.talents} retrain={{ status: retrainStatus, onRequest: requestRetraining }} inventory={inventory} approved={approved} otherHeroes={heroes.filter((h) => h.ownerUid !== user.uid)} ownerUid={user.uid} xpBudget={campaign.xpTotal} />
-      {approved && <section className="panel"><h2>Last GM-approved character</h2><CharacterDatasheet character={approved.sheet} view={derive(normalizeCharacter(approved.sheet, data), data)} /></section>}
+      {approved && <section className="panel"><h2>Last GM-approved character</h2><CharacterDatasheet character={approved.sheet} view={derive(normalizeCharacter(withOwnedEquipment(approved.sheet, inventory, user.uid), data), data)} /></section>}
       {myHero && <p className="character-footer small"><span className="muted">{allEntries(myHero.sheet?.talents ?? {}).length > 0 ? 'Characters with committed Talents can only be retired by the GM.' : 'Deleting your character releases its reserved formations.'}</span>{' '}
         <button className="danger" disabled={working || allEntries(myHero.sheet?.talents ?? {}).length > 0}
           onClick={() => {
@@ -319,7 +314,7 @@ function Workspace({ id, user }) {
         <ul className="saved-list panel-scroll">{requests.map((r) => <li key={r.id}><strong>{r.displayName}</strong><div className="saved-actions"><button className="primary" disabled={working} onClick={() => run(() => approveJoin(campaign, r.uid))}>Accept</button><button disabled={working} onClick={() => run(() => rejectJoin(id, r.uid))}>Reject</button></div></li>)}</ul>
       </section>
       <section className="panel span-2"><h2>Character reviews</h2><p className="muted small">Approve a saved snapshot for deployment; further player edits do not change the approved sheet.</p><ul className="saved-list panel-scroll tall">{heroes.map((h) => {
-        const v = derive(normalizeCharacter({ ...h.sheet, xpEarned: campaign.xpTotal }, data), data)
+        const v = derive(normalizeCharacter({ ...withOwnedEquipment(h.sheet, inventory, h.ownerUid), xpEarned: campaign.xpTotal }, data), data)
         const issues = validateCampaignSheet({ ...h.sheet, ownerUid: h.ownerUid }, data, campaign.xpTotal, inventory, heroes.filter((other) => other.ownerUid !== h.ownerUid), approvedHeroes.find((a) => a.ownerUid === h.ownerUid), h.sheet.talents)
         const eligible = v.checks.every((c) => c.ok) && !issues.length && v.points.spent <= campaign.xpTotal
         return <li key={h.id}><div><strong>{h.sheet.name}</strong><div className="muted small">{v.points.total} pts · {v.points.spent}/{campaign.xpTotal} XP spent · {eligible ? 'Valid' : 'Needs corrections'}</div></div>        <button className="primary" disabled={working || !eligible} onClick={() => run(() => approveHero(id, h.ownerUid, h.sheet))}>Approve snapshot</button>{approvedHeroes.some((a) => a.ownerUid === h.ownerUid) && <button disabled={working} onClick={() => window.confirm('Revoke this approved snapshot? The player will be unable to deploy this Hero until re-approved.') && run(() => revokeApproval(id, h.ownerUid))}>Revoke approval</button>}

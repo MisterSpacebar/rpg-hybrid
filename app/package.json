@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test src/builder/modifiers.test.js src/character/tags.test.js src/character/profileValidation.test.js src/campaign/equipment.test.js src/campaign/limits.test.js src/campaign/sync.test.js src/campaign/economy.test.js src/campaign/market.test.js src/campaign/recruitmentAccess.test.js src/campaign/roster.test.js src/campaign/bestiary.test.js src/campaign/craftingRules.test.js src/campaign/defaultShop.test.js src/campaign/talentCommitment.test.js src/campaign/retraining.test.js"
+    "test": "node --test src/builder/modifiers.test.js src/character/tags.test.js src/character/profileValidation.test.js src/campaign/equipment.test.js src/campaign/limits.test.js src/campaign/sync.test.js src/campaign/economy.test.js src/campaign/market.test.js src/campaign/recruitmentAccess.test.js src/campaign/roster.test.js src/campaign/bestiary.test.js src/campaign/craftingRules.test.js src/campaign/defaultShop.test.js src/campaign/talentCommitment.test.js src/campaign/retraining.test.js src/campaign/qualityEngine.test.js src/campaign/ownedEquipment.test.js"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.9.0",

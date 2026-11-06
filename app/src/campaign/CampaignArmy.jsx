@@ -7,6 +7,7 @@ import { detachmentView, deploymentCap, allowedDoctrineCommands, FIELD_SLOTS } f
 import { grantEquipment, grantFormation, removeInventoryItem, saveDetachment, setEntitlement, watchEntitlements } from './cloud.js'
 import { loadCharacterData } from '../character/data.js'
 import { derive, normalizeCharacter } from '../character/engine.js'
+import { withOwnedEquipment } from './ownedEquipment.js'
 import { acceptSnapshot, discardDraft, editDraft } from './sync.js'
 import { groupRoster, holdersOf } from './roster.js'
 
@@ -99,7 +100,7 @@ export default function CampaignArmy({ campaign, user, isGm, heroes, approvedHer
   }, [campaign.id])
 
   const approved = approvedHeroes.find((h) => h.ownerUid === user.uid)
-  const hero = approved && charData ? derive(normalizeCharacter(approved.sheet, charData), charData) : null
+  const hero = approved && charData ? derive(normalizeCharacter(withOwnedEquipment(approved.sheet, inventory, user.uid), charData), charData) : null
   const other = detachments.filter((d) => d.ownerUid !== user.uid)
   const result = useMemo(() => catalog && draft ? detachmentView(
     campaign, entitlements[user.uid] ?? {}, { ...draft, ownerUid: user.uid }, inventory,

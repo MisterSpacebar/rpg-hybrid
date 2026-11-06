@@ -8,8 +8,10 @@ import { equipmentCatalog } from './economy.js'
 import { eligibleStandardOffer, standardRecruitmentProfiles } from './recruitmentAccess.js'
 import { watchEntitlements } from './cloud.js'
 import { craftRoll, priceForFormation } from './market.js'
+import QualityPicker from './QualityPicker.jsx'
+import { repairOptions, randomDeterioration, validateQualityPlan } from './qualityEngine.js'
 import {
-  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers, seedDefaultEnchantOffers,
+  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers, seedDefaultEnchantOffers, seedStandardWorkshopOffers,
   watchMarketOffers, watchMarketPurchases, registerStartingGear, starterRecordId,
 } from './marketCloud.js'
 
@@ -24,6 +26,9 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   const [form, setForm] = useState({ kind: 'equipment', item: '', unit: '', price: '', difficulty: 2, check: 'Mind + Craft' })
   const [message, setMessage] = useState('')
   const [selectedTargets, setSelectedTargets] = useState({})
+  const [pending, setPending] = useState(null)
+  const [qualityPlan, setQualityPlan] = useState([])
+  const [repairField, setRepairField] = useState('')
   const [busy, setBusy] = useState(false)
   useEffect(() => {
     let active = true
@@ -43,6 +48,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     Promise.all([
       seedDefaultEquipmentOffers(campaign.id, user.uid, characterData),
       seedDefaultEnchantOffers(campaign.id, user.uid, characterData),
+      seedStandardWorkshopOffers(campaign.id, user.uid),
     ]).catch((error) => setMessage(`Could not initialize standard equipment or enchantments: ${error.message}`))
   }, [characterData, campaign.id, user.uid])
   useEffect(() => {
@@ -95,7 +101,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
   }
   const buy = async (offer) => {
     let result = null
-    if (['craft', 'enchant'].includes(offer.kind)) {
+    if (['craft', 'enchant', 'improve', 'repair'].includes(offer.kind)) {
       if (!pcView) throw new Error('Save a campaign character before crafting')
       const [char, skill] = offer.check.toLowerCase().split(' + ')
       const pool = pcView.characteristics[char]
@@ -113,9 +119,48 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       const roll = craftRoll(dice, threshold, offer.difficulty)
       result = { dice, threshold, successes: roll.successes, surges: roll.surges, blunders: roll.blunders }
     }
-    await purchaseOffer(campaign.id, user.uid, offer.id, result,
-      offer.kind === 'enchant' ? selectedTargets[offer.id] : null)
-    return result
+    if (result) {
+      const entropy = new Uint32Array(1)
+      crypto.getRandomValues(entropy)
+      setPending({ offer, roll: craftRoll(result.dice, result.threshold, offer.difficulty),
+        threshold: result.threshold, targetId: selectedTargets[offer.id] ?? null,
+        flawSeed: entropy[0] / 4294967296 })
+      setQualityPlan([])
+      setRepairField('')
+      return result
+    }
+    await purchaseOffer(campaign.id, user.uid, offer.id)
+    return null
+  }
+  const workItem = (p) => {
+    if (!p) return null
+    if (p.offer.kind === 'craft') return { ...p.offer.item, enchants: [], workshopEvents: [] }
+    const owned = inventory.find((i) => i.id === p.targetId)
+    if (!owned?.item) return null
+    return { ...owned.item,
+      enchants: [...(owned.enchants ?? []), ...(p.offer.kind === 'enchant' && p.roll.success ? [{key:p.offer.enchantKey}] : [])],
+      workshopEvents: owned.workshopEvents ?? [] }
+  }
+  const submitWork = async () => {
+    if (!pending || !characterData) throw new Error('No pending project')
+    const item = workItem(pending)
+    if (!item) throw new Error('The equipment is no longer available')
+    const repair = pending.offer.kind === 'repair' && pending.roll.success ? repairField : null
+    if (pending.offer.kind === 'repair' && pending.roll.success &&
+        !repairOptions(item, characterData).includes(repair)) throw new Error('Select a valid defect to repair')
+    if (pending.offer.kind !== 'repair') validateQualityPlan(item, characterData, pending.roll, qualityPlan, {
+      magical: pending.offer.check?.includes('Mysticism'),
+    })
+    const flaw = pending.roll.blunders && (pending.offer.kind !== 'craft' || pending.roll.success)
+      ? randomDeterioration(item, characterData, pending.roll.success ? qualityPlan : [],
+        () => pending.flawSeed, repair) : null
+    const rolled = pending.roll
+    await purchaseOffer(campaign.id, user.uid, pending.offer.id,
+      { dice: rolled.dice, threshold: pending.threshold, successes: rolled.successes,
+        surges: rolled.surges, blunders: rolled.blunders },
+      pending.targetId, { plan: pending.offer.kind === 'repair' ? [] : qualityPlan,
+        repair, flaw }, characterData)
+    setPending(null); setQualityPlan([]); setRepairField('')
   }
   const claimedByOthers = new Set(heroes.filter((h) => h.ownerUid !== user.uid)
     .flatMap((h) => (h.sheet?.gear ?? []).map((g) => g.inventoryId).filter(Boolean)))
@@ -123,8 +168,11 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     && entry.item?.kind === offer.targetKind
     && (!entry.ownerUid || entry.ownerUid === user.uid)
     && !claimedByOthers.has(entry.id)
-    && !(entry.enchants ?? []).some((e) => e.key === offer.enchantKey)
-    && (entry.enchants ?? []).length < 3)
+    && (offer.kind !== 'enchant' || (!(entry.enchants ?? []).some((e) => e.key === offer.enchantKey) &&
+      (entry.enchants ?? []).length < 3))
+    && (offer.kind !== 'repair' || repairOptions({ ...entry.item,
+      enchants:entry.enchants ?? [], workshopEvents:entry.workshopEvents ?? [] }, characterData).length > 0)
+    && (entry.workshopEvents ?? []).length < 8)
 
   const unregisteredStartingGear = (pc?.gear ?? []).filter((g) =>
     !g.inventoryId && ['melee','ranged','armor','shield'].includes(g.kind) &&
@@ -152,8 +200,10 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     {!isGm && <div className="offer-row span-all">
       {[
         ['equipment', 'Equipment', 'Bought instantly with Company Gold; added to the Company inventory.'],
-        ['craft', 'Crafting', 'Quest/reward recipes are published once; ordinary projects do not require per-attempt GM approval. Advanced crafted Qualities and flaws await the full profile editor.'],
-        ['enchant', 'Enchanting', 'Apply an unlocked Minor Enchantment to actual Company equipment. A successful Mysticism check updates its effects and Points; exceptional Surge Qualities, ranks and Blunder deterioration await the dedicated modifier editor.'],
+        ['craft', 'Crafting', 'Quest/reward recipes create equipment. Excess successes buy ranked Qualities and Surges unlock exceptional properties.'],
+        ['enchant', 'Enchanting', 'Apply an unlocked Minor Enchantment, plus ranked enhancements from excess successes. Blunders damage existing equipment.'],
+        ['improve', 'Improvements', 'Improve existing equipment with Craft checks, including Surge-unlocked exceptional properties.'],
+        ['repair', 'Repairs', 'Restore one deteriorated item statistic with an appropriate Craft check.'],
         ['unit', 'Formations', `Patron Core profiles: ${recruitAccess.factionCore.length} · Generic profiles permitted by party slots: ${recruitAccess.generic.length}. Two free starting formations are Company grants, not Marketplace purchases.`],
       ].map(([kind, title, note]) => {
         const list = visibleOffers.filter((o) => o.kind === kind)
@@ -163,26 +213,43 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
           {!list.length && <p className="muted">{offers.some((o) => o.enabled) ? 'Nothing available yet.' : 'No offers have been initialized. Standard options are loading; they should appear automatically without GM approval.'}</p>}
           <ul className="saved-list panel-scroll">{list.map((offer) =>
             <li key={offer.id}>
-              <div><strong>{offer.label}</strong><div className="muted small">{['craft', 'enchant'].includes(offer.kind)
+              <div><strong>{offer.label}</strong><div className="muted small">{['craft', 'enchant', 'improve', 'repair'].includes(offer.kind)
                 ? `${offer.check} · Difficulty ${offer.difficulty}`
                 : offer.kind === 'unit' ? `${offer.points} Points` : 'Equipment'}
                 {' · '}{offer.price} Gold</div></div>
-              {offer.kind === 'enchant' && <label className="field">Item
+              {['enchant','improve','repair'].includes(offer.kind) && <label className="field">Item
                 <select value={selectedTargets[offer.id] ?? ''} onChange={(event) =>
                   setSelectedTargets((prev) => ({ ...prev, [offer.id]: event.target.value }))}>
                   <option value="">Choose owned item…</option>
                   {compatibleTargets(offer).map((item) => <option key={item.id} value={item.id}>{item.item.name} · {(item.enchants ?? []).length} enchantments</option>)}
                 </select>
               </label>}
-              <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < offer.price ||
-                (['craft', 'enchant'].includes(offer.kind) && !pcView) ||
-                (offer.kind === 'enchant' && !compatibleTargets(offer).some((item) => item.id === selectedTargets[offer.id]))} onClick={() => run(() => buy(offer), (roll) => !roll ? 'Purchased. Company inventory updated.' :
-                  `${roll.dice.join(', ')} · ${roll.successes} successes, ${roll.surges} Surge, ${roll.blunders} Blunder. ${roll.successes >= offer.difficulty ? 'Project succeeded; inventory updated.' : 'Project failed; materials Gold spent.'} Bonus Qualities and Blunder deterioration await the profile editor.`)}>{offer.kind === 'craft' ? 'Craft' : offer.kind === 'enchant' ? 'Enchant' : 'Buy'}</button>
+              <button className="primary" disabled={busy || !!pending || (campaign.goldBalance ?? 0) < offer.price ||
+                (['craft','enchant','improve','repair'].includes(offer.kind) && !pcView) ||
+                (['enchant','improve','repair'].includes(offer.kind) && !compatibleTargets(offer).some((item) => item.id === selectedTargets[offer.id]))}
+                onClick={() => run(() => buy(offer), (roll) => roll ? 'Check rolled. Allocate results and confirm payment below.' : 'Purchased. Company inventory updated.')}>
+                {['craft','enchant','improve','repair'].includes(offer.kind) ? 'Roll check' : 'Buy'}</button>
             </li>)}</ul>
         </section>
       })}
     </div>}
 
+    {!isGm && pending && <section className="panel span-2">
+      <h2>Resolve {pending.offer.label}</h2>
+      <p className="small">Dice: <strong>{pending.roll.dice.join(', ')}</strong> · {pending.roll.successes} successes against Difficulty {pending.offer.difficulty} · {pending.roll.qualities} excess · {pending.roll.surges ? 'Surge' : 'No Surge'} · {pending.roll.blunders ? 'Blunder' : 'No Blunder'}.</p>
+      <p className="muted small">The roll is held locally until confirmation; Gold is deducted once. Client-side dice are not tamper-proof.</p>
+      <QualityPicker item={workItem(pending)} data={characterData} roll={pending.roll}
+        plan={qualityPlan} setPlan={setQualityPlan}
+        kind={pending.offer.kind} repair={repairField} setRepair={setRepairField}
+        magical={pending.offer.check?.includes('Mysticism')} />
+      <div className="saved-actions">
+        <button disabled={busy} onClick={() => setPending(null)}>Cancel check</button>
+        <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < pending.offer.price}
+          onClick={() => run(submitWork, 'Project recorded. Equipment profiles and Points updated.')}>
+          Confirm result · Pay {pending.offer.price} Gold
+        </button>
+      </div>
+    </section>}
     {isGm && <section className="panel">
       <h2>Publish regular market offers</h2>
       <p className="muted small">Ordinary equipment and Minor Enchantments are automatically stocked. Publish quest-unlocked crafting and special enchantment recipes once, or make special arrangements; PCs then use them without another GM approval.</p>

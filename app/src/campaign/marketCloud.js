@@ -7,6 +7,8 @@ import { newUnitConfig, resolveUnit } from '../builder/engine.js'
 import { patronCoreProfiles, standardOfferId } from './recruitmentAccess.js'
 import { standardOffers } from './defaultShop.js'
 import { standardEnchantOffers } from './defaultEnchantShop.js'
+import { standardWorkshopOffers } from './defaultWorkshop.js'
+import { MAX_WORK_EVENTS, validateQualityPlan, eligibleDeteriorations, repairOptions, itemWorkState } from './qualityEngine.js'
 
 const company = (id) => doc(db, 'campaigns', id)
 const offers = (id) => collection(db, 'campaigns', id, 'marketOffers')
@@ -32,9 +34,10 @@ export async function publishMarketOffer(id, uid, input) {
     ...(input.item ? { item: input.item } : {}),
     ...(input.config ? { config: input.config, points: input.points,
       factionId: input.factionId ?? null } : {}),
-    ...(['craft', 'enchant'].includes(input.kind) ? { difficulty: input.difficulty,
+    ...(['craft', 'enchant', 'improve', 'repair'].includes(input.kind) ? { difficulty: input.difficulty,
       check: input.check, materials: input.materials ?? '' } : {}),
     ...(input.kind === 'enchant' ? { enchantKey: input.enchantKey, targetKind: input.targetKind } : {}),
+    ...(['improve','repair'].includes(input.kind) ? { targetKind: input.targetKind } : {}),
     createdBy: uid,
     createdAt: serverTimestamp(),
   }
@@ -50,7 +53,7 @@ export async function setMarketOfferEnabled(id, offerId, enabled) {
   await updateDoc(ref, { enabled })
 }
 
-export async function purchaseOffer(id, uid, offerId, craft = null, targetItemId = null) {
+export async function purchaseOffer(id, uid, offerId, craft = null, targetItemId = null, work = null, data = null) {
   const offerRef = doc(offers(id), offerId)
   const companyRef = company(id)
   const purchaseRef = doc(purchases(id))
@@ -74,14 +77,14 @@ export async function purchaseOffer(id, uid, offerId, craft = null, targetItemId
       throw new Error('The formation is not priced according to the current rules')
     }
     let crafting = null
-    if (offer.kind === 'enchant') {
+    if (['enchant','improve','repair'].includes(offer.kind)) {
       if (!targetSnap?.exists() || targetSnap.data().kind !== 'equipment' || targetSnap.data().item?.kind !== offer.targetKind) throw new Error('Choose compatible Company equipment')
-      if (!targetItemId || !offer.enchantKey) throw new Error('Missing item or enchantment')
-      if ((targetSnap.data().enchants ?? []).some((e) => e.key === offer.enchantKey)) throw new Error('Already enchanted with this effect')
-      if ((targetSnap.data().enchants ?? []).length >= 3) throw new Error('Item has reached its normal enchantment capacity')
+      if (!targetItemId || (offer.kind === 'enchant' && !offer.enchantKey)) throw new Error('Missing item or project')
+      if (offer.kind === 'enchant' && (targetSnap.data().enchants ?? []).some((e) => e.key === offer.enchantKey)) throw new Error('Already enchanted with this effect')
+      if (offer.kind === 'enchant' && (targetSnap.data().enchants ?? []).length >= 3) throw new Error('Item has reached its normal enchantment capacity')
       if (targetSnap.data().ownerUid && targetSnap.data().ownerUid !== uid) throw new Error('Item is reserved for another PC')
     }
-    if (['craft', 'enchant'].includes(offer.kind)) {
+    if (['craft', 'enchant', 'improve', 'repair'].includes(offer.kind)) {
       if (!craft || !Array.isArray(craft.dice) || !Number.isInteger(craft.threshold)) {
         throw new Error('Roll your crafting dice before buying')
       }
@@ -91,6 +94,49 @@ export async function purchaseOffer(id, uid, offerId, craft = null, targetItemId
         throw new Error('Recorded crafting results do not match the dice')
       }
       crafting = calculated
+    }
+    // Only a specific owned item can acquire permanent rank/defect history.
+    // All work is applied in the same atomic Gold-and-purchase transaction.
+    let workshop = null
+    if (crafting && data) {
+      const base = offer.kind === 'craft'
+        ? { ...offer.item, workshopEvents: [], enchants: [] }
+        : { ...targetSnap?.data()?.item, enchants: targetSnap?.data()?.enchants ?? [],
+            workshopEvents: targetSnap?.data()?.workshopEvents ?? [] }
+      if (offer.kind === 'enchant' && crafting.success) {
+        if (itemWorkState(base, data)?.damaged) throw new Error('Repair damaged equipment before enchanting it')
+        base.enchants = [...base.enchants, { key: offer.enchantKey }]
+      }
+      const plan = Array.isArray(work?.plan) ? work.plan : []
+      const repair = work?.repair ?? null
+      const flaw = work?.flaw ?? null
+      if (offer.kind === 'repair') {
+        if (plan.length) throw new Error('Repairs cannot also purchase new Qualities')
+        if (crafting.success && !repairOptions(base, data).includes(repair)) {
+          throw new Error('Select a damaged item statistic to restore')
+        }
+      } else {
+        if (repair) throw new Error('Only Repair projects can remove deterioration')
+        validateQualityPlan(base, data, crafting, plan, {
+          magical: offer.check?.toLowerCase().includes('mysticism'),
+        })
+      }
+      if (flaw && (!crafting.blunders || (offer.kind === 'craft' && !crafting.success) ||
+          !eligibleDeteriorations(repair && crafting.success ? { ...base, workshopEvents: [...(base.workshopEvents ?? []), { kind:'repair', repair }] } : base, data, crafting.success ? plan : []).includes(flaw))) {
+        throw new Error('The Blunder must affect a valid, reducible item statistic')
+      }
+      if (crafting.blunders && (offer.kind !== 'craft' || crafting.success) && !flaw) {
+        throw new Error('A Blunder must deteriorate an eligible equipment stat')
+      }
+      if (!crafting.success && plan.length) throw new Error('Failed projects cannot grant Qualities')
+      if (!crafting.success && repair) throw new Error('Unsuccessful repairs cannot remove deterioration')
+      if ((base.workshopEvents?.length ?? 0) >= MAX_WORK_EVENTS) {
+        throw new Error('The item has reached its recorded work history limit')
+      }
+      workshop = { kind: offer.kind, plan, repair: crafting.success ? repair : null,
+        flaw, purchaseId: purchaseRef.id }
+    } else if (crafting && work?.plan?.length) {
+      throw new Error('Equipment rules data required for permanent improvements')
     }
 
     const balance = (campaign.goldBalance ?? 0) - offer.price
@@ -105,19 +151,25 @@ export async function purchaseOffer(id, uid, offerId, craft = null, targetItemId
       offerId, ownerUid: uid, kind: offer.kind, price: offer.price,
       balanceAfter: balance, status: 'completed', createdAt: serverTimestamp(),
       ...(crafting ? { crafting } : {}),
-      ...(offer.kind === 'enchant' ? { targetItemId } : {}),
+      ...(['enchant','improve','repair'].includes(offer.kind) ? { targetItemId } : {}),
+      ...(workshop ? { workshop } : {}),
     })
     tx.set(ledgerRef, {
       actorUid: uid, delta: -offer.price, balanceAfter: balance,
       reason: `Market: ${offer.label}`, kind: 'market', purchaseId: purchaseRef.id,
       createdAt: serverTimestamp(),
     })
-    if (offer.kind === 'enchant' && crafting?.success) {
-      tx.update(targetRef, {
-        enchants: [...(targetSnap.data().enchants ?? []), { key: offer.enchantKey }],
-        lastEnhancementId: purchaseRef.id,
-        updatedAt: serverTimestamp(),
-      })
+    if (['enchant','improve','repair'].includes(offer.kind)) {
+      const next = {}
+      if (offer.kind === 'enchant' && crafting?.success) {
+        next.enchants = [...(targetSnap.data().enchants ?? []), { key: offer.enchantKey }]
+        next.lastEnhancementId = purchaseRef.id
+      }
+      if (workshop) {
+        next.workshopEvents = [...(targetSnap.data().workshopEvents ?? []), workshop]
+        next.lastWorkshopId = purchaseRef.id
+      }
+      if (Object.keys(next).length) tx.update(targetRef, { ...next, updatedAt: serverTimestamp() })
     }
     if (offer.kind === 'unit' || offer.kind === 'equipment' ||
       (offer.kind === 'craft' && crafting?.success)) {
@@ -127,6 +179,7 @@ export async function purchaseOffer(id, uid, offerId, craft = null, targetItemId
           : { item: offer.item, ownerUid: null }),
         purchaseId: purchaseRef.id, createdAt: serverTimestamp(),
         ...(crafting ? { crafting } : {}),
+        ...(workshop ? { workshopEvents: [workshop], lastWorkshopId: purchaseRef.id } : {}),
       })
     }
   })
@@ -242,4 +295,26 @@ export async function registerStartingGear(id, uid, item) {
       starterOriginal: original, createdAt: serverTimestamp(),
     })
   })
+}
+
+// Reusable fixed workshop recipes; ordinary PCs may seed only these exact
+// whitelisted offers while quest/reward recipes remain GM-published.
+export async function seedStandardWorkshopOffers(id, uid) {
+  let created = 0
+  for (const choice of standardWorkshopOffers()) {
+    const ref = doc(offers(id), choice.offerId)
+    if ((await getDoc(ref)).exists()) continue
+    try {
+      await setDoc(ref, {
+        kind: choice.kind, label: choice.label, price: choice.price,
+        enabled: true, targetKind: choice.targetKind,
+        difficulty: choice.difficulty, check: choice.check, standardWorkshop: true,
+        createdBy: uid, createdAt: serverTimestamp(),
+      })
+      created++
+    } catch (error) {
+      if (!(await getDoc(ref)).exists()) throw error
+    }
+  }
+  return created
 }
