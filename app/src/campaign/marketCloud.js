@@ -8,7 +8,7 @@ import { patronCoreProfiles, standardOfferId } from './recruitmentAccess.js'
 import { standardOffers } from './defaultShop.js'
 import { standardEnchantOffers } from './defaultEnchantShop.js'
 import { standardWorkshopOffers } from './defaultWorkshop.js'
-import { MAX_WORK_EVENTS, validateQualityPlan, eligibleDeteriorations, repairOptions } from './qualityEngine.js'
+import { MAX_WORK_EVENTS, validateQualityPlan, eligibleDeteriorations, repairOptions, itemWorkState } from './qualityEngine.js'
 
 const company = (id) => doc(db, 'campaigns', id)
 const offers = (id) => collection(db, 'campaigns', id, 'marketOffers')
@@ -104,6 +104,7 @@ export async function purchaseOffer(id, uid, offerId, craft = null, targetItemId
         : { ...targetSnap?.data()?.item, enchants: targetSnap?.data()?.enchants ?? [],
             workshopEvents: targetSnap?.data()?.workshopEvents ?? [] }
       if (offer.kind === 'enchant' && crafting.success) {
+        if (itemWorkState(base, data)?.damaged) throw new Error('Repair damaged equipment before enchanting it')
         base.enchants = [...base.enchants, { key: offer.enchantKey }]
       }
       const plan = Array.isArray(work?.plan) ? work.plan : []
