@@ -361,7 +361,7 @@ service cloud.firestore {
           && request.resource.data.starterOriginal is map
           && request.resource.data.starterGearUid == request.resource.data.starterOriginal.uid
           && itemId == 'starter-' + request.auth.uid + '-' + request.resource.data.starterGearUid
-          && request.resource.data.starterOriginal.inventoryId == null
+          && request.resource.data.starterOriginal.get('inventoryId', null) == null
           && request.resource.data.starterOriginal in get(
             /databases/$(database)/documents/campaigns/$(campaignId)/approvedHeroes/$(request.auth.uid)
           ).data.sheet.gear
