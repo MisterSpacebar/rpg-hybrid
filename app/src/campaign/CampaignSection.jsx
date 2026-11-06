@@ -5,6 +5,7 @@ import { derive, emptyCharacter, normalizeCharacter } from '../character/engine.
 import CharacterStats from '../components/CharacterStats.jsx'
 import CharacterDatasheet from '../components/CharacterDatasheet.jsx'
 import TalentPyramid from '../components/TalentPyramid.jsx'
+import { allEntries } from '../character/talents.js'
 import GearTab from '../components/GearTab.jsx'
 import CampaignArmy from './CampaignArmy.jsx'
 import CompanyEconomy from './CompanyEconomy.jsx'
@@ -274,7 +275,9 @@ function Workspace({ id, user }) {
         <div className="saved-actions">
           {sheetDraft?.dirty && <button disabled={working} onClick={() => setSheetDraft(discardDraft)}>Discard changes</button>}
           <button className="primary" disabled={working || !isValid || sheetDraft?.conflict} onClick={() => run(async () => { await saveHeroDraft(id, user.uid, sheet); setNotice('Character saved') })}>Save draft</button>
-          {myHero && <button className="danger" disabled={working} onClick={() => {
+          {myHero && <button className="danger" disabled={working || allEntries(myHero.sheet?.talents ?? {}).length > 0}
+            title={allEntries(myHero.sheet?.talents ?? {}).length > 0 ? 'Ask the GM to retire a character with committed Talents' : undefined}
+            onClick={() => {
             if (!window.confirm('Delete your campaign character draft and release your reserved formations? A GM-approved snapshot stays until the GM revokes it. This cannot be undone.')) return
             run(() => deleteMyHero(id, user.uid))
           }}>Delete character</button>}</div>
