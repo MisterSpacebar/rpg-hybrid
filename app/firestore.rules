@@ -390,7 +390,7 @@ service cloud.firestore {
         allow create: if memberOfCampaign()
           && request.auth.uid != get(/databases/$(database)/documents/campaigns/$(campaignId)).data.gmUid
           && request.resource.data.ownerUid == request.auth.uid
-          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant']
+          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant', 'improve', 'repair']
           && request.resource.data.price is int
           && request.resource.data.price > 0
           && request.resource.data.status == 'completed'
@@ -405,7 +405,8 @@ service cloud.firestore {
             && offered(request.resource.data.offerId).enchantKey.matches('^minor:.*')
             && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.kind == 'equipment'
             && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.item.kind == offered(request.resource.data.offerId).targetKind
-            && (!request.resource.data.crafting.success ||
+            && (request.resource.data.get('workshop',null) != null ||
+              !request.resource.data.crafting.success ||
               getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.lastEnhancementId == purchaseId)
           ))
           && (request.resource.data.kind in ['improve','repair'] ? (
@@ -414,15 +415,8 @@ service cloud.firestore {
             && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.kind == 'equipment'
             && get(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.item.kind == offered(request.resource.data.offerId).targetKind
           ) : true)
-          && (request.resource.data.get('workshop',null) == null || (
-            validWorkshopReceipt(request.resource.data,purchaseId)
-            && (request.resource.data.kind != 'craft' ||
-              !request.resource.data.crafting.success ||
-              getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(purchaseId)).data.lastWorkshopId == purchaseId)
-            && (request.resource.data.kind == 'craft' || (
-              request.resource.data.targetItemId is string
-              && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/inventory/$(request.resource.data.targetItemId)).data.lastWorkshopId == purchaseId))
-          ))
+          && (request.resource.data.get('workshop',null) == null ||
+            validWorkshopReceipt(request.resource.data,purchaseId))
           && (!(request.resource.data.kind in ['craft', 'enchant','improve','repair']) || (
             request.resource.data.crafting is map
             && request.resource.data.crafting.difficulty == offered(request.resource.data.offerId).difficulty
