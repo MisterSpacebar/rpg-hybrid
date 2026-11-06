@@ -177,7 +177,14 @@ service cloud.firestore {
           && request.resource.data.sheet.gear.size() <= 60
           && request.resource.data.sheet.xpEarned == null
           && keepsSavedTalents();
-        allow delete: if (isOwner(uid) && memberOfCampaign()) || gmOfCampaign();
+        // Prevent deleting a purchased talent build and recreating a fresh
+        // character to bypass Retraining. The GM can retire/replace a Hero.
+        allow delete: if gmOfCampaign() || (isOwner(uid) && memberOfCampaign()
+          && resource.data.sheet.talents['1'].size() == 0
+          && resource.data.sheet.talents['2'].size() == 0
+          && resource.data.sheet.talents['3'].size() == 0
+          && resource.data.sheet.talents['4'].size() == 0
+          && resource.data.sheet.talents['5'].size() == 0);
       }
 
       // The GM controls what is in the open market and its published price.
