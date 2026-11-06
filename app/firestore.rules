@@ -277,14 +277,90 @@ service cloud.firestore {
           && request.resource.data.standardEnchant == true;
       }
 
+      function validStandardWorkshop(offerId) {
+        let prices = {
+          'standard-workshop-improve-melee': ['improve','melee',2,'Agility + Craft','Improve melee'],
+          'standard-workshop-improve-ranged': ['improve','ranged',2,'Agility + Craft','Improve ranged'],
+          'standard-workshop-improve-armor': ['improve','armor',2,'Body + Craft','Improve armor'],
+          'standard-workshop-improve-shield': ['improve','shield',2,'Body + Craft','Improve shield'],
+          'standard-workshop-repair-melee': ['repair','melee',1,'Body + Craft','Repair melee'],
+          'standard-workshop-repair-ranged': ['repair','ranged',1,'Body + Craft','Repair ranged'],
+          'standard-workshop-repair-armor': ['repair','armor',1,'Body + Craft','Repair armor'],
+          'standard-workshop-repair-shield': ['repair','shield',1,'Body + Craft','Repair shield']
+        };
+        let value = prices.get(offerId, []);
+        return value.size() == 5
+          && request.resource.data.keys().hasOnly([
+            'kind','label','price','enabled','targetKind','difficulty','check',
+            'standardWorkshop','createdBy','createdAt'
+          ])
+          && request.resource.data.kind == value[0]
+          && request.resource.data.targetKind == value[1]
+          && request.resource.data.price == value[2]
+          && request.resource.data.check == value[3]
+          && request.resource.data.label == value[4]
+          && request.resource.data.difficulty == 2
+          && request.resource.data.enabled == true
+          && request.resource.data.standardWorkshop == true;
+      }
+      function validWorkRow(row) {
+        return row is map && row.keys().hasOnly(['id','ranks','choice'])
+          && row.id in [
+            'balanced','specialized','extended','reinforced','sheltering','swift',
+            'deadly','precise','protective','exceptionalEdge','destructive','warded'
+          ]
+          && row.ranks is int && row.ranks >= 1 && row.ranks <= 3
+          && (row.get('choice','') is string)
+          && row.get('choice','').size() <= 40
+          && (row.id != 'warded' || row.get('choice','') in ['physical','magic'])
+          && (row.id != 'specialized' || row.get('choice','').size() > 0);
+      }
+      function workRowCost(row, surge) {
+        return row.id in ['precise','protective','destructive'] ? 2 * row.ranks :
+          row.id == 'exceptionalEdge' && surge == 1 ? row.ranks - 1 : row.ranks;
+      }
+      function validWorkshopReceipt(purchase, purchaseId) {
+        let work = purchase.workshop;
+        let plan = work.plan;
+        let roll = purchase.crafting;
+        let spent = (plan.size() > 0 ? workRowCost(plan[0],roll.surges) : 0)
+          + (plan.size() > 1 ? workRowCost(plan[1],roll.surges) : 0)
+          + (plan.size() > 2 ? workRowCost(plan[2],roll.surges) : 0);
+        return work is map
+          && work.keys().hasOnly(['kind','plan','repair','flaw','purchaseId'])
+          && work.kind == purchase.kind
+          && work.purchaseId == purchaseId
+          && work.plan is list && work.plan.size() <= 3
+          && (plan.size() < 1 || validWorkRow(plan[0]))
+          && (plan.size() < 2 || validWorkRow(plan[1]))
+          && (plan.size() < 3 || validWorkRow(plan[2]))
+          && (plan.size() < 2 || plan[0].id != plan[1].id)
+          && (plan.size() < 3 || (plan[0].id != plan[2].id && plan[1].id != plan[2].id))
+          && spent <= roll.qualities
+          && (!roll.success || work.get('repair',null) == null ||
+            (purchase.kind == 'repair' && work.repair is string))
+          && (roll.success || (plan.size() == 0 && work.get('repair',null) == null))
+          && (purchase.kind != 'repair' || plan.size() == 0)
+          && (purchase.kind == 'repair' || work.get('repair',null) == null)
+          && (work.get('flaw',null) == null || work.flaw in [
+            'attacks','hit','damage','range','armor','move','accurate','damaged',
+            'balanced','specialized','extended','reinforced','sheltering','swift',
+            'deadly','precise','protective','exceptionalEdge','destructive','warded'
+          ])
+          && (!roll.blunders || (purchase.kind == 'craft' && !roll.success)
+            || work.get('flaw',null) is string)
+          && (roll.blunders > 0 || work.get('flaw',null) == null)
+          && (purchase.kind != 'repair' || !roll.success || work.get('repair',null) is string);
+      }
+
       match /marketOffers/{offerId} {
         allow get, list: if memberOfCampaign();
         allow create: if (gmOfCampaign() || (
           memberOfCampaign()
-          && (validStandardEquipment(offerId) || validStandardEnchant(offerId))
+          && (validStandardEquipment(offerId) || validStandardEnchant(offerId) || validStandardWorkshop(offerId))
         ))
           && request.resource.data.createdBy == request.auth.uid
-          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant']
+          && request.resource.data.kind in ['equipment', 'unit', 'craft', 'enchant', 'improve', 'repair']
           && (request.resource.data.kind != 'enchant' || (
             request.resource.data.enchantKey is string
             && request.resource.data.enchantKey.matches('^minor:.*')
@@ -302,7 +378,7 @@ service cloud.firestore {
           && request.resource.data.label.size() > 0
           && (request.resource.data.kind == 'unit'
             ? request.resource.data.config is map
-            : request.resource.data.kind == 'enchant' || request.resource.data.item is map);
+            : request.resource.data.kind in ['enchant','improve','repair'] || request.resource.data.item is map);
         allow update: if gmOfCampaign()
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['enabled'])
           && request.resource.data.enabled is bool;
