@@ -214,11 +214,11 @@ function Workspace({ id, user }) {
     if (!sheet || !data) return null
     const owned = new Map(inventory.filter((x) => x.kind === 'equipment').map((x) => [x.id, x]))
     return derive({ ...sheet, gear: sheet.gear.map((g) => {
-      const item = g.inventoryId ? owned.get(g.inventoryId) : null
+      const item = owned.get(g.inventoryId || `starter-${user.uid}-${g.uid}`)
       return item && item.item?.kind === g.kind && item.item?.name === g.name
         ? { ...g, enchants: item.enchants ?? [] } : g
     }) }, data)
-  }, [sheet, data, inventory])
+  }, [sheet, data, inventory, user.uid])
   const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(
     sheet, data, campaign.xpTotal, inventory, heroes.filter((h) => h.ownerUid !== user.uid), approved,
   ) : [], [sheet, data, campaign, inventory, heroes, approved, user.uid])

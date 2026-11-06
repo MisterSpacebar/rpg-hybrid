@@ -74,6 +74,46 @@ async function spend({ id, offer, price, balance, kind, item, config, factionId 
 
 try {
   await setup()
+  // Standard shop initialization is self-service and price-locked.
+  await assertSucceeds(setDoc(doc(pc, cid('marketOffers/standard-basic-dagger')), {
+    kind: 'equipment', label: 'Dagger', price: 1, enabled: true,
+    item: { kind: 'melee', name: 'Dagger' }, standardEquipment: true,
+    createdBy: 'player-1', createdAt: serverTimestamp(),
+  }))
+  await assertFails(setDoc(doc(pc, cid('marketOffers/standard-basic-musket')), {
+    kind: 'equipment', label: 'Musket', price: 1, enabled: true,
+    item: { kind: 'ranged', name: 'Musket' }, standardEquipment: true,
+    createdBy: 'player-1', createdAt: serverTimestamp(),
+  }))
+  await assertSucceeds(setDoc(doc(pc, cid('marketOffers/standard-enchant-accurate-melee')), {
+    kind: 'enchant', label: 'Accurate 1', price: 2, enabled: true,
+    enchantKey: 'minor:Accurate 1', targetKind: 'melee',
+    difficulty: 2, check: 'Mind + Mysticism', standardEnchant: true,
+    createdBy: 'player-1', createdAt: serverTimestamp(),
+  }))
+  await assertFails(setDoc(doc(pc, cid('marketOffers/standard-enchant-cheap-fake')), {
+    kind: 'enchant', label: 'Critical 3', price: 1, enabled: true,
+    enchantKey: 'major:Critical 3', targetKind: 'melee',
+    difficulty: 2, check: 'Mind + Mysticism', standardEnchant: true,
+    createdBy: 'player-1', createdAt: serverTimestamp(),
+  }))
+  const originalStarter = { uid: 'starter-a1', kind: 'melee', name: 'Dagger', equipped: true }
+  await assertSucceeds(setDoc(doc(admin, cid('approvedHeroes/player-1')), {
+    ownerUid: 'player-1', sheet: { gear: [originalStarter] },
+  }))
+  await assertSucceeds(setDoc(doc(pc, cid('inventory/starter-player-1-starter-a1')), {
+    kind: 'equipment', item: { kind: 'melee', name: 'Dagger' },
+    ownerUid: 'player-1', starterOwnerUid: 'player-1',
+    starterGearUid: 'starter-a1', starterOriginal: originalStarter,
+    createdAt: serverTimestamp(),
+  }))
+  await assertFails(setDoc(doc(pc, cid('inventory/starter-player-1-starter-fake')), {
+    kind: 'equipment', item: { kind: 'melee', name: 'Dagger' },
+    ownerUid: 'player-1', starterOwnerUid: 'player-1',
+    starterGearUid: 'starter-fake',
+    starterOriginal: { ...originalStarter, uid: 'starter-fake' },
+    createdAt: serverTimestamp(),
+  }))
   await assertFails(updateDoc(doc(pc, campaignPath), { goldBalance: 100 }))
   await assertFails(setDoc(doc(pc, cid('inventory/unearned')), {
     kind: 'equipment', item: { kind: 'melee', name: 'Dagger' },
@@ -162,7 +202,39 @@ try {
   assert.equal((await getDoc(doc(pc, campaignPath))).data().goldBalance, 1)
   assert.deepEqual((await getDoc(doc(pc, cid('inventory/purchase-1')))).data().enchants, [{ key: 'minor:Accurate 1' }])
   await assertFails(updateDoc(doc(pc, cid('inventory/purchase-1')), { enchants: [] }))
-  console.log('PASS Firestore market: ordinary purchases, patron recruitment and paid owned-item enchanting; arbitrary asset modifications denied')
+  // The original free starter has an enhancement anchor, not a duplicate
+  // equipment pool item. Players can still pay to enchant that exact item.
+  await assertSucceeds(runTransaction(pc, async (tx) => {
+    const camp = doc(pc, campaignPath)
+    const starter = doc(pc, cid('inventory/starter-player-1-starter-a1'))
+    const [c, item] = await Promise.all([tx.get(camp), tx.get(starter)])
+    tx.update(camp, {
+      goldBalance: c.data().goldBalance - 1, lastPurchaseId: 'enchant-starter-1',
+      lastPurchaseOfferId: 'sharpen-recipe', lastPurchaseUid: 'player-1',
+      updatedAt: serverTimestamp(),
+    })
+    tx.set(doc(pc, cid('marketPurchases/enchant-starter-1')), {
+      offerId: 'sharpen-recipe', ownerUid: 'player-1', kind: 'enchant',
+      price: 1, balanceAfter: c.data().goldBalance - 1,
+      status: 'completed', targetItemId: starter.id,
+      crafting: crafted, createdAt: serverTimestamp(),
+    })
+    tx.set(doc(pc, cid('goldLedger/enchant-starter-1')), {
+      actorUid: 'player-1', delta: -1, balanceAfter: c.data().goldBalance - 1,
+      reason: 'Starting Dagger enchant', kind: 'market',
+      purchaseId: 'enchant-starter-1', createdAt: serverTimestamp(),
+    })
+    tx.update(starter, {
+      enchants: [...(item.data().enchants ?? []), { key: 'minor:Accurate 1' }],
+      lastEnhancementId: 'enchant-starter-1', updatedAt: serverTimestamp(),
+    })
+  }))
+  assert.equal((await getDoc(doc(pc, campaignPath))).data().goldBalance, 0)
+  assert.deepEqual(
+    (await getDoc(doc(pc, cid('inventory/starter-player-1-starter-a1')))).data().enchants,
+    [{ key: 'minor:Accurate 1' }],
+  )
+  console.log('PASS Firestore market: self-service ordinary shop, default Minor recipes, approved starter registration and paid enchantment')
 } finally {
   await env.cleanup()
 }

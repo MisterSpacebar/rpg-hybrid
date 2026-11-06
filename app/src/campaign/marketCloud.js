@@ -6,6 +6,7 @@ import { craftRoll, eligibleOffer, priceForFormation, publishableOffer } from '.
 import { newUnitConfig, resolveUnit } from '../builder/engine.js'
 import { patronCoreProfiles, standardOfferId } from './recruitmentAccess.js'
 import { standardOffers } from './defaultShop.js'
+import { standardEnchantOffers } from './defaultEnchantShop.js'
 
 const company = (id) => doc(db, 'campaigns', id)
 const offers = (id) => collection(db, 'campaigns', id, 'marketOffers')
@@ -176,12 +177,69 @@ export async function seedDefaultEquipmentOffers(id, uid, data) {
   for (const choice of choices) {
     const ref = doc(offers(id), choice.offerId)
     if ((await getDoc(ref)).exists()) continue
-    await setDoc(ref, {
-      kind: 'equipment', label: choice.label, item: choice.item, price: choice.price,
-      enabled: true, standardEquipment: true, createdBy: uid,
-      createdAt: serverTimestamp(),
-    })
-    created++
+    try {
+      await setDoc(ref, {
+        kind: 'equipment', label: choice.label, item: choice.item, price: choice.price,
+        enabled: true, standardEquipment: true, createdBy: uid,
+        createdAt: serverTimestamp(),
+      })
+      created++
+    } catch (error) {
+      if (!(await getDoc(ref)).exists()) throw error
+    }
   }
   return created
+}
+
+// Routine Minor Enchantments use fixed standard recipes. Unlocks from quests
+// may add other offers, but no GM action is needed for these basic options.
+export async function seedDefaultEnchantOffers(id, uid, data) {
+  const choices = standardEnchantOffers(data)
+  let created = 0
+  for (const choice of choices) {
+    const ref = doc(offers(id), choice.offerId)
+    if ((await getDoc(ref)).exists()) continue
+    try {
+      await setDoc(ref, {
+        kind: 'enchant', label: choice.label, price: choice.price,
+        enabled: true, enchantKey: choice.enchantKey, targetKind: choice.targetKind,
+        difficulty: choice.difficulty, check: choice.check, standardEnchant: true,
+        createdBy: uid, createdAt: serverTimestamp(),
+      })
+      created++
+    } catch (error) {
+      // Concurrent PCs may both initialize the same deterministic listing.
+      if (!(await getDoc(ref)).exists()) throw error
+    }
+  }
+  return created
+}
+
+// A starting item belongs to the Hero already, but until now it had no
+// persistent Company inventory identity. Register the *approved* original once
+// under a deterministic ID, without purchasing or duplicating the item.
+// The registered record is an enhancement anchor, not another carryable copy.
+export const starterRecordId = (uid, gearUid) => `starter-${uid}-${gearUid}`
+export async function registerStartingGear(id, uid, item) {
+  if (!item?.uid || !item?.kind || !item?.name || item.inventoryId) {
+    throw new Error('Choose an unregistered starting item')
+  }
+  const approvedRef = doc(db, 'campaigns', id, 'approvedHeroes', uid)
+  const inventoryRef = doc(owned(id), starterRecordId(uid, item.uid))
+  await runTransaction(db, async (tx) => {
+    const [approval, existing] = await Promise.all([tx.get(approvedRef), tx.get(inventoryRef)])
+    if (existing.exists()) return
+    const original = approval.exists()
+      ? (approval.data().sheet?.gear ?? []).find((g) => g.uid === item.uid && !g.inventoryId)
+      : null
+    if (!original || original.kind !== item.kind || original.name !== item.name) {
+      throw new Error('Approve this character and its starting equipment before registering an enchantment target')
+    }
+    tx.set(inventoryRef, {
+      kind: 'equipment',
+      item: { kind: original.kind, name: original.name },
+      ownerUid: uid, starterOwnerUid: uid, starterGearUid: original.uid,
+      starterOriginal: original, createdAt: serverTimestamp(),
+    })
+  })
 }

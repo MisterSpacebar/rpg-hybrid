@@ -9,8 +9,8 @@ import { eligibleStandardOffer, standardRecruitmentProfiles } from './recruitmen
 import { watchEntitlements } from './cloud.js'
 import { craftRoll, priceForFormation } from './market.js'
 import {
-  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers,
-  watchMarketOffers, watchMarketPurchases,
+  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers, seedDefaultEnchantOffers,
+  watchMarketOffers, watchMarketPurchases, registerStartingGear, starterRecordId,
 } from './marketCloud.js'
 
 // Firestore validates the market's price and assets atomically; this UI handles
@@ -39,10 +39,12 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     return () => { a(); b(); c() }
   }, [campaign.id])
   useEffect(() => {
-    if (!isGm || !characterData) return
-    seedDefaultEquipmentOffers(campaign.id, user.uid, characterData)
-      .catch((error) => setMessage(`Could not populate the equipment shop: ${error.message}`))
-  }, [isGm, characterData, campaign.id, user.uid])
+    if (!characterData) return
+    Promise.all([
+      seedDefaultEquipmentOffers(campaign.id, user.uid, characterData),
+      seedDefaultEnchantOffers(campaign.id, user.uid, characterData),
+    ]).catch((error) => setMessage(`Could not initialize standard equipment or enchantments: ${error.message}`))
+  }, [characterData, campaign.id, user.uid])
   useEffect(() => {
     if (!isGm || !catalog || campaign.act < 2 || !campaign.patronFactionId) return
     seedStandardRecruitmentOffers(campaign.id, user.uid, campaign, catalog)
@@ -124,14 +126,29 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     && !(entry.enchants ?? []).some((e) => e.key === offer.enchantKey)
     && (entry.enchants ?? []).length < 3)
 
+  const unregisteredStartingGear = (pc?.gear ?? []).filter((g) =>
+    !g.inventoryId && ['melee','ranged','armor','shield'].includes(g.kind) &&
+    !inventory.some((item) => item.id === starterRecordId(user.uid, g.uid)))
+
   const visibleOffers = offers.filter((o) => o.enabled && (o.standardAccess
     ? eligibleStandardOffer(o, catalog, campaign, entitlements, detachments)
     : o.kind !== 'unit' || (campaign.act >= 2 && !!campaign.patronFactionId &&
         (!o.factionId || o.factionId === campaign.patronFactionId))))
 
   return <div className="panel-grid contents">
-    <Toast message={message} kind={/purchased|recorded|published|enabled|disabled|updated/i.test(message) ? 'ok' : 'bad'} />
+    <Toast message={message} kind={/purchased|recorded|published|enabled|disabled|updated|eligible for enchanting/i.test(message) ? 'ok' : 'bad'} />
+    {!isGm && (campaign.goldBalance ?? 0) < 1 && <p className="bad small span-all" role="status">The Company treasury has no Gold. Purchases and enchantment attempts require a Gold award from the GM or campaign income; ordinary items do not need separate purchase approval.</p>}
 
+    {!isGm && unregisteredStartingGear.length > 0 && <section className="panel span-all">
+      <h2>Enchant existing starting equipment</h2>
+      <p className="muted small">Your free starting equipment can be registered once as an enchantment target. This does not buy or duplicate the item. The character's original starting gear remains equipped or carried. The GM must have approved the starting gear before it can be registered.</p>
+      <div className="saved-actions">
+        {unregisteredStartingGear.map((g) => <button key={g.uid} disabled={busy}
+          onClick={() => run(() => registerStartingGear(campaign.id, user.uid, g), `${g.name} is now eligible for enchanting`)}>
+          Register {g.name}
+        </button>)}
+      </div>
+    </section>}
     {!isGm && <div className="offer-row span-all">
       {[
         ['equipment', 'Equipment', 'Bought instantly with Company Gold; added to the Company inventory.'],
@@ -143,7 +160,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
         return <section className="panel" key={kind}>
           <h2>{title}</h2>
           <p className="muted small">{note}</p>
-          {!list.length && <p className="muted">{offers.some((o) => o.enabled) ? 'Nothing available yet.' : 'No offers have been initialized. The GM can open this page once after assigning the Patron; standard offers are published automatically.'}</p>}
+          {!list.length && <p className="muted">{offers.some((o) => o.enabled) ? 'Nothing available yet.' : 'No offers have been initialized. Standard options are loading; they should appear automatically without GM approval.'}</p>}
           <ul className="saved-list panel-scroll">{list.map((offer) =>
             <li key={offer.id}>
               <div><strong>{offer.label}</strong><div className="muted small">{['craft', 'enchant'].includes(offer.kind)
@@ -168,7 +185,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
 
     {isGm && <section className="panel">
       <h2>Publish regular market offers</h2>
-      <p className="muted small">Ordinary equipment is automatically stocked. Publish quest-unlocked crafting and enchantment recipes once, or make special arrangements; PCs then use them without another GM approval.</p>
+      <p className="muted small">Ordinary equipment and Minor Enchantments are automatically stocked. Publish quest-unlocked crafting and special enchantment recipes once, or make special arrangements; PCs then use them without another GM approval.</p>
       <div className="campaign-form">
         <label className="field">Type<select value={form.kind} onChange={(e) => setForm({ ...form, kind: e.target.value, item: '', unit: '', price: '', enchantKey: '', targetKind: '', check: e.target.value === 'enchant' ? 'Mind + Mysticism' : 'Mind + Craft' })}>
           <option value="equipment">Equipment purchase</option>
