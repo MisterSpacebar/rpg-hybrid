@@ -159,6 +159,31 @@ service cloud.firestore {
           && savedTalentPrefix(prior['5'], next['5']);
       }
 
+      function authorizedRetrainingApply(uid) {
+        let requestId = request.resource.data.get('lastRetrainingId', '');
+        let before = get(/databases/$(database)/documents/campaigns/$(campaignId)/retrainingRequests/$(requestId)).data;
+        let after = getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/retrainingRequests/$(requestId)).data;
+        let campaign = get(/databases/$(database)/documents/campaigns/$(campaignId)).data;
+        return gmOfCampaign()
+          && requestId is string && requestId.size() > 0
+          && request.resource.data.ownerUid == resource.data.ownerUid
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'sheet','lastRetrainingId','updatedAt'
+          ])
+          && request.resource.data.updatedAt == request.time
+          && request.resource.data.sheet.diff(resource.data.sheet).affectedKeys().hasOnly(['talents'])
+          && before.status == 'approved'
+          && after.status == 'applied'
+          && after.appliedAt == request.time
+          && before.ownerUid == uid
+          && after.ownerUid == uid
+          && before.originalTalents == resource.data.sheet.talents
+          && before.proposedTalents == request.resource.data.sheet.talents
+          && before.act is int && before.turn is int
+          && (campaign.act != before.act || campaign.turn != before.turn)
+          && campaign.retrainOrderUsed == before.orderId;
+      }
+
       match /heroes/{uid} {
         allow get, list: if memberOfCampaign();
         allow create: if isOwner(uid) && memberOfCampaign()
@@ -168,7 +193,7 @@ service cloud.firestore {
           && request.resource.data.sheet.gear is list
           && request.resource.data.sheet.gear.size() <= 60
           && request.resource.data.sheet.xpEarned == null;
-        allow update: if isOwner(uid) && memberOfCampaign()
+        allow update: if (isOwner(uid) && memberOfCampaign()
           && request.resource.data.ownerUid == resource.data.ownerUid
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['sheet', 'updatedAt'])
           && request.resource.data.sheet is map
@@ -176,7 +201,7 @@ service cloud.firestore {
           && request.resource.data.sheet.gear is list
           && request.resource.data.sheet.gear.size() <= 60
           && request.resource.data.sheet.xpEarned == null
-          && keepsSavedTalents();
+          && keepsSavedTalents()) || authorizedRetrainingApply(uid);
         // Prevent deleting a purchased talent build and recreating a fresh
         // character to bypass Retraining. The GM can retire/replace a Hero.
         allow delete: if gmOfCampaign() || (isOwner(uid) && memberOfCampaign()
@@ -358,6 +383,52 @@ service cloud.firestore {
           && request.resource.data.status in ['approved', 'rejected']
           && request.resource.data.ownerUid == resource.data.ownerUid
           && request.resource.data.kind == resource.data.kind;
+        allow delete: if gmOfCampaign();
+      }
+
+      match /retrainingRequests/{requestId} {
+        allow get, list: if memberOfCampaign();
+        // A PC may propose one replacement for the GM-declared Develop Order.
+        // Only the GM can confirm and charge Gold; PCs cannot write hero Talents.
+        allow create: if memberOfCampaign()
+          && request.auth.uid != get(/databases/$(database)/documents/campaigns/$(campaignId)).data.gmUid
+          && request.resource.data.ownerUid == request.auth.uid
+          && request.resource.data.status == 'requested'
+          && request.resource.data.orderId == get(/databases/$(database)/documents/campaigns/$(campaignId)).data.activeDevelopOrder
+          && request.resource.data.orderId != get(/databases/$(database)/documents/campaigns/$(campaignId)).data.get('retrainOrderUsed', '')
+          && request.resource.data.act == get(/databases/$(database)/documents/campaigns/$(campaignId)).data.act
+          && request.resource.data.turn == get(/databases/$(database)/documents/campaigns/$(campaignId)).data.turn
+          && requestId == 'retrain-' + request.auth.uid + '-' + request.resource.data.orderId
+          && request.resource.data.tier is int
+          && request.resource.data.tier >= 1
+          && request.resource.data.tier <= 5
+          && request.resource.data.index is int
+          && request.resource.data.index >= 0
+          && request.resource.data.index <= 5
+          && request.resource.data.newTalent is map
+          && request.resource.data.newTalent.id is string
+          && request.resource.data.keys().hasOnly([
+            'ownerUid','orderId','act','turn','status','tier','index','newTalent','createdAt'
+          ])
+          && request.resource.data.createdAt == request.time;
+        allow update: if gmOfCampaign()
+          && request.resource.data.ownerUid == resource.data.ownerUid
+          && request.resource.data.orderId == resource.data.orderId
+          && request.resource.data.tier == resource.data.tier
+          && request.resource.data.index == resource.data.index
+          && request.resource.data.newTalent == resource.data.newTalent
+          && request.resource.data.act == resource.data.act
+          && request.resource.data.turn == resource.data.turn
+          && (
+            (resource.data.status == 'requested'
+              && request.resource.data.status in ['approved','declined']
+              && request.resource.data.resolvedAt == request.time)
+            || (resource.data.status == 'approved'
+              && request.resource.data.status == 'applied'
+              && request.resource.data.appliedAt == request.time
+              && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/heroes/$(resource.data.ownerUid)).data.lastRetrainingId == requestId
+              && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/heroes/$(resource.data.ownerUid)).data.sheet.talents == resource.data.proposedTalents)
+          );
         allow delete: if gmOfCampaign();
       }
 
