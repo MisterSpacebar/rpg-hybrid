@@ -359,7 +359,7 @@ export function derive(char, data) {
   const gearPoints = equipped.reduce((sum, g) => sum + basePoints(g) + (g.workshop?.points ?? 0) + g.enchantList.reduce((s, e) => s + e.points, 0), 0)
 
   // Everything equipped magic contributes, gathered once and applied to the stats, attacks and Commands below.
-  const fx = { move: 0, wounds: 0, evadeSteps: 0, armorSteps: 0, wards: [], wardImprove: [], defenses: [] }
+  const fx = { move: 0, wounds: 0, evadeSteps: 0, armorSteps: 0, workshopTough: 0, workshopCover: 0, wards: [], wardImprove: [], defenses: [] }
   const gearMods = {}
   const spellBumps = []
   const itemCommands = []
@@ -394,7 +394,8 @@ export function derive(char, data) {
       fx.move += g.workshop.move
       fx.armorSteps += g.workshop.armor
       fx.wards.push(...g.workshop.wards)
-      fx.defenses.push(...g.workshop.defenses)
+      fx.workshopTough += g.workshop.toughAdjust
+      fx.workshopCover += g.workshop.coverAdjust
       if (g.workshop.damaged) itemTraits.push({
         source: 'Workshop', name: 'Damaged', text: 'This item requires repair before further permanent improvement.',
       })
@@ -625,8 +626,9 @@ export function derive(char, data) {
   const earned = char.xpEarned == null || char.xpEarned === '' ? null : Number(char.xpEarned)
   if (earned != null) check(spent <= earned, 'Experience', spent <= earned ? `${earned - spent} XP unspent` : `${spent - earned} XP over the ${earned} earned`)
 
-  const toughTotal = fx.defenses.filter((d) => /^Tough \d+$/.test(d)).reduce((sum, d) => sum + num(d), 0)
-  const defenses = [...(toughTotal ? [`Tough ${toughTotal}`] : []), ...new Set(fx.defenses.filter((d) => !/^Tough \d+$/.test(d)))]
+  const toughTotal = Math.max(0, fx.workshopTough + fx.defenses.filter((d) => /^Tough \d+$/.test(d)).reduce((sum, d) => sum + num(d), 0))
+  const coverTotal = Math.max(0, fx.workshopCover + fx.defenses.filter((d) => /^Cover \d+$/.test(d)).reduce((sum, d) => sum + num(d), 0))
+  const defenses = [...(toughTotal ? [`Tough ${toughTotal}`] : []), ...(coverTotal ? [`Cover ${coverTotal}`] : []), ...new Set(fx.defenses.filter((d) => !/^(Tough|Cover) \d+$/.test(d)))]
 
   const thrall = sub.summonedUnit ? buildThrall(sub.summonedUnit, characteristics, skills, traits, attacks, char.factionId ?? null) : null
 
