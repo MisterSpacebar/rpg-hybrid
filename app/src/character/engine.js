@@ -2,7 +2,7 @@ import { flat } from './data.js'
 import { SLOT_LIMITS, combineMods } from './magic.js'
 import { canonicalTags, normalizeTag } from '../tags.js'
 import { buildThrall } from './summons.js'
-import { workEffects } from '../campaign/qualityEngine.js'
+import { workEffects } from '../campaign/logic/qualityEngine.js'
 export { buildThrall } from './summons.js'
 import { choiceSpecs, emptyTalents, normalizeTalents, rankInfo, talentPool, TIERS, xpSpent } from './talents.js'
 

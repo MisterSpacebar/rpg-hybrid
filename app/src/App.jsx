@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import ArmySection from './components/ArmySection.jsx'
-import CharacterSection from './components/CharacterSection.jsx'
-import MyLibrary from './components/MyLibrary.jsx'
+import ArmySection from './components/army/ArmySection.jsx'
+import CharacterSection from './components/character/CharacterSection.jsx'
+import MyLibrary from './components/shared/MyLibrary.jsx'
 import CampaignSection from './campaign/CampaignSection.jsx'
-import UserMenu from './components/UserMenu.jsx'
-import RulesPage from './components/RulesPage.jsx'
+import UserMenu from './components/shared/UserMenu.jsx'
+import RulesPage from './components/rules/RulesPage.jsx'
 
 // Hash routing keeps the app host-agnostic; swap for react-router when more pages (login, armies) arrive.
 function useHash() {

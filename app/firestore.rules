@@ -159,11 +159,26 @@ service cloud.firestore {
           && savedTalentPrefix(prior['5'], next['5']);
       }
 
+      // Every entry of a Tier list except the one at idx is unchanged.
+      function otherEntriesKept(prior, next, idx) {
+        return next.size() == prior.size()
+          && (idx == 0 || prior.size() < 1 || next[0] == prior[0])
+          && (idx == 1 || prior.size() < 2 || next[1] == prior[1])
+          && (idx == 2 || prior.size() < 3 || next[2] == prior[2])
+          && (idx == 3 || prior.size() < 4 || next[3] == prior[3])
+          && (idx == 4 || prior.size() < 5 || next[4] == prior[4])
+          && (idx == 5 || prior.size() < 6 || next[5] == prior[5]);
+      }
+
       function authorizedRetrainingApply(uid) {
         let requestId = request.resource.data.get('lastRetrainingId', '');
         let before = get(/databases/$(database)/documents/campaigns/$(campaignId)/retrainingRequests/$(requestId)).data;
         let after = getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/retrainingRequests/$(requestId)).data;
         let campaign = get(/databases/$(database)/documents/campaigns/$(campaignId)).data;
+        let tier = string(before.tier);
+        let idx = before.index;
+        let prior = resource.data.sheet.talents;
+        let next = request.resource.data.sheet.talents;
         return gmOfCampaign()
           && requestId is string && requestId.size() > 0
           && request.resource.data.ownerUid == resource.data.ownerUid
@@ -177,11 +192,20 @@ service cloud.firestore {
           && after.appliedAt == request.time
           && before.ownerUid == uid
           && after.ownerUid == uid
-          && before.originalTalents == resource.data.sheet.talents
-          && before.proposedTalents == request.resource.data.sheet.talents
+          && before.tier is int && before.index is int
+          // Only the paid slot changes, and only to the replacement that was requested. Talents
+          // added or retrained since payment are preserved, so approved Retrainings stay independent.
+          && prior[tier].size() > idx
+          && prior[tier][idx] == before.originalTalents[tier][idx]
+          && next[tier][idx] == before.newTalent
+          && otherEntriesKept(prior[tier], next[tier], idx)
+          && (tier == '1' || next['1'] == prior['1'])
+          && (tier == '2' || next['2'] == prior['2'])
+          && (tier == '3' || next['3'] == prior['3'])
+          && (tier == '4' || next['4'] == prior['4'])
+          && (tier == '5' || next['5'] == prior['5'])
           && before.act is int && before.turn is int
-          && (campaign.act != before.act || campaign.turn != before.turn)
-          && campaign.retrainOrderUsed == before.orderId;
+          && (campaign.act != before.act || campaign.turn != before.turn);
       }
 
       match /heroes/{uid} {
@@ -511,8 +535,7 @@ service cloud.firestore {
             || (resource.data.status == 'approved'
               && request.resource.data.status == 'applied'
               && request.resource.data.appliedAt == request.time
-              && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/heroes/$(resource.data.ownerUid)).data.lastRetrainingId == requestId
-              && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/heroes/$(resource.data.ownerUid)).data.sheet.talents == resource.data.proposedTalents)
+              && getAfter(/databases/$(database)/documents/campaigns/$(campaignId)/heroes/$(resource.data.ownerUid)).data.lastRetrainingId == requestId)
           );
         allow delete: if gmOfCampaign();
       }

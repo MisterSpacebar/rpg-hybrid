@@ -1,27 +1,27 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useAuth } from '../auth/AuthContext.jsx'
 import { loadCharacterData } from '../character/data.js'
-import { withOwnedEquipment } from './ownedEquipment.js'
+import { withOwnedEquipment } from './logic/ownedEquipment.js'
 import { derive, emptyCharacter, normalizeCharacter } from '../character/engine.js'
-import CharacterStats from '../components/CharacterStats.jsx'
-import CharacterDatasheet from '../components/CharacterDatasheet.jsx'
-import TalentPyramid from '../components/TalentPyramid.jsx'
+import CharacterStats from '../components/character/CharacterStats.jsx'
+import CharacterDatasheet from '../components/character/CharacterDatasheet.jsx'
+import TalentPyramid from '../components/character/TalentPyramid.jsx'
 import { allEntries } from '../character/talents.js'
-import GearTab from '../components/GearTab.jsx'
-import CampaignArmy from './CampaignArmy.jsx'
-import CompanyEconomy from './CompanyEconomy.jsx'
-import Toast from './Toast.jsx'
-import { SignInButton } from '../components/UserMenu.jsx'
+import GearTab from '../components/character/GearTab.jsx'
+import CampaignArmy from './components/CampaignArmy.jsx'
+import CompanyEconomy from './components/CompanyEconomy.jsx'
+import Toast from './components/Toast.jsx'
+import { SignInButton } from '../components/shared/UserMenu.jsx'
 import {
   approveHero, approveJoin, createCampaign, FORMATS, rejectJoin, requestToJoin,
   saveHeroDraft, updateCampaignProgress, watchMyCampaigns,
   watchCampaign, watchHeroes, watchInventory, watchDetachments, watchApprovedHeroes, watchJoinRequests,
   deleteMyHero, revokeApproval, removeInventoryItem, removePlayer, deleteCampaign,
-} from './cloud.js'
-import { LOCKED_CHOICES, validateCampaignSheet } from './equipment.js'
-import { developOrderId } from './retraining.js'
-import { advanceTurn, baseXp, bonusXp } from './limits.js'
-import { acceptSnapshot, discardDraft, editDraft } from './sync.js'
+} from './cloud/campaignCloud.js'
+import { LOCKED_CHOICES, validateCampaignSheet } from './logic/equipment.js'
+import { developOrderId } from './logic/retraining.js'
+import { advanceTurn, baseXp, bonusXp } from './logic/limits.js'
+import { acceptSnapshot, discardDraft, editDraft } from './logic/sync.js'
 
 const errorMessage = (e) => e?.message || 'Something went wrong. Please try again.'
 const actName = ['The Gathering Storm', 'Founding the Company', 'Rising Powers', 'The Final Reckoning']

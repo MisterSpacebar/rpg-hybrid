@@ -5,13 +5,13 @@ on:
     paths:
       - 'app/firestore.rules'
       - 'app/scripts/firestore-market-rules.mjs'
-      - 'app/src/campaign/market*'
+      - 'app/src/campaign/**/market*'
       - '.github/workflows/firestore-market-rules.yml'
   pull_request:
     paths:
       - 'app/firestore.rules'
       - 'app/scripts/firestore-market-rules.mjs'
-      - 'app/src/campaign/market*'
+      - 'app/src/campaign/**/market*'
       - '.github/workflows/firestore-market-rules.yml'
 
 jobs:
