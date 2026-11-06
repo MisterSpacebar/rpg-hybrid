@@ -35,7 +35,7 @@ export function campaignGearOptions(char, data, inventory = [], approved = null,
     : starter
   const claimed = new Set(otherHeroes.flatMap((h) => (h.sheet?.gear ?? []).map((g) => g.inventoryId).filter(Boolean)))
   const acquired = inventory
-    .filter((x) => x.kind === 'equipment' && x.item && (!x.ownerUid || x.ownerUid === char.ownerUid))
+    .filter((x) => x.kind === 'equipment' && x.item && !x.starterOwnerUid && (!x.ownerUid || x.ownerUid === char.ownerUid))
     .filter((x) => !claimed.has(x.id))
     .map((x) => ({ id: x.id, ...x.item }))
     .filter((x) => !!(x.kind === 'shield' ? data.shield.name === x.name : x.kind === 'armor' ? data.armor.some((w) => w.name === x.name) : x.kind === 'melee' || x.kind === 'ranged' ? data[x.kind].some((w) => w.name === x.name) : data.magic.byKey.has(`${x.kind}:${x.name}`)))
