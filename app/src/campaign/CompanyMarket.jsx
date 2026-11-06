@@ -9,7 +9,7 @@ import { eligibleStandardOffer, standardRecruitmentProfiles } from './recruitmen
 import { watchEntitlements } from './cloud.js'
 import { craftRoll, priceForFormation } from './market.js'
 import {
-  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers,
+  publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers, seedDefaultEnchantOffers,
   watchMarketOffers, watchMarketPurchases,
 } from './marketCloud.js'
 
@@ -39,10 +39,12 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     return () => { a(); b(); c() }
   }, [campaign.id])
   useEffect(() => {
-    if (!isGm || !characterData) return
-    seedDefaultEquipmentOffers(campaign.id, user.uid, characterData)
-      .catch((error) => setMessage(`Could not populate the equipment shop: ${error.message}`))
-  }, [isGm, characterData, campaign.id, user.uid])
+    if (!characterData) return
+    Promise.all([
+      seedDefaultEquipmentOffers(campaign.id, user.uid, characterData),
+      seedDefaultEnchantOffers(campaign.id, user.uid, characterData),
+    ]).catch((error) => setMessage(`Could not initialize standard equipment or enchantments: ${error.message}`))
+  }, [characterData, campaign.id, user.uid])
   useEffect(() => {
     if (!isGm || !catalog || campaign.act < 2 || !campaign.patronFactionId) return
     seedStandardRecruitmentOffers(campaign.id, user.uid, campaign, catalog)
@@ -143,7 +145,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
         return <section className="panel" key={kind}>
           <h2>{title}</h2>
           <p className="muted small">{note}</p>
-          {!list.length && <p className="muted">{offers.some((o) => o.enabled) ? 'Nothing available yet.' : 'No offers have been initialized. The GM can open this page once after assigning the Patron; standard offers are published automatically.'}</p>}
+          {!list.length && <p className="muted">{offers.some((o) => o.enabled) ? 'Nothing available yet.' : 'No offers have been initialized. Standard options are loading; they should appear automatically without GM approval.'}</p>}
           <ul className="saved-list panel-scroll">{list.map((offer) =>
             <li key={offer.id}>
               <div><strong>{offer.label}</strong><div className="muted small">{['craft', 'enchant'].includes(offer.kind)
@@ -168,7 +170,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
 
     {isGm && <section className="panel">
       <h2>Publish regular market offers</h2>
-      <p className="muted small">Ordinary equipment is automatically stocked. Publish quest-unlocked crafting and enchantment recipes once, or make special arrangements; PCs then use them without another GM approval.</p>
+      <p className="muted small">Ordinary equipment and Minor Enchantments are automatically stocked. Publish quest-unlocked crafting and special enchantment recipes once, or make special arrangements; PCs then use them without another GM approval.</p>
       <div className="campaign-form">
         <label className="field">Type<select value={form.kind} onChange={(e) => setForm({ ...form, kind: e.target.value, item: '', unit: '', price: '', enchantKey: '', targetKind: '', check: e.target.value === 'enchant' ? 'Mind + Mysticism' : 'Mind + Craft' })}>
           <option value="equipment">Equipment purchase</option>
