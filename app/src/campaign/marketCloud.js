@@ -121,7 +121,7 @@ export async function purchaseOffer(id, uid, offerId, craft = null, targetItemId
         })
       }
       if (flaw && (!crafting.blunders || (offer.kind === 'craft' && !crafting.success) ||
-          !eligibleDeteriorations(base, data, crafting.success ? plan : []).includes(flaw))) {
+          !eligibleDeteriorations(repair && crafting.success ? { ...base, workshopEvents: [...(base.workshopEvents ?? []), { kind:'repair', repair }] } : base, data, crafting.success ? plan : []).includes(flaw))) {
         throw new Error('The Blunder must affect a valid, reducible item statistic')
       }
       if (crafting.blunders && (offer.kind !== 'craft' || crafting.success) && !flaw) {
