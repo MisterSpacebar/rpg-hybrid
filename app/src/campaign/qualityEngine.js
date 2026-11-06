@@ -1,3 +1,4 @@
+import { ANTI_TAGS } from '../tags.js'
 // Canonical permanent equipment improvements shared by crafting, enchanting,
 // repair, the Company inventory, and the Character sheet. Only purchased item
 // records carry these events; a PC draft is never authoritative.
@@ -42,7 +43,7 @@ export function itemDefinition(item, data) {
 }
 export function qualityAllowed(id, item) {
   const q = QUALITY_RULES[id]
-  return !!q && !!item && q.allowed.includes(item.kind) &&
+  return !!q && !!item && (q.allowed.includes(item.kind) || (id === 'extended' && item.kind === 'melee' && /^Engaged\\s+\\d+/.test(item.profile?.range ?? ''))) &&
     (!q.armorNames || q.armorNames.includes(item.name)) &&
     !(id === 'extended' && !/\d+/.test(item.profile?.range ?? ''))
 }
@@ -89,7 +90,7 @@ export function availableQualities(item, data) {
 }
 const validChoice = (q, choice) => !q.choice || (q.choice === 'ward'
   ? ['physical','magic'].includes(choice)
-  : typeof choice === 'string' && /^[A-Za-z][A-Za-z -]{0,36}$/.test(choice))
+  : ANTI_TAGS.includes(choice))
 
 // This validates the *increment* purchased by a single check; ranks may already
 // exist on the owned item. No excess success can be spent twice.
@@ -149,6 +150,8 @@ export function eligibleDeteriorations(item, data, plan = []) {
     if (/\d+/.test(profile.range) && baseNum(profile.range) + (ranks.extended ?? 0) - (defects.range ?? 0) > 1) keys.push('range')
   }
   if (item.kind === 'armor' && baseNum(def.armor) - (ranks.protective ?? 0) + (defects.armor ?? 0) < 6) keys.push('armor')
+  if (item.kind === 'shield' && (defects.armor ?? 0) < 1) keys.push('armor')
+  if ((ranks.swift ?? 0) > (defects.swift ?? 0) + (defects.move ?? 0)) keys.push('move')
   for (const id of Object.keys(QUALITY_RULES)) if ((ranks[id] ?? 0) > (defects[id] ?? 0)) keys.push(id)
   // Intrinsic printed reroll keywords can be weakened as well.
   if (keywordRank(profile,'Accurate') > (defects.accurate ?? 0)) keys.push('accurate')
@@ -171,7 +174,8 @@ export function repairOptions(item, data) {
 export function workEffects(item, data) {
   const s = itemWorkState(item, data)
   if (!s) return null
-  const rank = (id) => Math.max(0, (s.paidRanks[id] ?? 0) - (s.defects[id] ?? 0))
+  const rank = (id) => (s.paidRanks[id] ?? 0) - (s.defects[id] ?? 0)
+  const pos = (id) => Math.max(0, rank(id))
   const mod = { attacks: rank('deadly') - (s.defects.attacks ?? 0),
     hit: rank('precise') - (s.defects.hit ?? 0),
     damage: rank('destructive') - (s.defects.damage ?? 0),
@@ -180,17 +184,18 @@ export function workEffects(item, data) {
     critical: rank('exceptionalEdge'),
     anti: {},
   }
-  if (rank('specialized') && s.choices.specialized) mod.anti[s.choices.specialized] = rank('specialized')
+  if (pos('specialized') && s.choices.specialized) mod.anti[s.choices.specialized] = pos('specialized')
   const defenses = []
-  if (rank('reinforced')) defenses.push('Tough ' + rank('reinforced'))
-  if (rank('sheltering')) defenses.push('Cover ' + rank('sheltering'))
+  if (pos('reinforced')) defenses.push('Tough ' + pos('reinforced'))
+  if (pos('sheltering')) defenses.push('Cover ' + pos('sheltering'))
   return {
     points: s.points,
     mod,
     armor: rank('protective') - (s.defects.armor ?? 0),
-    move: rank('swift'),
+    move: rank('swift') - (s.defects.move ?? 0),
+    toughAdjust: rank('reinforced'), coverAdjust: rank('sheltering'),
     defenses,
-    wards: rank('warded') && s.choices.warded ? [{type:s.choices.warded, value:6}] : [],
+    wards: pos('warded') && s.choices.warded ? [{type:s.choices.warded, value:6}] : [],
     damaged: s.damaged,
     defects: s.defects,
     ranks: s.ranks,
