@@ -347,7 +347,7 @@ service cloud.firestore {
             'balanced','specialized','extended','reinforced','sheltering','swift',
             'deadly','precise','protective','exceptionalEdge','destructive','warded'
           ])
-          && (!roll.blunders || (purchase.kind == 'craft' && !roll.success)
+          && (roll.blunders == 0 || (purchase.kind == 'craft' && !roll.success)
             || work.get('flaw',null) is string)
           && (roll.blunders > 0 || work.get('flaw',null) == null)
           && (purchase.kind != 'repair' || !roll.success || work.get('repair',null) is string);
