@@ -225,7 +225,7 @@ function Workspace({ id, user }) {
     return derive({ ...sheet, gear: sheet.gear.map((g) => {
       const item = owned.get(g.inventoryId || `starter-${user.uid}-${g.uid}`)
       return item && item.item?.kind === g.kind && item.item?.name === g.name
-        ? { ...g, enchants: item.enchants ?? [] } : g
+        ? { ...g, enchants: item.enchants ?? [], workshopEvents: item.workshopEvents ?? [] } : g
     }) }, data)
   }, [sheet, data, inventory, user.uid])
   const creationErrors = useMemo(() => sheet && data && campaign ? validateCampaignSheet(
