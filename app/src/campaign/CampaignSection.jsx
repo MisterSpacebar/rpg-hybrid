@@ -15,7 +15,7 @@ import {
   approveHero, approveJoin, createCampaign, FORMATS, rejectJoin, requestToJoin,
   saveHeroDraft, updateCampaignProgress, watchMyCampaigns,
   watchCampaign, watchHeroes, watchInventory, watchDetachments, watchApprovedHeroes, watchJoinRequests,
-  deleteMyHero, revokeApproval, removePlayer, deleteCampaign,
+  deleteMyHero, revokeApproval, removeInventoryItem, removePlayer, deleteCampaign,
 } from './cloud.js'
 import { LOCKED_CHOICES, validateCampaignSheet } from './equipment.js'
 import { advanceTurn, baseXp, bonusXp } from './limits.js'
@@ -309,7 +309,17 @@ function Workspace({ id, user }) {
         const v = derive(normalizeCharacter({ ...h.sheet, xpEarned: campaign.xpTotal }, data), data)
         const issues = validateCampaignSheet({ ...h.sheet, ownerUid: h.ownerUid }, data, campaign.xpTotal, inventory, heroes.filter((other) => other.ownerUid !== h.ownerUid), approvedHeroes.find((a) => a.ownerUid === h.ownerUid), h.sheet.talents)
         const eligible = v.checks.every((c) => c.ok) && !issues.length && v.points.spent <= campaign.xpTotal
-        return <li key={h.id}><div><strong>{h.sheet.name}</strong><div className="muted small">{v.points.total} pts · {v.points.spent}/{campaign.xpTotal} XP spent · {eligible ? 'Valid' : 'Needs corrections'}</div></div>        <button className="primary" disabled={working || !eligible} onClick={() => run(() => approveHero(id, h.ownerUid, h.sheet))}>Approve snapshot</button>{approvedHeroes.some((a) => a.ownerUid === h.ownerUid) && <button disabled={working} onClick={() => window.confirm('Revoke this approved snapshot? The player will be unable to deploy this Hero until re-approved.') && run(() => revokeApproval(id, h.ownerUid))}>Revoke approval</button>}</li>
+        return <li key={h.id}><div><strong>{h.sheet.name}</strong><div className="muted small">{v.points.total} pts · {v.points.spent}/{campaign.xpTotal} XP spent · {eligible ? 'Valid' : 'Needs corrections'}</div></div>        <button className="primary" disabled={working || !eligible} onClick={() => run(() => approveHero(id, h.ownerUid, h.sheet))}>Approve snapshot</button>{approvedHeroes.some((a) => a.ownerUid === h.ownerUid) && <button disabled={working} onClick={() => window.confirm('Revoke this approved snapshot? The player will be unable to deploy this Hero until re-approved.') && run(() => revokeApproval(id, h.ownerUid))}>Revoke approval</button>}
+          <button className="danger" disabled={working} onClick={() => {
+            if (!window.confirm(`Retire ${h.sheet.name}? This permanently clears the character's saved Talents, starting-item enhancement records, approval and detachment. The player may create a new character. This is a GM exception, not free Retraining.`)) return
+            run(async () => {
+              await deleteMyHero(id, h.ownerUid)
+              for (const item of inventory.filter((x) => x.starterOwnerUid === h.ownerUid)) {
+                await removeInventoryItem(id, item.id)
+              }
+              if (approvedHeroes.some((a) => a.ownerUid === h.ownerUid)) await revokeApproval(id, h.ownerUid)
+            })
+          }}>Retire character</button></li>
       })}</ul></section>
               <section className="panel"><h2>Players</h2><p className="muted small">Removing a player deletes their character, approval, detachment and slot entitlements, and releases any formations or equipment they reserved.</p>
                 <ul className="saved-list panel-scroll">{campaign.memberUids.filter((uid) => uid !== campaign.gmUid).map((uid) => <li key={uid}>
