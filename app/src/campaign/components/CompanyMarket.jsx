@@ -10,6 +10,7 @@ import { watchEntitlements } from '../cloud/campaignCloud.js'
 import { craftRoll, priceForFormation } from '../logic/market.js'
 import QualityPicker from './QualityPicker.jsx'
 import { repairOptions, randomDeterioration, validateQualityPlan } from '../logic/qualityEngine.js'
+import { generateCraftingQualities } from '../logic/randomCrafting.js'
 import {
   publishMarketOffer, purchaseOffer, setMarketOfferEnabled, seedStandardRecruitmentOffers, seedDefaultEquipmentOffers, seedDefaultEnchantOffers, seedStandardWorkshopOffers,
   watchMarketOffers, watchMarketPurchases, registerStartingGear, starterRecordId,
@@ -122,10 +123,28 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     if (result) {
       const entropy = new Uint32Array(1)
       crypto.getRandomValues(entropy)
-      setPending({ offer, roll: craftRoll(result.dice, result.threshold, offer.difficulty),
+      const prepared = { offer, roll: craftRoll(result.dice, result.threshold, offer.difficulty),
         threshold: result.threshold, targetId: selectedTargets[offer.id] ?? null,
-        flawSeed: entropy[0] / 4294967296 })
-      setQualityPlan([])
+        flawSeed: entropy[0] / 4294967296 }
+      // Generate once, immediately after the Skill Check. Keep the outcome in
+      // pending state so re-rendering does not redraw Boons or their ranks.
+      const item = workItem(prepared)
+      if (!item) throw new Error('The equipment is no longer available for crafting')
+      const opts = { magical: offer.check?.includes('Mysticism') }
+      const random = () => {
+        const bits = new Uint32Array(1)
+        crypto.getRandomValues(bits)
+        return bits[0] / 4294967296
+      }
+      const generated = offer.kind === 'repair' ? null
+        : generateCraftingQualities(item, characterData, prepared.roll, opts, random)
+      const flaw = prepared.roll.blunders &&
+        (offer.kind !== 'craft' || prepared.roll.success) &&
+        offer.kind !== 'repair'
+        ? randomDeterioration(item, characterData, generated?.plan ?? [],
+          () => prepared.flawSeed) : null
+      setPending({ ...prepared, generated, flaw })
+      setQualityPlan(generated?.plan ?? [])
       setRepairField('')
       return result
     }
@@ -151,9 +170,9 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     if (pending.offer.kind !== 'repair') validateQualityPlan(item, characterData, pending.roll, qualityPlan, {
       magical: pending.offer.check?.includes('Mysticism'),
     })
-    const flaw = pending.roll.blunders && (pending.offer.kind !== 'craft' || pending.roll.success)
-      ? randomDeterioration(item, characterData, pending.roll.success ? qualityPlan : [],
-        () => pending.flawSeed, repair) : null
+    const flaw = pending.offer.kind === 'repair' && pending.roll.blunders
+      ? randomDeterioration(item, characterData, [], () => pending.flawSeed, repair)
+      : pending.flaw
     const rolled = pending.roll
     await purchaseOffer(campaign.id, user.uid, pending.offer.id,
       { dice: rolled.dice, threshold: pending.threshold, successes: rolled.successes,
@@ -201,9 +220,9 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       {[
         ['equipment', 'Equipment', 'Bought instantly with Company Gold; added to the Company inventory.'],
         ['unit', 'Formations', `Patron Core profiles: ${recruitAccess.factionCore.length} · Generic profiles permitted by party slots: ${recruitAccess.generic.length}. Two free starting formations are Company grants, not Marketplace purchases.`],
-        ['craft', 'Crafting', 'Quest/reward recipes create equipment. Excess successes buy ranked Qualities and Surges unlock exceptional properties.'],
-        ['enchant', 'Enchanting', 'Apply an unlocked Minor Enchantment, plus ranked enhancements from excess successes. Blunders damage existing equipment.'],
-        ['improve', 'Improvements', 'Improve existing equipment with Craft checks, including Surge-unlocked exceptional properties.'],
+        ['craft', 'Crafting', 'Quest/reward recipes create equipment. Excess successes generate random compatible Boons and Surges unlock exceptional results.'],
+        ['enchant', 'Enchanting', 'Choose a known Minor Enchantment; extra Boons are randomly generated from excess successes. Blunders weaken the item.'],
+        ['improve', 'Improvements', 'Existing equipment gains random compatible improvements, including exceptional properties from Surges.'],
         ['repair', 'Repairs', 'Restore one deteriorated item statistic with an appropriate Craft check.'],
       ].filter(([kind]) => visibleOffers.some((o) => o.kind === kind) || ['equipment', 'unit'].includes(kind)).map(([kind, title, note]) => {
         const list = visibleOffers.filter((o) => o.kind === kind)
@@ -227,7 +246,7 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
               <button className="primary" disabled={busy || !!pending || (campaign.goldBalance ?? 0) < offer.price ||
                 (['craft','enchant','improve','repair'].includes(offer.kind) && !pcView) ||
                 (['enchant','improve','repair'].includes(offer.kind) && !compatibleTargets(offer).some((item) => item.id === selectedTargets[offer.id]))}
-                onClick={() => run(() => buy(offer), (roll) => roll ? 'Check rolled. Allocate results and confirm payment below.' : 'Purchased. Company inventory updated.')}>
+                onClick={() => run(() => buy(offer), (roll) => roll ? 'Check resolved. Review the randomly generated Boons and confirm below.' : 'Purchased. Company inventory updated.')}>
                 {['craft','enchant','improve','repair'].includes(offer.kind) ? 'Roll check' : 'Buy'}</button>
             </li>)}</ul>
         </section>
@@ -240,11 +259,20 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     {sub === 'market' && !isGm && pending && <section className="panel span-2">
       <h2>Resolve {pending.offer.label}</h2>
       <p className="small">Dice: <strong>{pending.roll.dice.join(', ')}</strong> · {pending.roll.successes} successes against Difficulty {pending.offer.difficulty} · {pending.roll.qualities} excess · {pending.roll.surges ? 'Surge' : 'No Surge'} · {pending.roll.blunders ? 'Blunder' : 'No Blunder'}.</p>
-      <p className="muted small">The roll is held locally until confirmation; Gold is deducted once. Client-side dice are not tamper-proof.</p>
+      <p className="muted small">Compatible Boons and Banes were generated once with the roll. Only the Anti-type target may be chosen. Gold is deducted on confirmation. Client-side results are not tamper-proof.</p>
+      {pending.roll.blunders > 0 &&
+        <p className="bad small">Random Bane: {pending.offer.kind === 'craft' && !pending.roll.success
+          ? 'Failed craft — materials or tools lost; no item created'
+          : pending.offer.kind === 'repair'
+            ? repairField ? randomDeterioration(workItem(pending), characterData, [],
+                () => pending.flawSeed, pending.roll.success ? repairField : null)
+              : 'Choose a repair target to resolve the Blunder'
+            : pending.flaw}.</p>}
       <QualityPicker item={workItem(pending)} data={characterData} roll={pending.roll}
         plan={qualityPlan} setPlan={setQualityPlan}
         kind={pending.offer.kind} repair={repairField} setRepair={setRepairField}
-        magical={pending.offer.check?.includes('Mysticism')} />
+        magical={pending.offer.check?.includes('Mysticism')}
+        automatic={pending.offer.kind !== 'repair'} />
       <div className="saved-actions">
         <button disabled={busy} onClick={() => setPending(null)}>Cancel check</button>
         <button className="primary" disabled={busy || (campaign.goldBalance ?? 0) < pending.offer.price}
