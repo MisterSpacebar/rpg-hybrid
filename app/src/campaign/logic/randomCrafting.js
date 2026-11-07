@@ -66,10 +66,16 @@ export function generateCraftingQualities(item, data, roll, opts = {}, rng = Mat
   let plan = []
   const allowed = availableQualities(item, data)
   const exceptional = allowed.filter((id) => QUALITY_RULES[id].exceptional)
+  const randomizeWard = (chosen) => ({
+    ...chosen,
+    plan: chosen.plan.map((row) =>
+      row.id === 'warded' && !itemWorkState(item, data).choices.warded
+        ? { ...row, choice: pick(['physical','magic'], rng) } : row),
+  })
   if (roll.surges) {
     const surgeOptions = legalNext(item, data, roll, plan, opts, exceptional)
       .filter((x) => (itemWorkState(item, data).ranks[x.id] ?? 0) === 0)
-    if (surgeOptions.length) plan = pick(surgeOptions, rng).plan
+    if (surgeOptions.length) plan = randomizeWard(pick(surgeOptions, rng)).plan
   }
   const maxIterations = Math.max(1, (roll.qualities ?? 0) + 1)
   for (let i=0; i<maxIterations; i++) {
@@ -78,7 +84,7 @@ export function generateCraftingQualities(item, data, roll, opts = {}, rng = Mat
     const choices = legalNext(item, data, roll, plan, opts, ids)
       .filter((x) => x.spent > 0)
     if (!choices.length) break
-    plan = pick(choices, rng).plan
+    plan = randomizeWard(pick(choices, rng)).plan
   }
   // Warded's type is selected randomly; the PC explicitly chooses only
   // a newly generated Anti target. Previously chosen targets never change.
