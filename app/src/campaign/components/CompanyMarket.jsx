@@ -138,7 +138,12 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       }
       const generated = offer.kind === 'repair' ? null
         : generateCraftingQualities(item, characterData, prepared.roll, opts, random)
-      setPending({ ...prepared, generated })
+      const flaw = prepared.roll.blunders &&
+        (offer.kind !== 'craft' || prepared.roll.success) &&
+        offer.kind !== 'repair'
+        ? randomDeterioration(item, characterData, generated?.plan ?? [],
+          () => prepared.flawSeed) : null
+      setPending({ ...prepared, generated, flaw })
       setQualityPlan(generated?.plan ?? [])
       setRepairField('')
       return result
@@ -165,9 +170,9 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
     if (pending.offer.kind !== 'repair') validateQualityPlan(item, characterData, pending.roll, qualityPlan, {
       magical: pending.offer.check?.includes('Mysticism'),
     })
-    const flaw = pending.roll.blunders && (pending.offer.kind !== 'craft' || pending.roll.success)
-      ? randomDeterioration(item, characterData, pending.roll.success ? qualityPlan : [],
-        () => pending.flawSeed, repair) : null
+    const flaw = pending.offer.kind === 'repair' && pending.roll.blunders
+      ? randomDeterioration(item, characterData, [], () => pending.flawSeed, repair)
+      : pending.flaw
     const rolled = pending.roll
     await purchaseOffer(campaign.id, user.uid, pending.offer.id,
       { dice: rolled.dice, threshold: pending.threshold, successes: rolled.successes,
@@ -255,6 +260,14 @@ export default function CompanyMarket({ campaign, user, isGm, heroes, detachment
       <h2>Resolve {pending.offer.label}</h2>
       <p className="small">Dice: <strong>{pending.roll.dice.join(', ')}</strong> · {pending.roll.successes} successes against Difficulty {pending.offer.difficulty} · {pending.roll.qualities} excess · {pending.roll.surges ? 'Surge' : 'No Surge'} · {pending.roll.blunders ? 'Blunder' : 'No Blunder'}.</p>
       <p className="muted small">Compatible Boons and Banes were generated once with the roll. Only the Anti-type target may be chosen. Gold is deducted on confirmation. Client-side results are not tamper-proof.</p>
+      {pending.roll.blunders > 0 &&
+        <p className="bad small">Random Bane: {pending.offer.kind === 'craft' && !pending.roll.success
+          ? 'Failed craft — materials or tools lost; no item created'
+          : pending.offer.kind === 'repair'
+            ? repairField ? randomDeterioration(workItem(pending), characterData, [],
+                () => pending.flawSeed, pending.roll.success ? repairField : null)
+              : 'Choose a repair target to resolve the Blunder'
+            : pending.flaw}.</p>}
       <QualityPicker item={workItem(pending)} data={characterData} roll={pending.roll}
         plan={qualityPlan} setPlan={setQualityPlan}
         kind={pending.offer.kind} repair={repairField} setRepair={setRepairField}
