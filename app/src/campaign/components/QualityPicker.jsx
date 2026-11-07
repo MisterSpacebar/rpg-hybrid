@@ -1,7 +1,7 @@
 import { QUALITY_RULES, availableQualities, repairOptions, validateQualityPlan } from '../logic/qualityEngine.js'
 import { ANTI_TAGS } from '../../tags.js'
 
-export default function QualityPicker({ item, data, roll, plan, setPlan, kind, repair, setRepair, magical = false }) {
+export default function QualityPicker({ item, data, roll, plan, setPlan, kind, repair, setRepair, magical = false, automatic = false }) {
   if (!item || !data || !roll) return null
   if (kind === 'repair') {
     const options = repairOptions(item, data)
@@ -16,6 +16,41 @@ export default function QualityPicker({ item, data, roll, plan, setPlan, kind, r
     </div>
   }
   if (!roll.success) return <p className="muted small">The check failed: no permanent Qualities can be added.</p>
+  if (automatic) {
+    let calculated = null
+    let error = ''
+    const needsAnti = plan.some((p) => p.id === 'specialized' && !p.choice)
+    if (!needsAnti) {
+      try { calculated = validateQualityPlan(item, data, roll, plan, { magical }) }
+      catch (e) { error = e.message }
+    }
+    return <div className="panel">
+      <h3>Generated crafting Boons</h3>
+      <p className="muted small">The item automatically gains compatible improvements from its check. Excess successes buy eligible ranks, while a Surge may unlock an exceptional Quality. All non-Anti choices are fixed.</p>
+      {!plan.length && <p className="muted small">No compatible Boons were generated for this check.</p>}
+      {plan.map((row, index) => {
+        const q = QUALITY_RULES[row.id]
+        return <div className="campaign-form" key={row.id}>
+          <div><strong>{q.name} {row.ranks}</strong>
+            <div className="muted small">{q.exceptional ? 'Exceptional Surge Boon' : 'Crafting Boon'}
+              {row.id === 'warded' ? ` · ${row.choice === 'magic' ? 'Magic' : 'Physical'} Ward` : ''}</div>
+          </div>
+          {row.id === 'specialized' && <label className="field">Choose Anti-type target
+            <select value={row.choice || ''} onChange={(e) => setPlan((prev) => prev.map((entry, i) =>
+              i === index ? { ...entry, choice: e.target.value } : entry))}>
+              <option value="">Choose a canonical Tag…</option>
+              {ANTI_TAGS.map((tag) => <option key={tag} value={tag}>{tag}</option>)}
+            </select>
+          </label>}
+        </div>
+      })}
+      <p role="status" className={needsAnti || error ? 'bad small' : 'muted small'}>
+        {needsAnti ? 'Select the Anti-type target before confirming.' :
+          error || `Generated ${plan.length} named Boon(s) · Spent ${calculated?.spent ?? 0} of ${roll.qualities} excess successes · +${calculated?.addedPoints ?? 0} equipment Points`}
+      </p>
+    </div>
+  }
+
   const options = availableQualities(item, data)
   let calculated, error = ''
   try {
