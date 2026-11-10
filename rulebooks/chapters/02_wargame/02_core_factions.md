@@ -1595,7 +1595,7 @@ The first balancing tests should compare signature troops directly against equiv
 - The Aether Ballista Team versus Heavy Artillery.
 - Signature Support Characters versus generic three-model W2 Support Units.
 
-The large faction traits, Command Abilities, and unique Character interactions should then be tested in complete 2,000-point armies under the established CP and Doctrine-card economy.
+The large faction traits, Command Abilities, and Unique-unit interactions should then be tested in complete 2,000-point armies under the established CP and Doctrine-card economy.
 
 ## v4 Faction Damage-Output and Extra-Core Rebalance
 
@@ -1616,7 +1616,7 @@ Following the same post-playtesting concerns that prompted the Generic Units dam
 
 **Faction Commands:** Each Faction gains one **additional optional** 1 CP Command, selected from its revised roster of four, specializing in Anti 4 against tactical battlefield roles. The two normal Faction Command selections and eight-card matched-play repertoire are unchanged. Optional support specialist upgrades grant localized Anti 2 auras for +20 Points. Different faction allegiances do NOT dictate creature type; an undead Sacred Orders army remains legal under applicable conversion/roster rules.
 
-**Character:** The named/legendary top faction leader receives Character; routine officers, generic Captains and generic Wizards do not. Each Officer is separately labeled when appropriate. The detailed corrected JSON datasheets take precedence over legacy numeric summaries in this chapter.
+**Unique:** Named/legendary faction leaders receive Unique; routine officers, generic Captains and generic Wizards do not automatically receive it. Each Officer is separately labeled when appropriate. The detailed corrected JSON datasheets take precedence over legacy numeric summaries in this chapter.
 
 
 ## Current faction specialization — authoritative balance pass
