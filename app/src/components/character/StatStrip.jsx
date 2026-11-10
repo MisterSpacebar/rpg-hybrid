@@ -74,7 +74,7 @@ export function CharacterStatGroups({ view }) {
 
 // Abilities a generic Support Unit has at no extra cost (Corrosive Preparation, Triage, ...); the effect is in the tooltip.
 export function AbilityLines({ entry }) {
-  if (entry.source !== 'generic' || !entry.abilities?.length) return null
+  if (!entry.abilities?.length) return null
   return (
     <ul className="attack-lines ability-lines">
       {entry.abilities.map((a) => (
