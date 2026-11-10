@@ -160,11 +160,13 @@
       ],
       "abilities": [
         {
-          "name": "(unnamed)",
+          "name": "Hallowed Charge",
           "type": "Passive",
-          "effect": "After a successful Charge, gain Ward 6+ or improve this unit's ward by 1 until the end of the Round."
+          "effect": "After this Unit successfully Charges, gain Ward 6+ or improve its applicable existing Ward by one step until the end of the Round."
         }
-      ]
+      ],
+      "charge": 1,
+      "impact": 2
     }
   ],
   "captainAndSpecialists": [
