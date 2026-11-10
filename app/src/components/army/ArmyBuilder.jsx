@@ -298,7 +298,7 @@ function UnitGrid({ units, view, army, onAdd, emptyText }) {
                 {u.isCore && <span className="tag">Core</span>}
                 {u.isHero && <span className="tag">Hero</span>}
               </div>
-              <StatStrip stats={base.stats} impact={base.impact} />
+              <StatStrip stats={base.stats} charge={base.charge} impact={base.impact} />
               <AttackLines attacks={base.attacks} />
               <AbilityLines entry={u} />
             </div>
@@ -378,7 +378,7 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
         <div className="unit-points">{r.points} pts{r.pointsVary && <span title="Some selected options have a variable cost; check the rules"> *</span>}</div>
       </header>
 
-      <StatStrip stats={r.stats} impact={r.impact} models={r.models} changed={r.changedStats} base={r.baseStats} factionChanged={r.factionChanged} factionRule={r.factionRule} />
+      <StatStrip stats={r.stats} charge={r.charge} impact={r.impact} models={r.models} changed={r.changedStats} base={r.baseStats} factionChanged={r.factionChanged} factionRule={r.factionRule} />
       <AttackLines attacks={r.attacks} />
       <AbilityLines entry={{ ...entry, abilities: r.abilities }} />
 
