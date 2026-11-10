@@ -113,7 +113,7 @@ function arcanaGroup(arcana) {
     max: null,
     limit: { base: { group: 'specialization', field: 'arcanaChoices' }, bonus: { group: 'wizardUpgrades', option: 'Additional Arcana' } },
     options: list.map((a, i) => ({
-      id: `arcana:${i}`,
+      id: a.legacyId ?? `arcana:${i}`,
       name: a.name,
       points: 0,
       varies: false,
