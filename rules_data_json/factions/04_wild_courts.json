@@ -11,7 +11,7 @@
   "worldbuilding": "Elven enclaves, fey courts, forest spirits, beast clans, and ancient wilderness kingdoms. Their armies control where Engagements occur, relying on terrain, ambush, and unconventional movement.",
   "factionRule": {
     "name": "Paths of the Wild",
-    "effect": "Ignore the first 2\" of Difficult Terrain during each Move activation. Units must finish their moves legally."
+    "effect": "Ignore the first 2\" of Difficult Terrain during each Move activation; finish moves legally. In addition, while a friendly Unit already benefits from Cover, it gains Cover 1 (additive with other eligible Cover X ranks). The faction bonus does not itself grant Cover or qualify a Unit as being in Cover."
   },
   "factionCommands": [
     {
@@ -42,7 +42,7 @@
   "signatureCoreUnits": [
     {
       "name": "Glade Hunters",
-      "points": 175,
+      "points": 190,
       "models": 5,
       "tags": [
         "Ranged Infantry",
@@ -84,7 +84,7 @@
         {
           "name": "Woodland Stalker",
           "type": "Passive",
-          "effect": "Gain Concealed while benefiting from natural Cover."
+          "effect": "While this Unit is benefiting from Cover, it gains Concealed and its Longbows improve Hit from 5+ to 4+. This applies to Cover from any eligible source; no natural/artificial terrain distinction. The faction rule’s additional Cover 1 cannot itself create Cover eligibility."
         }
       ]
     },
