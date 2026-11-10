@@ -90,7 +90,7 @@ function applyTo(a, t) {
 }
 
 // allWeapons: names of upgrades that apply to every weapon even though their rules text says "selected" (generic infantry Veterans).
-export function modifyAttacks(attacks, options, { allWeapons = [] } = {}) {
+export function modifyAttacks(attacks, options, { allWeapons = [], weaponTargets = {} } = {}) {
   const list = attacks.map((a) => ({ ...a, keywords: [...(a.keywords ?? [])] }))
   for (const o of options.filter(passive)) {
     const t = o.effect ?? ''
@@ -103,7 +103,7 @@ export function modifyAttacks(attacks, options, { allWeapons = [] } = {}) {
       /Gain Long Range \d"/i.test(t)
     if (!touches) continue
     if (!allWeapons.includes(o.name) && (SPECIFIC.test(t) || /Range by|Long Range/i.test(t))) {
-      const a = targetOf(list, t)
+      const a = list.find((attack) => attack.name === weaponTargets[o.id]) ?? targetOf(list, t)
       if (a) applyTo(a, t)
     } else {
       list.forEach((a) => applyTo(a, t))
