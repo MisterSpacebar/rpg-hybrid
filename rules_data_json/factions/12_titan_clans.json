@@ -11,7 +11,7 @@
   "worldbuilding": "Ogre kingdoms, giant tribes, monstrous nomads, and beast clans. Their ordinary warriors are already exceptionally large and powerful, while their armies rely on physical mass and devastating Charges.",
   "factionRule": {
     "name": "Massive Momentum",
-    "effect": "All friendly Units gain Impact 2 on successful Charges. Impact bonuses from explicitly distinct printed abilities (such as Stampede) add to this faction bonus; duplicate faction-rule applications do not. Charge distance is unchanged."
+    "effect": "Faction-specific Titan Clans Units gain Impact 2 on successful Charges; generic Units recruited into Titan Clans instead gain Impact 1. Explicitly distinct printed Impact bonuses (such as Stampede) add to the faction bonus, but duplicate faction bonuses never stack. Charge distance is unchanged."
   },
   "factionCommands": [
     {
@@ -110,11 +110,13 @@
           "type": "Passive",
           "effect": "Gain Impact +2 on a successful Charge."
         }
-      ]
+      ],
+      "charge": 2,
+      "impact": 4
     },
     {
       "name": "Stone Hurlers",
-      "points": 220,
+      "points": 235,
       "models": 3,
       "tags": [
         "Monster",
@@ -154,6 +156,13 @@
           "name": "Covering Barrage",
           "type": "Passive",
           "effect": "While this Unit remains stationary, friendly Monster Units within Medium gain Accurate 1 on their next Charge-phase Attack."
+        },
+        {
+          "name": "Boulderfall",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Assault",
+          "effect": "When this Unit declares a Boulder Toss Attack while stationary, spend 1 CP. That Attack gains Blast 1\" until it resolves. This Command does not permit an additional Attack or override Heavy."
         }
       ]
     }
@@ -202,7 +211,8 @@
           "timing": "Reaction",
           "effect": "After inflicting an unsaved Hit to an engaged unit or after a successful Charge, reposition one enemy basic Model up to 2\" to a legal position, maintaining Unit coherency."
         }
-      ]
+      ],
+      "impact": 4
     },
     {
       "name": "Beast Shaman",
