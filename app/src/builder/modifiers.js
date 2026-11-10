@@ -34,7 +34,7 @@ export function modifyStats(base, options) {
       set('evade', m[1])
     } else {
       if ((m = t.match(/Armor from \d\+ to (\d\+)/i))) set('armor', m[1])
-      else if (/improve (?:the Unit's )?Armor (?:one step|by 1 step)/i.test(t)) set('armor', stepUp(stats.armor))
+      else if (/improve (?:the (?:Unit's |Captain's ))?Armor (?:one step|by 1 step)/i.test(t)) set('armor', stepUp(stats.armor))
       if (/improve Evade one step/i.test(t)) set('evade', stepUp(stats.evade))
     }
     if ((m = t.match(/Increase Move by (\d+)"/i)) && /^\d+"?$/.test(String(stats.move))) {
@@ -94,6 +94,15 @@ export function modifyAttacks(attacks, options, { allWeapons = [], weaponTargets
   const list = attacks.map((a) => ({ ...a, keywords: [...(a.keywords ?? [])] }))
   for (const o of options.filter(passive)) {
     const t = o.effect ?? ''
+    // Arcane Training is a spell-only Accurate improvement, not a buff to
+    // physical melee weapons or a different generic Accurate source.
+    if (o.name === 'Arcane Training') {
+      for (const a of list.filter((x) => attackPhase(x) === 'Assault' && (x.damageTypes ?? []).includes('Magic'))) {
+        addKeyword(a, 'Accurate', 1)
+        a.modified = true
+      }
+      continue
+    }
     const touches =
       /\+1 Attack|Increase Attacks by 1/i.test(t) ||
       /improves?\b[^.]*\bHit|Hit\b[^.]*\bimproves/i.test(t) ||
