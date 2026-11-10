@@ -159,6 +159,23 @@
         "note": "The primary spell is included at no Arcana cost; alternative offensive spell profiles may be learned using Arcana selections, with CP Command choices competing for the same known Arcana slots.",
         "offensive": [
           {
+            "name": "Arcane Bolt",
+            "commandCost": null,
+            "profile": {
+              "range": "7\"",
+              "attacks": 5,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
+            "effect": "Reliable, repeatable magical bolts. May be learned as additional offensive Arcana if Arcane Bolt is not the Wizard's free Primary Spell."
+          },
+          {
             "name": "Arcane Blast",
             "commandCost": null,
             "profile": {
