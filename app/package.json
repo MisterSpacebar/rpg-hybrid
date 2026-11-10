@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test src/builder/modifiers.test.js src/character/tags.test.js src/character/profileValidation.test.js src/campaign/logic/equipment.test.js src/campaign/logic/limits.test.js src/campaign/logic/sync.test.js src/campaign/logic/economy.test.js src/campaign/logic/market.test.js src/campaign/logic/recruitmentAccess.test.js src/campaign/logic/roster.test.js src/campaign/logic/bestiary.test.js src/campaign/logic/craftingRules.test.js src/campaign/defaults/defaultShop.test.js src/campaign/logic/talentCommitment.test.js src/campaign/logic/retraining.test.js src/campaign/logic/qualityEngine.test.js src/campaign/logic/randomCrafting.test.js src/campaign/logic/ownedEquipment.test.js"
+    "test": "node --test src/builder/modifiers.test.js src/character/tags.test.js src/character/profileValidation.test.js src/campaign/logic/equipment.test.js src/campaign/logic/limits.test.js src/campaign/logic/sync.test.js src/campaign/logic/economy.test.js src/campaign/logic/market.test.js src/campaign/logic/recruitmentAccess.test.js src/campaign/logic/roster.test.js src/campaign/logic/bestiary.test.js src/campaign/logic/craftingRules.test.js src/campaign/defaults/defaultShop.test.js src/campaign/logic/talentCommitment.test.js src/campaign/logic/retraining.test.js src/campaign/logic/qualityEngine.test.js src/campaign/logic/randomCrafting.test.js src/campaign/logic/ownedEquipment.test.js src/builder/genericBalance.test.js"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.9.0",
