@@ -340,9 +340,21 @@ function TagChoice({ option, cfg, attacks, onChange }) {
 function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
   const r = resolveUnit(entry, cfg, view.faction?.id)
   const groups = visibleGroups(entry, cfg)
+  const selectedNames = new Set(groups.flatMap((g) => (Array.isArray(cfg.picks[g.id]) ? cfg.picks[g.id] : [cfg.picks[g.id]]).map((id) => g.options.find((o) => o.id === id)?.name).filter(Boolean)))
+  const primaryName = entry.groups.find((g) => g.id === 'primarySpell')?.options.find((o) => o.id === cfg.picks.primarySpell)?.name
+  const trainingTaken = groups.flatMap((g) => (Array.isArray(cfg.picks[g.id]) ? cfg.picks[g.id] : [cfg.picks[g.id]]).map((id) => g.options.find((o) => o.id === id)).filter(Boolean)).filter((o) => o.countsAsCombatTraining).length
   // Gaining Hero (Heroic Commission, Master Wizard) moves the Unit from E to H on the slot tracker; losing it moves it back.
   const setPick = (groupId, value) => {
-    const next = { ...cfg, picks: { ...cfg.picks, [groupId]: value } }
+    const picks = { ...cfg.picks, [groupId]: value }
+    // An alternative Arcana cannot duplicate a Wizard's included primary spell.
+    if (groupId === 'primarySpell') {
+      const primary = entry.groups.find((g) => g.id === 'primarySpell')?.options.find((o) => o.id === value)
+      const group = entry.groups.find((g) => g.id === 'arcana')
+      if (primary && group) picks.arcana = (picks.arcana ?? []).filter((id) => group.options.find((o) => o.id === id)?.name !== primary.name)
+    }
+    // When a Shield is chosen, remove conflicting melee/ranged packages. Otherwise
+    // preserve choices and surface any invalid older saved combinations.
+    const next = { ...cfg, picks }
     const before = resolveUnit(entry, cfg, view.faction?.id)
     const after = resolveUnit(entry, next, view.faction?.id)
     let slot = next.slot
@@ -368,7 +380,7 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
 
       <StatStrip stats={r.stats} impact={r.impact} models={r.models} changed={r.changedStats} base={r.baseStats} factionChanged={r.factionChanged} factionRule={r.factionRule} />
       <AttackLines attacks={r.attacks} />
-      <AbilityLines entry={entry} />
+      <AbilityLines entry={{ ...entry, abilities: r.abilities }} />
 
       <div className="unit-controls">
         <label>
@@ -393,6 +405,8 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
         )}
       </div>
 
+      {r.loadoutConflicts?.length > 0 && <div className="bad small">Incompatible equipment: {r.loadoutConflicts.join(', ')}</div>}
+      {r.combatTrainingExceeded && <div className="bad small">Captain may purchase at most two Combat Training upgrades.</div>}
       {groups.map((g) => {
         const current = g.options.find((o) => o.id === cfg.picks[g.id])
         const limit = groupLimit(entry, g, cfg)
@@ -410,7 +424,7 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
                 <select value={cfg.picks[g.id] ?? ''} onChange={(e) => setPick(g.id, e.target.value || null)}>
                   {!g.required && <option value="">None</option>}
                   {g.options.map((o) => (
-                    <option key={o.id} value={o.id}>{o.name}{o.points ? ` (+${o.points})` : ''}</option>
+                    <option key={o.id} value={o.id} disabled={g.id === 'arcana' && o.name === primaryName || (o.incompatibleWith ?? []).some((name) => selectedNames.has(name))}>{o.name}{o.points ? ` (+${o.points})` : ''}</option>
                   ))}
                 </select>
                 {current && optionBrief(current) && <div className="brief">{optionBrief(current)}</div>}
@@ -428,7 +442,7 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
                           setPick(g.id, [...picked.filter((id) => id !== o.id), ...Array(n).fill(o.id)])
                         }} />
                     ) : (
-                      <input type="checkbox" checked={count > 0}
+                      <input type="checkbox" disabled={count === 0 && ((o.incompatibleWith ?? []).some((name) => selectedNames.has(name)) || (o.countsAsCombatTraining && trainingTaken >= 2))} checked={count > 0}
                         onChange={() => setPick(g.id, toggle(picked, o.id, limit))} />
                     )}
                     <span>
@@ -437,6 +451,14 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
                     </span>
                   </label>
                   {count > 0 && o.tagChoice && <TagChoice option={o} cfg={cfg} attacks={r.attacks} onChange={onChange} />}
+                  {count > 0 && /^(Weapon Master|Weapon Mastery|Veteran)$/i.test(o.name) && r.attacks.length > 1 && entry.category === 'Captain' && (
+                    <label className="tag-choice">Apply to weapon{' '}
+                      <select value={cfg.weaponPicks?.[o.id] ?? ''} onChange={(e) => onChange({ weaponPicks: { ...cfg.weaponPicks, [o.id]: e.target.value } })}>
+                        <option value="">Primary melee</option>
+                        {r.attacks.map((a) => <option key={a.name} value={a.name}>{a.name}</option>)}
+                      </select>
+                    </label>
+                  )}
                   </Fragment>
                 )
               })
