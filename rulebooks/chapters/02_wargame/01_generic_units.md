@@ -104,7 +104,7 @@ Armor and Shields may be purchased independently or together; together they impr
 | Charge Drill | +15 | Gain **Charge 1**. Adds 1" to final Charge distance, not to Charge Impact. |
 | Shock Training | +25 | Gain **Impact 1** on successful Charges. It increases the Unit's *one* shared Impact pool, not Impact per Model. |
 | Brace Training | +15 | Gain **Brace 1**, additive with a spear's Brace 1 or other eligible sources. |
-| Deadly Precision | +20 | 1 CP — Assault or Combat, on this Unit's Attack: gain Critical 1 per Surge with **any** weapon. This personal Command can be used again on another eligible Attack for another CP, never twice on the same Attack; no extra Attack is granted. |
+| Deadly Precision | +20 | 1 CP — Assault or Combat, on this Unit's Attack: gain **Critical 1 per Surge** with **any** weapon (no Surge means no conversion). This personal Command can be used again on another eligible Attack for another CP, never twice on the same Attack; no extra Attack is granted. |
 
 A Line Infantry Unit may purchase **one** of Charge Drill, Shock Training, or Brace Training. It may purchase Veterans, Weapon Specialization, Armor, and Shields independently. Training effects and ranked Keywords apply once to the Unit, not once per Model; Charge distance and Impact follow the standard combat rules.
 
@@ -158,8 +158,9 @@ A Unit carrying multiple profiles selects one eligible Attack when it uses an At
 | Sharpeye | +20 | Primary ranged weapon gains Pinpoint. |
 | Weapon Specialization | +25 | Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains **Anti-[chosen tag] 2** against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once. |
 | **Veterans** | **+75** | The selected ranged weapon gains **+1 Attack per Model** and improves Hit by one step. |
+| Deadly Precision | +20 | Personal **1 CP — Assault or Combat** Command: the Attack with any weapon gains Critical 1 per Surge. May be used again on a later eligible Attack for another CP, never twice on the same Attack. No Surge means no conversion. |
 
-Deadly Precision +20 is a 1 CP personal Command that grants Critical 1 per Surge on one eligible Attack with any weapon. It does not require an extra-Model surcharge.
+Deadly Precision is Surge-dependent despite being CP-paid: no Surges means no Critical conversions. It does not require an extra-Model surcharge.
 
 Veterans and Weapon Specialization may each be purchased once and apply only to the selected primary ranged weapon. Rangefinder and Longshot Training **may be combined**; they alter different portions of a weapon's range. Rangefinder increases **normal** Range and does not grant or remove the Long Range Attack-pool reduction; Longshot affects only the additional extended band. These range upgrades apply once to the chosen primary weapon profile, regardless of Models.
 
@@ -288,8 +289,9 @@ Shields may be purchased alongside a ranged package where physically appropriate
 | Additional Heavy Cavalry Model | +55  | Add one matching Heavy Cavalry Model.                    |
 | Weapon Specialization           | +25  | Choose one Faction, Unit Type, or Trait tag. One selected weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once. |
 | Veterans                       | +50  | Increase Attacks by 1 per Model and improve Hit by one step.              |
+| Deadly Precision | +20 | Personal **1 CP — Assault or Combat** Command, grants Critical 1 per Surge on the chosen Attack with any weapon. Does not grant guaranteed Critical without a Surge; no reinforcement surcharge. |
 
-Deadly Precision +20 unlocks a 1 CP personal Command granting Critical 1 per Surge on an eligible Attack using any weapon, with no extra-Model surcharge. Maximum 5 Models. Paid equipment incurs its ordinary per-Model cost.
+Maximum 5 Models. Paid equipment incurs its ordinary per-Model cost.
 
 Battlefield Role: Maneuver, Charges, flanking, and exploiting enemy weaknesses.
 
