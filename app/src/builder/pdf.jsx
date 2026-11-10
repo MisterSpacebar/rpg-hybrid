@@ -61,11 +61,11 @@ const FACTION_COLOR = '#14877f'
 const STAT_FIELDS = { MOVE: 'move', 'WOUNDS/MDL': 'wounds', ARMOR: 'armor', EVADE: 'evade', WARD: 'ward' }
 
 // Stats changed by upgrades get an accent border and value.
-function StatBlock({ stats, impact, models, changed = [], factionChanged = [] }) {
+function StatBlock({ stats, impact, charge, models, changed = [], factionChanged = [] }) {
   if (!stats) return null
   const items = [
     ['MOVE', stats.move], ['WOUNDS/MDL', stats.wounds], ['ARMOR', stats.armor],
-    ['EVADE', stats.evade], ['WARD', stats.ward], impact ? ['IMPACT', impact] : null, models > 1 ? ['MODELS', models] : null,
+    ['EVADE', stats.evade], ['WARD', stats.ward], charge != null ? ['CHARGE', `+${charge}`] : null, impact ? ['IMPACT', impact] : null, models > 1 ? ['MODELS', models] : null,
   ].filter(Boolean)
   return (
     <View style={st.statRow}>
@@ -148,7 +148,7 @@ function Datasheet({ u, rule, compact }) {
 
       <View style={compact ? st.sheetBodyStack : st.sheetBody}>
         <View style={compact ? { flexShrink: 0 } : { width: 215, marginRight: 10 }}>
-          <StatBlock stats={u.stats} impact={u.impact} models={u.models} changed={u.changedStats} factionChanged={u.factionChanged} />
+          <StatBlock stats={u.stats} charge={u.charge} impact={u.impact} models={u.models} changed={u.changedStats} factionChanged={u.factionChanged} />
           <Attacks attacks={u.attacks} />
         </View>
         <View style={compact ? { flexShrink: 0 } : { flex: 1 }}>

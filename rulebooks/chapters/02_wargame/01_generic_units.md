@@ -104,6 +104,7 @@ Armor and Shields may be purchased independently or together; together they impr
 | Charge Drill | +15 | Gain **Charge 1**. Adds 1" to final Charge distance, not to Charge Impact. |
 | Shock Training | +25 | Gain **Impact 1** on successful Charges. It increases the Unit's *one* shared Impact pool, not Impact per Model. |
 | Brace Training | +15 | Gain **Brace 1**, additive with a spear's Brace 1 or other eligible sources. |
+| Deadly Precision | +20 | 1 CP — Assault or Combat, on this Unit's Attack: gain **Critical 1 per Surge** with **any** weapon (no Surge means no conversion). This personal Command can be used again on another eligible Attack for another CP, never twice on the same Attack; no extra Attack is granted. |
 
 A Line Infantry Unit may purchase **one** of Charge Drill, Shock Training, or Brace Training. It may purchase Veterans, Weapon Specialization, Armor, and Shields independently. Training effects and ranked Keywords apply once to the Unit, not once per Model; Charge distance and Impact follow the standard combat rules.
 
@@ -153,10 +154,13 @@ A Unit carrying multiple profiles selects one eligible Attack when it uses an At
 | Additional Model | **+25 each** | Add a matching Model, up to **9 Models**. |
 | **Rangefinder Training** | **+20** | Increase the primary ranged weapon's **printed normal Range by 2"**. It remains at its listed Hit within this improved range; existing Long Range X begins beyond the improved normal Range. |
 | Longshot Training | +10 | Gain **Long Range 2"**. If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units (minimum 1). |
-| Marksman Training | +25 | The selected ranged weapon gains **Accurate 1** for its combined Unit Attack pool. |
-| Expert Marksmen | +35 | The primary ranged weapon gains **Pinpoint**. |
+| Marksman Training | +30 | Primary ranged weapon gains Accurate 1 and improves Hit by one step. |
+| Sharpeye | +20 | Primary ranged weapon gains Pinpoint. |
 | Weapon Specialization | +25 | Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains **Anti-[chosen tag] 2** against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once. |
 | **Veterans** | **+75** | The selected ranged weapon gains **+1 Attack per Model** and improves Hit by one step. |
+| Deadly Precision | +20 | Personal **1 CP — Assault or Combat** Command: the Attack with any weapon gains Critical 1 per Surge. May be used again on a later eligible Attack for another CP, never twice on the same Attack. No Surge means no conversion. |
+
+Deadly Precision is Surge-dependent despite being CP-paid: no Surges means no Critical conversions. It does not require an extra-Model surcharge.
 
 Veterans and Weapon Specialization may each be purchased once and apply only to the selected primary ranged weapon. Rangefinder and Longshot Training **may be combined**; they alter different portions of a weapon's range. Rangefinder increases **normal** Range and does not grant or remove the Long Range Attack-pool reduction; Longshot affects only the additional extended band. These range upgrades apply once to the chosen primary weapon profile, regardless of Models.
 
@@ -201,6 +205,8 @@ Any Elite Infantry Unit may buy **one** eligible ranged package **without first 
 | Pistols | +25 | 6" / 3 / 5+ / 1 / Firearm, Pinpoint. Short-range ranged utility. |
 | Musket | +50 | 11" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Elite 2. Stationary anti-elite fire. |
 
+Shields may be combined with Pistols, but **not** with Shortbows, Longbows or Muskets, which are two-handed ranged weapons.
+
 These are **Elite Infantry equipment costs**, not an alternative Ranged Infantry roster. A Unit makes one eligible weapon Attack when selected to Attack in its phase; carrying a ranged weapon does not add its dice to a melee Attack.
 
 ### Formation and Combat Upgrades
@@ -210,15 +216,15 @@ These are **Elite Infantry equipment costs**, not an alternative Ranged Infantry
 | Standard Formation | +0 | Three Models at W3 each (nine total Wounds). |
 | Reinforced Bodies | **+30** | All Models gain +1 maximum Wound (W3 → W4). Additional Models purchased with this upgrade cost +10 each beyond their normal cost. |
 | Additional Model | **+40 each** | Add a matching W3 Model, up to **5 Models**. Add another +10 per Model with Reinforced Bodies. |
-| Weapon Mastery | +10 | Selected melee weapon gains **Accurate 1** for the Unit's combined melee Attack pool. |
+| Weapon Master | +30 | Selected melee weapon gains Accurate 1 and improves Hit by one step. |
 | Armored | +25 | Improve Armor one step; gain the Armored tag. |
 | Quick | +50 | Increase Move by 2" and improve Evade one step; gain Mobile. |
-| Deadly Precision | **+25** | One selected weapon gains **Critical 1 per Surge** (up to one failed die converted for EACH Surge, after rerolls). No Surge means no passive conversion. |
+| Deadly Precision | +20 | 1 CP — Assault or Combat, on this Unit's Attack: gain Critical 1 per Surge with **any** weapon. This personal Command can be used again on another eligible Attack for another CP, never twice on the same Attack; no extra Attack is granted. |
 | Hunters | +25 | Choose one Faction or Trait tag. This unit gains Anti-[chosen tag] 3. |
 | **Veterans** | **+50** | One selected weapon gains **+1 Attack per Model** and improves its Hit characteristic one step. |
 | Brace Drill | +25 | Gain **Brace 1**; adds to other applicable sources and reduces Charge Impact once per receiving Unit. |
 
-A Unit may purchase **either Weapon Mastery or Deadly Precision**, not both. Veterans and Weapon Specialization each affect **one selected weapon profile**, chosen when the upgrade is purchased. If an Elite Infantry Unit buys a ranged package, Veterans must specify whether the melee or ranged profile benefits. Bonuses and ranked Keywords are never multiplied by its Model count unless expressly written **per Model**.
+Weapon Master and Deadly Precision are independent upgrades; the latter is a personal CP Command, not a passive keyword. Veterans improves all weapons; Weapon Specialization applies only to its selected weapon. Veterans improves every weapon the Unit carries. Bonuses and ranked Keywords are never multiplied by its Model count unless expressly written **per Model**.
 
 **Battlefield role:** Durable infantry, tactical melee specialists, and resilient mixed-weapon formations.
 
@@ -227,7 +233,7 @@ A Unit may purchase **either Weapon Mastery or Deadly Precision**, not both. Vet
 
 # 2. CAVALRY AND MOBILE TROOPS
 
-Cavalry profiles represent conventional mounted troops, while faction-specific mobile troops may use different forms of movement. All generic Cavalry classes gain **Charge 3**.
+Cavalry profiles represent conventional mounted troops, while faction-specific mobile troops may use different forms of movement. Generic Cavalry classes gain different Charge and Impact values as their protection increases.
 
 ## Cavalry — 115 Points
 
@@ -241,9 +247,9 @@ Choose one cavalry class, which determines the Unit's characteristics and base P
 
 | Class         | Cost | Characteristics / Role                                                            |
 | ------------- | ---- | ---------------------------------------------------------------------------------------------------------- |
-| Light Cavalry | +0   | M7" / W2 / Arm 6+ / Eva 5+. Fast, lightly protected troops suited to harassment and flanking.              |
-| Cavalry       | +10  | M6" / W2 / Arm 5+ / Eva 5+. Conventional cavalry with balanced mobility and protection. 125 Points total.  |
-| Heavy Cavalry | +35  | M5" / W3 / Arm 4+ / Eva 5+. Durable shock cavalry with reduced movement. 150 Points total. Gains Elite tag |
+| Light Cavalry | +0   | M7" / W2 / Arm 6+ / Eva 5+. Charge 3, Impact +0. Fast flankers.              |
+| Cavalry       | +10  | M6" / W2 / Arm 5+ / Eva 5+. Charge 2, Impact +1. Balanced cavalry. 125 Points total.  |
+| Heavy Cavalry | +35  | M5" / W3 / Arm 4+ / Eva 5+. Charge 1, Impact +2. Heavy shock troops. 150 Points total. Gains Elite tag |
 
 ### Melee Weapons
 
@@ -277,14 +283,15 @@ Shields may be purchased alongside a ranged package where physically appropriate
 | Upgrade                        | Cost | Effect                                                   |
 | ------------------------------ | ---- | -------------------------------------------------------- |
 | Standard Formation             | +0   | 3 Models using the selected Cavalry class and equipment. |
-| Charge Formation               | +50  | Gains Impact +3                                          |
+| Charge Formation | +50 | Personal **1 CP — Assault Command**, usable when declaring a Charge: +3 to the Unit's one shared Charge Impact for that Charge, additive with class Impact and weapon Impact; never per Model. |
 | Additional Light Cavalry Model | +40  | Add one matching Light Cavalry Model.                    |
 | Additional Cavalry Model       | +50  | Add one matching Cavalry Model.                          |
 | Additional Heavy Cavalry Model | +55  | Add one matching Heavy Cavalry Model.                    |
 | Weapon Specialization           | +25  | Choose one Faction, Unit Type, or Trait tag. One selected weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once. |
 | Veterans                       | +50  | Increase Attacks by 1 per Model and improve Hit by one step.              |
+| Deadly Precision | +20 | Personal **1 CP — Assault or Combat** Command, grants Critical 1 per Surge on the chosen Attack with any weapon. Does not grant guaranteed Critical without a Surge; no reinforcement surcharge. |
 
-Maximum 5 Models. Paid equipment incurs its additional per-Model cost.
+Maximum 5 Models. Paid equipment incurs its ordinary per-Model cost.
 
 Battlefield Role: Maneuver, Charges, flanking, and exploiting enemy weaknesses.
 
@@ -321,28 +328,28 @@ Choose one melee weapon.
 | Spear            | +5   | Engaged 2" / 3 / 4+ / 1 / Brace 1.                     |
 | Dual Weapons     | +35  | Engaged / 5 / 4+ / 1 / Accurate 1                      |
 
+### Optional Ranged Weapons
+
+Choose up to **one** secondary ranged weapon via a separate dropdown: Bow +10, Crossbow +10, Pistol +10, or Musket +25. These do not use Combat Training selections. Shields are incompatible with two-handed ranged weapons (Bow, Crossbow, Musket), but work with Pistols.
+
 ### Equipment and Combat Training
 
 | Upgrade            | Cost | Effect                                                                                                       |
 | ------------------ | ---- | ------------------------------------------------------------------------------------------------------------ |
 | Standard Equipment | +0   | Retain the Captain's chosen melee weapon and standard defenses.                                              |
-| Shield             | +15  | Improve Armor from 5+ to 4+. May be used with Officer's Weapon or Spear.                                     |
-| Bow                | +10  | 8" / 3 / 5+ / 1. Adds a ranged weapon.                                                                       |
-| Crossbow           | +10  | 8" / 2 / 4+ / 2 / Heavy                                                                                      |
-| Pistol             | +10  | 6" / 2 / 5+ / 1 / Firearm                                                                                    |
-| Musket             | +25  | 8" / 3 / 4+ / 1 / Firearm, Heavy                                                                             |
+| Shield | +15 | Improve Armor from 5+ to 4+. Compatible only with Officer's Weapon or Spear and no two-handed ranged weapon. |
 | Defensive          | +10  | Gain Brace 1, reducing incoming Charge Impact by 1.                                                          |
 | Battle-Hardened    | +15  | Gain Tough 1, rerolling up to one natural 1 on Armor Saves.                                                  |
-| Deadly Strikes     | +15  | One melee weapon gains Critical 1 per Surge, converting up to one failed Hit die for EACH Surge after rerolls; no passive conversion without a Surge. |
-| Monster Hunter     | +15  | One melee weapon gains Anti-Monster 1, increasing its Attacks by 1 against Monsters.                         |
-| Master Hunter      | +25  | This unit gains Anti-[Type] 2. |
+| Deadly Precision | +20 | 1 CP — Assault or Combat, on this Unit's Attack: gain Critical 1 per Surge with **any** weapon. This personal Command can be used again on another eligible Attack for another CP, never twice on the same Attack; no extra Attack is granted. |
+| Master Hunter | +25 | Choose a tag: the Unit gains Anti-[chosen tag] 2 for eligible Attacks; use the highest matching Anti rank. |
+| Armored | +25 | Improve Armor one step and gain Armored. Counts as Combat Training. |
 | Survivor           | +15  | Increase Wounds from 4 to 5.                                                                                 |
-| Weapon Master      | +20  | The chosen weapon gains Accurate 2.                                                                          |
+| Weapon Master | +30 | One selected melee or ranged weapon gains Accurate 1 and improves Hit by one step. |
 | Mounted            | +25  | Increase Move to M6", gain +1 Wound and **Charge 3**.<br>Loses Infantry tag and gains Cavalry.                                |
-| Veteran            | +50  | The chosen weapon gains +1 Attack and improves Hit by one step.                                              |
+| Veterans | +50 | Every weapon the Captain carries gains +1 Attack and improves Hit by one step. |
 | Heroic Commission  | +35  | Gain **Hero** and **H** eligibility while retaining **Elite**; increase Wounds by 1; every weapon the Captain currently carries gains +1 Attack. The Captain now counts toward the three-Hero limit. |
 
-A Captain may purchase up to two Combat Training upgrades. Weapon and equipment upgrades do not count toward this limit.
+A Captain may purchase at most two Combat Training upgrades (including Armored and Deadly Precision). Weapon packages and Shields do not count. Monster Hunter has been removed in favor of Master Hunter.
 
 A Captain may carry one ranged weapon in addition to their melee weapon.
 
@@ -393,8 +400,8 @@ Choose one Wizard specialization.
 
 | Type          | Cost | Characteristics / Abilities                                                                                                                                          |
 | ------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Wizard        | +0   | M3" / W3 / Arm 6+ / Eva 6+ / Ward 6+ Magic.<br>Arcane Bolt: 7" / 5 / 5+ / 1 / Magic, Accurate 1.<br>Choose 2 Arcana.                                                 |
-| Master Wizard | +50  | M3" / W4 / Arm 6+ / Eva 6+ / Ward 5+ Magic.<br>Arcane Bolt: 9" / 5 / 4+ / 1 / Magic, Accurate 1, Long Range 3”<br>Choose 3 Arcana.<br>Loses Elite tag and gains Hero |
+| Wizard        | +0   | M3" / W3 / Arm 6+ / Eva 6+ / Ward 6+ Magic.<br>Choose one free Primary Spell and 2 Arcana.                                                 |
+| Master Wizard | +50  | M3" / W4 / Arm 6+ / Eva 6+ / Ward 5+ Magic.<br>Choose one free Primary Spell, improved +2" normal Range and +1 Hit step, and 3 Arcana.<br>Loses Elite tag and gains Hero |
 
 ### Melee Weapon Options
 
@@ -404,7 +411,7 @@ Choose one Wizard specialization.
 | Arcane Blade    | +25  | Engaged / 5 / 4+ / 1 / Magic     |
 | Battle Staff    | +20  | Engaged 2" / 4 / 5+ / 1 / Magic  |
 
-Battle Wizards retain Arcane Bolt alongside their selected melee weapon.
+Wizards choose exactly **one free Primary Spell** from the four below. Additional offensive Spell Attacks may be learned through Arcana slots; each remains a separate Assault Attack choice.
 
 ### Master Wizard Ability
 
@@ -422,22 +429,34 @@ This additional Damage does not replace normal Hits or Damage. Applicable Ward S
 | Magic Armor       | +25      | Armor and Evade become 5+                                                                      |
 | Additional Arcana | +15 each | Learn one additional Arcana. Increases spell options, not CP or Doctrine-card availability.    |
 | Arcane Training   | +15      | Gain Accurate +1 on offensive spell attacks.                                                   |
-| Weapon Specialization | +25  | Choose one Faction, Unit Type, or Trait tag. One offensive Arcana (Arcane Bolt is eligible) gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts. May be purchased once. |
-| Veteran           | +50      | Increase Attacks by 1 and improve Hit by one step on one offensive Arcana; Arcane Bolt is eligible. |
+| Weapon Specialization | +25  | Choose one Faction, Unit Type, or Trait tag. One offensive Arcana (the chosen primary spell is eligible) gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts. May be purchased once. |
+| Veteran | +50 | Select one known offensive Spell Attack (including the primary spell); increase its Attacks by 1 and improve Hit by one step. |
 | Cantrip           | +30      | Reduce the CP cost of this Model's first eligible Command each Round by 1 (minimum 0). No card is exhausted for a 0 CP use.              |
 | Greater Ward      | +35      | This unit’s Ward improves by 1. This includes both Physical and Magic.                         |
 
+### Primary Spells (choose one free)
+
+| Spell | Starting Wizard profile |
+| --- | --- |
+| Arcane Bolt | 7" / 5 / 5+ / 1 / Magic, Accurate 1. |
+| Arcane Blast | 7" / 3 / 5+ / 1 / Magic, Blast 1". |
+| Force Bolt | 12" / 4 / 4+ / 1 / Magic. |
+| Arcane Lance | 9" / 2 / 5+ / 2 / Magic, Heavy, Anti-Monster 2. |
+
+Master Wizards add 2" normal Range and improve Hit one step on their selected primary spell only (maximum 2+). No Wizard gains Arcane Bolt automatically in addition to its primary spell.
+
 ## Generic Arcana
 
-Attack-profile Arcana are alternative weapons for a Wizard's normal Attack and do not require CP unless specified.
+Attack-profile Arcana are alternative spell attacks learned through Arcana slots, in competition with support/control Command Arcana. They require no CP unless stated. The selected primary spell cannot be learned a second time.
 
 ### Offensive Arcana
 
 | Arcana       | Command Cost | Profile / Effect                                                                                                                                |
 | ------------ | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Arcane Blast | —            | 6" / 3 / 5+ / 1 / Blast 1", Magic. Area magic that inflicts an automatic Hit on other Units within 1" of the target if the Attack scores a Hit. |
-| Force Bolt   | —            | 10" / 3 / 4+ / 1 / Magic.                                                                                                                       |
-| Arcane Lance | —            | 8" / 2 / 5+ / 2 / Magic, Heavy, Anti-Monster 2                                                                                                  |
+| Arcane Bolt | — | 7" / 5 / 5+ / 1 / Magic, Accurate 1. Learnable as additional Arcana if it is not the chosen free Primary Spell. |
+| Arcane Blast | —            | 7" / 3 / 5+ / 1 / Blast 1", Magic. Area magic that inflicts an automatic Hit on other Units within 1" of the target if the Attack scores a Hit. |
+| Force Bolt   | —            | 12" / 4 / 4+ / 1 / Magic.                                                                                                                       |
+| Arcane Lance | —            | 9" / 2 / 5+ / 2 / Magic, Heavy, Anti-Monster 2                                                                                                  |
 
 ### Command Arcana
 
@@ -595,8 +614,8 @@ They generally attack using a single Artillery profile, with one weak melee prof
 
 | Class           | Cost | Characteristics / Role                                                                                     |
 | --------------- | ---- | ---------------------------------------------------------------------------------------------------------- |
-| Light Artillery | +0   | M3" / W4 / Arm 5+ / Eva —. Smaller artillery suitable for general fire support.                            |
-| Heavy Artillery | +40  | M2" / W5 / Arm 5+ / Eva —. Larger artillery with heavier weapons and greater durability. 150 Points total. |
+| Light Artillery | +0   | M3" / W4 / Arm 5+ / Eva —. More mobile general fire support; only Light Cannon retains Heavy.                            |
+| Heavy Artillery | +40  | M2" / W5 / Arm 5+ / Eva —. Siege artillery; all primary weapons retain Heavy but improve Hit one step. 150 Points total. |
 
 ### Light Artillery Weapons
 
@@ -604,10 +623,10 @@ Choose one main weapon.
 
 | Weapon          | Cost | Profile / Effect                                                                                |
 | --------------- | ---- | ----------------------------------------------------------------------------------------------- |
-| Bolt Thrower    | +0   | 15" / 2 / 4+ / 2 / Heavy, Anti-Armored 2. Accurate projectiles suited to attacking armored enemies.             |
+| Bolt Thrower    | +0   | 15" / 2 / 4+ / 2 / Anti-Armored 2. Accurate projectiles suited to attacking armored enemies.             |
 | Light Cannon    | +0   | 15" / 2 / 5+ / 3 / Firearm, Heavy, Anti-Monster 2. Powerful direct-fire cannon that gains Instant.              |
-| Repeater Gun    | +0   | 10" / 4 / 5+ / 1 / Firearm, Heavy, Rapid-Fire 2. Gains +2 Attacks when the target is within 5". |
-| Arcane Ballista | +0   | 12" / 3 / 5+ / 2 / Magic, Heavy, Anti-Construct 2. Magically powered artillery with multiple projectiles.         |
+| Repeater Gun    | +0   | 10" / 4 / 5+ / 1 / Firearm, Rapid-Fire 2. Gains +2 Attacks when the target is within 5". |
+| Arcane Ballista | +0   | 12" / 3 / 5+ / 2 / Magic, Anti-Construct 2. Magically powered artillery with multiple projectiles.         |
 
 ### Heavy Artillery Weapons
 
@@ -615,10 +634,10 @@ Choose one main weapon.
 
 | Weapon         | Cost | Profile / Effect                                                                                                              |
 | -------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Heavy Cannon   | +0   | 18" / 2 / 4+ / 3 / Firearm, Heavy, Anti-Armored 2. Powerful direct-fire siege cannon.                                                         |
-| Bombard        | +0   | 15" / 2 / 5+ / 2 / Blast 2", Firearm, Heavy, Anti-Infantry 2. Explosive artillery affecting nearby Units when the primary Attack scores a Hit. |
-| Great Ballista | +0   | 18" / 2 / 4+ / 2 / Heavy, Anti-Monster 2. Long-range mechanical siege weapon.                                                                 |
-| Arcane Cannon  | +0   | 15" / 3 / 4+ / 2 / Magic, Heavy, Anti-Elite 2. Powerful magical artillery with reliable Hit characteristics.                                |
+| Heavy Cannon   | +0   | 18" / 2 / 3+ / 3 / Firearm, Heavy, Anti-Armored 2. Powerful direct-fire siege cannon.                                                         |
+| Bombard        | +0   | 15" / 2 / 4+ / 2 / Blast 2", Firearm, Heavy, Anti-Infantry 2. Explosive artillery affecting nearby Units when the primary Attack scores a Hit. |
+| Great Ballista | +0   | 18" / 2 / 3+ / 2 / Heavy, Anti-Monster 2. Long-range mechanical siege weapon.                                                                 |
+| Arcane Cannon  | +0   | 15" / 3 / 3+ / 2 / Magic, Heavy, Anti-Elite 2. Powerful magical artillery with reliable Hit characteristics.                                |
 
 ### Timed Barrage — +20 Points
 
@@ -753,7 +772,7 @@ These profiles are provisional balance targets. The main aim is to retain recogn
 - **Weapon Specialization (new, +25):** A broadly available upgrade (Line Infantry, Ranged Infantry, Elite Infantry, Cavalry, Captains, Wizards) letting a Unit choose **any one Faction, Unit Type, or Trait tag** and grant one selected weapon **Anti-[chosen tag] 2**. Because Anti-[Type] bonuses apply once to the whole Unit's combined Attack pool rather than per Model (see Unit Tags), this upgrade does not scale with Model count the way Veterans does — it stays a flat, situational bonus regardless of formation size, which is why it is priced as a single flat cost rather than per-unit like Veterans.
 - **Line Infantry:** Rebuilt around a **W2 / Arm 6+ / Eva 6+, Unarmored** baseline for the same 75 Points, trading the old flat 5+ Armor for more Wounds and a cheaper, individually purchasable path back to better Armor (see Defensive Upgrades: Armor and Shields, each +15, stacking to the old Arm 4+ ceiling). Spears and Polearms have Charge defenses, Heavy Weapons provide Damage 2 with Anti-Armored 2 **and the Heavy restriction** (its circumstantial extra-dice potential is strong enough on a multi-Model Unit to warrant the movement tradeoff), and Dual Weapons provide volume. Charge Drill, Shock Training, and Brace Training add independent tactical choices. **Polearms remain the only melee weapon not implicitly Heavy** despite their weight.
 - **Unarmored tag:** New Trait tag, the counterpart to Armored. Granted by baseline Line Infantry; removed once the Armor upgrade is purchased. See Unit Tags for full rules, including **Anti-Unarmored X**.
-- **Elite Infantry:** Strong W4 profiles remain their principal distinction. Secondary ranged weapons are allowed without buying Veterans, and their Weapon Mastery/Critical upgrades modify one combined Unit pool rather than multiplying with Model count.
+- **Elite Infantry:** Strong W4 profiles remain their principal distinction. Secondary ranged weapons are allowed without buying Veterans, and their Weapon Master and Deadly Precision upgrades affect the specified Unit Attack rather than multiplying with Model count.
 - **Faction Horde units:** Sneaks, Thralls, and Corpse Horde were buffed by adding Models at unchanged Points (Sneaks +1, Thralls +2, Corpse Horde +3) rather than by adding Attacks, preserving their characteristically fragile, high-casualty-tolerance profile while improving their staying power and board presence.
 - **Supports:** Two W3 Models remain standard. Additional Models cost +50 but **never multiply Commands**. Engineer Pistols and the Alchemist/Cleric options are deliberately limited compared with PC class Formulas and spells. Heralds, Scouts/Spotters, Engineers, Alchemists, and Clerics may each learn **Target Analysis** (+20 Points), a 1 CP Assault Command granting a friendly Unit's next Attack a specialization-appropriate **Anti-[Type] 3** (see each specialization's upgrade table for its available categories). It is priced higher than a weapon's own Anti-[Type] 2 precisely because, unlike an owned weapon, a granted Command bonus doesn't scale with the receiving Unit's size or equipment.
 - **Keyword stacking:** The entire Unit Attack pool receives its printed Accurate X, Critical X, etc. once. Distinct applicable keyword bonuses add their X values unless a specific rule states otherwise. An explicit **per-Model Attack** bonus is different from a **Unit Attack-pool** bonus.
@@ -777,16 +796,8 @@ These are **expected raw successful Hits and nominal Damage before enemy Saves**
 
 ---
 
-## v0.7 Generic Unit Balance — Authoritative Playtest Overrides
+## Current Generic Unit Balance — Playtest Clarifications
 
-This section takes precedence over older prices/ranges in the preceding tables where they differ:
+This balance pass supersedes the older historical Deadly Precision and Wizard default spell wording. **Deadly Precision +20** is now a personal 1 CP Command granting Critical 1 per Surge on any eligible Attack, repeatable on another Attack for another CP (never twice on the same Attack); no purchased Deadly Precision upgrade grants a permanent Critical keyword or adds a reinforcement surcharge. **Elite/Captain Weapon Master +30** and **Ranged Marksman Training +30** grant Accurate 1 plus one Hit step. **Sharpeye +20** grants Pinpoint.
 
-* **Line Infantry:** Dual Weapons +40 Points (five Models cost 75+40=115; Veterans are an additional +75). They remain 3 Attacks per Model at Hit 5+, Damage 1, with no innate Critical. Optional Deadly Precision +45 grants Critical 1 per Surge; each additional Model with it incurs a +5 surcharge.
-* **Ranged Infantry:** Optional Deadly Precision +40 grants Critical 1 per Surge on one ranged profile (additional Models with it +5 each). Shortbows 9"; Longbows **12" + Long Range 6"**, weapon cost **+35 Points** (four-model base Longbow Unit: 135 Points); Crossbows 9" + Long Range 3"; Heavy Crossbows 12" + Long Range 3"; Muskets 9" + Long Range 3"; Slings 9". Generic Rangefinder +2" and Longshot Training still apply at their purchased costs. Extended Range penalty is now −3 dice for multi-model Units.
-* **Elite Infantry:** base 105 Points, three W3 Models, Armor 5+, Evade 5+. Reinforced Bodies +30 makes the initial three Models W4; additional W3 Models cost +40 each, plus another +10 each with Reinforced Bodies. Armor +25 and Quick +50 remain independently purchasable and can combine for Armor 4+, Evade 4+. The +25 Deadly Precision upgrade is **Critical 1 per Surge**, not guaranteed Critical.
-* **Elite Infantry secondary ranged equipment:** Shortbow 9"; Longbow 12" / Long Range 3"; Musket 9" / Long Range 3"; other profile characteristics and package prices unchanged.
-* **Cavalry:** Mounted Bows 9", Carbines 9"; optional Deadly Precision +30 (+5 per added Model), Critical 1 per Surge on one selected weapon; otherwise unchanged.
-* **Captain:** 125 Points, two free Commands chosen from the five revised options above. Standard Captains are Officers, not Characters. Heroic Commission adds Hero but does not itself add Character. Deadly Strikes is Critical 1 per Surge.
-* **Generic Wizard:** base stats and damage unchanged. Optional **Precision Casting +20** grants Pinpoint on one chosen Spell Attack; optional **Critical Channeling +20** gives one chosen Spell Attack Critical 1 per Surge.
-* **Scouts/Spotters:** Forward Observer +25 now grants Pinpoint in addition to its existing Cover negation. Engineers, Heralds, Scouts, Alchemists and Clerics may each buy **Tactical Guidance +25**, choosing one creature/material Trait; other friendly Units wholly within 3" gain passive Anti-[that Trait] 2. Existing **Target Analysis** remains +20 and grants Anti 3 for 1 CP. Only the highest matching Anti rank applies.
-* **Core keywords:** Critical 1 is per Surge for passive/printed sources, while Command-granted Critical is guaranteed once; Long Range is −1 die for single-model and −3 for multi-model Units; see Keywords and Combat chapters.
+Captains choose their secondary ranged weapon separately from Combat Training, Veterans improve all their weapons, Monster Hunter is removed, and Armored +25 is available. Shields cannot be paired with two-handed ranged weapons. Light/standard/heavy Cavalry gain Charge 3/2/1 and Impact +0/+1/+2. Charge Formation costs +50 to unlock a 1 CP Charge Command granting +3 Impact. Regular artillery mostly fires without Heavy; heavy artillery keeps Heavy and improves Hit. Wizards select one free Primary Spell and use Arcana slots for additional offensive spells or Commands. The JSON roster profiles remain authoritative for point values and weapon stat lines.

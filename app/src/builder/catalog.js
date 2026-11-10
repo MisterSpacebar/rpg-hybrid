@@ -38,6 +38,11 @@ function optionOf(o, groupKey) {
     arcaneBolt: o.arcaneBolt ?? null,
     tagChange: o.tagChange ?? null,
     cpCost: o.cpCost ?? null,
+    incompatibleWith: o.incompatibleWith ?? null,
+    charge: o.charge ?? null,
+    impact: o.impact ?? null,
+    grantsTags: o.grantsTags ?? null,
+    countsAsCombatTraining: !!o.countsAsCombatTraining,
     timing: o.timing ?? null,
   }
 }
@@ -80,7 +85,7 @@ function buildGroups(raw, modelOptions) {
         required: radio && choices.some((o) => !o.points),
         max: radio ? 1 : (val.chooseCount ?? null),
         package: isPackage,
-        options: choices.map((o, i) => ({ id: `${key}:${i}`, ...optionOf(o, key) })),
+        options: choices.map((o, i) => ({ id: o.legacyId ?? `${key}:${i}`, ...optionOf(o, key) })),
       })
     }
     if (addons.length) {
@@ -89,7 +94,7 @@ function buildGroups(raw, modelOptions) {
         label: 'Shields',
         kind: 'check',
         package: true,
-        options: addons.map((o, i) => ({ id: `${key}+addon:${i}`, ...optionOf(o, key) })),
+        options: addons.map((o, i) => ({ id: o.legacyId ?? `${key}+addon:${i}`, ...optionOf(o, key) })),
       })
     }
   }
@@ -108,7 +113,7 @@ function arcanaGroup(arcana) {
     max: null,
     limit: { base: { group: 'specialization', field: 'arcanaChoices' }, bonus: { group: 'wizardUpgrades', option: 'Additional Arcana' } },
     options: list.map((a, i) => ({
-      id: `arcana:${i}`,
+      id: a.legacyId ?? `arcana:${i}`,
       name: a.name,
       points: 0,
       varies: false,
@@ -198,7 +203,11 @@ function normalizeGeneric(data) {
       { id, name, basePoints, baseModels, tags, stats, description, category: 'Captain', slots: recruitmentSlots, heroOption: 'Heroic Commission' },
       raw,
     )
-    // The Additional Command upgrade raises the number of Commands the Captain may learn.
+    // The ranged package is a separate optional radio selector, not a Combat Training pick.
+    // Keep non-weapon training available independently of the chosen ranged Attack.
+    const rangedGroup = entry.groups.find((g) => g.id === 'rangedWeaponPackages')
+    if (rangedGroup) { rangedGroup.required = false; rangedGroup.package = true }
+        // The Additional Command upgrade raises the number of Commands the Captain may learn.
     const commands = entry.groups.find((g) => g.id === 'commands')
     if (commands) commands.limit = { base: commands.max, bonus: { group: 'commandUpgrades', option: 'Additional Command' } }
     out.push(entry)
@@ -210,8 +219,11 @@ function normalizeGeneric(data) {
       { id, name, basePoints, baseModels, tags, description, category: 'Wizard', slots: ['E'], heroOption: 'Master Wizard' },
       raw,
     )
+    entry.masterWizardAbility = raw.masterWizardAbility ?? null
     const arcana = arcanaGroup(raw.genericArcana)
     if (arcana) {
+      // Learned offensive Arcana are separate optional attacks; the primary free spell
+      // occupies neither Arcana slot nor a CP/card.
       entry.groups.push(arcana)
       const extra = entry.groups.find((g) => g.id === 'wizardUpgrades')?.options.find((o) => o.each)
       if (extra) extra.maxCount = Math.max(0, arcana.options.length - 2)

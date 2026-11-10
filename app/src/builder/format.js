@@ -68,6 +68,8 @@ export function splitOptions(u) {
   for (const p of u.picks) {
     for (const o of p.options) {
       if (/^no /i.test(o.name)) continue
+      // Purchased personal Commands appear in the Abilities section, not twice.
+      if (o.cpCost && u.abilities.some((a) => a.name === o.name)) { applied.push(o.name); continue }
       if (o.profile || o.arcaneBolt) { if (o.points > 0) applied.push(o.name) } else if (appliedToProfile(o)) applied.push(o.name)
       else detailed.push({ ...o, group: p.group })
     }

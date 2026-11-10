@@ -29,19 +29,8 @@
               "evade": "6+",
               "ward": "6+ (Magic)"
             },
-            "arcaneBolt": {
-              "range": "7\"",
-              "attacks": 5,
-              "hit": "5+",
-              "damage": 1,
-              "damageTypes": [
-                "Magic"
-              ],
-              "keywords": [
-                "Accurate 1"
-              ]
-            },
-            "arcanaChoices": 2
+            "arcanaChoices": 2,
+            "notes": " Primary Spell is selected from primarySpell; Wizard uses printed values, Master Wizard adds +2 inches normal Range and improves Hit by one step (maximum 2+) for that primary spell. This bonus applies only to the selected primary spell, not Arcana learned separately."
           },
           {
             "name": "Master Wizard",
@@ -53,27 +42,15 @@
               "evade": "6+",
               "ward": "5+ (Magic)"
             },
-            "arcaneBolt": {
-              "range": "9\"",
-              "attacks": 5,
-              "hit": "4+",
-              "damage": 1,
-              "damageTypes": [
-                "Magic"
-              ],
-              "keywords": [
-                "Accurate 1",
-                "Long Range 3\""
-              ]
-            },
             "arcanaChoices": 3,
-            "tagChange": "Loses Elite tag and gains Hero."
+            "tagChange": "Loses Elite tag and gains Hero.",
+            "notes": " Primary Spell is selected from primarySpell; Wizard uses printed values, Master Wizard adds +2 inches normal Range and improves Hit by one step (maximum 2+) for that primary spell. This bonus applies only to the selected primary spell, not Arcana learned separately."
           }
         ]
       },
       "meleeWeaponOptions": {
         "chooseCount": 1,
-        "note": "Wizards retain Arcane Bolt alongside their selected melee weapon.",
+        "note": "Wizards carry exactly one primary Spell Attack, alongside their selected melee weapon; optional learned offensive Arcana remain alternative Assault Attacks.",
         "options": [
           {
             "name": "Staff or Dagger",
@@ -149,12 +126,12 @@
           {
             "name": "Weapon Specialization",
             "points": 25,
-            "effect": "Choose one Faction, Unit Type, or Trait tag. One offensive Arcana (Arcane Bolt is eligible) gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts. May be purchased once."
+            "effect": "Choose one Faction, Unit Type, or Trait tag. One offensive Spell Attack (including the selected primary spell) gains Anti-[chosen tag] 2 against eligible targets; the highest matching Anti rank applies."
           },
           {
             "name": "Veteran",
             "points": 50,
-            "effect": "Increase Attacks by 1 and improve Hit by one step on one offensive Arcana; Arcane Bolt is eligible."
+            "effect": "Choose one offensive Spell Attack (including the selected primary spell): increase its Attacks by 1 and improve Hit by one step."
           },
           {
             "name": "Cantrip",
@@ -179,13 +156,31 @@
         ]
       },
       "genericArcana": {
-        "note": "Attack-profile Arcana are alternative weapons for a Wizard's normal Attack and do not require CP unless specified.",
+        "note": "The primary spell is included at no Arcana cost; alternative offensive spell profiles may be learned using Arcana selections, with CP Command choices competing for the same known Arcana slots.",
         "offensive": [
+          {
+            "name": "Arcane Bolt",
+            "commandCost": null,
+            "profile": {
+              "range": "7\"",
+              "attacks": 5,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
+            "effect": "Reliable, repeatable magical bolts. May be learned as additional offensive Arcana if Arcane Bolt is not the Wizard's free Primary Spell.",
+            "legacyId": "arcana:11"
+          },
           {
             "name": "Arcane Blast",
             "commandCost": null,
             "profile": {
-              "range": "6\"",
+              "range": "7\"",
               "attacks": 3,
               "hit": "5+",
               "damage": 1,
@@ -196,27 +191,29 @@
                 "Blast 1\""
               ]
             },
-            "effect": "Area magic that inflicts an automatic Hit on other Units within 1\" of the target if the Attack scores a Hit."
+            "effect": "Area magic that inflicts an automatic Hit on other Units within 1\" of the target if the Attack scores a Hit.",
+            "legacyId": "arcana:0"
           },
           {
             "name": "Force Bolt",
             "commandCost": null,
             "profile": {
-              "range": "10\"",
-              "attacks": 3,
+              "range": "12\"",
+              "attacks": 4,
               "hit": "4+",
               "damage": 1,
               "damageTypes": [
                 "Magic"
               ],
               "keywords": []
-            }
+            },
+            "legacyId": "arcana:1"
           },
           {
             "name": "Arcane Lance",
             "commandCost": null,
             "profile": {
-              "range": "8\"",
+              "range": "9\"",
               "attacks": 2,
               "hit": "5+",
               "damage": 2,
@@ -227,7 +224,8 @@
                 "Heavy",
                 "Anti-Monster 2"
               ]
-            }
+            },
+            "legacyId": "arcana:2"
           }
         ],
         "command": {
@@ -237,49 +235,57 @@
               "name": "Arcane Ward",
               "cpCost": 1,
               "timing": "Movement",
-              "effect": "Grant Ward 6+ to one friendly Unit within Short, or improve its existing Ward by one step."
+              "effect": "Grant Ward 6+ to one friendly Unit within Short, or improve its existing Ward by one step.",
+              "legacyId": "arcana:3"
             },
             {
               "name": "Haste",
               "cpCost": 1,
               "timing": "Movement",
-              "effect": "One friendly Unit within Short gains +2\" Move until the end of the Round."
+              "effect": "One friendly Unit within Short gains +2\" Move until the end of the Round.",
+              "legacyId": "arcana:4"
             },
             {
               "name": "Hex",
               "cpCost": 1,
               "timing": "Assault",
-              "effect": "Worsen one visible enemy's Armor or Evade by one step until the end of the Round."
+              "effect": "Worsen one visible enemy's Armor or Evade by one step until the end of the Round.",
+              "legacyId": "arcana:5"
             },
             {
               "name": "Slow",
               "cpCost": 1,
               "timing": "Assault",
-              "effect": "One visible enemy within Medium suffers Slow 2, reducing its next Move by 2\"."
+              "effect": "One visible enemy within Medium suffers Slow 2, reducing its next Move by 2\".",
+              "legacyId": "arcana:6"
             },
             {
               "name": "Teleport",
               "cpCost": 1,
               "timing": "Movement",
-              "effect": "Move one friendly Unit within Short up to 3\". It cannot finish Engaged."
+              "effect": "Move one friendly Unit within Short up to 3\". It cannot finish Engaged.",
+              "legacyId": "arcana:7"
             },
             {
               "name": "Dispel",
               "cpCost": 1,
               "timing": "Reaction",
-              "effect": "When an enemy within Medium uses a magical Command Ability, roll a D6. On 4+, that ability fails."
+              "effect": "When an enemy within Medium uses a magical Command Ability, roll a D6. On 4+, that ability fails.",
+              "legacyId": "arcana:8"
             },
             {
               "name": "Arcane Rupture",
               "cpCost": 1,
               "timing": "Assault",
-              "effect": "Choose one visible enemy unit within Medium. On 3+, inflict Direct Damage 2. Applicable Ward Saves still apply."
+              "effect": "Choose one visible enemy unit within Medium. On 3+, inflict Direct Damage 2. Applicable Ward Saves still apply.",
+              "legacyId": "arcana:9"
             },
             {
               "name": "Arcane Storm",
               "cpCost": 1,
               "timing": "Movement",
-              "effect": "Instead of moving this Phase, place a 25mm token within Medium of this unit. At the end of the Round, each Unit with at least half its surviving Models within 2\" suffers 3 separate automatic Magic Hits at Damage 1 total; Armor and Ward apply, Evade does not. Do not multiply Hits by Models. Remove the token after resolving this effect."
+              "effect": "Instead of moving this Phase, place a 25mm token within Medium of this unit. At the end of the Round, each Unit with at least half its surviving Models within 2\" suffers 3 separate automatic Magic Hits at Damage 1 total; Armor and Ward apply, Evade does not. Do not multiply Hits by Models. Remove the token after resolving this effect.",
+              "legacyId": "arcana:10"
             }
           ]
         }
@@ -288,7 +294,76 @@
       "designNotes": [
         "v4 balance pass (post-playtesting): Damage-1 Attacks (Arcane Bolt, Staff/Dagger, Arcane Blade, Battle Staff, Arcane Blast, Force Bolt) gained +1 Attack; the Damage-2 Arcane Lance kept its listed Attacks and gained Anti-Monster 2.",
         "v4.1 refinement: the Wizard is a single Model, so Veteran (+50) stays a flat cost rather than the higher per-unit pricing used on larger multi-Model formations like Line/Ranged Infantry. A new Weapon Specialization upgrade (+25) lets the Wizard choose any Faction/Unit Type/Trait tag for one offensive Arcana to gain Anti-[chosen tag] 2."
-      ]
+      ],
+      "primarySpell": {
+        "chooseCount": 1,
+        "note": "Every Wizard chooses exactly one free primary Spell Attack from Arcane Bolt, Arcane Blast, Force Bolt, or Arcane Lance. Additional offensive spell profiles may be learned through Arcana slots. Each spell is an alternative normal Assault Attack; never combine their Attack dice.",
+        "options": [
+          {
+            "name": "Arcane Bolt",
+            "profile": {
+              "range": "7\"",
+              "attacks": 5,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
+            "points": 0
+          },
+          {
+            "name": "Arcane Blast",
+            "profile": {
+              "range": "7\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Blast 1\""
+              ]
+            },
+            "points": 0
+          },
+          {
+            "name": "Force Bolt",
+            "profile": {
+              "range": "12\"",
+              "attacks": 4,
+              "hit": "4+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": []
+            },
+            "points": 0
+          },
+          {
+            "name": "Arcane Lance",
+            "profile": {
+              "range": "9\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 2,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Heavy",
+                "Anti-Monster 2"
+              ]
+            },
+            "points": 0
+          }
+        ]
+      }
     }
   ]
 }

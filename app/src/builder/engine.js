@@ -23,6 +23,40 @@ export function defaultPicks(entry) {
   return picks
 }
 
+// Migrate older saved Captain equipment without silently changing the meaning of
+// historical option IDs, and give existing Wizards their free primary spell.
+export function migrateUnitConfig(entry, cfg) {
+  const picks = { ...(cfg.picks ?? {}) }
+  let changed = false
+  if (entry.key === 'generic:captain') {
+    const training = asArray(picks.equipmentAndCombatTraining)
+    const oldWeapons = { 'equipmentAndCombatTraining:2': 'rangedWeaponPackages:0', 'equipmentAndCombatTraining:3': 'rangedWeaponPackages:1', 'equipmentAndCombatTraining:4': 'rangedWeaponPackages:2', 'equipmentAndCombatTraining:5': 'rangedWeaponPackages:3' }
+    const weapon = training.find((id) => oldWeapons[id])
+    if (weapon && !picks.rangedWeaponPackages) { picks.rangedWeaponPackages = oldWeapons[weapon]; changed = true }
+    const replaced = training.map((id) => id === 'equipmentAndCombatTraining:9' ? 'equipmentAndCombatTraining:10' : id)
+      .filter((id) => !oldWeapons[id])
+    if (replaced.length !== training.length || replaced.some((id, i) => id !== training[i])) {
+      picks.equipmentAndCombatTraining = [...new Set(replaced)]
+      changed = true
+    }
+  }
+  for (const group of entry.groups.filter((g) => g.kind === 'radio' && g.required)) {
+    if (!picks[group.id] || !group.options.some((o) => o.id === picks[group.id])) {
+      picks[group.id] = group.options[0]?.id ?? null
+      changed = true
+    }
+  }
+  if (entry.key === 'generic:wizard') {
+    const primary = entry.groups.find((g) => g.id === 'primarySpell')?.options.find((o) => o.id === picks.primarySpell)
+    const arcana = entry.groups.find((g) => g.id === 'arcana')
+    if (primary && arcana && Array.isArray(picks.arcana)) {
+      const cleaned = picks.arcana.filter((id) => arcana.options.find((o) => o.id === id)?.name !== primary.name)
+      if (cleaned.length !== picks.arcana.length) { picks.arcana = cleaned; changed = true }
+    }
+  }
+  return changed ? { ...cfg, picks } : cfg
+}
+
 export function newUnitConfig(entry, slot) {
   return {
     uid: `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`,
@@ -56,7 +90,12 @@ function selectedOf(entry, cfg) {
       const dep = entry.groups.find((x) => x.id === g.when.group)
       if (!dep || !chosenOf(dep, cfg).some((o) => o.name === g.when.option)) continue
     }
-    const options = chosenOf(g, cfg).slice(0, groupLimit(entry, g, cfg))
+    let options = chosenOf(g, cfg).slice(0, groupLimit(entry, g, cfg))
+    if (g.id === 'arcana') {
+      const primary = entry.groups.find((x) => x.id === 'primarySpell')
+      const primaryName = primary && chosenOf(primary, cfg)[0]?.name
+      if (primaryName) options = options.filter((o) => o.name !== primaryName)
+    }
     result.push({ group: g, options })
   }
   return result
@@ -88,6 +127,10 @@ function describeTagChoice(o, cfg, targets) {
 export function resolveUnit(entry, cfg, factionId = null) {
   const selected = selectedOf(entry, cfg)
   const picked = selected.flatMap((s) => s.options)
+  const chosenNames = new Set(picked.map((o) => o.name))
+  const trainingCount = picked.filter((o) => o.countsAsCombatTraining).length
+  const illegalPair = picked.flatMap((o) => (o.incompatibleWith ?? []).filter((name) => chosenNames.has(name)).map((name) => `${o.name} + ${name}`))
+  const loadoutConflicts = [...new Set(illegalPair)]
 
   let total = entry.basePoints
   let paidPackages = 0
@@ -122,24 +165,35 @@ export function resolveUnit(entry, cfg, factionId = null) {
   const baseStats = withStats?.stats ?? entry.stats
   const { stats, changed } = modifyStats(baseStats, picked)
 
+  const isMasterWizard = entry.key === 'generic:wizard' && picked.some((o) => o.name === 'Master Wizard')
+  const primarySpell = picked.find((o) => o.id?.startsWith('primarySpell:'))
   const rawAttacks = [
     ...entry.attacks.map((a) => ({ ...a, origin: 'entry' })),
     ...picked.flatMap((o) => [
       o.arcaneBolt && { name: 'Arcane Bolt', ...o.arcaneBolt, origin: 'pick' },
-      o.profile && { name: o.name, ...o.profile, origin: 'pick' },
+      o.profile && { name: o.name, ...o.profile, origin: 'pick', sourceOption: o.id },
     ]),
   ].filter(Boolean)
+  // The primary spell is a free alternative to Arcane Bolt, not an extra spell
+  // granted alongside Bolt. Master Wizard improves that primary choice only.
+  const spellAttacks = rawAttacks.filter((a) => !(a.sourceOption?.startsWith('arcana:') && a.name === primarySpell?.name))
+  if (isMasterWizard) {
+    for (const attack of spellAttacks.filter((a) => a.sourceOption === primarySpell?.id)) {
+      attack.range = attack.range.replace(/\d+"/, (m) => `${Number.parseInt(m, 10) + 2}"`)
+      attack.hit = `${Math.max(2, Number.parseInt(attack.hit, 10) - 1)}+`
+    }
+  }
   // Ranged attacks and spells resolve in the Assault Phase, melee in the Combat Phase.
   // Veterans training makes every weapon of an infantry formation better, not just one package.
-  const infantryVeterans = entry.source === 'generic' && ['Core', 'Elite', 'Ranged'].includes(entry.category)
-  const upgraded = modifyAttacks(rawAttacks, picked, { allWeapons: infantryVeterans ? ['Veterans'] : [] })
+  const infantryVeterans = entry.source === 'generic' && ['Core', 'Elite', 'Ranged', 'Captain'].includes(entry.category)
+  const upgraded = modifyAttacks(spellAttacks, picked, { allWeapons: infantryVeterans ? ['Veterans'] : [], weaponTargets: cfg.weaponPicks ?? {} })
   const { attacks: tagged, applied: tagTargets } = applyTagChoices(upgraded, picked, cfg.tagPicks)
   const attacks = tagged
     .map((a) => ({ ...a, phase: attackPhase(a) }))
     .sort((a, b) => (a.phase === b.phase ? 0 : a.phase === 'Assault' ? -1 : 1))
 
   const finalModels = doubled ? models * 2 : models
-  const tags = modifyTags(entry.tags.filter((t) => !(isHero && t === 'Elite' && entry.heroOption === 'Master Wizard')), picked)
+  const tags = modifyTags([...entry.tags.filter((t) => !(isHero && t === 'Elite' && entry.heroOption === 'Master Wizard')), ...picked.flatMap((o) => o.grantsTags ?? [])], picked)
   // Hero and Unique are distinct. Commissioned generic Captains and Master Wizards
   // gain Hero but not Unique; PCs and named/legendary figures gain Unique explicitly.
   if (isHero && !tags.includes('Hero')) tags.push('Hero')
@@ -148,6 +202,10 @@ export function resolveUnit(entry, cfg, factionId = null) {
   if (entry.isCore && !tags.includes('Core')) tags.push('Core')
   if (entry.isLargeAsset && !tags.includes('Large Asset')) tags.push('Large Asset')
   const fx = applyFactionEffects(factionId, { source: entry.source, models: finalModels, stats, attacks, tags: canonicalTags(tags, factionId ?? entry.factionId) })
+  const cavalryClass = picked.find((o) => o.id?.startsWith('cavalryClass:'))
+  const charge = cavalryClass?.charge ?? null
+  const impact = cavalryClass?.impact != null ? `+${cavalryClass.impact}` : (entry.impact ?? null)
+  const optionCommands = picked.filter((o) => o.cpCost && !o.profile).map((o) => ({ name: o.name, type: 'Command', cost: `${o.cpCost} CP`, timing: o.timing, effect: o.effect }))
 
   return {
     uid: cfg.uid,
@@ -166,10 +224,13 @@ export function resolveUnit(entry, cfg, factionId = null) {
     changedStats: changed,
     factionChanged: fx.factionChanged,
     factionRule: fx.factionRule,
-    impact: entry.impact ?? null,
+    impact,
+    charge,
+    loadoutConflicts,
+    combatTrainingExceeded: entry.category === 'Captain' && trainingCount > 2,
     tags: canonicalTags(fx.tags),
     attacks: fx.attacks,
-    abilities: entry.abilities,
+    abilities: [...entry.abilities, ...(isMasterWizard && entry.masterWizardAbility ? [{ ...entry.masterWizardAbility }] : []), ...optionCommands],
     picks: selected
       .map(({ group, options }) => ({ group: group.label, options: options.map((o) => describeTagChoice(o, cfg, tagTargets)) }))
       .filter((p) => p.options.length),
@@ -259,7 +320,9 @@ export function buildArmyView(army, catalog) {
   const overSlots = SLOT_ORDER.filter((s) => used[s] > slots.available[s])
   check('slot-capacity', 'Units fit their Recruitment Slots', overSlots.length === 0, overSlots.length ? `Over capacity: ${overSlots.join(', ')}` : `${units.length} Units placed`)
   const badSlot = units.filter((u) => !u.eligibleSlots.includes(u.slot))
+  const illegalLoadouts = units.filter((u) => u.loadoutConflicts?.length || u.combatTrainingExceeded)
   check('slot-eligible', 'Each Unit uses an eligible Slot', badSlot.length === 0, badSlot.map((u) => u.name).join(', ') || 'OK')
+  check('equipment', 'No incompatible equipment or excessive Combat Training', illegalLoadouts.length === 0, illegalLoadouts.map((u) => `${u.name}: ${[...u.loadoutConflicts, ...(u.combatTrainingExceeded ? ['over two Combat Training upgrades'] : [])].join(', ')}`).join('; ') || 'OK')
   check('points', `Points within ${limits.maxPoints}`, points <= limits.maxPoints, `${points} / ${limits.maxPoints}`)
   check('hq', `At least ${limits.minHeadquarters} Headquarters`, hq >= limits.minHeadquarters, `${hq}`)
   check('core', `At least ${limits.minCoreUnits} Core Units`, core >= limits.minCoreUnits, `${core}`)

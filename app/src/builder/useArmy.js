@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { loadCatalog } from './catalog.js'
-import { buildArmyView, rebalanceSlots } from './engine.js'
+import { buildArmyView, migrateUnitConfig, rebalanceSlots } from './engine.js'
 import { getSavedSnapshot, loadLocalArmy, saveLocalArmy, setSavedSnapshot } from './storage.js'
 
 export function useArmy() {
@@ -24,7 +24,10 @@ export function useArmy() {
 
   // An army opened from storage may predate the catalog, so settle its slots once the rules data is ready.
   useEffect(() => {
-    if (catalog) setArmy((a) => a)
+    if (catalog) setArmy((a) => ({ ...a, units: a.units.map((cfg) => {
+      const entry = catalog.unitsByKey[cfg.key]
+      return entry ? migrateUnitConfig(entry, cfg) : cfg
+    }) }))
   }, [catalog, setArmy])
 
   useEffect(() => {

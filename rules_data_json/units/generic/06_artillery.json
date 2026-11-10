@@ -10,41 +10,191 @@
       "id": "artillery",
       "name": "Artillery",
       "basePoints": 110,
-      "tags": ["Artillery"],
+      "tags": [
+        "Artillery"
+      ],
       "artilleryClass": {
         "chooseCount": 1,
         "options": [
           {
             "name": "Light Artillery",
             "points": 0,
-            "stats": { "move": "3\"", "wounds": 4, "armor": "5+", "evade": null },
-            "notes": "Smaller artillery suitable for general fire support."
+            "stats": {
+              "move": "3\"",
+              "wounds": 4,
+              "armor": "5+",
+              "evade": null
+            },
+            "notes": "Smaller artillery suitable for general fire support. Regular artillery prioritizes flexible positioning and most weapons do not have Heavy."
           },
           {
             "name": "Heavy Artillery",
             "points": 40,
             "totalPoints": 150,
-            "stats": { "move": "2\"", "wounds": 5, "armor": "5+", "evade": null },
-            "notes": "Larger artillery with heavier weapons and greater durability."
+            "stats": {
+              "move": "2\"",
+              "wounds": 5,
+              "armor": "5+",
+              "evade": null
+            },
+            "notes": "Larger artillery with heavier weapons and greater durability. Heavy artillery retains Heavy on all primary weapons but improves every Heavy weapon's Hit threshold by one step."
           }
         ]
       },
       "lightArtilleryWeapons": {
         "chooseCount": 1,
         "options": [
-          { "name": "Bolt Thrower", "points": 0, "profile": { "range": "15\"", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Armored 2"] }, "notes": "Accurate projectiles suited to attacking armored enemies." },
-          { "name": "Light Cannon", "points": 0, "profile": { "range": "15\"", "attacks": 2, "hit": "5+", "damage": 3, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Anti-Monster 2"] }, "notes": "Powerful direct-fire cannon that gains Instant." },
-          { "name": "Repeater Gun", "points": 0, "profile": { "range": "10\"", "attacks": 4, "hit": "5+", "damage": 1, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Rapid-Fire 2"] }, "notes": "Gains +2 Attacks when the target is within 5\"." },
-          { "name": "Arcane Ballista", "points": 0, "profile": { "range": "12\"", "attacks": 3, "hit": "5+", "damage": 2, "damageTypes": ["Magic"], "keywords": ["Heavy", "Anti-Construct 2"] }, "notes": "Magically powered artillery with multiple projectiles." }
+          {
+            "name": "Bolt Thrower",
+            "points": 0,
+            "profile": {
+              "range": "15\"",
+              "attacks": 2,
+              "hit": "4+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Anti-Armored 2"
+              ]
+            },
+            "notes": "Accurate projectiles suited to attacking armored enemies. Regular artillery may fire after moving except when its specific weapon retains Heavy."
+          },
+          {
+            "name": "Light Cannon",
+            "points": 0,
+            "profile": {
+              "range": "15\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 3,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm",
+                "Heavy",
+                "Anti-Monster 2"
+              ]
+            },
+            "notes": "Powerful direct-fire cannon that gains Instant. Regular artillery may fire after moving except when its specific weapon retains Heavy."
+          },
+          {
+            "name": "Repeater Gun",
+            "points": 0,
+            "profile": {
+              "range": "10\"",
+              "attacks": 4,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm",
+                "Rapid-Fire 2"
+              ]
+            },
+            "notes": "Gains +2 Attacks when the target is within 5\". Regular artillery may fire after moving except when its specific weapon retains Heavy."
+          },
+          {
+            "name": "Arcane Ballista",
+            "points": 0,
+            "profile": {
+              "range": "12\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 2,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Anti-Construct 2"
+              ]
+            },
+            "notes": "Magically powered artillery with multiple projectiles. Regular artillery may fire after moving except when its specific weapon retains Heavy."
+          }
         ]
       },
       "heavyArtilleryWeapons": {
         "chooseCount": 1,
         "options": [
-          { "name": "Heavy Cannon", "points": 0, "profile": { "range": "18\"", "attacks": 2, "hit": "4+", "damage": 3, "damageTypes": ["Physical"], "keywords": ["Firearm", "Heavy", "Anti-Armored 2"] }, "notes": "Powerful direct-fire siege cannon." },
-          { "name": "Bombard", "points": 0, "profile": { "range": "15\"", "attacks": 2, "hit": "5+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Blast 2\"", "Firearm", "Heavy", "Anti-Infantry 2"] }, "notes": "Explosive artillery affecting nearby Units when the primary Attack scores a Hit." },
-          { "name": "Great Ballista", "points": 0, "profile": { "range": "18\"", "attacks": 2, "hit": "4+", "damage": 2, "damageTypes": ["Physical"], "keywords": ["Heavy", "Anti-Monster 2"] }, "notes": "Long-range mechanical siege weapon." },
-          { "name": "Arcane Cannon", "points": 0, "profile": { "range": "15\"", "attacks": 3, "hit": "4+", "damage": 2, "damageTypes": ["Magic"], "keywords": ["Heavy", "Anti-Elite 2"] }, "notes": "Powerful magical artillery with reliable Hit characteristics." }
+          {
+            "name": "Heavy Cannon",
+            "points": 0,
+            "profile": {
+              "range": "18\"",
+              "attacks": 2,
+              "hit": "3+",
+              "damage": 3,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Firearm",
+                "Heavy",
+                "Anti-Armored 2"
+              ]
+            },
+            "notes": "Powerful direct-fire siege cannon."
+          },
+          {
+            "name": "Bombard",
+            "points": 0,
+            "profile": {
+              "range": "15\"",
+              "attacks": 2,
+              "hit": "4+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Blast 2\"",
+                "Firearm",
+                "Heavy",
+                "Anti-Infantry 2"
+              ]
+            },
+            "notes": "Explosive artillery affecting nearby Units when the primary Attack scores a Hit."
+          },
+          {
+            "name": "Great Ballista",
+            "points": 0,
+            "profile": {
+              "range": "18\"",
+              "attacks": 2,
+              "hit": "3+",
+              "damage": 2,
+              "damageTypes": [
+                "Physical"
+              ],
+              "keywords": [
+                "Heavy",
+                "Anti-Monster 2"
+              ]
+            },
+            "notes": "Long-range mechanical siege weapon."
+          },
+          {
+            "name": "Arcane Cannon",
+            "points": 0,
+            "profile": {
+              "range": "15\"",
+              "attacks": 3,
+              "hit": "3+",
+              "damage": 2,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Heavy",
+                "Anti-Elite 2"
+              ]
+            },
+            "notes": "Powerful magical artillery with reliable Hit characteristics."
+          }
         ]
       },
       "specialUpgrades": [
@@ -60,7 +210,16 @@
       "secondaryWeapon": {
         "name": "Crew Weapons",
         "points": 0,
-        "profile": { "range": "Engaged", "attacks": 2, "hit": "6+", "damage": 1, "damageTypes": ["Physical"], "keywords": [] },
+        "profile": {
+          "range": "Engaged",
+          "attacks": 2,
+          "hit": "6+",
+          "damage": 1,
+          "damageTypes": [
+            "Physical"
+          ],
+          "keywords": []
+        },
         "notes": "The artillery platform makes one melee Attack using this profile, regardless of the number of crew figures represented. All Artillery includes this."
       },
       "battlefieldRole": "Ranged fire support, siege warfare, attacking heavily armored targets, and area denial.",
