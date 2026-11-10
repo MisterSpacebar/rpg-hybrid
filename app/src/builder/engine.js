@@ -230,7 +230,7 @@ export function resolveUnit(entry, cfg, factionId = null) {
     combatTrainingExceeded: entry.category === 'Captain' && trainingCount > 2,
     tags: canonicalTags(fx.tags),
     attacks: fx.attacks,
-    abilities: [...entry.abilities, ...optionCommands],
+    abilities: [...entry.abilities, ...(isMasterWizard && entry.masterWizardAbility ? [{ ...entry.masterWizardAbility }] : []), ...optionCommands],
     picks: selected
       .map(({ group, options }) => ({ group: group.label, options: options.map((o) => describeTagChoice(o, cfg, tagTargets)) }))
       .filter((p) => p.options.length),
