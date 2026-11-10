@@ -212,9 +212,9 @@
           {
             "name": "Charge Formation",
             "points": 50,
-            "effect": "1 CP — Combat, when this Unit declares a Charge. Increase this Unit's one shared Charge Impact by +3 for that Charge. This is additive with its class Impact and applicable weapon Impact, but is not applied per Model. The Command grants neither a Charge nor an additional activation.",
+            "effect": "1 CP — Assault, when this Unit declares a Charge. Increase this Unit's one shared Charge Impact by +3 for that Charge. This is additive with its class Impact and applicable weapon Impact, but is not applied per Model. The Command grants neither a Charge nor an additional activation.",
             "cpCost": 1,
-            "timing": "Combat"
+            "timing": "Assault"
           },
           {
             "name": "Additional Light Cavalry Model",
