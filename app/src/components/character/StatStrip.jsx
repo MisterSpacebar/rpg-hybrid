@@ -4,10 +4,11 @@ import { CHARACTERISTICS, cap } from '../../character/engine.js'
 const FIELDS = { M: 'move', W: 'wounds', Arm: 'armor', Eva: 'evade', Ward: 'ward' }
 
 // Stats changed by purchased upgrades are highlighted, with the printed value in the tooltip.
-export function StatStrip({ stats, impact, models, big, changed = [], base, factionChanged = [], factionRule }) {
+export function StatStrip({ stats, impact, charge, models, big, changed = [], base, factionChanged = [], factionRule }) {
   if (!stats) return null
   const items = [
     ['M', stats.move], ['W', stats.wounds], ['Arm', stats.armor], ['Eva', stats.evade], ['Ward', stats.ward],
+    charge != null ? ['Charge', `+${charge}`] : null,
     impact ? ['Impact', impact] : null,
     models > 1 ? ['Models', models] : null,
   ].filter(Boolean)
