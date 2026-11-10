@@ -1,15 +1,17 @@
 import { formatProfile, formatWard, statDash } from '../../builder/format.js'
+import { rushTiles } from '../../builder/rush.js'
 import { CHARACTERISTICS, cap } from '../../character/engine.js'
 
-const FIELDS = { M: 'move', W: 'wounds', Arm: 'armor', Eva: 'evade', Ward: 'ward' }
+const FIELDS = { M: 'move', W: 'wounds', Arm: 'armor', Eva: 'evade', Ward: 'ward', Charge: 'charge', Impact: 'impact' }
+const RUSH_LABELS = new Set(['Charge', 'Impact'])
 
 // Stats changed by purchased upgrades are highlighted, with the printed value in the tooltip.
+// Charge and Impact tiles appear only once above 0, and use the same colours (faction = teal).
 export function StatStrip({ stats, impact, charge, models, big, changed = [], base, factionChanged = [], factionRule }) {
   if (!stats) return null
   const items = [
     ['M', stats.move], ['W', stats.wounds], ['Arm', stats.armor], ['Eva', stats.evade], ['Ward', stats.ward],
-    charge != null ? ['Charge', `+${charge}`] : null,
-    impact ? ['Impact', impact] : null,
+    ...rushTiles({ charge, impact }).map(([label, value]) => [label, value]),
     models > 1 ? ['Models', models] : null,
   ].filter(Boolean)
   return (
@@ -18,7 +20,8 @@ export function StatStrip({ stats, impact, charge, models, big, changed = [], ba
         const field = FIELDS[label]
         const isChanged = field && changed.includes(field)
         const fromFaction = field && factionChanged.includes(field)
-        const tip = fromFaction ? `Faction rule: ${factionRule}` : isChanged ? `Printed: ${statDash(base?.[field])}` : label === 'W' ? 'Wounds per Model' : label === 'Ward' && value && formatWard(value) !== String(value) ? `Ward as printed: ${value}` : undefined
+        const rush = RUSH_LABELS.has(label)
+        const tip = fromFaction ? `Faction rule: ${factionRule}` : isChanged ? (rush ? `${label} gained from an upgrade or talent` : `Printed: ${statDash(base?.[field])}`) : rush ? (label === 'Charge' ? 'Charge X adds X" to the Charge distance (highest applies)' : 'Impact X adds X to the Charge Impact pool') : label === 'W' ? 'Wounds per Model' : label === 'Ward' && value && formatWard(value) !== String(value) ? `Ward as printed: ${value}` : undefined
         return (
           <div key={label} className={`stat ${isChanged ? 'changed' : ''} ${fromFaction ? 'faction' : ''} ${label === 'Ward' ? 'ward' : ''}`} title={tip}>
             <span className="stat-label">{label}</span>
@@ -54,7 +57,7 @@ export function CharacterStatGroups({ view }) {
   return (
     <>
       <div className="stat-group-label">Combat profile</div>
-      <StatStrip big stats={stats} changed={changed} base={printedStats} />
+      <StatStrip big stats={stats} changed={changed} base={printedStats} charge={view.charge} impact={view.impact} />
       {view.defenses.length > 0 && (
         <div className="defenses small"><span className="muted">Defenses:</span> {view.defenses.map((d) => <span key={d} className="tag tag-spell">{d}</span>)}</div>
       )}

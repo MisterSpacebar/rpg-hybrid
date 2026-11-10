@@ -508,6 +508,10 @@ export function derive(char, data) {
   const stats = { move: `${move}"`, wounds, armor: plus(armor), evade: plus(evade), ward }
   const printedStats = { move: printed.move, wounds: printed.wounds, armor: printed.armor, evade: printed.evade, ward: null }
   const changed = Object.keys(stats).filter((k) => String(stats[k] ?? '') !== String(printedStats[k] ?? ''))
+  // Mighty Impact gives Impact X (X = rank) on a successful Charge. PCs have no printed Charge/Impact, so it always shows as gained.
+  const impact = has('mighty-impact') ? `+${ranksOf('mighty-impact')}` : null
+  const charge = null
+  if (impact) changed.push('impact')
 
   // ----- traits and commands -----
   const traits = [{ source: ancestry.name, name: ancestry.traitName ?? 'Ancestry', text: ancestry.traits.join(' '), ancestry: true }]
@@ -635,7 +639,7 @@ export function derive(char, data) {
   return {
     ancestry, cls, sub, size, sizeChoice, tags, adaptations, archetype,
     characteristics, baseChar, skills, skillSteps: steps, skillsAtCreation, classList, classPicks, extraPicks,
-    stats, printedStats, changed, defenses, attacks, carried, attackOptions: candidates, gear, points, learned,
+    stats, printedStats, changed, charge, impact, defenses, attacks, carried, attackOptions: candidates, gear, points, learned,
     traits, commands, prepared, formulas, formulaList, entries, checks, pool, thrall,
   }
 }

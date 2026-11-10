@@ -1,6 +1,7 @@
 import { applyFactionEffects } from './factionEffects.js'
 import { canonicalTags, normalizeTag } from '../tags.js'
 import { applyTagChoices, attackPhase, modifyAttacks, modifyStats, modifyTags } from './modifiers.js'
+import { resolveRush } from './rush.js'
 
 export const SLOT_ORDER = ['H', 'C', 'E', 'R', 'V', 'S', 'A']
 
@@ -207,14 +208,10 @@ export function resolveUnit(entry, cfg, factionId = null) {
   const printedCharge = entry.charge ?? cavalryClass?.charge ?? null
   // Artillery cannot declare Charges: do not show an unusable faction Charge/Impact rank.
   const mayCharge = entry.category !== 'Artillery' && !(entry.tags ?? []).includes('Artillery')
-  const charge = factionId === 'warclans' && mayCharge
-    ? Math.max(Number(printedCharge ?? 0), entry.source === 'generic' ? 1 : 2)
-    : printedCharge
-  const printedImpact = entry.impact != null ? Number(String(entry.impact).replace(/^\+/, '')) : cavalryClass?.impact
-  const totalImpact = factionId === 'titan-clans' && mayCharge
-    ? (entry.source === 'generic' ? Number(printedImpact ?? 0) + 1 : Number(printedImpact ?? 2))
-    : printedImpact
-  const impact = totalImpact != null ? `+${totalImpact}` : null
+  const printedImpact = entry.impact ?? cavalryClass?.impact ?? null
+  const { charge, impact, chargeSource, impactSource } = resolveRush({ printedCharge, printedImpact, picked, factionId, source: entry.source, mayCharge })
+  const rushFaction = [chargeSource === 'faction' && 'charge', impactSource === 'faction' && 'impact'].filter(Boolean)
+  const rushChanged = [chargeSource === 'upgrade' && 'charge', impactSource === 'upgrade' && 'impact'].filter(Boolean)
   const optionCommands = picked.filter((o) => o.cpCost && !o.profile).map((o) => ({ name: o.name, type: 'Command', cost: `${o.cpCost} CP`, timing: o.timing, effect: o.effect }))
 
   return {
@@ -231,9 +228,9 @@ export function resolveUnit(entry, cfg, factionId = null) {
     pointsVary: varies,
     stats: fx.stats,
     baseStats,
-    changedStats: changed,
-    factionChanged: fx.factionChanged,
-    factionRule: fx.factionRule,
+    changedStats: [...changed, ...rushChanged],
+    factionChanged: [...fx.factionChanged, ...rushFaction],
+    factionRule: fx.factionRule ?? (rushFaction.length ? { warclans: 'Warclans Charge', 'titan-clans': 'Titan Clans Impact' }[factionId] : null),
     impact,
     charge,
     loadoutConflicts,

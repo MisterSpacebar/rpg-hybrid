@@ -1,5 +1,6 @@
 import { Document, Page, Text, View, StyleSheet, pdf } from '@react-pdf/renderer'
 import { s } from '../builder/pdf.jsx'
+import { rushTiles } from '../builder/rush.js'
 import { CHARACTERISTICS, SKILLS, attackTone, cap, gearTone, sheetCommands, sheetTalents, talentDetail, talentTitle } from './engine.js'
 
 const ink = '#1d1f24'
@@ -75,6 +76,7 @@ export function CharacterDocument({ character, view }) {
           <Stat label="Armor" value={stats.armor} changed={changed.includes('armor')} />
           <Stat label="Evade" value={stats.evade} changed={changed.includes('evade')} />
           <Stat label="Ward" value={stats.ward} changed={changed.includes('ward')} />
+          {rushTiles(view).map(([label, value, key]) => <Stat key={key} label={label} value={value} changed />)}
         </View>
         {view.defenses.length > 0 && <Text style={[st.muted, { fontSize: 8, marginBottom: 2 }]}>{s(`Defenses: ${view.defenses.join(', ')}`)}</Text>}
 

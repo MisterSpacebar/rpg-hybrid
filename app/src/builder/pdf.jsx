@@ -1,6 +1,7 @@
 import { Document, Page, Text, View, StyleSheet, pdf } from '@react-pdf/renderer'
 import { SLOT_ORDER } from './engine.js'
 import { collectCommandCards, formatWard, splitOptions } from './format.js'
+import { rushTiles } from './rush.js'
 
 const SLOT_NAMES = { H: 'Headquarters', C: 'Core', E: 'Elite', R: 'Ranged', V: 'Vanguard', S: 'Specialist', A: 'Asset' }
 
@@ -58,14 +59,14 @@ const st = StyleSheet.create({
 const cell = (w, extra) => ({ width: w, ...extra })
 
 const FACTION_COLOR = '#14877f'
-const STAT_FIELDS = { MOVE: 'move', 'WOUNDS/MDL': 'wounds', ARMOR: 'armor', EVADE: 'evade', WARD: 'ward' }
+const STAT_FIELDS = { MOVE: 'move', 'WOUNDS/MDL': 'wounds', ARMOR: 'armor', EVADE: 'evade', WARD: 'ward', CHARGE: 'charge', IMPACT: 'impact' }
 
 // Stats changed by upgrades get an accent border and value.
 function StatBlock({ stats, impact, charge, models, changed = [], factionChanged = [] }) {
   if (!stats) return null
   const items = [
     ['MOVE', stats.move], ['WOUNDS/MDL', stats.wounds], ['ARMOR', stats.armor],
-    ['EVADE', stats.evade], ['WARD', stats.ward], charge != null ? ['CHARGE', `+${charge}`] : null, impact ? ['IMPACT', impact] : null, models > 1 ? ['MODELS', models] : null,
+    ['EVADE', stats.evade], ['WARD', stats.ward], ...rushTiles({ charge, impact }).map(([label, value]) => [label.toUpperCase(), value]), models > 1 ? ['MODELS', models] : null,
   ].filter(Boolean)
   return (
     <View style={st.statRow}>
