@@ -42,7 +42,7 @@
   "signatureCoreUnits": [
     {
       "name": "Ironbreakers",
-      "points": 155,
+      "points": 165,
       "models": 5,
       "tags": [
         "Infantry",
@@ -71,6 +71,13 @@
           "name": "Shieldwall",
           "type": "Passive",
           "effect": "If stationary during the preceding Movement Phase, gain Brace 1 until the next Movement Phase."
+        },
+        {
+          "name": "Lock Shields",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Reaction",
+          "effect": "When this Unit is successfully Charged, spend 1 CP. Gain Brace 2 against that Charge's one Impact pool, additive with any applicable Brace 1 from Shieldwall. This does not stop the Charge or the charging Unit's later melee Attack."
         }
       ]
     },
@@ -125,7 +132,7 @@
     },
     {
       "name": "Deep Watch",
-      "points": 160,
+      "points": 180,
       "models": 5,
       "tags": [
         "Ranged Infantry",
@@ -163,14 +170,14 @@
       ],
       "abilities": [
         {
-          "name": "Fortified Volley",
-          "type": "Passive",
-          "effect": "If stationary during the preceding Movement Phase, gain Anti-Armored 1 when making a ranged Attack."
-        },
-        {
           "name": "Controlled Crossfire",
           "type": "Passive",
           "effect": "While this Unit did not voluntarily Move in the preceding Movement Phase, its Ranged Attacks gain Pinpoint."
+        },
+        {
+          "name": "Drilled Repeaters",
+          "type": "Passive",
+          "effect": "If this Unit did not voluntarily Move during the preceding Movement Phase, its Repeater Rifles improve Hit from 5+ to 4+ for this Attack. Its existing Controlled Crossfire rule still grants Pinpoint when stationary."
         }
       ]
     }
