@@ -173,7 +173,8 @@
                 "Accurate 1"
               ]
             },
-            "effect": "Reliable, repeatable magical bolts. May be learned as additional offensive Arcana if Arcane Bolt is not the Wizard's free Primary Spell."
+            "effect": "Reliable, repeatable magical bolts. May be learned as additional offensive Arcana if Arcane Bolt is not the Wizard's free Primary Spell.",
+            "legacyId": "arcana:11"
           },
           {
             "name": "Arcane Blast",
@@ -190,7 +191,8 @@
                 "Blast 1\""
               ]
             },
-            "effect": "Area magic that inflicts an automatic Hit on other Units within 1\" of the target if the Attack scores a Hit."
+            "effect": "Area magic that inflicts an automatic Hit on other Units within 1\" of the target if the Attack scores a Hit.",
+            "legacyId": "arcana:0"
           },
           {
             "name": "Force Bolt",
@@ -204,7 +206,8 @@
                 "Magic"
               ],
               "keywords": []
-            }
+            },
+            "legacyId": "arcana:1"
           },
           {
             "name": "Arcane Lance",
@@ -221,7 +224,8 @@
                 "Heavy",
                 "Anti-Monster 2"
               ]
-            }
+            },
+            "legacyId": "arcana:2"
           }
         ],
         "command": {
@@ -231,49 +235,57 @@
               "name": "Arcane Ward",
               "cpCost": 1,
               "timing": "Movement",
-              "effect": "Grant Ward 6+ to one friendly Unit within Short, or improve its existing Ward by one step."
+              "effect": "Grant Ward 6+ to one friendly Unit within Short, or improve its existing Ward by one step.",
+              "legacyId": "arcana:3"
             },
             {
               "name": "Haste",
               "cpCost": 1,
               "timing": "Movement",
-              "effect": "One friendly Unit within Short gains +2\" Move until the end of the Round."
+              "effect": "One friendly Unit within Short gains +2\" Move until the end of the Round.",
+              "legacyId": "arcana:4"
             },
             {
               "name": "Hex",
               "cpCost": 1,
               "timing": "Assault",
-              "effect": "Worsen one visible enemy's Armor or Evade by one step until the end of the Round."
+              "effect": "Worsen one visible enemy's Armor or Evade by one step until the end of the Round.",
+              "legacyId": "arcana:5"
             },
             {
               "name": "Slow",
               "cpCost": 1,
               "timing": "Assault",
-              "effect": "One visible enemy within Medium suffers Slow 2, reducing its next Move by 2\"."
+              "effect": "One visible enemy within Medium suffers Slow 2, reducing its next Move by 2\".",
+              "legacyId": "arcana:6"
             },
             {
               "name": "Teleport",
               "cpCost": 1,
               "timing": "Movement",
-              "effect": "Move one friendly Unit within Short up to 3\". It cannot finish Engaged."
+              "effect": "Move one friendly Unit within Short up to 3\". It cannot finish Engaged.",
+              "legacyId": "arcana:7"
             },
             {
               "name": "Dispel",
               "cpCost": 1,
               "timing": "Reaction",
-              "effect": "When an enemy within Medium uses a magical Command Ability, roll a D6. On 4+, that ability fails."
+              "effect": "When an enemy within Medium uses a magical Command Ability, roll a D6. On 4+, that ability fails.",
+              "legacyId": "arcana:8"
             },
             {
               "name": "Arcane Rupture",
               "cpCost": 1,
               "timing": "Assault",
-              "effect": "Choose one visible enemy unit within Medium. On 3+, inflict Direct Damage 2. Applicable Ward Saves still apply."
+              "effect": "Choose one visible enemy unit within Medium. On 3+, inflict Direct Damage 2. Applicable Ward Saves still apply.",
+              "legacyId": "arcana:9"
             },
             {
               "name": "Arcane Storm",
               "cpCost": 1,
               "timing": "Movement",
-              "effect": "Instead of moving this Phase, place a 25mm token within Medium of this unit. At the end of the Round, each Unit with at least half its surviving Models within 2\" suffers 3 separate automatic Magic Hits at Damage 1 total; Armor and Ward apply, Evade does not. Do not multiply Hits by Models. Remove the token after resolving this effect."
+              "effect": "Instead of moving this Phase, place a 25mm token within Medium of this unit. At the end of the Round, each Unit with at least half its surviving Models within 2\" suffers 3 separate automatic Magic Hits at Damage 1 total; Armor and Ward apply, Evade does not. Do not multiply Hits by Models. Remove the token after resolving this effect.",
+              "legacyId": "arcana:10"
             }
           ]
         }
