@@ -150,3 +150,27 @@ test('mobile and heavy artillery have distinct Heavy and Hit trade-offs',()=>{
   assert.ok(heavy.every(o=>o.profile.keywords.includes('Heavy')))
   assert.deepEqual(heavy.map(o=>o.profile.hit),['3+','4+','3+','3+'])
 })
+
+test('Captain Weapon Master can target the optional ranged profile without altering melee',()=>{
+  const master=readUnit('03_captains').equipmentAndCombatTraining.options.find(o=>o.name==='Weapon Master')
+  const option={...master,id:'equipmentAndCombatTraining:12'}
+  const attacks=[
+    {name:"Officer's Weapon",range:'Engaged',attacks:3,hit:'4+',keywords:[],origin:'pick'},
+    {name:'Pistol',range:'6"',attacks:2,hit:'5+',keywords:['Firearm'],origin:'pick'},
+  ]
+  const selected=modifyAttacks(attacks,[option],{weaponTargets:{[option.id]:'Pistol'}})
+  assert.equal(selected[0].hit,'4+')
+  assert.equal(selected[1].hit,'4+')
+  assert.ok(!selected[0].keywords.includes('Accurate 1'))
+  assert.ok(selected[1].keywords.includes('Accurate 1'))
+})
+
+test('all previously saved Arcana option IDs survive when Arcane Bolt becomes learnable',()=>{
+  const wizard=readUnit('04_wizards')
+  const arcana=[...wizard.genericArcana.offensive,...wizard.genericArcana.command.options]
+  const names=['Arcane Blast','Force Bolt','Arcane Lance','Arcane Ward','Haste','Hex','Slow','Teleport','Dispel','Arcane Rupture','Arcane Storm']
+  for(const [index,name] of names.entries()){
+    assert.equal(arcana.find(o=>o.name===name).legacyId,`arcana:${index}`)
+  }
+  assert.equal(arcana.find(o=>o.name==='Arcane Bolt').legacyId,'arcana:11')
+})
