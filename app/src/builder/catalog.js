@@ -85,7 +85,7 @@ function buildGroups(raw, modelOptions) {
         required: radio && choices.some((o) => !o.points),
         max: radio ? 1 : (val.chooseCount ?? null),
         package: isPackage,
-        options: choices.map((o, i) => ({ id: `${key}:${i}`, ...optionOf(o, key) })),
+        options: choices.map((o, i) => ({ id: o.legacyId ?? `${key}:${i}`, ...optionOf(o, key) })),
       })
     }
     if (addons.length) {
@@ -94,7 +94,7 @@ function buildGroups(raw, modelOptions) {
         label: 'Shields',
         kind: 'check',
         package: true,
-        options: addons.map((o, i) => ({ id: `${key}+addon:${i}`, ...optionOf(o, key) })),
+        options: addons.map((o, i) => ({ id: o.legacyId ?? `${key}+addon:${i}`, ...optionOf(o, key) })),
       })
     }
   }
