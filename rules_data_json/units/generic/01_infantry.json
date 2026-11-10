@@ -421,6 +421,11 @@
             "effect": "The primary ranged weapon gains Pinpoint."
           },
           {
+            "name": "Armored",
+            "points": 15,
+            "effect": "Improve Armor one step (6+ to 5+). Gain the Armored tag. This upgrade does not grant Shields or Brace, and does not change Heavy restrictions. Additional Models follow the generic Ranged Infantry reinforcement and paid-package costs."
+          },
+          {
             "name": "Weapon Specialization",
             "points": 25,
             "effect": "Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once."
@@ -443,7 +448,8 @@
           "Veterans and Weapon Specialization may each be purchased once and apply only to the selected primary ranged weapon.",
           "Rangefinder and Longshot Training may be combined; they alter different portions of a weapon's range. Rangefinder increases normal Range and does not grant or remove the Long Range Attack-pool reduction; Longshot affects only the additional extended band.",
           "These range upgrades apply once to the chosen primary weapon profile, regardless of Models.",
-          "Veteran pricing: the upgrade costs 75 Points for any primary weapon, reflecting the strong scaling effect of a flat +1 Attack per Model across a four-to-nine-Model formation. Veteran reinforcements pay +15 Points each because the extra die and improved Hit apply to every added Model."
+          "Veteran pricing: the upgrade costs 75 Points for any primary weapon, reflecting the strong scaling effect of a flat +1 Attack per Model across a four-to-nine-Model formation. Veteran reinforcements pay +15 Points each because the extra die and improved Hit apply to every added Model.",
+          "The optional Armored +15 upgrade improves the Unit's Armor from 6+ to 5+ and explicitly grants the Armored trait. It does not grant a Shield or modify a ranged weapon's Heavy restriction."
         ]
       },
       "formationExample": "Eight Veteran Shortbow Models cost 100 + 75 + (4 x 25) + (4 x 15) = 335 Points before other packages. Eight Veteran Musket Models cost 100 + 75 + 50 + (4 x 25) + (4 x 15) + (4 x 5) = 405 Points, including the paid-weapon reinforcement surcharge.",

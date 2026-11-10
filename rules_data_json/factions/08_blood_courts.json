@@ -30,7 +30,7 @@
       "name": "Mesmerize",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Character until the end of the Phase."
+      "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Unique Unit until the end of the Phase."
     },
     {
       "name": "Cut Off the Leaders",
@@ -117,13 +117,15 @@
         {
           "name": "Relentless Hunt",
           "type": "Passive",
-          "effect": "After successfully Charging, gain Impact +1."
+          "effect": "The Unit has Impact +2 on successful Charges. This printed value replaces the previous Impact +1 from Relentless Hunt; it is not an additional +1."
         }
-      ]
+      ],
+      "charge": 2,
+      "impact": 2
     },
     {
       "name": "Night Stalkers",
-      "points": 150,
+      "points": 170,
       "models": 4,
       "tags": [
         "Infiltrating Infantry",
@@ -153,6 +155,11 @@
           "name": "Pack Hunters",
           "type": "Passive",
           "effect": "After this Unit destroys an enemy Model, it may immediately Move up to 1\", ending legally."
+        },
+        {
+          "name": "Surround the Prey",
+          "type": "Passive",
+          "effect": "When this Unit makes a Melee Attack against an enemy also Engaged by a different friendly Unit, Twin Fangs improve Hit from 5+ to 4+ for that Attack. This does not grant additional Attacks."
         }
       ]
     }
@@ -205,7 +212,7 @@
           "type": "Command",
           "cost": "1 CP",
           "timing": "Assault",
-          "effect": "Choose one enemy Character within Short. The Vampire Captain's next Melee Attack against it gains Critical 1."
+          "effect": "Choose one enemy Unique Unit within Short. The Vampire Captain's next Melee Attack against it gains Critical 1."
         }
       ]
     },

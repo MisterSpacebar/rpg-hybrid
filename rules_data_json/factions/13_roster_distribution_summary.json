@@ -5,7 +5,7 @@
   },
   "description": "Summary table of each faction's two base Signature Core choices and one Extra Core/alternate-category choice (originally only Sacred Orders had an Extra Core; the v4.2 balance pass brought the other eleven factions to parity).",
   "table": [
-    { "faction": "Free Realms", "signatureCore1": "Greatweapon Guard — Infantry", "signatureCore2": "Outriders — Mobile", "extraCore": "Vanguard Skirmishers — Ranged" },
+    { "faction": "Free Realms", "signatureCore1": "Greatweapon Guard — Infantry", "signatureCore2": "Outriders — Mobile", "extraCore": "Shielded Fusiliers — Defensive Ranged" },
     { "faction": "Sacred Orders", "signatureCore1": "Temple Guard — Elite Infantry", "signatureCore2": "Sanctified Arbalests — Elite Ranged", "extraCore": "Consecrated Knights" },
     { "faction": "Iron Holds", "signatureCore1": "Ironbreakers — Infantry", "signatureCore2": "Thunderers — Ranged", "extraCore": "Deep Watch — Ranged" },
     { "faction": "Wild Courts", "signatureCore1": "Glade Hunters — Ranged", "signatureCore2": "Wild Riders — Mobile", "extraCore": "Briar Stalkers — Infiltrating Infantry" },

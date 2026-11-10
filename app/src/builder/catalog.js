@@ -372,6 +372,10 @@ export function loadCatalog() {
 
     const generic = normalizeGeneric(data)
     const unitsByKey = Object.fromEntries([...generic, ...factions.flatMap((f) => f.units)].map((u) => [u.key, u]))
+    // Keep old army saves readable after Free Realms' ranged Core replacement.
+    // The canonical unit is Shielded Fusiliers; newly purchased units use its new key.
+    const fusiliers = unitsByKey['faction:free-realms:shielded-fusiliers']
+    if (fusiliers) unitsByKey['faction:free-realms:vanguard-skirmishers'] = fusiliers
     return { rules, factions, doctrines, generic, unitsByKey }
   })
   return catalogPromise

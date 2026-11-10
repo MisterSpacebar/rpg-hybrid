@@ -25,8 +25,10 @@ export function useArmy() {
   // An army opened from storage may predate the catalog, so settle its slots once the rules data is ready.
   useEffect(() => {
     if (catalog) setArmy((a) => ({ ...a, units: a.units.map((cfg) => {
-      const entry = catalog.unitsByKey[cfg.key]
-      return entry ? migrateUnitConfig(entry, cfg) : cfg
+      const key = cfg.key === 'faction:free-realms:vanguard-skirmishers'
+        ? 'faction:free-realms:shielded-fusiliers' : cfg.key
+      const entry = catalog.unitsByKey[key]
+      return entry ? migrateUnitConfig(entry, { ...cfg, key }) : cfg
     }) }))
   }, [catalog, setArmy])
 

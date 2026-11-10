@@ -85,7 +85,7 @@
     },
     {
       "name": "Rift Stalkers",
-      "points": 175,
+      "points": 185,
       "models": 4,
       "tags": [
         "Mobile",
@@ -117,6 +117,13 @@
           "name": "Rift Step",
           "type": "Passive",
           "effect": "May begin in Reserve and deploy outside Short Range of enemies at the end of a Round."
+        },
+        {
+          "name": "Warp Frenzy",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Combat",
+          "effect": "When declaring a Warp Claws Attack, spend 1 CP. This Unit suffers 1 Damage (without saves) and improves its Warp Claws' Hit characteristic from 5+ to 4+ for that Attack. Damage must be assigned before making the Attack; if the Unit is destroyed by this cost, it cannot Attack. This does not give another Attack."
         }
       ]
     },
