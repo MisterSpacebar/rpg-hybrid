@@ -31,7 +31,7 @@
       "name": "Heroic Intervention",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "When a nearby ally is attacked, one friendly Character may Move up to 3\" toward it."
+      "effect": "When a nearby ally is attacked, one friendly Unique Unit may Move up to 3\" toward it."
     },
     {
       "name": "Break Their Line",
@@ -81,7 +81,7 @@
     },
     {
       "name": "Sanctified Arbalests",
-      "points": 190,
+      "points": 205,
       "models": 3,
       "tags": [
         "Elite",
@@ -120,7 +120,15 @@
           ]
         }
       ],
-      "abilities": []
+      "abilities": [
+        {
+          "name": "Hallowed Screen",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Reaction",
+          "effect": "When a friendly Unit within 3\" of this Unit is targeted by a Ranged Attack, spend 1 CP. That friendly Unit gains Cover 1 against that Attack. This grants the Cover keyword bonus to applicable Evade Saves, but does not itself grant Cover eligibility, Evade, or Concealed. A Unit can use this Command only once against a given Attack."
+        }
+      ]
     },
     {
       "name": "Consecrated Knights",
