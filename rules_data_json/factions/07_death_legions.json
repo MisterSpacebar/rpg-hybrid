@@ -114,7 +114,7 @@
     },
     {
       "name": "Bone Archers",
-      "points": 120,
+      "points": 130,
       "models": 6,
       "tags": [
         "Ranged Infantry",
@@ -152,6 +152,13 @@
           "name": "Ranks of the Dead",
           "type": "Passive",
           "effect": "Gain Accurate 1 while at least 4 Models remain."
+        },
+        {
+          "name": "Dread Volley",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Assault",
+          "effect": "When declaring a Bone Bows Attack, spend 1 CP. If that Attack inflicts at least one unsaved Damage on its target, the target gains Slow 1 for its next Move. This affects the target Unit once, regardless of Models or the number of Hits. This does not grant an additional Attack."
         }
       ]
     }
