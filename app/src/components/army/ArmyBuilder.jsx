@@ -341,6 +341,8 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
   const r = resolveUnit(entry, cfg, view.faction?.id)
   const groups = visibleGroups(entry, cfg)
   const selectedNames = new Set(groups.flatMap((g) => (Array.isArray(cfg.picks[g.id]) ? cfg.picks[g.id] : [cfg.picks[g.id]]).map((id) => g.options.find((o) => o.id === id)?.name).filter(Boolean)))
+  const selectedOptions = groups.flatMap((g) => (Array.isArray(cfg.picks[g.id]) ? cfg.picks[g.id] : [cfg.picks[g.id]]).map((id) => g.options.find((o) => o.id === id)).filter(Boolean))
+  const incompatible = (option) => (option.incompatibleWith ?? []).some((name) => selectedNames.has(name)) || selectedOptions.some((picked) => (picked.incompatibleWith ?? []).includes(option.name))
   const primaryName = entry.groups.find((g) => g.id === 'primarySpell')?.options.find((o) => o.id === cfg.picks.primarySpell)?.name
   const trainingTaken = groups.flatMap((g) => (Array.isArray(cfg.picks[g.id]) ? cfg.picks[g.id] : [cfg.picks[g.id]]).map((id) => g.options.find((o) => o.id === id)).filter(Boolean)).filter((o) => o.countsAsCombatTraining).length
   // Gaining Hero (Heroic Commission, Master Wizard) moves the Unit from E to H on the slot tracker; losing it moves it back.
@@ -424,7 +426,7 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
                 <select value={cfg.picks[g.id] ?? ''} onChange={(e) => setPick(g.id, e.target.value || null)}>
                   {!g.required && <option value="">None</option>}
                   {g.options.map((o) => (
-                    <option key={o.id} value={o.id} disabled={g.id === 'arcana' && o.name === primaryName || (o.incompatibleWith ?? []).some((name) => selectedNames.has(name))}>{o.name}{o.points ? ` (+${o.points})` : ''}</option>
+                    <option key={o.id} value={o.id} disabled={g.id === 'arcana' && o.name === primaryName || incompatible(o)}>{o.name}{o.points ? ` (+${o.points})` : ''}</option>
                   ))}
                 </select>
                 {current && optionBrief(current) && <div className="brief">{optionBrief(current)}</div>}
@@ -442,7 +444,7 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
                           setPick(g.id, [...picked.filter((id) => id !== o.id), ...Array(n).fill(o.id)])
                         }} />
                     ) : (
-                      <input type="checkbox" disabled={count === 0 && ((o.incompatibleWith ?? []).some((name) => selectedNames.has(name)) || (o.countsAsCombatTraining && trainingTaken >= 2))} checked={count > 0}
+                      <input type="checkbox" disabled={count === 0 && (incompatible(o) || (o.countsAsCombatTraining && trainingTaken >= 2))} checked={count > 0}
                         onChange={() => setPick(g.id, toggle(picked, o.id, limit))} />
                     )}
                     <span>
