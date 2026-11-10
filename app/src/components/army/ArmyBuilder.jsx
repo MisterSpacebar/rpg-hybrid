@@ -354,8 +354,8 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
       const group = entry.groups.find((g) => g.id === 'arcana')
       if (primary && group) picks.arcana = (picks.arcana ?? []).filter((id) => group.options.find((o) => o.id === id)?.name !== primary.name)
     }
-    // When a Shield is chosen, remove conflicting melee/ranged packages. Otherwise
-    // preserve choices and surface any invalid older saved combinations.
+    // Conflicting equipment is disabled in the UI; legacy saved combinations
+    // remain visible as invalid until explicitly corrected by the player.
     const next = { ...cfg, picks }
     const before = resolveUnit(entry, cfg, view.faction?.id)
     const after = resolveUnit(entry, next, view.faction?.id)
@@ -444,7 +444,7 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
                           setPick(g.id, [...picked.filter((id) => id !== o.id), ...Array(n).fill(o.id)])
                         }} />
                     ) : (
-                      <input type="checkbox" disabled={count === 0 && (incompatible(o) || (o.countsAsCombatTraining && trainingTaken >= 2))} checked={count > 0}
+                      <input type="checkbox" disabled={count === 0 && ((g.id === 'arcana' && o.name === primaryName) || incompatible(o) || (o.countsAsCombatTraining && trainingTaken >= 2))} checked={count > 0}
                         onChange={() => setPick(g.id, toggle(picked, o.id, limit))} />
                     )}
                     <span>
