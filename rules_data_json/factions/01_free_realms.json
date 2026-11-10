@@ -125,33 +125,37 @@
       ]
     },
     {
-      "name": "Vanguard Skirmishers",
-      "points": 150,
+      "name": "Shielded Fusiliers",
+      "points": 160,
       "models": 4,
       "tags": [
         "Ranged Infantry",
         "Mortal",
         "Infantry",
-        "Ranged"
+        "Ranged",
+        "Armored"
       ],
       "modelProfile": {
-        "move": "5\"",
+        "move": "3\"",
         "wounds": 1,
-        "armor": "6+",
-        "evade": "5+",
+        "armor": "5+",
+        "evade": "6+",
         "ward": null
       },
       "attackProfiles": [
         {
-          "name": "Repeating Crossbows",
-          "range": "10\"",
-          "attacks": 3,
-          "hit": "5+",
+          "name": "Shielded Carbine",
+          "range": "9\"",
+          "attacks": 1,
+          "hit": "3+",
           "damage": 1,
-          "keywords": []
+          "keywords": [
+            "Firearm",
+            "Pinpoint"
+          ]
         },
         {
-          "name": "Hunting Knife",
+          "name": "Sidearm",
           "range": "Engaged",
           "attacks": 1,
           "hit": "6+",
@@ -161,14 +165,9 @@
       ],
       "abilities": [
         {
-          "name": "Mutual Support",
+          "name": "Shield Formation",
           "type": "Passive",
-          "effect": "Gain Accurate 1 while within Short of another friendly Unit."
-        },
-        {
-          "name": "Safe Crossfire",
-          "type": "Passive",
-          "effect": "This Unit gains Pinpoint on Ranged Attacks targeting an enemy Engaged with another friendly Unit. Other Blunder and Blast effects still apply."
+          "effect": "When resolving Charge Impact against this Unit, it gains Brace X, where X equals the number of surviving Models in the Unit at the time Impact is resolved. There is no cap on X. Brace reduces the Unit's one incoming Charge Impact pool; it does not prevent the Charge or subsequent melee Attacks."
         }
       ]
     }
@@ -485,6 +484,6 @@
   },
   "genericUnitsWorthTaking": "Shield-and-spear Line Infantry, Longbow Infantry, Light Cavalry, Field Medics, and Scouts. The faction's strength is using ordinary troops together.",
   "designNotes": [
-    "v4.2 balance pass: added Vanguard Skirmishers as the faction's Extra Core (parity with Sacred Orders), reinforcing the Combined Arms cooperative-fire theme rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on Greatweapons, Anti-Elite on the Lord-Commander's Command Blade) or an improved Hit (Grand Cannon 4+ -> 3+)."
+    "v4.2 balance pass: added Shielded Fusiliers as the faction's Extra Core (parity with Sacred Orders), reinforcing a defensive precision-firing and anti-Charge role rather than patching a weakness. Damage-1 weapons across the faction gained +1 Attack; Damage-2+ weapons kept their Attacks and gained a thematic Anti-[Type] (Anti-Armored on Greatweapons, Anti-Elite on the Lord-Commander's Command Blade) or an improved Hit (Grand Cannon 4+ -> 3+)."
   ]
 }
