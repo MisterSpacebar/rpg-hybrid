@@ -219,6 +219,7 @@ function normalizeGeneric(data) {
       { id, name, basePoints, baseModels, tags, description, category: 'Wizard', slots: ['E'], heroOption: 'Master Wizard' },
       raw,
     )
+    entry.masterWizardAbility = raw.masterWizardAbility ?? null
     const arcana = arcanaGroup(raw.genericArcana)
     if (arcana) {
       // Learned offensive Arcana are separate optional attacks; the primary free spell
