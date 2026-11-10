@@ -117,9 +117,11 @@
         {
           "name": "Relentless Hunt",
           "type": "Passive",
-          "effect": "After successfully Charging, gain Impact +1."
+          "effect": "The Unit has Impact +2 on successful Charges. This printed value replaces the previous Impact +1 from Relentless Hunt; it is not an additional +1."
         }
-      ]
+      ],
+      "charge": 2,
+      "impact": 2
     },
     {
       "name": "Night Stalkers",
