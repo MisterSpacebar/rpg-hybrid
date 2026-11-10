@@ -12,31 +12,212 @@
     "signatureCoreRecruitmentReference": {
       "description": "Explicitly identifies the compatible recruitment choices of each faction's Core formations. Every listed Unit remains Core regardless of which eligible Slot is assigned.",
       "entries": [
-        { "faction": "Free Realms", "unit": "Greatweapon Guard", "eligibleSlots": ["C"] },
-        { "faction": "Free Realms", "unit": "Outriders", "eligibleSlots": ["C", "R", "V"] },
-        { "faction": "Sacred Orders", "unit": "Temple Guard", "eligibleSlots": ["C", "E"] },
-        { "faction": "Sacred Orders", "unit": "Sanctified Arbalests", "eligibleSlots": ["C", "R", "E"] },
-        { "faction": "Sacred Orders", "unit": "Consecrated Knights", "eligibleSlots": ["C", "V", "E"] },
-        { "faction": "Iron Holds", "unit": "Ironbreakers", "eligibleSlots": ["C"] },
-        { "faction": "Iron Holds", "unit": "Thunderers", "eligibleSlots": ["C", "R"] },
-        { "faction": "Wild Courts", "unit": "Glade Hunters", "eligibleSlots": ["C", "R"] },
-        { "faction": "Wild Courts", "unit": "Wild Riders", "eligibleSlots": ["C", "V"] },
-        { "faction": "Warclans", "unit": "Choppa Mob", "eligibleSlots": ["C"] },
-        { "faction": "Warclans", "unit": "Brutes", "eligibleSlots": ["C"] },
-        { "faction": "Underclans", "unit": "Sneaks", "eligibleSlots": ["C", "V"] },
-        { "faction": "Underclans", "unit": "Bombardiers", "eligibleSlots": ["C", "R"] },
-        { "faction": "Death Legions", "unit": "Corpse Horde", "eligibleSlots": ["C"] },
-        { "faction": "Death Legions", "unit": "Grave Guard", "eligibleSlots": ["C", "E"] },
-        { "faction": "Blood Courts", "unit": "Thralls", "eligibleSlots": ["C"] },
-        { "faction": "Blood Courts", "unit": "Blood Knights", "eligibleSlots": ["C", "E", "V"] },
-        { "faction": "Spirit Hosts", "unit": "Wraith Guard", "eligibleSlots": ["C", "E"] },
-        { "faction": "Spirit Hosts", "unit": "Haunters", "eligibleSlots": ["C", "V"] },
-        { "faction": "Infernal Hosts", "unit": "Hellguard", "eligibleSlots": ["C", "E"] },
-        { "faction": "Infernal Hosts", "unit": "Rift Stalkers", "eligibleSlots": ["C", "V"] },
-        { "faction": "Arcane Orders", "unit": "Spellguard", "eligibleSlots": ["C", "E"] },
-        { "faction": "Arcane Orders", "unit": "Aether Ballista Team", "eligibleSlots": ["C", "R", "E"] },
-        { "faction": "Titan Clans", "unit": "Ogre Warriors", "eligibleSlots": ["C"] },
-        { "faction": "Titan Clans", "unit": "Beast Riders", "eligibleSlots": ["C", "V"] }
+        {
+          "faction": "Free Realms",
+          "unit": "Greatweapon Guard",
+          "eligibleSlots": [
+            "C"
+          ]
+        },
+        {
+          "faction": "Free Realms",
+          "unit": "Outriders",
+          "eligibleSlots": [
+            "C",
+            "R",
+            "V"
+          ]
+        },
+        {
+          "faction": "Free Realms",
+          "unit": "Shielded Fusiliers",
+          "eligibleSlots": [
+            "C",
+            "R"
+          ]
+        },
+        {
+          "faction": "Sacred Orders",
+          "unit": "Temple Guard",
+          "eligibleSlots": [
+            "C",
+            "E"
+          ]
+        },
+        {
+          "faction": "Sacred Orders",
+          "unit": "Sanctified Arbalests",
+          "eligibleSlots": [
+            "C",
+            "R",
+            "E"
+          ]
+        },
+        {
+          "faction": "Sacred Orders",
+          "unit": "Consecrated Knights",
+          "eligibleSlots": [
+            "C",
+            "V",
+            "E"
+          ]
+        },
+        {
+          "faction": "Iron Holds",
+          "unit": "Ironbreakers",
+          "eligibleSlots": [
+            "C"
+          ]
+        },
+        {
+          "faction": "Iron Holds",
+          "unit": "Thunderers",
+          "eligibleSlots": [
+            "C",
+            "R"
+          ]
+        },
+        {
+          "faction": "Wild Courts",
+          "unit": "Glade Hunters",
+          "eligibleSlots": [
+            "C",
+            "R"
+          ]
+        },
+        {
+          "faction": "Wild Courts",
+          "unit": "Wild Riders",
+          "eligibleSlots": [
+            "C",
+            "V"
+          ]
+        },
+        {
+          "faction": "Warclans",
+          "unit": "Choppa Mob",
+          "eligibleSlots": [
+            "C"
+          ]
+        },
+        {
+          "faction": "Warclans",
+          "unit": "Brutes",
+          "eligibleSlots": [
+            "C"
+          ]
+        },
+        {
+          "faction": "Underclans",
+          "unit": "Sneaks",
+          "eligibleSlots": [
+            "C",
+            "V"
+          ]
+        },
+        {
+          "faction": "Underclans",
+          "unit": "Bombardiers",
+          "eligibleSlots": [
+            "C",
+            "R"
+          ]
+        },
+        {
+          "faction": "Death Legions",
+          "unit": "Corpse Horde",
+          "eligibleSlots": [
+            "C"
+          ]
+        },
+        {
+          "faction": "Death Legions",
+          "unit": "Grave Guard",
+          "eligibleSlots": [
+            "C",
+            "E"
+          ]
+        },
+        {
+          "faction": "Blood Courts",
+          "unit": "Thralls",
+          "eligibleSlots": [
+            "C"
+          ]
+        },
+        {
+          "faction": "Blood Courts",
+          "unit": "Blood Knights",
+          "eligibleSlots": [
+            "C",
+            "E",
+            "V"
+          ]
+        },
+        {
+          "faction": "Spirit Hosts",
+          "unit": "Wraith Guard",
+          "eligibleSlots": [
+            "C",
+            "E"
+          ]
+        },
+        {
+          "faction": "Spirit Hosts",
+          "unit": "Haunters",
+          "eligibleSlots": [
+            "C",
+            "V"
+          ]
+        },
+        {
+          "faction": "Infernal Hosts",
+          "unit": "Hellguard",
+          "eligibleSlots": [
+            "C",
+            "E"
+          ]
+        },
+        {
+          "faction": "Infernal Hosts",
+          "unit": "Rift Stalkers",
+          "eligibleSlots": [
+            "C",
+            "V"
+          ]
+        },
+        {
+          "faction": "Arcane Orders",
+          "unit": "Spellguard",
+          "eligibleSlots": [
+            "C",
+            "E"
+          ]
+        },
+        {
+          "faction": "Arcane Orders",
+          "unit": "Aether Ballista Team",
+          "eligibleSlots": [
+            "C",
+            "R",
+            "E"
+          ]
+        },
+        {
+          "faction": "Titan Clans",
+          "unit": "Ogre Warriors",
+          "eligibleSlots": [
+            "C"
+          ]
+        },
+        {
+          "faction": "Titan Clans",
+          "unit": "Beast Riders",
+          "eligibleSlots": [
+            "C",
+            "V"
+          ]
+        }
       ],
       "note": "The table grants eligibility even when a Unit's battlefield tag is narrower or uses different vocabulary (for example, Outriders' carbine-equipped mobility allows R or V). It does not turn these Units into generic Infantry or change their existing abilities."
     },
@@ -53,21 +234,66 @@
     "reinforcement": "Healing never returns a defeated Model unless expressly stated. Ordinary active reinforcement affects only surviving, unengaged Units; restore basic Models into legal Coherency, never above starting size unless the ability expressly permits it. A completely destroyed Unit cannot return except by a rule such as Rise Again that specifically permits returning a destroyed Unit. Passive casualty recovery, such as Endless Dead, may function for a surviving Engaged Unit, but cannot return a Unit whose final Model was destroyed during the Attack. All costs are provisional."
   },
   "files": [
-    { "id": "general-roster-rules", "file": "00_general_roster_rules.json" },
-    { "id": "free-realms", "file": "01_free_realms.json" },
-    { "id": "sacred-orders", "file": "02_sacred_orders.json" },
-    { "id": "iron-holds", "file": "03_iron_holds.json" },
-    { "id": "wild-courts", "file": "04_wild_courts.json" },
-    { "id": "warclans", "file": "05_warclans.json" },
-    { "id": "underclans", "file": "06_underclans.json" },
-    { "id": "death-legions", "file": "07_death_legions.json" },
-    { "id": "blood-courts", "file": "08_blood_courts.json" },
-    { "id": "spirit-hosts", "file": "09_spirit_hosts.json" },
-    { "id": "infernal-hosts", "file": "10_infernal_hosts.json" },
-    { "id": "arcane-orders", "file": "11_arcane_orders.json" },
-    { "id": "titan-clans", "file": "12_titan_clans.json" },
-    { "id": "roster-distribution-summary", "file": "13_roster_distribution_summary.json" },
-    { "id": "balance-and-design-notes", "file": "14_balance_and_design_notes.json" }
+    {
+      "id": "general-roster-rules",
+      "file": "00_general_roster_rules.json"
+    },
+    {
+      "id": "free-realms",
+      "file": "01_free_realms.json"
+    },
+    {
+      "id": "sacred-orders",
+      "file": "02_sacred_orders.json"
+    },
+    {
+      "id": "iron-holds",
+      "file": "03_iron_holds.json"
+    },
+    {
+      "id": "wild-courts",
+      "file": "04_wild_courts.json"
+    },
+    {
+      "id": "warclans",
+      "file": "05_warclans.json"
+    },
+    {
+      "id": "underclans",
+      "file": "06_underclans.json"
+    },
+    {
+      "id": "death-legions",
+      "file": "07_death_legions.json"
+    },
+    {
+      "id": "blood-courts",
+      "file": "08_blood_courts.json"
+    },
+    {
+      "id": "spirit-hosts",
+      "file": "09_spirit_hosts.json"
+    },
+    {
+      "id": "infernal-hosts",
+      "file": "10_infernal_hosts.json"
+    },
+    {
+      "id": "arcane-orders",
+      "file": "11_arcane_orders.json"
+    },
+    {
+      "id": "titan-clans",
+      "file": "12_titan_clans.json"
+    },
+    {
+      "id": "roster-distribution-summary",
+      "file": "13_roster_distribution_summary.json"
+    },
+    {
+      "id": "balance-and-design-notes",
+      "file": "14_balance_and_design_notes.json"
+    }
   ],
   "knownIssues": [
     "Several factions' 'Doctrines: X / Y' line (e.g. Free Realms' 'Combined Arms / Objective Play') names generic Doctrines defined in rulebooks/chapters/02_wargame/03_non_faction_doctrines.md (not yet converted to JSON). At least one name collision exists: Free Realms' own Faction Rule is also named 'Combined Arms' but has a different effect (Accurate 1 vs. an already-Engaged enemy) than the generic Combined Arms Doctrine (a 5-Command Slot-based table keyed on mutual support). This is likely intentional thematic echoing rather than a drafting error, but it means the two 'Combined Arms' are not the same rules object and should not be merged."
