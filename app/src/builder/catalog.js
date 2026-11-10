@@ -41,6 +41,8 @@ function optionOf(o, groupKey) {
     incompatibleWith: o.incompatibleWith ?? null,
     charge: o.charge ?? null,
     impact: o.impact ?? null,
+    grantsTags: o.grantsTags ?? null,
+    countsAsCombatTraining: !!o.countsAsCombatTraining,
     timing: o.timing ?? null,
   }
 }
