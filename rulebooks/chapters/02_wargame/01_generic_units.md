@@ -223,7 +223,7 @@ These are **Elite Infantry equipment costs**, not an alternative Ranged Infantry
 | **Veterans** | **+50** | One selected weapon gains **+1 Attack per Model** and improves its Hit characteristic one step. |
 | Brace Drill | +25 | Gain **Brace 1**; adds to other applicable sources and reduces Charge Impact once per receiving Unit. |
 
-Weapon Master and Deadly Precision are independent upgrades; the latter is a personal CP Command, not a passive keyword. Veterans and Weapon Specialization each affect **one selected weapon profile**, chosen when the upgrade is purchased. Veterans improves every weapon the Unit carries. Bonuses and ranked Keywords are never multiplied by its Model count unless expressly written **per Model**.
+Weapon Master and Deadly Precision are independent upgrades; the latter is a personal CP Command, not a passive keyword. Veterans improves all weapons; Weapon Specialization applies only to its selected weapon. Veterans improves every weapon the Unit carries. Bonuses and ranked Keywords are never multiplied by its Model count unless expressly written **per Model**.
 
 **Battlefield role:** Durable infantry, tactical melee specialists, and resilient mixed-weapon formations.
 
@@ -232,7 +232,7 @@ Weapon Master and Deadly Precision are independent upgrades; the latter is a per
 
 # 2. CAVALRY AND MOBILE TROOPS
 
-Cavalry profiles represent conventional mounted troops, while faction-specific mobile troops may use different forms of movement. All generic Cavalry classes gain **Charge 3**.
+Cavalry profiles represent conventional mounted troops, while faction-specific mobile troops may use different forms of movement. Generic Cavalry classes gain different Charge and Impact values as their protection increases.
 
 ## Cavalry — 115 Points
 
@@ -428,7 +428,7 @@ This additional Damage does not replace normal Hits or Damage. Applicable Ward S
 | Additional Arcana | +15 each | Learn one additional Arcana. Increases spell options, not CP or Doctrine-card availability.    |
 | Arcane Training   | +15      | Gain Accurate +1 on offensive spell attacks.                                                   |
 | Weapon Specialization | +25  | Choose one Faction, Unit Type, or Trait tag. One offensive Arcana (the chosen primary spell is eligible) gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts. May be purchased once. |
-| Veteran           | +50      | Increase Attacks by 1 and improve Hit by one step on one offensive Arcana; Arcane Bolt is eligible. |
+| Veteran | +50 | Select one known offensive Spell Attack (including the primary spell); increase its Attacks by 1 and improve Hit by one step. |
 | Cantrip           | +30      | Reduce the CP cost of this Model's first eligible Command each Round by 1 (minimum 0). No card is exhausted for a 0 CP use.              |
 | Greater Ward      | +35      | This unit’s Ward improves by 1. This includes both Physical and Magic.                         |
 
@@ -769,7 +769,7 @@ These profiles are provisional balance targets. The main aim is to retain recogn
 - **Weapon Specialization (new, +25):** A broadly available upgrade (Line Infantry, Ranged Infantry, Elite Infantry, Cavalry, Captains, Wizards) letting a Unit choose **any one Faction, Unit Type, or Trait tag** and grant one selected weapon **Anti-[chosen tag] 2**. Because Anti-[Type] bonuses apply once to the whole Unit's combined Attack pool rather than per Model (see Unit Tags), this upgrade does not scale with Model count the way Veterans does — it stays a flat, situational bonus regardless of formation size, which is why it is priced as a single flat cost rather than per-unit like Veterans.
 - **Line Infantry:** Rebuilt around a **W2 / Arm 6+ / Eva 6+, Unarmored** baseline for the same 75 Points, trading the old flat 5+ Armor for more Wounds and a cheaper, individually purchasable path back to better Armor (see Defensive Upgrades: Armor and Shields, each +15, stacking to the old Arm 4+ ceiling). Spears and Polearms have Charge defenses, Heavy Weapons provide Damage 2 with Anti-Armored 2 **and the Heavy restriction** (its circumstantial extra-dice potential is strong enough on a multi-Model Unit to warrant the movement tradeoff), and Dual Weapons provide volume. Charge Drill, Shock Training, and Brace Training add independent tactical choices. **Polearms remain the only melee weapon not implicitly Heavy** despite their weight.
 - **Unarmored tag:** New Trait tag, the counterpart to Armored. Granted by baseline Line Infantry; removed once the Armor upgrade is purchased. See Unit Tags for full rules, including **Anti-Unarmored X**.
-- **Elite Infantry:** Strong W4 profiles remain their principal distinction. Secondary ranged weapons are allowed without buying Veterans, and their Weapon Mastery/Critical upgrades modify one combined Unit pool rather than multiplying with Model count.
+- **Elite Infantry:** Strong W4 profiles remain their principal distinction. Secondary ranged weapons are allowed without buying Veterans, and their Weapon Master and Deadly Precision upgrades affect the specified Unit Attack rather than multiplying with Model count.
 - **Faction Horde units:** Sneaks, Thralls, and Corpse Horde were buffed by adding Models at unchanged Points (Sneaks +1, Thralls +2, Corpse Horde +3) rather than by adding Attacks, preserving their characteristically fragile, high-casualty-tolerance profile while improving their staying power and board presence.
 - **Supports:** Two W3 Models remain standard. Additional Models cost +50 but **never multiply Commands**. Engineer Pistols and the Alchemist/Cleric options are deliberately limited compared with PC class Formulas and spells. Heralds, Scouts/Spotters, Engineers, Alchemists, and Clerics may each learn **Target Analysis** (+20 Points), a 1 CP Assault Command granting a friendly Unit's next Attack a specialization-appropriate **Anti-[Type] 3** (see each specialization's upgrade table for its available categories). It is priced higher than a weapon's own Anti-[Type] 2 precisely because, unlike an owned weapon, a granted Command bonus doesn't scale with the receiving Unit's size or equipment.
 - **Keyword stacking:** The entire Unit Attack pool receives its printed Accurate X, Critical X, etc. once. Distinct applicable keyword bonuses add their X values unless a specific rule states otherwise. An explicit **per-Model Attack** bonus is different from a **Unit Attack-pool** bonus.
