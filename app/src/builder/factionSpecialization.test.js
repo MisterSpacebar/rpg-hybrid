@@ -151,3 +151,11 @@ test('Optional 1 CP commands provide tactical differentiation without multiplyin
   const ranks = byName(faction(3, 'iron_holds'), 'Ironbreakers').abilities.map((a) => a.name)
   assert.ok(ranks.includes('Shieldwall') && ranks.includes('Lock Shields'))
 })
+
+test('Artillery never shows faction Charge or Impact bonuses it cannot use', () => {
+  const artillery = {name: 'Field Cannon', points: 110, models: 1,
+    modelProfile: {move: '3"', wounds: 4, armor: '5+', evade: null},
+    tags: ['Artillery'], attackProfiles: []}
+  assert.equal(resolved(artillery, 'generic', 'warclans').charge, null)
+  assert.equal(resolved(artillery, 'generic', 'titan-clans').impact, null)
+})
