@@ -188,7 +188,7 @@
           {
             "name": "Heroic Commission",
             "points": 35,
-            "effect": "Gain Hero and H eligibility while retaining Elite; increase Wounds by 1; every weapon the Captain currently carries gains +1 Attack. The Captain now counts toward the three-Hero limit. This grants Hero, NOT Character. A named legacy Captain may separately gain Character by an explicit conversion.",
+            "effect": "Gain Hero and H eligibility while retaining Elite; increase Wounds by 1; every weapon the Captain currently carries gains +1 Attack. The Captain now counts toward the three-Hero limit. This grants Hero, NOT Unique. A named legacy Captain may separately gain Unique by an explicit conversion.",
             "countsAsCombatTraining": true
           }
         ]
