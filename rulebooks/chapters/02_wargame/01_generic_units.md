@@ -156,9 +156,12 @@ A Unit carrying multiple profiles selects one eligible Attack when it uses an At
 | Longshot Training | +10 | Gain **Long Range 2"**. If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units (minimum 1). |
 | Marksman Training | +30 | Primary ranged weapon gains Accurate 1 and improves Hit by one step. |
 | Sharpeye | +20 | Primary ranged weapon gains Pinpoint. |
+| Armored | +15 | Improve Armor from 6+ to 5+; gain **Armored**. No Shield or Brace is granted. Does not alter any two-handed weapon's Heavy restriction. |
 | Weapon Specialization | +25 | Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains **Anti-[chosen tag] 2** against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once. |
 | **Veterans** | **+75** | The selected ranged weapon gains **+1 Attack per Model** and improves Hit by one step. |
 | Deadly Precision | +20 | Personal **1 CP — Assault or Combat** Command: the Attack with any weapon gains Critical 1 per Surge. May be used again on a later eligible Attack for another CP, never twice on the same Attack. No Surge means no conversion. |
+
+The Armored upgrade is a paid defensive improvement independent of weapon selection and compatible with all Ranged Infantry packages. It does not grant Shields or Brace; any added Models use the existing generic reinforcement rules.
 
 Deadly Precision is Surge-dependent despite being CP-paid: no Surges means no Critical conversions. It does not require an extra-Model surcharge.
 
