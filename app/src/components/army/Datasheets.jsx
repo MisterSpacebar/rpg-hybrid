@@ -21,7 +21,7 @@ function Sheet({ u, rule }) {
         <div className="sheet-points">{u.points}<span>pts</span></div>
       </header>
 
-      <StatStrip big stats={u.stats} impact={u.impact} models={u.models} changed={u.changedStats} base={u.baseStats} factionChanged={u.factionChanged} factionRule={u.factionRule} />
+      <StatStrip big stats={u.stats} charge={u.charge} impact={u.impact} models={u.models} changed={u.changedStats} base={u.baseStats} factionChanged={u.factionChanged} factionRule={u.factionRule} />
 
       {u.attacks.length > 0 && (
         <table className="sheet-table">
