@@ -202,8 +202,17 @@ export function resolveUnit(entry, cfg, factionId = null) {
   if (entry.isLargeAsset && !tags.includes('Large Asset')) tags.push('Large Asset')
   const fx = applyFactionEffects(factionId, { source: entry.source, models: finalModels, stats, attacks, tags: canonicalTags(tags, factionId ?? entry.factionId) })
   const cavalryClass = picked.find((o) => o.id?.startsWith('cavalryClass:'))
-  const charge = cavalryClass?.charge ?? null
-  const impact = cavalryClass?.impact != null ? `+${cavalryClass.impact}` : (entry.impact ?? null)
+  // Faction-wide movement/shock bonuses vary by recruitment source.
+  // Named cavalry retain printed ranks; generic recruits use smaller bonuses.
+  const printedCharge = entry.charge ?? cavalryClass?.charge ?? null
+  const charge = factionId === 'warclans'
+    ? Math.max(Number(printedCharge ?? 0), entry.source === 'generic' ? 1 : 2)
+    : printedCharge
+  const printedImpact = entry.impact != null ? Number(String(entry.impact).replace(/^\+/, '')) : cavalryClass?.impact
+  const totalImpact = factionId === 'titan-clans'
+    ? (entry.source === 'generic' ? Number(printedImpact ?? 0) + 1 : Number(printedImpact ?? 2))
+    : printedImpact
+  const impact = totalImpact != null ? `+${totalImpact}` : null
   const optionCommands = picked.filter((o) => o.cpCost && !o.profile).map((o) => ({ name: o.name, type: 'Command', cost: `${o.cpCost} CP`, timing: o.timing, effect: o.effect }))
 
   return {
