@@ -133,7 +133,7 @@
     },
     {
       "name": "Animated Guardians",
-      "points": 180,
+      "points": 195,
       "models": 3,
       "tags": [
         "Construct",
@@ -164,6 +164,11 @@
           "name": "Arcane Binding",
           "type": "Passive",
           "effect": "Immune to Slow and forced-movement effects."
+        },
+        {
+          "name": "Resonant Blades",
+          "type": "Passive",
+          "effect": "While this Unit is within Short of a different friendly Wizard Unit, Stone Fists improve Hit from 5+ to 4+. This is a conditional Hit improvement and does not add extra Attacks or ranks of Accurate."
         }
       ]
     }
