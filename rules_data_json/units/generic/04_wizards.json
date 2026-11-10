@@ -29,19 +29,8 @@
               "evade": "6+",
               "ward": "6+ (Magic)"
             },
-            "arcaneBolt": {
-              "range": "7\"",
-              "attacks": 5,
-              "hit": "5+",
-              "damage": 1,
-              "damageTypes": [
-                "Magic"
-              ],
-              "keywords": [
-                "Accurate 1"
-              ]
-            },
-            "arcanaChoices": 2
+            "arcanaChoices": 2,
+            "notes": " Primary Spell is selected from primarySpell; Wizard uses printed values, Master Wizard adds +2 inches normal Range and improves Hit by one step (maximum 2+) for that primary spell. This bonus applies only to the selected primary spell, not Arcana learned separately."
           },
           {
             "name": "Master Wizard",
@@ -53,27 +42,15 @@
               "evade": "6+",
               "ward": "5+ (Magic)"
             },
-            "arcaneBolt": {
-              "range": "9\"",
-              "attacks": 5,
-              "hit": "4+",
-              "damage": 1,
-              "damageTypes": [
-                "Magic"
-              ],
-              "keywords": [
-                "Accurate 1",
-                "Long Range 3\""
-              ]
-            },
             "arcanaChoices": 3,
-            "tagChange": "Loses Elite tag and gains Hero."
+            "tagChange": "Loses Elite tag and gains Hero.",
+            "notes": " Primary Spell is selected from primarySpell; Wizard uses printed values, Master Wizard adds +2 inches normal Range and improves Hit by one step (maximum 2+) for that primary spell. This bonus applies only to the selected primary spell, not Arcana learned separately."
           }
         ]
       },
       "meleeWeaponOptions": {
         "chooseCount": 1,
-        "note": "Wizards retain Arcane Bolt alongside their selected melee weapon.",
+        "note": "Wizards carry exactly one primary Spell Attack, alongside their selected melee weapon; optional learned offensive Arcana remain alternative Assault Attacks.",
         "options": [
           {
             "name": "Staff or Dagger",
@@ -149,12 +126,12 @@
           {
             "name": "Weapon Specialization",
             "points": 25,
-            "effect": "Choose one Faction, Unit Type, or Trait tag. One offensive Arcana (Arcane Bolt is eligible) gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts. May be purchased once."
+            "effect": "Choose one Faction, Unit Type, or Trait tag. One offensive Spell Attack (including the selected primary spell) gains Anti-[chosen tag] 2 against eligible targets; the highest matching Anti rank applies."
           },
           {
             "name": "Veteran",
             "points": 50,
-            "effect": "Increase Attacks by 1 and improve Hit by one step on one offensive Arcana; Arcane Bolt is eligible."
+            "effect": "Choose one offensive Spell Attack (including the selected primary spell): increase its Attacks by 1 and improve Hit by one step."
           },
           {
             "name": "Cantrip",
@@ -179,13 +156,13 @@
         ]
       },
       "genericArcana": {
-        "note": "Attack-profile Arcana are alternative weapons for a Wizard's normal Attack and do not require CP unless specified.",
+        "note": "The primary spell is included at no Arcana cost; alternative offensive spell profiles may be learned using Arcana selections, with CP Command choices competing for the same known Arcana slots.",
         "offensive": [
           {
             "name": "Arcane Blast",
             "commandCost": null,
             "profile": {
-              "range": "6\"",
+              "range": "7\"",
               "attacks": 3,
               "hit": "5+",
               "damage": 1,
@@ -202,8 +179,8 @@
             "name": "Force Bolt",
             "commandCost": null,
             "profile": {
-              "range": "10\"",
-              "attacks": 3,
+              "range": "12\"",
+              "attacks": 4,
               "hit": "4+",
               "damage": 1,
               "damageTypes": [
@@ -216,7 +193,7 @@
             "name": "Arcane Lance",
             "commandCost": null,
             "profile": {
-              "range": "8\"",
+              "range": "9\"",
               "attacks": 2,
               "hit": "5+",
               "damage": 2,
@@ -288,7 +265,76 @@
       "designNotes": [
         "v4 balance pass (post-playtesting): Damage-1 Attacks (Arcane Bolt, Staff/Dagger, Arcane Blade, Battle Staff, Arcane Blast, Force Bolt) gained +1 Attack; the Damage-2 Arcane Lance kept its listed Attacks and gained Anti-Monster 2.",
         "v4.1 refinement: the Wizard is a single Model, so Veteran (+50) stays a flat cost rather than the higher per-unit pricing used on larger multi-Model formations like Line/Ranged Infantry. A new Weapon Specialization upgrade (+25) lets the Wizard choose any Faction/Unit Type/Trait tag for one offensive Arcana to gain Anti-[chosen tag] 2."
-      ]
+      ],
+      "primarySpell": {
+        "chooseCount": 1,
+        "note": "Every Wizard chooses exactly one free primary Spell Attack from Arcane Bolt, Arcane Blast, Force Bolt, or Arcane Lance. Additional offensive spell profiles may be learned through Arcana slots. Each spell is an alternative normal Assault Attack; never combine their Attack dice.",
+        "options": [
+          {
+            "name": "Arcane Bolt",
+            "profile": {
+              "range": "7\"",
+              "attacks": 5,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Accurate 1"
+              ]
+            },
+            "points": 0
+          },
+          {
+            "name": "Arcane Blast",
+            "profile": {
+              "range": "7\"",
+              "attacks": 3,
+              "hit": "5+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Blast 1\""
+              ]
+            },
+            "points": 0
+          },
+          {
+            "name": "Force Bolt",
+            "profile": {
+              "range": "12\"",
+              "attacks": 4,
+              "hit": "4+",
+              "damage": 1,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": []
+            },
+            "points": 0
+          },
+          {
+            "name": "Arcane Lance",
+            "profile": {
+              "range": "9\"",
+              "attacks": 2,
+              "hit": "5+",
+              "damage": 2,
+              "damageTypes": [
+                "Magic"
+              ],
+              "keywords": [
+                "Heavy",
+                "Anti-Monster 2"
+              ]
+            },
+            "points": 0
+          }
+        ]
+      }
     }
   ]
 }
