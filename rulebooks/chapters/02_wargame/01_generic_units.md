@@ -453,6 +453,7 @@ Attack-profile Arcana are alternative spell attacks learned through Arcana slots
 
 | Arcana       | Command Cost | Profile / Effect                                                                                                                                |
 | ------------ | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Arcane Bolt | — | 7" / 5 / 5+ / 1 / Magic, Accurate 1. Learnable as additional Arcana if it is not the chosen free Primary Spell. |
 | Arcane Blast | —            | 7" / 3 / 5+ / 1 / Blast 1", Magic. Area magic that inflicts an automatic Hit on other Units within 1" of the target if the Attack scores a Hit. |
 | Force Bolt   | —            | 12" / 4 / 4+ / 1 / Magic.                                                                                                                       |
 | Arcane Lance | —            | 9" / 2 / 5+ / 2 / Magic, Heavy, Anti-Monster 2                                                                                                  |
