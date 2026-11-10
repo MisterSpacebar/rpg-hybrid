@@ -205,11 +205,13 @@ export function resolveUnit(entry, cfg, factionId = null) {
   // Faction-wide movement/shock bonuses vary by recruitment source.
   // Named cavalry retain printed ranks; generic recruits use smaller bonuses.
   const printedCharge = entry.charge ?? cavalryClass?.charge ?? null
-  const charge = factionId === 'warclans'
+  // Artillery cannot declare Charges: do not show an unusable faction Charge/Impact rank.
+  const mayCharge = entry.category !== 'Artillery' && !(entry.tags ?? []).includes('Artillery')
+  const charge = factionId === 'warclans' && mayCharge
     ? Math.max(Number(printedCharge ?? 0), entry.source === 'generic' ? 1 : 2)
     : printedCharge
   const printedImpact = entry.impact != null ? Number(String(entry.impact).replace(/^\+/, '')) : cavalryClass?.impact
-  const totalImpact = factionId === 'titan-clans'
+  const totalImpact = factionId === 'titan-clans' && mayCharge
     ? (entry.source === 'generic' ? Number(printedImpact ?? 0) + 1 : Number(printedImpact ?? 2))
     : printedImpact
   const impact = totalImpact != null ? `+${totalImpact}` : null
