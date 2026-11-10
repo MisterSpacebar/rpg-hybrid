@@ -23,6 +23,40 @@ export function defaultPicks(entry) {
   return picks
 }
 
+// Migrate older saved Captain equipment without silently changing the meaning of
+// historical option IDs, and give existing Wizards their free primary spell.
+export function migrateUnitConfig(entry, cfg) {
+  const picks = { ...(cfg.picks ?? {}) }
+  let changed = false
+  if (entry.key === 'generic:captain') {
+    const training = asArray(picks.equipmentAndCombatTraining)
+    const oldWeapons = { 'equipmentAndCombatTraining:2': 'rangedWeaponPackages:0', 'equipmentAndCombatTraining:3': 'rangedWeaponPackages:1', 'equipmentAndCombatTraining:4': 'rangedWeaponPackages:2', 'equipmentAndCombatTraining:5': 'rangedWeaponPackages:3' }
+    const weapon = training.find((id) => oldWeapons[id])
+    if (weapon && !picks.rangedWeaponPackages) { picks.rangedWeaponPackages = oldWeapons[weapon]; changed = true }
+    const replaced = training.map((id) => id === 'equipmentAndCombatTraining:9' ? 'equipmentAndCombatTraining:10' : id)
+      .filter((id) => !oldWeapons[id])
+    if (replaced.length !== training.length || replaced.some((id, i) => id !== training[i])) {
+      picks.equipmentAndCombatTraining = [...new Set(replaced)]
+      changed = true
+    }
+  }
+  for (const group of entry.groups.filter((g) => g.kind === 'radio' && g.required)) {
+    if (!picks[group.id] || !group.options.some((o) => o.id === picks[group.id])) {
+      picks[group.id] = group.options[0]?.id ?? null
+      changed = true
+    }
+  }
+  if (entry.key === 'generic:wizard') {
+    const primary = entry.groups.find((g) => g.id === 'primarySpell')?.options.find((o) => o.id === picks.primarySpell)
+    const arcana = entry.groups.find((g) => g.id === 'arcana')
+    if (primary && arcana && Array.isArray(picks.arcana)) {
+      const cleaned = picks.arcana.filter((id) => arcana.options.find((o) => o.id === id)?.name !== primary.name)
+      if (cleaned.length !== picks.arcana.length) { picks.arcana = cleaned; changed = true }
+    }
+  }
+  return changed ? { ...cfg, picks } : cfg
+}
+
 export function newUnitConfig(entry, slot) {
   return {
     uid: `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`,
@@ -56,7 +90,12 @@ function selectedOf(entry, cfg) {
       const dep = entry.groups.find((x) => x.id === g.when.group)
       if (!dep || !chosenOf(dep, cfg).some((o) => o.name === g.when.option)) continue
     }
-    const options = chosenOf(g, cfg).slice(0, groupLimit(entry, g, cfg))
+    let options = chosenOf(g, cfg).slice(0, groupLimit(entry, g, cfg))
+    if (g.id === 'arcana') {
+      const primary = entry.groups.find((x) => x.id === 'primarySpell')
+      const primaryName = primary && chosenOf(primary, cfg)[0]?.name
+      if (primaryName) options = options.filter((o) => o.name !== primaryName)
+    }
     result.push({ group: g, options })
   }
   return result
