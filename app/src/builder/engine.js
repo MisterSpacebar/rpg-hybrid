@@ -88,6 +88,10 @@ function describeTagChoice(o, cfg, targets) {
 export function resolveUnit(entry, cfg, factionId = null) {
   const selected = selectedOf(entry, cfg)
   const picked = selected.flatMap((s) => s.options)
+  const chosenNames = new Set(picked.map((o) => o.name))
+  const trainingCount = picked.filter((o) => o.countsAsCombatTraining).length
+  const illegalPair = picked.flatMap((o) => (o.incompatibleWith ?? []).filter((name) => chosenNames.has(name)).map((name) => `${o.name} + ${name}`))
+  const loadoutConflicts = [...new Set(illegalPair)]
 
   let total = entry.basePoints
   let paidPackages = 0
@@ -122,24 +126,35 @@ export function resolveUnit(entry, cfg, factionId = null) {
   const baseStats = withStats?.stats ?? entry.stats
   const { stats, changed } = modifyStats(baseStats, picked)
 
+  const isMasterWizard = entry.key === 'generic:wizard' && picked.some((o) => o.name === 'Master Wizard')
+  const primarySpell = picked.find((o) => o.id?.startsWith('primarySpell:'))
   const rawAttacks = [
     ...entry.attacks.map((a) => ({ ...a, origin: 'entry' })),
     ...picked.flatMap((o) => [
       o.arcaneBolt && { name: 'Arcane Bolt', ...o.arcaneBolt, origin: 'pick' },
-      o.profile && { name: o.name, ...o.profile, origin: 'pick' },
+      o.profile && { name: o.name, ...o.profile, origin: 'pick', sourceOption: o.id },
     ]),
   ].filter(Boolean)
+  // The primary spell is a free alternative to Arcane Bolt, not an extra spell
+  // granted alongside Bolt. Master Wizard improves that primary choice only.
+  const spellAttacks = rawAttacks.filter((a) => !(a.sourceOption?.startsWith('arcana:') && a.name === primarySpell?.name))
+  if (isMasterWizard) {
+    for (const attack of spellAttacks.filter((a) => a.sourceOption === primarySpell?.id)) {
+      attack.range = attack.range.replace(/\d+"/, (m) => `${Number.parseInt(m, 10) + 2}"`)
+      attack.hit = `${Math.max(2, Number.parseInt(attack.hit, 10) - 1)}+`
+    }
+  }
   // Ranged attacks and spells resolve in the Assault Phase, melee in the Combat Phase.
   // Veterans training makes every weapon of an infantry formation better, not just one package.
-  const infantryVeterans = entry.source === 'generic' && ['Core', 'Elite', 'Ranged'].includes(entry.category)
-  const upgraded = modifyAttacks(rawAttacks, picked, { allWeapons: infantryVeterans ? ['Veterans'] : [] })
+  const infantryVeterans = entry.source === 'generic' && ['Core', 'Elite', 'Ranged', 'Captain'].includes(entry.category)
+  const upgraded = modifyAttacks(spellAttacks, picked, { allWeapons: infantryVeterans ? ['Veterans'] : [], weaponTargets: cfg.weaponPicks ?? {} })
   const { attacks: tagged, applied: tagTargets } = applyTagChoices(upgraded, picked, cfg.tagPicks)
   const attacks = tagged
     .map((a) => ({ ...a, phase: attackPhase(a) }))
     .sort((a, b) => (a.phase === b.phase ? 0 : a.phase === 'Assault' ? -1 : 1))
 
   const finalModels = doubled ? models * 2 : models
-  const tags = modifyTags(entry.tags.filter((t) => !(isHero && t === 'Elite' && entry.heroOption === 'Master Wizard')), picked)
+  const tags = modifyTags([...entry.tags.filter((t) => !(isHero && t === 'Elite' && entry.heroOption === 'Master Wizard')), ...picked.flatMap((o) => o.grantsTags ?? [])], picked)
   // Hero and Unique are distinct. Commissioned generic Captains and Master Wizards
   // gain Hero but not Unique; PCs and named/legendary figures gain Unique explicitly.
   if (isHero && !tags.includes('Hero')) tags.push('Hero')
@@ -148,6 +163,10 @@ export function resolveUnit(entry, cfg, factionId = null) {
   if (entry.isCore && !tags.includes('Core')) tags.push('Core')
   if (entry.isLargeAsset && !tags.includes('Large Asset')) tags.push('Large Asset')
   const fx = applyFactionEffects(factionId, { source: entry.source, models: finalModels, stats, attacks, tags: canonicalTags(tags, factionId ?? entry.factionId) })
+  const cavalryClass = picked.find((o) => o.id?.startsWith('cavalryClass:'))
+  const charge = cavalryClass?.charge ?? null
+  const impact = cavalryClass?.impact != null ? `+${cavalryClass.impact}` : (entry.impact ?? null)
+  const optionCommands = picked.filter((o) => o.cpCost && !o.profile).map((o) => ({ name: o.name, type: 'Command', cost: `${o.cpCost} CP`, timing: o.timing, effect: o.effect }))
 
   return {
     uid: cfg.uid,
@@ -166,10 +185,13 @@ export function resolveUnit(entry, cfg, factionId = null) {
     changedStats: changed,
     factionChanged: fx.factionChanged,
     factionRule: fx.factionRule,
-    impact: entry.impact ?? null,
+    impact,
+    charge,
+    loadoutConflicts,
+    combatTrainingExceeded: entry.category === 'Captain' && trainingCount > 2,
     tags: canonicalTags(fx.tags),
     attacks: fx.attacks,
-    abilities: entry.abilities,
+    abilities: [...entry.abilities, ...optionCommands],
     picks: selected
       .map(({ group, options }) => ({ group: group.label, options: options.map((o) => describeTagChoice(o, cfg, tagTargets)) }))
       .filter((p) => p.options.length),
@@ -259,7 +281,9 @@ export function buildArmyView(army, catalog) {
   const overSlots = SLOT_ORDER.filter((s) => used[s] > slots.available[s])
   check('slot-capacity', 'Units fit their Recruitment Slots', overSlots.length === 0, overSlots.length ? `Over capacity: ${overSlots.join(', ')}` : `${units.length} Units placed`)
   const badSlot = units.filter((u) => !u.eligibleSlots.includes(u.slot))
+  const illegalLoadouts = units.filter((u) => u.loadoutConflicts?.length || u.combatTrainingExceeded)
   check('slot-eligible', 'Each Unit uses an eligible Slot', badSlot.length === 0, badSlot.map((u) => u.name).join(', ') || 'OK')
+  check('equipment', 'No incompatible equipment or excessive Combat Training', illegalLoadouts.length === 0, illegalLoadouts.map((u) => `${u.name}: ${[...u.loadoutConflicts, ...(u.combatTrainingExceeded ? ['over two Combat Training upgrades'] : [])].join(', ')}`).join('; ') || 'OK')
   check('points', `Points within ${limits.maxPoints}`, points <= limits.maxPoints, `${points} / ${limits.maxPoints}`)
   check('hq', `At least ${limits.minHeadquarters} Headquarters`, hq >= limits.minHeadquarters, `${hq}`)
   check('core', `At least ${limits.minCoreUnits} Core Units`, core >= limits.minCoreUnits, `${core}`)
