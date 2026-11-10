@@ -20,7 +20,7 @@ The table below explicitly identifies the compatible recruitment choices of each
 | --- | --- | --- |
 | Free Realms | Greatweapon Guard | C |
 | Free Realms | Outriders | C / R / V |
-| Free Realms | Vanguard Skirmishers | C / R |
+| Free Realms | Shielded Fusiliers | C / R |
 | Sacred Orders | Temple Guard | C / E |
 | Sacred Orders | Sanctified Arbalests | C / R / E |
 | Sacred Orders | Consecrated Knights | C / V / E |
@@ -105,7 +105,7 @@ A friendly Unit gains **+1 Attack die to its combined Melee Attack** against an 
 | ------------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Greatweapon Guard — 145 pts (Infantry, Mortal, Armored, 5 Models)<br><br> | M4" / W2 / Arm 4+ / Eva 6+ | Greatweapons: Engaged / 1 / 4+ / 2 / Anti-Armored 2.<br>Disciplined Assault: When attacking an enemy Engaged by another friendly Unit, this Unit gains Accurate 1.                            |
 | Outriders — 175 pts (Infantry, Mortal, Armored, 4 Models)                 | M5" / W2 / Arm 5+ / Eva 5+ | Carbine: 8" / 3 / 5+ / 1 / Firearm.<br>Sabres: Engaged / 2 / 5+ / 1.<br>Mobile Fire: 1CP Assault: After resolving a ranged Attack, Move up to 2", without finishing Engaged. |
-| Vanguard Skirmishers — 150 pts (Ranged Infantry, Mortal, 4 Models)        | M5" / W1 / Arm 6+ / Eva 5+ | Repeating Crossbows: 8" / 3 / 5+ / 1.<br>Hunting Knife: Engaged / 1 / 6+ / 1.<br>Mutual Support: Gain Accurate 1 while within Short of another friendly Unit. |
+| Shielded Fusiliers — 160 pts (Ranged Infantry, Mortal, Armored, 4 Models) | M3" / W1 / Arm 5+ / Eva 6+ | Shielded Carbine: 9" / 1 / 3+ / 1 / Firearm, Pinpoint.<br>Sidearm: Engaged / 1 / 6+ / 1.<br>**Shield Formation:** When resolving incoming Charge Impact, gain Brace X equal to this Unit's current surviving Models (no cap). Does not prevent the Charge or ensuing melee Attack. |
 
 ### Captain and Specialists
 
@@ -228,7 +228,7 @@ Once per Round, each friendly **Core or Elite Unit** reduces the first instance 
 
 - Stand Fast — Reaction 1 CP: Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase.
 - Righteous Retaliation — Reaction 1 CP: After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round.
-- Heroic Intervention — Reaction 1 CP, Reaction: When a nearby ally is attacked, one friendly Character may Move up to 3" toward it.
+- Heroic Intervention — Reaction 1 CP, Reaction: When a nearby ally is attacked, one friendly Unique Unit may Move up to 3" toward it.
 
 ### Signature Core Units
 
@@ -237,8 +237,8 @@ Three Core choices are retained as a deliberate elite-army exception.
 | Unit                                                                      | Profile                                      | Weapon / Special Ability                                                                                                                     |
 | ------------------------------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | Temple Guard — 200 pts (Elite, Infantry, Mortal, Armored  3 Models)       | M4" / W3 / Arm 3+ / Eva 5+ / Ward 6+ (Magic) | Blessed Weapons: Engaged / 3 / 4+ / 1 /Magic.<br>Steadfast: Gain Tough 1 while holding an objective.                                         |
-| Sanctified Arbalests — 190 pts (Elite, Ranged, Mortal, Armored  3 Models) | M3" / W2 / Arm 4+ / Eva 6+                   | Relic Crossbows: 10" / 2 / 5+ / 2 / Heavy, Anti-Undead 2.<br>Sword: Engaged / 2 / 5+ / 1 / Accurate 1                                        |
-| Consecrated Knights — 230 pts (Cavalry, Mortal, Armored  3 Models)        | M5" / W3 / Arm 3+ / Eva 5+                   | Blessed Lances: Engaged / 1 / 4+ / 2 / Anti-Elite 2<br>After a successful Charge, gain Ward 6+ or improve this unit’s ward by 1 until the end of the Round. |
+| Sanctified Arbalests — 205 pts (Elite, Ranged, Mortal, Armored, 3 Models) | M3" / W2 / Arm 4+ / Eva 6+ | Relic Crossbows: 11" / 2 / 4+ / 2 / Heavy, Anti-Undead 2, Long Range 3".<br>Sword: Engaged / 2 / 5+ / 1 / Accurate 1.<br>**Hallowed Screen (1 CP, Reaction):** Friendly Unit within 3" gains Cover 1 versus one Ranged Attack; does not itself grant Cover eligibility. |
+| Consecrated Knights — 230 pts (Cavalry, Mortal, Armored, 3 Models) | M5" / W3 / Arm 3+ / Eva 5+ | Charge 1 / Impact +2.<br>Blessed Lances: Engaged / 1 / 4+ / 2 / Anti-Elite 2.<br>**Hallowed Charge:** After successfully Charging, gain Ward 6+ or improve an applicable existing Ward by one step for the Round. |
 
 ### Captain and Specialists
 
@@ -343,9 +343,9 @@ Friendly Units that did not Move during the preceding Movement Phase gain Tough 
 
 | Unit                                                               | Profile                    | Weapon / Special Ability                                                                                                                                                                       |
 | ------------------------------------------------------------------ | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Ironbreakers — 155 pts (Infantry, Mortal, Armored , 5 Models)      | M3" / W2 / Arm 4+ / Eva 6+ | Hold Axes: Engaged / 3 / 5+ / 1. <br>Shieldwall: If stationary during the preceding Movement Phase, gain Brace 1 until the next Movement Phase.                                                |
+| Ironbreakers — 165 pts (Infantry, Mortal, Armored, 5 Models) | M3" / W2 / Arm 4+ / Eva 6+ | Hold Axes: Engaged / 3 / 5+ / 1.<br>**Shieldwall:** Brace 1 while stationary.<br>**Lock Shields (1 CP, Reaction):** Gain +2 additional Brace versus one incoming Charge Impact pool; does not prevent the Charge. |
 | Thunderers — 185 pts (Ranged Infantry, Mortal, Armored , 4 Models) | M3" / W2 / Arm 5+ / Eva 6+ | Musket: 10" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Armored 2. <br>Axes: Engaged / 2 / 6+ / 1. <br>Drilled Volley: If stationary during the preceding Movement phase, gain Accurate 1 when making a ranged Attack. |
-| Deep Watch — 160 pts (Ranged Infantry, Mortal, Armored, 5 Models)  | M3" / W1 / Arm 5+ / Eva 6+ | Repeater Rifles: 8" / 3 / 5+ / 1 / Firearm. <br>Axes: Engaged / 2 / 6+ / 1. <br>Fortified Volley: If stationary during the preceding Movement Phase, gain Anti-Armored 1 when making a ranged Attack. |
+| Deep Watch — 180 pts (Ranged Infantry, Mortal, Armored, 5 Models) | M3" / W1 / Arm 5+ / Eva 6+ | Repeater Rifles: 10" / 3 / 5+ / 1 / Firearm.<br>Axes: Engaged / 2 / 6+ / 1.<br>**Drilled Repeaters:** Improve Rifle Hit to 4+ while stationary.<br>**Controlled Crossfire:** Gain Pinpoint on Ranged Attacks while stationary. |
 
 ### Captain and Specialists
 
@@ -458,7 +458,7 @@ Elven enclaves, fey courts, forest spirits, beast clans, and ancient wilderness 
 
 ### Faction Rule — Paths of the Wild
 
-Ignore the first 2" of Difficult Terrain during each Move activation. Units must finish their moves legally.
+Ignore the first 2" of Difficult Terrain during each Move activation. While a friendly Unit is already benefiting from Cover, gain an additional **Cover 1** (additive with eligible Cover ranks). This does not itself grant Cover, Evade, or Concealed. All movement must finish legally.
 
 ### Faction Commands
 
@@ -470,8 +470,8 @@ Ignore the first 2" of Difficult Terrain during each Move activation. Units must
 
 | Unit                                                         | Profile                    | Weapon / Special Ability                                                                                                                                                      |
 | ------------------------------------------------------------ | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Glade Hunters — 175 pts (Ranged Infantry, Mortal , 5 Models) | M4" / W1 / Arm 6+ / Eva 5+ | Longbows: 12" / 3 / 5+ / 1 / Surge: Direct Damage 1<br>Elven Sword: Engaged / 3 / 6+ / 1 / Accurate 1.<br>Woodland Stalker: Gain Concealed while benefiting from natural Cover. |
-| Wild Riders — 165 pts (Infantry, Cavalry, Mortal, 3 Models)  | M7" / W2 / Arm 6+ / Eva 4+ | Thorn Spears: Engaged 2" / 3 / 5+ / 1.<br>Forest Ambush: If beginning in Cover, Move up to 2" before declaring a Charge, ending legally.                                      |
+| Glade Hunters — 190 pts (Ranged Infantry, Mortal, 5 Models) | M4" / W1 / Arm 6+ / Eva 5+ | Longbows: 14" / 3 / 5+ / 1 / Long Range 3", Surge: Direct Damage 1.<br>Elven Sword: Engaged / 3 / 6+ / 1 / Accurate 1.<br>**Woodland Stalker:** While benefiting from any Cover, become Concealed and improve Longbow Hit to 4+. |
+| Wild Riders — 165 pts (Infantry, Cavalry, Mortal, 3 Models) | M7" / W2 / Arm 6+ / Eva 4+ | Charge 4 / Impact +0.<br>Thorn Spears: Engaged 2" / 3 / 5+ / 1.<br>**Forest Ambush:** Beginning in Cover permits a 2" reposition before declaring a Charge, ending legally. |
 | Briar Stalkers — 165 pts (Infiltrating Infantry, Mortal, Fey, 4 Models) | M5" / W1 / Arm 6+ / Eva 5+ | Thorned Blades: Engaged / 2 / 5+ / 1.<br>Thicket Ambush: If this Unit began its activation in Cover, gain Accurate 1 and Charge 1 on its Charge this Phase. |
 
 ### Captain and Specialists
@@ -583,7 +583,7 @@ Both signature Core choices are Infantry. Their cavalry and ranged troops remain
 
 ### Faction Rule — Eager for Battle
 
-All friendly Units gain **Charge 2**.
+Faction Warclans Units gain **Charge 2**; generic Units recruited into Warclans instead gain **Charge 1**. Use the highest applicable Charge rank rather than adding ranks; printed Boar Riders retain Charge 3. This never adds Impact.
 
 ### Faction Commands
 
@@ -596,8 +596,8 @@ All friendly Units gain **Charge 2**.
 | Unit                                                     | Profile                    | Weapon / Special Ability                                                                                                                                                                     |
 | -------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Choppa Mob — 130 pts (Horde Infantry, Mortal, 10 Models) | M4" / W1 / Arm 6+ / Eva 6+ | Choppas: Engaged / 1 / 5+ / 1.<br>Mob Violence: When Charging with at least six Models remaining, gain Impact +3                                                                             |
-| Brutes — 175 pts (Assault Infantry, Mortal, 4 Models)    | M4" / W3 / Arm 5+ / Eva 6+ | Heavy Choppas: Engaged / 4 / 5+ / 1.<br>Keep Swinging: Once per Attack roll, after destroying an enemy Model during that activation, one natural 6 may generate one additional ordinary Hit. |
-| Boar Riders — 190 pts (Cavalry, Mortal, 3 Models)        | M7" / W3 / Arm 5+ / Eva 5+ | Tusked Spears: Engaged / 3 / 5+ / 1.<br>Reckless Charge: Gain Impact +2 on a successful Charge. |
+| Brutes — 195 pts (Assault Infantry, Mortal, 4 Models) | M4" / W3 / Arm 5+ / Eva 6+ | Heavy Choppas: Engaged / 4 / 5+ / 1; improve Hit to 4+ after a successful Charge that Round (**Charging Fury**).<br>**Keep Swinging:** After destroying a Model in that activation, one natural 6 may generate one additional ordinary Hit. |
+| Boar Riders — 190 pts (Cavalry, Mortal, 3 Models) | M7" / W3 / Arm 5+ / Eva 5+ | Charge 3 / Impact +2.<br>Tusked Spears: Engaged / 3 / 5+ / 1.<br>**Racing Boars:** The printed Charge 3 takes priority over Warclans' faction Charge 2. |
 
 ### Captain and Specialists
 
@@ -729,7 +729,7 @@ Friendly Units containing at least 5 Models gain Accurate 2.
 | Unit                                                       | Profile                    | Weapon / Special Ability                                                                                                                     |
 | ---------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | Sneaks — 120 pts (Infiltrating Infantry, Mortal, 7 Models) | M5" / W1 / Arm 6+ / Eva 5+ | Knives: Engaged / 2 / 6+ / 1. <br>Sneaky: Gain Concealed while benefiting from Cover.                                                        |
-| Bombardiers — 140 pts (Ranged Infantry, Mortal, 5 Models)  | M3" / W1 / Arm 6+ / Eva 6+ | Bombs: 6" / 2 / 5+ / 1 / Blast 1"<br>Improvised Weapons: Engaged / 2 / 6+ / 1<br>Unstable: On a Blunder, this Unit suffers one Damage 1 Hit. |
+| Bombardiers — 155 pts (Ranged Infantry, Mortal, 5 Models) | M3" / W1 / Arm 6+ / Eva 6+ | Bombs: 6" / 2 / 5+ / 1 / Blast 1".<br>Improvised Weapons: Engaged / 2 / 6+ / 1.<br>**Unstable:** Blunders inflict one Damage 1 Hit.<br>**Overstuffed Bombs (1 CP, Assault):** Increase Blast radius to 2"; on Blunder suffer another Damage 1 Hit. |
 | Tunnel Rats — 125 pts (Infiltrating Infantry, Mortal, 6 Models) | M4" / W1 / Arm 6+ / Eva 6+ | Rusty Blades: Engaged / 2 / 6+ / 1.<br>Tunnel Ambush: May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. Cannot Charge in that Round. |
 
 ### Captain and Specialists
@@ -855,7 +855,7 @@ The first time each Round an Undead Unit with more than one starting Model **sur
 | --------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Corpse Horde — 80 pts (Horde Infantry, Undead , 12 Models) | M3" / W1 / Arm 6+ / Eva 6+ | Claws: Engaged / 1 / 6+ / 1. <br>Mass of Dead: Gain Accurate 2 while this unit still has more than half its starting models. |
 | Grave Guard — 165 pts (Elite Infantry, Undead, 3 Models)  | M4" / W3 / Arm 4+ / Eva 6+ | Ancient Blades: Engaged / 3 / 4+ / 1.<br>Deathless Discipline: Ignore the first Slow effect applied each Round.              |
-| Bone Archers — 110 pts (Ranged Infantry, Undead, 6 Models) | M3" / W1 / Arm 6+ / Eva 6+ | Bone Bows: 8" / 2 / 6+ / 1.<br>Improvised Weapons: Engaged / 1 / 6+ / 1.<br>Ranks of the Dead: Gain Accurate 1 while at least 4 Models remain. |
+| Bone Archers — 130 pts (Ranged Infantry, Undead, 6 Models) | M3" / W1 / Arm 6+ / Eva 6+ | Bone Bows: 9" / 2 / 5+ / 1.<br>Improvised Weapons: Engaged / 1 / 6+ / 1.<br>**Ranks of the Dead:** Accurate 1 with at least 4 Models.<br>**Dread Volley (1 CP, Assault):** Unsaved Bone Bow Damage applies Slow 1 for the target's next Move. |
 
 ### Captain and Specialists
 
@@ -958,15 +958,15 @@ Once per Round, after a friendly Unit defeats an enemy Model in Engagement, Heal
 
 - Blood Frenzy — Combat 1 CP: One friendly Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase.
 - Predatory Speed — Reaction 1 CP: After destroying an enemy Unit, one friendly Unit may Move up to 2".
-- Mesmerize — Reaction 1 CP: One nearby enemy worsens Hit by one step when attacking a chosen friendly Character until the end of the Phase.
+- Mesmerize — Reaction 1 CP: One nearby enemy worsens Hit by one step when attacking a chosen friendly Unique Unit until the end of the Phase.
 
 ### Signature Core Units
 
 | Unit                                                              | Profile                    | Weapon / Special Ability                                                                                    |
 | ----------------------------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | Thralls — 110 pts (Infantry, Undead, 10 Models)                    | M4" / W1 / Arm 5+ / Eva 6+ | Blades: Engaged / 1 / 6+ / 1.<br>Predatory: After destroying an enemy Unit, Move up to 1", ending legally.<br>Unnatural Resilience: Gain Tough 1. |
-| Blood Knights — 270 pts (Elite Cavalry, Undead, Armored 3 Models) | M6" / W4 / Arm 4+ / Eva 4+ | Blood Lances: Engaged / 2 / 4+ / 2 / Anti-Infantry 2. <br>Relentless Hunt: After successfully Charging, gain Impact +1        |
-| Night Stalkers — 150 pts (Infiltrating Infantry, Undead, 4 Models) | M6" / W2 / Arm 5+ / Eva 5+ | Twin Fangs: Engaged / 3 / 5+ / 1.<br>Pack Hunters: After this Unit destroys an enemy Model, it may immediately Move up to 1", ending legally. |
+| Blood Knights — 270 pts (Elite Cavalry, Undead, Armored, 3 Models) | M6" / W4 / Arm 4+ / Eva 4+ | Charge 2 / total Impact +2.<br>Blood Lances: Engaged / 2 / 4+ / 2 / Anti-Infantry 2.<br>**Relentless Hunt:** Its Impact +2 replaces the previous +1, rather than stacking with it. |
+| Night Stalkers — 170 pts (Infiltrating Infantry, Undead, 4 Models) | M6" / W2 / Arm 5+ / Eva 5+ | Twin Fangs: Engaged / 3 / 5+ / 1; improve Hit to 4+ while targeting an enemy Engaged by a different friendly Unit (**Surround the Prey**).<br>**Pack Hunters:** After destroying an enemy Model, Move 1" legally. |
 
 ### Captain and Specialists
 
@@ -980,7 +980,7 @@ Blood Pistol: 6” / 3 / 4+ / 1 / Firearm, Pinpoint
 
 Noble Blade: Engaged / 4 / 4+ / 2 / Anti-Elite 2
 
-Challenge Prey — 1 CP, Assault: Choose one enemy Character within Short. The Vampire Captain's next Melee Attack against it gains Critical 1.
+Challenge Prey — 1 CP, Assault: Choose one enemy Unique Unit within Short. The Vampire Captain's next Melee Attack against it gains Critical 1.
 
 
 
@@ -1175,7 +1175,7 @@ Once per activation, a friendly Infernal Unit may suffer 1 Damage to reroll one 
 | Unit                                                               | Profile                                      | Weapon / Special Ability                                                                                                                       |
 | ------------------------------------------------------------------ | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | Hellguard — 185 pts (Elite Infantry, Infernal, Armored, 3 Models)  | M4" / W4 / Arm 5+ / Eva 6+ / Ward 6+ (Magic) | Infernal Blades: Engaged / 3 / 4+ / 1 / Magic.<br>Grim Resolve: While this Unit has accumulated Damage, its melee Attacks gain Anti-Mortal 1.  |
-| Rift Stalkers — 175 pts (Mobile, Infiltrators, Infernal, 4 Models) | M5" / W2 / Arm 6+ / Eva 5+ / Ward 6+ (Magic) | Warp Claws: Engaged / 3 / 5+ / 1 / Magic. <br>Rift Step: May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. |
+| Rift Stalkers — 185 pts (Mobile, Infiltrators, Infernal, 4 Models) | M5" / W2 / Arm 6+ / Eva 5+ | Warp Claws: Engaged / 3 / 5+ / 1 / Magic.<br>**Rift Step:** Reserve infiltration.<br>**Warp Frenzy (1 CP, Combat):** Suffer 1 Damage without saves to improve Warp Claws Hit to 4+ for that Attack. |
 | Cultist Horde — 100 pts (Horde Infantry, Mortal, 8 Models)        | M4" / W1 / Arm 6+ / Eva 6+                    | Ritual Blades: Engaged / 1 / 6+ / 1.<br>Expendable: This Unit may be chosen as the sacrifice for Blood Offering without further restriction; when sacrificed this way, remove only one Model rather than damaging a Model of another Unit. |
 
 ### Captain and Specialists
@@ -1301,7 +1301,7 @@ Friendly Spell Attacks gain Accurate 1.
 | ---------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Spellguard — 165 pts (Elite Infantry, Mortal, Armored, 3 Models) | M3" / W2 / Arm 4+ / Eva 5+ / Ward 5+ | Arcane Blades: Engaged / 3 / 5+ / 1 / Magic<br>Spell Shield: This unit gains Tough 1 against Magic                                                      |
 | Aether Ballista Team — 210 pts (Elite Ranged Infantry, 2 Models) | M2" / W4 / Arm 4+ / Eva 6+ / Ward 5+ (Ward Magic +1) | Bound Ballista: 14" / 2 / 4+ / 2 / Magic, Heavy, Anti-Armored 2<br>Shortsword: Engaged / 2 / 5+ / 1<br>Anchored Array: Ignore Cover when resolving the Ballista Attack. |
-| Animated Guardians — 180 pts (Construct, Infantry, Armored, 3 Models) | M3" / W4 / Arm 4+ / Eva — / Ward 6+ (Magic) | Stone Fists: Engaged / 3 / 5+ / 1 / Magic<br>Arcane Binding: Immune to Slow and forced-movement effects. |
+| Animated Guardians — 195 pts (Construct, Infantry, Armored, 3 Models) | M3" / W4 / Arm 4+ / Eva — | Stone Fists: Engaged / 3 / 5+ / 1 / Magic.<br>**Arcane Binding:** Immune to Slow/forced movement.<br>**Resonant Blades:** While within Short of a different friendly Wizard, improve Stone Fists Hit to 4+. |
 
 The Aether Ballista Team counts as Ranged Infantry, not Artillery. Its two Models attack individually, and losing one Model halves its Attack dice.
 
@@ -1422,7 +1422,7 @@ Ogre kingdoms, giant tribes, monstrous nomads, and beast clans. Their ordinary w
 
 ### Faction Rule — Massive Momentum
 
-All friendly Units gain **Impact 2**.
+Faction Titan Clans Units gain **Impact +2**; generic Units recruited into Titan Clans instead gain **Impact +1**. Distinct printed Impact bonuses (including Stampede) add, but repeated faction bonuses never do.
 
 ### Faction Commands
 
@@ -1435,8 +1435,8 @@ All friendly Units gain **Impact 2**.
 | Unit                                                          | Profile                    | Weapon / Special Ability                                                                                        |
 | --------------------------------------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | Ogre Warriors — 225 pts (Monster, Infantry, Mortal, 3 Models) | M4" / W4 / Arm 5+ / Eva 5+ | Heavy Clubs: Engaged / 3 / 5+ / 2 / Anti-Armored 2<br>Massive Charge: roll 3d6 for this unit’s charges and keep the two highest. |
-| Beast Riders — 205 pts (Monster, Cavalry, Mortal 2 Models)    | M6" / W5 / Arm 5+ / Eva 5+ | Mauling Harness: Engaged / 3 / 5+ / 2 / Anti-Infantry 2<br>Stampede: Gain Impact +2 on a successful Charge.                       |
-| Stone Hurlers — 220 pts (Monster, Infantry, Mortal, 3 Models) | M4" / W4 / Arm 5+ / Eva 5+ | Boulder Toss: 10" / 3 / 5+ / 2 / Heavy<br>Heavy Clubs: Engaged / 2 / 5+ / 2<br>Covering Barrage: While this Unit remains stationary, friendly Monster Units within Medium gain Accurate 1 on their next Charge-phase Attack. |
+| Beast Riders — 205 pts (Monster, Cavalry, Mortal, 2 Models) | M6" / W5 / Arm 5+ / Eva 5+ | Charge 2 / total Impact +4 (Titan Clans faction +2, Stampede +2).<br>Mauling Harness: Engaged / 3 / 5+ / 2 / Anti-Infantry 2. No duplicate Impact addition. |
+| Stone Hurlers — 235 pts (Monster, Infantry, Mortal, 3 Models) | M4" / W4 / Arm 5+ / Eva 5+ | Boulder Toss: 11" / 3 / 5+ / 2 / Heavy, Long Range 3".<br>Heavy Clubs: Engaged / 2 / 5+ / 2.<br>**Covering Barrage:** Stationary aura grants Accurate 1 to friendly Monster Charge-phase Attacks.<br>**Boulderfall (1 CP, Assault):** Stationary Boulder Toss gains Blast 1" for one Attack. |
 
 ### Captain and Specialists
 
@@ -1517,7 +1517,7 @@ Generic Units Worth Taking: Cheap auxiliaries, conventional Ranged Infantry, lig
 
 | Faction        | Signature Core 1                   | Signature Core 2                    | Extra Core          |
 | -------------- | ---------------------------------- | ----------------------------------- | ------------------- |
-| Free Realms    | Greatweapon Guard — Infantry       | Outriders — Mobile                  | Vanguard Skirmishers — Ranged |
+| Free Realms    | Greatweapon Guard — Infantry       | Outriders — Mobile                  | Shielded Fusiliers — Ranged |
 | Sacred Orders  | Temple Guard — Elite Infantry      | Sanctified Arbalests — Elite Ranged | Consecrated Knights |
 | Iron Holds     | Ironbreakers — Infantry            | Thunderers — Ranged                 | Deep Watch — Ranged |
 | Wild Courts    | Glade Hunters — Ranged             | Wild Riders — Mobile                | Briar Stalkers — Infiltrating Infantry |
@@ -1601,7 +1601,7 @@ The large faction traits, Command Abilities, and unique Character interactions s
 
 Following the same post-playtesting concerns that prompted the Generic Units damage rebalance (units taking too long to inflict meaningful damage), this chapter received two coordinated changes:
 
-**Extra Core parity.** Sacred Orders was the only faction with three Signature Core choices instead of two. Rather than reducing Sacred Orders, the other eleven factions each gained one additional Core (or, in a few cases, a different category) unit, bringing every faction to the same three-choice baseline. Each addition was chosen to **reinforce what the faction already does well** rather than patch a weakness: Free Realms gained a cooperative-fire Ranged Core (Vanguard Skirmishers) extending Combined Arms synergy; Iron Holds gained a second stationary-gunline Ranged Core (Deep Watch); Wild Courts gained an ambush-melee Infiltrating Core (Briar Stalkers); Warclans gained a Charge-focused Cavalry Core (Boar Riders); Underclans gained a Reserve-deploying Infiltrating Core (Tunnel Rats) reinforcing their Deep Strike doctrine; Death Legions gained an attritional Ranged Undead Core (Bone Archers); Blood Courts gained a mobile lifesteal-skirmisher Core (Night Stalkers); Spirit Hosts gained a ranged Spirit Core (Keening Archers); Infernal Hosts gained a disposable Horde Core (Cultist Horde) explicitly meant to feed Blood Offering/Dark Bargain; Arcane Orders gained a Construct Infantry Core (Animated Guardians) immune to Control effects; and Titan Clans gained a stationary ranged-support Monster Core (Stone Hurlers) reinforcing Heavy Support.
+**Extra Core parity.** Sacred Orders was the only faction with three Signature Core choices instead of two. Rather than reducing Sacred Orders, the other eleven factions each gained one additional Core (or, in a few cases, a different category) unit, bringing every faction to the same three-choice baseline. Each addition was chosen to **reinforce what the faction already does well** rather than patch a weakness: Free Realms gained a cooperative-fire Ranged Core (Shielded Fusiliers) extending Combined Arms synergy; Iron Holds gained a second stationary-gunline Ranged Core (Deep Watch); Wild Courts gained an ambush-melee Infiltrating Core (Briar Stalkers); Warclans gained a Charge-focused Cavalry Core (Boar Riders); Underclans gained a Reserve-deploying Infiltrating Core (Tunnel Rats) reinforcing their Deep Strike doctrine; Death Legions gained an attritional Ranged Undead Core (Bone Archers); Blood Courts gained a mobile lifesteal-skirmisher Core (Night Stalkers); Spirit Hosts gained a ranged Spirit Core (Keening Archers); Infernal Hosts gained a disposable Horde Core (Cultist Horde) explicitly meant to feed Blood Offering/Dark Bargain; Arcane Orders gained a Construct Infantry Core (Animated Guardians) immune to Control effects; and Titan Clans gained a stationary ranged-support Monster Core (Stone Hurlers) reinforcing Heavy Support.
 - **Horde-style units were excluded from the attack-profile changes below**, keeping the Models-not-Attacks design used for the three originally buffed Horde units (Choppa Mob, Corpse Horde) and the two horde-like Core units (Sneaks, Thralls): their weapon dice remain exactly as previously printed.
 
 **Attack-profile rebalance.** Across every other Core, Captain, Wizard/Support, Large Asset, and Faction Leader profile in this chapter, Damage 1 weapons gained **+1 Attack**, while Damage 2+ weapons kept their listed Attacks and instead gained a thematic **Anti-[Type] 2** (or **3** on a handful of standout Large Asset/Leader weapons already carrying multiple keywords), chosen to reflect what that unit or faction already hunts or fears most (e.g. Anti-Armored on siege/engineering factions, Anti-Elite on duelist Captains and Leaders, Anti-Monster on anti-Large-Asset specialists). A few weapons that already carried an Anti-[Type] keyword instead had their Hit characteristic improved by one step for variety, consistent with the option to improve accuracy instead of volume or category coverage. Point costs are unchanged pending further playtesting.
@@ -1617,3 +1617,14 @@ Following the same post-playtesting concerns that prompted the Generic Units dam
 **Faction Commands:** Each Faction gains one **additional optional** 1 CP Command, selected from its revised roster of four, specializing in Anti 4 against tactical battlefield roles. The two normal Faction Command selections and eight-card matched-play repertoire are unchanged. Optional support specialist upgrades grant localized Anti 2 auras for +20 Points. Different faction allegiances do NOT dictate creature type; an undead Sacred Orders army remains legal under applicable conversion/roster rules.
 
 **Character:** The named/legendary top faction leader receives Character; routine officers, generic Captains and generic Wizards do not. Each Officer is separately labeled when appropriate. The detailed corrected JSON datasheets take precedence over legacy numeric summaries in this chapter.
+
+
+## Current faction specialization — authoritative balance pass
+
+The faction JSON rosters and above revised rows govern the current profiles, superseding older versioned summaries below and historical examples with conflicting costs or range values. Faction Core Units reinforce only through **Double Formation** (twice starting Models at twice the paid formation cost). There is no faction-specific per-added-Model reinforcement surcharge.
+
+* **Free Realms:** Shielded Fusiliers replace Vanguard Skirmishers. The four-Model, M3", W1, Armor 5+ squad has 1A / 3+ / D1 Firearm, Pinpoint; its Shield Formation grants **Brace equal to surviving Models with no cap** against Charge Impact. Standard Double Formation retains this ability. Outriders remain mobile and recruitable through the Vanguard slot.
+* **Wild Courts:** Paths of the Wild adds Cover 1 while already benefiting from Cover, regardless of terrain category. Glade Hunters conditionally improve to 4+ ranged Hit while in Cover. No natural/artificial Cover distinction.
+* **Warclans and Titan Clans:** Generic recruits receive reduced faction bonuses (Warclans Charge 1, Titan Clans Impact 1), while signature faction Units retain Charge 2 or Impact 2 as applicable. Printed higher values, such as Boar Riders' Charge 3 and Beast Riders' combined Impact +4, are retained without double counting.
+* **Specialized Core:** Iron Holds' Deep Watch have conditional 4+ stationary Hit, Wild Courts' Glade Hunters conditionally hit on 4+ in Cover, Warclans' Brutes conditionally hit on 4+ after Charging, and Blood Courts' Night Stalkers conditionally hit on 4+ when coordinating with a different friendly Unit.
+* **Tactical abilities:** Sanctified Arbalests gain Hallowed Screen; Ironbreakers gain Lock Shields; Bombardiers gain Overstuffed Bombs; Bone Archers gain Dread Volley; Rift Stalkers gain Warp Frenzy; Animated Guardians gain Resonant Blades; Stone Hurlers gain Boulderfall. These are printed on their faction datasheets and do not consume extra recruitment slots.
