@@ -344,7 +344,6 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
   const selectedOptions = groups.flatMap((g) => (Array.isArray(cfg.picks[g.id]) ? cfg.picks[g.id] : [cfg.picks[g.id]]).map((id) => g.options.find((o) => o.id === id)).filter(Boolean))
   const incompatible = (option) => (option.incompatibleWith ?? []).some((name) => selectedNames.has(name)) || selectedOptions.some((picked) => (picked.incompatibleWith ?? []).includes(option.name))
   const primaryName = entry.groups.find((g) => g.id === 'primarySpell')?.options.find((o) => o.id === cfg.picks.primarySpell)?.name
-  const trainingTaken = groups.flatMap((g) => (Array.isArray(cfg.picks[g.id]) ? cfg.picks[g.id] : [cfg.picks[g.id]]).map((id) => g.options.find((o) => o.id === id)).filter(Boolean)).filter((o) => o.countsAsCombatTraining).length
   // Gaining Hero (Heroic Commission, Master Wizard) moves the Unit from E to H on the slot tracker; losing it moves it back.
   const setPick = (groupId, value) => {
     const picks = { ...cfg.picks, [groupId]: value }
@@ -408,7 +407,6 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
       </div>
 
       {r.loadoutConflicts?.length > 0 && <div className="bad small">Incompatible equipment: {r.loadoutConflicts.join(', ')}</div>}
-      {r.combatTrainingExceeded && <div className="bad small">Captain may purchase at most two Combat Training upgrades.</div>}
       {groups.map((g) => {
         const current = g.options.find((o) => o.id === cfg.picks[g.id])
         const limit = groupLimit(entry, g, cfg)
@@ -444,7 +442,7 @@ function UnitCard({ entry, cfg, view, onChange, onRemove, onDuplicate }) {
                           setPick(g.id, [...picked.filter((id) => id !== o.id), ...Array(n).fill(o.id)])
                         }} />
                     ) : (
-                      <input type="checkbox" disabled={count === 0 && ((g.id === 'arcana' && o.name === primaryName) || incompatible(o) || (o.countsAsCombatTraining && trainingTaken >= 2))} checked={count > 0}
+                      <input type="checkbox" disabled={count === 0 && ((g.id === 'arcana' && o.name === primaryName) || incompatible(o))} checked={count > 0}
                         onChange={() => setPick(g.id, toggle(picked, o.id, limit))} />
                     )}
                     <span>

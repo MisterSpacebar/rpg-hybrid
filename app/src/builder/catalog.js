@@ -206,8 +206,15 @@ function normalizeGeneric(data) {
     // The ranged package is a separate optional radio selector, not a Combat Training pick.
     // Keep non-weapon training available independently of the chosen ranged Attack.
     const rangedGroup = entry.groups.find((g) => g.id === 'rangedWeaponPackages')
-    if (rangedGroup) { rangedGroup.required = false; rangedGroup.package = true }
-        // The Additional Command upgrade raises the number of Commands the Captain may learn.
+    if (rangedGroup) {
+      rangedGroup.required = false
+      rangedGroup.package = true
+      // Show the ranged selector directly after the melee weapons selector.
+      entry.groups = entry.groups.filter((g) => g !== rangedGroup)
+      const meleeAt = entry.groups.findIndex((g) => g.id === 'meleeWeapons')
+      entry.groups.splice(meleeAt + 1, 0, rangedGroup)
+    }
+    // The Additional Command upgrade raises the number of Commands the Captain may learn.
     const commands = entry.groups.find((g) => g.id === 'commands')
     if (commands) commands.limit = { base: commands.max, bonus: { group: 'commandUpgrades', option: 'Additional Command' } }
     out.push(entry)

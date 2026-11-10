@@ -110,7 +110,7 @@
         ]
       },
       "equipmentAndCombatTraining": {
-        "note": "A Captain may purchase up to two Combat Training upgrades, excluding weapon equipment and shields. Choose one melee weapon and up to one optional ranged weapon. The Armored upgrade is Combat Training; a Shield is equipment. Deadly Precision unlocks a personal CP Command.",
+        "note": "A Captain may purchase any number of equipment and training upgrades; only Commands are limited. Choose one melee weapon and up to one optional ranged weapon. The Armored upgrade is Combat Training; a Shield is equipment. Deadly Precision unlocks a personal CP Command.",
         "options": [
           {
             "name": "Standard Equipment",

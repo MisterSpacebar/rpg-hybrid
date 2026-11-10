@@ -349,7 +349,7 @@ Choose up to **one** secondary ranged weapon via a separate dropdown: Bow +10, C
 | Veterans | +50 | Every weapon the Captain carries gains +1 Attack and improves Hit by one step. |
 | Heroic Commission  | +35  | Gain **Hero** and **H** eligibility while retaining **Elite**; increase Wounds by 1; every weapon the Captain currently carries gains +1 Attack. The Captain now counts toward the three-Hero limit. |
 
-A Captain may purchase at most two Combat Training upgrades (including Armored and Deadly Precision). Weapon packages and Shields do not count. Monster Hunter has been removed in favor of Master Hunter.
+A Captain may purchase any number of these equipment and training upgrades; only Commands are limited. Monster Hunter has been removed in favor of Master Hunter.
 
 A Captain may carry one ranged weapon in addition to their melee weapon.
 

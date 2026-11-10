@@ -128,7 +128,6 @@ export function resolveUnit(entry, cfg, factionId = null) {
   const selected = selectedOf(entry, cfg)
   const picked = selected.flatMap((s) => s.options)
   const chosenNames = new Set(picked.map((o) => o.name))
-  const trainingCount = picked.filter((o) => o.countsAsCombatTraining).length
   const illegalPair = picked.flatMap((o) => (o.incompatibleWith ?? []).filter((name) => chosenNames.has(name)).map((name) => `${o.name} + ${name}`))
   const loadoutConflicts = [...new Set(illegalPair)]
 
@@ -227,7 +226,6 @@ export function resolveUnit(entry, cfg, factionId = null) {
     impact,
     charge,
     loadoutConflicts,
-    combatTrainingExceeded: entry.category === 'Captain' && trainingCount > 2,
     tags: canonicalTags(fx.tags),
     attacks: fx.attacks,
     abilities: [...entry.abilities, ...(isMasterWizard && entry.masterWizardAbility ? [{ ...entry.masterWizardAbility }] : []), ...optionCommands],
@@ -320,9 +318,9 @@ export function buildArmyView(army, catalog) {
   const overSlots = SLOT_ORDER.filter((s) => used[s] > slots.available[s])
   check('slot-capacity', 'Units fit their Recruitment Slots', overSlots.length === 0, overSlots.length ? `Over capacity: ${overSlots.join(', ')}` : `${units.length} Units placed`)
   const badSlot = units.filter((u) => !u.eligibleSlots.includes(u.slot))
-  const illegalLoadouts = units.filter((u) => u.loadoutConflicts?.length || u.combatTrainingExceeded)
+  const illegalLoadouts = units.filter((u) => u.loadoutConflicts?.length)
   check('slot-eligible', 'Each Unit uses an eligible Slot', badSlot.length === 0, badSlot.map((u) => u.name).join(', ') || 'OK')
-  check('equipment', 'No incompatible equipment or excessive Combat Training', illegalLoadouts.length === 0, illegalLoadouts.map((u) => `${u.name}: ${[...u.loadoutConflicts, ...(u.combatTrainingExceeded ? ['over two Combat Training upgrades'] : [])].join(', ')}`).join('; ') || 'OK')
+  check('equipment', 'No incompatible equipment', illegalLoadouts.length === 0, illegalLoadouts.map((u) => `${u.name}: ${u.loadoutConflicts.join(', ')}`).join('; ') || 'OK')
   check('points', `Points within ${limits.maxPoints}`, points <= limits.maxPoints, `${points} / ${limits.maxPoints}`)
   check('hq', `At least ${limits.minHeadquarters} Headquarters`, hq >= limits.minHeadquarters, `${hq}`)
   check('core', `At least ${limits.minCoreUnits} Core Units`, core >= limits.minCoreUnits, `${core}`)
