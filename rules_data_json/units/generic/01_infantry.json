@@ -717,8 +717,8 @@
           }
         ],
         "restrictions": [
-          "A Unit may purchase either Weapon Mastery or Deadly Precision, not both.",
-          "Veterans and Weapon Specialization each affect one selected weapon profile, chosen when the upgrade is purchased. If an Elite Infantry Unit buys a ranged package, Veterans must specify whether the melee or ranged profile benefits.",
+          "Weapon Master and Deadly Precision may be purchased together; Deadly Precision unlocks a personal CP Command rather than a passive Critical keyword.",
+          "Veterans improves every weapon profile the Elite Infantry Unit carries, including an optional ranged weapon; Weapon Specialization applies only to the selected weapon profile.",
           "Bonuses and ranked Keywords are never multiplied by its Model count unless expressly written per Model."
         ]
       },
