@@ -10,7 +10,7 @@ Each army selects two distinct eligible Doctrines according to its faction's Doc
 
 Each Doctrine grants one Foundation Recruitment Slot and provides five Command options. The player selects three Commands from each chosen Doctrine, gaining the Recruitment Slot listed beside each selected Command.
 
-A Doctrine Command may affect any eligible Unit unless its effect specifies otherwise. Recruitment Slots determine army composition; they do not restrict who may benefit from a Command.
+Non-Reaction Doctrine Commands normally apply to the **active Unit** during the relevant Phase. Only an ability that explicitly names another friendly Unit, multiple Units, a Reserve Unit, or a designated enemy permits a different target. Recruitment Slots determine army composition, not Command eligibility. Recruitment Slots determine army composition; they do not restrict who may benefit from a Command.
 
 ### Command Usage
 
@@ -97,13 +97,13 @@ Foundation Recruitment Slot: C
 
 Strategy: Coordinate different battlefield roles to improve the performance of ordinary troops, specialists, and supporting formations.
 
-| Command            | Slot | Timing          | Effect                                                                                                                                                                                           |
-| ------------------ | ---- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Screen and Advance | V    | Movement        | Choose one friendly Unit within 2" of a different friendly Unit. It gains +2" Move on its next normal Move this Round. This bonus cannot be used for a Charge.                                   |
-| Crossfire          | R    | Assault         | One friendly Unit gains Accurate 2 and Pinpoint on its next ranged Attack against an enemy already attacked by a different friendly Unit this Round.                                             |
-| Coordinated Orders | H    | Movement        | Choose two different friendly Units within Short of the same friendly Headquarters. Remove one temporary Hit or Move penalty from one. The other gains Accurate 1 on its next Attack this Round. |
-| Interlocking Lines | E    | Combat Reaction | When a friendly Unit within 2" of a different friendly Unit is attacked in Engagement, the defender gains Tough 2 against that Attack.                                                           |
-| Forward Observers  | A    | Assault         | One friendly Unit gains Accurate 1 and ignores Cover on its next ranged Attack this Phase, provided a different friendly Unit can see the target.                             |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Screen and Advance | V | Movement | Choose one friendly Unit within 2" of a different friendly Unit. It gains +2" Move on its next normal Move this Round. This bonus cannot be used for a Charge. |
+| Crossfire | R | Assault | The active Unit gains Accurate 2 and Pinpoint on its next ranged Attack this Assault Phase against an enemy already attacked by a different friendly Unit this Round. |
+| Coordinated Orders | H | Movement | Choose two different friendly Units within Short of the same friendly Headquarters. Remove one temporary Hit or Move penalty from one. The other gains Accurate 1 on its next Attack this Round. |
+| Interlocking Lines | E | Combat Reaction | When a friendly Unit within 2" of a different friendly Unit is attacked in Engagement, the defender gains Tough 2 against that Attack. |
+| Forward Observers | A | Assault | The active Unit gains Accurate 1 and ignores Cover against its next ranged Attack this Phase, provided a different friendly Unit can see the target. Cover granted by any source is ignored for this Attack. |
 
 Doctrine Identity: Cooperation between multiple Units.
 
@@ -121,13 +121,13 @@ Foundation Recruitment Slot: C
 
 Strategy: Capture, contest, and maintain control of valuable battlefield positions.
 
-| Command            | Slot | Timing                  | Effect                                                                                                                                                                                                        |
-| ------------------ | ---- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Seize the Opening  | V    | Movement                | One unengaged friendly Unit within Short of an objective may immediately Move up to 2" toward that objective, ending legally and unengaged.                                                                   |
-| Dig In             | C    | Assault/Combat Reaction | When a friendly Unit within 2" of an objective is attacked, it gains Tough 2 against that Attack. If receiving a Charge, it also gains Brace 1 against the charging Unit.                                     |
-| Deny the Ground    | R    | Assault                 | If one friendly Unit inflicts unsaved Damage with a ranged Attack against an enemy within 2" of an objective, that enemy cannot count as more than one Unit for objective control until the end of the Round. |
-| Supply Point       | S    | Movement                | Choose one friendly Unit within 2" of an objective. Either Heal 2 accumulated Damage from it or remove Withdrawn from it.                                                                                     |
-| Clear the Position | A    | Assault/Combat          | One friendly Unit gains +2 Attacks on its next Attack this Phase against an enemy contesting an objective.                                                                                                    |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Seize the Opening | V | Movement | If the active Unit is unengaged and within Short of an objective, it may immediately Move up to 2" toward that objective, ending legally and unengaged. This extra Move does not refresh its activation. |
+| Dig In | C | Assault/Combat Reaction | When a friendly Unit within 2" of an objective is attacked, it gains Tough 2 against that Attack. If the Attack is a Charge, also gain Brace 1 before resolving Impact. |
+| Deny the Ground | R | Assault | If the active Unit inflicts unsaved Damage with a ranged Attack against an enemy within 2" of an objective, that enemy cannot count as more than one Unit for objective control until the end of the Round. |
+| Supply Point | S | Movement | If the active Unit is within 2" of an objective, either Heal 2 accumulated Damage from it or remove Withdrawn from it. |
+| Clear the Position | A | Assault/Combat | The active Unit gains +2 Attacks on its next Attack this Phase against an enemy contesting an objective. |
 
 Doctrine Identity: Scenario scoring and battlefield positioning.
 
@@ -149,11 +149,11 @@ For **Veteran Spearhead**, an Elite Unit includes the exact **Elite** tag or an 
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| Veteran Spearhead | E | Combat | Choose one friendly Elite Unit. Its next **Melee Attack** this Phase gains **Critical 1**, without a Surge because this is a CP Command. |
-| Find the Opening | H | Assault/Combat | One friendly Unit gains **Accurate 2** on its next Attack this Phase. |
-| Perfect Technique | E | Assault/Combat | One friendly Unit gains **Accurate 1** on its next Attack this Phase. Reduce the defender's effective **Tough X and Cover X by 2 each**, minimum zero, against that Attack. Suppressing Cover rerolls does not remove Evade eligibility granted by Cover. |
-| Combat Training | S | Movement | One friendly Unit gains **Tough 1 and Brace 1** until the end of the Round. |
-| Knightly Order | V | Assault | One friendly Unit gains **Charge 1 and Impact 1** on its next Charge this Phase. |
+| Veteran Spearhead | E | Combat | If the active Unit has an Elite tag, its next Melee Attack this Combat Phase gains Critical 1 without requiring a Surge. |
+| Find the Opening | H | Assault/Combat | The active Unit gains Accurate 2 on its next Attack this Phase. |
+| Perfect Technique | E | Assault/Combat | The active Unit gains Accurate 1 on its next Attack this Phase. Against that Attack, reduce the defender's effective Tough X and Cover X by 2 each, minimum zero. Suppressing Cover rerolls does not remove Cover-granted Evade eligibility. |
+| Combat Training | S | Movement | The active Unit gains Tough 1 and Brace 1 until the end of the Round. |
+| Knightly Order | V | Assault | When the active Unit declares its next Charge this Assault Phase, it gains Charge 1 and Impact +1 for that Charge. Charge ranks use the highest rank unless explicitly additive. |
 
 Doctrine Identity: Keyword-focused precision and defense. Gambit trades reliability for explosive offense; Castling defends prepared positions; Counter Strike retaliates.
 
@@ -163,13 +163,13 @@ Foundation Recruitment Slot: S
 
 Strategy: Respond to enemy aggression through timely defense and retaliation.
 
-| Command              | Slot | Timing                  | Effect                                                                                                                                                                              |
-| -------------------- | ---- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Measured Retaliation | E    | Combat Reaction         | After a friendly Unit survives an enemy Melee Attack, its next Melee Attack against that attacker gains +2 Attacks. The benefit expires after its next Combat activation. |
-| Parry and Return     | C    | Combat Reaction         | One friendly Unit gains Tough 2 against an incoming Melee Attack. If it suffers no unsaved Damage, its next Melee Attack against that attacker gains Accurate 1.          |
-| Countermand          | H    | Assault/Combat Reaction | When an enemy attacks a friendly Unit within Short of friendly Headquarters, discard one successful non-6 Hit die from that Attack after Hit rerolls and before saves.              |
-| Return Volley        | R    | Assault Reaction        | After a friendly Unit survives a ranged Attack, its next ranged Attack against the attacker gains Accurate 2 and Pinpoint. The effect expires after its next Assault activation.    |
-| Emergency Screen     | A    | Assault/Combat Reaction | When a friendly Unit within 2" of a different friendly Unit is attacked, reduce the incoming Attack by one Attack die, minimum one, before rolling to Hit.                          |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Measured Retaliation | E | Combat Reaction | After a friendly Unit survives an enemy Melee Attack, its next Melee Attack against that attacker gains +2 Attacks. The benefit expires after its next Combat activation. |
+| Parry and Return | C | Combat Reaction | One friendly Unit gains Tough 2 against an incoming Melee Attack. If it suffers no unsaved Damage, its next Melee Attack against that attacker gains Accurate 1. |
+| Countermand | H | Assault/Combat Reaction | When an enemy attacks a friendly Unit within Short of friendly Headquarters, discard one successful non-6 Hit die from that Attack after Hit rerolls and before saves. |
+| Return Volley | R | Assault Reaction | After a friendly Unit survives a ranged Attack, its next ranged Attack against the attacker gains Accurate 2 and Pinpoint. The effect expires after its next Assault activation. |
+| Emergency Screen | A | Assault/Combat Reaction | When a friendly Unit within 2" of a different friendly Unit is attacked, reduce the incoming Attack by one Attack die, minimum one, before rolling to Hit. |
 
 Doctrine Identity: Defensive reactions followed by opportunities to retaliate.
 
@@ -187,13 +187,13 @@ Foundation Recruitment Slot: C
 
 Strategy: Establish defensive formations, prepared firing positions, and mutually supporting strongpoints.
 
-| Command               | Slot | Timing           | Effect                                                                                                                                                                                                                |
-| --------------------- | ---- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Hold Formation        | H    | Combat           | Choose one friendly Unit that has not voluntarily Moved, Disengaged, Charged, or Blinked this Round. It gains Tough 2 until the end of the Combat Phase.                                                              |
-| Layered Defense       | C    | Assault Reaction | When a friendly Unit that did not voluntarily Move or Disengage during the preceding Movement Phase receives a Charge, it gains Brace 2 against the charging Unit for its next eligible Melee Attack this Round. |
-| Fortified Emplacement | A    | Assault Reaction | When a friendly Unit that has not voluntarily Moved or Blinked this Round is attacked at range, it gains Tough 3 against that Attack.                                                                                 |
-| Prepared Firing Lanes | R    | Assault          | One friendly Unit that has not voluntarily Moved, Disengaged, or Blinked this Round gains Accurate 2 and +1 Attack on its next ranged Attack against an enemy that Moved this Round.                                  |
-| Maintain Positions    | S    | Movement         | Choose one friendly Unit. Remove Withdrawn, Slow, or one temporary Hit penalty from it. If it has not voluntarily Moved or Blinked this Round, it also gains Brace 1 against the next Charge it receives this Round.  |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Hold Formation | H | Combat | If the active Unit has not voluntarily Moved, Disengaged, Charged, or Blinked this Round, it gains Tough 2 until the end of this Combat Phase. |
+| Layered Defense | C | Assault Reaction | When a friendly Unit that did not voluntarily Move or Disengage during the preceding Movement Phase receives a Charge, it gains Brace 2 against that Charge's Impact pool. |
+| Fortified Emplacement | A | Assault Reaction | When a friendly Unit that has not voluntarily Moved or Blinked this Round is attacked at range, it gains Tough 3 against that Attack. |
+| Prepared Firing Lanes | R | Assault | If the active Unit has not voluntarily Moved, Disengaged, or Blinked this Round, its next ranged Attack against an enemy that Moved this Round gains Accurate 2 and +1 Attack die. |
+| Maintain Positions | S | Movement | Remove Withdrawn, Slow, or one temporary Hit penalty from the active Unit. If it has not voluntarily Moved or Blinked this Round, it also gains Brace 1 against the next Charge it receives this Round. |
 
 Doctrine Identity: Defensive preparation and positional advantage.
 
@@ -211,13 +211,13 @@ Foundation Recruitment Slot: R
 
 Strategy: Maintain ranged superiority through coordinated shooting, accuracy, and fire discipline.
 
-| Command              | Slot | Timing           | Effect                                                                                                                                                                             |
-| -------------------- | ---- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Concentrated Fire    | R    | Assault          | One friendly Unit that has not voluntarily Moved, Disengaged, or Blinked this Round gains +2 Attacks on its next ranged Attack this Phase.                                         |
-| Marked Fire Lane     | R    | Assault          | One friendly Unit gains Pinpoint and Accurate 2 on its next ranged Attack this Phase.                                                                                              |
-| Artillery Correction | A    | Assault          | One friendly Unit making a Heavy ranged Attack gains Accurate 2 and ignores Cover against its target.                                                           |
-| Veteran Gunners      | E    | Assault          | One friendly Unit gains +1 Attack and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round.            |
-| Screening Fire       | V    | Assault Reaction | When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Melee Attack during the ensuing Combat Phase. |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Concentrated Fire | R | Assault | If the active Unit has not voluntarily Moved, Disengaged, or Blinked this Round, it gains +2 Attack dice on its next ranged Attack this Assault Phase. |
+| Marked Fire Lane | R | Assault | The active Unit gains Pinpoint and Accurate 2 on its next ranged Attack this Phase. |
+| Artillery Correction | A | Assault | When the active Unit makes a Heavy ranged Attack this Assault Phase, it gains Accurate 2 and ignores one rank of the target's effective Cover X (minimum 0) for that Attack. |
+| Veteran Gunners | E | Assault | The active Unit gains +1 Attack and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round. |
+| Screening Fire | V | Assault Reaction | When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Melee Attack during the ensuing Combat Phase. |
 
 Doctrine Identity: Offensive ranged combat.
 
@@ -235,13 +235,13 @@ Foundation Recruitment Slot: V
 
 Strategy: Gain positional advantages through movement, evasion, and battlefield maneuvering.
 
-| Command             | Slot | Timing   | Effect                                                                                                                                                                              |
-| ------------------- | ---- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Flanking Run        | V    | Movement | One friendly Unit gains +3" Move and ignores the first 2" of Difficult Terrain during its next normal Move this Round.                                                              |
-| Mobile Fire Support | R    | Movement | One friendly Unit may use a Heavy ranged Attack after moving during the preceding Movement Phase, worsening Hit by one step. Applies to its next eligible ranged Attack this Round. |
-| Rapid Footwork      | C    | Movement | One unengaged friendly Unit may immediately Move up to 2", ending legally and unengaged.                                                                                            |
-| Evasive Shift       | E    | Movement | One unengaged friendly Unit immediately resolves Blink 2.                                                                                                                           |
-| Pathfinders         | S    | Movement | One friendly Unit ignores Difficult Terrain penalties on its next normal Move this Round and gains Tough 1 against its next ranged Attack this Round.                               |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Flanking Run | V | Movement | The active Unit gains +3" Move and ignores the first 2" of Difficult Terrain during its next normal Move this Round. |
+| Mobile Fire Support | R | Movement | The active Unit may use one Heavy ranged Attack after moving during the preceding Movement Phase, worsening Hit by one step for its next eligible ranged Attack this Round. This is a specific exception to Heavy; it does not reset the Unit's Movement history. |
+| Rapid Footwork | C | Movement | The active unengaged Unit may immediately Move up to 2", ending legally and unengaged. This is an additional Move, not an activation refresh or free Disengage. |
+| Evasive Shift | E | Movement | The active unengaged Unit immediately resolves Blink 2, following ordinary legal placement and elevation rules. |
+| Pathfinders | S | Movement | The active Unit ignores Difficult Terrain penalties on its next normal Move this Round and gains Tough 1 against its next ranged Attack this Round. |
 
 Doctrine Identity: Independent maneuverability and flexible positioning.
 
@@ -259,13 +259,13 @@ Foundation Recruitment Slot: S
 
 Strategy: Restrict enemy actions, interfere with movement, and suppress tactical advantages.
 
-| Command          | Slot | Timing                  | Effect                                                                                                                                                                                             |
-| ---------------- | ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Lockdown         | C    | Assault Reaction        | When an enemy within Medium of a friendly Unit declares a Charge, reduce its final Charge distance by 1", minimum 0". Charge Impact is unchanged.                                                  |
-| Interdiction     | V    | Movement Reaction       | When an enemy begins a normal Move within Short of a friendly Unit, reduce its Move distance by 2", minimum 1".                                                                                    |
-| Disrupt Orders   | H    | Assault/Combat Reaction | When an enemy within Medium of friendly Headquarters receives an Attack bonus, remove Accurate 1 from that Attack. If it has no Accurate bonus, reduce its bonus Attacks by one die instead.       |
-| Suppressing Fire | R    | Assault                 | If one friendly Unit inflicts unsaved Damage with its next ranged Attack this Phase, the target suffers Slow 2 and cannot receive positive Move bonuses from Commands during its next normal Move. |
-| Jamming Field    | A    | Assault                 | Choose one enemy within Short of a friendly Unit. That enemy cannot use Reactions against the next Attack it suffers this Phase.                                                                   |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Lockdown | C | Assault Reaction | When an enemy within Medium of a friendly Unit declares a Charge, reduce its final Charge distance by 1", minimum 0". Charge Impact is unchanged. |
+| Interdiction | V | Movement Reaction | When an enemy begins a normal Move within Short of a friendly Unit, reduce its Move distance by 2", minimum 1". |
+| Disrupt Orders | H | Assault/Combat Reaction | When an enemy within Medium of friendly Headquarters receives an Attack bonus, remove Accurate 1 from that Attack. If it has no Accurate bonus, reduce its bonus Attacks by one die instead. |
+| Suppressing Fire | R | Assault | If the active Unit inflicts unsaved Damage with its next ranged Attack this Phase, the target suffers Slow 2 and cannot receive positive Move bonuses from Commands during its next normal Move. |
+| Jamming Field | A | Assault | Choose one enemy within Short of the active Unit. That enemy cannot use Reaction Commands against the active Unit's next Attack this Phase. |
 
 Doctrine Identity: Reducing the opponent's tactical options.
 
@@ -299,11 +299,11 @@ Unless noted otherwise, the following Alpha Strike bonuses depend on the current
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| First Strike Orders | H | Assault | Choose one friendly Unit within Short of a friendly Headquarters. Its next Attack this Round gains Accurate X, where X is determined by the current Round. |
-| Opening Volley | R | Assault | One friendly Unit gains +X Attacks on its next ranged Attack this Phase, where X is determined by the current Round. |
-| Shock Assault | E | Assault | When one friendly Unit declares a Charge, increase its Charge Impact by X for that Charge, where X is determined by the current Round. This does not increase its Charge distance. |
-| Rapid Mobilization | A | Movement / Assault / Combat | Choose either **Rapid Deployment** (Movement, once per battle, Round 1 only) or **Standard Orders** (Assault/Combat). See below. |
-| Ferocious Opening | C | Combat | Choose one friendly Unit making a **Melee Attack** this Phase. It gains **Critical 2** in Round 1, **Critical 1** in Rounds 2–3, or **Accurate 1** in Rounds 4–5. CP-granted Critical does not require a Surge. |
+| First Strike Orders | H | Assault | If the active Unit is within Short of friendly Headquarters, its next Attack this Round gains Accurate X, where X depends on the current Round. |
+| Opening Volley | R | Assault | The active Unit gains +X Attacks on its next ranged Attack this Phase, where X is determined by the current Round. |
+| Shock Assault | E | Assault | When the active Unit declares a Charge, increase its Charge Impact by X for that Charge, where X depends on the current Round. This does not increase Charge distance. |
+| Rapid Mobilization | A | Movement / Assault / Combat | Choose either Rapid Deployment (Movement, once per battle, Round 1 only) or Standard Orders (Assault/Combat). See rapidMobilizationModes. |
+| Ferocious Opening | C | Combat | Choose the active Unit making a Melee Attack this Phase. Gain Critical 2 in Round 1, Critical 1 in Rounds 2–3, or Accurate 1 in Rounds 4–5. CP-granted Critical requires no Surge and does not modify Charge Impact. |
 
 ### Rapid Mobilization — Two Modes
 
@@ -341,13 +341,13 @@ Strategy: Use large formations, overlapping engagements, and numerical superiori
 
 A formation containing four or more surviving Models qualifies for the standard numerical requirements of this doctrine.
 
-| Command           | Slot | Timing                  | Effect                                                                                                                                                                                                              |
-| ----------------- | ---- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Endless Ranks     | C    | Movement                | One friendly Unit with at least four surviving Models counts as one additional Unit for objective control until the end of the Round.                                                                               |
-| Massed Volley     | R    | Assault                 | One friendly Unit with at least four surviving Models gains +2 Attacks on its next ranged Attack this Phase. If another friendly Unit with at least four surviving Models is within Short, also gain **Accurate 1** on that Attack. |
-| Mob Tactics       | E    | Combat                  | One friendly Unit gains **Anti-Infantry 4** on its next Melee Attack against an Infantry enemy also Engaged by a different friendly Unit with at least four surviving Models.                                                    |
-| Pack Coordination | S    | Assault/Combat Reaction | When a friendly Unit within Short of another friendly Unit with at least four surviving Models is attacked, it gains Tough 2 against that Attack.                                                                   |
-| Encirclement      | V    | Combat                  | One friendly Unit attacking an enemy also Engaged by a different friendly Unit with at least four surviving Models causes that enemy to worsen Evade by one step against the Attack.                                |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Endless Ranks | C | Movement | If the active Unit has at least four surviving Models, it counts as one additional Unit for objective control until the end of the Round. |
+| Massed Volley | R | Assault | If the active Unit has at least four surviving Models, its next ranged Attack this Assault Phase gains +2 Attack dice. If another friendly Unit with at least four surviving Models is within Short, also gain Accurate 1 on that Attack. |
+| Mob Tactics | E | Combat | The active Unit gains Anti-Infantry 4 on its next Melee Attack against an Infantry enemy also Engaged by a different friendly Unit with at least four surviving Models. |
+| Pack Coordination | S | Assault/Combat Reaction | When a friendly Unit within Short of another friendly Unit with at least four surviving Models is attacked, it gains Tough 2 against that Attack. |
+| Encirclement | V | Combat | When the active Unit attacks an enemy also Engaged by a different friendly Unit with at least four surviving Models, that enemy worsens Evade by one step against this Attack. |
 
 Doctrine Identity: Numerical advantage and coordinated formations.
 
@@ -367,13 +367,13 @@ Strategy: Outlast opponents through endurance, attrition, battlefield repairs, a
 
 Grinding combines the former Grinding and Recursion doctrines. Its commands may emphasize either surviving prolonged engagements or becoming increasingly effective as the battle continues.
 
-| Command             | Slot | Timing         | Effect                                                                                                                                                                                                                    |
-| ------------------- | ---- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Unbroken Line       | C    | Reaction       | When a friendly Unit that has already suffered an Attack this Phase is attacked again, it gains Tough 2 against the incoming Attack.                                                                                      |
-| Wear Them Down      | H    | Combat         | Choose one enemy Engaged with a friendly Unit that was already attacked by a different friendly Unit this Round. Reduce its next Melee Attack by one Attack die, minimum one, before the end of its next activation. |
-| Reform and Recover  | S    | Movement       | Choose one friendly Unit. Either Heal 2 accumulated Damage from it, or remove Withdrawn and one temporary Hit, Move, or Evade penalty from it. Defeated Models are not restored.                                          |
-| Attrition Engine    | A    | Assault/Combat | One friendly Unit gains Accurate 2 on its next Attack against an enemy that has already suffered unsaved Damage from a different friendly Unit this Round.                                                                |
-| Relentless Veterans | E    | Combat         | One friendly Unit gains Accurate 2 and Critical 1 on its next Melee Attack against an enemy it attacked during an earlier Round.                                                                                     |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Unbroken Line | C | Reaction | When a friendly Unit that has already suffered an Attack this Phase is attacked again, it gains Tough 2 against the incoming Attack. |
+| Wear Them Down | H | Combat | Choose an enemy Engaged with the active Unit that was already attacked by a different friendly Unit this Round. Reduce that enemy's next Melee Attack by one Attack die, minimum one, before the end of its next activation. |
+| Reform and Recover | S | Movement | Either Heal 2 accumulated Damage from the active Unit, or remove Withdrawn and one temporary Hit, Move, or Evade penalty from it. Defeated Models are not restored. |
+| Attrition Engine | A | Assault/Combat | The active Unit gains Accurate 2 on its next Attack against an enemy that has already suffered unsaved Damage from a different friendly Unit this Round. |
+| Relentless Veterans | E | Combat | The active Unit gains Accurate 2 and Critical 1 on its next Melee Attack against an enemy it attacked during an earlier Round. |
 
 ### Doctrine Identity
 
@@ -422,11 +422,11 @@ Normal insertion requires a position **wholly more than 8" from every enemy Mode
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| Forward Insertion | C | Movement | Designate one eligible Reserve Unit for End Step insertion using normal Deep Strike restrictions and the normal shared reinforcement allowance. |
-| Landing Fire | R | Assault | One friendly Unit that arrived through Deep Strike **at the end of the previous Round** gains **Accurate 2 and Pinpoint** on its next ranged Attack this Phase. Does not waive Heavy. |
-| Flanking Insertion | V | Movement | Designate one eligible Reserve Unit for End Step insertion wholly within 3" of a battlefield edge and more than 6" from enemy Models. It may enter the enemy Deployment Zone. |
-| Heavy Descent | A | Movement | Designate one eligible Reserve Unit, including a Large Asset, for End Step insertion under normal Deep Strike restrictions. It gains **Tough 2 against the first Attack it suffers during the following Round**, then expires. |
-| Signal Beacon | H | Movement | Choose one friendly Unit already on the battlefield. Until this Round's insertion step, a separately designated Deep Strike Unit placed wholly within Short of that beacon may use a **more-than-6"** enemy exclusion distance instead of 8". The insertion Command must be used in a **different friendly Movement activation** under the one-Command limit. |
+| Forward Insertion | C | Movement | Designate one eligible Reserve Unit for End Step insertion after scoring using normal Deep Strike restrictions (more than 8 inches from enemies, outside enemy Deployment Zone), counting toward normal reinforcement allowance. |
+| Landing Fire | R | Assault | If the active Unit arrived through Deep Strike at the end of the previous Round, it gains Accurate 2 and Pinpoint on its next ranged Attack this Assault Phase. Heavy restrictions still apply. |
+| Flanking Insertion | V | Movement | Designate one eligible Reserve Unit for End Step placement within 3 inches of a battlefield edge and more than 6 inches from enemies. May enter the enemy Deployment Zone; other requirements apply. |
+| Heavy Descent | A | Movement | Designate one eligible Reserve Unit, including a Large Asset, for End Step placement with normal Deep Strike restrictions (more than 8 inches from enemies). Gain Tough 2 against the first Attack suffered in the following Round, then expire. |
+| Signal Beacon | H | Movement | Choose one friendly Unit already on the battlefield. A separately designated Deep Strike Unit placed wholly within Short of the beacon during this Round's End Step may use more-than-6-inch enemy exclusion instead of 8 inches. Use its insertion Command during a different friendly Movement activation. |
 
 ## Command Clarifications
 
@@ -444,13 +444,13 @@ Foundation Recruitment Slot: V
 
 Strategy: Use one formation to create movement or attack opportunities for another formation.
 
-| Command             | Slot | Timing           | Effect                                                                                                                                                                                    |
-| ------------------- | ---- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Anchor and Launch   | C    | Movement         | Choose one friendly Unit that has not voluntarily Moved or Blinked this Round. A different unengaged friendly Unit within 2" may immediately Move up to 3", ending legally and unengaged. |
-| Exploit the Opening | E    | Combat           | If a different friendly Unit inflicted unsaved Damage on the target this Round, one friendly Unit gains Critical 1 on its next Melee Attack against that target this Round.          |
-| Create the Gap      | R    | Assault Reaction | After a friendly Unit inflicts unsaved Damage with a ranged Attack, a different unengaged friendly Unit within Short of the enemy may immediately Move up to 2", ending unengaged.        |
-| Launch Platform     | A    | Movement         | One unengaged friendly Unit within 2" of a friendly Asset immediately resolves Blink 2.                                                                                                   |
-| Relay Maneuver      | S    | Movement         | Choose one friendly Unit. A different unengaged friendly Unit within Short of it immediately resolves Blink 3.                                                                            |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Anchor and Launch | C | Movement | Choose one friendly Unit that has not voluntarily Moved or Blinked this Round. A different unengaged friendly Unit within 2" may immediately Move up to 3", ending legally and unengaged. |
+| Exploit the Opening | E | Combat | If a different friendly Unit inflicted unsaved Damage on an enemy this Round, the active Unit gains Critical 1 on its next Melee Attack against that enemy this Round. |
+| Create the Gap | R | Assault Reaction | After a friendly Unit inflicts unsaved Damage with a ranged Attack, a different unengaged friendly Unit within Short of the enemy may immediately Move up to 2", ending unengaged. |
+| Launch Platform | A | Movement | If the active Unit is unengaged and within 2" of a friendly Asset, it immediately resolves Blink 2. |
+| Relay Maneuver | S | Movement | Choose one friendly Unit. A different unengaged friendly Unit within Short of it immediately resolves Blink 3. |
 
 Doctrine Identity: Sequential cooperation and transferring tactical opportunities between Units.
 
@@ -470,13 +470,13 @@ Strategy: Accept dangerous, unreliable outcomes in exchange for powerful attacks
 
 Gambit uses Reckless Rolls, additional dice, and unusually consequential failures.
 
-| Command            | Slot | Timing                  | Effect                                                                                                                                                                                                                                                                                                                                                                                          |
-| ------------------ | ---- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Double Down        | C    | Assault/Combat Reaction | When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit normally, to a maximum of the incoming Hits. Excess successful Saves have no effect. These dice cannot be rerolled. Backlash: After resolving the Attack, suffer 1 unpreventable Damage for each natural 1 rolled.                             |
-| Risky Calculations | S    | Assault                 | One friendly Unit gains +2 Attacks on its next ranged or Spell Attack this Phase. Its Hit roll is Reckless. Blunder: The attacking Unit suffers Direct Damage 1.                                                                                                                                                                                                                                |
-| No Quarter         | E    | Combat                  | One friendly Unit gains +1 Attack and Critical 2 on its next **Melee Attack** this Phase. Its Hit roll is Reckless; the CP-granted Critical does not require a Surge. Blunder: This Unit becomes Off-Balance until the beginning of its next Movement activation and cannot use Reaction Commands until then.                                                                                                                                                                                                     |
-| Expend the Reserve | A    | Assault/Combat          | One friendly Unit gains +3 Attacks on its next Attack this Phase. Its Hit roll is Reckless. Blunder: The Unit suffers Direct Damage 2.                                                                                                                                                                                                                                                          |
-| All or Nothing     | V    | Assault                 | Declare a Charge against an eligible enemy at least 6" away. Gain Charge 2 and Impact +2 for that Charge. If the Charge succeeds, resolve it normally. If it fails, the Unit must move its modified rolled Charge distance toward the target as far as legally possible, stopping without becoming Engaged, and then suffers 1 unpreventable Damage. Normal Charge Blunder effects still apply. |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Double Down | C | Assault/Combat Reaction | When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit normally, to a maximum of the incoming Hits. Excess successful Saves have no effect. These dice cannot be rerolled. Backlash: After resolving the Attack, suffer 1 unpreventable Damage for each natural 1 rolled. |
+| Risky Calculations | S | Assault | The active Unit gains +2 Attack dice on its next ranged or Spell Attack this Assault Phase. Its Hit roll is Reckless. Blunder: the active Unit suffers Direct Damage 1. |
+| No Quarter | E | Combat | The active Unit gains +1 Attack die and Critical 2 on its next Melee Attack this Combat Phase. Its Hit roll is Reckless; CP-granted Critical does not require a Surge. Blunder: the active Unit becomes Off-Balance until its next Movement activation and cannot use Reaction Commands until then. |
+| Expend the Reserve | A | Assault/Combat | The active Unit gains +3 Attack dice on its next Attack this Phase. Its Hit roll is Reckless. Blunder: the Unit suffers Direct Damage 2. |
+| All or Nothing | V | Assault | The active Unit declares a Charge against an eligible enemy at least 6" away. It gains Charge 2 and Impact +2 for that Charge. If successful, resolve normally. If the Charge fails, it moves its modified rolled Charge distance toward the target as far as legally possible without becoming Engaged, then suffers 1 unpreventable Damage. Normal Charge Blunders still apply. |
 
 ### Double Down Clarification
 
@@ -510,13 +510,13 @@ Foundation Recruitment Slot: A
 
 Strategy: Coordinate powerful battlefield assets, artillery, heavy attacks, and conventional forces providing support.
 
-| Command          | Slot | Timing   | Effect                                                                                                                                                                                |
-| ---------------- | ---- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Armored Advance  | C    | Movement | One friendly Unit gains +2" Move during its next normal Move this Round and Tough 1 against its next ranged Attack this Round.                                                        |
-| Fire Control     | H    | Assault  | Choose one visible enemy Unit. The next Attack made against it by each of up to two different friendly Units this Phase gains Accurate 1.                                             |
-| Battering Attack | A    | Combat   | One friendly Unit gains +1 Attack, Anti-Armored 1, and Anti-Monster 1 on its next Melee Attack this Phase. Anti bonuses only apply against their respective target categories.   |
-| Shock Support    | V    | Assault  | One friendly Unit gains Charge 1 on its next Charge this Phase. If it begins that Charge within Short of a friendly Large Asset, it gains Charge 2 instead.                           |
-| Spotter's Call   | S    | Assault  | One friendly Unit gains Accurate 2 and ignores Cover on its next ranged Attack this Phase. If the attacker is Artillery or a Large Asset, it also gains +1 Attack. |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Armored Advance | C | Movement | The active Unit gains +2" Move during its next normal Move this Round and Tough 1 against the next ranged Attack it suffers this Round. |
+| Fire Control | H | Assault | Choose one visible enemy Unit. The next Attack made against it by each of up to two different friendly Units this Phase gains Accurate 1. |
+| Battering Attack | A | Combat | The active Unit gains +1 Attack, Anti-Armored 1, and Anti-Monster 1 on its next Melee Attack this Phase. Anti bonuses only apply against their respective target categories. |
+| Shock Support | V | Assault | The active Unit gains Charge 1 on its next Charge this Assault Phase, or Charge 2 if it begins that Charge within Short of a friendly Large Asset. Use the highest applicable Charge rank; do not add ranks. |
+| Spotter's Call | S | Assault | The active Unit gains Accurate 2 and reduces its target's effective Cover X by 1 (minimum 0) for its next ranged Attack this Assault Phase. If the active Unit is Artillery or a Large Asset, it also gains +1 Attack die. |
 
 Doctrine Identity: Concentrated force and coordination around powerful weapons or battlefield assets.
 
@@ -534,13 +534,13 @@ Foundation Recruitment Slot: V
 
 Strategy: Reach resistant positions, overcome defenders, and maintain pressure after entering Engagement.
 
-| Command            | Slot | Timing          | Effect                                                                                                                                                                                                                      |
-| ------------------ | ---- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Breach Guard       | E    | Combat          | One friendly Unit that successfully Charged this Round gains Accurate 2 on its next Melee Attack against an Armored target. If the target had Brace during that Charge, also gain +1 Attack.                           |
-| Momentum Drive     | V    | Assault         | One friendly Unit gains Charge 2 when declaring its next Charge this Phase. Charge Impact is unchanged.                                                                                                                     |
-| Siege Breaker      | A    | Assault/Combat  | One friendly Unit gains **Anti-[chosen matching type] 4** on its next Attack against an Armored Unit, Monster, Vehicle, War Machine, or Fortification this Phase. Against a Structure or Fortification, the Attack also gains +1 Damage. |
-| Press the Breach   | C    | Combat          | After a friendly Unit inflicts unsaved Damage in Engagement, the target loses one bonus Unit of objective-control counting until the end of the Round, to a minimum of its normal count.                                    |
-| Command the Breach | H    | Combat Reaction | When a friendly Unit within Short of friendly Headquarters that successfully Charged this Round is attacked in Engagement, grant it Tough 2 against that Attack.                                                            |
+| Command | Slot | Timing | Effect |
+| --- | --- | --- | --- |
+| Breach Guard | E | Combat | If the active Unit successfully Charged this Round, it gains Accurate 2 on its next Melee Attack against an Armored target. If the target had Brace during the Charge, also gain +1 Attack die. |
+| Momentum Drive | V | Assault | The active Unit gains Charge 2 when declaring its next Charge this Assault Phase. Charge Impact is unchanged. |
+| Siege Breaker | A | Assault/Combat | The active Unit gains Anti-[chosen matching type] 4 on its next Attack against an Armored Unit, Monster, Vehicle, War Machine, or Fortification this Phase. Against a Structure or Fortification, the Attack also gains +1 Damage. |
+| Press the Breach | C | Combat | After the active Unit inflicts unsaved Damage on an enemy Engaged with it, that enemy loses one bonus Unit of objective-control counting until the end of the Round, down to its ordinary minimum. |
+| Command the Breach | H | Combat Reaction | When a friendly Unit within Short of friendly Headquarters that successfully Charged this Round is attacked in Engagement, grant it Tough 2 against that Attack. |
 
 Doctrine Identity: Charge reliability and overcoming defended positions.
 
