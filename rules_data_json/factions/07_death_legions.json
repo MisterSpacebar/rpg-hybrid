@@ -24,19 +24,19 @@
       "name": "Death March",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "One eligible Undead Unit may immediately make an additional normal Move, ending legally; it cannot make a ranged Attack this Round."
+      "effect": "The active eligible Undead Unit may immediately make an additional normal Move, ending legally. It cannot make a ranged Attack this Round; this does not refresh its Movement activation or remove Withdrawn."
     },
     {
       "name": "The Dead Do Not Tire",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "Remove one negative condition from one friendly Undead Unit."
+      "effect": "Remove one negative condition from the active friendly Undead Unit."
     },
     {
       "name": "Sever the Vanguard",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Elite 4 or Anti-Cavalry 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Elite 4 or Anti-Cavalry 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [
