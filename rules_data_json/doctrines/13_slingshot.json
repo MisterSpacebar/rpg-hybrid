@@ -11,7 +11,7 @@
       "name": "Anchor and Launch",
       "slot": "C",
       "timing": "Movement",
-      "effect": "Choose one friendly Unit that has not voluntarily Moved or Blinked this Round. A different unengaged friendly Unit within 2\" may immediately Move up to 3\", ending legally and unengaged."
+      "effect": "If the active Unit has not voluntarily Moved or Blinked this Round, choose a different unengaged friendly Unit within 2\" of it. That Unit may immediately Move up to 3\", ending legally and unengaged. The active Unit acts as the anchor; the other Unit is an explicitly delegated recipient."
     },
     {
       "name": "Exploit the Opening",
@@ -35,7 +35,7 @@
       "name": "Relay Maneuver",
       "slot": "S",
       "timing": "Movement",
-      "effect": "Choose one friendly Unit. A different unengaged friendly Unit within Short of it immediately resolves Blink 3."
+      "effect": "Choose a different unengaged friendly Unit within Short of the active Unit. That other Unit immediately resolves Blink 3, ending legally and unengaged. The active Unit is the relay, not the Blink recipient."
     }
   ],
   "doctrineIdentity": "Sequential cooperation and transferring tactical opportunities between Units. Unlike Mobility, Slingshot typically requires two different friendly Units working together."
