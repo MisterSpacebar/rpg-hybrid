@@ -24,19 +24,19 @@
       "name": "Spectral Passage",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "One friendly Unit gains Move +2\" and may move through terrain and Models this activation, finishing legally."
+      "effect": "The active Unit gains Move +2\" and may move through terrain and Models during this Movement activation, finishing legally."
     },
     {
       "name": "Haunting Presence",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "One nearby enemy cannot benefit from Cover and worsens Evade by one step until the end of the Round."
+      "effect": "Choose one enemy Unit within Short of the active Unit. Until the end of this Phase, that enemy cannot benefit from Cover or Cover X against Attacks; it loses Evade eligibility that comes solely from Cover, but keeps other sources of Evade. This does not worsen its printed Evade or remove terrain."
     },
     {
       "name": "Haunt the Battleline",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Ranged 4 or Anti-Support 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Ranged 4 or Anti-Support 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [
