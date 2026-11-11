@@ -225,7 +225,7 @@
             "name": "Advance Orders",
             "timing": "Movement",
             "cpCost": 1,
-            "effect": "Choose one unengaged friendly Unit within Short. It may immediately Move up to 3\", ending legally; the Move does not grant another activation or Charge."
+            "effect": "1 CP — Movement, during the Captain’s own Movement activation: choose another friendly Unit within Short (6\") of this Captain whose Movement activation has already been spent this Phase. Refresh that Unit’s Movement activation: it becomes eligible for one more normal Movement activation later this Phase, following alternating activation order (not an immediate free Move). A Unit may be refreshed by Advance Orders only once per Round. This does not remove Withdrawn or other conditions, undo a Disengage, reset whether the Unit moved for Heavy, change the usual Disengage rules, grant a Charge, or grant an Assault/Combat activation. A Finished side cannot resume activating."
           },
           {
             "name": "Fire Discipline",
@@ -237,7 +237,7 @@
             "name": "Identify Threat",
             "timing": "Assault or Combat",
             "cpCost": 1,
-            "effect": "Choose one visible enemy Unit within Medium and a Creature or material Trait tag it actually possesses (such as Mortal, Undead, Beast, Spirit, Infernal, Construct, Mechanical, or Armored). One friendly Unit within Short gains Anti-[that tag] 3 on its next Attack against that enemy this Round. Applicable Anti ranks never stack; use the highest."
+            "effect": "1 CP — Assault or Combat, during the Captain’s own activation: choose another friendly Unit within Short (6\") of this Captain and a visible enemy Unit also within Short (6\") of this Captain. The friendly Unit gains +2 Attack dice to its single combined Attack pool for its next eligible Attack against that enemy this Round. The bonus is once per Unit Attack, not per Model, requires no matching Anti-tag, and cannot benefit the same Attack as another friendly Command."
           }
         ]
       },
