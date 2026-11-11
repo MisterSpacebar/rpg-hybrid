@@ -42,7 +42,7 @@ Upgrades may be selected only when listed in the Unit's profile or permitted by 
 
 ### Matched-Play Command Points and Cards
 
-A standard **2,000-point matched-play army selects eight army Commands** during construction: two Faction Commands and three from each of its two Doctrines. Each selected Command is represented by a card if playing physically. All eight selected cards remain available as the army's **Command repertoire**; players do **not** prepare a separate two-card hand each Round.
+A standard **2,000-point matched-play army selects eight army Commands** during construction: **two Faction Commands from its faction's four available options**, and three Commands from each of its two Doctrines (three out of five per Doctrine). Each selected Command is represented by a card if playing physically. All eight selected cards remain available as the army's **Command repertoire**; players do **not** prepare a separate two-card hand each Round.
 
 - Each matched-play army has **8 Command Points (CP) per Round**, refreshed at the **beginning** of the Round. Unspent CP are lost rather than carried forward.
 - To use a printed Faction or Doctrine Command, exhaust its card to spend 1 CP, or exhaust that card plus additional available cards if the printed cost exceeds 1 CP. Exhausting the card **represents** spending 1 CP for a 1 CP Command; it is **not** a second cost.
