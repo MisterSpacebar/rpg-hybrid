@@ -739,7 +739,7 @@ Friendly Units containing at least 5 Models gain Accurate 2.
 
 This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
 
-- **Dirty Trick — Assault, 1 CP:** Choose one visible enemy Unit. Against the active Unit’s next eligible Attack this Phase, worsen that enemy's Armor or Evade by one step (choose one).
+- **Dirty Trick — Assault, 1 CP:** Choose one visible enemy Unit during the active Unit’s Assault activation. Worsen that enemy’s Armor or Evade by one step (choose one) until the end of this Phase. This is an enemy debuff and may affect later friendly Attacks; it does not grant another Unit an activation.
 - **Scurry Away — Movement, 1 CP:** During its own Movement activation, the active Unit may Disengage without becoming Withdrawn. It follows all other normal Disengage restrictions and does not gain an additional activation.
 - **Mob Them! — Movement, 1 CP:** During the active Unit’s Movement activation, choose up to two friendly Units (including the active Unit if desired) to Move up to 2" toward the same enemy within Medium of the active Unit. Each Move must end legally; this is a multi-unit support exception, not an activation refresh.
 - **Strike the Exposed — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Support 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
@@ -1198,7 +1198,7 @@ Once per activation, a friendly Infernal Unit may suffer 1 Damage to reroll one 
 This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
 
 - **Unbound Power — Assault, 1 CP:** The active Unit's next Attack this Assault Phase gains +2 Attack dice to its combined pool. If that Attack Blunders, the active Unit suffers 1 Damage.
-- **Blood Offering — Assault, 1 CP:** Damage or remove one eligible friendly basic Model within Short of the active Unit. The active Unit gains Accurate 2 on its next eligible Attack this Round. This is a support/sacrifice effect and does not grant an extra Attack.
+- **Blood Offering — Assault, 1 CP:** During the active Unit’s Assault activation, damage or remove one eligible friendly basic Model. Choose one other friendly Unit within Short of the active Unit; the chosen Unit gains Accurate 2 on its next Attack this Round. The Command explicitly supports another Unit and does not grant an extra Attack or activation.
 - **Open the Rift — Movement, 1 CP:** Deploy one eligible, already paid-for minor Infernal Unit from Reserve according to its summoning restrictions.
 - **Break the Defense — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Elite 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
