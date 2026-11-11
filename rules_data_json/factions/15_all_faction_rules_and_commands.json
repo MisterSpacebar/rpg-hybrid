@@ -1,5 +1,5 @@
 {
-  "description": "Consolidated, cross-faction reference listing every faction's Faction Rule (passive) and Faction Commands (active) in one place, for quick lookup without opening all 12 individual faction files. This is a derived convenience view — the per-faction files (01_free_realms.json … 12_titan_clans.json) remain authoritative for any other faction content (Signature Units, Captains, Large Assets, Faction Leaders).",
+  "description": "Consolidated read-only convenience reference. All twelve faction command lists contain four options; matched-play armies choose two of these four. Per-faction profile files remain authoritative.",
   "sourceRef": {
     "file": "rulebooks/chapters/02_wargame/02_core_factions.md",
     "section": "Faction Rule and Faction Commands subsections of each of the 12 faction entries"
@@ -7,110 +7,400 @@
   "factions": [
     {
       "faction": "Free Realms",
-      "factionRule": { "name": "Combined Arms", "effect": "A friendly Unit gains Accurate 1 when attacking an enemy already Engaged by another friendly Unit." },
+      "factionRule": {
+        "name": "Combined Arms",
+        "effect": "Coordinated Arms: When a friendly Unit makes a Melee Attack against an enemy also Engaged by a DIFFERENT friendly Unit, add +1 Attack die to its combined pool. Alternatively, when a friendly Unit makes a ranged Weapon Attack while wholly within 3\" of another friendly Unit, add +1 Attack die to its combined pool; ranged benefit excludes Artillery, Vehicles, War Machines, and Large Assets. Max +1 die from this faction rule per Attack, regardless of supporting Units.",
+        "knownIssue": "Shares its name with the generic Doctrine 'Combined Arms' (rulebooks/chapters/02_wargame/03_non_faction_doctrines.md), which has a different, unrelated 5-Command effect table. Likely intentional thematic echo, not a merge."
+      },
       "factionCommands": [
-        { "name": "Coordinated Advance", "timing": "Movement", "cost": "1 CP", "effect": "Choose up to two friendly Units within Short. Each may immediately Move up to 2\", ending legally." },
-        { "name": "Covering Fire", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit Disengages, choose a different friendly Unit within Short of it that has not yet used its Assault activation. That Unit immediately makes an eligible ranged Attack against the enemy left behind, consuming its normal Assault activation. This does not grant a second Attack." },
-        { "name": "Secure Ground", "timing": "Movement", "cost": "1 CP", "effect": "One friendly Unit counts as one additional Unit for objective control until the end of the Round." }
+        {
+          "name": "Coordinated Advance",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "During the active Unit’s Movement activation, choose up to two friendly Units within Short of it (which may include the active Unit). Each selected Unit may immediately Move up to 2\", ending legally. These are additional Moves, not refreshed activations; Disengage and Withdrawn rules still apply."
+        },
+        {
+          "name": "Covering Fire",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "After a friendly Unit Disengages, choose a different friendly Unit within Short of it that has not yet used its Assault activation. That Unit immediately makes an eligible ranged Attack against the enemy left behind, consuming its normal Assault activation. This does not grant a second Attack."
+        },
+        {
+          "name": "Secure Ground",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "The active Unit counts as one additional Unit for objective control until the end of the Round."
+        },
+        {
+          "name": "Coordinated Targeting",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Sacred Orders",
-      "factionRule": { "name": "Unyielding", "effect": "Once per Round, each friendly Core or Elite Unit reduces the first instance of Damage it suffers by 1, minimum 0. This applies after Saves and cannot reduce a Critical Injury." },
+      "factionRule": {
+        "name": "Unyielding",
+        "effect": "Once per Round, each friendly Core or Elite Unit reduces the first instance of Damage it suffers by 1, minimum 0. This applies after Saves and cannot reduce a Critical Injury.",
+        "playtestNote": "Compare restricting this trait to these Units versus allowing all friendly Units."
+      },
       "factionCommands": [
-        { "name": "Stand Fast", "timing": "Reaction", "cost": "1 CP", "effect": "Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase." },
-        { "name": "Righteous Retaliation", "timing": "Reaction", "cost": "1 CP", "effect": "After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round." },
-        { "name": "Heroic Intervention", "timing": "Reaction", "cost": "1 CP", "effect": "When a nearby ally is attacked, one friendly Unique Unit may Move up to 3\" toward it." }
+        {
+          "name": "Stand Fast",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase."
+        },
+        {
+          "name": "Righteous Retaliation",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round."
+        },
+        {
+          "name": "Heroic Intervention",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "When a friendly Unit is targeted by an Attack, choose a different friendly Unit within Short of the attacked Unit. The chosen Unit may immediately Move up to 3\" toward the attacked Unit, ending legally. It cannot use this Move as a free Disengage, and this does not change the declared Attack target or intercept the Attack."
+        },
+        {
+          "name": "Break Their Line",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Elite 4 or Anti-Cavalry 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Iron Holds",
-      "factionRule": { "name": "Entrenched", "effect": "Friendly Units that did not Move during the preceding Movement Phase gain Tough 1 against Ranged attacks." },
+      "factionRule": {
+        "name": "Entrenched",
+        "effect": "Friendly Units that did not Move during the preceding Movement Phase gain Tough 1 against Ranged attacks."
+      },
       "factionCommands": [
-        { "name": "Hold the Line", "timing": "Reaction", "cost": "1 CP", "effect": "One friendly Unit gains Tough 2 until the end of the Round." },
-        { "name": "Concentrated Volley", "timing": "Assault", "cost": "1 CP", "effect": "One friendly stationary Unit gains Accurate 2 during its next ranged Attack." },
-        { "name": "Prepared Position", "timing": "Movement", "cost": "1 CP", "effect": "Create or activate a small barricade or defensive position according to the terrain rules." }
+        {
+          "name": "Hold the Line",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "One friendly Unit gains Tough 2 until the end of the Round."
+        },
+        {
+          "name": "Concentrated Volley",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "The active Unit gains Accurate 2 on its next ranged Attack this Phase, provided it did not voluntarily Move in the preceding Movement Phase."
+        },
+        {
+          "name": "Prepared Position",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "During the active Unit's Movement activation, create or activate a small barricade or defensive position adjacent to that Unit, following ordinary terrain-placement rules. This does not itself grant an additional Move or activation."
+        },
+        {
+          "name": "Counterbattery Orders",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Ranged 4 or Anti-Artillery 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Wild Courts",
-      "factionRule": { "name": "Paths of the Wild", "effect": "Ignore the first 2\" of Difficult Terrain during each Move activation. Units must finish their moves legally." },
+      "factionRule": {
+        "name": "Paths of the Wild",
+        "effect": "Ignore the first 2\" of Difficult Terrain during each Move activation; finish moves legally. In addition, while a friendly Unit already benefits from Cover, it gains Cover 1 (additive with other eligible Cover X ranks). The faction bonus does not itself grant Cover or qualify a Unit as being in Cover."
+      },
       "factionCommands": [
-        { "name": "Through the Wild", "timing": "Movement", "cost": "1 CP", "effect": "Reposition one friendly Unit from a terrain feature to another suitable terrain feature within Medium. It cannot finish Engaged." },
-        { "name": "Entangling Growth", "timing": "Assault", "cost": "1 CP", "effect": "One visible enemy within Medium suffers Slow 2 or cannot Charge during the current Phase." },
-        { "name": "Fade into the Wilds", "timing": "Reaction", "cost": "1 CP", "effect": "After being attacked, one unengaged friendly Unit may Move up to 3\"." }
+        {
+          "name": "Through the Wild",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "During the active Unit’s Movement activation, if it is unengaged and already benefiting from Cover, it may Blink 6. Its repositioning must end with the entire Unit legally in Coherency and benefiting from Cover provided by a different piece of cover-granting terrain than the one it began in. Blink ignores intervening terrain but not elevation, and cannot end Engaged. This is not a Move, Charge, or free Disengage."
+        },
+        {
+          "name": "Entangling Growth",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "Choose one visible enemy within Medium of the active Unit. That enemy suffers Slow 2 or cannot Charge during the current Phase (choose one)."
+        },
+        {
+          "name": "Fade into the Wilds",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "After a friendly unengaged Unit is attacked, it may Move up to 2\", ending legally. This does not override Disengage or Withdrawn restrictions."
+        },
+        {
+          "name": "Cull the Flank",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Cavalry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Warclans",
-      "factionRule": { "name": "Eager for Battle", "effect": "All friendly Units gain Charge 1." },
+      "factionRule": {
+        "name": "Eager for Battle",
+        "effect": "Faction-specific Warclans Units gain Charge 2; generic Units recruited into Warclans instead gain Charge 1. Use the highest applicable Charge X, not the sum, unless another rule explicitly says otherwise. These bonuses affect Charge distance, not Impact. Printed higher Charge ranks on faction Units (such as Boar Riders Charge 3) still apply."
+      },
       "factionCommands": [
-        { "name": "Get In There!", "timing": "Assault Reaction", "cost": "1 CP", "effect": "When a different friendly Unit successfully completes a Charge, choose one unactivated friendly Unit within Short of the charger. It may immediately make its normal Charge activation, consuming its Assault activation for this Phase; it does not gain a second Charge." },
-        { "name": "Overwhelm", "timing": "Combat", "cost": "2 CP", "effect": "One friendly multi-model Unit gains +1 Attack per Model during its next Combat activation." },
-        { "name": "Keep Fighting!", "timing": "Reaction", "cost": "1 CP", "effect": "After destroying an enemy Unit in Engagement, the attacking Unit may Move up to 2\" toward another enemy." }
+        {
+          "name": "Get In There!",
+          "timing": "Assault Reaction",
+          "cost": "1 CP",
+          "effect": "When a different friendly Unit successfully completes a Charge, choose one unactivated friendly Unit within Short of the charger. It may immediately make its normal Charge activation, consuming its Assault activation for this Phase; it does not gain a second Charge."
+        },
+        {
+          "name": "Overwhelm",
+          "timing": "Combat",
+          "cost": "2 CP",
+          "effect": "The active friendly multi-model Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase."
+        },
+        {
+          "name": "Keep Fighting!",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "After destroying an enemy Unit in Engagement, the attacking Unit may Move up to 2\" toward another enemy."
+        },
+        {
+          "name": "Crush Their Ranks",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Underclans",
-      "factionRule": { "name": "Strength in Numbers", "effect": "Friendly Units containing at least 5 Models gain Accurate 2." },
+      "factionRule": {
+        "name": "Strength in Numbers",
+        "effect": "Friendly Units containing at least 5 Models gain Accurate 2."
+      },
       "factionCommands": [
-        { "name": "Dirty Trick", "timing": "Assault", "cost": "1 CP", "effect": "Worsen one visible enemy's Armor or Evade by one step until the end of the Phase." },
-        { "name": "Scurry Away", "timing": "Movement", "cost": "1 CP", "effect": "One friendly Unit may Disengage without becoming Withdrawn." },
-        { "name": "Mob Them!", "timing": "Movement", "cost": "1 CP", "effect": "Up to two friendly Units may each Move up to 2\" toward the same enemy within Medium." }
+        {
+          "name": "Dirty Trick",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "Choose one visible enemy Unit. Against the active Unit’s next eligible Attack this Phase, worsen that enemy's Armor or Evade by one step (choose one)."
+        },
+        {
+          "name": "Scurry Away",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "During its own Movement activation, the active Unit may Disengage without becoming Withdrawn. It follows all other normal Disengage restrictions and does not gain an additional activation."
+        },
+        {
+          "name": "Mob Them!",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "During the active Unit’s Movement activation, choose up to two friendly Units (including the active Unit if desired) to Move up to 2\" toward the same enemy within Medium of the active Unit. Each Move must end legally; this is a multi-unit support exception, not an activation refresh."
+        },
+        {
+          "name": "Strike the Exposed",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Support 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Death Legions",
-      "factionRule": { "name": "Endless Dead", "effect": "The first time each Round an Undead Unit with more than one starting Model survives an Attack that defeats one or more of its basic Models, roll 1D6 for each Model defeated by that Attack. For each 6+, restore one defeated basic Model to that surviving Unit, up to its starting size, placing returned Models legally in Coherency. This passive effect may return Models while Engaged but cannot restore a completely destroyed Unit." },
+      "factionRule": {
+        "name": "Endless Dead",
+        "effect": "The first time each Round an Undead Unit with more than one starting Model survives an Attack that defeats one or more of its basic Models, roll 1D6 for each Model defeated by that Attack. For each 6+, restore one defeated basic Model to that surviving Unit, up to its starting size, placing returned Models legally in Coherency. This passive effect may return Models while Engaged but cannot restore a completely destroyed Unit."
+      },
       "factionCommands": [
-        { "name": "Rise Again", "timing": "Movement", "cost": "1 CP", "effect": "Either restore one defeated basic Model to a surviving, unengaged friendly Undead Unit (up to starting size), or once per battle, return one completely destroyed friendly Undead Core Unit with two original basic Models in legal Coherency, wholly within the friendly Deployment Zone at the end of Movement. That returned Unit cannot activate, Charge, or control objectives this Round. Both uses retain normal CP/card requirements." },
-        { "name": "Death March", "timing": "Movement", "cost": "1 CP", "effect": "One eligible Undead Unit may immediately make an additional normal Move, ending legally; it cannot make a ranged Attack this Round." },
-        { "name": "The Dead Do Not Tire", "timing": "Movement", "cost": "1 CP", "effect": "Remove one negative condition from one friendly Undead Unit." }
+        {
+          "name": "Rise Again",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "Either restore one defeated basic Model to a surviving, unengaged friendly Undead Unit (up to starting size), or once per battle, return one completely destroyed friendly Undead Core Unit with two original basic Models in legal Coherency, wholly within the friendly Deployment Zone at the end of Movement. That returned Unit cannot activate, Charge, or control objectives this Round. Both uses retain normal CP/card requirements."
+        },
+        {
+          "name": "Death March",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "The active eligible Undead Unit may immediately make an additional normal Move, ending legally. It cannot make a ranged Attack this Round; this does not refresh its Movement activation or remove Withdrawn."
+        },
+        {
+          "name": "The Dead Do Not Tire",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "Remove one negative condition from the active friendly Undead Unit."
+        },
+        {
+          "name": "Sever the Vanguard",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Elite 4 or Anti-Cavalry 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Blood Courts",
-      "factionRule": { "name": "Feast on the Fallen", "effect": "Once per Round, after a friendly Unit defeats an enemy Model in Engagement, Heal 1 Damage from that Unit." },
+      "factionRule": {
+        "name": "Feast on the Fallen",
+        "effect": "Once per Round, after a friendly Unit defeats an enemy Model in Engagement, Heal 1 Damage from that Unit."
+      },
       "factionCommands": [
-        { "name": "Blood Frenzy", "timing": "Combat", "cost": "1 CP", "effect": "One friendly Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase." },
-        { "name": "Predatory Speed", "timing": "Reaction", "cost": "1 CP", "effect": "After destroying an enemy Unit, one friendly Unit may Move up to 2\"." },
-        { "name": "Mesmerize", "timing": "Reaction", "cost": "1 CP", "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Unique Unit until the end of the Phase." }
+        {
+          "name": "Blood Frenzy",
+          "timing": "Combat",
+          "cost": "1 CP",
+          "effect": "The active Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase."
+        },
+        {
+          "name": "Predatory Speed",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "After destroying an enemy Unit, one friendly Unit may Move up to 2\"."
+        },
+        {
+          "name": "Mesmerize",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Unique Unit until the end of the Phase."
+        },
+        {
+          "name": "Cut Off the Leaders",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Hero 4 or Anti-Officer 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Spirit Hosts",
-      "factionRule": { "name": "Incorporeal", "effect": "Friendly Spirit Units gain Ward 6+ against Physical Damage, or their Ward is improved by 1 against incoming Physical damage. This effect is already marked on the faction datasheets and is not applied a second time to those printed Ward values." },
+      "factionRule": {
+        "name": "Incorporeal",
+        "effect": "Friendly Spirit Units gain Ward 6+ against Physical Damage, or their Ward is improved by 1 against incoming Physical damage. This effect is already marked on the faction datasheets and is not applied a second time to those printed Ward values."
+      },
       "factionCommands": [
-        { "name": "Fade from Reality", "timing": "Reaction", "cost": "1 CP", "effect": "Improve one friendly Unit's applicable Ward by one step until the end of the Phase." },
-        { "name": "Spectral Passage", "timing": "Movement", "cost": "1 CP", "effect": "One friendly Unit gains Move +2\" and may move through terrain and Models this activation, finishing legally." },
-        { "name": "Haunting Presence", "timing": "Assault", "cost": "1 CP", "effect": "One nearby enemy cannot benefit from Cover and worsens Evade by one step until the end of the Round." }
+        {
+          "name": "Fade from Reality",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "Improve one friendly Unit's applicable Ward by one step until the end of the Phase."
+        },
+        {
+          "name": "Spectral Passage",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "The active Unit gains Move +2\" and may move through terrain and Models during this Movement activation, finishing legally."
+        },
+        {
+          "name": "Haunting Presence",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "Choose one enemy Unit within Short of the active Unit. Until the end of this Phase, that enemy cannot benefit from Cover or Cover X against Attacks; it loses Evade eligibility that comes solely from Cover, but keeps other sources of Evade. This does not worsen its printed Evade or remove terrain."
+        },
+        {
+          "name": "Haunt the Battleline",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Ranged 4 or Anti-Support 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Infernal Hosts",
-      "factionRule": { "name": "Dark Bargain", "effect": "Once per activation, a friendly Infernal Unit may suffer 1 Damage to reroll one die, obeying the normal once-per-die reroll limitation." },
+      "factionRule": {
+        "name": "Dark Bargain",
+        "effect": "Once per activation, a friendly Infernal Unit may suffer 1 Damage to reroll one die, obeying the normal once-per-die reroll limitation."
+      },
       "factionCommands": [
-        { "name": "Unbound Power", "timing": "Assault", "cost": "1 CP", "effect": "One Attack gains +2 Attacks. If it Blunders, its Unit suffers 1 Damage." },
-        { "name": "Blood Offering", "timing": "Assault", "cost": "1 CP", "effect": "Damage or remove one friendly basic Model. One nearby friendly Unit gains Accurate 2 on its next Attack." },
-        { "name": "Open the Rift", "timing": "Movement", "cost": "1 CP", "effect": "Deploy one eligible, already paid-for minor Infernal Unit from Reserve according to its summoning restrictions." }
+        {
+          "name": "Unbound Power",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "The active Unit's next Attack this Assault Phase gains +2 Attack dice to its combined pool. If that Attack Blunders, the active Unit suffers 1 Damage."
+        },
+        {
+          "name": "Blood Offering",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "Damage or remove one eligible friendly basic Model within Short of the active Unit. The active Unit gains Accurate 2 on its next eligible Attack this Round. This is a support/sacrifice effect and does not grant an extra Attack."
+        },
+        {
+          "name": "Open the Rift",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "Deploy one eligible, already paid-for minor Infernal Unit from Reserve according to its summoning restrictions."
+        },
+        {
+          "name": "Break the Defense",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Elite 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Arcane Orders",
-      "factionRule": { "name": "Arcane Discipline", "effect": "Friendly Spell Attacks gain Accurate 1." },
+      "factionRule": {
+        "name": "Arcane Discipline",
+        "effect": "Friendly Spell Attacks gain Accurate 1."
+      },
       "factionCommands": [
-        { "name": "Overchannel", "timing": "Assault", "cost": "1 CP", "effect": "Increase either Attacks or Damage of one Spell Attack by 1." },
-        { "name": "Counterspell", "timing": "Reaction", "cost": "1 CP", "effect": "When a friendly unit is being affected by an enemy Magic attack or ability that involves saves, reroll all 1s rolled for saves to that attack or ability." },
-        { "name": "Spatial Fold", "timing": "Movement", "cost": "1 CP", "effect": "One unit gets Blink 3. Reposition one friendly Unit up to 3\" without this counting as a normal Move. It cannot finish Engaged." }
+        {
+          "name": "Overchannel",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "The active Unit’s next Spell Attack this Assault Phase gains +1 Damage. This changes Damage per successful unsaved Hit, not the number of Attacks; it does not affect a second Attack."
+        },
+        {
+          "name": "Counterspell",
+          "timing": "Reaction",
+          "cost": "1 CP",
+          "effect": "When a friendly unit is being affected by an enemy Magic attack or ability that involves saves, reroll all 1s rolled for saves to that attack or ability."
+        },
+        {
+          "name": "Spatial Fold",
+          "timing": "Movement",
+          "cost": "1 CP",
+          "effect": "During its own Movement activation, the active unengaged Unit gains Blink 3 and may immediately reposition up to 3\" following normal Blink rules, ending legally and unengaged. This does not count as a normal Move or grant another activation."
+        },
+        {
+          "name": "Disjoin the Formation",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Elite 4 or Anti-Monster 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     },
     {
       "faction": "Titan Clans",
-      "factionRule": { "name": "Massive Momentum", "effect": "All friendly Units gain Impact 1." },
+      "factionRule": {
+        "name": "Massive Momentum",
+        "effect": "Faction-specific Titan Clans Units gain Impact 2 on successful Charges; generic Units recruited into Titan Clans instead gain Impact 1. Explicitly distinct printed Impact bonuses (such as Stampede) add to the faction bonus, but duplicate faction bonuses never stack. Charge distance is unchanged."
+      },
       "factionCommands": [
-        { "name": "Thunderous Advance", "timing": "Assault", "cost": "1 CP", "effect": "One friendly Unit makes an additional Move before declaring a Charge." },
-        { "name": "Smash Through", "timing": "Assault", "cost": "1 CP", "effect": "One friendly Unit's next Charge Impact this Phase ignores one step of temporary Armor improvement on the target (use its normal printed Armor for this Impact if a bonus improved it). Impact already ignores Evade and Cover." },
-        { "name": "Roar of Dominance", "timing": "Assault", "cost": "1 CP", "effect": "Choose one friendly Monster. Enemies cannot use Reactions against that Monster until the end of the Phase." }
+        {
+          "name": "Thunderous Advance",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "The active Unit may make an additional legal normal Move immediately before declaring its Charge during this Assault activation; this does not grant an additional Charge or Disengage."
+        },
+        {
+          "name": "Smash Through",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "When the active Unit declares a Charge, its Charge Impact ignores the defending Unit’s Tough X during Armor Saves against that Impact only. Brace and ordinary Armor/Ward still apply; this does not improve the Unit's later melee Attack."
+        },
+        {
+          "name": "Roar of Dominance",
+          "timing": "Assault",
+          "cost": "1 CP",
+          "effect": "The active friendly Monster cannot be targeted by enemy Reaction Commands until the end of this Assault Phase."
+        },
+        {
+          "name": "Smash the Ranks",
+          "cost": "1 CP",
+          "timing": "Assault or Combat",
+          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+        }
       ]
     }
   ]
