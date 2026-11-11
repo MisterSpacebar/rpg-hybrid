@@ -105,7 +105,7 @@ Strategy: Coordinate different battlefield roles to improve the performance of o
 | Crossfire | R | Assault | The active Unit gains Accurate 2 and Pinpoint on its next ranged Attack this Assault Phase against an enemy already attacked by a different friendly Unit this Round. |
 | Coordinated Orders | H | Movement | Choose two different friendly Units within Short of the same friendly Headquarters. Remove one temporary Hit or Move penalty from one. The other gains Accurate 1 on its next Attack this Round. |
 | Interlocking Lines | E | Combat Reaction | When a friendly Unit within 2" of a different friendly Unit is attacked in Engagement, the defender gains Tough 2 against that Attack. |
-| Forward Observers | A | Assault | The active Unit gains Accurate 1 and ignores Cover against its next ranged Attack this Phase, provided a different friendly Unit can see the target. Cover granted by any source is ignored for this Attack. |
+| Forward Observers | A | Assault | The active Unit gains Accurate 1 and reduces the target's effective Cover X by 1 (minimum 0) on its next ranged Attack this Assault Phase, provided a different friendly Unit can see the target. This does not remove Cover eligibility. |
 
 Doctrine Identity: Cooperation between multiple Units.
 
