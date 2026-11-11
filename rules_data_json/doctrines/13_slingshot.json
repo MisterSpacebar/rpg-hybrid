@@ -1,14 +1,42 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "13. Slingshot" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "13. Slingshot"
+  },
   "name": "Slingshot",
   "foundationRecruitmentSlot": "V",
   "strategy": "Use one formation to create movement or attack opportunities for another formation.",
   "commands": [
-    { "name": "Anchor and Launch", "slot": "C", "timing": "Movement", "effect": "Choose one friendly Unit that has not voluntarily Moved or Blinked this Round. A different unengaged friendly Unit within 2\" may immediately Move up to 3\", ending legally and unengaged." },
-    { "name": "Exploit the Opening", "slot": "E", "timing": "Combat", "effect": "If a different friendly Unit inflicted unsaved Damage on the target this Round, one friendly Unit gains Critical 1 on its next Melee Attack against that target this Round." },
-    { "name": "Create the Gap", "slot": "R", "timing": "Assault Reaction", "effect": "After a friendly Unit inflicts unsaved Damage with a ranged Attack, a different unengaged friendly Unit within Short of the enemy may immediately Move up to 2\", ending unengaged." },
-    { "name": "Launch Platform", "slot": "A", "timing": "Movement", "effect": "One unengaged friendly Unit within 2\" of a friendly Asset immediately resolves Blink 2." },
-    { "name": "Relay Maneuver", "slot": "S", "timing": "Movement", "effect": "Choose one friendly Unit. A different unengaged friendly Unit within Short of it immediately resolves Blink 3." }
+    {
+      "name": "Anchor and Launch",
+      "slot": "C",
+      "timing": "Movement",
+      "effect": "Choose one friendly Unit that has not voluntarily Moved or Blinked this Round. A different unengaged friendly Unit within 2\" may immediately Move up to 3\", ending legally and unengaged."
+    },
+    {
+      "name": "Exploit the Opening",
+      "slot": "E",
+      "timing": "Combat",
+      "effect": "If a different friendly Unit inflicted unsaved Damage on an enemy this Round, the active Unit gains Critical 1 on its next Melee Attack against that enemy this Round."
+    },
+    {
+      "name": "Create the Gap",
+      "slot": "R",
+      "timing": "Assault Reaction",
+      "effect": "After a friendly Unit inflicts unsaved Damage with a ranged Attack, a different unengaged friendly Unit within Short of the enemy may immediately Move up to 2\", ending unengaged."
+    },
+    {
+      "name": "Launch Platform",
+      "slot": "A",
+      "timing": "Movement",
+      "effect": "If the active Unit is unengaged and within 2\" of a friendly Asset, it immediately resolves Blink 2."
+    },
+    {
+      "name": "Relay Maneuver",
+      "slot": "S",
+      "timing": "Movement",
+      "effect": "Choose one friendly Unit. A different unengaged friendly Unit within Short of it immediately resolves Blink 3."
+    }
   ],
   "doctrineIdentity": "Sequential cooperation and transferring tactical opportunities between Units. Unlike Mobility, Slingshot typically requires two different friendly Units working together."
 }
