@@ -220,7 +220,7 @@ The opposing side then activates one eligible Unit.
 
 Continue alternating until both sides become Finished.
 
-A Unit may normally activate only once during the same Phase.
+A Unit may normally activate only once during the same Phase. A rule that explicitly **refreshes a spent activation** makes that Unit eligible to activate again later in the same Phase, following the normal alternating order. Refreshing does not itself Move the Unit, undo Withdrawn or Disengage, reset whether it Moved for Heavy restrictions, or grant actions in other Phases. An ability cannot reopen a side that voluntarily became Finished, and a given Unit cannot receive more than one Advance Orders refresh in a Round.
 
 A Unit may choose to do nothing when activated. This still counts as its activation.
 
