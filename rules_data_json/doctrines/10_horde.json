@@ -12,19 +12,19 @@
       "name": "Endless Ranks",
       "slot": "C",
       "timing": "Movement",
-      "effect": "One friendly Unit with at least four surviving Models counts as one additional Unit for objective control until the end of the Round."
+      "effect": "If the active Unit has at least four surviving Models, it counts as one additional Unit for objective control until the end of the Round."
     },
     {
       "name": "Massed Volley",
       "slot": "R",
       "timing": "Assault",
-      "effect": "One friendly Unit with at least four surviving Models gains +2 Attacks on its next ranged Attack this Phase. If another friendly Unit with at least four surviving Models is within Short, also gain Accurate 1 on that Attack."
+      "effect": "If the active Unit has at least four surviving Models, its next ranged Attack this Assault Phase gains +2 Attack dice. If another friendly Unit with at least four surviving Models is within Short, also gain Accurate 1 on that Attack."
     },
     {
       "name": "Mob Tactics",
       "slot": "E",
       "timing": "Combat",
-      "effect": "One friendly Unit gains Anti-Infantry 4 on its next Melee Attack against an Infantry enemy also Engaged by a different friendly Unit with at least four surviving Models."
+      "effect": "The active Unit gains Anti-Infantry 4 on its next Melee Attack against an Infantry enemy also Engaged by a different friendly Unit with at least four surviving Models."
     },
     {
       "name": "Pack Coordination",
@@ -36,7 +36,7 @@
       "name": "Encirclement",
       "slot": "V",
       "timing": "Combat",
-      "effect": "One friendly Unit attacking an enemy also Engaged by a different friendly Unit with at least four surviving Models causes that enemy to worsen Evade by one step against the Attack."
+      "effect": "When the active Unit attacks an enemy also Engaged by a different friendly Unit with at least four surviving Models, that enemy worsens Evade by one step against this Attack."
     }
   ],
   "doctrineIdentity": "Numerical advantage and coordinated formations. Standard generic Line Infantry and Ranged Infantry qualify without reinforcement. Larger hordes remain more reliable because they retain their model-count requirements after suffering casualties."
