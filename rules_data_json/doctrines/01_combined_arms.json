@@ -11,7 +11,7 @@
       "name": "Screen and Advance",
       "slot": "V",
       "timing": "Movement",
-      "effect": "Choose one friendly Unit within 2\" of a different friendly Unit. It gains +2\" Move on its next normal Move this Round. This bonus cannot be used for a Charge."
+      "effect": "If the active Unit is within 2\" of a different friendly Unit, it gains +2\" Move on its next normal Move this Round. This bonus cannot be used for a Charge."
     },
     {
       "name": "Crossfire",
