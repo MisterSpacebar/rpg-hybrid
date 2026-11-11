@@ -62,7 +62,7 @@
       "name": "Landing Fire",
       "slot": "R",
       "timing": "Assault",
-      "effect": "One friendly Unit that arrived through Deep Strike at the end of the previous Round gains Accurate 2 and Pinpoint on its next ranged Attack this Phase. Heavy restrictions apply."
+      "effect": "If the active Unit arrived through Deep Strike at the end of the previous Round, it gains Accurate 2 and Pinpoint on its next ranged Attack this Assault Phase. Heavy restrictions still apply."
     },
     {
       "name": "Flanking Insertion",
