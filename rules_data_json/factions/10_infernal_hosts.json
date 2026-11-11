@@ -24,7 +24,7 @@
       "name": "Blood Offering",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "Damage or remove one eligible friendly basic Model within Short of the active Unit. The active Unit gains Accurate 2 on its next eligible Attack this Round. This is a support/sacrifice effect and does not grant an extra Attack."
+      "effect": "During the active Unit’s Assault activation, damage or remove one eligible friendly basic Model. Choose one other friendly Unit within Short of the active Unit; the chosen Unit gains Accurate 2 on its next Attack this Round. The Command explicitly supports another Unit and does not grant an extra Attack or activation."
     },
     {
       "name": "Open the Rift",
