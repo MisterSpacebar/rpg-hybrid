@@ -11,31 +11,31 @@
       "name": "Veteran Spearhead",
       "slot": "E",
       "timing": "Combat",
-      "effect": "Choose one friendly Elite Unit. Its next Melee Attack this Phase gains Critical 1 without a Surge, as this is a CP-paid Command. Elite Units include Elite, Elite Infantry, Elite Cavalry, and Elite Ranged Infantry tags."
+      "effect": "If the active Unit has an Elite tag, its next Melee Attack this Combat Phase gains Critical 1 without requiring a Surge."
     },
     {
       "name": "Find the Opening",
       "slot": "H",
       "timing": "Assault/Combat",
-      "effect": "One friendly Unit gains Accurate 2 on its next Attack this Phase."
+      "effect": "The active Unit gains Accurate 2 on its next Attack this Phase."
     },
     {
       "name": "Perfect Technique",
       "slot": "E",
       "timing": "Assault/Combat",
-      "effect": "One friendly Unit gains Accurate 1 on its next Attack this Phase. Against that Attack, reduce the defender's effective Tough X and Cover X by 2 each, minimum zero. Suppressing Cover rerolls does not remove Cover-granted Evade eligibility."
+      "effect": "The active Unit gains Accurate 1 on its next Attack this Phase. Against that Attack, reduce the defender's effective Tough X and Cover X by 2 each, minimum zero. Suppressing Cover rerolls does not remove Cover-granted Evade eligibility."
     },
     {
       "name": "Combat Training",
       "slot": "S",
       "timing": "Movement",
-      "effect": "One friendly Unit gains Tough 1 and Brace 1 until the end of the Round."
+      "effect": "The active Unit gains Tough 1 and Brace 1 until the end of the Round."
     },
     {
       "name": "Knightly Order",
       "slot": "V",
       "timing": "Assault",
-      "effect": "One friendly Unit gains Charge 1 and Impact 1 on its next Charge this Phase."
+      "effect": "When the active Unit declares its next Charge this Assault Phase, it gains Charge 1 and Impact +1 for that Charge. Charge ranks use the highest rank unless explicitly additive."
     }
   ],
   "doctrineIdentity": "Disciplined, keyword-focused precision and defense; unlike Gambit, Elite does not use Reckless for additional Attack volume."
