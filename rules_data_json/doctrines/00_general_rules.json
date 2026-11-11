@@ -12,6 +12,7 @@
   "commandUsage": {
     "repertoire": "In standard 2,000-point matched play, the six selected Doctrine Commands and two selected Faction Commands together form an eight-card repertoire. CP and card exhaustion are the same expenditure, not cumulative costs: a printed Doctrine Command costs its listed CP and exhausts its selected card, while an eligible Unit Command instead exhausts an available selected card as the physical marker of the CP spent. A 2 CP Command requires two available cards but resolves only once. A 0 CP ability exhausts none. All exhausted cards and CP refresh at the beginning of the next Round. The full repertoire remains available, representing 8 CP for the matched-play army per Round; there is no separate two-card preparation step.",
     "rules": [
+      "Unless its wording explicitly permits a different target, a non-Reaction Faction or Doctrine Phase Command applies to the active Unit during its own activation. Reactions use their printed triggers. Explicit coordination, Reserve insertion, and multi-Unit support effects are exceptions; a player may not use a single-target buff on an arbitrary unactivated ally.",
       "One personal Unit, Faction, or Doctrine Command per friendly Unit activation; one eligible opposing Reaction. An Attack, Charge, or Save sequence benefits from at most one friendly Command effect, including one prepared during a prior Phase. Passive bonuses are unaffected.",
       "Each selected Command costs 1 CP unless otherwise stated. A selected card cannot be used again until refreshed.",
       "Phase Commands are activated while the controlling side has activation priority during the indicated Movement, Assault, or Combat Phase. Personal Unit Commands instead occur during that Unit's own activation.",
@@ -22,7 +23,8 @@
       "Effects lasting a Phase expire at the end of that Phase.",
       "Effects lasting a Round expire during that Round's End Step.",
       "An effect referring to a Unit's next Attack or activation remains available until that event occurs or its stated duration expires.",
-      "Multiple applications of the same Command do not stack on one Unit."
+      "Multiple applications of the same Command do not stack on one Unit.",
+      "An expressly refreshed Movement activation makes a Unit with a spent Movement activation eligible for a later activation in normal alternating order; it does not create an immediate Move, lift Withdrawn, reset Heavy eligibility, override Disengage, reopen a Finished side, or restore an Assault/Combat activation. Advance Orders may refresh a given Unit once per Round."
     ],
     "rpgCampaignException": "A campaign party may have 2 abstract CP per player and no physical cards at all. The eight-card Doctrine repertoire is a matched-play army-construction feature, not a prerequisite for personal Commands. The controlling GM uses the encounter-specific allocation (normally max(2, 2 × number of PCs − 1))."
   },
