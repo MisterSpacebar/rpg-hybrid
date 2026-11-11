@@ -281,7 +281,7 @@ Unused CP do not carry over.
 
 A normal Unit Command with **Movement**, **Assault**, or **Combat** timing may be used only **during that Unit's own activation** in that Phase, when its controlling side has priority and has selected that Unit to activate. The Command may affect another Unit if the ability allows it, but a player cannot activate an unselected ally's personal Command. A Command does not consume the Unit's chosen Phase action unless stated otherwise; its CP cost is paid normally. An eligible Unit may use a Command even if it chooses to forgo its ordinary Phase action.
 
-**Faction and Doctrine Commands** belong to the controlling side. Unless they are Reactions, use them while that side holds activation priority in the permitted Phase, subject to their specific costs and restrictions. They do not permit a personal Command on another Unit.
+**Faction and Doctrine Commands** belong to the controlling side. Unless they are Reactions, use them during the selected active Unit's activation while that side holds priority in the permitted Phase. Their default beneficiary is the active Unit, unless the Command explicitly names a different allied recipient, multiple Units, a Reserve Unit, or an enemy target. Reactions instead use their specified trigger. Normal Command costs and the one-friendly-Command-per-activation limit still apply. A Phase Command never lets an unselected Unit use its own personal Command.
 
 **Reaction Commands** may interrupt the specified trigger even when the reacting side does not hold priority. Passives apply without spending CP or obtaining priority.
 
