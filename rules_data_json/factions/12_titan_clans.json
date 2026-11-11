@@ -18,25 +18,25 @@
       "name": "Thunderous Advance",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "One friendly Unit makes an additional Move before declaring a Charge."
+      "effect": "The active Unit may make an additional legal normal Move immediately before declaring its Charge during this Assault activation; this does not grant an additional Charge or Disengage."
     },
     {
       "name": "Smash Through",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "One friendly Unit's next Charge Impact this Phase ignores one step of temporary Armor improvement on the target (use its normal printed Armor for this Impact if a bonus improved it). Impact already ignores Evade and Cover."
+      "effect": "When the active Unit declares a Charge, its Charge Impact ignores the defending Unit’s Tough X during Armor Saves against that Impact only. Brace and ordinary Armor/Ward still apply; this does not improve the Unit's later melee Attack."
     },
     {
       "name": "Roar of Dominance",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "Choose one friendly Monster. Enemies cannot use Reactions against that Monster until the end of the Phase."
+      "effect": "The active friendly Monster cannot be targeted by enemy Reaction Commands until the end of this Assault Phase."
     },
     {
       "name": "Smash the Ranks",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Infantry 4 or Anti-Ranged 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [
