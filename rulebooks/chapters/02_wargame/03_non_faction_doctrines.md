@@ -101,7 +101,7 @@ Strategy: Coordinate different battlefield roles to improve the performance of o
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| Screen and Advance | V | Movement | Choose one friendly Unit within 2" of a different friendly Unit. It gains +2" Move on its next normal Move this Round. This bonus cannot be used for a Charge. |
+| Screen and Advance | V | Movement | If the active Unit is within 2" of a different friendly Unit, it gains +2" Move on its next normal Move this Round. This bonus cannot be used for a Charge. |
 | Crossfire | R | Assault | The active Unit gains Accurate 2 and Pinpoint on its next ranged Attack this Assault Phase against an enemy already attacked by a different friendly Unit this Round. |
 | Coordinated Orders | H | Movement | Choose two different friendly Units within Short of the same friendly Headquarters. Remove one temporary Hit or Move penalty from one. The other gains Accurate 1 on its next Attack this Round. |
 | Interlocking Lines | E | Combat Reaction | When a friendly Unit within 2" of a different friendly Unit is attacked in Engagement, the defender gains Tough 2 against that Attack. |
@@ -428,7 +428,7 @@ Normal insertion requires a position **wholly more than 8" from every enemy Mode
 | Landing Fire | R | Assault | If the active Unit arrived through Deep Strike at the end of the previous Round, it gains Accurate 2 and Pinpoint on its next ranged Attack this Assault Phase. Heavy restrictions still apply. |
 | Flanking Insertion | V | Movement | Designate one eligible Reserve Unit for End Step placement within 3 inches of a battlefield edge and more than 6 inches from enemies. May enter the enemy Deployment Zone; other requirements apply. |
 | Heavy Descent | A | Movement | Designate one eligible Reserve Unit, including a Large Asset, for End Step placement with normal Deep Strike restrictions (more than 8 inches from enemies). Gain Tough 2 against the first Attack suffered in the following Round, then expire. |
-| Signal Beacon | H | Movement | Choose one friendly Unit already on the battlefield. A separately designated Deep Strike Unit placed wholly within Short of the beacon during this Round's End Step may use more-than-6-inch enemy exclusion instead of 8 inches. Use its insertion Command during a different friendly Movement activation. |
+| Signal Beacon | H | Movement | Designate the active friendly Unit, which must already be on the battlefield, as a beacon until this Round’s insertion step. A separately designated Deep Strike Unit placed wholly within Short of this beacon may use a more-than-6" enemy exclusion distance instead of 8". Its insertion Command must be used during a different friendly Movement activation; Signal Beacon itself does not insert a Unit. |
 
 ## Command Clarifications
 
@@ -448,11 +448,11 @@ Strategy: Use one formation to create movement or attack opportunities for anoth
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| Anchor and Launch | C | Movement | Choose one friendly Unit that has not voluntarily Moved or Blinked this Round. A different unengaged friendly Unit within 2" may immediately Move up to 3", ending legally and unengaged. |
+| Anchor and Launch | C | Movement | If the active Unit has not voluntarily Moved or Blinked this Round, choose a different unengaged friendly Unit within 2" of it. That Unit may immediately Move up to 3", ending legally and unengaged. The active Unit acts as the anchor; the other Unit is an explicitly delegated recipient. |
 | Exploit the Opening | E | Combat | If a different friendly Unit inflicted unsaved Damage on an enemy this Round, the active Unit gains Critical 1 on its next Melee Attack against that enemy this Round. |
 | Create the Gap | R | Assault Reaction | After a friendly Unit inflicts unsaved Damage with a ranged Attack, a different unengaged friendly Unit within Short of the enemy may immediately Move up to 2", ending unengaged. |
 | Launch Platform | A | Movement | If the active Unit is unengaged and within 2" of a friendly Asset, it immediately resolves Blink 2. |
-| Relay Maneuver | S | Movement | Choose one friendly Unit. A different unengaged friendly Unit within Short of it immediately resolves Blink 3. |
+| Relay Maneuver | S | Movement | Choose a different unengaged friendly Unit within Short of the active Unit. That other Unit immediately resolves Blink 3, ending legally and unengaged. The active Unit is the relay, not the Blink recipient. |
 
 Doctrine Identity: Sequential cooperation and transferring tactical opportunities between Units.
 
