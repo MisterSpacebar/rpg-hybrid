@@ -14,6 +14,8 @@ Non-Reaction Doctrine Commands normally apply to the **active Unit** during the 
 
 ### Command Usage
 
+**Active-unit convention:** Unless a non-Reaction Phase Command explicitly names another friendly Unit, multiple Units, a Reserve Unit, or a designated enemy target, its benefit applies to the Unit currently activated. Coordination, multi-Unit Commands and triggered Reactions retain their stated target rules. Ordinary buffs cannot be assigned to arbitrary allies while an unrelated Unit activates.
+
 **One Command per activation:** The acting side may use at most one personal Unit, Faction, or Doctrine Command during each Unit activation; the opposing side may use one eligible Reaction. Each Attack, Charge, or Save sequence benefits from at most one friendly Command effect, including one prepared during an earlier Phase. Passives remain compatible.
 
 
