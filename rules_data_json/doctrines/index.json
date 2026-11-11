@@ -4,26 +4,98 @@
     "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
     "section": "NON-FACTION DOCTRINES — Consolidated Rules — Playtest Draft v6.1"
   },
-  "description": "Non-Faction Doctrines: the 16 selectable military strategies available to any army in 2,000-point matched play. Each army picks 2 Doctrines and selects 3 of 5 Commands from each, for 6 Doctrine Commands plus 2 Faction Commands (8 CP/cards total per Round). See rules_data_json/factions/ for the Faction-specific half of that repertoire (Faction Rules and Faction Commands).",
+  "description": "Non-Faction Doctrines: the 16 selectable military strategies available to any army in 2,000-point matched play. Each army picks 2 Doctrines and selects 3 of 5 Commands from each, for 6 Doctrine Commands plus 2 selected from 4 Faction Command options (8 CP/cards total per Round). See rules_data_json/factions/ for the Faction-specific half of that repertoire (Faction Rules and Faction Commands).",
   "files": [
-    { "id": "general-rules", "file": "00_general_rules.json", "description": "Command Usage, Movement and Positioning, Defensive Effects, Surges and Blunders, Recruitment Slots table." },
-    { "id": "combined-arms", "file": "01_combined_arms.json", "foundation": "C" },
-    { "id": "objective-play", "file": "02_objective_play.json", "foundation": "C" },
-    { "id": "elite", "file": "03_elite.json", "foundation": "E" },
-    { "id": "counter-strike", "file": "04_counter_strike.json", "foundation": "S" },
-    { "id": "castling", "file": "05_castling.json", "foundation": "C" },
-    { "id": "firing-line", "file": "06_firing_line.json", "foundation": "R" },
-    { "id": "mobility", "file": "07_mobility.json", "foundation": "V" },
-    { "id": "control", "file": "08_control.json", "foundation": "S" },
-    { "id": "alpha-strike", "file": "09_alpha_strike.json", "foundation": "V" },
-    { "id": "horde", "file": "10_horde.json", "foundation": "C" },
-    { "id": "grinding", "file": "11_grinding.json", "foundation": "C" },
-    { "id": "deep-strike", "file": "12_deep_strike.json", "foundation": "S" },
-    { "id": "slingshot", "file": "13_slingshot.json", "foundation": "V" },
-    { "id": "gambit", "file": "14_gambit.json", "foundation": "C" },
-    { "id": "heavy-support", "file": "15_heavy_support.json", "foundation": "A" },
-    { "id": "breakthrough", "file": "16_breakthrough.json", "foundation": "V" },
-    { "id": "doctrine-summary", "file": "17_doctrine_summary.json", "description": "Doctrine Summary table (Foundation + Primary Strength per doctrine), Playtesting Priorities, and Draft Status note." }
+    {
+      "id": "general-rules",
+      "file": "00_general_rules.json",
+      "description": "Command Usage, Movement and Positioning, Defensive Effects, Surges and Blunders, Recruitment Slots table."
+    },
+    {
+      "id": "combined-arms",
+      "file": "01_combined_arms.json",
+      "foundation": "C"
+    },
+    {
+      "id": "objective-play",
+      "file": "02_objective_play.json",
+      "foundation": "C"
+    },
+    {
+      "id": "elite",
+      "file": "03_elite.json",
+      "foundation": "E"
+    },
+    {
+      "id": "counter-strike",
+      "file": "04_counter_strike.json",
+      "foundation": "S"
+    },
+    {
+      "id": "castling",
+      "file": "05_castling.json",
+      "foundation": "C"
+    },
+    {
+      "id": "firing-line",
+      "file": "06_firing_line.json",
+      "foundation": "R"
+    },
+    {
+      "id": "mobility",
+      "file": "07_mobility.json",
+      "foundation": "V"
+    },
+    {
+      "id": "control",
+      "file": "08_control.json",
+      "foundation": "S"
+    },
+    {
+      "id": "alpha-strike",
+      "file": "09_alpha_strike.json",
+      "foundation": "V"
+    },
+    {
+      "id": "horde",
+      "file": "10_horde.json",
+      "foundation": "C"
+    },
+    {
+      "id": "grinding",
+      "file": "11_grinding.json",
+      "foundation": "C"
+    },
+    {
+      "id": "deep-strike",
+      "file": "12_deep_strike.json",
+      "foundation": "S"
+    },
+    {
+      "id": "slingshot",
+      "file": "13_slingshot.json",
+      "foundation": "V"
+    },
+    {
+      "id": "gambit",
+      "file": "14_gambit.json",
+      "foundation": "C"
+    },
+    {
+      "id": "heavy-support",
+      "file": "15_heavy_support.json",
+      "foundation": "A"
+    },
+    {
+      "id": "breakthrough",
+      "file": "16_breakthrough.json",
+      "foundation": "V"
+    },
+    {
+      "id": "doctrine-summary",
+      "file": "17_doctrine_summary.json",
+      "description": "Doctrine Summary table (Foundation + Primary Strength per doctrine), Playtesting Priorities, and Draft Status note."
+    }
   ],
   "knownIssues": [
     "Doctrine 1 'Combined Arms' shares its name with the Free Realms Faction Rule 'Combined Arms', but the two have unrelated effects. Likely an intentional thematic echo, not a merge. See rules_data_json/factions/00_general_roster_rules.json and rules_data_json/factions/01_free_realms.json."
