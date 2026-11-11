@@ -364,9 +364,14 @@ Choose **two** Command Abilities at no additional cost. Each Command costs **1 C
 | --- | --- | --- |
 | **Press the Attack** | Assault or Combat | One friendly Unit within Short gains **Critical 1 (guaranteed)** on its next Melee Attack this Round; CP-granted Critical converts one failed die even without a Surge. |
 | **Hold Formation** | Reaction | When a friendly Unit within Short is Charged, it gains **Brace 2** against the Charge and **Tough 1** against the charging Unit until end of Round. |
-| **Advance Orders** | Movement | One unengaged friendly Unit within Short immediately Moves up to **3"**, ending legally; no extra activation or Charge. |
+| **Advance Orders** | Movement | **1 CP — during the Captain's Movement activation:** Refresh the already-spent Movement activation of another friendly Unit within 6". It may activate again later in normal alternating order, once per target Unit per Round. It does not undo Disengage or Withdrawn, reset Heavy movement restrictions, reopen a Finished side, or grant an Assault/Combat activation. |
 | **Fire Discipline** | Assault | One friendly Unit within Short gains **Pinpoint and Accurate 1** on its next Ranged or Spell Attack this Round, or **Accurate 2** instead. |
-| **Identify Threat** | Assault or Combat | Select a visible enemy within Medium and one actual creature/material Trait tag on it; one friendly Unit within Short gains **Anti-[selected tag] 3** against it for its next Attack this Round. |
+| **Identify Threat** | Assault or Combat | **1 CP — during the Captain's own activation:** Choose another friendly Unit within 6" of the Captain and a visible enemy Unit also within 6" of the Captain. Add **+2 Attack dice to the ally's single combined Attack pool** on its next eligible Attack against that enemy this Round. Not per Model and not Anti-tag. |
+
+
+**Advance Orders and Heavy:** A refreshed Movement activation is a *real* additional Movement activation, not a no-cost reposition. A recipient that moves again remains a Unit that voluntarily Moved for Heavy restrictions; it cannot erase a Disengage/Withdrawn penalty by being refreshed. The Captain must spend its own Movement activation to issue this personal Command. 
+
+**Identify Threat positioning:** Both the recipient and the designated visible target are measured from the Captain. The bonus is +2 dice total for one Unit Attack, not +2 per Model and not an Anti-[Type] source.
 
 ### Command Upgrades
 
