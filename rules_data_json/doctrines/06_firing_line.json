@@ -1,14 +1,42 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "6. Firing Line" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "6. Firing Line"
+  },
   "name": "Firing Line",
   "foundationRecruitmentSlot": "R",
   "strategy": "Maintain ranged superiority through coordinated shooting, accuracy, and fire discipline.",
   "commands": [
-    { "name": "Concentrated Fire", "slot": "R", "timing": "Assault", "effect": "One friendly Unit that has not voluntarily Moved, Disengaged, or Blinked this Round gains +2 Attacks on its next ranged Attack this Phase." },
-    { "name": "Marked Fire Lane", "slot": "R", "timing": "Assault", "effect": "One friendly Unit gains Pinpoint and Accurate 2 on its next ranged Attack this Phase." },
-    { "name": "Artillery Correction", "slot": "A", "timing": "Assault", "effect": "One friendly Unit making a Heavy ranged Attack gains Accurate 2 and reduces the target's effective Cover X by 1 (minimum 0) against its target." },
-    { "name": "Veteran Gunners", "slot": "E", "timing": "Assault", "effect": "One friendly Unit gains +1 Attack and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round." },
-    { "name": "Screening Fire", "slot": "V", "timing": "Assault Reaction", "effect": "When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Melee Attack during the ensuing Combat Phase." }
+    {
+      "name": "Concentrated Fire",
+      "slot": "R",
+      "timing": "Assault",
+      "effect": "If the active Unit has not voluntarily Moved, Disengaged, or Blinked this Round, it gains +2 Attack dice on its next ranged Attack this Assault Phase."
+    },
+    {
+      "name": "Marked Fire Lane",
+      "slot": "R",
+      "timing": "Assault",
+      "effect": "The active Unit gains Pinpoint and Accurate 2 on its next ranged Attack this Phase."
+    },
+    {
+      "name": "Artillery Correction",
+      "slot": "A",
+      "timing": "Assault",
+      "effect": "When the active Unit makes a Heavy ranged Attack this Assault Phase, it gains Accurate 2 and ignores one rank of the target's effective Cover X (minimum 0) for that Attack."
+    },
+    {
+      "name": "Veteran Gunners",
+      "slot": "E",
+      "timing": "Assault",
+      "effect": "The active Unit gains +1 Attack and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round."
+    },
+    {
+      "name": "Screening Fire",
+      "slot": "V",
+      "timing": "Assault Reaction",
+      "effect": "When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Melee Attack during the ensuing Combat Phase."
+    }
   ],
   "doctrineIdentity": "Offensive ranged combat. Firing Line is especially effective with conventional archers, gun lines, and artillery but remains usable by any Unit possessing a ranged weapon."
 }
