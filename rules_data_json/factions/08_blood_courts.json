@@ -18,7 +18,7 @@
       "name": "Blood Frenzy",
       "timing": "Combat",
       "cost": "1 CP",
-      "effect": "One friendly Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase."
+      "effect": "The active Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase."
     },
     {
       "name": "Predatory Speed",
@@ -36,7 +36,7 @@
       "name": "Cut Off the Leaders",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Hero 4 or Anti-Officer 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Hero 4 or Anti-Officer 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [
