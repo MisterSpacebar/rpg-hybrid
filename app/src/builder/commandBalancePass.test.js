@@ -84,7 +84,7 @@ test('two contrasting 2,000-point matched-play examples obey command and recruit
  const book=md('02_wargame/04_army_construction.md')
  assert.match(book,/Choose 2 of the [Ff]action's 4/)
  const examples=[
-  {title:'Free Realms Coordinated Gunline',doctrines:['Firing Line','Combined Arms'],points:2000,units:13,reserve:6,onTable:7,slotUse:{H:1,C:4,E:2,R:4,V:1,S:1,A:0}},
+  {title:'Free Realms Screened Firing Line',doctrines:['Firing Line','Objective Play'],points:1995,units:14,reserve:7,onTable:7,slotUse:{H:1,C:4,E:1,R:5,V:1,S:2,A:0}},
   {title:'Sacred Orders Hammer and Anvil',doctrines:['Castling','Breakthrough'],points:2000,units:10,reserve:5,onTable:5,slotUse:{H:1,C:4,E:1,R:0,V:2,S:1,A:1}}
  ]
  for(const [idx,e] of examples.entries()){
@@ -107,6 +107,34 @@ test('two contrasting 2,000-point matched-play examples obey command and recruit
   }
   assert.match(block,new RegExp(`\\*\\*${e.onTable}\\*\\* Units on table; \\*\\*${e.reserve}\\*\\* in Reserve`))
  }
+})
+
+test('the updated Free Realms screened gunline uses the selected Faction and Doctrine slots legally',()=>{
+ const book=md('02_wargame/04_army_construction.md')
+ const from=book.indexOf('# 10. Worked Example — Free Realms Screened Firing Line')
+ const to=book.indexOf('# 11. Worked Example — Sacred Orders Hammer and Anvil')
+ assert.ok(from>=0 && to>from)
+ const example=book.slice(from,to)
+ const section=(title,next)=>example.split(title)[1].split(next)[0]
+ const fac=section('## Step 3: Choose Faction Commands','## Step 4:')
+ const firing=section('## Step 4: Choose Firing Line Commands','## Step 5:')
+ const objective=section('## Step 5: Choose Objective Play Commands','## Step 6:')
+ const reference=json('army_construction.json')
+ const ff=reference.factions.find(f=>f.name==='Free Realms')
+ const selectedFaction=['Covering Fire','Coordinated Targeting']
+ const selectedFiring=['Concentrated Fire','Marked Fire Lane','Veteran Gunners']
+ const selectedObjective=['Seize the Opening','Dig In','Supply Point']
+ for(const name of selectedFaction) {
+   assert.match(fac,new RegExp('\\| '+name+' \\|'))
+   assert.equal(ff.commandSlots.find(c=>c.name===name)?.slot,'R')
+ }
+ for(const name of selectedFiring)assert.match(firing,new RegExp('\\| '+name+' \\|'))
+ for(const name of selectedObjective)assert.match(objective,new RegExp('\\| '+name+' \\|'))
+ assert.match(example,/14 Units/)
+ assert.match(example,/1,995/)
+ assert.match(example,/Disciplined Rifle Fire/)
+ assert.match(example,/Brace Training/)
+ assert.match(example,/Heavy Crossbows/)
 })
 
 test('reserve rounding, healing pending Wounds, medics, and fusilier rifle range',()=>{

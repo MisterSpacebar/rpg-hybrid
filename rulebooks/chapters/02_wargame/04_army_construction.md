@@ -522,13 +522,13 @@ They apply automatically when their stated conditions are met.
 
 
 
-# 10. Worked Example — Free Realms Coordinated Gunline
+# 10. Worked Example — Free Realms Screened Firing Line
 
-This 2,000-point example emphasizes a coordinated rifle line with inexpensive officers, defensive infantry, and mobile screens. It illustrates a tightly focused **Firing Line + Combined Arms** army rather than a general-purpose collection of units.
+This 1,995-point matched-play example demonstrates a more resilient **Firing Line + Objective Play** army. Shielded Fusiliers and Heavy Crossbowmen provide complementary Anti-Armored and Anti-Elite ranged fire. Multiple spear-and-shield formations screen the gunline against Charges, while specialists improve target selection and objective control. It is a worked example, not a mandatory or optimized list.
 
 ## Step 1: Faction and Foundation
 
-Choose **Free Realms**. Its passive **Coordinated Arms** rewards neighboring formations, including qualifying ranged attacks made while wholly within 3" of another friendly Unit.
+Choose **Free Realms**. Its passive **Coordinated Arms** adds +1 die to qualifying ranged Weapon Attacks made while wholly within 3" of another friendly Unit (excluding Artillery, Vehicles, War Machines, and Large Assets), or to eligible cooperative Melee Attacks.
 
 - Universal Foundation: **H, C, C**.
 - Faction Foundation: **C, S**.
@@ -536,30 +536,30 @@ Choose **Free Realms**. Its passive **Coordinated Arms** rewards neighboring for
 ## Step 2: Choose Doctrines
 
 - **Firing Line**: Foundation **R**.
-- **Combined Arms**: Foundation **C**.
+- **Objective Play**: Foundation **C**.
 
 ## Step 3: Choose Faction Commands
 
 | Command | Slot | Purpose |
 | --- | --- | --- |
-| Coordinated Advance | C | Reposition neighboring formations |
-| Covering Fire | R | Protect a Disengaging ally with a committed ranged Attack |
+| Covering Fire | R | A different ranged Unit can commit its unused Assault activation to cover a Disengaging ally |
+| Coordinated Targeting | R | Give one eligible Unit Attack Anti-Infantry 4 or Anti-Ranged 4 against a matching target |
 
 ## Step 4: Choose Firing Line Commands
 
 | Command | Slot | Purpose |
 | --- | --- | --- |
-| Concentrated Fire | R | Increase stationary ranged Attack dice |
-| Marked Fire Lane | R | Ignore Concealed and suppress Cover |
-| Veteran Gunners | E | Reward follow-up fire against an already targeted enemy |
+| Concentrated Fire | R | +3 Attack dice for a qualifying stationary ranged Attack |
+| Marked Fire Lane | R | Ignore Concealed for targeting and suppress up to Cover 2 |
+| Veteran Gunners | E | +2 Attack dice and Accurate 1 against an enemy already attacked at range by a different ally this Round |
 
-## Step 5: Choose Combined Arms Commands
+## Step 5: Choose Objective Play Commands
 
 | Command | Slot | Purpose |
 | --- | --- | --- |
-| Screen and Advance | V | Maintain screening formations |
-| Crossfire | R | Coordinate ranged Attacks on a shared target |
-| Interlocking Lines | E | Protect nearby allied formations in Engagement |
+| Seize the Opening | V | Move up to 2" toward a nearby objective while unengaged |
+| Dig In | C | Tough 2 against an incoming Attack near an objective; Brace 1 against a Charge |
+| Supply Point | S | Heal 2 accumulated Damage or remove Withdrawn while near an objective |
 
 ## Step 6: Calculate Recruitment Slots
 
@@ -567,40 +567,44 @@ Choose **Free Realms**. Its passive **Coordinated Arms** rewards neighboring for
 | --- | ---: | ---: | ---: |
 | H | 1 | 1 | 0 |
 | C | 5 | 4 | 1 |
-| E | 2 | 2 | 0 |
-| R | 5 | 4 | 1 |
+| E | 1 | 1 | 0 |
+| R | 5 | 5 | 0 |
 | V | 1 | 1 | 0 |
-| S | 1 | 1 | 0 |
+| S | 2 | 2 | 0 |
 | A | 0 | 0 | 0 |
-| **Total** | **15** | **13** | **2** |
+| **Total** | **15** | **14** | **1** |
 
 ## Step 7: Purchase Units
 
 | Unit | Number | Slots used | Points |
 | --- | ---: | --- | ---: |
 | Marshal | 1 | H | 195 |
-| Generic Captain, standard Officer's Weapon | 2 | E, E | 250 |
-| Battlemage | 1 | S | 170 |
-| Shielded Fusiliers (Shielded Rifle, 12") | 4 | R, R, R, R | 640 |
-| Outriders | 2 | V, C | 350 |
-| Greatweapon Guard | 2 | C, C | 290 |
-| Generic Line Infantry (Hand Weapons, Armor, Shields) | 1 | C | 105 |
-| **Total** | **13 Units** | **13 of 15 Slots** | **2,000** |
+| Generic Captain (standard Officer's Weapon) | 1 | E | 125 |
+| Generic Herald (Battle Standard, Target Analysis) | 1 | S | 120 |
+| Generic Scouts / Spotters (Forward Observer) | 1 | S | 110 |
+| Shielded Fusiliers (Shielded Rifle, 12") | 3 | R, R, R | 480 |
+| Generic Ranged Infantry (Heavy Crossbows) | 2 | R, R | 300 |
+| Generic Line Infantry (Spears, Armor, Shields, Brace Training) | 2 | C, C | 260 |
+| Generic Line Infantry (Spears, Armor, Shields) | 2 | C, C | 230 |
+| Outriders | 1 | V | 175 |
+| **Total** | **14 Units** | **14 of 15 Slots** | **1,995** |
 
-**Points and eligibility:** Captains cost 125 Points each with their standard Officer's Weapon. Generic Line Infantry with Armor and Shields cost 75 + 15 + 15 = 105 Points. Shielded Fusiliers remain 160 Points with their improved 12" rifles. Faction Core Outriders are eligible for C, R, or V: one uses V, and the other uses an available C slot.
+**Points and eligibility:** Each Fusilier Unit costs 160 Points, including its updated **Disciplined Rifle Fire** passive (Anti-Armored 2 on eligible ranged Attacks, once per combined Unit pool). Heavy Crossbow Ranged Infantry cost 100 + 50 = 150 Points per four-Model Unit and have Anti-Elite 2 on their selected ranged weapon. Armored spear-and-shield Line Infantry cost 75 + 10 (Spears) + 15 (Armor) + 15 (Shields) = 115 Points per five-Model Unit; Brace Training adds 15 Points to two of these formations (130 Points each). The Herald costs 85 + 15 (Battle Standard) + 20 (Target Analysis) = 120 Points. The Scouts / Spotters cost 85 + 25 (Forward Observer) = 110 Points. The Outriders occupy the available **V** slot; as a faction Core choice, they could also occupy an available **C** or **R** slot.
 
 ## Step 8: Verify Composition and Deployment
 
 | Check | Result |
 | --- | --- |
-| Points | 2,000 / 2,000 |
-| Recruitment Slots | 13 / 15 |
+| Points | 1,995 / 2,000 |
+| Recruitment Slots | 14 / 15 |
 | Headquarters | Marshal |
-| Selected Commands | 2 Faction + 3 Firing Line + 3 Combined Arms |
+| Selected Commands | 2 Faction + 3 Firing Line + 3 Objective Play |
 | Unique restrictions | No duplicates |
-| Starting deployment | **7** Units on table; **6** in Reserve |
+| Starting deployment | **7** Units on table; **7** in Reserve |
 
-**Battle plan:** Four Fusilier formations hold a mutual-support firing line, with Greatweapon Guard and armored Line Infantry protecting the center. Captains and Battlemage provide tactical flexibility while two Outrider Units screen the flanks. Prioritize maintaining firing lanes and nearby formations; spend CP on coordinated attacks or protective Reactions rather than attempting to fight a separate cavalry battle.
+**Battle plan:** Establish overlapping firing lanes with the Fusiliers and Heavy Crossbows, keeping the shooters close enough to other friendly Units for Coordinated Arms without crowding their lines of sight. Deploy spear-and-shield infantry to absorb Charges, with the two Brace-trained formations protecting the most exposed approaches. The Herald's Target Analysis and the Scouts' Forward Observer help concentrate fire on priority targets. Use Objective Play Commands to stabilize contested positions and the Outriders to threaten an open flank. Heavy Crossbows should avoid voluntary Movement before firing because their Heavy attacks require a stationary firing position.
+
+**Teaching matchup:** This revised force brings more screening and a more varied ranged damage profile against elite armor, but it has only one mobile Outrider Unit and must balance stationary Heavy shooting with objective movement. Compare it against the Sacred Orders Hammer and Anvil army below; numerical parity in Points does not guarantee parity on every battlefield or mission.
 
 ---
 
