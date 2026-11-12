@@ -75,19 +75,58 @@ test('conditional model-scaling and capped warclan offense',()=>{
  assert.match(dc('Control','Lockdown').effect,/by 2"/)
 })
 
-test('matched-play example armies have legal point, command and recruitment totals',()=>{
+test('two contrasting 2,000-point matched-play examples obey command and recruitment rules', () => {
  const army=json('army_construction.json')
- assert.equal(army.standardArmy.factionCommandsAvailable,4)
+ const limits=army.standardArmy
+ assert.equal(limits.factionCommandsAvailable,4)
+ assert.equal(limits.minHeadquarters,1)
+ for(const removed of ['minCoreUnits','maxHeroes','maxLargeAssets','maxLargeAssetsWithHeavySupport'])assert.equal(removed in limits,false)
  const book=md('02_wargame/04_army_construction.md')
  assert.match(book,/Choose 2 of the faction's 4/)
- assert.ok(book.includes('# 10. Worked Example — Free Realms Heavy Gunline'))
- assert.ok(book.includes('# 11. Worked Example — Warclans Horde Breakthrough'))
- const free=book.split('# 10. Worked Example — Free Realms Heavy Gunline')[1].split('# 11. Worked Example')[0]
- const war=book.split('# 11. Worked Example — Warclans Horde Breakthrough')[1].split('# 12. Army List Checklist')[0]
- const sum=(block)=>block.split('## Step 7: Purchase Units')[1].split('## Step 8:')[0].split('\n').filter(x=>/^\|/.test(x)&&/\| (?:H|C|E|R|V|S|A)\s*\| \d+\s*\|/.test(x)).reduce((total,row)=>total+Number(row.trim().split('|').at(-2).trim()),0)
- assert.equal(sum(free),2000)
- assert.equal(sum(war),2000)
- assert.match(war,/\*\*Total\*\* \| \*\*15\*\* \| \*\*12\*\* \| \*\*3\*\*/)
- assert.match(free,/Outriders\s*\| V\s*\| 175/)
- assert.match(war,/Double Formation \(20 Models\)\s*\| C\s*\| 260/)
+ const examples=[
+  {title:'Free Realms Coordinated Gunline',doctrines:['Firing Line','Combined Arms'],points:2000,units:13,reserve:6,onTable:7,slotUse:{H:1,C:4,E:2,R:4,V:1,S:1,A:0}},
+  {title:'Sacred Orders Hammer and Anvil',doctrines:['Castling','Breakthrough'],points:2000,units:10,reserve:5,onTable:5,slotUse:{H:1,C:4,E:1,R:0,V:2,S:1,A:1}}
+ ]
+ for(const [idx,e] of examples.entries()){
+  const marker=`# ${idx+10}. Worked Example — ${e.title}`
+  const start=book.indexOf(marker)
+  const end=book.indexOf(`# ${idx+11}. `,start+marker.length)
+  assert.ok(start>=0&&end>start,e.title+' not found')
+  const block=book.slice(start,end)
+  for(const n of e.doctrines)assert.ok(block.includes(n),e.title+' doctrine '+n)
+  const roster=block.split('## Step 7: Purchase Units')[1].split('## Step 8:')[0]
+  const rows=roster.split('\n').filter(x=>/^\|/.test(x)).map(x=>x.split('|').map(c=>c.trim()).filter(Boolean))
+  const units=rows.filter(x=>x.length===4&&!x[0].startsWith('**')&&x[0]!=='Unit'&&!x[0].startsWith('---'))
+  const points=units.reduce((n,row)=>n+Number(row[3]),0)
+  const count=units.reduce((n,row)=>n+Number(row[1]),0)
+  assert.equal(points,e.points,e.title+' points')
+  assert.equal(count,e.units,e.title+' units')
+  for(const slot of Object.keys(e.slotUse)){
+   const used=units.reduce((n,row)=>n+row[2].split(',').map(x=>x.trim()).filter(x=>x===slot).length,0)
+   assert.equal(used,e.slotUse[slot],e.title+' '+slot)
+  }
+  assert.match(block,new RegExp(`\\*\\*${e.onTable}\\*\\* Units on table; \\*\\*${e.reserve}\\*\\* in Reserve`))
+ }
+})
+
+test('reserve rounding, healing pending Wounds, medics, and fusilier rifle range',()=>{
+ const book=md('01_rpg/16_structured_combat.md')
+ const quick=md('01_rpg/09_structured_combat_quick_reference.md')
+ const doctrine=md('02_wargame/03_non_faction_doctrines.md')
+ assert.match(book,/purchased Units in Reserve, rounded down/)
+ assert.match(quick,/purchased Units, \*\*rounded down\*\*/)
+ assert.match(doctrine,/Reserve, rounded down/)
+ for(const size of [9,10,13,15])assert.equal(Math.floor(size/2),({9:4,10:5,13:6,15:7})[size])
+ assert.match(book,/Heal X can remove up to X accumulated Damage and\/or temporary Wounds/)
+ assert.match(md('01_rpg/10_keywords.md'),/Remove up to X total accumulated Damage and\/or temporary Wounds/)
+ const units=json('units/generic/05_support_units.json')
+ const med=units.specializations.find(x=>x.id==='field-medics')
+ const eng=units.specializations.find(x=>x.id==='engineers')
+ assert.match(med.abilities.find(x=>x.name==='Triage').effect,/within 3"/)
+ assert.match(eng.abilities.find(x=>x.name==='Repair').effect,/within 3"/)
+ const gun=faction('Free Realms').signatureCoreUnits.find(x=>x.name==='Shielded Fusiliers')
+ assert.equal(gun.points,160)
+ assert.equal(gun.attackProfiles[0].name,'Shielded Rifle')
+ assert.equal(gun.attackProfiles[0].range,'12"')
+ assert.ok(gun.attackProfiles[0].keywords.includes('Firearm'))
 })

@@ -109,7 +109,7 @@ Before the first Round, each side deploys its army according to the scenario's D
 
 ### Initial Deployment — Staggered Deployment
 
-Each player must place **half of their purchased Units in Reserve, rounded up**. All remaining Units deploy on the battlefield. Count **Units, not Models or Point Value**; a reinforced or multi-model Unit counts as one Unit.
+Each player must place **half of their purchased Units in Reserve, rounded down**. All remaining Units deploy on the battlefield. Count **Units, not Models or Point Value**; a reinforced or multi-model Unit counts as one Unit.
 
 Sides alternate deploying one starting Unit at a time unless the scenario specifies otherwise. Every starting Unit must be placed wholly within its owner's Deployment Zone, without overlapping Models and while maintaining Unit Coherency.
 
@@ -143,7 +143,7 @@ At the **end of each Movement Phase**, each player may deploy a number of Units 
 
 A player may deploy fewer than the maximum or none at all. **Unused reinforcement allowances do not accumulate** or increase later limits. A Unit cannot enter from Reserve more than once unless a specific rule permits its return and redeployment.
 
-*Example:* In a 15-Unit army, 8 Units begin in Reserve and 7 start on the battlefield. A player can bring in 1 in Round 1, 2 in Round 2, 3 in Round 3, and the remaining 2 in Round 4.
+*Example:* In a 15-Unit army, 7 Units begin in Reserve and 8 start on the battlefield. A player can bring in 1 in Round 1, 2 in Round 2, 3 in Round 3, and the remaining 1 in Round 4.
 
 ### Deploying Ordinary Reserves
 
@@ -773,7 +773,7 @@ When an ability assigns temporary Wounds to a Unit, record them separately from 
 
 The next time the Unit suffers at least 1 Damage **after all applicable Saves**, add all its pending temporary Wounds once to that Damage and clear the pending total. Allocate the combined Damage using the normal multi-Model damage-allocation rules; remove defeated Models or Defeat Characters normally. Pending Damage is not an additional Hit, cannot be Saved again, and cannot trigger on-Hit effects.
 
-Temporary Wounds cannot be removed by Heal, do not automatically expire at the end of a Phase, Round, or encounter, and do not convert without an actual unsaved Damage event. A Unit may voluntarily accrue no more than **2 temporary Wounds**, unless a rule expressly permits a higher limit. Mandatory backlash may exceed that voluntary limit. A Unit at the voluntary limit cannot pay a further voluntary temporary-Wound cost.
+Heal X can remove up to X accumulated Damage and/or temporary Wounds in any combination before those temporary Wounds convert; ordinary healing still cannot restore defeated Models. Temporary Wounds do not automatically expire at the end of a Phase, Round, or encounter, and do not convert without an actual unsaved Damage event. A Unit may voluntarily accrue no more than **2 temporary Wounds**, unless a rule expressly permits a higher limit. Mandatory backlash may exceed that voluntary limit. A Unit at the voluntary limit cannot pay a further voluntary temporary-Wound cost.
 
 ### Multi-Model Units
 

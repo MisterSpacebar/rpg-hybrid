@@ -66,7 +66,7 @@ Until the end of the Round:
 
 Where X is half your Body characteristic, rounded up.
 
-The additional Attack dice are consumed when the Attack is resolved. Temporary Wounds remain pending until the Berserker next suffers Damage after Saves, as detailed in [Damage and Defeat](16_structured_combat.md#16-damage-and-defeat). They cannot be Healed.
+The additional Attack dice are consumed when the Attack is resolved. Temporary Wounds remain pending until the Berserker next suffers Damage after Saves, as detailed in [Damage and Defeat](16_structured_combat.md#16-damage-and-defeat). They may be removed by Heal X before converting into Damage.
 
 #### Combat Phase — Suggested Weapons
 

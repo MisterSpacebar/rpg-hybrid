@@ -297,9 +297,6 @@ export function buildArmyView(army, catalog) {
   })
 
   const points = units.reduce((n, u) => n + u.points, 0)
-  const largeAssetMax = doctrines.some((d) => d?.id === limits.heavySupportDoctrineId)
-    ? limits.maxLargeAssetsWithHeavySupport
-    : limits.maxLargeAssets
 
   const count = (fn) => units.filter(fn).length
   const heroes = count((u) => u.isHero)
@@ -331,8 +328,6 @@ export function buildArmyView(army, catalog) {
   check('equipment', 'No incompatible equipment', illegalLoadouts.length === 0, illegalLoadouts.map((u) => `${u.name}: ${u.loadoutConflicts.join(', ')}`).join('; ') || 'OK')
   check('points', `Points within ${limits.maxPoints}`, points <= limits.maxPoints, `${points} / ${limits.maxPoints}`)
   check('hq', `At least ${limits.minHeadquarters} Headquarters`, hq >= limits.minHeadquarters, `${hq}`)
-  check('core', `At least ${limits.minCoreUnits} Core Units`, core >= limits.minCoreUnits, `${core}`)
-  check('heroes', `At most ${limits.maxHeroes} Heroes`, heroes <= limits.maxHeroes, `${heroes}`)
   check('leaders', `At most ${limits.maxNamedFactionLeaders} named Faction Leader`, leaders <= limits.maxNamedFactionLeaders, `${leaders}`)
   const uniqueCounts = new Map()
   for (const unit of units.filter((u) => u.tags.includes('Unique'))) {
@@ -341,7 +336,6 @@ export function buildArmyView(army, catalog) {
   }
   const repeatedUnique = [...uniqueCounts].filter(([, n]) => n > 1).map(([key]) => key)
   check('unique', 'Unique Units may be purchased once per profile', repeatedUnique.length === 0, repeatedUnique.length ? repeatedUnique.join(', ') : 'OK')
-  check('large-assets', `At most ${largeAssetMax} Large Assets`, largeAssets <= largeAssetMax, `${largeAssets}`)
   if (units.some((u) => u.entry.groups.some((g) => g.options.some((o) => o.tagChoice)))) {
     const untagged = units.filter((u) => u.missingTags.length)
     check('anti-tags', 'Anti-[Type] choices made', untagged.length === 0, untagged.map((u) => `${u.name}: ${u.missingTags.join(', ')}`).join('; ') || 'OK')
@@ -352,7 +346,7 @@ export function buildArmyView(army, catalog) {
     faction, doctrines, factionCommands, doctrineCommands,
     slots, used, units, points, limits, checks,
     legal: checks.every((c) => c.ok),
-    counts: { heroes, core, hq, largeAssets, largeAssetMax },
+    counts: { heroes, core, hq, largeAssets },
   }
 }
 

@@ -1,6 +1,6 @@
 # ARMY CONSTRUCTION & LIST BUILDING
 
-## 2,000-Point Matched Play — Revised Draft v7
+## 2,000-Point Matched Play — Revised Draft v9
 
 These rules govern **standard 2,000-point matched-play army construction**, not the progression or Command acquisition of a normal RPG campaign. They use the same Units, Factions, equipment, and abilities as the wider system. Campaign play normally begins with 2 CP per player per Round, sometimes with **no physical Command cards or selected army repertoire**; later campaign rules may introduce those separately.
 
@@ -29,20 +29,16 @@ Recruitment Slots represent permission to purchase Units. They do not provide Un
 
 ### Standard Army Limits
 
-| Requirement                     | Limit                                     |
-| ------------------------------- | ----------------------------------------- |
-| Army Points                     | 2,000 maximum                             |
-| Recruitment Slots               | 15                                        |
-| Faction                         | Choose 1                                  |
-| Doctrines                       | Choose any 2 distinct Doctrines           |
-| Faction Commands                | Choose 2 of the faction's 4               |
-| Doctrine Commands               | Choose 3 of 5 from each selected Doctrine |
-| Headquarters                    | Minimum 1 (may be non-Hero)               |
-| Core Units                      | Minimum 3                                 |
-| Heroes                          | Maximum 3                                 |
-| Named Faction Leaders           | Maximum 1                                 |
-| Large Assets                    | Maximum 2                                 |
-| Large Assets with Heavy Support | Maximum 3                                 |
+| Requirement | Limit |
+| --- | --- |
+| Army Points | 2,000 maximum |
+| Recruitment Slots | 15 |
+| Faction | Choose 1 |
+| Doctrines | Choose 2 distinct Doctrines |
+| Faction Commands | Choose 2 of the Faction's 4 |
+| Doctrine Commands | Choose 3 of 5 from each Doctrine |
+| Headquarters | At least 1, including a non-Hero Headquarters |
+| Unique Units | One copy of each explicitly Unique named profile |
 
 All requirements apply simultaneously.
 
@@ -104,9 +100,9 @@ Examples:
 
 Not everything recruited through A is a Large Asset.
 
-Only Units with the Large Asset classification count toward the army's Large Asset maximum.
+A Large Asset must use an eligible Recruitment Slot, normally A, and pay its full Points cost. There is no separate Large Asset count limit.
 
-Monstrous Core Units may occupy eligible A slots without counting toward that limit, unless they also have the Large Asset classification.
+A monstrous Core Unit may use C and any other explicitly eligible slot. Its tags do not grant extra recruitment eligibility.
 
 
 
@@ -116,71 +112,27 @@ Monstrous Core Units may occupy eligible A slots without counting toward that li
 
 # 3. Required Army Composition
 
-Every standard army must contain at least:
+A standard army must purchase **at least one Headquarters Unit**. Otherwise, composition is determined by its **2,000-point budget and fifteen Recruitment Slots**, rather than additional minimum Core counts or maximum Hero and Asset counts.
 
-- One Headquarters Unit.
-- Three purchased Core-classified Units.
-
-These requirements refer to purchased Units, not available Recruitment Slots.
+A player may buy any number of Core, Hero, Elite, Ranged, Specialist, Cavalry, and Asset Units that their Points and compatible Recruitment Slots can support. An unused Recruitment Slot is legal; no category is mandatory besides Headquarters.
 
 ### Core Units and Core Slots
 
-The Core classification is not the same thing as a C Recruitment Slot.
-
-A **faction-specific Unit explicitly designated Core** counts toward the army's three-Core minimum regardless of whether it occupies C, R, V, or another permitted Slot. **Generic Line Infantry** is also Core. A generic Ranged Infantry or Elite Infantry Unit is **not automatically Core** simply because it has Ranged or Elite tags.
-
-For example, an army may satisfy its Core requirement with:
-
-1. Generic Line Infantry recruited through C.
-2. Faction Core Ranged Infantry recruited through R.
-3. Faction Core Cavalry recruited through V.
-
-All three count as Core Units when their profiles explicitly carry that classification.
-
-Conversely, having several unused C slots does not satisfy the minimum requirement.
-
-A Hero, Specialist, or Large Asset does not count as Core merely because it has the Infantry, Cavalry, or Monster keyword.
+The **Core** classification is not the same as having the Infantry or Cavalry tag. Generic Line Infantry and designated faction Core formations are Core even when assigned to a different compatible slot such as R or V. Core classification can matter for abilities, mission conditions, and Double Formations, but **there is no mandatory Core Unit minimum**.
 
 ### Headquarters and Heroes
 
-An army must recruit at least one Headquarters Unit.
+The army requires one purchased Headquarters Unit occupying a compatible Recruitment Slot, normally H. A generic Captain remains a non-Hero Elite Unit unless it takes Heroic Commission, at which point it gains the Hero tag and may occupy H or another compatible slot. **Hero Units have no separate numerical cap**; available Recruitment Slots, Points, and Unique restrictions determine how many can be included.
 
-An army may contain a maximum of three Heroes. **Generic Elite Captains without Heroic Commission do not count against this limit.**
+### Named Faction Leaders and Unique Units
 
-This limit counts all purchased Units with the Hero classification, even if they occupy different Recruitment Slots.
-
-For example, a **Heroic-Commission Captain** recruited through H and a designated **Hero faction Wizard** recruited through S both count toward the three-Hero limit; a standard Generic Captain without that upgrade does not.
-
-The Hero maximum is separate from the availability of H slots. An army must still possess appropriate Recruitment Slots for every Hero it purchases.
-
-### Faction Leaders
-
-A faction may recruit its named Faction Leader as a Headquarters choice.
-
-A Faction Leader:
-
-- Costs its full listed Points.
-- Uses one compatible Recruitment Slot, normally H.
-- Counts toward the Hero limit if classified as a Hero.
-- May be recruited only once.
-
-A Faction Leader is not mandatory. A **generic Captain with Heroic Commission** or an eligible faction Captain may satisfy Headquarters; a generic Captain without Heroic Commission is an E Unit and cannot. A named or faction Hero Captain still counts against the normal Hero cap.
+Each named Faction Leader has the **Unique** designation and can be purchased once per army. All other explicitly Unique Units are likewise limited to one copy of the named profile; multiple different Unique Units are legal when the army has sufficient Points and matching Recruitment Slots.
 
 ### Large Assets
 
-An army may normally recruit up to two Large Assets.
-
-An army selecting the Heavy Support Doctrine may recruit up to three Large Assets.
-
-This increases the composition limit only. It does not provide a free Unit or additional Recruitment Slot beyond those normally granted by Heavy Support and its selected Commands.
-
-An army must still possess sufficient A or other explicitly compatible Recruitment Slots and enough Points to purchase its Large Assets.
-
-
+Large Assets must occupy a compatible Recruitment Slot, usually A, and cost their full listed Points. There is **no separate Large Asset cap**. Heavy Support remains valuable because its Foundation and selected Commands grant additional A slots; it does not change a separate Asset maximum.
 
 ---
-
-
 
 # 4. Choosing a Faction
 
@@ -459,7 +411,7 @@ Generic Units often provide cheaper or more flexible alternatives to specialized
 A purchased **faction-specific Core** Unit may be upgraded to a **Double Formation** when its Unit profile does not prohibit this option:
 
 - Double its **starting Model count** and pay **twice the standard formation's total Points**, including any selected packages or fixed-price Unit-wide upgrades. For example, Greatweapon Guard (5 Models / 145 Points) becomes **10 Models / 290 Points** before any further permissible variations.
-- The doubled group is **one Unit** occupying **one compatible Recruitment Slot** and counts as **one Core Unit** for the Core minimum; it has **one activation per eligible Phase** and counts as **one Unit** for objective control.
+- The doubled group is **one Unit** occupying **one compatible Recruitment Slot** and remains **one Core Unit** for effects that check that designation; it has **one activation per eligible Phase** and counts as **one Unit** for objective control.
 - Its individual Models retain their printed Wounds and Attacks. The Unit's ranked Keywords and effects (Accurate X, Critical X, Tough X, etc.) **are not doubled**; additional compatible bonuses add to their ranks normally. A Command that grants +X Attacks to one Unit's next Attack adds X once, unless it expressly says **per Model**.
 - The doubled starting size is used to calculate thresholds, replenishment caps, and any restoration limited to the Unit's starting Models.
 - A Core Unit may use this option only once. Other added-Model options require explicit permission and their usual Points.
@@ -472,7 +424,7 @@ Faction-specific Units provide distinctive battlefield roles, equipment, special
 
 They use their printed Points costs and recruitment eligibility.
 
-Faction Units do not automatically replace Generic Units or override the normal composition limits.
+Faction Units do not automatically replace Generic Units or override normal Points, recruitment-slot, or Unique restrictions.
 
 ### Equipment and Upgrades
 
@@ -495,13 +447,13 @@ A Unit possessing multiple weapon profiles does not automatically attack with al
 
 Ordinary Units may be purchased multiple times when enough Points and compatible Recruitment Slots are available.
 
-A Unit with the **Unique** tag is limited to one copy of its named profile per army. Named Faction Leaders have Unique. This restriction is independent of the Hero limit and recruitment slot.
+A Unit with the **Unique** tag is limited to one copy of its named profile per army. Named Faction Leaders have Unique. This restriction is independent of recruitment-slot eligibility and Points.
 
 Specific Faction or scenario rules may impose additional restrictions.
 
 ### Reinforcement, Model Restoration, and Exceptional Return
 
-- **Heal X** removes accumulated Damage from a surviving Model or Unit; it does **not** return defeated Models unless specified.
+- **Heal X** removes up to X accumulated Damage and/or pending temporary Wounds from a surviving Unit in any combination; it does **not** return defeated Models unless specified.
 - **Ordinary reinforcement** returns defeated basic Models to an existing, surviving Unit, never above its **starting Model count** unless the rule expressly permits it. Such active reinforcement cannot target an **Engaged Unit**, and new Models must be placed legally in Unit Coherency. Restored Models do not generate additional activations that Round.
 - A **completely destroyed Unit** cannot normally be returned by healing, reinforcement, or resurrection. Only an ability explicitly saying it can return a destroyed Unit (such as Death Legions' **Rise Again**) is an exception. A restored Unit continues occupying its original Recruitment Slot; it is not purchased again.
 - A passive casualty-return effect that explicitly resolves **during an Attack**, such as **Endless Dead**, may return Models to a surviving Engaged Unit, provided the wording allows it and placement is legal. It cannot save or revive a Unit whose last Model was destroyed during that Attack unless it expressly says so.
@@ -516,8 +468,7 @@ They count toward:
 
 - The army's Points limit.
 - Its Recruitment Slot usage.
-- Its Hero and Large Asset limits.
-- Its Core minimum, where applicable.
+- All applicable Unique Unit restrictions.
 
 Units in ordinary Reserve and Deep Strike Reserve together obey the **normal Reserve limits in Structured Combat**; a Doctrine or Faction ability may change their arrival procedure but not those limits unless explicitly stated. Abilities that deploy purchased Units from Reserve do not provide free Units.
 
@@ -571,224 +522,171 @@ They apply automatically when their stated conditions are met.
 
 
 
-# 10. Worked Example — Free Realms Heavy Gunline
+# 10. Worked Example — Free Realms Coordinated Gunline
 
-This example constructs a Free Realms army using an unconventional Doctrine combination.
+This 2,000-point example emphasizes a coordinated rifle line with inexpensive officers, defensive infantry, and mobile screens. It illustrates a tightly focused **Firing Line + Combined Arms** army rather than a general-purpose collection of units.
 
-The purpose is to demonstrate that Factions can freely combine different battlefield strategies.
+## Step 1: Faction and Foundation
 
-## Step 1: Choose Faction
+Choose **Free Realms**. Its passive **Coordinated Arms** rewards neighboring formations, including qualifying ranged attacks made while wholly within 3" of another friendly Unit.
 
-Faction: Free Realms
-
-The Free Realms provide:
-
-- Faction Rule: Combined Arms.
-- Faction Foundation: C, S.
-
-The Universal Foundation is H, C, C.
-
-The army therefore begins with:
-
-H ×1, C ×3, S ×1
+- Universal Foundation: **H, C, C**.
+- Faction Foundation: **C, S**.
 
 ## Step 2: Choose Doctrines
 
-Select:
-
-- Firing Line, granting Foundation R.
-- Heavy Support, granting Foundation A.
-
-Firing Line is traditionally Compatible with Free Realms, while Heavy Support is not among its listed thematic recommendations.
-
-Both are legal because any Faction may select any two distinct Doctrines.
+- **Firing Line**: Foundation **R**.
+- **Combined Arms**: Foundation **C**.
 
 ## Step 3: Choose Faction Commands
 
-Select: 
-
-| Faction Command     | Slot |
-| ------------------- | ---- |
-| Coordinated Advance | C    |
-| Covering Fire       | R    |
+| Command | Slot | Purpose |
+| --- | --- | --- |
+| Coordinated Advance | C | Reposition neighboring formations |
+| Covering Fire | R | Protect a Disengaging ally with a committed ranged Attack |
 
 ## Step 4: Choose Firing Line Commands
 
-Select:
+| Command | Slot | Purpose |
+| --- | --- | --- |
+| Concentrated Fire | R | Increase stationary ranged Attack dice |
+| Marked Fire Lane | R | Ignore Concealed and suppress Cover |
+| Veteran Gunners | E | Reward follow-up fire against an already targeted enemy |
 
-| Doctrine Command     | Slot |
-| -------------------- | ---- |
-| Concentrated Fire    | R    |
-| Artillery Correction | A    |
-| Screening Fire       | V    |
+## Step 5: Choose Combined Arms Commands
 
-## Step 5: Choose Heavy Support Commands
-
-Select:
-
-| Doctrine Command | Slot |
-| ---------------- | ---- |
-| Fire Control     | H    |
-| Battering Attack | A    |
-| Spotter's Call   | S    |
+| Command | Slot | Purpose |
+| --- | --- | --- |
+| Screen and Advance | V | Maintain screening formations |
+| Crossfire | R | Coordinate ranged Attacks on a shared target |
+| Interlocking Lines | E | Protect nearby allied formations in Engagement |
 
 ## Step 6: Calculate Recruitment Slots
 
-| Slot  | Available |
-| ----- | --------- |
-| H     | 2         |
-| C     | 4         |
-| E     | 0         |
-| R     | 3         |
-| V     | 1         |
-| S     | 2         |
-| A     | 3         |
-| Total | 15        |
-
-This distribution emphasizes Ranged Infantry and Assets while retaining enough Core and Headquarters recruitment.
-
-Because the army selected Heavy Support, it may recruit up to three Large Assets if it has sufficient Points.
+| Slot | Available | Used | Unused |
+| --- | ---: | ---: | ---: |
+| H | 1 | 1 | 0 |
+| C | 5 | 4 | 1 |
+| E | 2 | 2 | 0 |
+| R | 5 | 4 | 1 |
+| V | 1 | 1 | 0 |
+| S | 1 | 1 | 0 |
+| A | 0 | 0 | 0 |
+| **Total** | **15** | **13** | **2** |
 
 ## Step 7: Purchase Units
 
-| Unit                                  | Slot | Points |
-| ------------------------------------- | ---- | ------ |
-| Lord-Commander                        | H    | 390    |
-| Marshal                               | H    | 195    |
-| Greatweapon Guard                     | C    | 145    |
-| Outriders                             | V    | 175    |
-| Generic Line Infantry with Spears     | C    | 85     |
-| Generic Ranged Infantry with Longbows | R    | 135    |
-| Battlemage                            | S    | 170    |
-| Engineer-Quartermaster                | S    | 130    |
-| War Wagon                             | A    | 240    |
-| Grand Cannon                          | A    | 185    |
-| Generic Ranged Infantry with Muskets  | R    | 150    |
-| Total                                 | —    | 2,000  |
+| Unit | Number | Slots used | Points |
+| --- | ---: | --- | ---: |
+| Marshal | 1 | H | 195 |
+| Generic Captain, standard Officer's Weapon | 2 | E, E | 250 |
+| Battlemage | 1 | S | 170 |
+| Shielded Fusiliers (Shielded Rifle, 12") | 4 | R, R, R, R | 640 |
+| Outriders | 2 | V, C | 350 |
+| Greatweapon Guard | 2 | C, C | 290 |
+| Generic Line Infantry (Hand Weapons, Armor, Shields) | 1 | C | 105 |
+| **Total** | **13 Units** | **13 of 15 Slots** | **2,000** |
 
-The army spends exactly 2,000 Points and uses 11 of its 15 available Recruitment Slots.
+**Points and eligibility:** Captains cost 125 Points each with their standard Officer's Weapon. Generic Line Infantry with Armor and Shields cost 75 + 15 + 15 = 105 Points. Shielded Fusiliers remain 160 Points with their improved 12" rifles. Faction Core Outriders are eligible for C, R, or V: one uses V, and the other uses an available C slot.
 
-It is legal to leave its remaining slots empty.
+## Step 8: Verify Composition and Deployment
 
-**Pricing note:** Under the current Generic Units catalogue, five Line Infantry with Spears cost **75 + 10 = 85 Points**, while four Ranged Infantry with Longbows cost **100 + 35 = 135 Points**, and four Ranged Infantry with Muskets cost **100 + 50 = 150 Points**. Equipping the Line Infantry with Shields instead would change their price and requires recalculating the list.
+| Check | Result |
+| --- | --- |
+| Points | 2,000 / 2,000 |
+| Recruitment Slots | 13 / 15 |
+| Headquarters | Marshal |
+| Selected Commands | 2 Faction + 3 Firing Line + 3 Combined Arms |
+| Unique restrictions | No duplicates |
+| Starting deployment | **7** Units on table; **6** in Reserve |
 
-## Step 8: Verify Army Composition
-
-| Requirement            | Army Total    | Result |
-| ---------------------- | ------------- | ------ |
-| Points                 | 2,000 / 2,000 | Legal  |
-| Recruitment Slots Used | 11 / 15       | Legal  |
-| Headquarters           | 2 / minimum 1 | Legal  |
-| Core-classified Units  | 3 / minimum 3 | Legal  |
-| Heroes                 | 2 / maximum 3 | Legal  |
-| Large Assets           | 2 / maximum 3 | Legal  |
-| Factions               | 1             | Legal  |
-| Distinct Doctrines     | 2             | Legal  |
-| Faction Commands       | 2 of 4        | Legal  |
-| Firing Line Commands   | 3 of 5        | Legal  |
-| Heavy Support Commands | 3 of 5        | Legal  |
-
-The army's three Core Units are:
-
-1. Greatweapon Guard, occupying C.
-2. Outriders, occupying V.
-3. Generic Line Infantry, occupying C.
-
-Outriders count toward the Core minimum because they are a faction-specific Core Unit, even though they occupy a V slot.
-
-This army combines conventional Free Realms troops with artillery-focused Doctrines. It gains a different recruitment distribution and tactical identity without changing the Free Realms Faction Rule.
-
-
+**Battle plan:** Four Fusilier formations hold a mutual-support firing line, with Greatweapon Guard and armored Line Infantry protecting the center. Captains and Battlemage provide tactical flexibility while two Outrider Units screen the flanks. Prioritize maintaining firing lanes and nearby formations; spend CP on coordinated attacks or protective Reactions rather than attempting to fight a separate cavalry battle.
 
 ---
 
+# 11. Worked Example — Sacred Orders Hammer and Anvil
 
+This opposing 2,000-point example demonstrates **Castling + Breakthrough**: hold ground with durable infantry, then use a timed cavalry Charge to punish an enemy committed to the center. Both worked armies are legal opponents, though equal Points do not guarantee equal performance on every layout.
 
-# 11. Worked Example — Warclans Horde Breakthrough
+## Step 1: Faction and Foundation
 
-This example demonstrates a **2,000-point Warclans army** that emphasizes large melee formations, numerical superiority, and committed Charges. It contrasts with the Free Realms gunline and shows the revised Horde/Breakthrough tactics without treating similar Command effects as stackable.
+Choose **Sacred Orders**. Its **Unyielding** faction rule protects eligible Core or Elite Units from their first Damage instance each Round.
 
-## Step 1: Choose Faction
-
-**Warclans:** Faction Foundation **C, C**, plus Universal Foundation **H, C, C**. Warclans' faction-specific Units receive their normal **Charge 2** faction bonus (or a higher printed Charge rank), while generic Units receive **Charge 1**.
+- Universal Foundation: **H, C, C**.
+- Faction Foundation: **E, H**.
 
 ## Step 2: Choose Doctrines
 
-- **Horde** — Foundation **C**.
-- **Breakthrough** — Foundation **V**.
+- **Castling**: Foundation **C**.
+- **Breakthrough**: Foundation **V**.
 
-## Step 3: Choose Two Faction Commands
+## Step 3: Choose Faction Commands
 
-| Command | Slot | Battlefield purpose |
+| Command | Slot | Purpose |
 | --- | --- | --- |
-| Get In There! | V | Coordinate successive Charges |
-| Overwhelm | C | Add up to six Attack dice for 1 CP in Combat |
+| Stand Fast | E | Improve Armor or Ward for the threatened formation |
+| Heroic Intervention | H | Reposition a supporting Unit toward an ally under attack |
 
-## Step 4: Choose Three Horde Commands
+## Step 4: Choose Castling Commands
 
-| Command | Slot | Battlefield purpose |
+| Command | Slot | Purpose |
 | --- | --- | --- |
-| Endless Ranks | C | Extra objective-control counting for large formations |
-| Massed Volley | R | Support the advance with massed shooting |
-| Mob Tactics | E | Anti-Infantry/Elite X based on surviving Model advantage, maximum six |
+| Layered Defense | C | Brace against Charge Impact |
+| Fortified Emplacement | A | Protect a stationary formation against ranged fire |
+| Maintain Positions | S | Remove movement restrictions or prepare for a Charge |
 
-## Step 5: Choose Three Breakthrough Commands
+## Step 5: Choose Breakthrough Commands
 
-| Command | Slot | Battlefield purpose |
+| Command | Slot | Purpose |
 | --- | --- | --- |
-| Momentum Drive | V | Commit to a Charge after a short pre-Charge Move |
-| Press the Breach | C | Reward a Charge by counting as two Units near an objective |
-| Siege Breaker | A | Specialized anti-fortification attacks |
+| Breach Guard | E | Reward successful Charges against Armored targets |
+| Momentum Drive | V | Commit to a short pre-Charge Move followed by a Charge |
+| Press the Breach | C | Reward a Charge near an objective with extra control |
 
 ## Step 6: Calculate Recruitment Slots
 
-| Slot | Available | Used | Remaining |
+| Slot | Available | Used | Unused |
 | --- | ---: | ---: | ---: |
-| H | 1 | 1 | 0 |
-| C | 8 | 6 | 2 |
-| E | 1 | 1 | 0 |
-| R | 1 | 1 | 0 |
-| V | 3 | 2 | 1 |
-| S | 0 | 0 | 0 |
+| H | 3 | 1 | 2 |
+| C | 5 | 4 | 1 |
+| E | 3 | 1 | 2 |
+| R | 0 | 0 | 0 |
+| V | 2 | 2 | 0 |
+| S | 1 | 1 | 0 |
 | A | 1 | 1 | 0 |
-| **Total** | **15** | **12** | **3** |
+| **Total** | **15** | **10** | **5** |
 
 ## Step 7: Purchase Units
 
-| Unit | Slot | Points |
-| --- | --- | ---: |
-| Warboss | H | 220 |
-| Choppa Mob (10 Models) | C | 130 |
-| Choppa Mob (10 Models) | C | 130 |
-| Choppa Mob — Double Formation (20 Models) | C | 260 |
-| Brutes (4 Models) | C | 195 |
-| Brutes (4 Models) | C | 195 |
-| Generic Line Infantry, standard Hand Weapons | C | 75 |
-| Boar Riders | V | 190 |
-| Generic Light Cavalry, Mounted Weapons, no additional equipment | V | 115 |
-| Generic Ranged Infantry with Crossbows (4 Models) | R | 125 |
-| Generic Elite Infantry with Hand Weapons (3 Models) | E | 105 |
-| War Beast | A | 260 |
-| **Total** | — | **2,000** |
+| Unit | Number | Slots used | Points |
+| --- | ---: | --- | ---: |
+| Castellan | 1 | H | 205 |
+| War-Priest | 1 | S | 230 |
+| Temple Guard | 3 | C, C, C | 600 |
+| Consecrated Knights | 2 | V, V | 460 |
+| Sanctified Arbalests | 1 | E | 205 |
+| Reliquary Engine | 1 | A | 200 |
+| Generic Line Infantry (Spears, Armor) | 1 | C | 100 |
+| **Total** | **10 Units** | **10 of 15 Slots** | **2,000** |
 
-**Pricing:** Double Formation doubles a faction Unit's starting Model count and Points (Choppa Mob: 10 Models / 130 Points becomes 20 Models / 260 Points). Generic Ranged Infantry with Crossbows cost **100 + 25 = 125 Points**. Generic Light Cavalry use the zero-cost class and Mounted Weapons choices, totaling **115 Points**.
+**Points and eligibility:** Generic Line Infantry with Spears and Armor cost 75 + 10 + 15 = 100 Points. Other formations use printed faction costs. The War-Priest is an eligible Specialist, the Castellan occupies Headquarters, and the Consecrated Knights are eligible for V.
 
-## Step 8: Verify Army Composition
+## Step 8: Verify Composition and Deployment
 
-| Requirement | Result | Legality |
-| --- | --- | --- |
-| Points | 2,000 / 2,000 | Legal |
-| Recruitment Slots | 12 / 15 | Legal |
-| Headquarters | Warboss (1) | Legal |
-| Core Units | 6 faction infantry formations, plus the generic Line Infantry; Boar Riders also count as signature Core | Legal |
-| Heroes | Warboss (1) | Legal |
-| Large Assets | War Beast (1 of maximum 2) | Legal |
-| Faction Commands | 2 of 4 | Legal |
-| Doctrine Commands | Horde 3 of 5; Breakthrough 3 of 5 | Legal |
+| Check | Result |
+| --- | --- |
+| Points | 2,000 / 2,000 |
+| Recruitment Slots | 10 / 15 |
+| Headquarters | Castellan |
+| Selected Commands | 2 Faction + 3 Castling + 3 Breakthrough |
+| Unique restrictions | No duplicates |
+| Starting deployment | **5** Units on table; **5** in Reserve |
 
-The army fields a **20-Model Choppa Mob** to demonstrate Double Formation and Horde eligibility. Overwhelm adds at most six dice for 1 CP, regardless of the formation's size; Mob Tactics instead measures the Model advantage against the target and grants a matching Anti rank. Those effects are alternative Commands, not bonuses that can be layered on the same Attack.
+**Battle plan:** Temple Guard, the War-Priest, and Reliquary Engine establish a resilient center, while the Knights threaten a countercharge or flank strike. Arbalests support the line. Defensive Reactions protect the anvil, whereas Breakthrough Commands create a decisive opening for the cavalry. The army must judge whether to spend CP holding ground or reserve it for the hammer.
 
-This roster uses only twelve of its fifteen Recruitment Slots; unused Slots are allowed and do not refund or generate Points.
+**Teaching matchup:** The Free Realms have more starting activations and distributed ranged pressure; Sacred Orders have sturdier formations and more concentrated melee threats. Objective placement, terrain, and Reserve choices determine whether the gunline survives the opposing hammer-and-anvil attack.
+
+
 
 ---
 
@@ -803,10 +701,10 @@ Before beginning a standard game, verify:
 - All fifteen Recruitment Slots have been calculated.
 - Every purchased Unit occupies one compatible Recruitment Slot, including flexible C/E/S choices.
 - At least one Headquarters Unit has been purchased.
-- At least three Core-classified Units have been purchased.
-- No more than three Heroes have been purchased.
+- Each Unit uses a compatible Recruitment Slot and fits the Points limit.
+- No duplicate explicitly Unique profiles have been purchased.
 - No more than one named Faction Leader has been purchased.
-- The appropriate Large Asset maximum has been respected.
+- Large Assets occupy eligible recruitment slots and are fully paid for.
 - All additional Models, equipment, and upgrades have been paid for.
 - The army's total Points cost does not exceed the agreed limit.
 - All Reserve Units are included in the Points and composition limits.
@@ -846,9 +744,9 @@ To build a standard army:
 4. Select three Commands from each Doctrine.
 5. Add the Universal, Faction, Doctrine, and Command Recruitment Slots.
 6. Purchase Units using those slots, up to 2,000 Points.
-7. Include at least one Headquarters and three Core Units.
-8. Respect the Hero, Large Asset, and other applicable limits.
+7. Include at least one Headquarters Unit.
+8. Respect Unique restrictions and any scenario-specific limits.
 
 Design Principle: The Faction determines an army's identity and signature troops. The Doctrines determine how the player wishes to fight. Recruitment Slots encourage strategic specialization without preventing unconventional army compositions.
 
-Draft Status: Standard army construction v8. All sixteen Doctrines are available to every Faction; Favored and Compatible labels are now recommendations only. Other composition and recruitment rules are unchanged.
+Draft Status: Standard army construction v9. All sixteen Doctrines are available to every Faction; Favored and Compatible labels are now recommendations only. Other composition and recruitment rules are unchanged.

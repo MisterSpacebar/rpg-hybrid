@@ -76,7 +76,7 @@ All existing recruitment limits, Hero caps, Asset caps, and faction-specific Cor
 
 These universal rules apply to all armies in standard five-Round matched battles unless a Mission explicitly overrides them.
 
-**Initial deployment.** During army deployment, each player places half of their purchased Units in Reserve, rounded up; the remainder deploy normally in the player's deployment zone. Count Units, not Points or Models. A player must deploy at least one Headquarters Unit normally if their army includes one.
+**Initial deployment.** During army deployment, each player places half of their purchased Units in Reserve, rounded down; the remainder deploy normally in the player's deployment zone. Count Units, not Points or Models. A player must deploy at least one Headquarters Unit normally if their army includes one.
 
 **Escalating reinforcements.** Beginning in Round 1, each player may deploy up to a number of Reserve Units equal to the current Round number (one in Round 1, two in Round 2, and so on). This is a maximum, not a requirement. Unused allowances do not carry forward. No Unit may enter more than once.
 
@@ -612,7 +612,7 @@ Deep Strike — Reinforcement Competition: Confirm that forward insertion is wor
 
 ### Revision v6 — Key Changes
 
-- Added universal Staggered Deployment: half the army's Units (rounded up) begin in Reserve; each Round allows up to that Round number of arrivals, beginning in Round 1.
+- Added universal Staggered Deployment: half the army's Units (rounded down) begin in Reserve; each Round allows up to that Round number of arrivals, beginning in Round 1.
 - Reworked Alpha Strike to use declining Round-based bonuses without first-attack restrictions. Opening Barrage was replaced by Rapid Mobilization, which combines a once-per-battle extra Round 1 deployment with a reusable +1 Attack mode.
 - Updated Shock Assault to grant Charge Impact rather than Melee Attack dice; updated Ferocious Opening to force rerolls of successful Armor or Evade saves rather than granting Accurate and Critical.
 - Updated Deep Strike to draw from the shared mandatory Reserve pool and count its insertions toward the normal reinforcement allowance; the once-per-Round Deep Strike insertion limit remains.

@@ -46,7 +46,7 @@ When making a Ranged or Spell Attack against an enemy Engaged with a different f
 
 ## Heal X
 
-Remove up to X accumulated Damage, without exceeding the target's Wounds characteristic or restoring removed Models unless an ability states otherwise. Heal X cannot remove temporary Wounds (pending Damage). Ordinary healing does not undo Critical Injuries or automatically return Defeated PCs to combat.
+Remove up to X total accumulated Damage and/or temporary Wounds (pending Damage) from a surviving target, divided as the controlling player chooses. Removing pending temporary Wounds prevents them from converting into Damage later. References to **Heal X accumulated Damage** use this same combined healing allowance unless the specific ability explicitly excludes temporary Wounds. Healing cannot restore defeated Models, undo Critical Injuries, or automatically return Defeated PCs to combat unless an ability expressly permits it.
 
 ## Instant
 

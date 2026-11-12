@@ -144,8 +144,8 @@
       },
       "attackProfiles": [
         {
-          "name": "Shielded Carbine",
-          "range": "9\"",
+          "name": "Shielded Rifle",
+          "range": "12\"",
           "attacks": 1,
           "hit": "3+",
           "damage": 1,

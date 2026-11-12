@@ -47,7 +47,7 @@
           "points": 0,
           "cpCost": 1,
           "timing": "Movement",
-          "effect": "Heal 2 accumulated Damage from one surviving friendly Unit within Engagement Range. Does not restore defeated Models."
+          "effect": "Heal 2 accumulated Damage and/or temporary Wounds from one surviving friendly Unit within 3\" (measure between the closest Models). This restores no defeated Models."
         },
         {
           "name": "Field Treatment",
@@ -63,7 +63,7 @@
         }
       ],
       "notes": [
-        "Medics supply stronger restoration than generic Clerics but must initially operate at much closer distances."
+        "Medics supply stronger restoration than generic Clerics at a close 3-inch support range. Field Treatment extends Triage to Short (6 inches) and can clear a physical condition."
       ]
     },
     {
@@ -90,7 +90,7 @@
           "points": 0,
           "cpCost": 1,
           "timing": "Movement",
-          "effect": "Heal 2 accumulated Damage from a friendly Construct, Vehicle, Artillery, or War Machine within Engagement Range. Does not return removed Models."
+          "effect": "Heal 2 accumulated Damage and/or temporary Wounds from one friendly Construct, Vehicle, Artillery, or War Machine within 3\" (measure between the closest Models). Cannot restore defeated Models."
         },
         {
           "name": "Field Works",

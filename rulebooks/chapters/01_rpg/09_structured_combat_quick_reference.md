@@ -4,7 +4,7 @@
 
 ### Battle Setup
 
-- **Staggered deployment:** Half of purchased Units, **rounded up**, must begin in Reserve (count Units, not Points or Models); the rest deploy wholly in friendly Deployment Zones. At least one Headquarters deploys normally if present.
+- **Staggered deployment:** Half of purchased Units, **rounded down**, must begin in Reserve (count Units, not Points or Models); the rest deploy wholly in friendly Deployment Zones. At least one Headquarters deploys normally if present.
 - **Reinforcement allowance:** Beginning in Round 1, each player may bring in up to **the current Round number** of Reserve Units (R1: 1; R2: 2; R3: 3; R4: 4; R5: 5). Unused allowances do not carry over.
 
 ### Round Sequence

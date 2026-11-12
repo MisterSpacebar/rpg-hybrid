@@ -2,9 +2,9 @@
   "domain": "army_construction",
   "sourceRef": {
     "file": "rulebooks/chapters/02_wargame/04_army_construction.md",
-    "section": "ARMY CONSTRUCTION & LIST BUILDING — 2,000-Point Matched Play — Revised Draft v7"
+    "section": "ARMY CONSTRUCTION & LIST BUILDING — 2,000-Point Matched Play — Revised Draft v9"
   },
-  "description": "Machine-readable constants and legality rules for standard 2,000-point matched-play army construction. Faction/Doctrine Command names and effects remain in factions/ and doctrines/; this file only holds the recruitment-slot data and composition limits needed to validate an army list.",
+  "description": "Machine-readable constants and legality rules for standard 2,000-point matched play. Army composition is limited by Points, fifteen Recruitment Slots, at least one Headquarters, and Unique restrictions. Faction and Doctrine Commands remain in their dedicated files.",
   "slotTypes": [
     {
       "code": "H",
