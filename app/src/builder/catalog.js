@@ -367,6 +367,8 @@ export function loadCatalog() {
         foundationSlot: d.foundationRecruitmentSlot,
         strategy: d.strategy,
         commands: d.commands,
+        decliningOffensiveBonuses: d.decliningOffensiveBonuses ?? null,
+        rapidMobilizationModes: d.rapidMobilizationModes ?? null,
       }))
       .sort((a, b) => a.name.localeCompare(b.name))
 
