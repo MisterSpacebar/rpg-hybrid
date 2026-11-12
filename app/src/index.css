@@ -522,3 +522,6 @@ select.needs-choice { border-color: #e5645b !important; }
 .army-roster-entry .roster-stats { margin: 6px 0 0; }
 .army-roster-entry .roster-list { margin: 6px 0 0; padding-left: 16px; }
 .army-roster-entry p.small { margin: 6px 0 0; }
+
+/* Readability for styled faction roster names in lazy-loaded Markdown chapters. */
+.markdown .faction-roster-unit-name { color: var(--accent); font-weight: 750; }
