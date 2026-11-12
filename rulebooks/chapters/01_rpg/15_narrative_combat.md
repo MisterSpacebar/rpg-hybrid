@@ -485,7 +485,7 @@ Recovery, injury, and death follow the campaign rules.
 
 Damage allocation for multi-model Units follows the normal Unit rules.
 
-**Temporary Wounds:** Abilities may record temporary Wounds as pending Damage without immediately removing Models. When the Unit next suffers Damage after Saves, add all pending temporary Wounds once to that Damage, clear them, and allocate normally. See [Structured Combat — Damage and Defeat](16_structured_combat.md#16-damage-and-defeat) for the complete limits and conversion rule.
+**Temporary Wounds:** Abilities may record temporary Wounds as pending Damage without immediately removing Models. When the Unit next suffers Damage after Saves, add all pending temporary Wounds once to that Damage, clear them, and allocate normally. Heal X may remove temporary Wounds or accumulated Damage before conversion, up to its normal X total. See [Structured Combat — Damage and Defeat](16_structured_combat.md#16-damage-and-defeat) for the complete limits and conversion rule.
 
 **Concealed detection:** In tactical measurement, an enemy Unit coming within 4" of a Concealed Unit ends Concealed immediately; it cannot be regained while the enemy remains within 4". In unmeasured narrative scenes, use the established close-range positioning to represent discovery.
 

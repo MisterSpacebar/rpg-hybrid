@@ -110,7 +110,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 | ------------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Greatweapon Guard — 145 pts (Infantry, Mortal, Armored, 5 Models)<br><br> | M4" / W2 / Arm 4+ / Eva 6+ | Greatweapons: Engaged / 1 / 4+ / 2 / Anti-Armored 2.<br>Disciplined Assault: When attacking an enemy Engaged by another friendly Unit, this Unit gains Accurate 1.                            |
 | Outriders — 175 pts (Infantry, Mortal, Armored, 4 Models)                 | M5" / W2 / Arm 5+ / Eva 5+ | Carbine: 8" / 3 / 5+ / 1 / Firearm.<br>Sabres: Engaged / 2 / 5+ / 1.<br>Mobile Fire: 1CP Assault: After resolving a ranged Attack, Move up to 2", without finishing Engaged. |
-| Shielded Fusiliers — 160 pts (Ranged Infantry, Mortal, Armored, 4 Models) | M3" / W1 / Arm 5+ / Eva 6+ | Shielded Carbine: 9" / 1 / 3+ / 1 / Firearm, Pinpoint.<br>Sidearm: Engaged / 1 / 6+ / 1.<br>**Shield Formation:** When resolving incoming Charge Impact, gain Brace X equal to this Unit's current surviving Models (no cap). Does not prevent the Charge or ensuing melee Attack. |
+| Shielded Fusiliers — 160 pts (Ranged Infantry, Mortal, Armored, 4 Models) | M3" / W1 / Arm 5+ / Eva 6+ | Shielded Rifle: 12" / 1 / 3+ / 1 / Firearm, Pinpoint.<br>Sidearm: Engaged / 1 / 6+ / 1.<br>**Shield Formation:** When resolving incoming Charge Impact, gain Brace X equal to this Unit's current surviving Models (no cap). Does not prevent the Charge or ensuing melee Attack. |
 
 ### Captain and Specialists
 

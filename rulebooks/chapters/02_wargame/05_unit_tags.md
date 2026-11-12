@@ -135,7 +135,7 @@ Some existing army profiles use additional battlefield labels or army-list class
 | --- | --- |
 | **Core** | A designated Core Unit; counts toward the required number of Core Units in applicable army formats. |
 | **Elite** | A higher-grade Unit or specialist. Elite does not imply Hero. Elite-subtype tags (Elite Infantry, Elite Cavalry, Elite Ranged Infantry) also satisfy Commands requiring an Elite Unit. |
-| **Hero** | A designated Hero, subject to the army's Hero limits where applicable. **Hero does not imply Unique.** |
+| **Hero** | A designated Hero, eligible through matching Recruitment Slots and Points in standard matched play. **Hero does not imply Unique**; scenarios may impose their own Hero limits. |
 | **Officer** | A leader entrusted with military command, whether or not they are a Hero or named Unique individual. |
 | **Wizard** | A designated spellcasting Unit eligible for rules specifically referencing Wizards. |
 | **Ranged / Ranged Infantry** | Identifies Units with a specialized ranged role; ordinary possession of a ranged weapon does not automatically change recruitment eligibility. |
@@ -160,7 +160,7 @@ For standard 2,000-point matched play, the principal distinctions are:
 
 The precise recruitment permissions and composition limits are controlled by the **Army Construction & List Building** chapter. A Unit with `Elite` or `Monster` does not receive an E or A slot automatically. Likewise, selecting a ranged weapon does not automatically add R eligibility.
 
-**Hero, Core, and Large Asset** are also independent of the slot a Unit occupies. A designated Core Unit recruited using R still counts as Core; a Hero recruited using S still counts against the Hero limit; a Large Asset recruited through an eligible alternate slot still counts against the Large Asset limit.
+**Hero, Core, and Large Asset** are also independent of the slot a Unit occupies. A designated Core Unit recruited using R still counts as Core; a Hero recruited using S remains a Hero; a Large Asset recruited through an eligible alternate slot retains its Large Asset tag. Standard matched play has no separate Hero or Large Asset numerical limit.
 
 ---
 

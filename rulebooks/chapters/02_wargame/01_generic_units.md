@@ -350,7 +350,7 @@ Choose up to **one** secondary ranged weapon via a separate dropdown: Bow +10, C
 | Weapon Master | +30 | One selected melee or ranged weapon gains Accurate 1 and improves Hit by one step. |
 | Mounted            | +25  | Increase Move to M6", gain +1 Wound and **Charge 3**.<br>Loses Infantry tag and gains Cavalry.                                |
 | Veterans | +50 | Every weapon the Captain carries gains +1 Attack and improves Hit by one step. |
-| Heroic Commission  | +35  | Gain **Hero** and **H** eligibility while retaining **Elite**; increase Wounds by 1; every weapon the Captain currently carries gains +1 Attack. The Captain now counts toward the three-Hero limit. |
+| Heroic Commission  | +35  | Gain **Hero** and **H** eligibility while retaining **Elite**; increase Wounds by 1; every weapon the Captain currently carries gains +1 Attack. The Captain has the Hero tag and can use a compatible Recruitment Slot; no separate Hero maximum applies. |
 
 A Captain may purchase any number of these equipment and training upgrades; only Commands are limited. Monster Hunter has been removed in favor of Master Hunter.
 
@@ -515,17 +515,17 @@ A Support's role is distinct from the player-character **Artificer/Alchemist** o
 
 | Ability / Upgrade | Points | Effect |
 | --- | ---: | --- |
-| Triage | +0 | **1 CP — Movement.** Heal 2 accumulated Damage from one surviving friendly Unit within Engagement Range. Does not restore defeated Models. |
+| Triage | +0 | **1 CP — Movement.** Heal 2 accumulated Damage and/or temporary Wounds from one surviving friendly Unit within 3" (measure between the closest Models). Does not restore defeated Models. |
 | Field Treatment | +25 | Triage's range becomes Short and it can also remove one temporary physical condition, Move penalty, or Hit penalty. |
 | Rapid Treatment | +35 | **1 CP — Reaction.** After an eligible friendly non-Artillery, non-Construct, non-Vehicle, non-War Machine Unit within Short survives an Attack, Heal 3 accumulated Damage. Does not restore Models. |
 
-Medics supply stronger restoration than generic Clerics but must initially operate at much closer distances.
+Medics supply stronger restoration than generic Clerics at a close 3-inch range; Field Treatment increases Triage to Short (6 inches).
 
 ### Engineers — 90 Points
 
 | Ability / Upgrade | Points | Effect |
 | --- | ---: | --- |
-| Repair | +0 | **1 CP — Movement.** Heal 2 accumulated Damage from a friendly Construct, Vehicle, Artillery, or War Machine within Engagement Range. Does not return removed Models. |
+| Repair | +0 | **1 CP — Movement.** Heal 2 accumulated Damage and/or temporary Wounds from a friendly Construct, Vehicle, Artillery, or War Machine within 3" (measure between the closest Models). Does not return removed Models. |
 | Field Works | +0 | **1 CP — Movement.** Place one Temporary Barricade within 2". The Unit may maintain only one of its barricades at a time. |
 | **Pistols** | **+25** | All Models gain **Pistol: 6" / 2 / 5+ / 1 / Firearm** as their eligible Assault Attack. They retain their melee tools and Repair/Field Works. |
 | Demolitions | +15 | Gain **Demolition Charge: Engaged / 1 / 4+ / Direct Damage 2** against Structures, Fortifications, Barricades, Vehicles, War Machines, and suitable scenario objects. |

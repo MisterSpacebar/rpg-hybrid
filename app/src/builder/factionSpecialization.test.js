@@ -41,6 +41,8 @@ test('Fusiliers replace Vanguard Skirmishers without changing Outriders Vanguard
   assert.equal(u.modelProfile.armor, '5+')
   assert.equal(u.modelProfile.evade, '6+')
   assert.deepEqual(u.attackProfiles[0].keywords, ['Firearm', 'Pinpoint'])
+  assert.equal(u.attackProfiles[0].name, 'Shielded Rifle')
+  assert.equal(u.attackProfiles[0].range, '12"')
   assert.equal(u.attackProfiles[0].hit, '3+')
   assert.equal(u.attackProfiles[0].attacks, 1)
   const shield = u.abilities.find((a) => a.name === 'Shield Formation')

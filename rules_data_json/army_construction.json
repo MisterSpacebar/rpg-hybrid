@@ -2,9 +2,9 @@
   "domain": "army_construction",
   "sourceRef": {
     "file": "rulebooks/chapters/02_wargame/04_army_construction.md",
-    "section": "ARMY CONSTRUCTION & LIST BUILDING — 2,000-Point Matched Play — Revised Draft v7"
+    "section": "ARMY CONSTRUCTION & LIST BUILDING — 2,000-Point Matched Play — Revised Draft v9"
   },
-  "description": "Machine-readable constants and legality rules for standard 2,000-point matched-play army construction. Faction/Doctrine Command names and effects remain in factions/ and doctrines/; this file only holds the recruitment-slot data and composition limits needed to validate an army list.",
+  "description": "Machine-readable constants and legality rules for standard 2,000-point matched play. Army composition is limited by Points, fifteen Recruitment Slots, at least one Headquarters, and Unique restrictions. Faction and Doctrine Commands remain in their dedicated files.",
   "slotTypes": [
     {
       "code": "H",
@@ -55,12 +55,8 @@
     "totalSelectedCommands": 8,
     "commandPointsPerRound": 8,
     "minHeadquarters": 1,
-    "minCoreUnits": 3,
-    "maxHeroes": 3,
     "maxNamedFactionLeaders": 1,
-    "maxLargeAssets": 2,
-    "maxLargeAssetsWithHeavySupport": 3,
-    "heavySupportDoctrineId": "heavy-support"
+    "initialReserveRounding": "down"
   },
   "slotCalculation": {
     "universalFoundation": [
@@ -102,7 +98,8 @@
       "Slots of the same type are interchangeable regardless of source.",
       "Slots may be left empty; unused slots grant no Points and cannot be exchanged for other categories.",
       "A Unit occupies exactly one compatible slot, even if eligible for several categories.",
-      "A Command grants its slot as soon as it is selected, whether or not it is used in battle."
+      "A Command grants its slot as soon as it is selected, whether or not it is used in battle.",
+      "Composition is restricted by Points, fifteen Recruitment Slots, one Headquarters, and Unique profile status. No extra minimum Core, Hero cap, or Large Asset cap."
     ]
   },
   "legalityRules": [
@@ -116,7 +113,7 @@
     },
     {
       "id": "faction-commands",
-      "rule": "Exactly two of the Faction's three Commands are selected."
+      "rule": "Exactly two of the Faction's four Commands are selected."
     },
     {
       "id": "doctrine-commands",
@@ -131,20 +128,8 @@
       "rule": "At least one purchased Headquarters Unit (may be non-Hero)."
     },
     {
-      "id": "min-core",
-      "rule": "At least three purchased Core-classified Units. Faction Core Units count regardless of slot used; generic Line Infantry is Core; generic Ranged/Elite Infantry, Heroes, Specialists and Large Assets are not Core by keyword alone."
-    },
-    {
-      "id": "max-heroes",
-      "rule": "At most three purchased Hero-classified Units, regardless of slot. A generic Elite Captain without Heroic Commission is not a Hero."
-    },
-    {
       "id": "max-leaders",
-      "rule": "At most one named Faction Leader, recruited once."
-    },
-    {
-      "id": "max-large-assets",
-      "rule": "At most two Units with the Large Asset classification (three with Heavy Support). Monstrous Core Units in A slots do not count unless also classified Large Asset."
+      "rule": "No more than one named Faction Leader; all explicitly Unique named profiles are limited to one copy. No additional general Hero cap applies."
     },
     {
       "id": "unique-units",
@@ -156,7 +141,7 @@
     },
     {
       "id": "reserves-count",
-      "rule": "Units in Reserve count toward Points, slot usage, Hero and Large Asset limits, and the Core minimum."
+      "rule": "Units in Reserve count toward Points and occupy normal Recruitment Slots. Starting Reserve count is half the purchased Units rounded down; at least one Headquarters deploys normally."
     }
   ],
   "unitCostFormula": "Base Cost + Equipment + Additional Models + Other Upgrades",

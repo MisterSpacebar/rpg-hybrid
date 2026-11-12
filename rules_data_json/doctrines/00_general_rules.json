@@ -80,7 +80,7 @@
         "category": "Large Asset / Artillery"
       }
     ],
-    "note": "All existing recruitment limits, Hero caps, Asset caps, and faction-specific Core classifications remain unchanged."
+    "note": "Ordinary army composition is governed by the 2,000-point limit, recruitment slots, at least one Headquarters, and Unique restrictions. No separate minimum Core requirement, Hero cap, or Large Asset cap."
   },
   "files": [
     {
@@ -164,5 +164,12 @@
     "voluntaryLimit": 2,
     "mandatoryBacklashMayExceedLimit": true,
     "expiry": "Persist until the next unsaved Damage event, including across encounter boundaries unless a campaign rule states otherwise."
+  },
+  "staggeredDeployment": {
+    "startingReserveUnits": "floor(purchased Units / 2)",
+    "startingOnTableUnits": "ceil(purchased Units / 2)",
+    "countBy": "Units, not Models or Points",
+    "headquarters": "At least one Headquarters starts on the battlefield",
+    "reinforcementAllowance": "Normal per-Round arrivals remain at most the current Round number."
   }
 }
