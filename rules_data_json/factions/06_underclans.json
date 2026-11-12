@@ -18,25 +18,25 @@
       "name": "Dirty Trick",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "Worsen one visible enemy's Armor or Evade by one step until the end of the Phase."
+      "effect": "Choose one visible enemy Unit during the active Unit’s Assault activation. Worsen that enemy’s Armor or Evade by one step (choose one) until the end of this Phase. This is an enemy debuff and may affect later friendly Attacks; it does not grant another Unit an activation."
     },
     {
       "name": "Scurry Away",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "One friendly Unit may Disengage without becoming Withdrawn."
+      "effect": "During its own Movement activation, the active Unit may Disengage without becoming Withdrawn. It follows all other normal Disengage restrictions and does not gain an additional activation."
     },
     {
       "name": "Mob Them!",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "Up to two friendly Units may each Move up to 2\" toward the same enemy within Medium."
+      "effect": "During the active Unit’s Movement activation, choose up to two friendly Units (including the active Unit if desired) to Move up to 2\" toward the same enemy within Medium of the active Unit. Each Move must end legally; this is a multi-unit support exception, not an activation refresh."
     },
     {
       "name": "Strike the Exposed",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Support 4 or Anti-Ranged 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Support 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [

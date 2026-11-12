@@ -1,30 +1,79 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "11. Grinding" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "11. Grinding"
+  },
   "name": "Grinding",
   "foundationRecruitmentSlot": "C",
   "strategy": "Outlast opponents through endurance, attrition, battlefield repairs, and reorganizing damaged forces.",
   "designNote": "Grinding combines the former Grinding and Recursion doctrines. Its commands may emphasize either surviving prolonged engagements or becoming increasingly effective as the battle continues.",
   "commands": [
-    { "name": "Unbroken Line", "slot": "C", "timing": "Reaction", "effect": "When a friendly Unit that has already suffered an Attack this Phase is attacked again, it gains Tough 2 against the incoming Attack." },
-    { "name": "Wear Them Down", "slot": "H", "timing": "Combat", "effect": "Choose one enemy Engaged with a friendly Unit that was already attacked by a different friendly Unit this Round. Reduce its next Melee Attack by one Attack die, minimum one, before the end of its next activation." },
-    { "name": "Reform and Recover", "slot": "S", "timing": "Movement", "effect": "Choose one friendly Unit. Either Heal 2 accumulated Damage from it, or remove Withdrawn and one temporary Hit, Move, or Evade penalty from it. Defeated Models are not restored." },
-    { "name": "Attrition Engine", "slot": "A", "timing": "Assault/Combat", "effect": "One friendly Unit gains Accurate 2 on its next Attack against an enemy that has already suffered unsaved Damage from a different friendly Unit this Round." },
-    { "name": "Relentless Veterans", "slot": "E", "timing": "Combat", "effect": "One friendly Unit gains Accurate 2 and Critical 1 on its next Melee Attack against an enemy it attacked during an earlier Round." }
+    {
+      "name": "Unbroken Line",
+      "slot": "C",
+      "timing": "Reaction",
+      "effect": "When a friendly Unit that has already suffered an Attack this Phase is attacked again, it gains Tough 2 against the incoming Attack."
+    },
+    {
+      "name": "Wear Them Down",
+      "slot": "H",
+      "timing": "Combat",
+      "effect": "Choose an enemy Engaged with the active Unit that was already attacked by a different friendly Unit this Round. Reduce that enemy's next Melee Attack by one Attack die, minimum one, before the end of its next activation."
+    },
+    {
+      "name": "Reform and Recover",
+      "slot": "S",
+      "timing": "Movement",
+      "effect": "Either Heal 2 accumulated Damage from the active Unit, or remove Withdrawn and one temporary Hit, Move, or Evade penalty from it. Defeated Models are not restored."
+    },
+    {
+      "name": "Attrition Engine",
+      "slot": "A",
+      "timing": "Assault/Combat",
+      "effect": "The active Unit gains Accurate 2 on its next Attack against an enemy that has already suffered unsaved Damage from a different friendly Unit this Round."
+    },
+    {
+      "name": "Relentless Veterans",
+      "slot": "E",
+      "timing": "Combat",
+      "effect": "The active Unit gains Accurate 2 and Critical 1 on its next Melee Attack against an enemy it attacked during an earlier Round."
+    }
   ],
   "doctrineIdentity": {
     "summary": "Grinding focuses on endurance and cumulative advantage. Its commands support three approaches:",
     "approaches": [
-      { "name": "Endurance", "description": "Unbroken Line and Reform and Recover help Units withstand damage and maintain effectiveness." },
-      { "name": "Attrition", "description": "Wear Them Down and Attrition Engine reward applying sustained pressure to enemy formations." },
-      { "name": "Prolonged Engagements", "description": "Relentless Veterans improves a Unit's performance against opponents it has already fought." }
+      {
+        "name": "Endurance",
+        "description": "Unbroken Line and Reform and Recover help Units withstand damage and maintain effectiveness."
+      },
+      {
+        "name": "Attrition",
+        "description": "Wear Them Down and Attrition Engine reward applying sustained pressure to enemy formations."
+      },
+      {
+        "name": "Prolonged Engagements",
+        "description": "Relentless Veterans improves a Unit's performance against opponents it has already fought."
+      }
     ],
     "flexibility": "A player can lean toward defensive durability, offensive attrition, or a combination of both depending on which three Commands are selected.",
     "limitation": "Grinding does not restore defeated Models or Units. Those effects remain available through faction-specific abilities and other exceptional rules."
   },
   "distinctionFromOtherDoctrines": [
-    { "doctrine": "Castling", "distinction": "Rewards holding defensive positions and preparing for attacks." },
-    { "doctrine": "Counter Strike", "distinction": "Rewards reactions and retaliation against enemy attacks." },
-    { "doctrine": "Grinding", "distinction": "Rewards enduring damage, reorganizing forces, and repeatedly engaging the same enemies." },
-    { "doctrine": "Horde", "distinction": "Rewards maintaining large formations and overwhelming enemies numerically." }
+    {
+      "doctrine": "Castling",
+      "distinction": "Rewards holding defensive positions and preparing for attacks."
+    },
+    {
+      "doctrine": "Counter Strike",
+      "distinction": "Rewards reactions and retaliation against enemy attacks."
+    },
+    {
+      "doctrine": "Grinding",
+      "distinction": "Rewards enduring damage, reorganizing forces, and repeatedly engaging the same enemies."
+    },
+    {
+      "doctrine": "Horde",
+      "distinction": "Rewards maintaining large formations and overwhelming enemies numerically."
+    }
   ]
 }

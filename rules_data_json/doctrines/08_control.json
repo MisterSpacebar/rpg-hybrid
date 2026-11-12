@@ -1,14 +1,42 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "8. Control" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "8. Control"
+  },
   "name": "Control",
   "foundationRecruitmentSlot": "S",
   "strategy": "Restrict enemy actions, interfere with movement, and suppress tactical advantages.",
   "commands": [
-    { "name": "Lockdown", "slot": "C", "timing": "Assault Reaction", "effect": "When an enemy within Medium of a friendly Unit declares a Charge, reduce its final Charge distance by 1\", minimum 0\". Charge Impact is unchanged." },
-    { "name": "Interdiction", "slot": "V", "timing": "Movement Reaction", "effect": "When an enemy begins a normal Move within Short of a friendly Unit, reduce its Move distance by 2\", minimum 1\"." },
-    { "name": "Disrupt Orders", "slot": "H", "timing": "Assault/Combat Reaction", "effect": "When an enemy within Medium of friendly Headquarters receives an Attack bonus, remove Accurate 1 from that Attack. If it has no Accurate bonus, reduce its bonus Attacks by one die instead." },
-    { "name": "Suppressing Fire", "slot": "R", "timing": "Assault", "effect": "If one friendly Unit inflicts unsaved Damage with its next ranged Attack this Phase, the target suffers Slow 2 and cannot receive positive Move bonuses from Commands during its next normal Move." },
-    { "name": "Jamming Field", "slot": "A", "timing": "Assault", "effect": "Choose one enemy within Short of a friendly Unit. That enemy cannot use Reactions against the next Attack it suffers this Phase." }
+    {
+      "name": "Lockdown",
+      "slot": "C",
+      "timing": "Assault Reaction",
+      "effect": "When an enemy within Medium of a friendly Unit declares a Charge, reduce its final Charge distance by 1\", minimum 0\". Charge Impact is unchanged."
+    },
+    {
+      "name": "Interdiction",
+      "slot": "V",
+      "timing": "Movement Reaction",
+      "effect": "When an enemy begins a normal Move within Short of a friendly Unit, reduce its Move distance by 2\", minimum 1\"."
+    },
+    {
+      "name": "Disrupt Orders",
+      "slot": "H",
+      "timing": "Assault/Combat Reaction",
+      "effect": "When an enemy within Medium of friendly Headquarters receives an Attack bonus, remove Accurate 1 from that Attack. If it has no Accurate bonus, reduce its bonus Attacks by one die instead."
+    },
+    {
+      "name": "Suppressing Fire",
+      "slot": "R",
+      "timing": "Assault",
+      "effect": "If the active Unit inflicts unsaved Damage with its next ranged Attack this Phase, the target suffers Slow 2 and cannot receive positive Move bonuses from Commands during its next normal Move."
+    },
+    {
+      "name": "Jamming Field",
+      "slot": "A",
+      "timing": "Assault",
+      "effect": "Choose one enemy within Short of the active Unit. That enemy cannot use Reaction Commands against the active Unit's next Attack this Phase."
+    }
   ],
   "doctrineIdentity": "Reducing the opponent's tactical options. Control focuses on denying movement and effective responses rather than dealing additional damage."
 }

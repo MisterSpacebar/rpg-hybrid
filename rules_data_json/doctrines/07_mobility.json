@@ -1,14 +1,42 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "7. Mobility" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "7. Mobility"
+  },
   "name": "Mobility",
   "foundationRecruitmentSlot": "V",
   "strategy": "Gain positional advantages through movement, evasion, and battlefield maneuvering.",
   "commands": [
-    { "name": "Flanking Run", "slot": "V", "timing": "Movement", "effect": "One friendly Unit gains +3\" Move and ignores the first 2\" of Difficult Terrain during its next normal Move this Round." },
-    { "name": "Mobile Fire Support", "slot": "R", "timing": "Movement", "effect": "One friendly Unit may use a Heavy ranged Attack after moving during the preceding Movement Phase, worsening Hit by one step. Applies to its next eligible ranged Attack this Round." },
-    { "name": "Rapid Footwork", "slot": "C", "timing": "Movement", "effect": "One unengaged friendly Unit may immediately Move up to 2\", ending legally and unengaged." },
-    { "name": "Evasive Shift", "slot": "E", "timing": "Movement", "effect": "One unengaged friendly Unit immediately resolves Blink 2." },
-    { "name": "Pathfinders", "slot": "S", "timing": "Movement", "effect": "One friendly Unit ignores Difficult Terrain penalties on its next normal Move this Round and gains Tough 1 against its next ranged Attack this Round." }
+    {
+      "name": "Flanking Run",
+      "slot": "V",
+      "timing": "Movement",
+      "effect": "The active Unit gains +3\" Move and ignores the first 2\" of Difficult Terrain during its next normal Move this Round."
+    },
+    {
+      "name": "Mobile Fire Support",
+      "slot": "R",
+      "timing": "Movement",
+      "effect": "The active Unit may use one Heavy ranged Attack after moving during the preceding Movement Phase, worsening Hit by one step for its next eligible ranged Attack this Round. This is a specific exception to Heavy; it does not reset the Unit's Movement history."
+    },
+    {
+      "name": "Rapid Footwork",
+      "slot": "C",
+      "timing": "Movement",
+      "effect": "The active unengaged Unit may immediately Move up to 2\", ending legally and unengaged. This is an additional Move, not an activation refresh or free Disengage."
+    },
+    {
+      "name": "Evasive Shift",
+      "slot": "E",
+      "timing": "Movement",
+      "effect": "The active unengaged Unit immediately resolves Blink 2, following ordinary legal placement and elevation rules."
+    },
+    {
+      "name": "Pathfinders",
+      "slot": "S",
+      "timing": "Movement",
+      "effect": "The active Unit ignores Difficult Terrain penalties on its next normal Move this Round and gains Tough 1 against its next ranged Attack this Round."
+    }
   ],
   "doctrineIdentity": "Independent maneuverability and flexible positioning. Mobility improves movement without generally making Charges more damaging."
 }

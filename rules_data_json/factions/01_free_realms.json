@@ -19,7 +19,7 @@
       "name": "Coordinated Advance",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "Choose up to two friendly Units within Short. Each may immediately Move up to 2\", ending legally."
+      "effect": "During the active Unit’s Movement activation, choose up to two friendly Units within Short of it (which may include the active Unit). Each selected Unit may immediately Move up to 2\", ending legally. These are additional Moves, not refreshed activations; Disengage and Withdrawn rules still apply."
     },
     {
       "name": "Covering Fire",
@@ -31,13 +31,13 @@
       "name": "Secure Ground",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "One friendly Unit counts as one additional Unit for objective control until the end of the Round."
+      "effect": "The active Unit counts as one additional Unit for objective control until the end of the Round."
     },
     {
       "name": "Coordinated Targeting",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Infantry 4 or Anti-Ranged 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [

@@ -1,15 +1,45 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "1. Combined Arms" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "1. Combined Arms"
+  },
   "name": "Combined Arms",
   "foundationRecruitmentSlot": "C",
   "strategy": "Coordinate different battlefield roles to improve the performance of ordinary troops, specialists, and supporting formations.",
   "commands": [
-    { "name": "Screen and Advance", "slot": "V", "timing": "Movement", "effect": "Choose one friendly Unit within 2\" of a different friendly Unit. It gains +2\" Move on its next normal Move this Round. This bonus cannot be used for a Charge." },
-    { "name": "Crossfire", "slot": "R", "timing": "Assault", "effect": "One friendly Unit gains Accurate 2 and Pinpoint on its next ranged Attack against an enemy already attacked by a different friendly Unit this Round." },
-    { "name": "Coordinated Orders", "slot": "H", "timing": "Movement", "effect": "Choose two different friendly Units within Short of the same friendly Headquarters. Remove one temporary Hit or Move penalty from one. The other gains Accurate 1 on its next Attack this Round." },
-    { "name": "Interlocking Lines", "slot": "E", "timing": "Combat Reaction", "effect": "When a friendly Unit within 2\" of a different friendly Unit is attacked in Engagement, the defender gains Tough 2 against that Attack." },
-    { "name": "Forward Observers", "slot": "A", "timing": "Assault", "effect": "One friendly Unit gains Accurate 1 and reduces the target's effective Cover X by 1 (minimum 0) on its next ranged Attack this Phase, provided a different friendly Unit can see the target." }
+    {
+      "name": "Screen and Advance",
+      "slot": "V",
+      "timing": "Movement",
+      "effect": "If the active Unit is within 2\" of a different friendly Unit, it gains +2\" Move on its next normal Move this Round. This bonus cannot be used for a Charge."
+    },
+    {
+      "name": "Crossfire",
+      "slot": "R",
+      "timing": "Assault",
+      "effect": "The active Unit gains Accurate 2 and Pinpoint on its next ranged Attack this Assault Phase against an enemy already attacked by a different friendly Unit this Round."
+    },
+    {
+      "name": "Coordinated Orders",
+      "slot": "H",
+      "timing": "Movement",
+      "effect": "Choose two different friendly Units within Short of the same friendly Headquarters. Remove one temporary Hit or Move penalty from one. The other gains Accurate 1 on its next Attack this Round."
+    },
+    {
+      "name": "Interlocking Lines",
+      "slot": "E",
+      "timing": "Combat Reaction",
+      "effect": "When a friendly Unit within 2\" of a different friendly Unit is attacked in Engagement, the defender gains Tough 2 against that Attack."
+    },
+    {
+      "name": "Forward Observers",
+      "slot": "A",
+      "timing": "Assault",
+      "effect": "The active Unit gains Accurate 1 and reduces the target's effective Cover X by 1 (minimum 0) on its next ranged Attack this Assault Phase, provided a different friendly Unit can see the target. This does not remove Cover eligibility."
+    }
   ],
   "doctrineIdentity": "Cooperation between multiple Units. Combined Arms rewards keeping formations close enough to support each other without requiring specific recruitment categories.",
-  "knownIssues": ["Shares its name with the Free Realms Faction Rule, which has an unrelated effect (Accurate 1 vs. an already-Engaged enemy). See rules_data_json/doctrines/00_general_rules.json."]
+  "knownIssues": [
+    "Shares its name with the Free Realms Faction Rule, which has an unrelated effect (Accurate 1 vs. an already-Engaged enemy). See rules_data_json/doctrines/00_general_rules.json."
+  ]
 }

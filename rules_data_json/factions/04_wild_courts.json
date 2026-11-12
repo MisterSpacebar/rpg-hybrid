@@ -18,25 +18,25 @@
       "name": "Through the Wild",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "Reposition one friendly Unit from a terrain feature to another suitable terrain feature within Medium. It cannot finish Engaged."
+      "effect": "During the active Unit’s Movement activation, if it is unengaged and already benefiting from Cover, it may Blink 6. Its repositioning must end with the entire Unit legally in Coherency and benefiting from Cover provided by a different piece of cover-granting terrain than the one it began in. Blink ignores intervening terrain but not elevation, and cannot end Engaged. This is not a Move, Charge, or free Disengage."
     },
     {
       "name": "Entangling Growth",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "One visible enemy within Medium suffers Slow 2 or cannot Charge during the current Phase."
+      "effect": "Choose one visible enemy within Medium of the active Unit. That enemy suffers Slow 2 or cannot Charge during the current Phase (choose one)."
     },
     {
       "name": "Fade into the Wilds",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "After being attacked, one unengaged friendly Unit may Move up to 3\"."
+      "effect": "After a friendly unengaged Unit is attacked, it may Move up to 2\", ending legally. This does not override Disengage or Withdrawn restrictions."
     },
     {
       "name": "Cull the Flank",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Cavalry 4 or Anti-Ranged 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Cavalry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [

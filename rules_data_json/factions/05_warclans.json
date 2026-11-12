@@ -24,7 +24,7 @@
       "name": "Overwhelm",
       "timing": "Combat",
       "cost": "2 CP",
-      "effect": "One friendly multi-model Unit gains +1 Attack per Model during its next Combat activation."
+      "effect": "The active friendly multi-model Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase."
     },
     {
       "name": "Keep Fighting!",
@@ -36,7 +36,7 @@
       "name": "Crush Their Ranks",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Infantry 4 or Anti-Ranged 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [

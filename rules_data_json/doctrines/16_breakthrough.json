@@ -11,25 +11,25 @@
       "name": "Breach Guard",
       "slot": "E",
       "timing": "Combat",
-      "effect": "One friendly Unit that successfully Charged this Round gains Accurate 2 on its next Melee Attack against an Armored target. If the target had Brace during that Charge, also gain +1 Attack."
+      "effect": "If the active Unit successfully Charged this Round, it gains Accurate 2 on its next Melee Attack against an Armored target. If the target had Brace during the Charge, also gain +1 Attack die."
     },
     {
       "name": "Momentum Drive",
       "slot": "V",
       "timing": "Assault",
-      "effect": "One friendly Unit gains Charge 2 when declaring its next Charge this Phase. Charge Impact is unchanged."
+      "effect": "The active Unit gains Charge 2 when declaring its next Charge this Assault Phase. Charge Impact is unchanged."
     },
     {
       "name": "Siege Breaker",
       "slot": "A",
       "timing": "Assault/Combat",
-      "effect": "One friendly Unit gains Anti-[chosen matching type] 4 on its next Attack against an Armored Unit, Monster, Vehicle, War Machine, or Fortification this Phase. Against a Structure or Fortification, the Attack also gains +1 Damage."
+      "effect": "The active Unit gains Anti-[chosen matching type] 4 on its next Attack against an Armored Unit, Monster, Vehicle, War Machine, or Fortification this Phase. Against a Structure or Fortification, the Attack also gains +1 Damage."
     },
     {
       "name": "Press the Breach",
       "slot": "C",
       "timing": "Combat",
-      "effect": "After a friendly Unit inflicts unsaved Damage in Engagement, the target loses one bonus Unit of objective-control counting until the end of the Round, to a minimum of its normal count."
+      "effect": "After the active Unit inflicts unsaved Damage on an enemy Engaged with it, that enemy loses one bonus Unit of objective-control counting until the end of the Round, down to its ordinary minimum."
     },
     {
       "name": "Command the Breach",
