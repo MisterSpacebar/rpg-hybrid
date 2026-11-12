@@ -295,7 +295,7 @@ function factionEntries(f, coreReference) {
   const base = (u, extra) => ({
     source: 'faction', factionId: slug, key: `faction:${slug}:${slugify(u.name)}`, name: u.name,
     basePoints: u.points, baseModels: u.models ?? 1, maxModels: u.models ?? 1, modelOptions: [],
-    tags: u.tags ?? [], stats: u.modelProfile ?? null, impact: u.impact ?? null,
+    tags: u.tags ?? [],     stats: u.modelProfile ?? null, impact: u.impact ?? null, charge: u.charge ?? null,
     attacks: u.attackProfiles ?? [], abilities: u.abilities ?? [], description: u.note ?? null,
     groups: upgradeGroup(u), heroOption: null,
     isCore: false, isHero: false, isLargeAsset: false, isLeader: false,
