@@ -35,7 +35,7 @@ Recruitment Slots represent permission to purchase Units. They do not provide Un
 | Recruitment Slots               | 15                                        |
 | Faction                         | Choose 1                                  |
 | Doctrines                       | Choose any 2 distinct Doctrines           |
-| Faction Commands                | Choose 2 of the faction's 3               |
+| Faction Commands                | Choose 2 of the faction's 4               |
 | Doctrine Commands               | Choose 3 of 5 from each selected Doctrine |
 | Headquarters                    | Minimum 1 (may be non-Hero)               |
 | Core Units                      | Minimum 3                                 |
@@ -190,7 +190,7 @@ Each Faction provides:
 
 1. A Faction Rule.
 2. Two Faction Foundation Recruitment Slots.
-3. Three Faction Commands, of which two are selected.
+3. Four Faction Commands, of which two are selected.
 4. Access to its signature Units and Characters.
 5. Access to appropriately themed Generic Units.
 6. Suggested Doctrines representing its traditional battlefield strategies.
@@ -264,26 +264,26 @@ No additional permission, Points cost, or special rule is required to choose an 
 
 # 5. Faction Commands
 
-Each Faction provides three Faction Commands.
+Each Faction provides four Faction Commands.
 
-Choose two of these three Commands when constructing an army.
+Choose two of these four Commands when constructing an army.
 
 Each selected Command grants one Recruitment Slot of its listed category and becomes available during battle.
 
-| Faction        | Command 1               | Command 2                 | Command 3                |
-| -------------- | ----------------------- | ------------------------- | ------------------------ |
-| Free Realms    | Coordinated Advance (C) | Covering Fire (R)         | Secure Ground (C)        |
-| Sacred Orders  | Stand Fast (E)          | Righteous Retaliation (E) | Heroic Intervention (H)  |
-| Iron Holds     | Hold the Line (C)       | Concentrated Volley (R)   | Prepared Position (S)    |
-| Wild Courts    | Through the Wild (V)    | Entangling Growth (S)     | Fade into the Wilds (V)  |
-| Warclans       | Get In There! (V)       | Overwhelm (C)             | Keep Fighting! (C)       |
-| Underclans     | Dirty Trick (S)         | Scurry Away (V)           | Mob Them! (C)            |
-| Death Legions  | Rise Again (C)          | Death March (C)           | The Dead Do Not Tire (S) |
-| Blood Courts   | Blood Frenzy (E)        | Predatory Speed (V)       | Mesmerize (H)            |
-| Spirit Hosts   | Fade from Reality (S)   | Spectral Passage (V)      | Haunting Presence (V)    |
-| Infernal Hosts | Unbound Power (E)       | Blood Offering (C)        | Open the Rift (C)        |
-| Arcane Orders  | Overchannel (S)         | Counterspell (S)          | Spatial Fold (V)         |
-| Titan Clans    | Thunderous Advance (V)  | Smash Through (C)         | Roar of Dominance (S)    |
+| Faction | Command 1 | Command 2 | Command 3 | Command 4 |
+| --- | --- | --- | --- | --- |
+| Free Realms | Coordinated Advance (C) | Covering Fire (R) | Secure Ground (C) | Coordinated Targeting (R) |
+| Sacred Orders | Stand Fast (E) | Righteous Retaliation (E) | Heroic Intervention (H) | Break Their Line (E) |
+| Iron Holds | Hold the Line (C) | Concentrated Volley (R) | Prepared Position (S) | Counterbattery Orders (R) |
+| Wild Courts | Through the Wild (V) | Entangling Growth (S) | Fade into the Wilds (V) | Cull the Flank (V) |
+| Warclans | Get In There! (V) | Overwhelm (C) | Keep Fighting! (C) | Crush Their Ranks (C) |
+| Underclans | Dirty Trick (S) | Scurry Away (V) | Mob Them! (C) | Strike the Exposed (E) |
+| Death Legions | Rise Again (C) | Death March (C) | The Dead Do Not Tire (S) | Sever the Vanguard (E) |
+| Blood Courts | Blood Frenzy (E) | Predatory Speed (V) | Mesmerize (H) | Cut Off the Leaders (H) |
+| Spirit Hosts | Fade from Reality (S) | Spectral Passage (V) | Haunting Presence (V) | Haunt the Battleline (E) |
+| Infernal Hosts | Unbound Power (E) | Blood Offering (C) | Open the Rift (C) | Break the Defense (E) |
+| Arcane Orders | Overchannel (S) | Counterspell (S) | Spatial Fold (V) | Disjoin the Formation (S) |
+| Titan Clans | Thunderous Advance (V) | Smash Through (C) | Roar of Dominance (S) | Smash the Ranks (C) |
 
 Only the two selected Commands are added to the army's available Faction Commands.
 
@@ -656,27 +656,27 @@ Because the army selected Heavy Support, it may recruit up to three Large Assets
 | Lord-Commander                        | H    | 390    |
 | Marshal                               | H    | 195    |
 | Greatweapon Guard                     | C    | 145    |
-| Outriders                             | R    | 175    |
+| Outriders                             | V    | 175    |
 | Generic Line Infantry with Spears     | C    | 85     |
-| Generic Ranged Infantry with Longbows | R    | 125    |
+| Generic Ranged Infantry with Longbows | R    | 135    |
 | Battlemage                            | S    | 170    |
 | Engineer-Quartermaster                | S    | 130    |
 | War Wagon                             | A    | 240    |
 | Grand Cannon                          | A    | 185    |
-| Generic Heavy Cavalry                 | V    | 150    |
-| Total                                 | <br> | 1,990  |
+| Generic Ranged Infantry with Muskets  | R    | 150    |
+| Total                                 | —    | 2,000  |
 
-The army has 10 unspent Points and uses 11 of its 15 available Recruitment Slots.
+The army spends exactly 2,000 Points and uses 11 of its 15 available Recruitment Slots.
 
 It is legal to leave its remaining slots empty.
 
-**Pricing note:** Under the current Generic Units catalogue, five Line Infantry with Spears cost **75 + 10 = 85 Points**, while four Ranged Infantry with Longbows cost **100 + 25 = 125 Points**. Equipping the Line Infantry with Shields instead would change their price and requires recalculating the list.
+**Pricing note:** Under the current Generic Units catalogue, five Line Infantry with Spears cost **75 + 10 = 85 Points**, while four Ranged Infantry with Longbows cost **100 + 35 = 135 Points**, and four Ranged Infantry with Muskets cost **100 + 50 = 150 Points**. Equipping the Line Infantry with Shields instead would change their price and requires recalculating the list.
 
 ## Step 8: Verify Army Composition
 
 | Requirement            | Army Total    | Result |
 | ---------------------- | ------------- | ------ |
-| Points                 | 1,990 / 2,000 | Legal  |
+| Points                 | 2,000 / 2,000 | Legal  |
 | Recruitment Slots Used | 11 / 15       | Legal  |
 | Headquarters           | 2 / minimum 1 | Legal  |
 | Core-classified Units  | 3 / minimum 3 | Legal  |
@@ -684,17 +684,17 @@ It is legal to leave its remaining slots empty.
 | Large Assets           | 2 / maximum 3 | Legal  |
 | Factions               | 1             | Legal  |
 | Distinct Doctrines     | 2             | Legal  |
-| Faction Commands       | 2 of 3        | Legal  |
+| Faction Commands       | 2 of 4        | Legal  |
 | Firing Line Commands   | 3 of 5        | Legal  |
 | Heavy Support Commands | 3 of 5        | Legal  |
 
 The army's three Core Units are:
 
 1. Greatweapon Guard, occupying C.
-2. Outriders, occupying R.
+2. Outriders, occupying V.
 3. Generic Line Infantry, occupying C.
 
-Outriders count toward the Core minimum because they are a faction-specific Core Unit, even though they occupy an R slot.
+Outriders count toward the Core minimum because they are a faction-specific Core Unit, even though they occupy a V slot.
 
 This army combines conventional Free Realms troops with artillery-focused Doctrines. It gains a different recruitment distribution and tactical identity without changing the Free Realms Faction Rule.
 
@@ -704,13 +704,101 @@ This army combines conventional Free Realms troops with artillery-focused Doctri
 
 
 
-# 11. Army List Checklist
+# 11. Worked Example — Warclans Horde Breakthrough
+
+This example demonstrates a **2,000-point Warclans army** that emphasizes large melee formations, numerical superiority, and committed Charges. It contrasts with the Free Realms gunline and shows the revised Horde/Breakthrough tactics without treating similar Command effects as stackable.
+
+## Step 1: Choose Faction
+
+**Warclans:** Faction Foundation **C, C**, plus Universal Foundation **H, C, C**. Warclans' faction-specific Units receive their normal **Charge 2** faction bonus (or a higher printed Charge rank), while generic Units receive **Charge 1**.
+
+## Step 2: Choose Doctrines
+
+- **Horde** — Foundation **C**.
+- **Breakthrough** — Foundation **V**.
+
+## Step 3: Choose Two Faction Commands
+
+| Command | Slot | Battlefield purpose |
+| --- | --- | --- |
+| Get In There! | V | Coordinate successive Charges |
+| Overwhelm | C | Add up to six Attack dice for 1 CP in Combat |
+
+## Step 4: Choose Three Horde Commands
+
+| Command | Slot | Battlefield purpose |
+| --- | --- | --- |
+| Endless Ranks | C | Extra objective-control counting for large formations |
+| Massed Volley | R | Support the advance with massed shooting |
+| Mob Tactics | E | Anti-Infantry/Elite X based on surviving Model advantage, maximum six |
+
+## Step 5: Choose Three Breakthrough Commands
+
+| Command | Slot | Battlefield purpose |
+| --- | --- | --- |
+| Momentum Drive | V | Commit to a Charge after a short pre-Charge Move |
+| Press the Breach | C | Reward a Charge by counting as two Units near an objective |
+| Siege Breaker | A | Specialized anti-fortification attacks |
+
+## Step 6: Calculate Recruitment Slots
+
+| Slot | Available | Used | Remaining |
+| --- | ---: | ---: | ---: |
+| H | 1 | 1 | 0 |
+| C | 8 | 6 | 2 |
+| E | 1 | 1 | 0 |
+| R | 1 | 1 | 0 |
+| V | 3 | 2 | 1 |
+| S | 0 | 0 | 0 |
+| A | 1 | 1 | 0 |
+| **Total** | **15** | **12** | **3** |
+
+## Step 7: Purchase Units
+
+| Unit | Slot | Points |
+| --- | --- | ---: |
+| Warboss | H | 220 |
+| Choppa Mob (10 Models) | C | 130 |
+| Choppa Mob (10 Models) | C | 130 |
+| Choppa Mob — Double Formation (20 Models) | C | 260 |
+| Brutes (4 Models) | C | 195 |
+| Brutes (4 Models) | C | 195 |
+| Generic Line Infantry, standard Hand Weapons | C | 75 |
+| Boar Riders | V | 190 |
+| Generic Light Cavalry, Mounted Weapons, no additional equipment | V | 115 |
+| Generic Ranged Infantry with Crossbows (4 Models) | R | 125 |
+| Generic Elite Infantry with Hand Weapons (3 Models) | E | 105 |
+| War Beast | A | 260 |
+| **Total** | — | **2,000** |
+
+**Pricing:** Double Formation doubles a faction Unit's starting Model count and Points (Choppa Mob: 10 Models / 130 Points becomes 20 Models / 260 Points). Generic Ranged Infantry with Crossbows cost **100 + 25 = 125 Points**. Generic Light Cavalry use the zero-cost class and Mounted Weapons choices, totaling **115 Points**.
+
+## Step 8: Verify Army Composition
+
+| Requirement | Result | Legality |
+| --- | --- | --- |
+| Points | 2,000 / 2,000 | Legal |
+| Recruitment Slots | 12 / 15 | Legal |
+| Headquarters | Warboss (1) | Legal |
+| Core Units | 6 faction infantry formations, plus the generic Line Infantry; Boar Riders also count as signature Core | Legal |
+| Heroes | Warboss (1) | Legal |
+| Large Assets | War Beast (1 of maximum 2) | Legal |
+| Faction Commands | 2 of 4 | Legal |
+| Doctrine Commands | Horde 3 of 5; Breakthrough 3 of 5 | Legal |
+
+The army fields a **20-Model Choppa Mob** to demonstrate Double Formation and Horde eligibility. Overwhelm adds at most six dice for 1 CP, regardless of the formation's size; Mob Tactics instead measures the Model advantage against the target and grants a matching Anti rank. Those effects are alternative Commands, not bonuses that can be layered on the same Attack.
+
+This roster uses only twelve of its fifteen Recruitment Slots; unused Slots are allowed and do not refund or generate Points.
+
+---
+
+# 12. Army List Checklist
 
 Before beginning a standard game, verify:
 
 - Exactly one Faction has been selected.
 - Exactly two distinct Non-Faction Doctrines have been selected.
-- Two of the Faction's three Commands have been selected.
+- Two of the Faction's four Commands have been selected.
 - Three of five Commands have been selected from each Doctrine.
 - All fifteen Recruitment Slots have been calculated.
 - Every purchased Unit occupies one compatible Recruitment Slot, including flexible C/E/S choices.
@@ -732,7 +820,7 @@ There is no requirement to select a Favored or Compatible Doctrine.
 
 
 
-# 12. Alternative Army Formats
+# 13. Alternative Army Formats
 
 The 2,000-point, 15-slot system is the standard army construction format.
 
@@ -763,4 +851,4 @@ To build a standard army:
 
 Design Principle: The Faction determines an army's identity and signature troops. The Doctrines determine how the player wishes to fight. Recruitment Slots encourage strategic specialization without preventing unconventional army compositions.
 
-Draft Status: Standard army construction v6. All sixteen Doctrines are available to every Faction; Favored and Compatible labels are now recommendations only. Other composition and recruitment rules are unchanged.
+Draft Status: Standard army construction v8. All sixteen Doctrines are available to every Faction; Favored and Compatible labels are now recommendations only. Other composition and recruitment rules are unchanged.

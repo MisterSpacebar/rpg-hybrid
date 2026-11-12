@@ -526,6 +526,8 @@ Other sources of Cover X may specify different conditions.
 
 Cover does not permit Evade against Charge Impact unless a special rule explicitly overrides Impact's normal restriction.
 
+**Concealed detection:** Moving or deploying an enemy Unit within 4" of a Concealed Unit ends Concealed immediately; measure from the nearest Models. That Unit cannot gain Concealed again while an enemy remains within 4". This applies to Command-granted concealment and ordinary concealment. See [Keywords](10_keywords.md#concealed).
+
 ## 11. Heavy
 
 An Attack, Spell, or Action with Heavy may only be used if the Unit did not voluntarily move or perform another Movement Action during the immediately preceding Movement Phase.

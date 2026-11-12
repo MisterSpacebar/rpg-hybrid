@@ -38,7 +38,7 @@ Gain X additional Attack dice against Units with the listed category or tag (for
 
 ## Concealed
 
-A Concealed Unit cannot normally be chosen as an Attack target unless the attacker is Engaged with it or wholly within 4". This proximity exception permits that attacker to target it; proximity does not globally remove Concealed. Concealed ends when the Unit Attacks, enters Engagement, or a specific effect ends it. Concealed granted only while in Cover also ends if Cover is lost. Ignoring Concealed for one Attack does not remove the condition from the Unit.
+A Concealed Unit cannot normally be chosen as an Attack target unless the attacker is Engaged with it or wholly within 4". As soon as any enemy Unit moves or is placed within 4" of the Concealed Unit (measure from the nearest Models), Concealed ends for that Unit. A Unit cannot gain Concealed while any enemy is within 4". Concealed ends when the Unit Attacks, enters Engagement, or a specific effect ends it. Concealed granted only while in Cover also ends if Cover is lost. Ignoring Concealed for one Attack does not remove the condition from the Unit.
 
 ## Pinpoint
 

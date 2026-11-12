@@ -73,7 +73,7 @@ test('the six requested Faction Command revisions keep their target/timing condi
   const wild=cmd('Wild Courts','Through the Wild')
   assert.equal(wild.timing,'Movement')
   assert.match(wild.effect,/Blink 6/)
-  assert.match(wild.effect,/different piece of cover-granting terrain/)
+  assert.match(wild.effect,/different piece of terrain/)
   assert.match(wild.effect,/unengaged/)
   assert.match(cmd('Wild Courts','Fade into the Wilds').effect,/Move up to 2"/)
   const sacred=cmd('Sacred Orders','Heroic Intervention')

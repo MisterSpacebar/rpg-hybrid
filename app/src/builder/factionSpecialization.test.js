@@ -108,7 +108,7 @@ test('Warclans and Titan Clans reduce generic faction bonuses without changing s
 
 test('Wild Courts rules use any eligible Cover, without creating Cover from nothing', () => {
   const wild = faction(4, 'wild_courts')
-  assert.match(wild.factionRule.effect, /while a friendly Unit already benefits from Cover/)
+  assert.match(wild.factionRule.effect, /while a friendly Unit (?:already )?benefit(?:s|ing) from Cover/i)
   assert.match(wild.factionRule.effect, /Cover 1/)
   assert.doesNotMatch(wild.factionRule.effect, /natural Cover|artificial Cover/i)
   const hunters = byName(wild, 'Glade Hunters')

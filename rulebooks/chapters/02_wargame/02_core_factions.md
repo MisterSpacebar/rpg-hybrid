@@ -93,16 +93,16 @@ The Free Realms emphasize cooperation between different battlefield roles rather
 
 ### Faction Rule — Combined Arms
 
-A friendly Unit gains **+1 Attack die to its combined Melee Attack** against an enemy already Engaged by another friendly Unit, or **+1 Attack die to a ranged Weapon Attack** while wholly within Short of another friendly Unit. Apply the bonus once per Attack, not per Model.
+Coordinated Arms: When a friendly Unit makes a Melee Attack against an enemy also Engaged by a DIFFERENT friendly Unit, add +1 Attack die to its combined pool. Alternatively, when a friendly Unit makes a ranged Weapon Attack while wholly within 3" of another friendly Unit, add +1 Attack die to its combined pool; ranged benefit excludes Artillery, Vehicles, War Machines, and Large Assets. Max +1 die from this faction rule per Attack, regardless of supporting Units.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
 - **Coordinated Advance — Movement, 1 CP:** During the active Unit’s Movement activation, choose up to two friendly Units within Short of it (which may include the active Unit). Each selected Unit may immediately Move up to 2", ending legally. These are additional Moves, not refreshed activations; Disengage and Withdrawn rules still apply.
 - **Covering Fire — Reaction, 1 CP:** After a friendly Unit Disengages, choose a different friendly Unit within Short of it that has not yet used its Assault activation. That Unit immediately makes an eligible ranged Attack against the enemy left behind, consuming its normal Assault activation. This does not grant a second Attack.
 - **Secure Ground — Movement, 1 CP:** The active Unit counts as one additional Unit for objective control until the end of the Round.
-- **Coordinated Targeting — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
+- **Coordinated Targeting — Assault or Combat, 1 CP:** When the active Unit declares an Attack this Phase, choose Anti-Infantry 4 or Anti-Ranged 4. It gains that keyword for this Attack only, provided the target has the matching tag. Matching Anti ranks do not stack; use the highest. This Command adds its bonus dice once to the combined Unit Attack pool, not per Model.
 
 ### Signature Core Units
 
@@ -227,14 +227,14 @@ Military religious orders, fortress-monasteries, holy knights, warrior-priests, 
 
 ### Faction Rule — Unyielding
 
-Once per Round, each friendly **Core or Elite Unit** reduces the first instance of Damage it suffers by 1, minimum 0. This applies after Saves and cannot reduce a Critical Injury. [**Playtest:** compare restricting this trait to these Units versus allowing all friendly Units.]
+Once per Round, each friendly Core or Elite Unit reduces the first instance of Damage it suffers by 1, minimum 0. This applies after Saves and cannot reduce a Critical Injury.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
 - **Stand Fast — Reaction, 1 CP:** Improve one friendly Unit's Armor or an applicable Ward by one step until the end of the Phase.
-- **Righteous Retaliation — Reaction, 1 CP:** After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round.
+- **Righteous Retaliation — Reaction, 1 CP:** Reaction: After a friendly Unit survives a Melee Attack, it gains +3 Attack dice on its next eligible Melee Attack against the attacker. This bonus expires at the end of the following Round if unused; it applies once to the combined Attack pool, not per Model.
 - **Heroic Intervention — Reaction, 1 CP:** When a friendly Unit is targeted by an Attack, choose a different friendly Unit within Short of the attacked Unit. The chosen Unit may immediately Move up to 3" toward the attacked Unit, ending legally. It cannot use this Move as a free Disengage, and this does not change the declared Attack target or intercept the Attack.
 - **Break Their Line — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Elite 4 or Anti-Cavalry 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
@@ -343,11 +343,11 @@ Friendly Units that did not Move during the preceding Movement Phase gain Tough 
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
-- **Hold the Line — Reaction, 1 CP:** One friendly Unit gains Tough 2 until the end of the Round.
+- **Hold the Line — Reaction, 1 CP:** Reaction: When a friendly Unit is targeted by an Attack, it gains Tough 2 against the triggering Attack only. This does not persist for other Attacks.
 - **Concentrated Volley — Assault, 1 CP:** The active Unit gains Accurate 2 on its next ranged Attack this Phase, provided it did not voluntarily Move in the preceding Movement Phase.
-- **Prepared Position — Movement, 1 CP:** During the active Unit's Movement activation, create or activate a small barricade or defensive position adjacent to that Unit, following ordinary terrain-placement rules. This does not itself grant an additional Move or activation.
+- **Prepared Position — Movement, 1 CP:** During the active Unit's Movement activation, it may forgo its normal Move to gain Cover 2 against Ranged Attacks until the beginning of its next Movement activation. This is an explicit Cover benefit even without a barricade; no terrain is created. Disengaging or another voluntary Move this Round ends the benefit.
 - **Counterbattery Orders — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Ranged 4 or Anti-Artillery 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
 ### Signature Core Units
@@ -469,15 +469,15 @@ Elven enclaves, fey courts, forest spirits, beast clans, and ancient wilderness 
 
 ### Faction Rule — Paths of the Wild
 
-Ignore the first 2" of Difficult Terrain during each Move activation. While a friendly Unit is already benefiting from Cover, gain an additional **Cover 1** (additive with eligible Cover ranks). This does not itself grant Cover, Evade, or Concealed. All movement must finish legally.
+While a friendly Unit is already benefiting from Cover, it gains an additional Cover 1. This bonus does not create Cover eligibility by itself; ordinary Difficult Terrain rules apply.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
-- **Through the Wild — Movement, 1 CP:** During the active Unit’s Movement activation, if it is unengaged and already benefiting from Cover, it may Blink 6. Its repositioning must end with the entire Unit legally in Coherency and benefiting from Cover provided by a different piece of cover-granting terrain than the one it began in. Blink ignores intervening terrain but not elevation, and cannot end Engaged. This is not a Move, Charge, or free Disengage.
-- **Entangling Growth — Assault, 1 CP:** Choose one visible enemy within Medium of the active Unit. That enemy suffers Slow 2 or cannot Charge during the current Phase (choose one).
-- **Fade into the Wilds — Reaction, 1 CP:** After a friendly unengaged Unit is attacked, it may Move up to 2", ending legally. This does not override Disengage or Withdrawn restrictions.
+- **Through the Wild — Movement, 1 CP:** During the active Unit’s Movement activation, if unengaged and benefiting from Cover, it may Blink 6, ending legally in Cover granted by a different piece of terrain. After repositioning, it gains Concealed until the beginning of its next Movement activation or until Concealed ends normally (including Attacking, entering Engagement, or losing Cover). This is not a Move, Charge, or free Disengage.
+- **Entangling Growth — Assault, 1 CP:** Choose one visible enemy Unit within Medium of the active Unit. It either suffers Slow 2 on its next normal Move or cannot declare a Charge for the rest of this Round (choose one when using this Command).
+- **Fade into the Wilds — Reaction, 1 CP:** Reaction: After an Attack against a friendly unengaged Unit is completely resolved, that Unit may Move up to 2", ending legally. If it ends benefiting from Cover, it gains Concealed until the beginning of its next Movement activation or until Concealed ends normally. It cannot retroactively negate the triggering Attack or bypass Withdrawn and Disengage rules.
 - **Cull the Flank — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Cavalry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
 ### Signature Core Units
@@ -597,14 +597,14 @@ Both signature Core choices are Infantry. Their cavalry and ranged troops remain
 
 ### Faction Rule — Eager for Battle
 
-Faction Warclans Units gain **Charge 2**; generic Units recruited into Warclans instead gain **Charge 1**. Use the highest applicable Charge rank rather than adding ranks; printed Boar Riders retain Charge 3. This never adds Impact.
+Faction-specific Warclans Units gain Charge 2; generic Units recruited into Warclans instead gain Charge 1. Use the highest applicable Charge X, not the sum, unless another rule explicitly says otherwise. These bonuses affect Charge distance, not Impact. Printed higher Charge ranks on faction Units (such as Boar Riders Charge 3) still apply.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
 - **Get In There! — Assault Reaction, 1 CP:** When a different friendly Unit successfully completes a Charge, choose one unactivated friendly Unit within Short of the charger. It may immediately make its normal Charge activation, consuming its Assault activation for this Phase; it does not gain a second Charge.
-- **Overwhelm — Combat, 2 CP:** The active friendly multi-model Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase.
+- **Overwhelm — Combat, 1 CP:** The active multi-model Unit gains +1 Attack die per surviving Model, to a maximum of +6 Attack dice, on its next Melee Attack this Combat Phase. This bonus is added once to the combined Unit Attack pool, not multiplied again by its Models.
 - **Keep Fighting! — Reaction, 1 CP:** After destroying an enemy Unit in Engagement, the attacking Unit may Move up to 2" toward another enemy.
 - **Crush Their Ranks — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
@@ -737,9 +737,9 @@ Friendly Units containing at least 5 Models gain Accurate 2.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
-- **Dirty Trick — Assault, 1 CP:** Choose one visible enemy Unit during the active Unit’s Assault activation. Worsen that enemy’s Armor or Evade by one step (choose one) until the end of this Phase. This is an enemy debuff and may affect later friendly Attacks; it does not grant another Unit an activation.
+- **Dirty Trick — Assault, 1 CP:** Choose one visible enemy Unit within Medium of the active Unit during this Unit's Assault activation. Worsen that enemy's Armor or Evade by one step (choose one) until the end of this Assault Phase. This enemy debuff may affect later friendly Attacks during the Phase; it does not grant any additional activation.
 - **Scurry Away — Movement, 1 CP:** During its own Movement activation, the active Unit may Disengage without becoming Withdrawn. It follows all other normal Disengage restrictions and does not gain an additional activation.
 - **Mob Them! — Movement, 1 CP:** During the active Unit’s Movement activation, choose up to two friendly Units (including the active Unit if desired) to Move up to 2" toward the same enemy within Medium of the active Unit. Each Move must end legally; this is a multi-unit support exception, not an activation refresh.
 - **Strike the Exposed — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Support 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
@@ -861,15 +861,15 @@ Both signature Core choices are Infantry, leaving conventional undead archers an
 
 ### Faction Rule — Endless Dead
 
-The first time each Round an Undead Unit with more than one starting Model **survives an Attack that defeats one or more of its basic Models**, roll 1D6 for each Model defeated by that Attack. For each 6+, restore one defeated basic Model to that surviving Unit, up to its starting size, placing returned Models legally in Coherency. This passive effect may return Models while Engaged but **cannot restore a completely destroyed Unit**.
+The first time each Round an Undead Unit with more than one starting Model survives an Attack that defeats one or more of its basic Models, roll 1D6 for each Model defeated by that Attack. For each 6+, restore one defeated basic Model to that surviving Unit, up to its starting size, placing returned Models legally in Coherency. This passive effect may return Models while Engaged but cannot restore a completely destroyed Unit.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
-- **Rise Again — Movement, 1 CP:** Either restore one defeated basic Model to a surviving, unengaged friendly Undead Unit (up to starting size), or once per battle, return one completely destroyed friendly Undead Core Unit with two original basic Models in legal Coherency, wholly within the friendly Deployment Zone at the end of Movement. That returned Unit cannot activate, Charge, or control objectives this Round. Both uses retain normal CP/card requirements.
+- **Rise Again — Movement, 1 CP:** During the active Unit's Movement activation, choose a surviving, unengaged friendly Undead Unit within Short of the active Unit to restore one defeated basic Model, up to its starting size. Alternatively, once per battle, designate a completely destroyed, previously purchased friendly Undead Core Unit for return at the end of this Movement Phase, placing two of its original basic Models wholly within the friendly Deployment Zone in legal Coherency. This return consumes one normal reinforcement allowance for the Round; the returned Unit cannot activate, Charge, or control objectives that Round. Neither mode creates a free new Unit.
 - **Death March — Movement, 1 CP:** The active eligible Undead Unit may immediately make an additional normal Move, ending legally. It cannot make a ranged Attack this Round; this does not refresh its Movement activation or remove Withdrawn.
-- **The Dead Do Not Tire — Movement, 1 CP:** Remove one negative condition from the active friendly Undead Unit.
+- **The Dead Do Not Tire — Movement, 1 CP:** Remove Slow, Off-Balance, or one temporary Hit, Move, or Evade penalty from the active friendly Undead Unit. This cannot remove Withdrawn, accumulated Damage, or temporary Wounds.
 - **Sever the Vanguard — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Elite 4 or Anti-Cavalry 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
 ### Signature Core Units
@@ -979,11 +979,11 @@ Once per Round, after a friendly Unit defeats an enemy Model in Engagement, Heal
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
-- **Blood Frenzy — Combat, 1 CP:** The active Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase.
-- **Predatory Speed — Reaction, 1 CP:** After destroying an enemy Unit, one friendly Unit may Move up to 2".
-- **Mesmerize — Reaction, 1 CP:** One nearby enemy worsens Hit by one step when attacking a chosen friendly Unique Unit until the end of the Phase.
+- **Blood Frenzy — Combat, 1 CP:** When the active Unit makes a Melee Attack against an enemy Unit that has already lost at least one Model or has accumulated unsaved Damage, gain +1 Attack die per surviving Model, maximum +4 Attack dice, on that Attack. Add these dice once to the combined Unit pool.
+- **Predatory Speed — Reaction, 1 CP:** Reaction: After a friendly Unit destroys an enemy Unit, choose that victorious Unit or one other friendly Unit within Short (6") of it. The chosen Unit may Move up to 2", ending legally. This is not a free Disengage or another activation.
+- **Mesmerize — Reaction, 1 CP:** Reaction: When an enemy Unit within Short (6") of a friendly Unique Unit declares an Attack against that Unique Unit, worsen the enemy’s Hit by one step for that triggering Attack only.
 - **Cut Off the Leaders — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Hero 4 or Anti-Officer 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
 ### Signature Core Units
@@ -1085,11 +1085,11 @@ They do not require conventional mounted cavalry to field mobile battlefield uni
 
 ### Faction Rule — Incorporeal
 
-Friendly Spirit Units gain Ward 6+ against Physical Damage, or their Ward is improved by 1 against incoming Physical damage. This effect is already marked on the faction datasheets and is **not applied a second time** to those printed Ward values.
+Friendly Spirit Units gain Ward 6+ against Physical Damage, or their Ward is improved by 1 against incoming Physical damage. This effect is already marked on the faction datasheets and is not applied a second time to those printed Ward values.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
 - **Fade from Reality — Reaction, 1 CP:** Improve one friendly Unit's applicable Ward by one step until the end of the Phase.
 - **Spectral Passage — Movement, 1 CP:** The active Unit gains Move +2" and may move through terrain and Models during this Movement activation, finishing legally.
@@ -1191,15 +1191,15 @@ Demonic legions, corrupted mortal warriors, infernal cults, and summoned horrors
 
 ### Faction Rule — Dark Bargain
 
-Once per activation, a friendly Infernal Unit may suffer 1 Damage to reroll one die, obeying the normal once-per-die reroll limitation.
+Once per friendly Infernal Unit per Round, before resolving one of its rolls, that Unit may voluntarily take 1 temporary Wound to reroll up to two dice in that roll. The Unit cannot voluntarily exceed 2 pending temporary Wounds, cannot reroll any die more than once, and cannot reroll a Reckless roll. Temporary Wounds are pending Damage, not extra maximum Wounds; resolve using the core Damage and Defeat rules.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
-- **Unbound Power — Assault, 1 CP:** The active Unit's next Attack this Assault Phase gains +2 Attack dice to its combined pool. If that Attack Blunders, the active Unit suffers 1 Damage.
-- **Blood Offering — Assault, 1 CP:** During the active Unit’s Assault activation, damage or remove one eligible friendly basic Model. Choose one other friendly Unit within Short of the active Unit; the chosen Unit gains Accurate 2 on its next Attack this Round. The Command explicitly supports another Unit and does not grant an extra Attack or activation.
-- **Open the Rift — Movement, 1 CP:** Deploy one eligible, already paid-for minor Infernal Unit from Reserve according to its summoning restrictions.
+- **Unbound Power — Assault, 1 CP:** The active Unit's next eligible Attack this Assault Phase gains +2 Attack dice to its combined pool. If that Attack Blunders, the active Unit gains 1 temporary Wound as backlash. Mandatory backlash can exceed the voluntary 2-Wound limit; the temporary Wounds are converted when the Unit next suffers unsaved Damage.
+- **Blood Offering — Assault, 1 CP:** During the active Unit's Assault activation, it voluntarily takes 2 temporary Wounds, provided doing so would not put it above the voluntary limit of 2. Choose a different friendly Unit within Short (6") of it; that Unit's next eligible Attack this Round gains +3 Attack dice and Accurate 1. The bonus applies to one combined Attack pool and grants no additional activation.
+- **Open the Rift — Movement, 1 CP:** During the active Unit's Movement activation, designate one eligible already-purchased minor Infernal Unit in Reserve for placement at the normal end-of-Movement reinforcement step, following its summoning restrictions. This consumes one available normal reinforcement slot and cannot exceed the Round's allowance. The arriving Unit cannot activate in Movement, Charge, or control objectives this Round unless an explicit exception permits it.
 - **Break the Defense — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Elite 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
 ### Signature Core Units
@@ -1323,10 +1323,10 @@ Friendly Spell Attacks gain Accurate 1.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
 - **Overchannel — Assault, 1 CP:** The active Unit’s next Spell Attack this Assault Phase gains +1 Damage. This changes Damage per successful unsaved Hit, not the number of Attacks; it does not affect a second Attack.
-- **Counterspell — Reaction, 1 CP:** When a friendly unit is being affected by an enemy Magic attack or ability that involves saves, reroll all 1s rolled for saves to that attack or ability.
+- **Counterspell — Reaction, 1 CP:** Reaction: When a friendly Unit is targeted by an enemy Magic Attack or ability that allows Armor, Evade, or Ward Saves, reroll up to all natural 1s in that Unit's applicable Save roll against the triggering effect. Each die may be rerolled at most once. This does not change Saves that the effect does not permit.
 - **Spatial Fold — Movement, 1 CP:** During its own Movement activation, the active unengaged Unit gains Blink 3 and may immediately reposition up to 3" following normal Blink rules, ending legally and unengaged. This does not count as a normal Move or grant another activation.
 - **Disjoin the Formation — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Elite 4 or Anti-Monster 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
@@ -1457,15 +1457,15 @@ Ogre kingdoms, giant tribes, monstrous nomads, and beast clans. Their ordinary w
 
 ### Faction Rule — Massive Momentum
 
-Faction Titan Clans Units gain **Impact +2**; generic Units recruited into Titan Clans instead gain **Impact +1**. Distinct printed Impact bonuses (including Stampede) add, but repeated faction bonuses never do.
+Faction-specific Titan Clans Units gain Impact 2 on successful Charges; generic Units recruited into Titan Clans instead gain Impact 1. Explicitly distinct printed Impact bonuses (such as Stampede) add to the faction bonus, but duplicate faction bonuses never stack. Charge distance is unchanged.
 
 ### Faction Commands
 
-This faction provides **four** options; choose **two** in standard 2,000-point matched play. Only those two selected cards join the six Doctrine cards.
+This faction offers **four** Command options; choose **two** for standard matched play.
 
-- **Thunderous Advance — Assault, 1 CP:** The active Unit may make an additional legal normal Move immediately before declaring its Charge during this Assault activation; this does not grant an additional Charge or Disengage.
+- **Thunderous Advance — Assault, 1 CP:** When the active Unit declares an eligible Charge target within the normal 12" declaration limit, it may Move up to 3" toward that target, ending legally and unengaged, then must attempt the declared Charge. This additional Assault-phase Move is not a Disengage or a normal Charge and does not extend the declaration limit.
 - **Smash Through — Assault, 1 CP:** When the active Unit declares a Charge, its Charge Impact ignores the defending Unit’s Tough X during Armor Saves against that Impact only. Brace and ordinary Armor/Ward still apply; this does not improve the Unit's later melee Attack.
-- **Roar of Dominance — Assault, 1 CP:** The active friendly Monster cannot be targeted by enemy Reaction Commands until the end of this Assault Phase.
+- **Roar of Dominance — Assault, 1 CP:** During the active Monster Unit's Assault activation, enemy Units cannot use Reaction Commands in response to that Monster's actions or Attacks until the end of this Assault activation. This does not stop a Reaction triggered by some other Unit's action.
 - **Smash the Ranks — Assault or Combat, 1 CP:** For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack.
 
 ### Signature Core Units
