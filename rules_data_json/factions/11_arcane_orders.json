@@ -24,7 +24,7 @@
       "name": "Counterspell",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "When a friendly unit is being affected by an enemy Magic attack or ability that involves saves, reroll all 1s rolled for saves to that attack or ability."
+      "effect": "Reaction: When a friendly Unit is targeted by an enemy Magic Attack or ability that allows Armor, Evade, or Ward Saves, reroll up to all natural 1s in that Unit's applicable Save roll against the triggering effect. Each die may be rerolled at most once. This does not change Saves that the effect does not permit."
     },
     {
       "name": "Spatial Fold",

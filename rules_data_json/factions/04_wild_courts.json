@@ -11,26 +11,26 @@
   "worldbuilding": "Elven enclaves, fey courts, forest spirits, beast clans, and ancient wilderness kingdoms. Their armies control where Engagements occur, relying on terrain, ambush, and unconventional movement.",
   "factionRule": {
     "name": "Paths of the Wild",
-    "effect": "Ignore the first 2\" of Difficult Terrain during each Move activation; finish moves legally. In addition, while a friendly Unit already benefits from Cover, it gains Cover 1 (additive with other eligible Cover X ranks). The faction bonus does not itself grant Cover or qualify a Unit as being in Cover."
+    "effect": "While a friendly Unit is already benefiting from Cover, it gains an additional Cover 1. This bonus does not create Cover eligibility by itself; ordinary Difficult Terrain rules apply."
   },
   "factionCommands": [
     {
       "name": "Through the Wild",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "During the active Unit’s Movement activation, if it is unengaged and already benefiting from Cover, it may Blink 6. Its repositioning must end with the entire Unit legally in Coherency and benefiting from Cover provided by a different piece of cover-granting terrain than the one it began in. Blink ignores intervening terrain but not elevation, and cannot end Engaged. This is not a Move, Charge, or free Disengage."
+      "effect": "During the active Unit’s Movement activation, if unengaged and benefiting from Cover, it may Blink 6, ending legally in Cover granted by a different piece of terrain. After repositioning, it gains Concealed until the beginning of its next Movement activation or until Concealed ends normally (including Attacking, entering Engagement, or losing Cover). This is not a Move, Charge, or free Disengage."
     },
     {
       "name": "Entangling Growth",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "Choose one visible enemy within Medium of the active Unit. That enemy suffers Slow 2 or cannot Charge during the current Phase (choose one)."
+      "effect": "Choose one visible enemy Unit within Medium of the active Unit. It either suffers Slow 2 on its next normal Move or cannot declare a Charge for the rest of this Round (choose one when using this Command)."
     },
     {
       "name": "Fade into the Wilds",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "After a friendly unengaged Unit is attacked, it may Move up to 2\", ending legally. This does not override Disengage or Withdrawn restrictions."
+      "effect": "Reaction: After an Attack against a friendly unengaged Unit is completely resolved, that Unit may Move up to 2\", ending legally. If it ends benefiting from Cover, it gains Concealed until the beginning of its next Movement activation or until Concealed ends normally. It cannot retroactively negate the triggering Attack or bypass Withdrawn and Disengage rules."
     },
     {
       "name": "Cull the Flank",

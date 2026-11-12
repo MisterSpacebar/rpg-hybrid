@@ -25,7 +25,7 @@
       "name": "Righteous Retaliation",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round."
+      "effect": "Reaction: After a friendly Unit survives a Melee Attack, it gains +3 Attack dice on its next eligible Melee Attack against the attacker. This bonus expires at the end of the following Round if unused; it applies once to the combined Attack pool, not per Model."
     },
     {
       "name": "Heroic Intervention",

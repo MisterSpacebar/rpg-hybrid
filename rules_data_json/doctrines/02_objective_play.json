@@ -23,7 +23,7 @@
       "name": "Deny the Ground",
       "slot": "R",
       "timing": "Assault",
-      "effect": "If the active Unit inflicts unsaved Damage with a ranged Attack against an enemy within 2\" of an objective, that enemy cannot count as more than one Unit for objective control until the end of the Round."
+      "effect": "When the active Ranged Unit makes a ranged Attack while within 2\" of an objective, that Unit counts as two Units for controlling that objective until the end of the Round. This does not require Hits or unsaved Damage and does not stack with other bonuses to objective-control Unit counting."
     },
     {
       "name": "Supply Point",

@@ -37,7 +37,7 @@
       "name": "Coordinated Targeting",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "When the active Unit declares an Attack this Phase, choose Anti-Infantry 4 or Anti-Ranged 4. It gains that keyword for this Attack only, provided the target has the matching tag. Matching Anti ranks do not stack; use the highest. This Command adds its bonus dice once to the combined Unit Attack pool, not per Model."
     }
   ],
   "signatureCoreUnits": [

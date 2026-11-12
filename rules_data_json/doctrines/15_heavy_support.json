@@ -23,19 +23,19 @@
       "name": "Battering Attack",
       "slot": "A",
       "timing": "Combat",
-      "effect": "The active Unit gains +1 Attack, Anti-Armored 1, and Anti-Monster 1 on its next Melee Attack this Phase. Anti bonuses only apply against their respective target categories."
+      "effect": "The active Unit gains +1 Attack die and either Anti-Armored 2 or Anti-Monster 2 on its next Melee Attack this Combat Phase, whichever matches the target. The Anti rank applies once to the combined Unit pool and does not stack with another matching Anti rank."
     },
     {
       "name": "Shock Support",
       "slot": "V",
       "timing": "Assault",
-      "effect": "The active Unit gains Charge 1 on its next Charge this Assault Phase, or Charge 2 if it begins that Charge within Short of a friendly Large Asset. Use the highest applicable Charge rank; do not add ranks."
+      "effect": "When the active Unit declares a Charge this Assault Phase, reroll one Charge die (which cannot already have been rerolled). If the charging Unit began that Charge within Short of a friendly Large Asset, it also ignores up to 2 of the defender's Brace X against the resulting Impact. The original Charge declaration limits apply."
     },
     {
       "name": "Spotter's Call",
       "slot": "S",
       "timing": "Assault",
-      "effect": "The active Unit gains Accurate 2 and reduces its target's effective Cover X by 1 (minimum 0) for its next ranged Attack this Assault Phase. If the active Unit is Artillery or a Large Asset, it also gains +1 Attack die."
+      "effect": "During the active Unit's Assault activation, designate one visible enemy Unit. Choose one different friendly Artillery or Large Asset Unit within Short of the active Unit. That designated ally gains Accurate 2 and reduces the target's effective Cover X by 1 (minimum 0) on its next ranged Attack against the marked enemy this Assault Phase. This delegated support does not grant an extra Attack or activation."
     }
   ],
   "doctrineIdentity": "Concentrated force and coordination around powerful weapons or battlefield assets. Heavy Support is useful even without multiple Large Assets, but its additional A slots and selected bonuses reward armies investing in them."

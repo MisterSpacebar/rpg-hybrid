@@ -17,7 +17,7 @@
       "name": "Find the Opening",
       "slot": "H",
       "timing": "Assault/Combat",
-      "effect": "The active Unit gains Accurate 2 on its next Attack this Phase."
+      "effect": "When the active multi-model Unit declares an Attack against an enemy with more surviving Models, choose one of the active Unit's own matching battlefield Unit Type or Role tags also borne by the target (Infantry, Cavalry, Ranged, Elite, Monster, Support, or Artillery). Gain Anti-[chosen tag] X for this Attack, where X equals target surviving Models minus active surviving Models, maximum 6. This Command requires at least two surviving Models in the active Unit; ancestry and Faction tags do not qualify. Anti-X applies once to the combined Attack pool and never stacks with another matching Anti rank."
     },
     {
       "name": "Perfect Technique",

@@ -18,7 +18,7 @@
       "name": "Rise Again",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "Either restore one defeated basic Model to a surviving, unengaged friendly Undead Unit (up to starting size), or once per battle, return one completely destroyed friendly Undead Core Unit with two original basic Models in legal Coherency, wholly within the friendly Deployment Zone at the end of Movement. That returned Unit cannot activate, Charge, or control objectives this Round. Both uses retain normal CP/card requirements."
+      "effect": "During the active Unit's Movement activation, choose a surviving, unengaged friendly Undead Unit within Short of the active Unit to restore one defeated basic Model, up to its starting size. Alternatively, once per battle, designate a completely destroyed, previously purchased friendly Undead Core Unit for return at the end of this Movement Phase, placing two of its original basic Models wholly within the friendly Deployment Zone in legal Coherency. This return consumes one normal reinforcement allowance for the Round; the returned Unit cannot activate, Charge, or control objectives that Round. Neither mode creates a free new Unit."
     },
     {
       "name": "Death March",
@@ -30,7 +30,7 @@
       "name": "The Dead Do Not Tire",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "Remove one negative condition from the active friendly Undead Unit."
+      "effect": "Remove Slow, Off-Balance, or one temporary Hit, Move, or Evade penalty from the active friendly Undead Unit. This cannot remove Withdrawn, accumulated Damage, or temporary Wounds."
     },
     {
       "name": "Sever the Vanguard",

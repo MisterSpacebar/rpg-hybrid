@@ -17,13 +17,13 @@
       "name": "Marked Fire Lane",
       "slot": "R",
       "timing": "Assault",
-      "effect": "The active Unit gains Pinpoint and Accurate 2 on its next ranged Attack this Phase."
+      "effect": "When the active Unit declares its next ranged Attack this Assault Phase, gain Pinpoint, ignore Concealed for targeting that Attack, and reduce the target's effective Cover X by up to 2 (minimum 0). Suppressing Cover rerolls does not remove Evade eligibility provided by Cover; ignoring Concealed does not remove the condition."
     },
     {
       "name": "Artillery Correction",
       "slot": "A",
       "timing": "Assault",
-      "effect": "When the active Unit makes a Heavy ranged Attack this Assault Phase, it gains Accurate 2 and ignores one rank of the target's effective Cover X (minimum 0) for that Attack."
+      "effect": "When the active Unit makes its next Heavy ranged Attack this Assault Phase, gain +1 Attack die and reduce the target's effective Cover X by up to 2 (minimum 0) against that Attack. Suppressing Cover rerolls does not remove Cover-granted Evade eligibility."
     },
     {
       "name": "Veteran Gunners",

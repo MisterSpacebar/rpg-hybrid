@@ -4,6 +4,8 @@
 
 **Wounds** are a Character or Model’s maximum capacity for Damage; record accumulated **Damage** separately. When accumulated Damage equals or exceeds Wounds, the Character is **Defeated**. Do not use *Health* or *Downed* as separate rules terms.
 
+Temporary Wounds are pending Damage, not increased maximum Wounds. They do not immediately defeat Models; on the Unit's next unsaved Damage event, add all pending temporary Wounds once before ordinary allocation, then clear them. Heal does not remove them. See [Structured Combat — Damage and Defeat](16_structured_combat.md#16-damage-and-defeat).
+
 Specific rules override these general rules. See [Keywords](10_keywords.md) for combat effects, [Advancement](03_experience_and_advancement.md) for XP/Points, and the relevant full combat chapter for phase sequencing.
 
 ## 1. Skill Checks

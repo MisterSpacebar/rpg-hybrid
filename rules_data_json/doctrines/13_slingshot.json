@@ -11,7 +11,7 @@
       "name": "Anchor and Launch",
       "slot": "C",
       "timing": "Movement",
-      "effect": "If the active Unit has not voluntarily Moved or Blinked this Round, choose a different unengaged friendly Unit within 2\" of it. That Unit may immediately Move up to 3\", ending legally and unengaged. The active Unit acts as the anchor; the other Unit is an explicitly delegated recipient."
+      "effect": "During the active Unit’s Movement activation, if it has not voluntarily Moved or Blinked this Round, choose a different unengaged friendly Unit within 2\" of it. That Unit may immediately make a Move of up to 5\", ending legally and unengaged. The active Unit is the anchor; this is an explicit delegated extra Move, not an activation refresh or free Disengage."
     },
     {
       "name": "Exploit the Opening",
@@ -29,7 +29,7 @@
       "name": "Launch Platform",
       "slot": "A",
       "timing": "Movement",
-      "effect": "If the active Unit is unengaged and within 2\" of a friendly Asset, it immediately resolves Blink 2."
+      "effect": "If the active Unit is unengaged and within 2\" of a friendly Asset during its Movement activation, it may immediately Blink 4, following normal Blink and legal-placement restrictions."
     },
     {
       "name": "Relay Maneuver",

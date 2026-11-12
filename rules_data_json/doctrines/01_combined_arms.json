@@ -35,7 +35,7 @@
       "name": "Forward Observers",
       "slot": "A",
       "timing": "Assault",
-      "effect": "The active Unit gains Accurate 1 and reduces the target's effective Cover X by 1 (minimum 0) on its next ranged Attack this Assault Phase, provided a different friendly Unit can see the target. This does not remove Cover eligibility."
+      "effect": "When the active Unit declares a ranged Attack this Assault Phase and a different friendly Unit has line of sight to the target, gain Accurate 1, reduce the target's effective Cover X by 1 (minimum 0), and ignore Concealed for targeting this Attack. Ignoring Concealed does not remove it, and reducing Cover X does not remove Cover-granted Evade eligibility."
     }
   ],
   "doctrineIdentity": "Cooperation between multiple Units. Combined Arms rewards keeping formations close enough to support each other without requiring specific recruitment categories.",

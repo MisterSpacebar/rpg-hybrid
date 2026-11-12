@@ -18,7 +18,7 @@
       "name": "Thunderous Advance",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "The active Unit may make an additional legal normal Move immediately before declaring its Charge during this Assault activation; this does not grant an additional Charge or Disengage."
+      "effect": "When the active Unit declares an eligible Charge target within the normal 12\" declaration limit, it may Move up to 3\" toward that target, ending legally and unengaged, then must attempt the declared Charge. This additional Assault-phase Move is not a Disengage or a normal Charge and does not extend the declaration limit."
     },
     {
       "name": "Smash Through",
@@ -30,7 +30,7 @@
       "name": "Roar of Dominance",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "The active friendly Monster cannot be targeted by enemy Reaction Commands until the end of this Assault Phase."
+      "effect": "During the active Monster Unit's Assault activation, enemy Units cannot use Reaction Commands in response to that Monster's actions or Attacks until the end of this Assault activation. This does not stop a Reaction triggered by some other Unit's action."
     },
     {
       "name": "Smash the Ranks",

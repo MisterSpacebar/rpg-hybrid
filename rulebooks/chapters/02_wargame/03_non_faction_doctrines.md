@@ -105,7 +105,7 @@ Strategy: Coordinate different battlefield roles to improve the performance of o
 | Crossfire | R | Assault | The active Unit gains Accurate 2 and Pinpoint on its next ranged Attack this Assault Phase against an enemy already attacked by a different friendly Unit this Round. |
 | Coordinated Orders | H | Movement | Choose two different friendly Units within Short of the same friendly Headquarters. Remove one temporary Hit or Move penalty from one. The other gains Accurate 1 on its next Attack this Round. |
 | Interlocking Lines | E | Combat Reaction | When a friendly Unit within 2" of a different friendly Unit is attacked in Engagement, the defender gains Tough 2 against that Attack. |
-| Forward Observers | A | Assault | The active Unit gains Accurate 1 and reduces the target's effective Cover X by 1 (minimum 0) on its next ranged Attack this Assault Phase, provided a different friendly Unit can see the target. This does not remove Cover eligibility. |
+| Forward Observers | A | Assault | When the active Unit declares a ranged Attack this Assault Phase and a different friendly Unit has line of sight to the target, gain Accurate 1, reduce the target's effective Cover X by 1 (minimum 0), and ignore Concealed for targeting this Attack. Ignoring Concealed does not remove it, and reducing Cover X does not remove Cover-granted Evade eligibility. |
 
 Doctrine Identity: Cooperation between multiple Units.
 
@@ -127,7 +127,7 @@ Strategy: Capture, contest, and maintain control of valuable battlefield positio
 | --- | --- | --- | --- |
 | Seize the Opening | V | Movement | If the active Unit is unengaged and within Short of an objective, it may immediately Move up to 2" toward that objective, ending legally and unengaged. This extra Move does not refresh its activation. |
 | Dig In | C | Assault/Combat Reaction | When a friendly Unit within 2" of an objective is attacked, it gains Tough 2 against that Attack. If the Attack is a Charge, also gain Brace 1 before resolving Impact. |
-| Deny the Ground | R | Assault | If the active Unit inflicts unsaved Damage with a ranged Attack against an enemy within 2" of an objective, that enemy cannot count as more than one Unit for objective control until the end of the Round. |
+| Deny the Ground | R | Assault | When the active Ranged Unit makes a ranged Attack while within 2" of an objective, that Unit counts as two Units for controlling that objective until the end of the Round. This does not require Hits or unsaved Damage and does not stack with other bonuses to objective-control Unit counting. |
 | Supply Point | S | Movement | If the active Unit is within 2" of an objective, either Heal 2 accumulated Damage from it or remove Withdrawn from it. |
 | Clear the Position | A | Assault/Combat | The active Unit gains +2 Attacks on its next Attack this Phase against an enemy contesting an objective. |
 
@@ -152,7 +152,7 @@ For **Veteran Spearhead**, an Elite Unit includes the exact **Elite** tag or an 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
 | Veteran Spearhead | E | Combat | If the active Unit has an Elite tag, its next Melee Attack this Combat Phase gains Critical 1 without requiring a Surge. |
-| Find the Opening | H | Assault/Combat | The active Unit gains Accurate 2 on its next Attack this Phase. |
+| Find the Opening | H | Assault/Combat | When the active multi-model Unit declares an Attack against an enemy with more surviving Models, choose one of the active Unit's own matching battlefield Unit Type or Role tags also borne by the target (Infantry, Cavalry, Ranged, Elite, Monster, Support, or Artillery). Gain Anti-[chosen tag] X for this Attack, where X equals target surviving Models minus active surviving Models, maximum 6. This Command requires at least two surviving Models in the active Unit; ancestry and Faction tags do not qualify. Anti-X applies once to the combined Attack pool and never stacks with another matching Anti rank. |
 | Perfect Technique | E | Assault/Combat | The active Unit gains Accurate 1 on its next Attack this Phase. Against that Attack, reduce the defender's effective Tough X and Cover X by 2 each, minimum zero. Suppressing Cover rerolls does not remove Cover-granted Evade eligibility. |
 | Combat Training | S | Movement | The active Unit gains Tough 1 and Brace 1 until the end of the Round. |
 | Knightly Order | V | Assault | When the active Unit declares its next Charge this Assault Phase, it gains Charge 1 and Impact +1 for that Charge. Charge ranks use the highest rank unless explicitly additive. |
@@ -216,8 +216,8 @@ Strategy: Maintain ranged superiority through coordinated shooting, accuracy, an
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
 | Concentrated Fire | R | Assault | If the active Unit has not voluntarily Moved, Disengaged, or Blinked this Round, it gains +2 Attack dice on its next ranged Attack this Assault Phase. |
-| Marked Fire Lane | R | Assault | The active Unit gains Pinpoint and Accurate 2 on its next ranged Attack this Phase. |
-| Artillery Correction | A | Assault | When the active Unit makes a Heavy ranged Attack this Assault Phase, it gains Accurate 2 and ignores one rank of the target's effective Cover X (minimum 0) for that Attack. |
+| Marked Fire Lane | R | Assault | When the active Unit declares its next ranged Attack this Assault Phase, gain Pinpoint, ignore Concealed for targeting that Attack, and reduce the target's effective Cover X by up to 2 (minimum 0). Suppressing Cover rerolls does not remove Evade eligibility provided by Cover; ignoring Concealed does not remove the condition. |
+| Artillery Correction | A | Assault | When the active Unit makes its next Heavy ranged Attack this Assault Phase, gain +1 Attack die and reduce the target's effective Cover X by up to 2 (minimum 0) against that Attack. Suppressing Cover rerolls does not remove Cover-granted Evade eligibility. |
 | Veteran Gunners | E | Assault | The active Unit gains +1 Attack and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round. |
 | Screening Fire | V | Assault Reaction | When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Melee Attack during the ensuing Combat Phase. |
 
@@ -263,11 +263,11 @@ Strategy: Restrict enemy actions, interfere with movement, and suppress tactical
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| Lockdown | C | Assault Reaction | When an enemy within Medium of a friendly Unit declares a Charge, reduce its final Charge distance by 1", minimum 0". Charge Impact is unchanged. |
+| Lockdown | C | Assault Reaction | Assault Reaction: When an enemy within Medium of a friendly Unit declares a Charge, reduce its final Charge distance by 2", minimum 0". The declared Charge target and 12" declaration limit are unchanged; Charge Impact is unaffected. |
 | Interdiction | V | Movement Reaction | When an enemy begins a normal Move within Short of a friendly Unit, reduce its Move distance by 2", minimum 1". |
-| Disrupt Orders | H | Assault/Combat Reaction | When an enemy within Medium of friendly Headquarters receives an Attack bonus, remove Accurate 1 from that Attack. If it has no Accurate bonus, reduce its bonus Attacks by one die instead. |
+| Disrupt Orders | H | Assault/Combat Reaction | Assault/Combat Reaction: When an enemy Unit within Medium of friendly Headquarters receives a bonus to an Attack, reduce that Attack's Accurate X by up to 2; if the Attack has no Accurate bonus, remove up to two bonus Attack dice instead (not below its unmodified base Attacks). This does not suppress printed/passive bonuses outside the triggering Attack. |
 | Suppressing Fire | R | Assault | If the active Unit inflicts unsaved Damage with its next ranged Attack this Phase, the target suffers Slow 2 and cannot receive positive Move bonuses from Commands during its next normal Move. |
-| Jamming Field | A | Assault | Choose one enemy within Short of the active Unit. That enemy cannot use Reaction Commands against the active Unit's next Attack this Phase. |
+| Jamming Field | A | Assault | During the active Unit's Assault activation, choose one enemy within Short of it. Either suppress that enemy's Concealed until the end of the Phase, or prevent that enemy from using Reaction Commands against the active Unit's next Attack this Phase. A Concealed Unit can be chosen for this Command despite Concealed's normal Attack-targeting restriction. |
 
 Doctrine Identity: Reducing the opponent's tactical options.
 
@@ -347,7 +347,7 @@ A formation containing four or more surviving Models qualifies for the standard 
 | --- | --- | --- | --- |
 | Endless Ranks | C | Movement | If the active Unit has at least four surviving Models, it counts as one additional Unit for objective control until the end of the Round. |
 | Massed Volley | R | Assault | If the active Unit has at least four surviving Models, its next ranged Attack this Assault Phase gains +2 Attack dice. If another friendly Unit with at least four surviving Models is within Short, also gain Accurate 1 on that Attack. |
-| Mob Tactics | E | Combat | The active Unit gains Anti-Infantry 4 on its next Melee Attack against an Infantry enemy also Engaged by a different friendly Unit with at least four surviving Models. |
+| Mob Tactics | E | Combat | When the active multi-model Unit declares a Melee Attack against an enemy with fewer surviving Models, gain Anti-Infantry X or Anti-Elite X, provided the target possesses the matching tag. X equals active surviving Models minus target surviving Models, to a maximum of 6. The active Unit must have at least two surviving Models. Calculate X at declaration; add at most one applicable Anti rank to the combined Attack pool. |
 | Pack Coordination | S | Assault/Combat Reaction | When a friendly Unit within Short of another friendly Unit with at least four surviving Models is attacked, it gains Tough 2 against that Attack. |
 | Encirclement | V | Combat | When the active Unit attacks an enemy also Engaged by a different friendly Unit with at least four surviving Models, that enemy worsens Evade by one step against this Attack. |
 
@@ -372,10 +372,10 @@ Grinding combines the former Grinding and Recursion doctrines. Its commands may 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
 | Unbroken Line | C | Reaction | When a friendly Unit that has already suffered an Attack this Phase is attacked again, it gains Tough 2 against the incoming Attack. |
-| Wear Them Down | H | Combat | Choose an enemy Engaged with the active Unit that was already attacked by a different friendly Unit this Round. Reduce that enemy's next Melee Attack by one Attack die, minimum one, before the end of its next activation. |
+| Wear Them Down | H | Combat | Choose an enemy Engaged with the active Unit that was already attacked by a different friendly Unit this Round. Reduce that enemy's next Melee Attack by up to two Attack dice, minimum one die remaining, before the end of its next Combat activation. |
 | Reform and Recover | S | Movement | Either Heal 2 accumulated Damage from the active Unit, or remove Withdrawn and one temporary Hit, Move, or Evade penalty from it. Defeated Models are not restored. |
 | Attrition Engine | A | Assault/Combat | The active Unit gains Accurate 2 on its next Attack against an enemy that has already suffered unsaved Damage from a different friendly Unit this Round. |
-| Relentless Veterans | E | Combat | The active Unit gains Accurate 2 and Critical 1 on its next Melee Attack against an enemy it attacked during an earlier Round. |
+| Relentless Veterans | E | Combat | When the active Unit makes a Melee Attack against an enemy that has lost a Model or has accumulated unsaved Damage, its next Melee Attack against that enemy this Combat Phase gains +1 Attack die and Critical 1. This checks the defender's current casualties/Damage, not any previous attacker-target history. |
 
 ### Doctrine Identity
 
@@ -448,10 +448,10 @@ Strategy: Use one formation to create movement or attack opportunities for anoth
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| Anchor and Launch | C | Movement | If the active Unit has not voluntarily Moved or Blinked this Round, choose a different unengaged friendly Unit within 2" of it. That Unit may immediately Move up to 3", ending legally and unengaged. The active Unit acts as the anchor; the other Unit is an explicitly delegated recipient. |
+| Anchor and Launch | C | Movement | During the active Unit’s Movement activation, if it has not voluntarily Moved or Blinked this Round, choose a different unengaged friendly Unit within 2" of it. That Unit may immediately make a Move of up to 5", ending legally and unengaged. The active Unit is the anchor; this is an explicit delegated extra Move, not an activation refresh or free Disengage. |
 | Exploit the Opening | E | Combat | If a different friendly Unit inflicted unsaved Damage on an enemy this Round, the active Unit gains Critical 1 on its next Melee Attack against that enemy this Round. |
 | Create the Gap | R | Assault Reaction | After a friendly Unit inflicts unsaved Damage with a ranged Attack, a different unengaged friendly Unit within Short of the enemy may immediately Move up to 2", ending unengaged. |
-| Launch Platform | A | Movement | If the active Unit is unengaged and within 2" of a friendly Asset, it immediately resolves Blink 2. |
+| Launch Platform | A | Movement | If the active Unit is unengaged and within 2" of a friendly Asset during its Movement activation, it may immediately Blink 4, following normal Blink and legal-placement restrictions. |
 | Relay Maneuver | S | Movement | Choose a different unengaged friendly Unit within Short of the active Unit. That other Unit immediately resolves Blink 3, ending legally and unengaged. The active Unit is the relay, not the Blink recipient. |
 
 Doctrine Identity: Sequential cooperation and transferring tactical opportunities between Units.
@@ -474,7 +474,7 @@ Gambit uses Reckless Rolls, additional dice, and unusually consequential failure
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| Double Down | C | Assault/Combat Reaction | When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit normally, to a maximum of the incoming Hits. Excess successful Saves have no effect. These dice cannot be rerolled. Backlash: After resolving the Attack, suffer 1 unpreventable Damage for each natural 1 rolled. |
+| Double Down | C | Assault/Combat Reaction | Assault/Combat Reaction: When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit, up to the incoming Hits; excess Saves do nothing. The dice cannot be rerolled. Backlash: for each complete pair of natural 1s among these Armor Save dice, the Unit suffers 1 unpreventable Damage after resolving the Attack. This special Blunder consequence does not make ordinary Armor Saves generate Blunders. |
 | Risky Calculations | S | Assault | The active Unit gains +2 Attack dice on its next ranged or Spell Attack this Assault Phase. Its Hit roll is Reckless. Blunder: the active Unit suffers Direct Damage 1. |
 | No Quarter | E | Combat | The active Unit gains +1 Attack die and Critical 2 on its next Melee Attack this Combat Phase. Its Hit roll is Reckless; CP-granted Critical does not require a Surge. Blunder: the active Unit becomes Off-Balance until its next Movement activation and cannot use Reaction Commands until then. |
 | Expend the Reserve | A | Assault/Combat | The active Unit gains +3 Attack dice on its next Attack this Phase. Its Hit roll is Reckless. Blunder: the Unit suffers Direct Damage 2. |
@@ -482,11 +482,7 @@ Gambit uses Reckless Rolls, additional dice, and unusually consequential failure
 
 ### Double Down Clarification
 
-Double Down does not roll pairs and keep the highest. All additional dice contribute to a single Armor Save pool.
-
-For example, if an Attack produces three Hits, the defender rolls six Armor Save dice. Up to three successful Saves cancel the three Hits. Every natural 1 among all six dice causes 1 unpreventable Backlash Damage after the Attack is resolved.
-
-Backlash applies to every natural 1, not merely when the roll generates a normal Blunder.
+Double Down rolls one doubled Armor Save pool, not pairs selecting better results. If the Attack inflicts three Hits, roll six Armor Save dice; at most three successes cancel Hits. Each complete pair of natural 1s in that pool generates one Double Down Backlash and inflicts 1 unpreventable Damage after the Attack. A lone natural 1 has no Backlash effect, and the dice cannot be rerolled. Ordinary Armor Save rolls do not generate Blunders.
 
 ### All or Nothing Clarification
 
@@ -516,9 +512,9 @@ Strategy: Coordinate powerful battlefield assets, artillery, heavy attacks, and 
 | --- | --- | --- | --- |
 | Armored Advance | C | Movement | The active Unit gains +2" Move during its next normal Move this Round and Tough 1 against the next ranged Attack it suffers this Round. |
 | Fire Control | H | Assault | Choose one visible enemy Unit. The next Attack made against it by each of up to two different friendly Units this Phase gains Accurate 1. |
-| Battering Attack | A | Combat | The active Unit gains +1 Attack, Anti-Armored 1, and Anti-Monster 1 on its next Melee Attack this Phase. Anti bonuses only apply against their respective target categories. |
-| Shock Support | V | Assault | The active Unit gains Charge 1 on its next Charge this Assault Phase, or Charge 2 if it begins that Charge within Short of a friendly Large Asset. Use the highest applicable Charge rank; do not add ranks. |
-| Spotter's Call | S | Assault | The active Unit gains Accurate 2 and reduces its target's effective Cover X by 1 (minimum 0) for its next ranged Attack this Assault Phase. If the active Unit is Artillery or a Large Asset, it also gains +1 Attack die. |
+| Battering Attack | A | Combat | The active Unit gains +1 Attack die and either Anti-Armored 2 or Anti-Monster 2 on its next Melee Attack this Combat Phase, whichever matches the target. The Anti rank applies once to the combined Unit pool and does not stack with another matching Anti rank. |
+| Shock Support | V | Assault | When the active Unit declares a Charge this Assault Phase, reroll one Charge die (which cannot already have been rerolled). If the charging Unit began that Charge within Short of a friendly Large Asset, it also ignores up to 2 of the defender's Brace X against the resulting Impact. The original Charge declaration limits apply. |
+| Spotter's Call | S | Assault | During the active Unit's Assault activation, designate one visible enemy Unit. Choose one different friendly Artillery or Large Asset Unit within Short of the active Unit. That designated ally gains Accurate 2 and reduces the target's effective Cover X by 1 (minimum 0) on its next ranged Attack against the marked enemy this Assault Phase. This delegated support does not grant an extra Attack or activation. |
 
 Doctrine Identity: Concentrated force and coordination around powerful weapons or battlefield assets.
 
@@ -539,9 +535,9 @@ Strategy: Reach resistant positions, overcome defenders, and maintain pressure a
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
 | Breach Guard | E | Combat | If the active Unit successfully Charged this Round, it gains Accurate 2 on its next Melee Attack against an Armored target. If the target had Brace during the Charge, also gain +1 Attack die. |
-| Momentum Drive | V | Assault | The active Unit gains Charge 2 when declaring its next Charge this Assault Phase. Charge Impact is unchanged. |
+| Momentum Drive | V | Assault | When the active Unit declares a legal Charge target within the normal 12" declaration limit, it may Move up to 2" toward that target, ending legally and unengaged, then must attempt the Charge. This pre-Charge Move does not add Charge distance or extend declaration range, and cannot be used as a Disengage. |
 | Siege Breaker | A | Assault/Combat | The active Unit gains Anti-[chosen matching type] 4 on its next Attack against an Armored Unit, Monster, Vehicle, War Machine, or Fortification this Phase. Against a Structure or Fortification, the Attack also gains +1 Damage. |
-| Press the Breach | C | Combat | After the active Unit inflicts unsaved Damage on an enemy Engaged with it, that enemy loses one bonus Unit of objective-control counting until the end of the Round, down to its ordinary minimum. |
+| Press the Breach | C | Combat | If the active Unit successfully Charged this Round and makes a Melee Attack against an enemy contesting an objective, it counts as two Units for controlling that objective until the end of the Round while within the objective’s control range. This does not require unsaved Damage and does not stack with other objective-control Unit-counting bonuses. |
 | Command the Breach | H | Combat Reaction | When a friendly Unit within Short of friendly Headquarters that successfully Charged this Round is attacked in Engagement, grant it Tough 2 against that Attack. |
 
 Doctrine Identity: Charge reliability and overcoming defended positions.

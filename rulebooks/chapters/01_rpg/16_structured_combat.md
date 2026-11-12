@@ -274,6 +274,8 @@ Unused CP do not carry over.
 
 ### Command timing and priority
 
+**Friendly-triggered Reactions:** If a Reaction triggers from a friendly Unit's action, it uses the acting side's one-Command allowance for that activation. An eligible opposing Reaction uses the opponent's separate response allowance. Instant still prevents Reactions unless a specific exception permits them.
+
 **One Command per activation:** The acting side may use at most **one Command** (personal Unit, Faction, or Doctrine) during each Unit's activation, regardless of CP cost. A multi-target Command may affect other Units, but does not authorize another friendly Command during that activation. The opposing side may use **one eligible Reaction Command** against that activation; its trigger and priority rules still apply. Passive effects are not Commands.
 
 **No stacking on one resolution:** An individual Attack, Charge, or Save sequence may benefit from **at most one friendly Command effect**, including effects prepared in earlier Phases. If several friendly prepared effects would apply, choose one; the others do not apply to that sequence. A defending player may use its eligible Reaction against an Attack enhanced by the attacker. Compatible passive abilities, equipment, and Talents still apply.
@@ -524,6 +526,8 @@ Other sources of Cover X may specify different conditions.
 
 Cover does not permit Evade against Charge Impact unless a special rule explicitly overrides Impact's normal restriction.
 
+**Concealed detection:** Moving or deploying an enemy Unit within 4" of a Concealed Unit ends Concealed immediately; measure from the nearest Models. That Unit cannot gain Concealed again while an enemy remains within 4". This applies to Command-granted concealment and ordinary concealment. See [Keywords](10_keywords.md#concealed).
+
 ## 11. Heavy
 
 An Attack, Spell, or Action with Heavy may only be used if the Unit did not voluntarily move or perform another Movement Action during the immediately preceding Movement Phase.
@@ -763,6 +767,14 @@ Every Hit remaining after all applicable Saves inflicts the Attack's listed Dama
 
 Damage accumulates against the target Model's Wounds.
 
+### Temporary Wounds (pending Damage)
+
+When an ability assigns temporary Wounds to a Unit, record them separately from its maximum Wounds and accumulated Damage. They are **pending Damage**, not extra maximum Wounds or temporary Hit Points. Receiving temporary Wounds does not immediately damage or defeat Models.
+
+The next time the Unit suffers at least 1 Damage **after all applicable Saves**, add all its pending temporary Wounds once to that Damage and clear the pending total. Allocate the combined Damage using the normal multi-Model damage-allocation rules; remove defeated Models or Defeat Characters normally. Pending Damage is not an additional Hit, cannot be Saved again, and cannot trigger on-Hit effects.
+
+Temporary Wounds cannot be removed by Heal, do not automatically expire at the end of a Phase, Round, or encounter, and do not convert without an actual unsaved Damage event. A Unit may voluntarily accrue no more than **2 temporary Wounds**, unless a rule expressly permits a higher limit. Mandatory backlash may exceed that voluntary limit. A Unit at the voluntary limit cannot pay a further voluntary temporary-Wound cost.
+
 ### Multi-Model Units
 
 Allocate unsaved Damage to Models within the targeted Unit.
@@ -808,6 +820,8 @@ Unless a scenario states otherwise, a Unit controls an objective while at least 
 If both sides have eligible Units within range, the side with more eligible Units controls the objective.
 
 If tied, the objective is Contested.
+
+**Counting bonuses:** Abilities that make one Unit count as multiple Units for objective control do not stack. Use the highest count applicable to that Unit. Defeated, Withdrawn, and Reserve Units cannot gain control eligibility from a counting bonus.
 
 Defeated and Withdrawn Units cannot control objectives.
 

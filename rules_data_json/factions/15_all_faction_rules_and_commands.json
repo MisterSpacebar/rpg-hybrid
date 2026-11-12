@@ -35,7 +35,7 @@
           "name": "Coordinated Targeting",
           "cost": "1 CP",
           "timing": "Assault or Combat",
-          "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Ranged 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+          "effect": "When the active Unit declares an Attack this Phase, choose Anti-Infantry 4 or Anti-Ranged 4. It gains that keyword for this Attack only, provided the target has the matching tag. Matching Anti ranks do not stack; use the highest. This Command adds its bonus dice once to the combined Unit Attack pool, not per Model."
         }
       ]
     },
@@ -57,7 +57,7 @@
           "name": "Righteous Retaliation",
           "timing": "Reaction",
           "cost": "1 CP",
-          "effect": "After a friendly Unit survives an Melee Attack, it gains +1 Attack per Model on its next Combat activation against that attacker this Round."
+          "effect": "Reaction: After a friendly Unit survives a Melee Attack, it gains +3 Attack dice on its next eligible Melee Attack against the attacker. This bonus expires at the end of the following Round if unused; it applies once to the combined Attack pool, not per Model."
         },
         {
           "name": "Heroic Intervention",
@@ -84,7 +84,7 @@
           "name": "Hold the Line",
           "timing": "Reaction",
           "cost": "1 CP",
-          "effect": "One friendly Unit gains Tough 2 until the end of the Round."
+          "effect": "Reaction: When a friendly Unit is targeted by an Attack, it gains Tough 2 against the triggering Attack only. This does not persist for other Attacks."
         },
         {
           "name": "Concentrated Volley",
@@ -96,7 +96,7 @@
           "name": "Prepared Position",
           "timing": "Movement",
           "cost": "1 CP",
-          "effect": "During the active Unit's Movement activation, create or activate a small barricade or defensive position adjacent to that Unit, following ordinary terrain-placement rules. This does not itself grant an additional Move or activation."
+          "effect": "During the active Unit's Movement activation, it may forgo its normal Move to gain Cover 2 against Ranged Attacks until the beginning of its next Movement activation. This is an explicit Cover benefit even without a barricade; no terrain is created. Disengaging or another voluntary Move this Round ends the benefit."
         },
         {
           "name": "Counterbattery Orders",
@@ -110,26 +110,26 @@
       "faction": "Wild Courts",
       "factionRule": {
         "name": "Paths of the Wild",
-        "effect": "Ignore the first 2\" of Difficult Terrain during each Move activation; finish moves legally. In addition, while a friendly Unit already benefits from Cover, it gains Cover 1 (additive with other eligible Cover X ranks). The faction bonus does not itself grant Cover or qualify a Unit as being in Cover."
+        "effect": "While a friendly Unit is already benefiting from Cover, it gains an additional Cover 1. This bonus does not create Cover eligibility by itself; ordinary Difficult Terrain rules apply."
       },
       "factionCommands": [
         {
           "name": "Through the Wild",
           "timing": "Movement",
           "cost": "1 CP",
-          "effect": "During the active Unit’s Movement activation, if it is unengaged and already benefiting from Cover, it may Blink 6. Its repositioning must end with the entire Unit legally in Coherency and benefiting from Cover provided by a different piece of cover-granting terrain than the one it began in. Blink ignores intervening terrain but not elevation, and cannot end Engaged. This is not a Move, Charge, or free Disengage."
+          "effect": "During the active Unit’s Movement activation, if unengaged and benefiting from Cover, it may Blink 6, ending legally in Cover granted by a different piece of terrain. After repositioning, it gains Concealed until the beginning of its next Movement activation or until Concealed ends normally (including Attacking, entering Engagement, or losing Cover). This is not a Move, Charge, or free Disengage."
         },
         {
           "name": "Entangling Growth",
           "timing": "Assault",
           "cost": "1 CP",
-          "effect": "Choose one visible enemy within Medium of the active Unit. That enemy suffers Slow 2 or cannot Charge during the current Phase (choose one)."
+          "effect": "Choose one visible enemy Unit within Medium of the active Unit. It either suffers Slow 2 on its next normal Move or cannot declare a Charge for the rest of this Round (choose one when using this Command)."
         },
         {
           "name": "Fade into the Wilds",
           "timing": "Reaction",
           "cost": "1 CP",
-          "effect": "After a friendly unengaged Unit is attacked, it may Move up to 2\", ending legally. This does not override Disengage or Withdrawn restrictions."
+          "effect": "Reaction: After an Attack against a friendly unengaged Unit is completely resolved, that Unit may Move up to 2\", ending legally. If it ends benefiting from Cover, it gains Concealed until the beginning of its next Movement activation or until Concealed ends normally. It cannot retroactively negate the triggering Attack or bypass Withdrawn and Disengage rules."
         },
         {
           "name": "Cull the Flank",
@@ -155,8 +155,8 @@
         {
           "name": "Overwhelm",
           "timing": "Combat",
-          "cost": "2 CP",
-          "effect": "The active friendly multi-model Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase."
+          "cost": "1 CP",
+          "effect": "The active multi-model Unit gains +1 Attack die per surviving Model, to a maximum of +6 Attack dice, on its next Melee Attack this Combat Phase. This bonus is added once to the combined Unit Attack pool, not multiplied again by its Models."
         },
         {
           "name": "Keep Fighting!",
@@ -183,7 +183,7 @@
           "name": "Dirty Trick",
           "timing": "Assault",
           "cost": "1 CP",
-          "effect": "Choose one visible enemy Unit during the active Unit’s Assault activation. Worsen that enemy’s Armor or Evade by one step (choose one) until the end of this Phase. This is an enemy debuff and may affect later friendly Attacks; it does not grant another Unit an activation."
+          "effect": "Choose one visible enemy Unit within Medium of the active Unit during this Unit's Assault activation. Worsen that enemy's Armor or Evade by one step (choose one) until the end of this Assault Phase. This enemy debuff may affect later friendly Attacks during the Phase; it does not grant any additional activation."
         },
         {
           "name": "Scurry Away",
@@ -216,7 +216,7 @@
           "name": "Rise Again",
           "timing": "Movement",
           "cost": "1 CP",
-          "effect": "Either restore one defeated basic Model to a surviving, unengaged friendly Undead Unit (up to starting size), or once per battle, return one completely destroyed friendly Undead Core Unit with two original basic Models in legal Coherency, wholly within the friendly Deployment Zone at the end of Movement. That returned Unit cannot activate, Charge, or control objectives this Round. Both uses retain normal CP/card requirements."
+          "effect": "During the active Unit's Movement activation, choose a surviving, unengaged friendly Undead Unit within Short of the active Unit to restore one defeated basic Model, up to its starting size. Alternatively, once per battle, designate a completely destroyed, previously purchased friendly Undead Core Unit for return at the end of this Movement Phase, placing two of its original basic Models wholly within the friendly Deployment Zone in legal Coherency. This return consumes one normal reinforcement allowance for the Round; the returned Unit cannot activate, Charge, or control objectives that Round. Neither mode creates a free new Unit."
         },
         {
           "name": "Death March",
@@ -228,7 +228,7 @@
           "name": "The Dead Do Not Tire",
           "timing": "Movement",
           "cost": "1 CP",
-          "effect": "Remove one negative condition from the active friendly Undead Unit."
+          "effect": "Remove Slow, Off-Balance, or one temporary Hit, Move, or Evade penalty from the active friendly Undead Unit. This cannot remove Withdrawn, accumulated Damage, or temporary Wounds."
         },
         {
           "name": "Sever the Vanguard",
@@ -249,19 +249,19 @@
           "name": "Blood Frenzy",
           "timing": "Combat",
           "cost": "1 CP",
-          "effect": "The active Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase."
+          "effect": "When the active Unit makes a Melee Attack against an enemy Unit that has already lost at least one Model or has accumulated unsaved Damage, gain +1 Attack die per surviving Model, maximum +4 Attack dice, on that Attack. Add these dice once to the combined Unit pool."
         },
         {
           "name": "Predatory Speed",
           "timing": "Reaction",
           "cost": "1 CP",
-          "effect": "After destroying an enemy Unit, one friendly Unit may Move up to 2\"."
+          "effect": "Reaction: After a friendly Unit destroys an enemy Unit, choose that victorious Unit or one other friendly Unit within Short (6\") of it. The chosen Unit may Move up to 2\", ending legally. This is not a free Disengage or another activation."
         },
         {
           "name": "Mesmerize",
           "timing": "Reaction",
           "cost": "1 CP",
-          "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Unique Unit until the end of the Phase."
+          "effect": "Reaction: When an enemy Unit within Short (6\") of a friendly Unique Unit declares an Attack against that Unique Unit, worsen the enemy’s Hit by one step for that triggering Attack only."
         },
         {
           "name": "Cut Off the Leaders",
@@ -308,26 +308,26 @@
       "faction": "Infernal Hosts",
       "factionRule": {
         "name": "Dark Bargain",
-        "effect": "Once per activation, a friendly Infernal Unit may suffer 1 Damage to reroll one die, obeying the normal once-per-die reroll limitation."
+        "effect": "Once per friendly Infernal Unit per Round, before resolving one of its rolls, that Unit may voluntarily take 1 temporary Wound to reroll up to two dice in that roll. The Unit cannot voluntarily exceed 2 pending temporary Wounds, cannot reroll any die more than once, and cannot reroll a Reckless roll. Temporary Wounds are pending Damage, not extra maximum Wounds; resolve using the core Damage and Defeat rules."
       },
       "factionCommands": [
         {
           "name": "Unbound Power",
           "timing": "Assault",
           "cost": "1 CP",
-          "effect": "The active Unit's next Attack this Assault Phase gains +2 Attack dice to its combined pool. If that Attack Blunders, the active Unit suffers 1 Damage."
+          "effect": "The active Unit's next eligible Attack this Assault Phase gains +2 Attack dice to its combined pool. If that Attack Blunders, the active Unit gains 1 temporary Wound as backlash. Mandatory backlash can exceed the voluntary 2-Wound limit; the temporary Wounds are converted when the Unit next suffers unsaved Damage."
         },
         {
           "name": "Blood Offering",
           "timing": "Assault",
           "cost": "1 CP",
-          "effect": "During the active Unit’s Assault activation, damage or remove one eligible friendly basic Model. Choose one other friendly Unit within Short of the active Unit; the chosen Unit gains Accurate 2 on its next Attack this Round. The Command explicitly supports another Unit and does not grant an extra Attack or activation."
+          "effect": "During the active Unit's Assault activation, it voluntarily takes 2 temporary Wounds, provided doing so would not put it above the voluntary limit of 2. Choose a different friendly Unit within Short (6\") of it; that Unit's next eligible Attack this Round gains +3 Attack dice and Accurate 1. The bonus applies to one combined Attack pool and grants no additional activation."
         },
         {
           "name": "Open the Rift",
           "timing": "Movement",
           "cost": "1 CP",
-          "effect": "Deploy one eligible, already paid-for minor Infernal Unit from Reserve according to its summoning restrictions."
+          "effect": "During the active Unit's Movement activation, designate one eligible already-purchased minor Infernal Unit in Reserve for placement at the normal end-of-Movement reinforcement step, following its summoning restrictions. This consumes one available normal reinforcement slot and cannot exceed the Round's allowance. The arriving Unit cannot activate in Movement, Charge, or control objectives this Round unless an explicit exception permits it."
         },
         {
           "name": "Break the Defense",
@@ -354,7 +354,7 @@
           "name": "Counterspell",
           "timing": "Reaction",
           "cost": "1 CP",
-          "effect": "When a friendly unit is being affected by an enemy Magic attack or ability that involves saves, reroll all 1s rolled for saves to that attack or ability."
+          "effect": "Reaction: When a friendly Unit is targeted by an enemy Magic Attack or ability that allows Armor, Evade, or Ward Saves, reroll up to all natural 1s in that Unit's applicable Save roll against the triggering effect. Each die may be rerolled at most once. This does not change Saves that the effect does not permit."
         },
         {
           "name": "Spatial Fold",
@@ -381,7 +381,7 @@
           "name": "Thunderous Advance",
           "timing": "Assault",
           "cost": "1 CP",
-          "effect": "The active Unit may make an additional legal normal Move immediately before declaring its Charge during this Assault activation; this does not grant an additional Charge or Disengage."
+          "effect": "When the active Unit declares an eligible Charge target within the normal 12\" declaration limit, it may Move up to 3\" toward that target, ending legally and unengaged, then must attempt the declared Charge. This additional Assault-phase Move is not a Disengage or a normal Charge and does not extend the declaration limit."
         },
         {
           "name": "Smash Through",
@@ -393,7 +393,7 @@
           "name": "Roar of Dominance",
           "timing": "Assault",
           "cost": "1 CP",
-          "effect": "The active friendly Monster cannot be targeted by enemy Reaction Commands until the end of this Assault Phase."
+          "effect": "During the active Monster Unit's Assault activation, enemy Units cannot use Reaction Commands in response to that Monster's actions or Attacks until the end of this Assault activation. This does not stop a Reaction triggered by some other Unit's action."
         },
         {
           "name": "Smash the Ranks",
