@@ -18,7 +18,7 @@
       "name": "Risky Calculations",
       "slot": "S",
       "timing": "Assault",
-      "effect": "The active Unit gains +2 Attack dice on its next ranged or Spell Attack this Assault Phase. Its Hit roll is Reckless. Blunder: the active Unit suffers Direct Damage 1."
+      "effect": "The active Unit gains +3 Attack dice on its next ranged or Spell Attack this Assault Phase. Its Hit roll is Reckless. Blunder: the active Unit suffers Direct Damage 1."
     },
     {
       "name": "No Quarter",
@@ -30,7 +30,7 @@
       "name": "Expend the Reserve",
       "slot": "A",
       "timing": "Assault/Combat",
-      "effect": "The active Unit gains +3 Attack dice on its next Attack this Phase. Its Hit roll is Reckless. Blunder: the Unit suffers Direct Damage 2."
+      "effect": "The active Unit gains +4 Attack dice on its next Attack this Phase. Its Hit roll is Reckless. Blunder: the Unit suffers Direct Damage 2."
     },
     {
       "name": "All or Nothing",
