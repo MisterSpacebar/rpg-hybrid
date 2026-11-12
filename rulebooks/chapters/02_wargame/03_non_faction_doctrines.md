@@ -215,10 +215,10 @@ Strategy: Maintain ranged superiority through coordinated shooting, accuracy, an
 
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
-| Concentrated Fire | R | Assault | If the active Unit has not voluntarily Moved, Disengaged, or Blinked this Round, it gains +2 Attack dice on its next ranged Attack this Assault Phase. |
+| Concentrated Fire | R | Assault | If the active Unit has not voluntarily Moved, Disengaged, or Blinked this Round, it gains +3 Attack dice on its next ranged Attack this Assault Phase. |
 | Marked Fire Lane | R | Assault | When the active Unit declares its next ranged Attack this Assault Phase, gain Pinpoint, ignore Concealed for targeting that Attack, and reduce the target's effective Cover X by up to 2 (minimum 0). Suppressing Cover rerolls does not remove Evade eligibility provided by Cover; ignoring Concealed does not remove the condition. |
 | Artillery Correction | A | Assault | When the active Unit makes its next Heavy ranged Attack this Assault Phase, gain +1 Attack die and reduce the target's effective Cover X by up to 2 (minimum 0) against that Attack. Suppressing Cover rerolls does not remove Cover-granted Evade eligibility. |
-| Veteran Gunners | E | Assault | The active Unit gains +1 Attack and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round. |
+| Veteran Gunners | E | Assault | The active Unit gains +2 Attack dice and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round. |
 | Screening Fire | V | Assault Reaction | When an enemy within range of a friendly Unit's ranged weapon declares a Charge, the enemy worsens Hit by one step on its first Melee Attack during the ensuing Combat Phase. |
 
 Doctrine Identity: Offensive ranged combat.
@@ -475,9 +475,9 @@ Gambit uses Reckless Rolls, additional dice, and unusually consequential failure
 | Command | Slot | Timing | Effect |
 | --- | --- | --- | --- |
 | Double Down | C | Assault/Combat Reaction | Assault/Combat Reaction: When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit, up to the incoming Hits; excess Saves do nothing. The dice cannot be rerolled. Backlash: for each complete pair of natural 1s among these Armor Save dice, the Unit suffers 1 unpreventable Damage after resolving the Attack. This special Blunder consequence does not make ordinary Armor Saves generate Blunders. |
-| Risky Calculations | S | Assault | The active Unit gains +2 Attack dice on its next ranged or Spell Attack this Assault Phase. Its Hit roll is Reckless. Blunder: the active Unit suffers Direct Damage 1. |
+| Risky Calculations | S | Assault | The active Unit gains +3 Attack dice on its next ranged or Spell Attack this Assault Phase. Its Hit roll is Reckless. Blunder: the active Unit suffers Direct Damage 1. |
 | No Quarter | E | Combat | The active Unit gains +1 Attack die and Critical 2 on its next Melee Attack this Combat Phase. Its Hit roll is Reckless; CP-granted Critical does not require a Surge. Blunder: the active Unit becomes Off-Balance until its next Movement activation and cannot use Reaction Commands until then. |
-| Expend the Reserve | A | Assault/Combat | The active Unit gains +3 Attack dice on its next Attack this Phase. Its Hit roll is Reckless. Blunder: the Unit suffers Direct Damage 2. |
+| Expend the Reserve | A | Assault/Combat | The active Unit gains +4 Attack dice on its next Attack this Phase. Its Hit roll is Reckless. Blunder: the Unit suffers Direct Damage 2. |
 | All or Nothing | V | Assault | The active Unit declares a Charge against an eligible enemy at least 6" away. It gains Charge 2 and Impact +2 for that Charge. If successful, resolve normally. If the Charge fails, it moves its modified rolled Charge distance toward the target as far as legally possible without becoming Engaged, then suffers 1 unpreventable Damage. Normal Charge Blunders still apply. |
 
 ### Double Down Clarification
