@@ -44,8 +44,8 @@
       "faction": "Sacred Orders",
       "factionRule": {
         "name": "Unyielding",
-        "effect": "Once per Round, each friendly Core or Elite Unit reduces the first instance of Damage it suffers by 1, minimum 0. This applies after Saves and cannot reduce a Critical Injury.",
-        "playtestNote": "Compare restricting this trait to these Units versus allowing all friendly Units."
+        "effect": "All friendly Sacred Orders Units gain Tough 1. This combines with other applicable sources of Tough X, following the normal rules for ranked keywords; no Armor Save die may be rerolled more than once.",
+        "playtestNote": "Replaces the former once-per-Round first-Damage reduction. Applies to all friendly Units, not only Core, Elite or Armored."
       },
       "factionCommands": [
         {
