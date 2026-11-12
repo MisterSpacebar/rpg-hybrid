@@ -208,9 +208,10 @@
     },
     {
       "name": "Spirit Seer",
-      "role": "Wizard",
-      "points": 180,
+      "role": "Support",
+      "points": 200,
       "tags": [
+        "Support",
         "Elite",
         "Spirit",
         "Undead"
@@ -247,10 +248,8 @@
       "abilities": [
         {
           "name": "Soul Rend",
-          "type": "Command",
-          "cost": "1 CP",
-          "timing": "Assault",
-          "effect": "On 3+, inflict Direct Damage 1 on a visible enemy within Medium."
+          "type": "Passive",
+          "effect": "Other friendly Units within Short (6\") of this Unit gain Anti-Armored 2 and Anti-Mortal 2 on their eligible Attacks. If both tags match one target, apply only the highest applicable Anti rank; the bonus is added once to the combined Unit Attack pool, not once per Model."
         }
       ]
     },
