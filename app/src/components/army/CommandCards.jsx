@@ -28,7 +28,7 @@ export default function CommandCards({ view }) {
               <span>{c.kind} · {c.source}</span>
               <span>{[c.timing, c.cost, c.frequency].filter(Boolean).join(' · ')}</span>
             </div>
-            <p>{c.effect}</p>
+            <p style={{ whiteSpace: 'pre-line' }}>{c.effect}</p>
           </article>
         ))}
       </div>

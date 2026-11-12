@@ -1,6 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
+import { commandCardEffect, collectCommandCards } from './format.js'
 
 const root = new URL('../../../rules_data_json/', import.meta.url)
 const rulebooks = new URL('../../../rulebooks/chapters/02_wargame/', import.meta.url)
@@ -119,4 +120,41 @@ test('Doctrine ordinary buffs use active Unit while explicit coordination is pre
   assert.match(by('Slingshot','Anchor and Launch').effect,/active Unit/)
   assert.match(by('Heavy Support','Fire Control').effect,/up to two different friendly Units/)
   assert.match(by('Deep Strike','Forward Insertion').effect,/Reserve Unit/)
+})
+
+test('Alpha Strike Command Cards show exact round bonuses from structured data',()=>{
+  const alpha=doctrines.find(d=>d.name==='Alpha Strike')
+  const cards=alpha.commands.map(c=>({name:c.name,effect:commandCardEffect(c,alpha)}))
+  const by=(name)=>cards.find(c=>c.name===name).effect
+  assert.match(by('First Strike Orders'),/Round 1: Accurate 3/)
+  assert.match(by('First Strike Orders'),/Round 2: Accurate 2/)
+  assert.match(by('First Strike Orders'),/Rounds 3–5: Accurate 1/)
+  assert.match(by('Opening Volley'),/Round 1: \+3 Attacks/)
+  assert.match(by('Opening Volley'),/Rounds 2–3: \+2 Attacks/)
+  assert.match(by('Opening Volley'),/Rounds 4–5: \+1 Attacks/)
+  assert.match(by('Shock Assault'),/Round 1: Impact \+3/)
+  assert.match(by('Shock Assault'),/Round 2: Impact \+2/)
+  assert.match(by('Shock Assault'),/Rounds 3–5: Impact \+1/)
+  assert.match(by('Ferocious Opening'),/Round 1: Critical 2/)
+  assert.match(by('Ferocious Opening'),/Rounds 2–3: Critical 1/)
+  assert.match(by('Ferocious Opening'),/Rounds 4–5: Accurate 1/)
+  assert.equal(by('Rapid Mobilization'),alpha.commands.find(c=>c.name==='Rapid Mobilization').effect)
+  const view={
+    faction:{name:'Test Faction'},
+    factionCommands:[],
+    doctrines:[{...alpha,decliningOffensiveBonuses:alpha.decliningOffensiveBonuses},null],
+    doctrineCommands:[alpha.commands,[]],
+  }
+  const printed=collectCommandCards(view)
+  assert.equal(printed.length,5)
+  assert.match(printed.find(c=>c.name==='Opening Volley').effect,/Rounds 2–3: \+2 Attacks/)
+  assert.equal(commandCardEffect({effect:'Unchanged'}, {name:'Firing Line'}),'Unchanged')
+})
+
+test('Firing Line and Gambit balance changes match the rulebook',()=>{
+  const by=(d,n)=>doctrines.find(x=>x.name===d).commands.find(c=>c.name===n).effect
+  assert.match(by('Firing Line','Concentrated Fire'),/\+3 Attack dice/)
+  assert.match(by('Firing Line','Veteran Gunners'),/\+2 Attack dice and Accurate 1/)
+  assert.match(by('Gambit','Risky Calculations'),/\+3 Attack dice/)
+  assert.match(by('Gambit','Expend the Reserve'),/\+4 Attack dice/)
 })

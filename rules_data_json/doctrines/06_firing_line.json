@@ -11,7 +11,7 @@
       "name": "Concentrated Fire",
       "slot": "R",
       "timing": "Assault",
-      "effect": "If the active Unit has not voluntarily Moved, Disengaged, or Blinked this Round, it gains +2 Attack dice on its next ranged Attack this Assault Phase."
+      "effect": "If the active Unit has not voluntarily Moved, Disengaged, or Blinked this Round, it gains +3 Attack dice on its next ranged Attack this Assault Phase."
     },
     {
       "name": "Marked Fire Lane",
@@ -29,7 +29,7 @@
       "name": "Veteran Gunners",
       "slot": "E",
       "timing": "Assault",
-      "effect": "The active Unit gains +1 Attack and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round."
+      "effect": "The active Unit gains +2 Attack dice and Accurate 1 on its next ranged Attack against an enemy that was already attacked at range by a different friendly Unit this Round."
     },
     {
       "name": "Screening Fire",

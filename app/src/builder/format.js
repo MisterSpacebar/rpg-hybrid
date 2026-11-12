@@ -80,6 +80,38 @@ export function splitOptions(u) {
 export const statDash = dash
 const cpText = (cost) => (typeof cost === 'number' ? `${cost} CP` : cost || '1 CP')
 
+// Show the structured Alpha Strike round bonuses on both web and PDF cards.
+// This avoids duplicating balance values in the UI.
+export function commandCardEffect(command, doctrine) {
+  if (doctrine?.name !== 'Alpha Strike') return command.effect
+  const rounds = doctrine.decliningOffensiveBonuses?.byRound
+  if (!Array.isArray(rounds) || !rounds.length) return command.effect
+  const configurations = {
+    'First Strike Orders': { key: 'firstStrikeOrdersAccurate', label: 'Accurate',
+      description: 'If the active Unit is within Short of friendly Headquarters, its next Attack this Round gains the listed Accurate rank.' },
+    'Opening Volley': { key: 'openingVolleyBonusAttacks', label: 'Attacks',
+      description: 'The active Unit gains the listed bonus Attacks on its next ranged Attack this Assault Phase.' },
+    'Shock Assault': { key: 'shockAssaultImpactBonus', label: 'Impact',
+      description: 'When the active Unit declares a Charge, increase its Charge Impact by the listed amount for that Charge; Charge distance is unchanged.' },
+    'Ferocious Opening': { key: 'ferociousOpeningBonus', label: null,
+      description: 'The active Unit gains the listed bonus on its next Melee Attack this Combat Phase. CP-granted Critical requires no Surge; Charge Impact is unchanged.' },
+  }
+  const config = configurations[command.name]
+  if (!config) return command.effect
+  const grouped = []
+  for (const row of rounds) {
+    const value = row[config.key]
+    if (value == null) return command.effect
+    const previous = grouped[grouped.length - 1]
+    if (previous && previous.value === value && row.round === previous.end + 1) previous.end = row.round
+    else grouped.push({ start: row.round, end: row.round, value })
+  }
+  const summary = grouped.map(({ start, end, value }) => {
+    const bonus = config.label === null ? value : config.label === 'Accurate' ? `Accurate ${value}` : config.label === 'Impact' ? `Impact +${value}` : `+${value} ${config.label}`
+    return `${start === end ? `Round ${start}` : `Rounds ${start}–${end}`}: ${bonus}`
+  }).join(' · ')
+  return `${config.description}\n${summary}`
+}
 // One entry per printable card: the army's selected Faction and Doctrine Commands. Unit Commands stay on their datasheets.
 export function collectCommandCards(view) {
   const cards = []
@@ -89,7 +121,7 @@ export function collectCommandCards(view) {
   view.doctrines.forEach((d, i) => {
     if (!d) return
     view.doctrineCommands[i].forEach((c) =>
-      cards.push({ kind: 'Doctrine Command', source: d.name, name: c.name, slot: c.slot, timing: c.timing, cost: cpText(c.cost), effect: c.effect }),
+      cards.push({ kind: 'Doctrine Command', source: d.name, name: c.name, slot: c.slot, timing: c.timing, cost: cpText(c.cost), effect: commandCardEffect(c, d) }),
     )
   })
   return cards
