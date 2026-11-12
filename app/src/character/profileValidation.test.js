@@ -154,7 +154,7 @@ test('duplicate named Unique entries fail army validation independently of Hero 
     ],
   }
   const view = buildArmyView(army, catalog)
-  assert.equal(view.checks.find((c) => c.id === 'heroes').ok, true)
+  assert.equal(view.checks.some((c) => c.id === 'heroes'), false) // no independent Hero cap: recruitment slots and Points apply
   assert.equal(view.checks.find((c) => c.id === 'unique').ok, false)
   assert.equal(view.checks.find((c) => c.id === 'unique').detail, 'test:unique')
   const ordinaryHero = { ...leader, tags: ['Hero', 'Officer'], unique: false, isLeader: false }
