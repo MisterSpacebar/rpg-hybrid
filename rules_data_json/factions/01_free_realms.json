@@ -168,6 +168,11 @@
           "name": "Shield Formation",
           "type": "Passive",
           "effect": "When resolving Charge Impact against this Unit, it gains Brace X, where X equals the number of surviving Models in the Unit at the time Impact is resolved. There is no cap on X. Brace reduces the Unit's one incoming Charge Impact pool; it does not prevent the Charge or subsequent melee Attacks."
+        },
+        {
+          "name": "Disciplined Rifle Fire",
+          "type": "Passive",
+          "effect": "This Unit gains Anti-Armored 2 on its ranged Weapon Attacks. Apply the bonus once to the combined Unit Attack pool, not once per Model; only the highest matching Anti rank applies."
         }
       ]
     }

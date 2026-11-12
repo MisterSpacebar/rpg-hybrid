@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import RulesIntro from './RulesIntro.jsx'
 import AppendicesIntro from './AppendicesIntro.jsx'
-import { bookGroups, CHAPTER_META, chapterBySlug, useLibrary } from '../../rulebooks.js'
+import { bookGroups, CHAPTER_META, chapterBySlug, useLibrary, factionRosterMarkdown } from '../../rulebooks.js'
 
 // Route shape: #/<tab>/<book>/<chapter>[/<sectionId>]
 function parseRoute(hash, tab) {
@@ -23,9 +23,18 @@ function RuleLink({ href, children }) {
   return <a href={target ? hrefFor(target.tab, target.slug) : href}>{children}</a>
 }
 
-function Md({ children }) {
+function FactionStrong({ children }) {
+  const label = String(children)
+  const isUnit = /—\s*\d+\s*(?:pts|Points)\b/i.test(label)
+  return <strong className={isUnit ? 'faction-roster-unit-name' : undefined}>{children}</strong>
+}
+
+function Md({ children, factionRoster = false }) {
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ a: RuleLink }}>
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm, [factionRosterMarkdown, { enabled: factionRoster }]]}
+      components={{ a: RuleLink, ...(factionRoster ? { strong: FactionStrong } : {}) }}
+    >
       {children}
     </ReactMarkdown>
   )
@@ -152,7 +161,7 @@ function Chapter({ parsed, slug, section }) {
           onToggle={(e) => toggle(s.id, e.currentTarget.open)}
         >
           <summary>{s.title}</summary>
-          <Md>{s.body}</Md>
+          <Md factionRoster={slug === '02_wargame/02_core_factions' && /^\d+\.\s/.test(s.title)}>{s.body}</Md>
         </details>
       ))}
     </article>

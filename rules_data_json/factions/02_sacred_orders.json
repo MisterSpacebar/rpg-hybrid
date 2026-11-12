@@ -11,8 +11,8 @@
   "worldbuilding": "Military religious orders, fortress-monasteries, holy knights, warrior-priests, and sacred guardians. Their warriors are unusually disciplined, but their armies are smaller and more expensive than conventional forces.",
   "factionRule": {
     "name": "Unyielding",
-    "effect": "Once per Round, each friendly Core or Elite Unit reduces the first instance of Damage it suffers by 1, minimum 0. This applies after Saves and cannot reduce a Critical Injury.",
-    "playtestNote": "Compare restricting this trait to these Units versus allowing all friendly Units."
+    "effect": "All friendly Sacred Orders Units gain Tough 1. This combines with other applicable sources of Tough X, following the normal rules for ranked keywords; no Armor Save die may be rerolled more than once.",
+    "playtestNote": "Replaces the former once-per-Round first-Damage reduction. Applies to all friendly Units, not only Core, Elite or Armored."
   },
   "factionCommands": [
     {
@@ -45,7 +45,7 @@
     {
       "name": "Temple Guard",
       "points": 200,
-      "models": 3,
+      "models": 2,
       "tags": [
         "Elite",
         "Infantry",
@@ -54,7 +54,7 @@
       ],
       "modelProfile": {
         "move": "4\"",
-        "wounds": 3,
+        "wounds": 5,
         "armor": "3+",
         "evade": "5+",
         "ward": "6+ (Magic)"
@@ -63,7 +63,7 @@
         {
           "name": "Blessed Weapons",
           "range": "Engaged",
-          "attacks": 3,
+          "attacks": 4,
           "hit": "4+",
           "damage": 1,
           "keywords": [
@@ -86,8 +86,7 @@
       "tags": [
         "Elite",
         "Ranged",
-        "Mortal",
-        "Armored"
+        "Mortal"
       ],
       "modelProfile": {
         "move": "3\"",
@@ -105,7 +104,6 @@
           "damage": 2,
           "keywords": [
             "Heavy",
-            "Anti-Undead 2",
             "Long Range 3\""
           ]
         },
@@ -122,11 +120,16 @@
       ],
       "abilities": [
         {
-          "name": "Hallowed Screen",
+          "name": "Exorcist Ammunition",
+          "type": "Passive",
+          "effect": "This Unit gains Anti-Undead 2 on its eligible Attacks. Apply the bonus once to the combined Unit Attack pool, not once per Model; only the highest applicable Anti rank applies."
+        },
+        {
+          "name": "Suppressing Bolts",
           "type": "Command",
           "cost": "1 CP",
-          "timing": "Reaction",
-          "effect": "When a friendly Unit within 3\" of this Unit is targeted by a Ranged Attack, spend 1 CP. That friendly Unit gains Cover 1 against that Attack. This grants the Cover keyword bonus to applicable Evade Saves, but does not itself grant Cover eligibility, Evade, or Concealed. A Unit can use this Command only once against a given Attack."
+          "timing": "Assault",
+          "effect": "If this Unit inflicts unsaved Damage with its next Relic Crossbows Attack this Assault Phase, the target suffers Slow 2 until after its next Movement activation."
         }
       ]
     },
@@ -153,9 +156,7 @@
           "attacks": 1,
           "hit": "4+",
           "damage": 2,
-          "keywords": [
-            "Anti-Elite 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -163,6 +164,11 @@
           "name": "Hallowed Charge",
           "type": "Passive",
           "effect": "After this Unit successfully Charges, gain Ward 6+ or improve its applicable existing Ward by one step until the end of the Round."
+        },
+        {
+          "name": "Zealous Hunters",
+          "type": "Passive",
+          "effect": "This Unit gains Anti-Elite 2 on its eligible Attacks. Apply the bonus once to the combined Unit Attack pool, not once per Model; only the highest applicable Anti rank applies."
         }
       ],
       "charge": 1,

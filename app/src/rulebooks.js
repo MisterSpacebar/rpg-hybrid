@@ -182,3 +182,69 @@ export function useLibrary() {
   }, [])
   return library
 }
+
+/**
+ * Safe remark AST transformation for the faction roster chapter. The Markdown source
+ * may contain literal <br> tags in pipe-table cells; replace only those tags with
+ * actual line-break nodes. Do not enable arbitrary raw HTML in react-markdown.
+ *
+ * For faction sections, additionally emphasize (a) first-column unit headings
+ * and (b) the labels of attack profiles and abilities. JSON remains the source of
+ * truth for unit stats; this affects presentation only.
+ */
+export function factionRosterMarkdown({ enabled = false } = {}) {
+  const breakTags = /<br\s*\/?>/gi
+  const pureBreakTags = /^(?:\s*<br\s*\/?>\s*)+$/i
+  const unitLine = /^(.+?\s+—\s+\d+\s+(?:pts|Points))\b/
+  const labelStart = /^(\s*)([A-Z][^.:]{1,65}):/
+  const replaceLeading = (parent, pattern) => {
+    const first = parent?.children?.[0]
+    if (!first || first.type !== 'text') return
+    const match = first.value.match(pattern)
+    if (!match) return
+    const prefix = match[0]
+    const rest = first.value.slice(prefix.length)
+    parent.children.splice(0, 1, { type: 'strong', children: [{ type: 'text', value: prefix }] }, ...(rest ? [{ type: 'text', value: rest }] : []))
+  }
+  const markLabels = (cell) => {
+    if (!Array.isArray(cell?.children)) return
+    for (let i = 0; i < cell.children.length; i++) {
+      const child = cell.children[i]
+      if (child.type !== 'text' || (i > 0 && cell.children[i - 1].type !== 'break')) continue
+      const match = child.value.match(labelStart)
+      if (!match) continue
+      const prefix = match[1]
+      const label = match[2] + ':'
+      const rest = child.value.slice(match[0].length)
+      cell.children.splice(i, 1, ...(prefix ? [{ type: 'text', value: prefix }] : []), { type: 'strong', children: [{ type: 'text', value: label }] }, ...(rest ? [{ type: 'text', value: rest }] : []))
+      i += (prefix ? 1 : 0) + (rest ? 1 : 0)
+    }
+  }
+  return (tree) => {
+    function walk(node) {
+      if (!Array.isArray(node.children)) return
+      // Inline <br> may be tokenized as one or several HTML nodes by GFM.
+      node.children = node.children.flatMap((child) => {
+        if (child.type === 'html' && pureBreakTags.test(child.value)) {
+          return (child.value.match(breakTags) || []).map(() => ({ type: 'break' }))
+        }
+        return [child]
+      })
+      for (const child of node.children) walk(child)
+      if (!enabled) return
+      if (node.type === 'table' && node.children?.[0]?.children?.[0]?.children?.[0]?.value === 'Unit') {
+        for (const row of node.children.slice(1)) {
+          replaceLeading(row.children?.[0], unitLine)
+          markLabels(row.children?.[2])
+        }
+      }
+      if (node.type === 'paragraph') {
+        const first = node.children[0]
+        if (first?.type !== 'text') return
+        if (unitLine.test(first.value) && /\bPoints\b/.test(first.value)) replaceLeading(node, unitLine)
+        else markLabels(node)
+      }
+    }
+    walk(tree)
+  }
+}
