@@ -110,7 +110,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 | ------------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Greatweapon Guard — 145 pts (Infantry, Mortal, Armored, 5 Models)<br><br> | M4" / W2 / Arm 4+ / Eva 6+ | Greatweapons: Engaged / 1 / 4+ / 2 / Anti-Armored 2.<br>Disciplined Assault: When attacking an enemy Engaged by another friendly Unit, this Unit gains Accurate 1.                            |
 | Outriders — 175 pts (Infantry, Mortal, Armored, 4 Models)                 | M5" / W2 / Arm 5+ / Eva 5+ | Carbine: 8" / 3 / 5+ / 1 / Firearm.<br>Sabres: Engaged / 2 / 5+ / 1.<br>Mobile Fire: 1CP Assault: After resolving a ranged Attack, Move up to 2", without finishing Engaged. |
-| Shielded Fusiliers — 160 pts (Ranged Infantry, Mortal, Armored, 4 Models) | M3" / W1 / Arm 5+ / Eva 6+ | Shielded Rifle: 12" / 1 / 3+ / 1 / Firearm, Pinpoint.<br>Sidearm: Engaged / 1 / 6+ / 1.<br>**Shield Formation:** When resolving incoming Charge Impact, gain Brace X equal to this Unit's current surviving Models (no cap). Does not prevent the Charge or ensuing melee Attack. |
+| Shielded Fusiliers — 160 pts (Ranged Infantry, Mortal, Armored, 4 Models) | M3" / W1 / Arm 5+ / Eva 6+ | Shielded Rifle: 12" / 1 / 3+ / 1 / Firearm, Pinpoint.<br>Sidearm: Engaged / 1 / 6+ / 1.<br>Shield Formation: When resolving incoming Charge Impact, gain Brace X equal to this Unit's current surviving Models (no cap). Does not prevent the Charge or ensuing melee Attack.<br>Disciplined Rifle Fire: Gain Anti-Armored 2 on ranged Weapon Attacks (once per combined pool; highest applicable Anti rank only). |
 
 ### Captain and Specialists
 
@@ -227,7 +227,7 @@ Military religious orders, fortress-monasteries, holy knights, warrior-priests, 
 
 ### Faction Rule — Unyielding
 
-Once per Round, each friendly Core or Elite Unit reduces the first instance of Damage it suffers by 1, minimum 0. This applies after Saves and cannot reduce a Critical Injury.
+All friendly Sacred Orders Units gain Tough 1. This combines with other applicable sources of Tough X, following the normal rules for ranked keywords; no Armor Save die may be rerolled more than once.
 
 ### Faction Commands
 
@@ -244,9 +244,9 @@ Three Core choices are retained as a deliberate elite-army exception.
 
 | Unit                                                                      | Profile                                      | Weapon / Special Ability                                                                                                                     |
 | ------------------------------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Temple Guard — 200 pts (Elite, Infantry, Mortal, Armored  3 Models)       | M4" / W3 / Arm 3+ / Eva 5+ / Ward 6+ (Magic) | Blessed Weapons: Engaged / 3 / 4+ / 1 /Magic.<br>Steadfast: Gain Tough 1 while holding an objective.                                         |
-| Sanctified Arbalests — 205 pts (Elite, Ranged, Mortal, Armored, 3 Models) | M3" / W2 / Arm 4+ / Eva 6+ | Relic Crossbows: 11" / 2 / 4+ / 2 / Heavy, Anti-Undead 2, Long Range 3".<br>Sword: Engaged / 2 / 5+ / 1 / Accurate 1.<br>**Hallowed Screen (1 CP, Reaction):** Friendly Unit within 3" gains Cover 1 versus one Ranged Attack; does not itself grant Cover eligibility. |
-| Consecrated Knights — 230 pts (Cavalry, Mortal, Armored, 3 Models) | M5" / W3 / Arm 3+ / Eva 5+ | Charge 1 / Impact +2.<br>Blessed Lances: Engaged / 1 / 4+ / 2 / Anti-Elite 2.<br>**Hallowed Charge:** After successfully Charging, gain Ward 6+ or improve an applicable existing Ward by one step for the Round. |
+| Temple Guard — 200 pts (Elite, Infantry, Mortal, Armored, 2 Models) | M4" / W5 / Arm 3+ / Eva 5+ / Ward 6+ (Magic) | Blessed Weapons: Engaged / 4 / 4+ / 1 / Magic.<br>Steadfast: Gain Tough 1 while holding an objective. |
+| Sanctified Arbalests — 205 pts (Elite, Ranged, Mortal, 3 Models) | M3" / W2 / Arm 4+ / Eva 6+ | Relic Crossbows: 11" / 2 / 4+ / 2 / Heavy, Long Range 3".<br>Sword: Engaged / 2 / 5+ / 1 / Accurate 1.<br>Exorcist Ammunition: This Unit gains Anti-Undead 2 on eligible Attacks (once per combined pool; highest applicable Anti rank only).<br>Suppressing Bolts — 1 CP, Assault: If this Unit inflicts unsaved Damage with its next Relic Crossbows Attack this Assault Phase, the target suffers Slow 2 until after its next Movement activation. |
+| Consecrated Knights — 230 pts (Cavalry, Mortal, Armored, 3 Models) | M5" / W3 / Arm 3+ / Eva 5+ | Charge 1 / Impact +2.<br>Blessed Lances: Engaged / 1 / 4+ / 2.<br>Hallowed Charge: After successfully Charging, gain Ward 6+ or improve an applicable existing Ward by one step for the Round.<br>Zealous Hunters: This Unit gains Anti-Elite 2 on eligible Attacks (once per combined pool; highest applicable Anti rank only). |
 
 ### Captain and Specialists
 
@@ -1118,15 +1118,15 @@ Deathly Escort — 1 CP, Movement: One unengaged friendly Spirit Unit within Sho
 
 
 
-Spirit Seer — 180 Points
+Spirit Seer — 200 Points
 
-Elite, Spirit, Undead
+Support, Elite, Spirit, Undead
 
 M4" / W4 / Arm 6+ / Eva 5+ / Ward 5+ (Physical)
 
 Soul Lance: 9" / 5 / 5+ / 1 / Magic. Spectral Staff: Engaged / 2 / 5+ / 1 / Magic.
 
-Soul Rend — 1 CP, Assault: On 3+, inflict Direct Damage 1 on a visible enemy within Medium.
+Soul Rend — Passive: Other friendly Units within Short (6") gain Anti-Armored 2 and Anti-Mortal 2 on eligible Attacks. If both match, use only the highest applicable Anti rank; add that bonus once to the combined Unit Attack pool.
 
 
 
