@@ -1,14 +1,42 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "5. Castling" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "5. Castling"
+  },
   "name": "Castling",
   "foundationRecruitmentSlot": "C",
   "strategy": "Establish defensive formations, prepared firing positions, and mutually supporting strongpoints.",
   "commands": [
-    { "name": "Hold Formation", "slot": "H", "timing": "Combat", "effect": "Choose one friendly Unit that has not voluntarily Moved, Disengaged, Charged, or Blinked this Round. It gains Tough 2 until the end of the Combat Phase." },
-    { "name": "Layered Defense", "slot": "C", "timing": "Assault Reaction", "effect": "When a friendly Unit that did not voluntarily Move or Disengage during the preceding Movement Phase receives a Charge, it gains Brace 2 against that Charge's Impact pool." },
-    { "name": "Fortified Emplacement", "slot": "A", "timing": "Assault Reaction", "effect": "When a friendly Unit that has not voluntarily Moved or Blinked this Round is attacked at range, it gains Tough 3 against that Attack." },
-    { "name": "Prepared Firing Lanes", "slot": "R", "timing": "Assault", "effect": "One friendly Unit that has not voluntarily Moved, Disengaged, or Blinked this Round gains Accurate 2 and +1 Attack on its next ranged Attack against an enemy that Moved this Round." },
-    { "name": "Maintain Positions", "slot": "S", "timing": "Movement", "effect": "Choose one friendly Unit. Remove Withdrawn, Slow, or one temporary Hit penalty from it. If it has not voluntarily Moved or Blinked this Round, it also gains Brace 1 against the next Charge it receives this Round." }
+    {
+      "name": "Hold Formation",
+      "slot": "H",
+      "timing": "Combat",
+      "effect": "If the active Unit has not voluntarily Moved, Disengaged, Charged, or Blinked this Round, it gains Tough 2 until the end of this Combat Phase."
+    },
+    {
+      "name": "Layered Defense",
+      "slot": "C",
+      "timing": "Assault Reaction",
+      "effect": "When a friendly Unit that did not voluntarily Move or Disengage during the preceding Movement Phase receives a Charge, it gains Brace 2 against that Charge's Impact pool."
+    },
+    {
+      "name": "Fortified Emplacement",
+      "slot": "A",
+      "timing": "Assault Reaction",
+      "effect": "When a friendly Unit that has not voluntarily Moved or Blinked this Round is attacked at range, it gains Tough 3 against that Attack."
+    },
+    {
+      "name": "Prepared Firing Lanes",
+      "slot": "R",
+      "timing": "Assault",
+      "effect": "If the active Unit has not voluntarily Moved, Disengaged, or Blinked this Round, its next ranged Attack against an enemy that Moved this Round gains Accurate 2 and +1 Attack die."
+    },
+    {
+      "name": "Maintain Positions",
+      "slot": "S",
+      "timing": "Movement",
+      "effect": "Remove Withdrawn, Slow, or one temporary Hit penalty from the active Unit. If it has not voluntarily Moved or Blinked this Round, it also gains Brace 1 against the next Charge it receives this Round."
+    }
   ],
   "doctrineIdentity": "Defensive preparation and positional advantage. Castling is more predictable than Counter Strike but requires giving up movement or anticipating an enemy's approach."
 }

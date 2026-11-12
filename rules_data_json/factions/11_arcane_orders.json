@@ -18,7 +18,7 @@
       "name": "Overchannel",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "Increase either Attacks or Damage of one Spell Attack by 1."
+      "effect": "The active Unit’s next Spell Attack this Assault Phase gains +1 Damage. This changes Damage per successful unsaved Hit, not the number of Attacks; it does not affect a second Attack."
     },
     {
       "name": "Counterspell",
@@ -30,13 +30,13 @@
       "name": "Spatial Fold",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "One unit gets Blink 3. Reposition one friendly Unit up to 3\" without this counting as a normal Move. It cannot finish Engaged."
+      "effect": "During its own Movement activation, the active unengaged Unit gains Blink 3 and may immediately reposition up to 3\" following normal Blink rules, ending legally and unengaged. This does not count as a normal Move or grant another activation."
     },
     {
       "name": "Disjoin the Formation",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Elite 4 or Anti-Monster 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Elite 4 or Anti-Monster 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [

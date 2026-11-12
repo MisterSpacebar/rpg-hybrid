@@ -31,13 +31,13 @@
       "name": "Heroic Intervention",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "When a nearby ally is attacked, one friendly Unique Unit may Move up to 3\" toward it."
+      "effect": "When a friendly Unit is targeted by an Attack, choose a different friendly Unit within Short of the attacked Unit. The chosen Unit may immediately Move up to 3\" toward the attacked Unit, ending legally. It cannot use this Move as a free Disengage, and this does not change the declared Attack target or intercept the Attack."
     },
     {
       "name": "Break Their Line",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Elite 4 or Anti-Cavalry 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Elite 4 or Anti-Cavalry 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreNote": "Three Core choices are retained as a deliberate elite-army exception.",

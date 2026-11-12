@@ -62,7 +62,7 @@
       "name": "Landing Fire",
       "slot": "R",
       "timing": "Assault",
-      "effect": "One friendly Unit that arrived through Deep Strike at the end of the previous Round gains Accurate 2 and Pinpoint on its next ranged Attack this Phase. Heavy restrictions apply."
+      "effect": "If the active Unit arrived through Deep Strike at the end of the previous Round, it gains Accurate 2 and Pinpoint on its next ranged Attack this Assault Phase. Heavy restrictions still apply."
     },
     {
       "name": "Flanking Insertion",
@@ -80,7 +80,7 @@
       "name": "Signal Beacon",
       "slot": "H",
       "timing": "Movement",
-      "effect": "Choose one friendly Unit already on the battlefield. A separately designated Deep Strike Unit placed wholly within Short of the beacon during this Round's End Step may use more-than-6-inch enemy exclusion instead of 8 inches. Use its insertion Command during a different friendly Movement activation."
+      "effect": "Designate the active friendly Unit, which must already be on the battlefield, as a beacon until this Round’s insertion step. A separately designated Deep Strike Unit placed wholly within Short of this beacon may use a more-than-6\" enemy exclusion distance instead of 8\". Its insertion Command must be used during a different friendly Movement activation; Signal Beacon itself does not insert a Unit."
     }
   ],
   "commandClarifications": [

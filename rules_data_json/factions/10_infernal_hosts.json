@@ -18,13 +18,13 @@
       "name": "Unbound Power",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "One Attack gains +2 Attacks. If it Blunders, its Unit suffers 1 Damage."
+      "effect": "The active Unit's next Attack this Assault Phase gains +2 Attack dice to its combined pool. If that Attack Blunders, the active Unit suffers 1 Damage."
     },
     {
       "name": "Blood Offering",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "Damage or remove one friendly basic Model. One nearby friendly Unit gains Accurate 2 on its next Attack."
+      "effect": "During the active Unit’s Assault activation, damage or remove one eligible friendly basic Model. Choose one other friendly Unit within Short of the active Unit; the chosen Unit gains Accurate 2 on its next Attack this Round. The Command explicitly supports another Unit and does not grant an extra Attack or activation."
     },
     {
       "name": "Open the Rift",
@@ -36,7 +36,7 @@
       "name": "Break the Defense",
       "cost": "1 CP",
       "timing": "Assault or Combat",
-      "effect": "Choose one friendly Unit within Short and one of these battlefield-role counters when activating: Anti-Infantry 4 or Anti-Elite 4. That Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
+      "effect": "For the active Unit's next eligible Attack this Phase, choose one of these battlefield-role counters: Anti-Infantry 4 or Anti-Elite 4. The active Unit gains the selected Anti-tag 4 for its next eligible Attack against a Unit actually bearing the matching tag this Round. Applicable Anti ranks never add; use the highest. This is one CP-powered Command and cannot stack with another friendly Command on the same Attack."
     }
   ],
   "signatureCoreUnits": [

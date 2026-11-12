@@ -220,7 +220,7 @@ The opposing side then activates one eligible Unit.
 
 Continue alternating until both sides become Finished.
 
-A Unit may normally activate only once during the same Phase.
+A Unit may normally activate only once during the same Phase. A rule that explicitly **refreshes a spent activation** makes that Unit eligible to activate again later in the same Phase, following the normal alternating order. Refreshing does not itself Move the Unit, undo Withdrawn or Disengage, reset whether it Moved for Heavy restrictions, or grant actions in other Phases. An ability cannot reopen a side that voluntarily became Finished, and a given Unit cannot receive more than one Advance Orders refresh in a Round.
 
 A Unit may choose to do nothing when activated. This still counts as its activation.
 
@@ -281,7 +281,7 @@ Unused CP do not carry over.
 
 A normal Unit Command with **Movement**, **Assault**, or **Combat** timing may be used only **during that Unit's own activation** in that Phase, when its controlling side has priority and has selected that Unit to activate. The Command may affect another Unit if the ability allows it, but a player cannot activate an unselected ally's personal Command. A Command does not consume the Unit's chosen Phase action unless stated otherwise; its CP cost is paid normally. An eligible Unit may use a Command even if it chooses to forgo its ordinary Phase action.
 
-**Faction and Doctrine Commands** belong to the controlling side. Unless they are Reactions, use them while that side holds activation priority in the permitted Phase, subject to their specific costs and restrictions. They do not permit a personal Command on another Unit.
+**Faction and Doctrine Commands** belong to the controlling side. Unless they are Reactions, use them during the selected active Unit's activation while that side holds priority in the permitted Phase. Their default beneficiary is the active Unit, unless the Command explicitly names a different allied recipient, multiple Units, a Reserve Unit, or an enemy target. Reactions instead use their specified trigger. Normal Command costs and the one-friendly-Command-per-activation limit still apply. A Phase Command never lets an unselected Unit use its own personal Command.
 
 **Reaction Commands** may interrupt the specified trigger even when the reacting side does not hold priority. Passives apply without spending CP or obtaining priority.
 

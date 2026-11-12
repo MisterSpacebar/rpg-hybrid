@@ -1,14 +1,42 @@
 {
-  "sourceRef": { "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md", "section": "15. Heavy Support" },
+  "sourceRef": {
+    "file": "rulebooks/chapters/02_wargame/03_non_faction_doctrines.md",
+    "section": "15. Heavy Support"
+  },
   "name": "Heavy Support",
   "foundationRecruitmentSlot": "A",
   "strategy": "Coordinate powerful battlefield assets, artillery, heavy attacks, and conventional forces providing support.",
   "commands": [
-    { "name": "Armored Advance", "slot": "C", "timing": "Movement", "effect": "One friendly Unit gains +2\" Move during its next normal Move this Round and Tough 1 against its next ranged Attack this Round." },
-    { "name": "Fire Control", "slot": "H", "timing": "Assault", "effect": "Choose one visible enemy Unit. The next Attack made against it by each of up to two different friendly Units this Phase gains Accurate 1." },
-    { "name": "Battering Attack", "slot": "A", "timing": "Combat", "effect": "One friendly Unit gains +1 Attack, Anti-Armored 1, and Anti-Monster 1 on its next Melee Attack this Phase. Anti bonuses only apply against their respective target categories." },
-    { "name": "Shock Support", "slot": "V", "timing": "Assault", "effect": "One friendly Unit gains Charge 1 on its next Charge this Phase. If it begins that Charge within Short of a friendly Large Asset, it gains Charge 2 instead." },
-    { "name": "Spotter's Call", "slot": "S", "timing": "Assault", "effect": "One friendly Unit gains Accurate 2 and reduces the target's effective Cover X by 1 (minimum 0) on its next ranged Attack this Phase. If the attacker is Artillery or a Large Asset, it also gains +1 Attack." }
+    {
+      "name": "Armored Advance",
+      "slot": "C",
+      "timing": "Movement",
+      "effect": "The active Unit gains +2\" Move during its next normal Move this Round and Tough 1 against the next ranged Attack it suffers this Round."
+    },
+    {
+      "name": "Fire Control",
+      "slot": "H",
+      "timing": "Assault",
+      "effect": "Choose one visible enemy Unit. The next Attack made against it by each of up to two different friendly Units this Phase gains Accurate 1."
+    },
+    {
+      "name": "Battering Attack",
+      "slot": "A",
+      "timing": "Combat",
+      "effect": "The active Unit gains +1 Attack, Anti-Armored 1, and Anti-Monster 1 on its next Melee Attack this Phase. Anti bonuses only apply against their respective target categories."
+    },
+    {
+      "name": "Shock Support",
+      "slot": "V",
+      "timing": "Assault",
+      "effect": "The active Unit gains Charge 1 on its next Charge this Assault Phase, or Charge 2 if it begins that Charge within Short of a friendly Large Asset. Use the highest applicable Charge rank; do not add ranks."
+    },
+    {
+      "name": "Spotter's Call",
+      "slot": "S",
+      "timing": "Assault",
+      "effect": "The active Unit gains Accurate 2 and reduces its target's effective Cover X by 1 (minimum 0) for its next ranged Attack this Assault Phase. If the active Unit is Artillery or a Large Asset, it also gains +1 Attack die."
+    }
   ],
   "doctrineIdentity": "Concentrated force and coordination around powerful weapons or battlefield assets. Heavy Support is useful even without multiple Large Assets, but its additional A slots and selected bonuses reward armies investing in them."
 }
