@@ -134,7 +134,7 @@ test('Factions gain distinct conditional accuracy instead of identical permanent
 
 test('Optional 1 CP commands provide tactical differentiation without multiplying attack activations', () => {
   for (const [file, slug, unit, cmd] of [
-    [2, 'sacred_orders', 'Sanctified Arbalests', 'Hallowed Screen'],
+    [2, 'sacred_orders', 'Sanctified Arbalests', 'Suppressing Bolts'],
     [3, 'iron_holds', 'Ironbreakers', 'Lock Shields'],
     [6, 'underclans', 'Bombardiers', 'Overstuffed Bombs'],
     [7, 'death_legions', 'Bone Archers', 'Dread Volley'],
