@@ -485,6 +485,8 @@ Recovery, injury, and death follow the campaign rules.
 
 Damage allocation for multi-model Units follows the normal Unit rules.
 
+**Temporary Wounds:** Abilities may record temporary Wounds as pending Damage without immediately removing Models. When the Unit next suffers Damage after Saves, add all pending temporary Wounds once to that Damage, clear them, and allocate normally. See [Structured Combat — Damage and Defeat](16_structured_combat.md#16-damage-and-defeat) for the complete limits and conversion rule.
+
 ## 12. Command Points and Abilities
 
 Command Points (CP) represent tactical coordination and exceptional actions.

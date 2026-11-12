@@ -18,7 +18,7 @@
       "name": "Wear Them Down",
       "slot": "H",
       "timing": "Combat",
-      "effect": "Choose an enemy Engaged with the active Unit that was already attacked by a different friendly Unit this Round. Reduce that enemy's next Melee Attack by one Attack die, minimum one, before the end of its next activation."
+      "effect": "Choose an enemy Engaged with the active Unit that was already attacked by a different friendly Unit this Round. Reduce that enemy's next Melee Attack by up to two Attack dice, minimum one die remaining, before the end of its next Combat activation."
     },
     {
       "name": "Reform and Recover",
@@ -36,7 +36,7 @@
       "name": "Relentless Veterans",
       "slot": "E",
       "timing": "Combat",
-      "effect": "The active Unit gains Accurate 2 and Critical 1 on its next Melee Attack against an enemy it attacked during an earlier Round."
+      "effect": "When the active Unit makes a Melee Attack against an enemy that has lost a Model or has accumulated unsaved Damage, its next Melee Attack against that enemy this Combat Phase gains +1 Attack die and Critical 1. This checks the defender's current casualties/Damage, not any previous attacker-target history."
     }
   ],
   "doctrineIdentity": {

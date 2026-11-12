@@ -48,7 +48,7 @@
     "factionCount": 1,
     "doctrineCount": 2,
     "doctrinesMustBeDistinct": true,
-    "factionCommandsAvailable": 3,
+    "factionCommandsAvailable": 4,
     "factionCommandsSelected": 2,
     "doctrineCommandsAvailablePerDoctrine": 5,
     "doctrineCommandsSelectedPerDoctrine": 3,

@@ -23,8 +23,8 @@
     {
       "name": "Overwhelm",
       "timing": "Combat",
-      "cost": "2 CP",
-      "effect": "The active friendly multi-model Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase."
+      "cost": "1 CP",
+      "effect": "The active multi-model Unit gains +1 Attack die per surviving Model, to a maximum of +6 Attack dice, on its next Melee Attack this Combat Phase. This bonus is added once to the combined Unit Attack pool, not multiplied again by its Models."
     },
     {
       "name": "Keep Fighting!",

@@ -24,7 +24,10 @@
       "Effects lasting a Round expire during that Round's End Step.",
       "An effect referring to a Unit's next Attack or activation remains available until that event occurs or its stated duration expires.",
       "Multiple applications of the same Command do not stack on one Unit.",
-      "An expressly refreshed Movement activation makes a Unit with a spent Movement activation eligible for a later activation in normal alternating order; it does not create an immediate Move, lift Withdrawn, reset Heavy eligibility, override Disengage, reopen a Finished side, or restore an Assault/Combat activation. Advance Orders may refresh a given Unit once per Round."
+      "An expressly refreshed Movement activation makes a Unit with a spent Movement activation eligible for a later activation in normal alternating order; it does not create an immediate Move, lift Withdrawn, reset Heavy eligibility, override Disengage, reopen a Finished side, or restore an Assault/Combat activation. Advance Orders may refresh a given Unit once per Round.",
+      "Friendly-triggered Reactions consume the friendly acting side's one-Command allowance; opposing Reactions have a separate eligible response allowance.",
+      "Objective-control Unit-count bonuses never stack; use the highest count for a Unit.",
+      "A committed pre-Charge Move requires a legal target within the normal 12-inch declaration limit before repositioning. The Unit must then attempt that Charge; the Move is not a free Disengage."
     ],
     "rpgCampaignException": "A campaign party may have 2 abstract CP per player and no physical cards at all. The eight-card Doctrine repertoire is a matched-play army-construction feature, not a prerequisite for personal Commands. The controlling GM uses the encounter-specific allocation (normally max(2, 2 × number of PCs − 1))."
   },
@@ -155,5 +158,11 @@
   ],
   "knownIssues": [
     "At least one faction/generic Doctrine name collision exists: Free Realms' Faction Rule is named 'Combined Arms', identical to Doctrine 1 'Combined Arms', but the two have unrelated effects (see rules_data_json/factions/00_general_roster_rules.json knownIssues). Likely intentional thematic echo, not a merge."
-  ]
+  ],
+  "temporaryWounds": {
+    "definition": "Temporary Wounds are pending Damage separate from maximum Wounds and accumulated Damage. Add once to the next unsaved Damage event before ordinary allocation and clear; Heal cannot remove them.",
+    "voluntaryLimit": 2,
+    "mandatoryBacklashMayExceedLimit": true,
+    "expiry": "Persist until the next unsaved Damage event, including across encounter boundaries unless a campaign rule states otherwise."
+  }
 }

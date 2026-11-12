@@ -38,7 +38,7 @@ Gain X additional Attack dice against Units with the listed category or tag (for
 
 ## Concealed
 
-A Concealed Unit cannot normally be chosen as an Attack target unless the attacker is Engaged with it or wholly within 4". Concealed ends when an effect specifies, usually when the Unit Attacks or enters Engagement.
+A Concealed Unit cannot normally be chosen as an Attack target unless the attacker is Engaged with it or wholly within 4". This proximity exception permits that attacker to target it; proximity does not globally remove Concealed. Concealed ends when the Unit Attacks, enters Engagement, or a specific effect ends it. Concealed granted only while in Cover also ends if Cover is lost. Ignoring Concealed for one Attack does not remove the condition from the Unit.
 
 ## Pinpoint
 
@@ -46,7 +46,7 @@ When making a Ranged or Spell Attack against an enemy Engaged with a different f
 
 ## Heal X
 
-Remove up to X accumulated Damage, without exceeding the target's Wounds characteristic or restoring removed Models unless an ability states otherwise. Ordinary healing does not undo Critical Injuries or automatically return Defeated PCs to combat.
+Remove up to X accumulated Damage, without exceeding the target's Wounds characteristic or restoring removed Models unless an ability states otherwise. Heal X cannot remove temporary Wounds (pending Damage). Ordinary healing does not undo Critical Injuries or automatically return Defeated PCs to combat.
 
 ## Instant
 

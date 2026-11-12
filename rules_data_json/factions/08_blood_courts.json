@@ -18,19 +18,19 @@
       "name": "Blood Frenzy",
       "timing": "Combat",
       "cost": "1 CP",
-      "effect": "The active Unit gains +1 Attack per Model on its next Melee Attack this Combat Phase."
+      "effect": "When the active Unit makes a Melee Attack against an enemy Unit that has already lost at least one Model or has accumulated unsaved Damage, gain +1 Attack die per surviving Model, maximum +4 Attack dice, on that Attack. Add these dice once to the combined Unit pool."
     },
     {
       "name": "Predatory Speed",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "After destroying an enemy Unit, one friendly Unit may Move up to 2\"."
+      "effect": "Reaction: After a friendly Unit destroys an enemy Unit, choose that victorious Unit or one other friendly Unit within Short (6\") of it. The chosen Unit may Move up to 2\", ending legally. This is not a free Disengage or another activation."
     },
     {
       "name": "Mesmerize",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "One nearby enemy worsens Hit by one step when attacking a chosen friendly Unique Unit until the end of the Phase."
+      "effect": "Reaction: When an enemy Unit within Short (6\") of a friendly Unique Unit declares an Attack against that Unique Unit, worsen the enemy’s Hit by one step for that triggering Attack only."
     },
     {
       "name": "Cut Off the Leaders",

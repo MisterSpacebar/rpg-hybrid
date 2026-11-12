@@ -18,7 +18,7 @@
       "name": "Dirty Trick",
       "timing": "Assault",
       "cost": "1 CP",
-      "effect": "Choose one visible enemy Unit during the active Unit’s Assault activation. Worsen that enemy’s Armor or Evade by one step (choose one) until the end of this Phase. This is an enemy debuff and may affect later friendly Attacks; it does not grant another Unit an activation."
+      "effect": "Choose one visible enemy Unit within Medium of the active Unit during this Unit's Assault activation. Worsen that enemy's Armor or Evade by one step (choose one) until the end of this Assault Phase. This enemy debuff may affect later friendly Attacks during the Phase; it does not grant any additional activation."
     },
     {
       "name": "Scurry Away",

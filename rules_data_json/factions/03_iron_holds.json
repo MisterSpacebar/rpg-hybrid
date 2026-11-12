@@ -18,7 +18,7 @@
       "name": "Hold the Line",
       "timing": "Reaction",
       "cost": "1 CP",
-      "effect": "One friendly Unit gains Tough 2 until the end of the Round."
+      "effect": "Reaction: When a friendly Unit is targeted by an Attack, it gains Tough 2 against the triggering Attack only. This does not persist for other Attacks."
     },
     {
       "name": "Concentrated Volley",
@@ -30,7 +30,7 @@
       "name": "Prepared Position",
       "timing": "Movement",
       "cost": "1 CP",
-      "effect": "During the active Unit's Movement activation, create or activate a small barricade or defensive position adjacent to that Unit, following ordinary terrain-placement rules. This does not itself grant an additional Move or activation."
+      "effect": "During the active Unit's Movement activation, it may forgo its normal Move to gain Cover 2 against Ranged Attacks until the beginning of its next Movement activation. This is an explicit Cover benefit even without a barricade; no terrain is created. Disengaging or another voluntary Move this Round ends the benefit."
     },
     {
       "name": "Counterbattery Orders",

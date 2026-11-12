@@ -57,7 +57,7 @@ Berserkers sacrifice their own safety for bursts of speed and overwhelming aggre
 
 **1 CP — Movement**
 
-Suffer 2 Damage that cannot be saved or prevented.
+Take 2 **temporary Wounds** (pending Damage) rather than immediately suffering Damage. This is a voluntary cost and cannot exceed the normal voluntary limit of 2 temporary Wounds.
 
 Until the end of the Round:
 
@@ -66,7 +66,7 @@ Until the end of the Round:
 
 Where X is half your Body characteristic, rounded up.
 
-The additional Attack dice are consumed when the Attack is resolved.
+The additional Attack dice are consumed when the Attack is resolved. Temporary Wounds remain pending until the Berserker next suffers Damage after Saves, as detailed in [Damage and Defeat](16_structured_combat.md#16-damage-and-defeat). They cannot be Healed.
 
 #### Combat Phase — Suggested Weapons
 

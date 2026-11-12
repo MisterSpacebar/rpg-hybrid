@@ -12,7 +12,7 @@
       "name": "Double Down",
       "slot": "C",
       "timing": "Assault/Combat Reaction",
-      "effect": "When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit normally, to a maximum of the incoming Hits. Excess successful Saves have no effect. These dice cannot be rerolled. Backlash: After resolving the Attack, suffer 1 unpreventable Damage for each natural 1 rolled."
+      "effect": "Assault/Combat Reaction: When a friendly Unit makes Armor Saves against one Attack, roll twice the normal number of Armor Save dice. Each successful Save cancels one Hit, up to the incoming Hits; excess Saves do nothing. The dice cannot be rerolled. Backlash: for each complete pair of natural 1s among these Armor Save dice, the Unit suffers 1 unpreventable Damage after resolving the Attack. This special Blunder consequence does not make ordinary Armor Saves generate Blunders."
     },
     {
       "name": "Risky Calculations",
@@ -39,7 +39,7 @@
       "effect": "The active Unit declares a Charge against an eligible enemy at least 6\" away. It gains Charge 2 and Impact +2 for that Charge. If successful, resolve normally. If the Charge fails, it moves its modified rolled Charge distance toward the target as far as legally possible without becoming Engaged, then suffers 1 unpreventable Damage. Normal Charge Blunders still apply."
     }
   ],
-  "doubleDownClarification": "Double Down does not roll pairs and keep the highest. All additional dice contribute to a single Armor Save pool. For example, if an Attack produces three Hits, the defender rolls six Armor Save dice. Up to three successful Saves cancel the three Hits. Every natural 1 among all six dice causes 1 unpreventable Backlash Damage after the Attack is resolved. Backlash applies to every natural 1, not merely when the roll generates a normal Blunder.",
+  "doubleDownClarification": "Double Down rolls one doubled Armor Save pool, not pairs selecting better results. If the Attack inflicts three Hits, roll six Armor Save dice; at most three successes cancel Hits. Each complete pair of natural 1s in that pool generates one Double Down Backlash and inflicts 1 unpreventable Damage after the Attack. A lone natural 1 has no Backlash effect, and the dice cannot be rerolled. Ordinary Armor Save rolls do not generate Blunders.",
   "allOrNothingClarification": "The declared target must be an otherwise legal Charge target, within the normal 12\" declaration limit and at least 6\" away. If the Charge fails because of insufficient distance or an illegal path, move along a legal path toward the target as far as the modified Charge distance permits without entering Engagement. If no legal movement is possible, the Unit remains in place and still suffers the failed-Charge Damage. The failed movement does not generate Charge Impact.",
   "doctrineIdentity": "High-risk, high-reward dice manipulation. Unlike Alpha Strike, Gambit accepts substantial uncertainty. Unlike Breakthrough, its Charge enhancement can leave the attacking Unit stranded and damaged."
 }

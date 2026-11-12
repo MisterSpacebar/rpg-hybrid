@@ -17,7 +17,7 @@
       "name": "Momentum Drive",
       "slot": "V",
       "timing": "Assault",
-      "effect": "The active Unit gains Charge 2 when declaring its next Charge this Assault Phase. Charge Impact is unchanged."
+      "effect": "When the active Unit declares a legal Charge target within the normal 12\" declaration limit, it may Move up to 2\" toward that target, ending legally and unengaged, then must attempt the Charge. This pre-Charge Move does not add Charge distance or extend declaration range, and cannot be used as a Disengage."
     },
     {
       "name": "Siege Breaker",
@@ -29,7 +29,7 @@
       "name": "Press the Breach",
       "slot": "C",
       "timing": "Combat",
-      "effect": "After the active Unit inflicts unsaved Damage on an enemy Engaged with it, that enemy loses one bonus Unit of objective-control counting until the end of the Round, down to its ordinary minimum."
+      "effect": "If the active Unit successfully Charged this Round and makes a Melee Attack against an enemy contesting an objective, it counts as two Units for controlling that objective until the end of the Round while within the objective’s control range. This does not require unsaved Damage and does not stack with other objective-control Unit-counting bonuses."
     },
     {
       "name": "Command the Breach",

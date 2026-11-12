@@ -24,7 +24,7 @@
       "name": "Mob Tactics",
       "slot": "E",
       "timing": "Combat",
-      "effect": "The active Unit gains Anti-Infantry 4 on its next Melee Attack against an Infantry enemy also Engaged by a different friendly Unit with at least four surviving Models."
+      "effect": "When the active multi-model Unit declares a Melee Attack against an enemy with fewer surviving Models, gain Anti-Infantry X or Anti-Elite X, provided the target possesses the matching tag. X equals active surviving Models minus target surviving Models, to a maximum of 6. The active Unit must have at least two surviving Models. Calculate X at declaration; add at most one applicable Anti rank to the combined Attack pool."
     },
     {
       "name": "Pack Coordination",

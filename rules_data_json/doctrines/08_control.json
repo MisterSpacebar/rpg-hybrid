@@ -11,7 +11,7 @@
       "name": "Lockdown",
       "slot": "C",
       "timing": "Assault Reaction",
-      "effect": "When an enemy within Medium of a friendly Unit declares a Charge, reduce its final Charge distance by 1\", minimum 0\". Charge Impact is unchanged."
+      "effect": "Assault Reaction: When an enemy within Medium of a friendly Unit declares a Charge, reduce its final Charge distance by 2\", minimum 0\". The declared Charge target and 12\" declaration limit are unchanged; Charge Impact is unaffected."
     },
     {
       "name": "Interdiction",
@@ -23,7 +23,7 @@
       "name": "Disrupt Orders",
       "slot": "H",
       "timing": "Assault/Combat Reaction",
-      "effect": "When an enemy within Medium of friendly Headquarters receives an Attack bonus, remove Accurate 1 from that Attack. If it has no Accurate bonus, reduce its bonus Attacks by one die instead."
+      "effect": "Assault/Combat Reaction: When an enemy Unit within Medium of friendly Headquarters receives a bonus to an Attack, reduce that Attack's Accurate X by up to 2; if the Attack has no Accurate bonus, remove up to two bonus Attack dice instead (not below its unmodified base Attacks). This does not suppress printed/passive bonuses outside the triggering Attack."
     },
     {
       "name": "Suppressing Fire",
@@ -35,7 +35,7 @@
       "name": "Jamming Field",
       "slot": "A",
       "timing": "Assault",
-      "effect": "Choose one enemy within Short of the active Unit. That enemy cannot use Reaction Commands against the active Unit's next Attack this Phase."
+      "effect": "During the active Unit's Assault activation, choose one enemy within Short of it. Either suppress that enemy's Concealed until the end of the Phase, or prevent that enemy from using Reaction Commands against the active Unit's next Attack this Phase. A Concealed Unit can be chosen for this Command despite Concealed's normal Attack-targeting restriction."
     }
   ],
   "doctrineIdentity": "Reducing the opponent's tactical options. Control focuses on denying movement and effective responses rather than dealing additional damage."
