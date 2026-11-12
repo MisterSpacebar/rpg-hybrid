@@ -610,7 +610,7 @@ This opposing 2,000-point example demonstrates **Castling + Breakthrough**: hold
 
 ## Step 1: Faction and Foundation
 
-Choose **Sacred Orders**. Its **Unyielding** faction rule protects eligible Core or Elite Units from their first Damage instance each Round.
+Choose **Sacred Orders**. Its **Unyielding** faction rule grants Tough 1 to all friendly Sacred Orders Units, improving their Armor Save rerolls.
 
 - Universal Foundation: **H, C, C**.
 - Faction Foundation: **E, H**.
