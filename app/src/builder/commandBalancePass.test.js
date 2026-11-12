@@ -82,7 +82,7 @@ test('two contrasting 2,000-point matched-play examples obey command and recruit
  assert.equal(limits.minHeadquarters,1)
  for(const removed of ['minCoreUnits','maxHeroes','maxLargeAssets','maxLargeAssetsWithHeavySupport'])assert.equal(removed in limits,false)
  const book=md('02_wargame/04_army_construction.md')
- assert.match(book,/Choose 2 of the faction's 4/)
+ assert.match(book,/Choose 2 of the [Ff]action's 4/)
  const examples=[
   {title:'Free Realms Coordinated Gunline',doctrines:['Firing Line','Combined Arms'],points:2000,units:13,reserve:6,onTable:7,slotUse:{H:1,C:4,E:2,R:4,V:1,S:1,A:0}},
   {title:'Sacred Orders Hammer and Anvil',doctrines:['Castling','Breakthrough'],points:2000,units:10,reserve:5,onTable:5,slotUse:{H:1,C:4,E:1,R:0,V:2,S:1,A:1}}
