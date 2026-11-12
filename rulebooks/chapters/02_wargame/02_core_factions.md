@@ -1124,7 +1124,9 @@ Support, Elite, Spirit, Undead
 
 M4" / W4 / Arm 6+ / Eva 5+ / Ward 5+ (Physical)
 
-Soul Lance: 9" / 5 / 5+ / 1 / Magic. Spectral Staff: Engaged / 2 / 5+ / 1 / Magic.
+Soul Lance: 9" / 5 / 5+ / 1 / Magic.
+
+Spectral Staff: Engaged / 2 / 5+ / 1 / Magic.
 
 Soul Rend — Passive: Other friendly Units within Short (6") gain Anti-Armored 2 and Anti-Mortal 2 on eligible Attacks. If both match, use only the highest applicable Anti rank; add that bonus once to the combined Unit Attack pool.
 
