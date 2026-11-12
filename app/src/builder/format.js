@@ -107,7 +107,7 @@ export function commandCardEffect(command, doctrine) {
     else grouped.push({ start: row.round, end: row.round, value })
   }
   const summary = grouped.map(({ start, end, value }) => {
-    const bonus = config.label === null ? value : config.label === 'Accurate' ? `Accurate ${value}` : `+${value} ${config.label}`
+    const bonus = config.label === null ? value : config.label === 'Accurate' ? `Accurate ${value}` : config.label === 'Impact' ? `Impact +${value}` : `+${value} ${config.label}`
     return `${start === end ? `Round ${start}` : `Rounds ${start}–${end}`}: ${bonus}`
   }).join(' · ')
   return `${config.description}\n${summary}`
