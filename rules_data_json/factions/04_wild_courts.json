@@ -85,6 +85,13 @@
           "name": "Woodland Stalker",
           "type": "Passive",
           "effect": "While this Unit is benefiting from Cover, it gains Concealed and its Longbows improve Hit from 5+ to 4+. This applies to Cover from any eligible source; no natural/artificial terrain distinction. The faction rule’s additional Cover 1 cannot itself create Cover eligibility."
+        },
+        {
+          "name": "Horde Breakers",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Horde 2",
+          "effect": "This Unit gains Anti-Horde 2 on its eligible Weapon and Spell Attacks, once per combined Attack pool."
         }
       ]
     },
@@ -332,9 +339,7 @@
           "attacks": 4,
           "hit": "4+",
           "damage": 3,
-          "keywords": [
-            "Anti-Infantry 3"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -342,6 +347,13 @@
           "name": "Living Bastion",
           "type": "Passive",
           "effect": "Friendly Units immediately behind or adjacent to this Model benefit from Cover against ranged Attacks when physically appropriate."
+        },
+        {
+          "name": "Anti-Infantry 3 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Infantry 3",
+          "effect": "This Unit gains Anti-Infantry 3 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },
