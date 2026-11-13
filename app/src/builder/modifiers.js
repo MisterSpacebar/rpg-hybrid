@@ -81,9 +81,10 @@ function applyTo(a, t) {
   if ((m = t.match(/Range by (\d+)"/i)) && /^\d+"$/.test(a.range)) a.range = `${parseInt(a.range, 10) + Number(m[1])}"`
   if ((m = t.match(/gains? (Accurate|Critical|Anti-Monster) (\d)/i))) addKeyword(a, m[1], Number(m[2]))
   if (/\bgains? Pinpoint\b/i.test(t) && !a.keywords.includes('Pinpoint')) a.keywords.push('Pinpoint')
-  if ((m = t.match(/Gain Long Range (\d)"/i))) {
+  if ((m = t.match(/Gain Long Range (\d+)"/i))) {
     const i = a.keywords.findIndex((k) => /^Long Range/.test(k))
-    if (i >= 0) a.keywords[i] = `Long Range ${parseInt(a.keywords[i].slice(11), 10) + 1}"`
+    const increment = Number(t.match(/increase (?:that )?X by (\d+)/i)?.[1] ?? 1)
+    if (i >= 0) a.keywords[i] = `Long Range ${parseInt(a.keywords[i].slice(11), 10) + increment}"`
     else a.keywords.push(`Long Range ${m[1]}"`)
   }
   a.modified = true
