@@ -411,12 +411,12 @@ Generic Units often provide cheaper or more flexible alternatives to specialized
 A purchased **faction-specific Core** Unit may be upgraded to a **Double Formation** when its Unit profile does not prohibit this option:
 
 - Double its **starting Model count** and pay **twice the standard formation's total Points**, including any selected packages or fixed-price Unit-wide upgrades. For example, Greatweapon Guard (5 Models / 145 Points) becomes **10 Models / 290 Points** before any further permissible variations.
-- The doubled group is **one Unit** occupying **one compatible Recruitment Slot** and remains **one Core Unit** for effects that check that designation; it has **one activation per eligible Phase** and counts as **one Unit** for objective control.
+- The doubled group is **one Unit** occupying **one compatible Recruitment Slot** and remains **one Core Unit** for effects that check that designation; it has **one activation per eligible Phase** and counts as **one Unit** for objective control. If it is neither Cavalry nor Elite, it gains **Horde** and remains eligible to control objectives down to its last surviving Model.
 - Its individual Models retain their printed Wounds and Attacks. The Unit's ranked Keywords and effects (Accurate X, Critical X, Tough X, etc.) **are not doubled**; additional compatible bonuses add to their ranks normally. A Command that grants +X Attacks to one Unit's next Attack adds X once, unless it expressly says **per Model**.
 - The doubled starting size is used to calculate thresholds, replenishment caps, and any restoration limited to the Unit's starting Models.
 - A Core Unit may use this option only once. Other added-Model options require explicit permission and their usual Points.
 
-This upgrade does not apply to generic Line Infantry, even though they are Core; those units use their own Additional Model options.
+This upgrade does not apply to generic Line Infantry, even though they are Core; those units use their own Additional Model options. Generic Line Infantry gain Horde at 10 purchased Models; generic Ranged Infantry gain Horde at 8 or 9 Models. Horde has no extra objective-control value by itself.
 
 ### Faction Units
 
