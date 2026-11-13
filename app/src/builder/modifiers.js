@@ -171,10 +171,12 @@ function setAnti(a, tag, rank) {
   a.modified = true
 }
 
-// choices: { [optionId]: { tag, weapon } }. Returns the changed attacks plus, per option, what it was applied to.
+// choices: { [optionId]: { tag, weapon } }. Unit-wide Anti is kept separate
+// from weapon keywords so it is never accidentally multiplied per Model.
 export function applyTagChoices(attacks, options, choices = {}) {
   const list = attacks.map((a) => ({ ...a, keywords: [...(a.keywords ?? [])] }))
   const applied = {}
+  const unitAnti = []
   for (const o of options) {
     if (!o.tagChoice) continue
     const { tag: selectedTag, weapon } = choices?.[o.id] ?? {}
@@ -186,7 +188,7 @@ export function applyTagChoices(attacks, options, choices = {}) {
     }
     if (!list.length) continue
     if (o.tagChoice.scope === 'unit') {
-      list.forEach((a) => setAnti(a, tag, o.tagChoice.rank))
+      unitAnti.push(`Anti-${tag} ${o.tagChoice.rank}`)
       applied[o.id] = null
     } else {
       const target = list.find((a) => a.name === weapon) ?? targetOf(list, o.effect ?? '')
@@ -196,5 +198,5 @@ export function applyTagChoices(attacks, options, choices = {}) {
       }
     }
   }
-  return { attacks: list, applied }
+  return { attacks: list, applied, unitAnti }
 }
