@@ -42,7 +42,7 @@
   "signatureCoreUnits": [
     {
       "name": "Corpse Horde",
-      "points": 80,
+      "points": 120,
       "models": 12,
       "tags": [
         "Horde Infantry",
@@ -327,9 +327,7 @@
           "attacks": 4,
           "hit": "4+",
           "damage": 3,
-          "keywords": [
-            "Anti-Elite 3"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -337,6 +335,13 @@
           "name": "Reassembled",
           "type": "Passive",
           "effect": "The first time this Unit would be defeated, roll a D6. On 4+, remain at 1 Wound instead."
+        },
+        {
+          "name": "Anti-Elite 3 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Elite 3",
+          "effect": "This Unit gains Anti-Elite 3 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },

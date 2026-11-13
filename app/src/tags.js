@@ -60,8 +60,8 @@ export const ANTI_TAGS = [
   'Gnome', 'Beastfolk', 'Tiefling',
 ].filter((tag, i, tags) => tags.indexOf(tag) === i)
 
-// All applicable Anti ranks are checked against the target; only the highest
-// matching value adds dice to a combined Attack pool (never once per Model).
+// Anti sources do not stack: use the highest applicable *total* dice. Weapon Anti
+// applies per contributing Model; Unit Anti is added once to a combined pool.
 export function antiBonus(keywords = [], targetTags = []) {
   const targets = new Set(canonicalTags(targetTags))
   return keywords.reduce((best, keyword) => {
@@ -70,4 +70,22 @@ export function antiBonus(keywords = [], targetTags = []) {
       ? Math.max(best, Number(match[2]))
       : best
   }, 0)
+}
+
+// Use this for resolved, model-aware attacks. Existing antiBonus() still returns the
+// highest printed rank for backwards-compatible single-Model callers.
+export function resolvedAntiBonus({ weaponKeywords = [], unitKeywords = [], targetTags = [], contributingModels = 1 } = {}) {
+  const perWeapon = antiBonus(weaponKeywords, targetTags) * Math.max(0, contributingModels)
+  const perUnit = antiBonus(unitKeywords, targetTags)
+  return Math.max(perWeapon, perUnit)
+}
+
+export function canControlObjective({ startingModels = 1, survivingModels = 0, tags = [], withdrawn = false, inReserve = false, inRange = true } = {}) {
+  if (withdrawn || inReserve || !inRange || survivingModels < 1) return false
+  const isHorde = canonicalTags(tags).includes('Horde')
+  return isHorde || survivingModels >= Math.ceil(startingModels / 2)
+}
+
+export function objectiveControlValue({ eligible = true, modifiers = [] } = {}) {
+  return eligible ? Math.max(1, ...modifiers) : 0
 }

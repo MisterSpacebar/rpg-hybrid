@@ -241,8 +241,7 @@
           "hit": "5+",
           "damage": 1,
           "keywords": [
-            "Magic",
-            "Anti-Undead 2"
+            "Magic"
           ]
         }
       ],
@@ -260,6 +259,13 @@
           "cost": "1 CP",
           "timing": "Movement",
           "effect": "Target one unit within Short of this unit. Heal 2 that unit."
+        },
+        {
+          "name": "Anti-Undead 2 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Undead 2",
+          "effect": "This Unit gains Anti-Undead 2 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ],
       "optionalUpgrades": [

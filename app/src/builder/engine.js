@@ -42,6 +42,8 @@ export function migrateUnitConfig(entry, cfg) {
     }
   }
   for (const group of entry.groups.filter((g) => g.kind === 'radio' && g.required)) {
+    // Retired Sling packages must be reselected manually, never converted silently.
+    if (entry.key === 'generic:ranged-infantry' && group.id === 'rangedWeaponPackages' && picks[group.id] === 'rangedWeaponPackages:7') continue
     if (!picks[group.id] || !group.options.some((o) => o.id === picks[group.id])) {
       picks[group.id] = group.options[0]?.id ?? null
       changed = true
@@ -131,6 +133,7 @@ export function resolveUnit(entry, cfg, factionId = null) {
   const chosenNames = new Set(picked.map((o) => o.name))
   const illegalPair = picked.flatMap((o) => (o.incompatibleWith ?? []).filter((name) => chosenNames.has(name)).map((name) => `${o.name} + ${name}`))
   const loadoutConflicts = [...new Set(illegalPair)]
+  if (entry.key === 'generic:ranged-infantry' && cfg.picks?.rangedWeaponPackages === 'rangedWeaponPackages:7') loadoutConflicts.push('Slings were retired; select a replacement ranged weapon before using this army.')
 
   let total = entry.basePoints
   let paidPackages = 0
@@ -187,13 +190,16 @@ export function resolveUnit(entry, cfg, factionId = null) {
   // Veterans training makes every weapon of an infantry formation better, not just one package.
   const infantryVeterans = entry.source === 'generic' && ['Core', 'Elite', 'Ranged', 'Captain'].includes(entry.category)
   const upgraded = modifyAttacks(spellAttacks, picked, { allWeapons: infantryVeterans ? ['Veterans'] : [], weaponTargets: cfg.weaponPicks ?? {} })
-  const { attacks: tagged, applied: tagTargets } = applyTagChoices(upgraded, picked, cfg.tagPicks)
+  const { attacks: tagged, applied: tagTargets, unitAnti: chosenUnitAnti } = applyTagChoices(upgraded, picked, cfg.tagPicks)
   const attacks = tagged
     .map((a) => ({ ...a, phase: attackPhase(a) }))
     .sort((a, b) => (a.phase === b.phase ? 0 : a.phase === 'Assault' ? -1 : 1))
 
   const finalModels = doubled ? models * 2 : models
   const tags = modifyTags([...entry.tags.filter((t) => !(isHero && t === 'Elite' && entry.heroOption === 'Master Wizard')), ...picked.flatMap((o) => o.grantsTags ?? [])], picked)
+  const expanded = canonicalTags(tags)
+  const isNonEliteInfantry = expanded.includes('Infantry') && !expanded.includes('Cavalry') && !expanded.includes('Elite')
+  if (((doubled && entry.source === 'faction' && entry.isCore) || (entry.key === 'generic:line-infantry' && finalModels >= 10) || (entry.key === 'generic:ranged-infantry' && finalModels >= 8)) && isNonEliteInfantry && !tags.includes('Horde')) tags.push('Horde')
   // Hero and Unique are distinct. Commissioned generic Captains and Master Wizards
   // gain Hero but not Unique; PCs and named/legendary figures gain Unique explicitly.
   if (isHero && !tags.includes('Hero')) tags.push('Hero')
@@ -235,6 +241,7 @@ export function resolveUnit(entry, cfg, factionId = null) {
     charge,
     loadoutConflicts,
     tags: canonicalTags(fx.tags),
+    unitAnti: [...entry.abilities.filter((a) => a.scope === 'unit' && a.keyword?.startsWith('Anti-')).map((a) => a.keyword), ...chosenUnitAnti],
     attacks: fx.attacks,
     abilities: [...entry.abilities, ...(isMasterWizard && entry.masterWizardAbility ? [{ ...entry.masterWizardAbility }] : []), ...optionCommands],
     picks: selected

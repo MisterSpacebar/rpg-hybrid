@@ -378,6 +378,8 @@ export function loadCatalog() {
     // The canonical unit is Shielded Fusiliers; newly purchased units use its new key.
     const fusiliers = unitsByKey['faction:free-realms:shielded-fusiliers']
     if (fusiliers) unitsByKey['faction:free-realms:vanguard-skirmishers'] = fusiliers
+    const spellstriders = unitsByKey['faction:arcane-orders:spellstriders']
+    if (spellstriders) unitsByKey['faction:arcane-orders:spellguard'] = spellstriders
     return { rules, factions, doctrines, generic, unitsByKey }
   })
   return catalogPromise

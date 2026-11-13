@@ -108,9 +108,7 @@
           "attacks": 2,
           "hit": "4+",
           "damage": 2,
-          "keywords": [
-            "Anti-Infantry 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -118,6 +116,13 @@
           "name": "Relentless Hunt",
           "type": "Passive",
           "effect": "The Unit has Impact +2 on successful Charges. This printed value replaces the previous Impact +1 from Relentless Hunt; it is not an additional +1."
+        },
+        {
+          "name": "Anti-Infantry 4 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Infantry 4",
+          "effect": "This Unit gains Anti-Infantry 4 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ],
       "charge": 2,
@@ -328,9 +333,7 @@
           "attacks": 5,
           "hit": "4+",
           "damage": 2,
-          "keywords": [
-            "Anti-Unique 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -338,6 +341,13 @@
           "name": "Predatory Dive",
           "type": "Passive",
           "effect": "When Charging from an elevated position, gain +1 Impact and Accurate 1 on its next Attack."
+        },
+        {
+          "name": "Anti-Unique 2 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Unique 2",
+          "effect": "This Unit gains Anti-Unique 2 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },

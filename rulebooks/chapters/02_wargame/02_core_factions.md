@@ -48,7 +48,7 @@ The table below explicitly identifies the compatible recruitment choices of each
 | Infernal Hosts | Hellguard | C / E |
 | Infernal Hosts | Rift Stalkers | C / V |
 | Infernal Hosts | Cultist Horde | C |
-| Arcane Orders | Spellguard | C / E |
+| Arcane Orders | Spellstriders | C / E |
 | Arcane Orders | Aether Ballista Team | C / R / E |
 | Arcane Orders | Animated Guardians | C / E |
 | Titan Clans | Ogre Warriors | C |
@@ -108,7 +108,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 
 | Unit                                                                      | Profile                    | Weapon / Special Ability                                                                                                                                                     |
 | ------------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Greatweapon Guard — 145 pts (Infantry, Mortal, Armored, 5 Models)<br><br> | M4" / W2 / Arm 4+ / Eva 6+ | Greatweapons: Engaged / 1 / 4+ / 2 / Anti-Armored 2.<br>Disciplined Assault: When attacking an enemy Engaged by another friendly Unit, this Unit gains Accurate 1.                            |
+| Greatweapon Guard — 145 pts (Infantry, Mortal, Armored, 5 Models)<br><br> | M4" / W2 / Arm 4+ / Eva 6+ | Greatweapons: Engaged / 1 / 4+ / 2.<br>Anti-Armored 5 (Unit Passive).<br>Disciplined Assault: When attacking an enemy Engaged by another friendly Unit, this Unit gains Accurate 1.                            |
 | Outriders — 175 pts (Infantry, Mortal, Armored, 4 Models)                 | M5" / W2 / Arm 5+ / Eva 5+ | Carbine: 8" / 3 / 5+ / 1 / Firearm.<br>Sabres: Engaged / 2 / 5+ / 1.<br>Mobile Fire: 1CP Assault: After resolving a ranged Attack, Move up to 2", without finishing Engaged. |
 | Shielded Fusiliers — 160 pts (Ranged Infantry, Mortal, Armored, 4 Models) | M3" / W1 / Arm 5+ / Eva 6+ | Shielded Rifle: 12" / 1 / 3+ / 1 / Firearm, Pinpoint.<br>Sidearm: Engaged / 1 / 6+ / 1.<br>Shield Formation: When resolving incoming Charge Impact, gain Brace X equal to this Unit's current surviving Models (no cap). Does not prevent the Charge or ensuing melee Attack.<br>Disciplined Rifle Fire: Gain Anti-Armored 2 on ranged Weapon Attacks (once per combined pool; highest applicable Anti rank only). |
 
@@ -180,7 +180,7 @@ Field Refit — 1 CP, Movement: Choose one friendly Vehicle, Artillery, or Range
 
 | Unit                                                        | Profile                   | Weapons / Special Ability                                                                                                                                                                            |
 | ----------------------------------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| War Wagon — 240 pts (Vehicle, Mechanical, Armored )<br><br> | M5" / W8 / Arm 4+ / Eva — | Repeater Battery: 10" / 8 / 5+ / 1 / Heavy.<br>Crew Weapons: Engaged / 5 / 5+ / 1.<br>Mobile Platform: May use Repeater Battery after moving, but base Hit is 6+                                     |
+| War Wagon — 240 pts (Vehicle, Mechanical, Armored )<br><br> | M5" / W8 / Arm 4+ / Eva — | Repeater Battery: 10" / 8 / 5+ / 1 / Heavy, Anti-Horde 3.<br>Crew Weapons: Engaged / 5 / 5+ / 1.<br>Mobile Platform: May use Repeater Battery after moving, but base Hit is 6+                                     |
 | Grand Cannon — 185 pts (Artillery, Mechanical, Armored )    | M2" / W5 / Arm 5+ / Eva — | Grand Cannon: 18" / 2 / 3+ / 3 / Firearm, Heavy.<br>Crew Weapons: Engaged / 2 / 6+ / 1.<br>Surveyed Battery: If stationary during the preceding Round, gain Accurate 2 when firing the Grand Cannon. |
 
 ### Faction Leader — Lord-Commander
@@ -268,7 +268,8 @@ Infantry, Support, Elite, Mortal, Armored 
 
 M3" / W5 / Arm 4+ / Eva 5+ / Ward 5+ (Magic)
 
-Blessed Mace: Engaged / 3 / 5+ / 1 / Magic, Anti-Undead 2
+Blessed Mace: Engaged / 3 / 5+ / 1 / Magic
+Anti-Undead 2 — Unit Passive: Applies once to the combined Attack pool with any eligible Weapon or Spell Attack.
 
 Benediction — 1 CP, Movement: Improve one nearby Unit's applicable Ward by one step until the end of the Phase.
 
@@ -355,7 +356,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 | Unit                                                               | Profile                    | Weapon / Special Ability                                                                                                                                                                       |
 | ------------------------------------------------------------------ | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Ironbreakers — 165 pts (Infantry, Mortal, Armored, 5 Models) | M3" / W2 / Arm 4+ / Eva 6+ | Hold Axes: Engaged / 3 / 5+ / 1.<br>**Shieldwall:** Brace 1 while stationary.<br>**Lock Shields (1 CP, Reaction):** Gain +2 additional Brace versus one incoming Charge Impact pool; does not prevent the Charge. |
-| Thunderers — 185 pts (Ranged Infantry, Mortal, Armored , 4 Models) | M3" / W2 / Arm 5+ / Eva 6+ | Musket: 10" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Armored 2. <br>Axes: Engaged / 2 / 6+ / 1. <br>Drilled Volley: If stationary during the preceding Movement phase, gain Accurate 1 when making a ranged Attack. |
+| Thunderers — 185 pts (Ranged Infantry, Mortal, Armored , 4 Models) | M3" / W2 / Arm 5+ / Eva 6+ | Musket: 10" / 1 / 4+ / 2 / Firearm, Heavy. <br>Warhammers: Engaged / 2 / 6+ / 1. <br>Armorbreakers: Unit-wide Anti-Armored 4.<br>Drilled Volley: If stationary during the preceding Movement phase, gain Accurate 1 when making a ranged Attack. |
 | Deep Watch — 180 pts (Ranged Infantry, Mortal, Armored, 5 Models) | M3" / W1 / Arm 5+ / Eva 6+ | Repeater Rifles: 10" / 3 / 5+ / 1 / Firearm.<br>Axes: Engaged / 2 / 6+ / 1.<br>**Drilled Repeaters:** Improve Rifle Hit to 4+ while stationary.<br>**Controlled Crossfire:** Gain Pinpoint on Ranged Attacks while stationary. |
 
 ### Captain and Specialists
@@ -402,8 +403,8 @@ Overcharge — 1 CP, Assault: One unit within Short with an attack profile that 
 
 | Unit                                                      | Profile                    | Weapons / Special Ability                                                                                                                                                                                  |
 | --------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Steam Bastion — 285 pts (Vehicle, Mechanical, Armored )   | M4" / W11 / Arm 3+ / Eva — | Heavy Cannon: 15" / 2 / 4+ / 3 / Firearm, Heavy, Anti-Monster 2. <br>Repeater Guns: 8" / 5 / 5+ / 1 / Firearm. <br>Armored Engine: Reduce the first Damage suffered each Round by 1.                                       |
-| Great Bombard — 215 pts (Artillery, Mechanical, Armored ) | M2" / W5 / Arm 5+ / Eva —  | Bombard: 18" / 2 / 4+ / 3 / Blast 1", Firearm, Heavy. <br>Crew Weapons: Engaged / 2 / 6+ / 1. <br>Grounded Platform: Gain Accurate 1 on Bombard Attacks if stationary during the preceding Movement phase. |
+| Steam Bastion — 270 pts (Vehicle, Mechanical, Armored )   | M6" / W11 / Arm 3+ / Eva — | Repeater Guns: 8" / 4 / 5+ / 1 / Firearm. <br>Armored Engine: Reduce the first Damage suffered each Round by 1.<br>Transport Capacity: Two friendly Units, up to 5 Models each; no Cavalry or Large Assets.<br>Embark (1 CP, Movement): During the Bastion’s Movement activation, embark one eligible unengaged Unit within 3"; it spends its Movement activation.<br>Disembark (1 CP, Assault): Instead of attacking, deploy one carried Unit wholly within 3" in Coherency outside Engagement; it may take an unused Assault activation but cannot Charge. Passengers cannot control objectives while aboard. If the Bastion is destroyed, passengers emergency disembark and suffer one automatic Damage 1 Physical Hit per Model, Armor and Ward permitted.                                       |
+| Great Bombard — 215 pts (Artillery, Mechanical, Armored ) | M2" / W5 / Arm 5+ / Eva —  | Bombard: 18" / 2 / 4+ / 3 / Blast 1", Firearm, Heavy. <br>Crew Weapons: Engaged / 2 / 6+ / 1. <br>Grounded Platform: Gain Accurate 1 on Bombard Attacks if stationary during the preceding Movement phase, Anti-Horde 3. |
 
 Airburst Bombardment
 
@@ -484,7 +485,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 
 | Unit                                                         | Profile                    | Weapon / Special Ability                                                                                                                                                      |
 | ------------------------------------------------------------ | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Glade Hunters — 190 pts (Ranged Infantry, Mortal, 5 Models) | M4" / W1 / Arm 6+ / Eva 5+ | Longbows: 14" / 3 / 5+ / 1 / Long Range 3", Surge: Direct Damage 1.<br>Elven Sword: Engaged / 3 / 6+ / 1 / Accurate 1.<br>**Woodland Stalker:** While benefiting from any Cover, become Concealed and improve Longbow Hit to 4+. |
+| Glade Hunters — 190 pts (Ranged Infantry, Mortal, 5 Models) | M4" / W1 / Arm 6+ / Eva 5+ | Longbows: 14" / 3 / 5+ / 1 / Long Range 3", Surge: Direct Damage 1.<br>Elven Sword: Engaged / 3 / 6+ / 1 / Accurate 1.<br>**Woodland Stalker:** While benefiting from any Cover, become Concealed and improve Longbow Hit to 4+.<br>Anti-Horde 2 (Unit Passive). |
 | Wild Riders — 165 pts (Infantry, Cavalry, Mortal, 3 Models) | M7" / W2 / Arm 6+ / Eva 4+ | Charge 4 / Impact +0.<br>Thorn Spears: Engaged 2" / 3 / 5+ / 1.<br>**Forest Ambush:** Beginning in Cover permits a 2" reposition before declaring a Charge, ending legally. |
 | Briar Stalkers — 165 pts (Infiltrating Infantry, Mortal, Fey, 4 Models) | M5" / W1 / Arm 6+ / Eva 5+ | Thorned Blades: Engaged / 2 / 5+ / 1.<br>Thicket Ambush: If this Unit began its activation in Cover, gain Accurate 1 and Charge 1 on its Charge this Phase. |
 
@@ -548,7 +549,7 @@ Guided Hunt — 1 CP, Movement: One Beast, Cavalry, or Monster Unit within Short
 
 | Unit                                    | Profile                                          | Weapons / Special Ability                                                                                                                                                                    |
 | --------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Treant Ancient — 285 pts (Monster, Fey) | M3" / W12 / Arm 3+ / Eva 6+                      | Great Limbs: Engaged 2" / 4 / 4+ / 3 / Anti-Infantry 3. <br>Living Bastion: Friendly Units immediately behind or adjacent to this Model benefit from Cover against ranged Attacks when physically appropriate. |
+| Treant Ancient — 285 pts (Monster, Fey) | M3" / W12 / Arm 3+ / Eva 6+                      | Great Limbs: Engaged 2" / 4 / 4+ / 3. <br>Living Bastion: Friendly Units immediately behind or adjacent to this Model benefit from Cover against ranged Attacks when physically appropriate.<br>Anti-Infantry 3 (Unit Passive). |
 | Forest Wurm— 365 pts (Monster)          | M7" / W11 / Arm 4+ / Eva 5+ / Ward 6+ (Magic +1) | Verdant Breath: 8" / 6 / 5+ / 1 / Magic, Blast 1". <br>Claws: Engaged / 6 / 3+ / 2. <br>Canopy Flight: May Move over terrain and Models but must finish legally.                             |
 
 ### Faction Leader — Queen of Thorns
@@ -624,7 +625,8 @@ Infantry, Hero, Mortal, Armored
 
 M5" / W7 / Arm 4+ / Eva 5+
 
-Boss Choppa: Engaged / 4 / 4+ / 2 / Anti-Elite 2
+Boss Choppa: Engaged / 4 / 4+ / 2
+Anti-Elite 2 — Unit Passive: Applies once to the combined Attack pool with any eligible Weapon or Spell Attack.
 
 Drive the Mob — 1 CP, Movement: One friendly Infantry Unit within Short gains +2" Move during its next Move but cannot make a ranged Attack during that activation.
 
@@ -672,7 +674,7 @@ Rallying Roar — 1 CP, Movement: Remove Withdrawn from a nearby friendly Unit a
 
 | Unit                                  | Profile                     | Weapons / Special Ability                                                                                                                  |
 | ------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| War Beast — 260 pts (Monster, Beast)  | M6" / W10 / Arm 4+ / Eva 6+ | Tusks and Claws: Engaged / 5 / 4+ / 2 / Anti-Unique 2. Unstoppable Charge: Gain +4 Impact when Charging.                                                   |
+| War Beast — 260 pts (Monster, Beast)  | M6" / W10 / Arm 4+ / Eva 6+ | Tusks and Claws: Engaged / 5 / 4+ / 2. Unstoppable Charge: Gain +4 Impact when Charging.<br>Anti-Unique 2 (Unit Passive).                                                   |
 | Looted Catapult — 155 pts (Artillery) | M2" / W5 / Arm 5+ / Eva —   | Boulder Thrower: 15" / 2 / 4+ / 2 / Heavy, Blast 1". Crew: Engaged / 2 / 6+ / 1. <br>Unstable Frame: On a Blunder, suffer Direct Damage 1. |
 
 Warclans — Looted Catapult
@@ -749,7 +751,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 | Unit                                                       | Profile                    | Weapon / Special Ability                                                                                                                     |
 | ---------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | Sneaks — 120 pts (Infiltrating Infantry, Mortal, 7 Models) | M5" / W1 / Arm 6+ / Eva 5+ | Knives: Engaged / 2 / 6+ / 1. <br>Sneaky: Gain Concealed while benefiting from Cover.                                                        |
-| Bombardiers — 155 pts (Ranged Infantry, Mortal, 5 Models) | M3" / W1 / Arm 6+ / Eva 6+ | Bombs: 6" / 2 / 5+ / 1 / Blast 1".<br>Improvised Weapons: Engaged / 2 / 6+ / 1.<br>**Unstable:** Blunders inflict one Damage 1 Hit.<br>**Overstuffed Bombs (1 CP, Assault):** Increase Blast radius to 2"; on Blunder suffer another Damage 1 Hit. |
+| Bombardiers — 155 pts (Ranged Infantry, Mortal, 5 Models) | M3" / W1 / Arm 6+ / Eva 6+ | Bombs: 6" / 2 / 5+ / 1 / Blast 1".<br>Improvised Weapons: Engaged / 2 / 6+ / 1.<br>**Unstable:** Blunders inflict one Damage 1 Hit.<br>**Overstuffed Bombs (1 CP, Assault):** Increase Blast radius to 2"; on Blunder suffer another Damage 1 Hit.<br>Anti-Horde 3 (Unit Passive). |
 | Tunnel Rats — 125 pts (Infiltrating Infantry, Mortal, 6 Models) | M4" / W1 / Arm 6+ / Eva 6+ | Rusty Blades: Engaged / 2 / 6+ / 1.<br>Tunnel Ambush: May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. Cannot Charge in that Round. |
 
 ### Captain and Specialists
@@ -813,7 +815,7 @@ Both options use the same Command and share its normal activation restrictions.
 | Unit                                                           | Profile                   | Weapons / Special Ability                                                                                                                                                      |
 | -------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Scrap Tank — 220 pts (Vehicle, Mechanical, Armored)            | M5" / W8 / Arm 4+ / Eva — | Scrap Cannon: 8" / 4 / 4+ / 2 / Blast 1", Heavy. Ram: Engaged / 3 / 5+ / 2 / Anti-Infantry 2. Unreliable: A Blunder on its Heavy Attack inflicts Direct Damage 1 on the Tank.                    |
-| Burrowing Engine — 225 pts (War Machine, Mechanical, Armored ) | M5" / W8 / Arm 4+ / Eva — | Grinding Drill: Engaged / 4 / 4+ / 2 / Anti-Armored 2. Subterranean Assault: May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. Cannot Charge in that Round. |
+| Burrowing Engine — 225 pts (War Machine, Mechanical, Armored ) | M5" / W8 / Arm 4+ / Eva — | Grinding Drill: Engaged / 4 / 4+ / 2. Subterranean Assault: May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. Cannot Charge in that Round.<br>Anti-Armored 2 (Unit Passive). |
 
 ### Faction Leader — Underking
 
@@ -876,7 +878,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 
 | Unit                                                      | Profile                    | Weapon / Special Ability                                                                                                     |
 | --------------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Corpse Horde — 80 pts (Horde Infantry, Undead , 12 Models) | M3" / W1 / Arm 6+ / Eva 6+ | Claws: Engaged / 1 / 6+ / 1. <br>Mass of Dead: Gain Accurate 2 while this unit still has more than half its starting models. |
+| Corpse Horde — 120 pts (Horde Infantry, Undead , 12 Models) | M3" / W1 / Arm 6+ / Eva 6+ | Claws: Engaged / 1 / 6+ / 1. <br>Mass of Dead: Gain Accurate 2 while this unit still has more than half its starting models. |
 | Grave Guard — 165 pts (Elite Infantry, Undead, 3 Models)  | M4" / W3 / Arm 4+ / Eva 6+ | Ancient Blades: Engaged / 3 / 4+ / 1.<br>Deathless Discipline: Ignore the first Slow effect applied each Round.              |
 | Bone Archers — 130 pts (Ranged Infantry, Undead, 6 Models) | M3" / W1 / Arm 6+ / Eva 6+ | Bone Bows: 9" / 2 / 5+ / 1.<br>Improvised Weapons: Engaged / 1 / 6+ / 1.<br>**Ranks of the Dead:** Accurate 1 with at least 4 Models.<br>**Dread Volley (1 CP, Assault):** Unsaved Bone Bow Damage applies Slow 1 for the target's next Move. |
 
@@ -928,7 +930,7 @@ Rebind Bones — 1 CP, Movement: One friendly Undead Unit within Short that has 
 
 | Unit                                                              | Profile                                   | Weapons / Special Ability                                                                                                                                                                                              |
 | ----------------------------------------------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Bone Colossus — 280 pts (Construct, Undead, Armored )             | M4" / W12 / Arm 3+ / Eva —                | Colossal Blade: Engaged 2" / 4 / 4+ / 3 / Anti-Elite 3. Reassembled: The first time this Unit would be defeated, roll a D6. On 4+, remain at 1 Wound instead.                                                                         |
+| Bone Colossus — 280 pts (Construct, Undead, Armored )             | M4" / W12 / Arm 3+ / Eva —                | Colossal Blade: Engaged 2" / 4 / 4+ / 3. Reassembled: The first time this Unit would be defeated, roll a D6. On 4+, remain at 1 Wound instead.<br>Anti-Elite 3 (Unit Passive).                                                                         |
 | Corpse Engine — 225 pts (War Machine, Construct, Undead, Armored) | M3" / W9 / Arm 5+ / Eva — / Ward 6+ Magic | Grave Pulse: 8" / 5 / 5+ / 1 / Magic. Crew: Engaged / 2 / 6+ / 1. Necrotic Conduit: Once per Round, after a nearby friendly Undead Unit returns a basic Model, Heal 1 Damage from that Unit if it has a wounded Model. |
 
 ### Faction Leader — Deathless King
@@ -991,7 +993,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 | Unit                                                              | Profile                    | Weapon / Special Ability                                                                                    |
 | ----------------------------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | Thralls — 110 pts (Infantry, Undead, 10 Models)                    | M4" / W1 / Arm 5+ / Eva 6+ | Blades: Engaged / 1 / 6+ / 1.<br>Predatory: After destroying an enemy Unit, Move up to 1", ending legally.<br>Unnatural Resilience: Gain Tough 1. |
-| Blood Knights — 270 pts (Elite Cavalry, Undead, Armored, 3 Models) | M6" / W4 / Arm 4+ / Eva 4+ | Charge 2 / total Impact +2.<br>Blood Lances: Engaged / 2 / 4+ / 2 / Anti-Infantry 2.<br>**Relentless Hunt:** Its Impact +2 replaces the previous +1, rather than stacking with it. |
+| Blood Knights — 270 pts (Elite Cavalry, Undead, Armored, 3 Models) | M6" / W4 / Arm 4+ / Eva 4+ | Charge 2 / total Impact +2.<br>Blood Lances: Engaged / 2 / 4+ / 2.<br>**Anti-Infantry 4 (Unit Passive).<br>Relentless Hunt:** Its Impact +2 replaces the previous +1, rather than stacking with it. |
 | Night Stalkers — 170 pts (Infiltrating Infantry, Undead, 4 Models) | M6" / W2 / Arm 5+ / Eva 5+ | Twin Fangs: Engaged / 3 / 5+ / 1; improve Hit to 4+ while targeting an enemy Engaged by a different friendly Unit (**Surround the Prey**).<br>**Pack Hunters:** After destroying an enemy Model, Move 1" legally. |
 
 ### Captain and Specialists
@@ -1038,7 +1040,7 @@ Call Retainers — 1 CP, Movement: Add one matching basic Model to a surviving, 
 
 | Unit                              | Profile                                       | Weapons / Special Ability                                                                                                                                                                                       |
 | --------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Winged Horror — 290 pts (Monster) | M8" / W10 / Arm 4+ / Eva 5+ / Ward 6+ (Magic) | Fangs and Talons: Engaged / 5 / 4+ / 2 / Anti-Unique 2. Predatory Dive: When Charging from an elevated position, gain +1 Impact and Accurate 1 on its next Attack.                                                              |
+| Winged Horror — 290 pts (Monster) | M8" / W10 / Arm 4+ / Eva 5+ / Ward 6+ (Magic) | Fangs and Talons: Engaged / 5 / 4+ / 2. Predatory Dive: When Charging from an elevated position, gain +1 Impact and Accurate 1 on its next Attack.<br>Anti-Unique 2 (Unit Passive).                                                              |
 | Black Coach — 260 pts (Vehicle)   | M7" / W9 / Arm 4+ / Eva 5+ / Ward 6+ (Magic)  | Soul Lanterns: 8" / 4 / 5+ / 1 / Magic. Scythes: Engaged / 4 / 5+ / 2 / Anti-Infantry 2. Soul Furnace: Once per Round, when a friendly Unit within Short destroys an enemy Unit, the Coach may Move 2" without finishing Engaged. |
 
 ### Faction Leader — Crimson Regent
@@ -1102,7 +1104,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 | ----------------------------------------------------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Wraith Guard — 185 pts (Elite Infantry, Spirit, Undead, 3 Models) | M4" / W3 / Arm 6+ / Eva 5+ / Ward 5+ (Physical) | Spectral Blades: Engaged / 3 / 4+ / 1 / Magic.<br>Incorporeal Advance: May Move and Charge through terrain and Models but must finish legally.                             |
 | Haunters — 170 pts (Mobile, Infantry, Spirit, Undead  4 Models)   | M6" / W2 / Arm 6+ / Eva 4+ / Ward 6+ (Physical) | Ghostly Touch: Engaged / 3 / 5+ / 1 / Magic.<br>Terrifying Presence: Enemies Engaged with this Unit worsen Evade by one step. May Move through terrain, finishing legally. |
-| Keening Archers — 175 pts (Ranged Infantry, Spirit, Undead, 4 Models) | M5" / W2 / Arm 6+ / Eva 5+ / Ward 6+ (Physical) | Soul Arrows: 9" / 3 / 5+ / 1 / Magic.<br>Ghostly Touch: Engaged / 2 / 5+ / 1 / Magic.<br>Keening Wail: Enemies within Short of this Unit worsen Hit by one step when targeting it with ranged Attacks. |
+| Keening Archers — 175 pts (Ranged Infantry, Spirit, Undead, 4 Models) | M5" / W2 / Arm 6+ / Eva 5+ / Ward 6+ (Physical) | Soul Arrows: 9" / 3 / 5+ / 1 / Magic.<br>Ghostly Touch: Engaged / 2 / 5+ / 1 / Magic.<br>Keening Wail: Enemies within Short of this Unit worsen Hit by one step when targeting it with ranged Attacks.<br>Anti-Horde 2 (Unit Passive). |
 
 ### Captain and Specialists
 
@@ -1149,7 +1151,7 @@ Funeral Bell — 1 CP, Movement: One visible enemy within Medium cannot benefit 
 | Unit                                                    | Profile                                          | Weapons / Special Ability                                                                                                                                                    |
 | ------------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Mourning Engine — 255 pts (Spirit,  Construct, Armored) | M5" / W9 / Arm 5+ / Eva 5+ / Ward 4+ (Physical)  | Soul Wave: 8" / 5 / 5+ / 1 / Magic, Blast 1". Spectral Limbs: Engaged / 4 / 5+ / 1 / Magic. Unbound Spirit: Ignores terrain and Models while moving, finishing legally.      |
-| Grave Leviathan — 325 pts (Monster, Spirit, Undead )    | M6" / W12 / Arm 6+ / Eva 5+ / Ward 4+ (Physical) | Abyssal Grasp: Engaged 2" / 5 / 4+ / 2 / Magic, Anti-Armored 2. Otherworldly Bulk: After successfully Charging, enemies cannot use Reactions against its first Melee Attack that Round. |
+| Grave Leviathan — 325 pts (Monster, Spirit, Undead )    | M6" / W12 / Arm 6+ / Eva 5+ / Ward 4+ (Physical) | Abyssal Grasp: Engaged 2" / 5 / 4+ / 2 / Magic Otherworldly Bulk: After successfully Charging, enemies cannot use Reactions against its first Melee Attack that Round.<br>Anti-Armored 2 (Unit Passive). |
 
 ### Faction Leader — Pale Monarch
 
@@ -1220,7 +1222,8 @@ Hero, Infernal, Armored
 
 M5" / W6 / Arm 3+ / Eva 6+ / Ward 6+ (Magic)
 
-Daemon Blade: Engaged / 4 / 3+ / 2 / Magic, Anti-Mortal 1
+Daemon Blade: Engaged / 4 / 3+ / 2 / Magic
+Anti-Mortal 1 — Unit Passive: Applies once to the combined Attack pool with any eligible Weapon or Spell Attack.
 
 Blood Debt — 1 CP, Movement: If the Champion inflicted at least 2 Damage on enemies during its preceding activation, Heal 1 on one friendly Infernal Unit within Short.
 
@@ -1276,8 +1279,8 @@ Unholy Benediction — 1 CP, Movement: One friendly Infernal Unit within Short g
 
 | Unit                                          | Profile                                       | Weapons / Special Ability                                                                                                                                 |
 | --------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Greater Fiend — 310 pts (Monster, Infernal)   | M6" / W12 / Arm 4+ / Eva 5+ / Ward 5+ (Magic) | Daemon Weapon: Engaged / 5 / 4+ / 2 / Magic, Anti-Elite 2. Unstable Power: Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Melee Attack. |
-| Rift Engine — 225 pts (War Machine, Infernal) | M3" / W8 / Arm 5+ / Eva — / Ward 6+ (Magic)   | Rift Battery: 10" / 3 / 4+ / 2 / Magic, Blast 1", Heavy. Crew: Engaged / 2 / 6+ / 1. Volatile Gate: On a Blunder, suffer Direct Damage 1.                 |
+| Greater Fiend — 310 pts (Monster, Infernal)   | M6" / W12 / Arm 4+ / Eva 5+ / Ward 5+ (Magic) | Daemon Weapon: Engaged / 5 / 4+ / 2 / Magic Unstable Power: Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Melee Attack.<br>Anti-Elite 2 (Unit Passive). |
+| Rift Engine — 225 pts (War Machine, Infernal) | M3" / W8 / Arm 5+ / Eva — / Ward 6+ (Magic)   | Rift Battery: 10" / 3 / 4+ / 2 / Magic, Blast 1", Heavy. Crew: Engaged / 2 / 6+ / 1. Volatile Gate: On a Blunder, suffer Direct Damage 1, Anti-Horde 3.                 |
 
 ### Faction Leader — Archfiend
 
@@ -1336,7 +1339,7 @@ This faction offers **four** Command options; choose **two** for standard matche
 
 | Unit                                                             | Profile                                              | Weapon / Special Ability                                                                                                                                |
 | ---------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Spellguard — 165 pts (Elite Infantry, Mortal, Armored, 3 Models) | M3" / W2 / Arm 4+ / Eva 5+ / Ward 5+ | Arcane Blades: Engaged / 3 / 5+ / 1 / Magic<br>Spell Shield: This unit gains Tough 1 against Magic                                                      |
+| Spellstriders — 180 pts (Elite Infantry, Mortal, Ranged, 5 Models) | M5" / W2 / Arm 5+ / Eva 5+ / Ward 6+ | Arcane Bolts: 6" / 2 / 5+ / 1 / Magic.<br>Arcane Blades: Engaged / 2 / 5+ / 1 / Magic<br>Spell Shield: Tough 1 against Magic.<br>Waymark (1 CP, Movement): After normal Move, place a 25mm token within 6" and more than 3" from enemies.<br>Fold Step (End Step, after Scoring): Blink by centering the leading Model on the Waymark, placing the rest in Coherency. Destination must be legal and outside Engagement; remove the token after use or at the end of Round.                                                      |
 | Aether Ballista Team — 210 pts (Elite Ranged Infantry, 2 Models) | M2" / W4 / Arm 4+ / Eva 6+ / Ward 5+ (Ward Magic +1) | Bound Ballista: 14" / 2 / 4+ / 2 / Magic, Heavy, Anti-Armored 2<br>Shortsword: Engaged / 2 / 5+ / 1<br>Anchored Array: Ignore Cover when resolving the Ballista Attack. |
 | Animated Guardians — 195 pts (Construct, Infantry, Armored, 3 Models) | M3" / W4 / Arm 4+ / Eva — | Stone Fists: Engaged / 3 / 5+ / 1 / Magic.<br>**Arcane Binding:** Immune to Slow/forced movement.<br>**Resonant Blades:** While within Short of a different friendly Wizard, improve Stone Fists Hit to 4+. |
 
@@ -1393,7 +1396,7 @@ Power Cores — 1 CP, Assault: One friendly Construct, Artillery, or Ranged Infa
 | Unit                                         | Profile                                     | Weapons / Special Ability                                                                                                                                                                                               |
 | -------------------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Arcane Golem — 340 pts (Construct, Armored ) | M4" / W14 / Arm 3+ / Eva — / Ward 6+        | Arcane Cannon: 12" / 3 / 4+ / 2 / Magic, Heavy, Anti-Monster 2<br>Stone Fists: Engaged / 4 / 4+ / 2 / Anti-Armored 2<br>Arcane Shield: Nearby friendly units in Short of this unit gain Ward 6+ or improve their existing Ward +1 against Magic Attacks. |
-| Aether Battery — 195 pts (Artillery)         | M2" / W6 / Arm 5+ / Eva — / Ward 6+ (Magic) | Ley Lance: 16" / 7 / 4+ / 1 / Magic, Heavy.<br>Crew: Engaged / 2 / 6+ / 1. <br>Ley-Line Surge: Before firing, may gain +1 Damage; on a Blunder, suffer Direct Damage 1.                                                 |
+| Aether Battery — 195 pts (Artillery)         | M2" / W6 / Arm 5+ / Eva — / Ward 6+ (Magic) | Ley Lance: 16" / 7 / 4+ / 1 / Magic, Heavy, Anti-Horde 3.<br>Crew: Engaged / 2 / 6+ / 1. <br>Ley-Line Surge: Before firing, may gain +1 Damage; on a Blunder, suffer Direct Damage 1.                                                 |
 
 Arcane Orders — Aether Battery
 
@@ -1474,8 +1477,8 @@ This faction offers **four** Command options; choose **two** for standard matche
 
 | Unit                                                          | Profile                    | Weapon / Special Ability                                                                                        |
 | --------------------------------------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Ogre Warriors — 225 pts (Monster, Infantry, Mortal, 3 Models) | M4" / W4 / Arm 5+ / Eva 5+ | Heavy Clubs: Engaged / 3 / 5+ / 2 / Anti-Armored 2<br>Massive Charge: roll 3d6 for this unit’s charges and keep the two highest. |
-| Beast Riders — 205 pts (Monster, Cavalry, Mortal, 2 Models) | M6" / W5 / Arm 5+ / Eva 5+ | Charge 2 / total Impact +4 (Titan Clans faction +2, Stampede +2).<br>Mauling Harness: Engaged / 3 / 5+ / 2 / Anti-Infantry 2. No duplicate Impact addition. |
+| Ogre Warriors — 225 pts (Monster, Infantry, Mortal, 3 Models) | M4" / W4 / Arm 5+ / Eva 5+ | Heavy Clubs: Engaged / 3 / 5+ / 2<br>Anti-Armored 4 (Unit Passive).<br>Massive Charge: roll 3d6 for this unit’s charges and keep the two highest. |
+| Beast Riders — 205 pts (Monster, Cavalry, Mortal, 2 Models) | M6" / W5 / Arm 5+ / Eva 5+ | Charge 2 / total Impact +4 (Titan Clans faction +2, Stampede +2).<br>Mauling Harness: Engaged / 3 / 5+ / 2. Anti-Infantry 3 (Unit Passive). No duplicate Impact addition. |
 | Stone Hurlers — 235 pts (Monster, Infantry, Mortal, 3 Models) | M4" / W4 / Arm 5+ / Eva 5+ | Boulder Toss: 11" / 3 / 5+ / 2 / Heavy, Long Range 3".<br>Heavy Clubs: Engaged / 2 / 5+ / 2.<br>**Covering Barrage:** Stationary aura grants Accurate 1 to friendly Monster Charge-phase Attacks.<br>**Boulderfall (1 CP, Assault):** Stationary Boulder Toss gains Blast 1" for one Attack. |
 
 ### Captain and Specialists
@@ -1486,7 +1489,8 @@ Infantry, Hero, Mortal, Monster
 
 M5" / W8 / Arm 4+ / Eva 5+
 
-Great Weapon: Engaged / 6 / 3+ / 2 / Anti-Elite 2
+Great Weapon: Engaged / 6 / 3+ / 2
+Anti-Elite 2 — Unit Passive: Applies once to the combined Attack pool with any eligible Weapon or Spell Attack.
 
 Stampede: Gain Impact +2 on a successful Charge.
 
@@ -1520,7 +1524,7 @@ Crack the Whip — 1 CP, Reaction: When a friendly Monster or Beast Unit within 
 
 | Unit                                            | Profile                     | Weapons / Special Ability                                                                                                                                                                |
 | ----------------------------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Giant — 300 pts (Monster, Beast, Armored )      | M5" / W14 / Arm 4+ / Eva 6+ | Massive Club: Engaged 2" / 5 / 4+ / 3 / Anti-Armored 3.<br>Huge: Counts as three Units for objective control.                                                                                             |
+| Giant — 300 pts (Monster, Beast, Armored )      | M5" / W14 / Arm 4+ / Eva 6+ | Massive Club: Engaged 2" / 5 / 4+ / 3.<br>Huge: Counts as three Units for objective control.<br>Anti-Armored 3 (Unit Passive).                                                                                             |
 | War Mammoth — 400 pts (Monster, Beast, Armored) | M5" / W16 / Arm 3+ / Eva 6+ | Howdah Bows: 10" / 7 / 5+ / 1 Accurate 1<br>Crushing Tusks: Engaged / 5 / 3+ / 3<br>Mobile Fortress: Friendly units immediately behind the Mammoth benefit from Cover where appropriate. |
 
 ### Faction Leader — Overtyrant
@@ -1567,7 +1571,7 @@ Generic Units Worth Taking: Cheap auxiliaries, conventional Ranged Infantry, lig
 | Blood Courts   | Thralls — Infantry                 | Blood Knights — Elite Cavalry       | Night Stalkers — Infiltrating Infantry |
 | Spirit Hosts   | Wraith Guard — Elite Infantry      | Haunters — Mobile                   | Keening Archers — Ranged |
 | Infernal Hosts | Hellguard — Elite Infantry         | Rift Stalkers — Infiltrators        | Cultist Horde — Horde Infantry |
-| Arcane Orders  | Spellguard — Elite Infantry        | Aether Ballista Team — Elite Ranged | Animated Guardians — Construct Infantry |
+| Arcane Orders  | Spellstriders — Mobile Magic Infantry        | Aether Ballista Team — Elite Ranged | Animated Guardians — Construct Infantry |
 | Titan Clans    | Ogre Warriors — Monstrous Infantry | Beast Riders — Monstrous Cavalry    | Stone Hurlers — Monstrous Ranged Infantry |
 
 This gives 36 signature Core choices across 12 factions, each qualifying for C and other applicable recruitment slots as described above. Their starting Model counts, equipment, durability, and mobility differ substantially. Sacred Orders was already the three-Core exception; the other eleven factions each gained one additional Core choice to bring parity with that elite-army baseline.

@@ -17,9 +17,24 @@
     "layoutVsMission": "The Battlefield Layout determines deployment zones and objective-marker positions. The Mission determines how Victory Points (VP) are scored.",
     "standardGameSize": {
       "table": [
-        { "format": "Small", "armyPointsPerSide": 1000, "battlefield": "36\" × 36\"", "objectives": 3 },
-        { "format": "Standard", "armyPointsPerSide": 2000, "battlefield": "36\" × 60\"", "objectives": 5 },
-        { "format": "Grand", "armyPointsPerSide": 3000, "battlefield": "48\" × 72\"", "objectives": 7 }
+        {
+          "format": "Small",
+          "armyPointsPerSide": 1000,
+          "battlefield": "36\" × 36\"",
+          "objectives": 3
+        },
+        {
+          "format": "Standard",
+          "armyPointsPerSide": 2000,
+          "battlefield": "36\" × 60\"",
+          "objectives": 5
+        },
+        {
+          "format": "Grand",
+          "armyPointsPerSide": 3000,
+          "battlefield": "48\" × 72\"",
+          "objectives": 7
+        }
       ],
       "note": "The standard format is 2,000 Points, five objectives, and five Rounds. The eight Missions below are written for this format. Smaller and larger battles may use the scaling guidelines at the end of the chapter (see 11_format_scaling_and_design_principles.json)."
     }
@@ -42,12 +57,13 @@
   "objectiveControl": {
     "defaultRule": "Unless a Mission states otherwise, an objective is controlled according to the Structured Combat rules.",
     "rules": [
-      "A Unit contributes to control if at least one eligible Model is within 3\" of the objective.",
+      "A normal Unit contributes to objective control only while at least half its starting Models (rounded up) survive and at least one eligible Model is within 3\". Horde Units contribute while at least one Model survives, provided that Model is otherwise eligible and within 3\".",
       "Each eligible Unit contributes one to its side's control total, regardless of its number of Models.",
       "The side with more eligible Units in range controls the objective.",
       "If both sides have equal eligible Units in range, the objective is Contested and neither side controls it.",
       "Downed, Withdrawn, and Reserve Units cannot control objectives.",
-      "A Unit may count toward only one objective during the same Scoring Phase. If it is within range of multiple objectives, its controlling player chooses which one it contributes to."
+      "A Unit may count toward only one objective during the same Scoring Phase. If it is within range of multiple objectives, its controlling player chooses which one it contributes to.",
+      "Horde and Double Formation count as one Unit for objective control unless another temporary effect explicitly increases their count. A Horde retains its tag after losses, and Anti-Horde continues to affect it."
     ]
   },
   "victoryPointScoring": {
@@ -67,9 +83,18 @@
     },
     "maximumOrdinaryScoring": {
       "table": [
-        { "source": "Primary Objectives", "maxVPPerRound": 5 },
-        { "source": "Tactical Objective", "maxVPPerRound": 1 },
-        { "source": "Total", "maxVPPerRound": 6 }
+        {
+          "source": "Primary Objectives",
+          "maxVPPerRound": 5
+        },
+        {
+          "source": "Tactical Objective",
+          "maxVPPerRound": 1
+        },
+        {
+          "source": "Total",
+          "maxVPPerRound": 6
+        }
       ]
     }
   },

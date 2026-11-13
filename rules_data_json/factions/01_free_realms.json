@@ -64,9 +64,7 @@
           "attacks": 1,
           "hit": "4+",
           "damage": 2,
-          "keywords": [
-            "Anti-Armored 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -74,6 +72,13 @@
           "name": "Disciplined Assault",
           "type": "Passive",
           "effect": "When attacking an enemy Engaged by another friendly Unit, this Unit gains Accurate 1."
+        },
+        {
+          "name": "Anti-Armored 5 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Armored 5",
+          "effect": "This Unit gains Anti-Armored 5 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },
@@ -365,7 +370,8 @@
           "hit": "5+",
           "damage": 1,
           "keywords": [
-            "Heavy"
+            "Heavy",
+            "Anti-Horde 3"
           ]
         },
         {

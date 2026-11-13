@@ -150,7 +150,7 @@
     "modelMultiplier": 2,
     "pointsMultiplier": 2,
     "maxPerUnit": 1,
-    "notes": "Doubles starting Model count and the standard formation's total Points, including selected packages and fixed-price Unit-wide upgrades. Still one Unit, one slot, one Core Unit. Ranked keywords are not doubled."
+    "notes": "Doubles starting Model count and the standard formation's total Points, including selected packages and fixed-price Unit-wide upgrades. Still one Unit, one slot, one Core Unit. Ranked keywords are not doubled. Non-Cavalry, non-Elite faction Core Double Formations gain Horde, which retains objective eligibility down to one surviving Model; objective control still counts as one Unit."
   },
   "factions": [
     {
@@ -760,5 +760,18 @@
     "The Markdown Death Legions row lists Horde as both a Favored and a Compatible Doctrine; reproduced as written.",
     "Doctrine commandSlots are positional and follow the order of the Commands in doctrines/*.json (verified to match).",
     "The Markdown footer still says 'Standard army construction v6' while the title says v7."
-  ]
+  ],
+  "objectiveControl": {
+    "normalMinimumModels": "ceil(startingModels / 2)",
+    "hordeMinimumModels": 1,
+    "range": "3\"",
+    "baseControlValue": 1,
+    "nonStackingControlBonuses": true,
+    "genericHordeThresholds": {
+      "line-infantry": 10,
+      "ranged-infantry": 8
+    },
+    "hordeFromDoubleFormation": "Faction-specific Core Double Formation only when neither Cavalry nor Elite, including compound Elite Cavalry or Elite Infantry.",
+    "note": "A Horde's surviving Model must still be eligible, in range, and not Withdrawn; each Unit counts toward only one objective."
+  }
 }

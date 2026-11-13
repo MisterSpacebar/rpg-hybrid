@@ -188,8 +188,7 @@
           "hit": "3+",
           "damage": 2,
           "keywords": [
-            "Magic",
-            "Anti-Mortal 1"
+            "Magic"
           ]
         }
       ],
@@ -200,6 +199,13 @@
           "cost": "1 CP",
           "timing": "Movement",
           "effect": "If the Champion inflicted at least 2 Damage on enemies during its preceding activation, Heal 1 on one friendly Infernal Unit within Short."
+        },
+        {
+          "name": "Anti-Mortal 1 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Mortal 1",
+          "effect": "This Unit gains Anti-Mortal 1 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },
@@ -336,8 +342,7 @@
           "hit": "4+",
           "damage": 2,
           "keywords": [
-            "Magic",
-            "Anti-Elite 2"
+            "Magic"
           ]
         }
       ],
@@ -346,6 +351,13 @@
           "name": "Unstable Power",
           "type": "Passive",
           "effect": "Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Melee Attack."
+        },
+        {
+          "name": "Anti-Elite 2 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Elite 2",
+          "effect": "This Unit gains Anti-Elite 2 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },
@@ -373,7 +385,8 @@
           "keywords": [
             "Magic",
             "Blast 1\"",
-            "Heavy"
+            "Heavy",
+            "Anti-Horde 3"
           ]
         },
         {

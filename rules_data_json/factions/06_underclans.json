@@ -129,6 +129,13 @@
           "cost": "1 CP",
           "timing": "Assault",
           "effect": "When declaring a Bombs Attack, spend 1 CP. Increase its printed Blast radius from 1\" to 2\" for that Attack. If the Attack Blunders, this Unit suffers one additional automatic Physical Hit at Damage 1 (Armor and Ward apply); this is separate from the existing Unstable Hit. This does not grant another Attack."
+        },
+        {
+          "name": "Horde Breakers",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Horde 3",
+          "effect": "This Unit gains Anti-Horde 3 on its eligible Weapon and Spell Attacks, once per combined Attack pool."
         }
       ]
     },
@@ -385,9 +392,7 @@
           "attacks": 4,
           "hit": "4+",
           "damage": 2,
-          "keywords": [
-            "Anti-Armored 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -395,6 +400,13 @@
           "name": "Subterranean Assault",
           "type": "Passive",
           "effect": "May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. Cannot Charge in that Round."
+        },
+        {
+          "name": "Anti-Armored 2 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Armored 2",
+          "effect": "This Unit gains Anti-Armored 2 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     }
