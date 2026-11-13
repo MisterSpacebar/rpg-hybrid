@@ -109,12 +109,11 @@
           "keywords": [
             "Firearm",
             "Heavy",
-            "Anti-Armored 2",
             "Long Range 3\""
           ]
         },
         {
-          "name": "Axes",
+          "name": "Warhammers",
           "range": "Engaged",
           "attacks": 2,
           "hit": "6+",
@@ -127,6 +126,13 @@
           "name": "Drilled Volley",
           "type": "Passive",
           "effect": "If stationary during the preceding Movement phase, gain Accurate 1 when making a ranged Attack."
+        },
+        {
+          "name": "Armorbreakers",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Armored 4",
+          "effect": "This Unit gains Anti-Armored 4 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },
@@ -329,14 +335,15 @@
   "largeAssets": [
     {
       "name": "Steam Bastion",
-      "points": 285,
+      "points": 270,
       "tags": [
         "Vehicle",
         "Mechanical",
-        "Armored"
+        "Armored",
+        "Transport"
       ],
       "modelProfile": {
-        "move": "4\"",
+        "move": "6\"",
         "wounds": 11,
         "armor": "3+",
         "evade": null,
@@ -344,21 +351,9 @@
       },
       "attackProfiles": [
         {
-          "name": "Heavy Cannon",
-          "range": "15\"",
-          "attacks": 2,
-          "hit": "4+",
-          "damage": 3,
-          "keywords": [
-            "Firearm",
-            "Heavy",
-            "Anti-Monster 2"
-          ]
-        },
-        {
           "name": "Repeater Guns",
           "range": "8\"",
-          "attacks": 5,
+          "attacks": 4,
           "hit": "5+",
           "damage": 1,
           "keywords": [
@@ -371,6 +366,38 @@
           "name": "Armored Engine",
           "type": "Passive",
           "effect": "Reduce the first Damage suffered each Round by 1."
+        },
+        {
+          "name": "Transport Capacity",
+          "type": "Passive",
+          "capacity": {
+            "units": 2,
+            "maxModelsPerUnit": 5,
+            "excludedTags": [
+              "Cavalry",
+              "Large Asset"
+            ]
+          },
+          "effect": "May carry up to two friendly Units, each with no more than 5 Models. Cavalry and Large Assets cannot embark. Passengers remain separate purchased Units, cannot control objectives or act while embarked, and count separately for Reserve limits."
+        },
+        {
+          "name": "Embark",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "During this Steam Bastion's Movement activation, spend 1 CP to embark one unengaged friendly non-Cavalry, non-Large-Asset Unit of at most five Models within 3\", if capacity permits. The passenger expends its Movement activation; the Bastion may then Move normally. Neither may embark from Reserve."
+        },
+        {
+          "name": "Disembark",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Assault",
+          "effect": "During this Steam Bastion's Assault activation, spend 1 CP instead of its ordinary Assault action to disembark one carried Unit wholly within 3\", outside Engagement and in legal Coherency. That Unit may use an unused Assault activation but cannot Charge in this Round. A passenger may not disembark in the Round its transport arrived from Reserve."
+        },
+        {
+          "name": "Emergency Disembark",
+          "type": "Passive",
+          "effect": "If this transport is destroyed, place each passenger in legal Coherency within 3\" and outside Engagement if possible. Each passenger Model suffers one automatic Physical Hit at Damage 1, resolving Armor then Ward; no Evade. If a Unit cannot be placed legally, it is defeated."
         }
       ]
     },
@@ -399,7 +426,8 @@
           "keywords": [
             "Blast 1\"",
             "Firearm",
-            "Heavy"
+            "Heavy",
+            "Anti-Horde 3"
           ]
         },
         {
