@@ -42,6 +42,8 @@ export function migrateUnitConfig(entry, cfg) {
     }
   }
   for (const group of entry.groups.filter((g) => g.kind === 'radio' && g.required)) {
+    // Retired Sling packages must be reselected manually, never converted silently.
+    if (entry.key === 'generic:ranged-infantry' && group.id === 'rangedWeaponPackages' && picks[group.id] === 'rangedWeaponPackages:7') continue
     if (!picks[group.id] || !group.options.some((o) => o.id === picks[group.id])) {
       picks[group.id] = group.options[0]?.id ?? null
       changed = true
@@ -131,6 +133,7 @@ export function resolveUnit(entry, cfg, factionId = null) {
   const chosenNames = new Set(picked.map((o) => o.name))
   const illegalPair = picked.flatMap((o) => (o.incompatibleWith ?? []).filter((name) => chosenNames.has(name)).map((name) => `${o.name} + ${name}`))
   const loadoutConflicts = [...new Set(illegalPair)]
+  if (entry.key === 'generic:ranged-infantry' && cfg.picks?.rangedWeaponPackages === 'rangedWeaponPackages:7') loadoutConflicts.push('Slings were retired; select a replacement ranged weapon before using this army.')
 
   let total = entry.basePoints
   let paidPackages = 0
