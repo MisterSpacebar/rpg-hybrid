@@ -41,28 +41,38 @@
   ],
   "signatureCoreUnits": [
     {
-      "name": "Spellguard",
-      "points": 165,
-      "models": 3,
+      "name": "Spellstriders",
+      "points": 180,
+      "models": 5,
       "tags": [
         "Elite Infantry",
         "Mortal",
-        "Armored",
         "Elite",
-        "Infantry"
+        "Infantry",
+        "Ranged"
       ],
       "modelProfile": {
-        "move": "3\"",
+        "move": "5\"",
         "wounds": 2,
-        "armor": "4+",
+        "armor": "5+",
         "evade": "5+",
-        "ward": "5+"
+        "ward": "6+"
       },
       "attackProfiles": [
         {
+          "name": "Arcane Bolts",
+          "range": "6\"",
+          "attacks": 2,
+          "hit": "5+",
+          "damage": 1,
+          "keywords": [
+            "Magic"
+          ]
+        },
+        {
           "name": "Arcane Blades",
           "range": "Engaged",
-          "attacks": 3,
+          "attacks": 2,
           "hit": "5+",
           "damage": 1,
           "keywords": [
@@ -74,12 +84,20 @@
         {
           "name": "Spell Shield",
           "type": "Passive",
-          "effect": "This unit gains Tough 1 against Magic."
+          "effect": "This Unit gains Tough 1 against Magic Attacks."
         },
         {
-          "name": "Arcane Formation",
+          "name": "Waymark",
+          "type": "Command",
+          "cost": "1 CP",
+          "timing": "Movement",
+          "effect": "During this Unit's Movement activation, after its normal Move, spend 1 CP to place one 25mm Waymark token within 6\" of this Unit and more than 3\" from enemies. Only its own Waymark may be used; replace any previous Waymark. Cannot place a Waymark from Reserve or in the Round this Unit arrives from Reserve."
+        },
+        {
+          "name": "Fold Step",
           "type": "Passive",
-          "effect": "While wholly within Short of a different friendly Wizard Unit, Arcane Blades gain Critical 1 PER SURGE. Spellguard retains its existing universal Ward 5+."
+          "timing": "End Step (after Scoring)",
+          "effect": "After Scoring, if this Unit is not Engaged and has an active Waymark, it may Blink to it: remove the token, place one leading Model centered on the token's former position, then place all remaining Models in legal Coherency. Ignore intervening terrain but obey normal Blink placement, elevation and Engagement restrictions. If legal placement is impossible, remain in place. Remove any unused Waymark at the end of the Round. This does not cause a Charge, grant an activation, or score objectives retroactively."
         }
       ]
     },
@@ -405,7 +423,8 @@
           "damage": 1,
           "keywords": [
             "Magic",
-            "Heavy"
+            "Heavy",
+            "Anti-Horde 3"
           ]
         },
         {
