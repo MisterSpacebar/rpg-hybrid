@@ -79,7 +79,7 @@ Choose **one** melee weapon package. All listed Attacks are **per Model**.
 | Hand Weapons | +0 | Engaged / 2 / 5+ / 1. Standard sword, axe, or similar weapon. |
 | Spears | +10 | Engaged 2" / 2 / 5+ / 1 / Brace 1. Defensive reach and resistance to Charge Impact. |
 | Polearms | +25 | Engaged 2" / 1 / 6+ / 2 / Brace 1 / Anti-Cavalry 2. Less reliable and no added Attack volume, but devastating reach weapons against mounted and multi-Wound Charging threats. |
-| Heavy Weapons | +25 | Engaged / 1 / 5+ / 2 / Heavy / Anti-Armored 2. Stronger individual Hits and extra dice against Armored targets; the Heavy restriction balances its circumstantial extra-dice potential on a multi-Model Unit. |
+| Heavy Weapons | +25 | Engaged / 1 / 5+ / 2 / Heavy / Anti-Armored 1. Stronger individual Hits and extra dice against Armored targets; the Heavy restriction balances its circumstantial extra-dice potential on a multi-Model Unit. |
 | Dual Weapons | +40 | Engaged / 3 / 5+ / 1. Greater volume of Hits; cannot take Shields. |
 
 **Melee Heavy clarification:** Polearms above do **not** possess the **Heavy** keyword despite its weight; Heavy Weapons **do** possess Heavy. Their physical weight is represented by their printed Hit, Damage, Anti-[Type], and costs; normal melee combat after movement remains legal except where Heavy restricts it.
@@ -119,7 +119,7 @@ A Line Infantry Unit may purchase **one** of Charge Drill, Shock Training, or Br
 **4 Models · Infantry, Ranged Infantry · Recruitment R**  
 **M3" / W1 / Arm 6+ / Eva 6+**
 
-Ranged Infantry specialize in mobile short-range shooting, massed arrows, prepared crossbow fire, and specialized firearms. Their starting formation is four Models, but can grow to **ten** at an increasing price.
+Ranged Infantry specialize in mobile short-range shooting, massed arrows, prepared crossbow fire, and specialized firearms. Their starting formation is four Models, but can grow to **nine** at an increasing price.
 
 ### Ranged Weapon Packages
 
@@ -128,13 +128,13 @@ Choose **one** primary ranged weapon package. Attacks are **per Model**; Heavy a
 | Weapon | Points | Profile / Role |
 | --- | ---: | --- |
 | **Shortbows** | **+0** | **8" / 2 / 5+ / 1**. Affordable, mobile baseline weapon. |
-| Longbows | +35 | **12" / 3 / 5+ / 1 / Long Range 6"**. Mobile volleys with extended reach; beyond 12" reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units (minimum 1). |
-| Crossbows | +25 | **9" / 1 / 4+ / 2 / Heavy / Anti-Armored 2**. Compact, accurate shots that punch through armor plating; stationary firing. |
-| Heavy Crossbows | +50 | **11" / 2 / 5+ / 2 / Heavy / Anti-Elite 2**. Sustained anti-elite fire, at high cost and with Heavy restrictions. |
+| Longbows | +35 | **9" / 3 / 5+ / 1 / Long Range 6"**. Mobile volley; up to 15" before training, with 3 fewer combined dice beyond 9" (minimum 1). |
+| Crossbows | +25 | **9" / 1 / 4+ / 2 / Heavy, Anti-Armored 1, Long Range 3"**. Stationary precision against armor. |
+| Heavy Crossbows | +50 | **10" / 2 / 5+ / 2 / Heavy, Anti-Elite 1, Long Range 2"**. Stationary anti-elite fire. |
 | Muskets | +50 | **11" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Unique 1**. Accurate, reaction-proof shooting against valuable individual targets. |
 | Pistols | +25 | **6" / 3 / 5+ / 1 / Firearm**. Mobile close-range shooting with Instant from Firearm. |
 | Javelins | +10 | **6" / 3 / 5+ / 1**. Thrown volleys; also gain **Javelin Melee: Engaged 2" / 2 / 5+ / 1** instead of the default melee weapon. |
-| Slings | +10 | **7" / 4 / 6+ / 1**. High-volume, low-accuracy short-range attacks. |
+| Hand Crossbows | +20 | **8" / 2 / 4+ / 1**. Mobile accurate short-range shooting with neither Heavy nor Firearm. Replaces Hand Crossbows. |
 
 **Distinctions:** Longbows have greater effective reach and do not require stationary firing; Crossbows trade movement flexibility for concentrated Damage 2 Hits with extra dice against Armored targets; Heavy Crossbows deliver more dice against tough and Elite targets; Muskets gain Firearm's **Instant** and extra dice against Characters; Pistols and Javelins favor close-range mobile play. Weapon range does not modify Hit unless **Long Range X** is used beyond the printed range.
 
@@ -153,11 +153,11 @@ A Unit carrying multiple profiles selects one eligible Attack when it uses an At
 | Standard Formation | +0 | Four Models with the selected ranged package. |
 | Additional Model | **+25 each** | Add a matching Model, up to **9 Models**. |
 | **Rangefinder Training** | **+20** | Increase the primary ranged weapon's **printed normal Range by 2"**. It remains at its listed Hit within this improved range; existing Long Range X begins beyond the improved normal Range. |
-| Longshot Training | +10 | Gain **Long Range 2"**. If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range reduce the combined Attack pool by 1 die for single-model Units or 3 dice for multi-model Units (minimum 1). |
+| Longshot Training | +10 | Gain **Long Range 3"**, or increase existing Long Range X by **2"**. Beyond normal Range, lose 3 dice from a multi-model combined Attack pool (minimum 1). |
 | Marksman Training | +30 | Primary ranged weapon gains Accurate 1 and improves Hit by one step. |
 | Sharpeye | +20 | Primary ranged weapon gains Pinpoint. |
 | Armored | +15 | Improve Armor from 6+ to 5+; gain **Armored**. No Shield or Brace is granted. Does not alter any two-handed weapon's Heavy restriction. |
-| Weapon Specialization | +25 | Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains **Anti-[chosen tag] 2** against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once. |
+| Weapon Specialization | +25 | Choose one target tag. **This Unit gains Anti-[chosen tag] 3** on its eligible Weapon Attacks; add three dice once to the combined pool. Does not stack with weapon Anti; use the highest total. May be purchased once. |
 | **Veterans** | **+75** | The selected ranged weapon gains **+1 Attack per Model** and improves Hit by one step. |
 | Deadly Precision | +20 | Personal **1 CP — Assault or Combat** Command: the Attack with any weapon gains Critical 1 per Surge. May be used again on a later eligible Attack for another CP, never twice on the same Attack. No Surge means no conversion. |
 
@@ -192,7 +192,7 @@ Choose **one** melee weapon package. Shields may accompany only Hand Weapons or 
 | Spears | +10 | Engaged 2" / 3 / 5+ / 1 / Brace 1. Reach and defense. |
 | Polearms | +25 | Engaged 2" / 2 / 6+ / 2 / Brace 1 / Anti-Cavalry 2. Heavy Hits, reach, extra dice against mounted Charges, and Charge protection at reduced accuracy. |
 | Dual Weapons | +25 | Engaged / 4 / 5+ / 1 / Accurate 1. High-volume specialist melee. |
-| Heavy Weapons | +25 | Engaged / 2 / 5+ / 2 / Anti-Armored 2. Reliable high-Damage melee Hits with extra dice against Armored targets. |
+| Heavy Weapons | +25 | Engaged / 2 / 5+ / 2 / Anti-Armored 1. Reliable high-Damage melee Hits with extra dice against Armored targets. |
 | Shields | +25 | Improve Armor from 5+ to 4+. Hand Weapons or Spears only. |
 
 These melee weapons do **not** inherently gain Heavy. The higher-Damage profiles already trade off Points, accuracy, or defensive equipment.
@@ -206,7 +206,7 @@ Any Elite Infantry Unit may buy **one** eligible ranged package **without first 
 | Shortbow | +25 | 8" / 2 / 5+ / 1. Inexpensive secondary fire. |
 | Longbow | +50 | 10" / 3 / 5+ / 1 / Long Range 3". Mobile, longer-range fire. |
 | Pistols | +25 | 6" / 3 / 5+ / 1 / Firearm, Pinpoint. Short-range ranged utility. |
-| Musket | +50 | 11" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Elite 2. Stationary anti-elite fire. |
+| Musket | +50 | 11" / 1 / 4+ / 2 / Firearm, Heavy, Anti-Elite 1. Stationary anti-elite fire. |
 
 Shields may be combined with Pistols, but **not** with Shortbows, Longbows or Muskets, which are two-handed ranged weapons.
 
@@ -263,7 +263,7 @@ Choose one eligible melee package.
 | Mounted Weapons       | +0   | Engaged / 3 / 5+ / 1. Swords, axes, maces, and conventional mounted weapons. |
 | Spears                | +10  | Engaged 2" / 3 / 5+ / 1. Extended reach.                                     |
 | Lances                | +25  | Engaged / 1 / 5+ / 2 / Impact 1 / Anti-Cavalry 2                             |
-| Heavy Mounted Weapons | +25  | Engaged / 2 / 5+ / 2 / Anti-Armored 2.                                       |
+| Heavy Mounted Weapons | +25  | Engaged / 2 / 5+ / 2 / Anti-Armored 1.                                       |
 
 Heavy Mounted Weapons do not have the Heavy keyword; their increased cost accounts for their damage without preventing conventional mounted Charges.
 
@@ -327,7 +327,7 @@ Choose one melee weapon.
 | Weapon           | Cost | Profile / Effect                                       |
 | ---------------- | ---- | ------------------------------------------------------ |
 | Officer's Weapon | +0   | Engaged / 3 / 4+ / 1.                                  |
-| Great Weapon     | +25  | Engaged / 2 / 4+ / 2 / Anti-Armored 2. Fewer but more damaging Attacks, with extra dice against Armored foes. |
+| Great Weapon     | +25  | Engaged / 2 / 4+ / 2 / Anti-Armored 1. Fewer but more damaging Attacks, with extra dice against Armored foes. |
 | Spear            | +5   | Engaged 2" / 3 / 4+ / 1 / Brace 1.                     |
 | Dual Weapons     | +35  | Engaged / 5 / 4+ / 1 / Accurate 1                      |
 
@@ -631,7 +631,7 @@ Choose one main weapon.
 
 | Weapon          | Cost | Profile / Effect                                                                                |
 | --------------- | ---- | ----------------------------------------------------------------------------------------------- |
-| Bolt Thrower    | +0   | 15" / 2 / 4+ / 2 / Anti-Armored 2. Accurate projectiles suited to attacking armored enemies.             |
+| Bolt Thrower    | +0   | 15" / 2 / 4+ / 2 / Anti-Armored 1. Accurate projectiles suited to attacking armored enemies.             |
 | Light Cannon    | +0   | 15" / 2 / 5+ / 3 / Firearm, Heavy, Anti-Monster 2. Powerful direct-fire cannon that gains Instant.              |
 | Repeater Gun    | +0   | 10" / 4 / 5+ / 1 / Firearm, Rapid-Fire 2. Gains +2 Attacks when the target is within 5". |
 | Arcane Ballista | +0   | 12" / 3 / 5+ / 2 / Magic, Anti-Construct 2. Magically powered artillery with multiple projectiles.         |
@@ -642,10 +642,10 @@ Choose one main weapon.
 
 | Weapon         | Cost | Profile / Effect                                                                                                              |
 | -------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Heavy Cannon   | +0   | 18" / 2 / 3+ / 3 / Firearm, Heavy, Anti-Armored 2. Powerful direct-fire siege cannon.                                                         |
+| Heavy Cannon   | +0   | 18" / 2 / 3+ / 3 / Firearm, Heavy, Anti-Armored 1. Powerful direct-fire siege cannon.                                                         |
 | Bombard        | +0   | 15" / 2 / 4+ / 2 / Blast 2", Firearm, Heavy, Anti-Infantry 2. Explosive artillery affecting nearby Units when the primary Attack scores a Hit. |
 | Great Ballista | +0   | 18" / 2 / 3+ / 2 / Heavy, Anti-Monster 2. Long-range mechanical siege weapon.                                                                 |
-| Arcane Cannon  | +0   | 15" / 3 / 3+ / 2 / Magic, Heavy, Anti-Elite 2. Powerful magical artillery with reliable Hit characteristics.                                |
+| Arcane Cannon  | +0   | 15" / 3 / 3+ / 2 / Magic, Heavy, Anti-Elite 1. Powerful magical artillery with reliable Hit characteristics.                                |
 
 ### Timed Barrage — +20 Points
 
@@ -778,7 +778,7 @@ These profiles are provisional balance targets. The main aim is to retain recogn
 - **Large ranged formations:** Up to **10 Models**, but additional Models cost 25 Points and **Veterans adds +15 more per added Model**. A paid ranged weapon also adds +5 per added Model. W1 defenses, concentrated deployment, and one activation per Unit remain important costs.
 - **Veterans pricing is per-unit, not uniform:** Veterans grants a flat **+1 Attack per Model** plus a Hit improvement, so its value scales directly with a Unit's Model count. Larger formations therefore pay more: **Line Infantry and Ranged Infantry pay +75** (5–10 and 4–9 Models respectively), each with its own printed **per-added-Model Veteran reinforcement surcharge** (+10 for Line Infantry, +15 for Ranged Infantry) reflecting that every additional Model also benefits. Smaller or single-Model formations — **Elite Infantry (3–5 Models), Cavalry (3–5 Models), Captains and Wizards (1 Model)** — pay a flat **+50** with no comparable scaling risk. Generic Supports retain a reduced **+25** combat-training option. Veteran bonuses increase the **selected weapon's** Attacks per Model and improve Hit one step; they do not buff unrelated profiles.
 - **Weapon Specialization (new, +25):** A broadly available upgrade (Line Infantry, Ranged Infantry, Elite Infantry, Cavalry, Captains, Wizards) letting a Unit choose **any one Faction, Unit Type, or Trait tag** and grant one selected weapon **Anti-[chosen tag] 2**. Because Anti-[Type] bonuses apply once to the whole Unit's combined Attack pool rather than per Model (see Unit Tags), this upgrade does not scale with Model count the way Veterans does — it stays a flat, situational bonus regardless of formation size, which is why it is priced as a single flat cost rather than per-unit like Veterans.
-- **Line Infantry:** Rebuilt around a **W2 / Arm 6+ / Eva 6+, Unarmored** baseline for the same 75 Points, trading the old flat 5+ Armor for more Wounds and a cheaper, individually purchasable path back to better Armor (see Defensive Upgrades: Armor and Shields, each +15, stacking to the old Arm 4+ ceiling). Spears and Polearms have Charge defenses, Heavy Weapons provide Damage 2 with Anti-Armored 2 **and the Heavy restriction** (its circumstantial extra-dice potential is strong enough on a multi-Model Unit to warrant the movement tradeoff), and Dual Weapons provide volume. Charge Drill, Shock Training, and Brace Training add independent tactical choices. **Polearms remain the only melee weapon not implicitly Heavy** despite their weight.
+- **Line Infantry:** Rebuilt around a **W2 / Arm 6+ / Eva 6+, Unarmored** baseline for the same 75 Points, trading the old flat 5+ Armor for more Wounds and a cheaper, individually purchasable path back to better Armor (see Defensive Upgrades: Armor and Shields, each +15, stacking to the old Arm 4+ ceiling). Spears and Polearms have Charge defenses, Heavy Weapons provide Damage 2 with Anti-Armored 1 **and the Heavy restriction** (its circumstantial extra-dice potential is strong enough on a multi-Model Unit to warrant the movement tradeoff), and Dual Weapons provide volume. Charge Drill, Shock Training, and Brace Training add independent tactical choices. **Polearms remain the only melee weapon not implicitly Heavy** despite their weight.
 - **Unarmored tag:** New Trait tag, the counterpart to Armored. Granted by baseline Line Infantry; removed once the Armor upgrade is purchased. See Unit Tags for full rules, including **Anti-Unarmored X**.
 - **Elite Infantry:** Strong W4 profiles remain their principal distinction. Secondary ranged weapons are allowed without buying Veterans, and their Weapon Master and Deadly Precision upgrades affect the specified Unit Attack rather than multiplying with Model count.
 - **Faction Horde units:** Sneaks, Thralls, and Corpse Horde were buffed by adding Models at unchanged Points (Sneaks +1, Thralls +2, Corpse Horde +3) rather than by adding Attacks, preserving their characteristically fragile, high-casualty-tolerance profile while improving their staying power and board presence.
@@ -793,12 +793,12 @@ These are **expected raw successful Hits and nominal Damage before enemy Saves**
 | --- | ---: | ---: | --- |
 | Shortbows (2 / 5+ / 1) | 2.67 | 2.67 | Yes |
 | Longbows (3 / 5+ / 1) | 4.00 | 4.00 | Yes |
-| Crossbows (1 / 4+ / 2, Anti-Armored 2) | 2.00 | 4.00 | No (Heavy) |
-| Heavy Crossbows (2 / 5+ / 2, Anti-Elite 2) | 2.67 | 5.33 | No (Heavy) |
+| Crossbows (1 / 4+ / 2, Anti-Armored 1) | 2.00 | 4.00 | No (Heavy) |
+| Heavy Crossbows (2 / 5+ / 2, Anti-Elite 1) | 2.67 | 5.33 | No (Heavy) |
 | Muskets (1 / 4+ / 2, Anti-Unique 2) | 2.00 | 4.00 | No (Heavy) |
 | Pistols (3 / 5+ / 1) | 4.00 | 4.00 | Yes |
 | Javelins (3 / 5+ / 1) | 4.00 | 4.00 | Yes |
-| Slings (4 / 6+ / 1) | 2.67 | 2.67 | Yes |
+| Hand Crossbows (2 / 4+ / 1) | 2.67 | 2.67 | Yes |
 
 **Playtesting priority:** Compare four-, six-, eight-, and ten-Model Veteran formations, particularly Damage 2 Heavy Crossbows/Muskets, in full 2,000-point armies with eight matched-play CP cards. Test Charges and Cover alongside ranged output, not just stationary gunlines. Also compare generic support Commands against named faction specialists; all Point costs remain subject to adjustment.
 
@@ -809,3 +809,8 @@ These are **expected raw successful Hits and nominal Damage before enemy Saves**
 This balance pass supersedes the older historical Deadly Precision and Wizard default spell wording. **Deadly Precision +20** is now a personal 1 CP Command granting Critical 1 per Surge on any eligible Attack, repeatable on another Attack for another CP (never twice on the same Attack); no purchased Deadly Precision upgrade grants a permanent Critical keyword or adds a reinforcement surcharge. **Elite/Captain Weapon Master +30** and **Ranged Marksman Training +30** grant Accurate 1 plus one Hit step. **Sharpeye +20** grants Pinpoint.
 
 Captains choose their secondary ranged weapon separately from Combat Training, Veterans improve all their weapons, Monster Hunter is removed, and Armored +25 is available. Shields cannot be paired with two-handed ranged weapons. Light/standard/heavy Cavalry gain Charge 3/2/1 and Impact +0/+1/+2. Charge Formation costs +50 to unlock a 1 CP Charge Command granting +3 Impact. Regular artillery mostly fires without Heavy; heavy artillery keeps Heavy and improves Hit. Wizards select one free Primary Spell and use Arcana slots for additional offensive spells or Commands. The JSON roster profiles remain authoritative for point values and weapon stat lines.
+
+
+### Formation-Strength Objective Eligibility
+
+Normal Units need at least half their starting Models (rounded up) surviving to contribute to objectives. Generic Line Infantry purchased at 10 Models and generic Ranged Infantry at 8–9 Models gain the Horde tag: they retain objective-control eligibility until their final Model, while counting as one Unit unless another ability modifies the count.
