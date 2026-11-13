@@ -187,13 +187,16 @@ export function resolveUnit(entry, cfg, factionId = null) {
   // Veterans training makes every weapon of an infantry formation better, not just one package.
   const infantryVeterans = entry.source === 'generic' && ['Core', 'Elite', 'Ranged', 'Captain'].includes(entry.category)
   const upgraded = modifyAttacks(spellAttacks, picked, { allWeapons: infantryVeterans ? ['Veterans'] : [], weaponTargets: cfg.weaponPicks ?? {} })
-  const { attacks: tagged, applied: tagTargets } = applyTagChoices(upgraded, picked, cfg.tagPicks)
+  const { attacks: tagged, applied: tagTargets, unitAnti: chosenUnitAnti } = applyTagChoices(upgraded, picked, cfg.tagPicks)
   const attacks = tagged
     .map((a) => ({ ...a, phase: attackPhase(a) }))
     .sort((a, b) => (a.phase === b.phase ? 0 : a.phase === 'Assault' ? -1 : 1))
 
   const finalModels = doubled ? models * 2 : models
   const tags = modifyTags([...entry.tags.filter((t) => !(isHero && t === 'Elite' && entry.heroOption === 'Master Wizard')), ...picked.flatMap((o) => o.grantsTags ?? [])], picked)
+  const expanded = canonicalTags(tags)
+  const isNonEliteInfantry = expanded.includes('Infantry') && !expanded.includes('Cavalry') && !expanded.includes('Elite')
+  if (((doubled && entry.source === 'faction' && entry.isCore) || (entry.key === 'generic:line-infantry' && finalModels >= 10) || (entry.key === 'generic:ranged-infantry' && finalModels >= 8)) && isNonEliteInfantry && !tags.includes('Horde')) tags.push('Horde')
   // Hero and Unique are distinct. Commissioned generic Captains and Master Wizards
   // gain Hero but not Unique; PCs and named/legendary figures gain Unique explicitly.
   if (isHero && !tags.includes('Hero')) tags.push('Hero')
@@ -235,6 +238,7 @@ export function resolveUnit(entry, cfg, factionId = null) {
     charge,
     loadoutConflicts,
     tags: canonicalTags(fx.tags),
+    unitAnti: [...entry.abilities.filter((a) => a.scope === 'unit' && a.keyword?.startsWith('Anti-')).map((a) => a.keyword), ...chosenUnitAnti],
     attacks: fx.attacks,
     abilities: [...entry.abilities, ...(isMasterWizard && entry.masterWizardAbility ? [{ ...entry.masterWizardAbility }] : []), ...optionCommands],
     picks: selected
