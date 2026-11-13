@@ -268,7 +268,8 @@ Infantry, Support, Elite, Mortal, Armored 
 
 M3" / W5 / Arm 4+ / Eva 5+ / Ward 5+ (Magic)
 
-Blessed Mace: Engaged / 3 / 5+ / 1 / Magic, Anti-Undead 2
+Blessed Mace: Engaged / 3 / 5+ / 1 / Magic
+Anti-Undead 2 — Unit Passive: Applies once to the combined Attack pool with any eligible Weapon or Spell Attack.
 
 Benediction — 1 CP, Movement: Improve one nearby Unit's applicable Ward by one step until the end of the Phase.
 
@@ -548,7 +549,7 @@ Guided Hunt — 1 CP, Movement: One Beast, Cavalry, or Monster Unit within Short
 
 | Unit                                    | Profile                                          | Weapons / Special Ability                                                                                                                                                                    |
 | --------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Treant Ancient — 285 pts (Monster, Fey) | M3" / W12 / Arm 3+ / Eva 6+                      | Great Limbs: Engaged 2" / 4 / 4+ / 3 / Anti-Infantry 3. <br>Living Bastion: Friendly Units immediately behind or adjacent to this Model benefit from Cover against ranged Attacks when physically appropriate. |
+| Treant Ancient — 285 pts (Monster, Fey) | M3" / W12 / Arm 3+ / Eva 6+                      | Great Limbs: Engaged 2" / 4 / 4+ / 3. <br>Living Bastion: Friendly Units immediately behind or adjacent to this Model benefit from Cover against ranged Attacks when physically appropriate.<br>Anti-Infantry 3 (Unit Passive). |
 | Forest Wurm— 365 pts (Monster)          | M7" / W11 / Arm 4+ / Eva 5+ / Ward 6+ (Magic +1) | Verdant Breath: 8" / 6 / 5+ / 1 / Magic, Blast 1". <br>Claws: Engaged / 6 / 3+ / 2. <br>Canopy Flight: May Move over terrain and Models but must finish legally.                             |
 
 ### Faction Leader — Queen of Thorns
@@ -624,7 +625,8 @@ Infantry, Hero, Mortal, Armored
 
 M5" / W7 / Arm 4+ / Eva 5+
 
-Boss Choppa: Engaged / 4 / 4+ / 2 / Anti-Elite 2
+Boss Choppa: Engaged / 4 / 4+ / 2
+Anti-Elite 2 — Unit Passive: Applies once to the combined Attack pool with any eligible Weapon or Spell Attack.
 
 Drive the Mob — 1 CP, Movement: One friendly Infantry Unit within Short gains +2" Move during its next Move but cannot make a ranged Attack during that activation.
 
@@ -672,7 +674,7 @@ Rallying Roar — 1 CP, Movement: Remove Withdrawn from a nearby friendly Unit a
 
 | Unit                                  | Profile                     | Weapons / Special Ability                                                                                                                  |
 | ------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| War Beast — 260 pts (Monster, Beast)  | M6" / W10 / Arm 4+ / Eva 6+ | Tusks and Claws: Engaged / 5 / 4+ / 2 / Anti-Unique 2. Unstoppable Charge: Gain +4 Impact when Charging.                                                   |
+| War Beast — 260 pts (Monster, Beast)  | M6" / W10 / Arm 4+ / Eva 6+ | Tusks and Claws: Engaged / 5 / 4+ / 2. Unstoppable Charge: Gain +4 Impact when Charging.<br>Anti-Unique 2 (Unit Passive).                                                   |
 | Looted Catapult — 155 pts (Artillery) | M2" / W5 / Arm 5+ / Eva —   | Boulder Thrower: 15" / 2 / 4+ / 2 / Heavy, Blast 1". Crew: Engaged / 2 / 6+ / 1. <br>Unstable Frame: On a Blunder, suffer Direct Damage 1. |
 
 Warclans — Looted Catapult
@@ -813,7 +815,7 @@ Both options use the same Command and share its normal activation restrictions.
 | Unit                                                           | Profile                   | Weapons / Special Ability                                                                                                                                                      |
 | -------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Scrap Tank — 220 pts (Vehicle, Mechanical, Armored)            | M5" / W8 / Arm 4+ / Eva — | Scrap Cannon: 8" / 4 / 4+ / 2 / Blast 1", Heavy. Ram: Engaged / 3 / 5+ / 2 / Anti-Infantry 2. Unreliable: A Blunder on its Heavy Attack inflicts Direct Damage 1 on the Tank.                    |
-| Burrowing Engine — 225 pts (War Machine, Mechanical, Armored ) | M5" / W8 / Arm 4+ / Eva — | Grinding Drill: Engaged / 4 / 4+ / 2 / Anti-Armored 2. Subterranean Assault: May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. Cannot Charge in that Round. |
+| Burrowing Engine — 225 pts (War Machine, Mechanical, Armored ) | M5" / W8 / Arm 4+ / Eva — | Grinding Drill: Engaged / 4 / 4+ / 2. Subterranean Assault: May begin in Reserve and deploy outside Short Range of enemies at the end of a Round. Cannot Charge in that Round.<br>Anti-Armored 2 (Unit Passive). |
 
 ### Faction Leader — Underking
 
@@ -928,7 +930,7 @@ Rebind Bones — 1 CP, Movement: One friendly Undead Unit within Short that has 
 
 | Unit                                                              | Profile                                   | Weapons / Special Ability                                                                                                                                                                                              |
 | ----------------------------------------------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Bone Colossus — 280 pts (Construct, Undead, Armored )             | M4" / W12 / Arm 3+ / Eva —                | Colossal Blade: Engaged 2" / 4 / 4+ / 3 / Anti-Elite 3. Reassembled: The first time this Unit would be defeated, roll a D6. On 4+, remain at 1 Wound instead.                                                                         |
+| Bone Colossus — 280 pts (Construct, Undead, Armored )             | M4" / W12 / Arm 3+ / Eva —                | Colossal Blade: Engaged 2" / 4 / 4+ / 3. Reassembled: The first time this Unit would be defeated, roll a D6. On 4+, remain at 1 Wound instead.<br>Anti-Elite 3 (Unit Passive).                                                                         |
 | Corpse Engine — 225 pts (War Machine, Construct, Undead, Armored) | M3" / W9 / Arm 5+ / Eva — / Ward 6+ Magic | Grave Pulse: 8" / 5 / 5+ / 1 / Magic. Crew: Engaged / 2 / 6+ / 1. Necrotic Conduit: Once per Round, after a nearby friendly Undead Unit returns a basic Model, Heal 1 Damage from that Unit if it has a wounded Model. |
 
 ### Faction Leader — Deathless King
@@ -1038,7 +1040,7 @@ Call Retainers — 1 CP, Movement: Add one matching basic Model to a surviving, 
 
 | Unit                              | Profile                                       | Weapons / Special Ability                                                                                                                                                                                       |
 | --------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Winged Horror — 290 pts (Monster) | M8" / W10 / Arm 4+ / Eva 5+ / Ward 6+ (Magic) | Fangs and Talons: Engaged / 5 / 4+ / 2 / Anti-Unique 2. Predatory Dive: When Charging from an elevated position, gain +1 Impact and Accurate 1 on its next Attack.                                                              |
+| Winged Horror — 290 pts (Monster) | M8" / W10 / Arm 4+ / Eva 5+ / Ward 6+ (Magic) | Fangs and Talons: Engaged / 5 / 4+ / 2. Predatory Dive: When Charging from an elevated position, gain +1 Impact and Accurate 1 on its next Attack.<br>Anti-Unique 2 (Unit Passive).                                                              |
 | Black Coach — 260 pts (Vehicle)   | M7" / W9 / Arm 4+ / Eva 5+ / Ward 6+ (Magic)  | Soul Lanterns: 8" / 4 / 5+ / 1 / Magic. Scythes: Engaged / 4 / 5+ / 2 / Anti-Infantry 2. Soul Furnace: Once per Round, when a friendly Unit within Short destroys an enemy Unit, the Coach may Move 2" without finishing Engaged. |
 
 ### Faction Leader — Crimson Regent
@@ -1149,7 +1151,7 @@ Funeral Bell — 1 CP, Movement: One visible enemy within Medium cannot benefit 
 | Unit                                                    | Profile                                          | Weapons / Special Ability                                                                                                                                                    |
 | ------------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Mourning Engine — 255 pts (Spirit,  Construct, Armored) | M5" / W9 / Arm 5+ / Eva 5+ / Ward 4+ (Physical)  | Soul Wave: 8" / 5 / 5+ / 1 / Magic, Blast 1". Spectral Limbs: Engaged / 4 / 5+ / 1 / Magic. Unbound Spirit: Ignores terrain and Models while moving, finishing legally.      |
-| Grave Leviathan — 325 pts (Monster, Spirit, Undead )    | M6" / W12 / Arm 6+ / Eva 5+ / Ward 4+ (Physical) | Abyssal Grasp: Engaged 2" / 5 / 4+ / 2 / Magic, Anti-Armored 2. Otherworldly Bulk: After successfully Charging, enemies cannot use Reactions against its first Melee Attack that Round. |
+| Grave Leviathan — 325 pts (Monster, Spirit, Undead )    | M6" / W12 / Arm 6+ / Eva 5+ / Ward 4+ (Physical) | Abyssal Grasp: Engaged 2" / 5 / 4+ / 2 / Magic Otherworldly Bulk: After successfully Charging, enemies cannot use Reactions against its first Melee Attack that Round.<br>Anti-Armored 2 (Unit Passive). |
 
 ### Faction Leader — Pale Monarch
 
@@ -1220,7 +1222,8 @@ Hero, Infernal, Armored
 
 M5" / W6 / Arm 3+ / Eva 6+ / Ward 6+ (Magic)
 
-Daemon Blade: Engaged / 4 / 3+ / 2 / Magic, Anti-Mortal 1
+Daemon Blade: Engaged / 4 / 3+ / 2 / Magic
+Anti-Mortal 1 — Unit Passive: Applies once to the combined Attack pool with any eligible Weapon or Spell Attack.
 
 Blood Debt — 1 CP, Movement: If the Champion inflicted at least 2 Damage on enemies during its preceding activation, Heal 1 on one friendly Infernal Unit within Short.
 
@@ -1276,7 +1279,7 @@ Unholy Benediction — 1 CP, Movement: One friendly Infernal Unit within Short g
 
 | Unit                                          | Profile                                       | Weapons / Special Ability                                                                                                                                 |
 | --------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Greater Fiend — 310 pts (Monster, Infernal)   | M6" / W12 / Arm 4+ / Eva 5+ / Ward 5+ (Magic) | Daemon Weapon: Engaged / 5 / 4+ / 2 / Magic, Anti-Elite 2. Unstable Power: Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Melee Attack. |
+| Greater Fiend — 310 pts (Monster, Infernal)   | M6" / W12 / Arm 4+ / Eva 5+ / Ward 5+ (Magic) | Daemon Weapon: Engaged / 5 / 4+ / 2 / Magic Unstable Power: Once per Round, suffer Direct Damage 1 to gain +2 Attacks during the next Melee Attack.<br>Anti-Elite 2 (Unit Passive). |
 | Rift Engine — 225 pts (War Machine, Infernal) | M3" / W8 / Arm 5+ / Eva — / Ward 6+ (Magic)   | Rift Battery: 10" / 3 / 4+ / 2 / Magic, Blast 1", Heavy. Crew: Engaged / 2 / 6+ / 1. Volatile Gate: On a Blunder, suffer Direct Damage 1, Anti-Horde 3.                 |
 
 ### Faction Leader — Archfiend
@@ -1486,7 +1489,8 @@ Infantry, Hero, Mortal, Monster
 
 M5" / W8 / Arm 4+ / Eva 5+
 
-Great Weapon: Engaged / 6 / 3+ / 2 / Anti-Elite 2
+Great Weapon: Engaged / 6 / 3+ / 2
+Anti-Elite 2 — Unit Passive: Applies once to the combined Attack pool with any eligible Weapon or Spell Attack.
 
 Stampede: Gain Impact +2 on a successful Charge.
 
@@ -1520,7 +1524,7 @@ Crack the Whip — 1 CP, Reaction: When a friendly Monster or Beast Unit within 
 
 | Unit                                            | Profile                     | Weapons / Special Ability                                                                                                                                                                |
 | ----------------------------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Giant — 300 pts (Monster, Beast, Armored )      | M5" / W14 / Arm 4+ / Eva 6+ | Massive Club: Engaged 2" / 5 / 4+ / 3 / Anti-Armored 3.<br>Huge: Counts as three Units for objective control.                                                                                             |
+| Giant — 300 pts (Monster, Beast, Armored )      | M5" / W14 / Arm 4+ / Eva 6+ | Massive Club: Engaged 2" / 5 / 4+ / 3.<br>Huge: Counts as three Units for objective control.<br>Anti-Armored 3 (Unit Passive).                                                                                             |
 | War Mammoth — 400 pts (Monster, Beast, Armored) | M5" / W16 / Arm 3+ / Eva 6+ | Howdah Bows: 10" / 7 / 5+ / 1 Accurate 1<br>Crushing Tusks: Engaged / 5 / 3+ / 3<br>Mobile Fortress: Friendly units immediately behind the Mammoth benefit from Cover where appropriate. |
 
 ### Faction Leader — Overtyrant
