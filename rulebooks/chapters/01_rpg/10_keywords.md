@@ -34,7 +34,13 @@ If this Attack scores at least one Hit, each **other Unit** qualifying within X 
 
 ## Anti-[Type] X
 
-Gain X additional Attack dice against Units with the listed category or tag (for example, Anti-Undead 1, Anti-Monster 2, Anti-Armored 1). This does **not** raise Damage.
+Gain X additional Attack dice when the target has the named Tag. Anti never raises Damage. **Where Anti appears matters:**
+
+- **Weapon-profile Anti:** Each eligible Model contributing that weapon's Attack gains X additional Attack dice. Combine these dice into the Unit's Attack pool after counting contributing Models.
+- **Unit-wide Anti:** A Passive, Command or effect explicitly granting **this Unit** Anti-X adds X dice **once** to the combined eligible Attack pool, regardless of Model count or the weapon used.
+- **Non-stacking:** When multiple Anti sources match the same target, compute the total additional dice from each source (including model multiplication for weapon Anti) and apply only the **highest total**. A Unit-wide bonus does not multiply merely because it applies to all its weapons.
+
+**Example:** Four Thunderers have one Musket Attack each. If each Musket has Anti-Armored 2, the four Models contribute 4 normal + (4 × 2) Anti = **12 dice** against an Armored Unit. If instead the Thunderers have **Unit-wide Anti-Armored 4**, they roll 4 normal + 4 Anti = **8 dice**, and at two surviving Models they still roll 2 normal + 4 Anti = **6 dice**. Neither source increases Damage or Charge Impact.
 
 ## Concealed
 
