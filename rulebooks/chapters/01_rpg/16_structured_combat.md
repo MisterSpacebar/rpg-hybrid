@@ -815,19 +815,11 @@ Common objectives include:
 
 ### Objective Control
 
-Unless a scenario states otherwise, a Unit controls an objective while at least one eligible Model is within 3" of it.
+Unless a scenario states otherwise, a normal Unit can contribute to an objective only if **at least half of its purchased starting Models (rounded up)** survive and at least one eligible Model is within 3" of the objective. A Unit with **Horde** ignores the half-strength requirement and remains eligible down to its final surviving Model.
 
-If both sides have eligible Units within range, the side with more eligible Units controls the objective.
+If both sides have eligible Units within range, the side with more eligible Units controls the objective. A tie makes it Contested. Each eligible Unit ordinarily counts as **one Unit**, regardless of size or Horde; extra-count effects never stack (use the highest applicable count). A Unit contributes to only one objective per Scoring Phase.
 
-If tied, the objective is Contested.
-
-**Counting bonuses:** Abilities that make one Unit count as multiple Units for objective control do not stack. Use the highest count applicable to that Unit. Defeated, Withdrawn, and Reserve Units cannot gain control eligibility from a counting bonus.
-
-Defeated and Withdrawn Units cannot control objectives.
-
-Units still in Reserves cannot control objectives.
-
-A multi-model Unit counts as one Unit for determining control unless the scenario states otherwise.
+Defeated, Withdrawn, and Reserve Units cannot control objectives. A Unit that regains Models can regain eligibility if it meets the threshold during Scoring.
 
 ## 18. End Step
 
