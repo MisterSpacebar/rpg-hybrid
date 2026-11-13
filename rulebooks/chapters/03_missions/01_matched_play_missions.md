@@ -63,19 +63,9 @@ Where a Mission distinguishes friendly-affiliated, enemy-affiliated, and Neutral
 
 ## 3. Objective Control
 
-Unless a Mission states otherwise, an objective is controlled according to the Structured Combat rules.
+Control follows the Structured Combat rules. Normal Units require at least half their starting Models, rounded up, surviving. Horde Units remain eligible with a single surviving Model. The Unit must also have at least one eligible Model within 3" of the objective.
 
-A Unit contributes to control if at least one eligible Model is within 3" of the objective.
-
-Each eligible Unit contributes one to its side's control total, regardless of its number of Models.
-
-The side with more eligible Units in range controls the objective.
-
-If both sides have equal eligible Units in range, the objective is **Contested** and neither side controls it.
-
-Downed, Withdrawn, and Reserve Units cannot control objectives.
-
-A Unit may count toward only one objective during the same Scoring Phase. If it is within range of multiple objectives, its controlling player chooses which one it contributes to.
+Eligible Units count as **one** for control, including Horde and Double Formations; explicit bonuses that count as more Units do not stack. Higher counts win, ties are Contested. Defeated, Withdrawn and Reserve Units cannot control objectives. A Unit contributes to at most one objective in each Scoring Phase.
 
 ## 4. Victory Point Scoring
 
