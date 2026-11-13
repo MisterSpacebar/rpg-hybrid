@@ -63,9 +63,7 @@
           "attacks": 3,
           "hit": "5+",
           "damage": 2,
-          "keywords": [
-            "Anti-Armored 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -73,6 +71,13 @@
           "name": "Massive Charge",
           "type": "Passive",
           "effect": "Roll 3d6 for this unit's charges and keep the two highest."
+        },
+        {
+          "name": "Anti-Armored 4 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Armored 4",
+          "effect": "This Unit gains Anti-Armored 4 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },
@@ -99,9 +104,7 @@
           "attacks": 3,
           "hit": "5+",
           "damage": 2,
-          "keywords": [
-            "Anti-Infantry 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -109,6 +112,13 @@
           "name": "Stampede",
           "type": "Passive",
           "effect": "Gain Impact +2 on a successful Charge."
+        },
+        {
+          "name": "Anti-Infantry 3 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Infantry 3",
+          "effect": "This Unit gains Anti-Infantry 3 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ],
       "charge": 2,
@@ -193,9 +203,7 @@
           "attacks": 6,
           "hit": "3+",
           "damage": 2,
-          "keywords": [
-            "Anti-Elite 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -210,6 +218,13 @@
           "cost": "1 CP",
           "timing": "Reaction",
           "effect": "After inflicting an unsaved Hit to an engaged unit or after a successful Charge, reposition one enemy basic Model up to 2\" to a legal position, maintaining Unit coherency."
+        },
+        {
+          "name": "Anti-Elite 2 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Elite 2",
+          "effect": "This Unit gains Anti-Elite 2 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ],
       "impact": 4
@@ -327,9 +342,7 @@
           "attacks": 5,
           "hit": "4+",
           "damage": 3,
-          "keywords": [
-            "Anti-Armored 3"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -337,6 +350,13 @@
           "name": "Huge",
           "type": "Passive",
           "effect": "Counts as three Units for objective control."
+        },
+        {
+          "name": "Anti-Armored 3 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Armored 3",
+          "effect": "This Unit gains Anti-Armored 3 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },
