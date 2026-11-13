@@ -181,9 +181,7 @@
           "attacks": 4,
           "hit": "4+",
           "damage": 2,
-          "keywords": [
-            "Anti-Elite 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -193,6 +191,13 @@
           "cost": "1 CP",
           "timing": "Movement",
           "effect": "One friendly Infantry Unit within Short gains +2\" Move during its next Move but cannot make a ranged Attack during that activation."
+        },
+        {
+          "name": "Anti-Elite 2 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Elite 2",
+          "effect": "This Unit gains Anti-Elite 2 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },
@@ -318,9 +323,7 @@
           "attacks": 5,
           "hit": "4+",
           "damage": 2,
-          "keywords": [
-            "Anti-Unique 2"
-          ]
+          "keywords": []
         }
       ],
       "abilities": [
@@ -328,6 +331,13 @@
           "name": "Unstoppable Charge",
           "type": "Passive",
           "effect": "Gain +4 Impact when Charging."
+        },
+        {
+          "name": "Anti-Unique 2 Training",
+          "type": "Passive",
+          "scope": "unit",
+          "keyword": "Anti-Unique 2",
+          "effect": "This Unit gains Anti-Unique 2 on its eligible Weapon and Spell Attacks; add the bonus once to the combined Attack pool, not per Model."
         }
       ]
     },
