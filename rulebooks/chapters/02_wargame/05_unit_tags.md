@@ -87,6 +87,7 @@ Unit Types may overlap. An individual Artificer might be `Unique, Support`; an A
 | **Armored** | Units explicitly designated as protected by substantial armor, heavy plating, or equivalent equipment. |
 | **Unarmored** | Units explicitly designated as lacking substantial armor — unarmed, lightly clothed, or relying on natural toughness alone. |
 | **Mechanical** | Units primarily powered or operated through machinery, including certain Vehicles and Artillery. |
+| **Horde** | Large or massed infantry formations; eligible for objective control until the final surviving Model. It normally counts as one Unit for control. |
 | **Humanoid** | Humanoid physical form. May coexist with Mortal, Undead, Infernal, or other creature types. |
 | **Flying** | Units explicitly able to fly. The tag does not itself provide movement rules. |
 
@@ -251,6 +252,10 @@ The following illustrate notation and classification, not additional equipment o
 A Unit's actual datasheet remains authoritative for its specific tags and eligible Recruitment Slots.
 
 ---
+
+## Horde and Formation Strength
+
+A non-Cavalry, non-Elite faction Core Unit upgraded to Double Formation gains Horde if its tags satisfy the restriction. Generic Line Infantry gain Horde at 10 purchased Models; generic Ranged Infantry at 8 or 9. Printed Horde Units retain it. Horde persists after casualties and is a valid target tag for Anti-Horde. It does not double attacks, activations, recruitment slots, or control value.
 
 ## 10. Rules Reference and Compatibility
 
