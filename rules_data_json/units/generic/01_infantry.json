@@ -215,7 +215,7 @@
         "evade": "6+",
         "ward": null
       },
-      "description": "Ranged Infantry specialize in mobile short-range shooting, massed arrows, prepared crossbow fire, and specialized firearms. Their starting formation is four Models, but can grow to ten at an increasing price.",
+      "description": "Ranged Infantry specialize in mobile short-range shooting, massed arrows, prepared crossbow fire, and specialized firearms. Their starting formation is four Models, but can grow to nine at an increasing price.",
       "rangedWeaponPackages": {
         "chooseCount": 1,
         "note": "Choose one primary ranged weapon package. Attacks are per Model; Heavy and Firearm have their ordinary shared keyword meanings.",
@@ -239,7 +239,7 @@
             "name": "Longbows",
             "points": 35,
             "profile": {
-              "range": "12\"",
+              "range": "9\"",
               "attacks": 3,
               "hit": "5+",
               "damage": 1,
@@ -250,7 +250,7 @@
                 "Long Range 6\""
               ]
             },
-            "notes": "Mobile volleys with extended reach; beyond 12\" the combined Attack pool loses 1 die for single-model Units or 3 dice for multi-model Units (minimum 1)."
+            "notes": "Mobile volleys with up to 15\" reach before training; beyond 9\" reduce the combined multi-model Attack pool by 3 dice."
           },
           {
             "name": "Crossbows",
@@ -265,7 +265,7 @@
               ],
               "keywords": [
                 "Heavy",
-                "Anti-Armored 2",
+                "Anti-Armored 1",
                 "Long Range 3\""
               ]
             },
@@ -275,7 +275,7 @@
             "name": "Heavy Crossbows",
             "points": 50,
             "profile": {
-              "range": "12\"",
+              "range": "10\"",
               "attacks": 2,
               "hit": "5+",
               "damage": 2,
@@ -284,8 +284,8 @@
               ],
               "keywords": [
                 "Heavy",
-                "Anti-Elite 2",
-                "Long Range 3\""
+                "Anti-Elite 1",
+                "Long Range 2\""
               ]
             },
             "notes": "Sustained anti-elite fire, at high cost and with Heavy restrictions."
@@ -354,19 +354,20 @@
             }
           },
           {
-            "name": "Slings",
-            "points": 10,
+            "name": "Hand Crossbows",
+            "points": 20,
             "profile": {
-              "range": "9\"",
-              "attacks": 4,
-              "hit": "6+",
+              "range": "8\"",
+              "attacks": 2,
+              "hit": "4+",
               "damage": 1,
               "damageTypes": [
                 "Physical"
               ],
               "keywords": []
             },
-            "notes": "High-volume, low-accuracy short-range attacks."
+            "notes": "Mobile reliable hand crossbows without Heavy or Firearm. Retired Sling picks require explicit reselection.",
+            "legacyId": "rangedWeaponPackages:hand-crossbows"
           }
         ],
         "distinctions": "Longbows have greater effective reach and do not require stationary firing; Crossbows trade movement flexibility for concentrated Damage 2 Hits with extra dice against Armored targets; Heavy Crossbows deliver more dice against tough and Elite targets; Muskets gain Firearm's Instant and extra dice against Characters; Pistols and Javelins favor close-range mobile play. Weapon range does not modify Hit unless Long Range X is used beyond the printed range."
@@ -408,7 +409,7 @@
           {
             "name": "Longshot Training",
             "points": 10,
-            "effect": "Gain Long Range 2\". If the weapon already has Long Range X, increase that X by 1 instead. Shots beyond normal Range reduce the combined Attack pool by 3 dice for multi-model Units (minimum 1)."
+            "effect": "Gain Long Range 3\". If the primary weapon already has Long Range X, increase X by 2\". Shots beyond normal Range reduce the combined Attack pool by 3 dice for multi-model Units (minimum 1)."
           },
           {
             "name": "Marksman Training",
@@ -428,7 +429,7 @@
           {
             "name": "Weapon Specialization",
             "points": 25,
-            "effect": "Choose one Faction, Unit Type, or Trait tag. The primary ranged weapon gains Anti-[chosen tag] 2 against Units possessing it. Follows the normal Anti-[Type] rules (applies once to the Unit's combined Attack pool; does not stack with another applicable Anti-[Type] source on the same target — only the higher value counts). May be purchased once."
+            "effect": "Choose one Faction, Unit Type, or Trait tag. This Unit gains Anti-[chosen tag] 3 on all its eligible Weapon Attacks, applied once to the combined Attack pool. This Unit-wide bonus does not stack with weapon-specific Anti bonuses; use the highest applicable total additional dice. May be purchased once."
           },
           {
             "name": "Veterans",
@@ -456,11 +457,10 @@
       "battlefieldRole": "Formed shooting, precision ranged damage, mobile skirmish volleys, and specialized heavy fire.",
       "designNotes": [
         "v4 balance pass (post-playtesting): Damage-1 weapons (Shortbows, Longbows, Pistols, Javelins, Slings, Improvised Weapons) gained +1 Attack; Damage-2/Heavy weapons (Crossbows, Heavy Crossbows, Muskets) kept their listed Attacks and gained a thematic Anti-[Type] 2.",
-        "v4.1 refinement: Veterans pricing is per-unit, not uniform. Ranged Infantry's 4-9 Model formation pays +75 (not a flat +50 shared with small/single-Model Units), matching Line Infantry's pricing logic and this Unit's own per-added-Model Veteran reinforcement surcharge (+15/Model). A new Weapon Specialization upgrade (+25) lets the Unit choose any Faction/Unit Type/Trait tag for the primary weapon to gain Anti-[chosen tag] 2; it is priced flat (not per-unit like Veterans) because Anti-[Type] applies once to the whole Unit's Attack pool regardless of Model count."
+        "v4.1 refinement: Veterans pricing is per-unit, not uniform. Ranged Infantry's 4-9 Model formation pays +75 (not a flat +50 shared with small/single-Model Units), matching Line Infantry's pricing logic and this Unit's own per-added-Model Veteran reinforcement surcharge (+15/Model). A new Weapon Specialization upgrade (+25) lets the Unit choose any Faction/Unit Type/Trait tag for the primary weapon to gain Anti-[chosen tag] 2; it is priced flat (not per-unit like Veterans) because Anti-[Type] applies once to the whole Unit's Attack pool regardless of Model count.",
+        "2026 balance pass: Longbows 9\" + Long Range 6\", Heavy Crossbows 10\" + Long Range 2\", conservative weapon Anti 1, Hand Crossbows replace Slings, Longshot upgrades extend by +2\" if already present, and Weapon Specialization grants unit-wide Anti 3."
       ],
-      "knownIssues": [
-        "The intro description states the formation 'can grow to ten' Models, but the Formation and Shooting Upgrades table caps Additional Model purchases at 9 Models. This JSON uses the table's explicit cap (maxModels: 9); the two figures conflict in the source and should be reconciled."
-      ]
+      "knownIssues": []
     },
     {
       "id": "elite-infantry",
